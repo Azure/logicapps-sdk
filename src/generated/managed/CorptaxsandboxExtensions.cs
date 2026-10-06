@@ -4,557 +4,813 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CorptaxsandboxActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction CorptaxEntityViews(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyqualifiedviewName = null)
+        [WorkflowExpressionFactory(nameof(__BuildCorptaxEntityViews))]
+        public IWorkflowAction CorptaxEntityViews([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodyqualifiedviewName = null)
         {
-            var apiCallPath = "/entityView";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyqualifiedviewName != null)
-            {
-                body["qualifiedviewName"] = ExpressionConverter.ConvertO(bodyqualifiedviewName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction DataExchangeLookup(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<lookupTypeInput>> lookupType, Expression<Func<bool>> bodydetails, Expression<Func<string>> bodylookupName = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCorptaxEntityViews(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodyqualifiedviewName = null)
         {
-            var apiCallPath = "/DataExchangeLookup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            callPayload.Headers["lookupType"] = ExpressionConverter.Convert(lookupType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodylookupName != null)
+            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            WorkflowExpression.Validate(bodyqualifiedviewName, nameof(bodyqualifiedviewName), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["lookupName"] = ExpressionConverter.ConvertO(bodylookupName);
-                bodypropCount++;
-            }
+                var apiCallPath = "/entityView";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+                callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyqualifiedviewName != null)
+                {
+                    body["qualifiedviewName"] = ExpressionConverter.ConvertO(bodyqualifiedviewName);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["details"] = ExpressionConverter.ConvertO(bodydetails);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction EntityList(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodyperiodName = null, Expression<Func<string>> bodyviewName = null)
+        [WorkflowExpressionFactory(nameof(__BuildDataExchangeLookup))]
+        public IWorkflowAction DataExchangeLookup([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<lookupTypeInput> lookupType, [WorkflowExpression] Func<bool> bodydetails, [WorkflowExpression] Func<string> bodylookupName = null)
         {
-            var apiCallPath = "/EntityLists";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyactive != null)
-            {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
-                bodypropCount++;
-            }
-
-            if (bodyperiodName != null)
-            {
-                body["periodName"] = ExpressionConverter.ConvertO(bodyperiodName);
-                bodypropCount++;
-            }
-
-            if (bodyviewName != null)
-            {
-                body["viewName"] = ExpressionConverter.ConvertO(bodyviewName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction ExportData(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodypackageName, Expression<Func<string>> bodynamedContext = null, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<string>> bodyinternationalTaxName = null, Expression<Func<string>> bodyprovisionName = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDataExchangeLookup(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<lookupTypeInput> lookupType, WorkflowExpression<bool> bodydetails, WorkflowExpression<string> bodylookupName = null)
         {
-            var apiCallPath = "/dataExport";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodynamedContext != null)
+            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            WorkflowExpression.Validate(lookupType, nameof(lookupType), required: true);
+            WorkflowExpression.Validate(bodydetails, nameof(bodydetails), required: true);
+            WorkflowExpression.Validate(bodylookupName, nameof(bodylookupName), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["namedContext"] = ExpressionConverter.ConvertO(bodynamedContext);
+                var apiCallPath = "/DataExchangeLookup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+                callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+                callPayload.Headers["lookupType"] = ExpressionConverter.Convert(lookupType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodylookupName != null)
+                {
+                    body["lookupName"] = ExpressionConverter.ConvertO(bodylookupName);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["details"] = ExpressionConverter.ConvertO(bodydetails);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyentityCode != null)
-            {
-                body["entityCode"] = ExpressionConverter.ConvertO(bodyentityCode);
-                bodypropCount++;
-            }
-
-            if (bodycaseCode != null)
-            {
-                body["caseCode"] = ExpressionConverter.ConvertO(bodycaseCode);
-                bodypropCount++;
-            }
-
-            if (bodyperiodCode != null)
-            {
-                body["periodCode"] = ExpressionConverter.ConvertO(bodyperiodCode);
-                bodypropCount++;
-            }
-
-            if (bodyjurisdictionCode != null)
-            {
-                body["jurisdictionCode"] = ExpressionConverter.ConvertO(bodyjurisdictionCode);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["packageName"] = ExpressionConverter.ConvertO(bodypackageName);
-            if (bodyinternationalTaxName != null)
-            {
-                body["internationalTaxName"] = ExpressionConverter.ConvertO(bodyinternationalTaxName);
-                bodypropCount++;
-            }
-
-            if (bodyprovisionName != null)
-            {
-                body["provisionName"] = ExpressionConverter.ConvertO(bodyprovisionName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction ExportDataWithDataSource(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodydataSource, Expression<Func<string>> bodynamedContext = null, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<string>> bodyinternationalTaxName = null, Expression<Func<string>> bodyprovisionName = null)
+        [WorkflowExpressionFactory(nameof(__BuildEntityList))]
+        public IWorkflowAction EntityList([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<string> bodyperiodName = null, [WorkflowExpression] Func<string> bodyviewName = null)
         {
-            var apiCallPath = "/dataExportWithDataSource";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodynamedContext != null)
-            {
-                body["namedContext"] = ExpressionConverter.ConvertO(bodynamedContext);
-                bodypropCount++;
-            }
-
-            if (bodyentityCode != null)
-            {
-                body["entityCode"] = ExpressionConverter.ConvertO(bodyentityCode);
-                bodypropCount++;
-            }
-
-            if (bodycaseCode != null)
-            {
-                body["caseCode"] = ExpressionConverter.ConvertO(bodycaseCode);
-                bodypropCount++;
-            }
-
-            if (bodyperiodCode != null)
-            {
-                body["periodCode"] = ExpressionConverter.ConvertO(bodyperiodCode);
-                bodypropCount++;
-            }
-
-            if (bodyjurisdictionCode != null)
-            {
-                body["jurisdictionCode"] = ExpressionConverter.ConvertO(bodyjurisdictionCode);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
-            if (bodyinternationalTaxName != null)
-            {
-                body["internationalTaxName"] = ExpressionConverter.ConvertO(bodyinternationalTaxName);
-                bodypropCount++;
-            }
-
-            if (bodyprovisionName != null)
-            {
-                body["provisionName"] = ExpressionConverter.ConvertO(bodyprovisionName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<TriggerCartResponse> TriggerCart(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodycartName, Expression<Func<bodytypeOfActionInput>> bodytypeOfAction, Expression<Func<string>> bodynamedContext = null, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<string>> bodyledgerName = null, Expression<Func<string>> bodyisoCurrencyCode = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildEntityList(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<bool> bodyactive = null, WorkflowExpression<string> bodyperiodName = null, WorkflowExpression<string> bodyviewName = null)
         {
-            var apiCallPath = "/triggerCart";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["cartName"] = ExpressionConverter.ConvertO(bodycartName);
-            bodypropCount++;
-            body["typeOfAction"] = ExpressionConverter.ConvertO(bodytypeOfAction);
-            if (bodynamedContext != null)
+            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            WorkflowExpression.Validate(bodyactive, nameof(bodyactive), required: false);
+            WorkflowExpression.Validate(bodyperiodName, nameof(bodyperiodName), required: false);
+            WorkflowExpression.Validate(bodyviewName, nameof(bodyviewName), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["namedContext"] = ExpressionConverter.ConvertO(bodynamedContext);
-                bodypropCount++;
-            }
+                var apiCallPath = "/EntityLists";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+                callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyactive != null)
+                {
+                    body["active"] = ExpressionConverter.ConvertO(bodyactive);
+                    bodypropCount++;
+                }
 
-            if (bodyentityCode != null)
-            {
-                body["entityCode"] = ExpressionConverter.ConvertO(bodyentityCode);
-                bodypropCount++;
-            }
+                if (bodyperiodName != null)
+                {
+                    body["periodName"] = ExpressionConverter.ConvertO(bodyperiodName);
+                    bodypropCount++;
+                }
 
-            if (bodycaseCode != null)
-            {
-                body["caseCode"] = ExpressionConverter.ConvertO(bodycaseCode);
-                bodypropCount++;
-            }
+                if (bodyviewName != null)
+                {
+                    body["viewName"] = ExpressionConverter.ConvertO(bodyviewName);
+                    bodypropCount++;
+                }
 
-            if (bodyperiodCode != null)
-            {
-                body["periodCode"] = ExpressionConverter.ConvertO(bodyperiodCode);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyjurisdictionCode != null)
-            {
-                body["jurisdictionCode"] = ExpressionConverter.ConvertO(bodyjurisdictionCode);
-                bodypropCount++;
-            }
-
-            if (bodyledgerName != null)
-            {
-                body["ledgerName"] = ExpressionConverter.ConvertO(bodyledgerName);
-                bodypropCount++;
-            }
-
-            if (bodyisoCurrencyCode != null)
-            {
-                body["isoCurrencyCode"] = ExpressionConverter.ConvertO(bodyisoCurrencyCode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TriggerCartResponse>(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<TriggerReturnResponse> TriggerReturn(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyreturnName, Expression<Func<string>> bodytypeOfAction)
+        [WorkflowExpressionFactory(nameof(__BuildExportData))]
+        public IWorkflowAction ExportData([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodypackageName, [WorkflowExpression] Func<string> bodynamedContext = null, [WorkflowExpression] Func<string> bodyentityCode = null, [WorkflowExpression] Func<string> bodycaseCode = null, [WorkflowExpression] Func<string> bodyperiodCode = null, [WorkflowExpression] Func<string> bodyjurisdictionCode = null, [WorkflowExpression] Func<string> bodyinternationalTaxName = null, [WorkflowExpression] Func<string> bodyprovisionName = null)
         {
-            var apiCallPath = "/triggerReturn";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["returnName"] = ExpressionConverter.ConvertO(bodyreturnName);
-            bodypropCount++;
-            body["typeOfAction"] = ExpressionConverter.ConvertO(bodytypeOfAction);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TriggerReturnResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<DownloadContentsResponseItem[]> DownloadContents(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<typeOfActionInput>> typeOfAction, Expression<Func<string>> bodyreturnOrCartName)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildExportData(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodypackageName, WorkflowExpression<string> bodynamedContext = null, WorkflowExpression<string> bodyentityCode = null, WorkflowExpression<string> bodycaseCode = null, WorkflowExpression<string> bodyperiodCode = null, WorkflowExpression<string> bodyjurisdictionCode = null, WorkflowExpression<string> bodyinternationalTaxName = null, WorkflowExpression<string> bodyprovisionName = null)
         {
-            var apiCallPath = "/downloadContents";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            callPayload.Headers["typeOfAction"] = ExpressionConverter.Convert(typeOfAction);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["returnOrCartName"] = ExpressionConverter.ConvertO(bodyreturnOrCartName);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            WorkflowExpression.Validate(bodypackageName, nameof(bodypackageName), required: true);
+            WorkflowExpression.Validate(bodynamedContext, nameof(bodynamedContext), required: false);
+            WorkflowExpression.Validate(bodyentityCode, nameof(bodyentityCode), required: false);
+            WorkflowExpression.Validate(bodycaseCode, nameof(bodycaseCode), required: false);
+            WorkflowExpression.Validate(bodyperiodCode, nameof(bodyperiodCode), required: false);
+            WorkflowExpression.Validate(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
+            WorkflowExpression.Validate(bodyinternationalTaxName, nameof(bodyinternationalTaxName), required: false);
+            WorkflowExpression.Validate(bodyprovisionName, nameof(bodyprovisionName), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/dataExport";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+                callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodynamedContext != null)
+                {
+                    body["namedContext"] = ExpressionConverter.ConvertO(bodynamedContext);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<DownloadContentsResponseItem[]>(callPayload);
+                if (bodyentityCode != null)
+                {
+                    body["entityCode"] = ExpressionConverter.ConvertO(bodyentityCode);
+                    bodypropCount++;
+                }
+
+                if (bodycaseCode != null)
+                {
+                    body["caseCode"] = ExpressionConverter.ConvertO(bodycaseCode);
+                    bodypropCount++;
+                }
+
+                if (bodyperiodCode != null)
+                {
+                    body["periodCode"] = ExpressionConverter.ConvertO(bodyperiodCode);
+                    bodypropCount++;
+                }
+
+                if (bodyjurisdictionCode != null)
+                {
+                    body["jurisdictionCode"] = ExpressionConverter.ConvertO(bodyjurisdictionCode);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["packageName"] = ExpressionConverter.ConvertO(bodypackageName);
+                if (bodyinternationalTaxName != null)
+                {
+                    body["internationalTaxName"] = ExpressionConverter.ConvertO(bodyinternationalTaxName);
+                    bodypropCount++;
+                }
+
+                if (bodyprovisionName != null)
+                {
+                    body["provisionName"] = ExpressionConverter.ConvertO(bodyprovisionName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<CheckTriggerStatusResponse> CheckTriggerStatus(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<typeOfActionInput>> typeOfAction, Expression<Func<string>> bodyreturnOrCartName)
+        [WorkflowExpressionFactory(nameof(__BuildExportDataWithDataSource))]
+        public IWorkflowAction ExportDataWithDataSource([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodynamedContext = null, [WorkflowExpression] Func<string> bodyentityCode = null, [WorkflowExpression] Func<string> bodycaseCode = null, [WorkflowExpression] Func<string> bodyperiodCode = null, [WorkflowExpression] Func<string> bodyjurisdictionCode = null, [WorkflowExpression] Func<string> bodyinternationalTaxName = null, [WorkflowExpression] Func<string> bodyprovisionName = null)
         {
-            var apiCallPath = "/checkTriggerStatus";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            callPayload.Headers["typeOfAction"] = ExpressionConverter.Convert(typeOfAction);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["returnOrCartName"] = ExpressionConverter.ConvertO(bodyreturnOrCartName);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CheckTriggerStatusResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<ImportDataResponse> ImportData(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodypackageName, Expression<Func<string>> bodyfileContents, Expression<Func<string>> bodyfileName, Expression<Func<bodyimportTransactionTypeInput>> bodyimportTransactionType, Expression<Func<string>> bodychartOfAccountsName, Expression<Func<bool>> bodyrecognizeFunctionalCurrency, Expression<Func<bool>> bodystopOnLookupErrors, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<bodyledgerAmountTypeInput>> bodyledgerAmountType = null, Expression<Func<string>> bodyfunctionalCurrencyValue = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildExportDataWithDataSource(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodydataSource, WorkflowExpression<string> bodynamedContext = null, WorkflowExpression<string> bodyentityCode = null, WorkflowExpression<string> bodycaseCode = null, WorkflowExpression<string> bodyperiodCode = null, WorkflowExpression<string> bodyjurisdictionCode = null, WorkflowExpression<string> bodyinternationalTaxName = null, WorkflowExpression<string> bodyprovisionName = null)
         {
-            var apiCallPath = "/importData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyentityCode != null)
+            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            WorkflowExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
+            WorkflowExpression.Validate(bodynamedContext, nameof(bodynamedContext), required: false);
+            WorkflowExpression.Validate(bodyentityCode, nameof(bodyentityCode), required: false);
+            WorkflowExpression.Validate(bodycaseCode, nameof(bodycaseCode), required: false);
+            WorkflowExpression.Validate(bodyperiodCode, nameof(bodyperiodCode), required: false);
+            WorkflowExpression.Validate(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
+            WorkflowExpression.Validate(bodyinternationalTaxName, nameof(bodyinternationalTaxName), required: false);
+            WorkflowExpression.Validate(bodyprovisionName, nameof(bodyprovisionName), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["entityCode"] = ExpressionConverter.ConvertO(bodyentityCode);
+                var apiCallPath = "/dataExportWithDataSource";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+                callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodynamedContext != null)
+                {
+                    body["namedContext"] = ExpressionConverter.ConvertO(bodynamedContext);
+                    bodypropCount++;
+                }
+
+                if (bodyentityCode != null)
+                {
+                    body["entityCode"] = ExpressionConverter.ConvertO(bodyentityCode);
+                    bodypropCount++;
+                }
+
+                if (bodycaseCode != null)
+                {
+                    body["caseCode"] = ExpressionConverter.ConvertO(bodycaseCode);
+                    bodypropCount++;
+                }
+
+                if (bodyperiodCode != null)
+                {
+                    body["periodCode"] = ExpressionConverter.ConvertO(bodyperiodCode);
+                    bodypropCount++;
+                }
+
+                if (bodyjurisdictionCode != null)
+                {
+                    body["jurisdictionCode"] = ExpressionConverter.ConvertO(bodyjurisdictionCode);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["dataSource"] = ExpressionConverter.ConvertO(bodydataSource);
+                if (bodyinternationalTaxName != null)
+                {
+                    body["internationalTaxName"] = ExpressionConverter.ConvertO(bodyinternationalTaxName);
+                    bodypropCount++;
+                }
 
-            if (bodycaseCode != null)
-            {
-                body["caseCode"] = ExpressionConverter.ConvertO(bodycaseCode);
-                bodypropCount++;
-            }
+                if (bodyprovisionName != null)
+                {
+                    body["provisionName"] = ExpressionConverter.ConvertO(bodyprovisionName);
+                    bodypropCount++;
+                }
 
-            if (bodyperiodCode != null)
-            {
-                body["periodCode"] = ExpressionConverter.ConvertO(bodyperiodCode);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyjurisdictionCode != null)
-            {
-                body["jurisdictionCode"] = ExpressionConverter.ConvertO(bodyjurisdictionCode);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["packageName"] = ExpressionConverter.ConvertO(bodypackageName);
-            bodypropCount++;
-            body["fileContents"] = ExpressionConverter.ConvertO(bodyfileContents);
-            bodypropCount++;
-            body["fileName"] = ExpressionConverter.ConvertO(bodyfileName);
-            bodypropCount++;
-            body["importTransactionType"] = ExpressionConverter.ConvertO(bodyimportTransactionType);
-            bodypropCount++;
-            body["chartOfAccountsName"] = ExpressionConverter.ConvertO(bodychartOfAccountsName);
-            bodypropCount++;
-            body["recognizeFunctionalCurrency"] = ExpressionConverter.ConvertO(bodyrecognizeFunctionalCurrency);
-            bodypropCount++;
-            body["stopOnLookupErrors"] = ExpressionConverter.ConvertO(bodystopOnLookupErrors);
-            if (bodyledgerAmountType != null)
-            {
-                body["ledgerAmountType"] = ExpressionConverter.ConvertO(bodyledgerAmountType);
-                bodypropCount++;
-            }
-
-            if (bodyfunctionalCurrencyValue != null)
-            {
-                body["functionalCurrencyValue"] = ExpressionConverter.ConvertO(bodyfunctionalCurrencyValue);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ImportDataResponse>(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction CorptaxEfileGroups(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> filingGroup = null)
+        [WorkflowExpressionFactory(nameof(__BuildTriggerCart))]
+        public IBodyWorkflowAction<TriggerCartResponse> TriggerCart([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodycartName, [WorkflowExpression] Func<bodytypeOfActionInput> bodytypeOfAction, [WorkflowExpression] Func<string> bodynamedContext = null, [WorkflowExpression] Func<string> bodyentityCode = null, [WorkflowExpression] Func<string> bodycaseCode = null, [WorkflowExpression] Func<string> bodyperiodCode = null, [WorkflowExpression] Func<string> bodyjurisdictionCode = null, [WorkflowExpression] Func<string> bodyledgerName = null, [WorkflowExpression] Func<string> bodyisoCurrencyCode = null)
         {
-            var apiCallPath = "/efileGroups";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            if (filingGroup != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TriggerCartResponse> __BuildTriggerCart(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodycartName, WorkflowExpression<bodytypeOfActionInput> bodytypeOfAction, WorkflowExpression<string> bodynamedContext = null, WorkflowExpression<string> bodyentityCode = null, WorkflowExpression<string> bodycaseCode = null, WorkflowExpression<string> bodyperiodCode = null, WorkflowExpression<string> bodyjurisdictionCode = null, WorkflowExpression<string> bodyledgerName = null, WorkflowExpression<string> bodyisoCurrencyCode = null)
+        {
+            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            WorkflowExpression.Validate(bodycartName, nameof(bodycartName), required: true);
+            WorkflowExpression.Validate(bodytypeOfAction, nameof(bodytypeOfAction), required: true);
+            WorkflowExpression.Validate(bodynamedContext, nameof(bodynamedContext), required: false);
+            WorkflowExpression.Validate(bodyentityCode, nameof(bodyentityCode), required: false);
+            WorkflowExpression.Validate(bodycaseCode, nameof(bodycaseCode), required: false);
+            WorkflowExpression.Validate(bodyperiodCode, nameof(bodyperiodCode), required: false);
+            WorkflowExpression.Validate(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
+            WorkflowExpression.Validate(bodyledgerName, nameof(bodyledgerName), required: false);
+            WorkflowExpression.Validate(bodyisoCurrencyCode, nameof(bodyisoCurrencyCode), required: false);
+            return new DeferredBodyAction<TriggerCartResponse>(() =>
+            {
+                var apiCallPath = "/triggerCart";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+                callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["cartName"] = ExpressionConverter.ConvertO(bodycartName);
+                bodypropCount++;
+                body["typeOfAction"] = ExpressionConverter.ConvertO(bodytypeOfAction);
+                if (bodynamedContext != null)
+                {
+                    body["namedContext"] = ExpressionConverter.ConvertO(bodynamedContext);
+                    bodypropCount++;
+                }
+
+                if (bodyentityCode != null)
+                {
+                    body["entityCode"] = ExpressionConverter.ConvertO(bodyentityCode);
+                    bodypropCount++;
+                }
+
+                if (bodycaseCode != null)
+                {
+                    body["caseCode"] = ExpressionConverter.ConvertO(bodycaseCode);
+                    bodypropCount++;
+                }
+
+                if (bodyperiodCode != null)
+                {
+                    body["periodCode"] = ExpressionConverter.ConvertO(bodyperiodCode);
+                    bodypropCount++;
+                }
+
+                if (bodyjurisdictionCode != null)
+                {
+                    body["jurisdictionCode"] = ExpressionConverter.ConvertO(bodyjurisdictionCode);
+                    bodypropCount++;
+                }
+
+                if (bodyledgerName != null)
+                {
+                    body["ledgerName"] = ExpressionConverter.ConvertO(bodyledgerName);
+                    bodypropCount++;
+                }
+
+                if (bodyisoCurrencyCode != null)
+                {
+                    body["isoCurrencyCode"] = ExpressionConverter.ConvertO(bodyisoCurrencyCode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TriggerCartResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
+        [WorkflowExpressionFactory(nameof(__BuildTriggerReturn))]
+        public IBodyWorkflowAction<TriggerReturnResponse> TriggerReturn([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodyreturnName, [WorkflowExpression] Func<string> bodytypeOfAction)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TriggerReturnResponse> __BuildTriggerReturn(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodyreturnName, WorkflowExpression<string> bodytypeOfAction)
+        {
+            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            WorkflowExpression.Validate(bodyreturnName, nameof(bodyreturnName), required: true);
+            WorkflowExpression.Validate(bodytypeOfAction, nameof(bodytypeOfAction), required: true);
+            return new DeferredBodyAction<TriggerReturnResponse>(() =>
+            {
+                var apiCallPath = "/triggerReturn";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+                callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["returnName"] = ExpressionConverter.ConvertO(bodyreturnName);
+                bodypropCount++;
+                body["typeOfAction"] = ExpressionConverter.ConvertO(bodytypeOfAction);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TriggerReturnResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
+        [WorkflowExpressionFactory(nameof(__BuildDownloadContents))]
+        public IBodyWorkflowAction<DownloadContentsResponseItem[]> DownloadContents([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<typeOfActionInput> typeOfAction, [WorkflowExpression] Func<string> bodyreturnOrCartName)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DownloadContentsResponseItem[]> __BuildDownloadContents(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<typeOfActionInput> typeOfAction, WorkflowExpression<string> bodyreturnOrCartName)
+        {
+            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            WorkflowExpression.Validate(typeOfAction, nameof(typeOfAction), required: true);
+            WorkflowExpression.Validate(bodyreturnOrCartName, nameof(bodyreturnOrCartName), required: true);
+            return new DeferredBodyAction<DownloadContentsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/downloadContents";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+                callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+                callPayload.Headers["typeOfAction"] = ExpressionConverter.Convert(typeOfAction);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["returnOrCartName"] = ExpressionConverter.ConvertO(bodyreturnOrCartName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DownloadContentsResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
+        [WorkflowExpressionFactory(nameof(__BuildCheckTriggerStatus))]
+        public IBodyWorkflowAction<CheckTriggerStatusResponse> CheckTriggerStatus([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<typeOfActionInput> typeOfAction, [WorkflowExpression] Func<string> bodyreturnOrCartName)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CheckTriggerStatusResponse> __BuildCheckTriggerStatus(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<typeOfActionInput> typeOfAction, WorkflowExpression<string> bodyreturnOrCartName)
+        {
+            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            WorkflowExpression.Validate(typeOfAction, nameof(typeOfAction), required: true);
+            WorkflowExpression.Validate(bodyreturnOrCartName, nameof(bodyreturnOrCartName), required: true);
+            return new DeferredBodyAction<CheckTriggerStatusResponse>(() =>
+            {
+                var apiCallPath = "/checkTriggerStatus";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+                callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+                callPayload.Headers["typeOfAction"] = ExpressionConverter.Convert(typeOfAction);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["returnOrCartName"] = ExpressionConverter.ConvertO(bodyreturnOrCartName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CheckTriggerStatusResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
+        [WorkflowExpressionFactory(nameof(__BuildImportData))]
+        public IBodyWorkflowAction<ImportDataResponse> ImportData([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodypackageName, [WorkflowExpression] Func<string> bodyfileContents, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<bodyimportTransactionTypeInput> bodyimportTransactionType, [WorkflowExpression] Func<string> bodychartOfAccountsName, [WorkflowExpression] Func<bool> bodyrecognizeFunctionalCurrency, [WorkflowExpression] Func<bool> bodystopOnLookupErrors, [WorkflowExpression] Func<string> bodyentityCode = null, [WorkflowExpression] Func<string> bodycaseCode = null, [WorkflowExpression] Func<string> bodyperiodCode = null, [WorkflowExpression] Func<string> bodyjurisdictionCode = null, [WorkflowExpression] Func<bodyledgerAmountTypeInput> bodyledgerAmountType = null, [WorkflowExpression] Func<string> bodyfunctionalCurrencyValue = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ImportDataResponse> __BuildImportData(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodypackageName, WorkflowExpression<string> bodyfileContents, WorkflowExpression<string> bodyfileName, WorkflowExpression<bodyimportTransactionTypeInput> bodyimportTransactionType, WorkflowExpression<string> bodychartOfAccountsName, WorkflowExpression<bool> bodyrecognizeFunctionalCurrency, WorkflowExpression<bool> bodystopOnLookupErrors, WorkflowExpression<string> bodyentityCode = null, WorkflowExpression<string> bodycaseCode = null, WorkflowExpression<string> bodyperiodCode = null, WorkflowExpression<string> bodyjurisdictionCode = null, WorkflowExpression<bodyledgerAmountTypeInput> bodyledgerAmountType = null, WorkflowExpression<string> bodyfunctionalCurrencyValue = null)
+        {
+            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            WorkflowExpression.Validate(bodypackageName, nameof(bodypackageName), required: true);
+            WorkflowExpression.Validate(bodyfileContents, nameof(bodyfileContents), required: true);
+            WorkflowExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
+            WorkflowExpression.Validate(bodyimportTransactionType, nameof(bodyimportTransactionType), required: true);
+            WorkflowExpression.Validate(bodychartOfAccountsName, nameof(bodychartOfAccountsName), required: true);
+            WorkflowExpression.Validate(bodyrecognizeFunctionalCurrency, nameof(bodyrecognizeFunctionalCurrency), required: true);
+            WorkflowExpression.Validate(bodystopOnLookupErrors, nameof(bodystopOnLookupErrors), required: true);
+            WorkflowExpression.Validate(bodyentityCode, nameof(bodyentityCode), required: false);
+            WorkflowExpression.Validate(bodycaseCode, nameof(bodycaseCode), required: false);
+            WorkflowExpression.Validate(bodyperiodCode, nameof(bodyperiodCode), required: false);
+            WorkflowExpression.Validate(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
+            WorkflowExpression.Validate(bodyledgerAmountType, nameof(bodyledgerAmountType), required: false);
+            WorkflowExpression.Validate(bodyfunctionalCurrencyValue, nameof(bodyfunctionalCurrencyValue), required: false);
+            return new DeferredBodyAction<ImportDataResponse>(() =>
+            {
+                var apiCallPath = "/importData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+                callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyentityCode != null)
+                {
+                    body["entityCode"] = ExpressionConverter.ConvertO(bodyentityCode);
+                    bodypropCount++;
+                }
+
+                if (bodycaseCode != null)
+                {
+                    body["caseCode"] = ExpressionConverter.ConvertO(bodycaseCode);
+                    bodypropCount++;
+                }
+
+                if (bodyperiodCode != null)
+                {
+                    body["periodCode"] = ExpressionConverter.ConvertO(bodyperiodCode);
+                    bodypropCount++;
+                }
+
+                if (bodyjurisdictionCode != null)
+                {
+                    body["jurisdictionCode"] = ExpressionConverter.ConvertO(bodyjurisdictionCode);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["packageName"] = ExpressionConverter.ConvertO(bodypackageName);
+                bodypropCount++;
+                body["fileContents"] = ExpressionConverter.ConvertO(bodyfileContents);
+                bodypropCount++;
+                body["fileName"] = ExpressionConverter.ConvertO(bodyfileName);
+                bodypropCount++;
+                body["importTransactionType"] = ExpressionConverter.ConvertO(bodyimportTransactionType);
+                bodypropCount++;
+                body["chartOfAccountsName"] = ExpressionConverter.ConvertO(bodychartOfAccountsName);
+                bodypropCount++;
+                body["recognizeFunctionalCurrency"] = ExpressionConverter.ConvertO(bodyrecognizeFunctionalCurrency);
+                bodypropCount++;
+                body["stopOnLookupErrors"] = ExpressionConverter.ConvertO(bodystopOnLookupErrors);
+                if (bodyledgerAmountType != null)
+                {
+                    body["ledgerAmountType"] = ExpressionConverter.ConvertO(bodyledgerAmountType);
+                    bodypropCount++;
+                }
+
+                if (bodyfunctionalCurrencyValue != null)
+                {
+                    body["functionalCurrencyValue"] = ExpressionConverter.ConvertO(bodyfunctionalCurrencyValue);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ImportDataResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
+        [WorkflowExpressionFactory(nameof(__BuildCorptaxEfileGroups))]
+        public IWorkflowAction CorptaxEfileGroups([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> filingGroup = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCorptaxEfileGroups(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> filingGroup = null)
+        {
+            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            WorkflowExpression.Validate(filingGroup, nameof(filingGroup), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/efileGroups";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+                callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+                if (filingGroup != null)
+                    callPayload.Headers["filingGroup"] = ExpressionConverter.Convert(filingGroup);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
+        [WorkflowExpressionFactory(nameof(__BuildCorptaxEfilePackage))]
+        public IWorkflowAction CorptaxEfilePackage([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> filingGroup, [WorkflowExpression] Func<bool> bodyefilePackageDetails, [WorkflowExpression] Func<string> bodyentityCode = null, [WorkflowExpression] Func<string> bodyform = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCorptaxEfilePackage(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> filingGroup, WorkflowExpression<bool> bodyefilePackageDetails, WorkflowExpression<string> bodyentityCode = null, WorkflowExpression<string> bodyform = null)
+        {
+            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            WorkflowExpression.Validate(filingGroup, nameof(filingGroup), required: true);
+            WorkflowExpression.Validate(bodyefilePackageDetails, nameof(bodyefilePackageDetails), required: true);
+            WorkflowExpression.Validate(bodyentityCode, nameof(bodyentityCode), required: false);
+            WorkflowExpression.Validate(bodyform, nameof(bodyform), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/efilePackage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+                callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
                 callPayload.Headers["filingGroup"] = ExpressionConverter.Convert(filingGroup);
-            return new ApiConnectionAction(callPayload);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyentityCode != null)
+                {
+                    body["entityCode"] = ExpressionConverter.ConvertO(bodyentityCode);
+                    bodypropCount++;
+                }
+
+                if (bodyform != null)
+                {
+                    body["form"] = ExpressionConverter.ConvertO(bodyform);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["efilePackageDetails"] = ExpressionConverter.ConvertO(bodyefilePackageDetails);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction CorptaxEfilePackage(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> filingGroup, Expression<Func<bool>> bodyefilePackageDetails, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodyform = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetJobHistory))]
+        public IBodyWorkflowAction<GetJobHistoryResponse> GetJobHistory([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> bodyjobToken, [WorkflowExpression] Func<bodyreportInput> bodyreport = null, [WorkflowExpression] Func<bodyreportFormatInput> bodyreportFormat = null)
         {
-            var apiCallPath = "/efilePackage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            callPayload.Headers["filingGroup"] = ExpressionConverter.Convert(filingGroup);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyentityCode != null)
-            {
-                body["entityCode"] = ExpressionConverter.ConvertO(bodyentityCode);
-                bodypropCount++;
-            }
-
-            if (bodyform != null)
-            {
-                body["form"] = ExpressionConverter.ConvertO(bodyform);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["efilePackageDetails"] = ExpressionConverter.ConvertO(bodyefilePackageDetails);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<GetJobHistoryResponse> GetJobHistory(Expression<Func<string>> environmentName, Expression<Func<string>> bodyjobToken, Expression<Func<bodyreportInput>> bodyreport = null, Expression<Func<bodyreportFormatInput>> bodyreportFormat = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetJobHistoryResponse> __BuildGetJobHistory(WorkflowExpression<string> environmentName, WorkflowExpression<string> bodyjobToken, WorkflowExpression<bodyreportInput> bodyreport = null, WorkflowExpression<bodyreportFormatInput> bodyreportFormat = null)
         {
-            var apiCallPath = "/JobHistoryReports";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["jobToken"] = ExpressionConverter.ConvertO(bodyjobToken);
-            if (bodyreport != null)
+            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowExpression.Validate(bodyjobToken, nameof(bodyjobToken), required: true);
+            WorkflowExpression.Validate(bodyreport, nameof(bodyreport), required: false);
+            WorkflowExpression.Validate(bodyreportFormat, nameof(bodyreportFormat), required: false);
+            return new DeferredBodyAction<GetJobHistoryResponse>(() =>
             {
+                var apiCallPath = "/JobHistoryReports";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["jobToken"] = ExpressionConverter.ConvertO(bodyjobToken);
                 if (bodyreport != null)
                 {
-                    body["report"] = ExpressionConverter.ConvertO(bodyreport);
+                    if (bodyreport != null)
+                    {
+                        body["report"] = ExpressionConverter.ConvertO(bodyreport);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["report"] = "Summary";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["report"] = "Summary";
-                bodypropCount++;
-            }
-
-            if (bodyreportFormat != null)
-            {
                 if (bodyreportFormat != null)
                 {
-                    body["reportFormat"] = ExpressionConverter.ConvertO(bodyreportFormat);
+                    if (bodyreportFormat != null)
+                    {
+                        body["reportFormat"] = ExpressionConverter.ConvertO(bodyreportFormat);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["reportFormat"] = "Pdf";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["reportFormat"] = "Pdf";
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetJobHistoryResponse>(callPayload);
+                return new ApiConnectionAction<GetJobHistoryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction GetGmtDiagnostics(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodygmtSetting, Expression<Func<string>> bodygmtDiagnosticName)
+        [WorkflowExpressionFactory(nameof(__BuildGetGmtDiagnostics))]
+        public IWorkflowAction GetGmtDiagnostics([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodygmtSetting, [WorkflowExpression] Func<string> bodygmtDiagnosticName)
         {
-            var apiCallPath = "/gmtDiagnosticsData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["gmtSetting"] = ExpressionConverter.ConvertO(bodygmtSetting);
-            bodypropCount++;
-            body["gmtDiagnosticName"] = ExpressionConverter.ConvertO(bodygmtDiagnosticName);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction ReturnCalculationDetails(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyreturnName)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetGmtDiagnostics(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodygmtSetting, WorkflowExpression<string> bodygmtDiagnosticName)
         {
-            var apiCallPath = "/ReturnCalculationDetails";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
-            callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["returnName"] = ExpressionConverter.ConvertO(bodyreturnName);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            WorkflowExpression.Validate(bodygmtSetting, nameof(bodygmtSetting), required: true);
+            WorkflowExpression.Validate(bodygmtDiagnosticName, nameof(bodygmtDiagnosticName), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/gmtDiagnosticsData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+                callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["gmtSetting"] = ExpressionConverter.ConvertO(bodygmtSetting);
+                bodypropCount++;
+                body["gmtDiagnosticName"] = ExpressionConverter.ConvertO(bodygmtDiagnosticName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
+        [WorkflowExpressionFactory(nameof(__BuildReturnCalculationDetails))]
+        public IWorkflowAction ReturnCalculationDetails([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodyreturnName)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildReturnCalculationDetails(WorkflowExpression<string> environmentName, WorkflowExpression<string> enterpriseName, WorkflowExpression<string> bodyreturnName)
+        {
+            WorkflowExpression.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            WorkflowExpression.Validate(bodyreturnName, nameof(bodyreturnName), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/ReturnCalculationDetails";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = ExpressionConverter.Convert(environmentName);
+                callPayload.Headers["enterpriseName"] = ExpressionConverter.Convert(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["returnName"] = ExpressionConverter.ConvertO(bodyreturnName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

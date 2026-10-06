@@ -4,111 +4,187 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ShopranosActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<AttributeSetDTO[]> AttributeSetsGETGetAll(Expression<Func<string>> title = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        [WorkflowExpressionFactory(nameof(__BuildAttributeSetsGETGetAll))]
+        public IBodyWorkflowAction<AttributeSetDTO[]> AttributeSetsGETGetAll([WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = "/api/AttributeSets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<AttributeSetDTO[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<AttributeDTO> AttributesGETGetAll(Expression<Func<statusInput>> status = null, Expression<Func<string>> type = null, Expression<Func<bool>> isFilterable = null, Expression<Func<bool>> displayOnProduct = null, Expression<Func<bool>> displayInList = null, Expression<Func<string>> search = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AttributeSetDTO[]> __BuildAttributeSetsGETGetAll(WorkflowExpression<string> title = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
-            var apiCallPath = "/api/Attributes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (type != null)
-                callPayload.Queries["Type"] = ExpressionConverter.Convert(type);
-            if (isFilterable != null)
-                callPayload.Queries["IsFilterable"] = ExpressionConverter.Convert(isFilterable);
-            if (displayOnProduct != null)
-                callPayload.Queries["DisplayOnProduct"] = ExpressionConverter.Convert(displayOnProduct);
-            if (displayInList != null)
-                callPayload.Queries["DisplayInList"] = ExpressionConverter.Convert(displayInList);
-            if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
-            if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<AttributeDTO>(callPayload);
+            WorkflowExpression.Validate(title, nameof(title), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<AttributeSetDTO[]>(() =>
+            {
+                var apiCallPath = "/api/AttributeSets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (title != null)
+                    callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
+                if (page != null)
+                    callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                return new ApiConnectionAction<AttributeSetDTO[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<BrandDTO[]> BrandsGETGetAll(Expression<Func<statusInput>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        [WorkflowExpressionFactory(nameof(__BuildAttributesGETGetAll))]
+        public IBodyWorkflowAction<AttributeDTO> AttributesGETGetAll([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<bool> isFilterable = null, [WorkflowExpression] Func<bool> displayOnProduct = null, [WorkflowExpression] Func<bool> displayInList = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = "/api/Brands";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
-            if (code != null)
-                callPayload.Queries["Code"] = ExpressionConverter.Convert(code);
-            if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<BrandDTO[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<CategoryDTO[]> CategoriesGETGetAll(Expression<Func<string>> title = null, Expression<Func<string>> id = null, Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> parentId = null, Expression<Func<string>> path = null, Expression<Func<string>> parentIds = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AttributeDTO> __BuildAttributesGETGetAll(WorkflowExpression<statusInput> status = null, WorkflowExpression<string> type = null, WorkflowExpression<bool> isFilterable = null, WorkflowExpression<bool> displayOnProduct = null, WorkflowExpression<bool> displayInList = null, WorkflowExpression<string> search = null, WorkflowExpression<string> id = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
-            var apiCallPath = "/api/Categories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
-            if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
-            if (code != null)
-                callPayload.Queries["Code"] = ExpressionConverter.Convert(code);
-            if (parentId != null)
-                callPayload.Queries["ParentId"] = ExpressionConverter.Convert(parentId);
-            if (path != null)
-                callPayload.Queries["Path"] = ExpressionConverter.Convert(path);
-            if (parentIds != null)
-                callPayload.Queries["ParentIds"] = ExpressionConverter.Convert(parentIds);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<CategoryDTO[]>(callPayload);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            WorkflowExpression.Validate(type, nameof(type), required: false);
+            WorkflowExpression.Validate(isFilterable, nameof(isFilterable), required: false);
+            WorkflowExpression.Validate(displayOnProduct, nameof(displayOnProduct), required: false);
+            WorkflowExpression.Validate(displayInList, nameof(displayInList), required: false);
+            WorkflowExpression.Validate(search, nameof(search), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<AttributeDTO>(() =>
+            {
+                var apiCallPath = "/api/Attributes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (status != null)
+                    callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                if (type != null)
+                    callPayload.Queries["Type"] = ExpressionConverter.Convert(type);
+                if (isFilterable != null)
+                    callPayload.Queries["IsFilterable"] = ExpressionConverter.Convert(isFilterable);
+                if (displayOnProduct != null)
+                    callPayload.Queries["DisplayOnProduct"] = ExpressionConverter.Convert(displayOnProduct);
+                if (displayInList != null)
+                    callPayload.Queries["DisplayInList"] = ExpressionConverter.Convert(displayInList);
+                if (search != null)
+                    callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                if (id != null)
+                    callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                if (page != null)
+                    callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                return new ApiConnectionAction<AttributeDTO>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
+        [WorkflowExpressionFactory(nameof(__BuildBrandsGETGetAll))]
+        public IBodyWorkflowAction<BrandDTO[]> BrandsGETGetAll([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BrandDTO[]> __BuildBrandsGETGetAll(WorkflowExpression<statusInput> status = null, WorkflowExpression<string> search = null, WorkflowExpression<string> code = null, WorkflowExpression<string> id = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
+        {
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            WorkflowExpression.Validate(search, nameof(search), required: false);
+            WorkflowExpression.Validate(code, nameof(code), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<BrandDTO[]>(() =>
+            {
+                var apiCallPath = "/api/Brands";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (status != null)
+                    callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                if (search != null)
+                    callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                if (code != null)
+                    callPayload.Queries["Code"] = ExpressionConverter.Convert(code);
+                if (id != null)
+                    callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                if (page != null)
+                    callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                return new ApiConnectionAction<BrandDTO[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
+        [WorkflowExpressionFactory(nameof(__BuildCategoriesGETGetAll))]
+        public IBodyWorkflowAction<CategoryDTO[]> CategoriesGETGetAll([WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> parentId = null, [WorkflowExpression] Func<string> path = null, [WorkflowExpression] Func<string> parentIds = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CategoryDTO[]> __BuildCategoriesGETGetAll(WorkflowExpression<string> title = null, WorkflowExpression<string> id = null, WorkflowExpression<string> search = null, WorkflowExpression<string> code = null, WorkflowExpression<string> parentId = null, WorkflowExpression<string> path = null, WorkflowExpression<string> parentIds = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
+        {
+            WorkflowExpression.Validate(title, nameof(title), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(search, nameof(search), required: false);
+            WorkflowExpression.Validate(code, nameof(code), required: false);
+            WorkflowExpression.Validate(parentId, nameof(parentId), required: false);
+            WorkflowExpression.Validate(path, nameof(path), required: false);
+            WorkflowExpression.Validate(parentIds, nameof(parentIds), required: false);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<CategoryDTO[]>(() =>
+            {
+                var apiCallPath = "/api/Categories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (title != null)
+                    callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
+                if (id != null)
+                    callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                if (search != null)
+                    callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                if (code != null)
+                    callPayload.Queries["Code"] = ExpressionConverter.Convert(code);
+                if (parentId != null)
+                    callPayload.Queries["ParentId"] = ExpressionConverter.Convert(parentId);
+                if (path != null)
+                    callPayload.Queries["Path"] = ExpressionConverter.Convert(path);
+                if (parentIds != null)
+                    callPayload.Queries["ParentIds"] = ExpressionConverter.Convert(parentIds);
+                if (status != null)
+                    callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                if (page != null)
+                    callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                return new ApiConnectionAction<CategoryDTO[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
@@ -121,847 +197,1386 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<IcoTagDTO[]> IcoTagsGETGetAll(Expression<Func<string>> name = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        [WorkflowExpressionFactory(nameof(__BuildIcoTagsGETGetAll))]
+        public IBodyWorkflowAction<IcoTagDTO[]> IcoTagsGETGetAll([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = "/api/IcoTags";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<IcoTagDTO[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<ProblemDetails> ProductVariantsGETGetAllFlat(Expression<Func<string>> price = null, Expression<Func<double>> maxPrice = null, Expression<Func<string>> size1 = null, Expression<Func<string>> size2 = null, Expression<Func<string>> size3 = null, Expression<Func<string>> insertDate = null, Expression<Func<string>> date1 = null, Expression<Func<string>> date2 = null, Expression<Func<string>> date3 = null, Expression<Func<string>> date1DateRange = null, Expression<Func<string>> date2DateRange = null, Expression<Func<string>> date3DateRange = null, Expression<Func<string>> insertDateRange = null, Expression<Func<string>> search = null, Expression<Func<double>> minPrice = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> availability = null, Expression<Func<string>> tag = null, Expression<Func<string>> sourceTag = null, Expression<Func<string>> privacyRule = null, Expression<Func<string>> rule = null, Expression<Func<string>> condition = null, Expression<Func<string>> ids = null, Expression<Func<string>> id = null, Expression<Func<string>> priceRange = null, Expression<Func<string>> brandCode = null, Expression<Func<string>> brandId = null, Expression<Func<string>> attribute = null, Expression<Func<string>> pathCategory = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> additionalCategoryId = null, Expression<Func<string>> stockAvailabilityId = null, Expression<Func<string>> attributeSetId = null, Expression<Func<string>> priceCategoryId = null, Expression<Func<bool>> hasMedia = null, Expression<Func<string>> masterId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IcoTagDTO[]> __BuildIcoTagsGETGetAll(WorkflowExpression<string> name = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
-            var apiCallPath = "/api/ProductVariants/flat";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (price != null)
-                callPayload.Queries["Price"] = ExpressionConverter.Convert(price);
-            if (maxPrice != null)
-                callPayload.Queries["MaxPrice"] = ExpressionConverter.Convert(maxPrice);
-            if (size1 != null)
-                callPayload.Queries["Size1"] = ExpressionConverter.Convert(size1);
-            if (size2 != null)
-                callPayload.Queries["Size2"] = ExpressionConverter.Convert(size2);
-            if (size3 != null)
-                callPayload.Queries["Size3"] = ExpressionConverter.Convert(size3);
-            if (insertDate != null)
-                callPayload.Queries["InsertDate"] = ExpressionConverter.Convert(insertDate);
-            if (date1 != null)
-                callPayload.Queries["Date1"] = ExpressionConverter.Convert(date1);
-            if (date2 != null)
-                callPayload.Queries["Date2"] = ExpressionConverter.Convert(date2);
-            if (date3 != null)
-                callPayload.Queries["Date3"] = ExpressionConverter.Convert(date3);
-            if (date1DateRange != null)
-                callPayload.Queries["Date1DateRange"] = ExpressionConverter.Convert(date1DateRange);
-            if (date2DateRange != null)
-                callPayload.Queries["Date2DateRange"] = ExpressionConverter.Convert(date2DateRange);
-            if (date3DateRange != null)
-                callPayload.Queries["Date3DateRange"] = ExpressionConverter.Convert(date3DateRange);
-            if (insertDateRange != null)
-                callPayload.Queries["InsertDateRange"] = ExpressionConverter.Convert(insertDateRange);
-            if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
-            if (minPrice != null)
-                callPayload.Queries["MinPrice"] = ExpressionConverter.Convert(minPrice);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (availability != null)
-                callPayload.Queries["Availability"] = ExpressionConverter.Convert(availability);
-            if (tag != null)
-                callPayload.Queries["Tag"] = ExpressionConverter.Convert(tag);
-            if (sourceTag != null)
-                callPayload.Queries["SourceTag"] = ExpressionConverter.Convert(sourceTag);
-            if (privacyRule != null)
-                callPayload.Queries["PrivacyRule"] = ExpressionConverter.Convert(privacyRule);
-            if (rule != null)
-                callPayload.Queries["Rule"] = ExpressionConverter.Convert(rule);
-            if (condition != null)
-                callPayload.Queries["Condition"] = ExpressionConverter.Convert(condition);
-            if (ids != null)
-                callPayload.Queries["Ids"] = ExpressionConverter.Convert(ids);
-            if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (priceRange != null)
-                callPayload.Queries["PriceRange"] = ExpressionConverter.Convert(priceRange);
-            if (brandCode != null)
-                callPayload.Queries["BrandCode"] = ExpressionConverter.Convert(brandCode);
-            if (brandId != null)
-                callPayload.Queries["BrandId"] = ExpressionConverter.Convert(brandId);
-            if (attribute != null)
-                callPayload.Queries["Attribute"] = ExpressionConverter.Convert(attribute);
-            if (pathCategory != null)
-                callPayload.Queries["PathCategory"] = ExpressionConverter.Convert(pathCategory);
-            if (categoryId != null)
-                callPayload.Queries["CategoryId"] = ExpressionConverter.Convert(categoryId);
-            if (additionalCategoryId != null)
-                callPayload.Queries["AdditionalCategoryId"] = ExpressionConverter.Convert(additionalCategoryId);
-            if (stockAvailabilityId != null)
-                callPayload.Queries["StockAvailabilityId"] = ExpressionConverter.Convert(stockAvailabilityId);
-            if (attributeSetId != null)
-                callPayload.Queries["AttributeSetId"] = ExpressionConverter.Convert(attributeSetId);
-            if (priceCategoryId != null)
-                callPayload.Queries["PriceCategoryId"] = ExpressionConverter.Convert(priceCategoryId);
-            if (hasMedia != null)
-                callPayload.Queries["HasMedia"] = ExpressionConverter.Convert(hasMedia);
-            if (masterId != null)
-                callPayload.Queries["MasterId"] = ExpressionConverter.Convert(masterId);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<ProblemDetails>(callPayload);
+            WorkflowExpression.Validate(name, nameof(name), required: false);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<IcoTagDTO[]>(() =>
+            {
+                var apiCallPath = "/api/IcoTags";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (name != null)
+                    callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
+                if (status != null)
+                    callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                if (page != null)
+                    callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                return new ApiConnectionAction<IcoTagDTO[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<RelatedProductVariantDTO> RelatedProductsGETGetRelated(Expression<Func<string>> productId, Expression<Func<string>> variantId)
+        [WorkflowExpressionFactory(nameof(__BuildProductVariantsGETGetAllFlat))]
+        public IBodyWorkflowAction<ProblemDetails> ProductVariantsGETGetAllFlat([WorkflowExpression] Func<string> price = null, [WorkflowExpression] Func<double> maxPrice = null, [WorkflowExpression] Func<string> size1 = null, [WorkflowExpression] Func<string> size2 = null, [WorkflowExpression] Func<string> size3 = null, [WorkflowExpression] Func<string> insertDate = null, [WorkflowExpression] Func<string> date1 = null, [WorkflowExpression] Func<string> date2 = null, [WorkflowExpression] Func<string> date3 = null, [WorkflowExpression] Func<string> date1DateRange = null, [WorkflowExpression] Func<string> date2DateRange = null, [WorkflowExpression] Func<string> date3DateRange = null, [WorkflowExpression] Func<string> insertDateRange = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<double> minPrice = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> availability = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<string> sourceTag = null, [WorkflowExpression] Func<string> privacyRule = null, [WorkflowExpression] Func<string> rule = null, [WorkflowExpression] Func<string> condition = null, [WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> priceRange = null, [WorkflowExpression] Func<string> brandCode = null, [WorkflowExpression] Func<string> brandId = null, [WorkflowExpression] Func<string> attribute = null, [WorkflowExpression] Func<string> pathCategory = null, [WorkflowExpression] Func<string> categoryId = null, [WorkflowExpression] Func<string> additionalCategoryId = null, [WorkflowExpression] Func<string> stockAvailabilityId = null, [WorkflowExpression] Func<string> attributeSetId = null, [WorkflowExpression] Func<string> priceCategoryId = null, [WorkflowExpression] Func<bool> hasMedia = null, [WorkflowExpression] Func<string> masterId = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = String.Format("/api/RelatedProducts/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1), ExpressionConverter.ConvertWithUrlEncoding(variantId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RelatedProductVariantDTO>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<StockAvailabilityDTO[]> StockAvailabilityGETGetAll(Expression<Func<string>> title = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProblemDetails> __BuildProductVariantsGETGetAllFlat(WorkflowExpression<string> price = null, WorkflowExpression<double> maxPrice = null, WorkflowExpression<string> size1 = null, WorkflowExpression<string> size2 = null, WorkflowExpression<string> size3 = null, WorkflowExpression<string> insertDate = null, WorkflowExpression<string> date1 = null, WorkflowExpression<string> date2 = null, WorkflowExpression<string> date3 = null, WorkflowExpression<string> date1DateRange = null, WorkflowExpression<string> date2DateRange = null, WorkflowExpression<string> date3DateRange = null, WorkflowExpression<string> insertDateRange = null, WorkflowExpression<string> search = null, WorkflowExpression<double> minPrice = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<string> availability = null, WorkflowExpression<string> tag = null, WorkflowExpression<string> sourceTag = null, WorkflowExpression<string> privacyRule = null, WorkflowExpression<string> rule = null, WorkflowExpression<string> condition = null, WorkflowExpression<string> ids = null, WorkflowExpression<string> id = null, WorkflowExpression<string> priceRange = null, WorkflowExpression<string> brandCode = null, WorkflowExpression<string> brandId = null, WorkflowExpression<string> attribute = null, WorkflowExpression<string> pathCategory = null, WorkflowExpression<string> categoryId = null, WorkflowExpression<string> additionalCategoryId = null, WorkflowExpression<string> stockAvailabilityId = null, WorkflowExpression<string> attributeSetId = null, WorkflowExpression<string> priceCategoryId = null, WorkflowExpression<bool> hasMedia = null, WorkflowExpression<string> masterId = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
-            var apiCallPath = "/api/StockAvailability";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<StockAvailabilityDTO[]>(callPayload);
+            WorkflowExpression.Validate(price, nameof(price), required: false);
+            WorkflowExpression.Validate(maxPrice, nameof(maxPrice), required: false);
+            WorkflowExpression.Validate(size1, nameof(size1), required: false);
+            WorkflowExpression.Validate(size2, nameof(size2), required: false);
+            WorkflowExpression.Validate(size3, nameof(size3), required: false);
+            WorkflowExpression.Validate(insertDate, nameof(insertDate), required: false);
+            WorkflowExpression.Validate(date1, nameof(date1), required: false);
+            WorkflowExpression.Validate(date2, nameof(date2), required: false);
+            WorkflowExpression.Validate(date3, nameof(date3), required: false);
+            WorkflowExpression.Validate(date1DateRange, nameof(date1DateRange), required: false);
+            WorkflowExpression.Validate(date2DateRange, nameof(date2DateRange), required: false);
+            WorkflowExpression.Validate(date3DateRange, nameof(date3DateRange), required: false);
+            WorkflowExpression.Validate(insertDateRange, nameof(insertDateRange), required: false);
+            WorkflowExpression.Validate(search, nameof(search), required: false);
+            WorkflowExpression.Validate(minPrice, nameof(minPrice), required: false);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            WorkflowExpression.Validate(availability, nameof(availability), required: false);
+            WorkflowExpression.Validate(tag, nameof(tag), required: false);
+            WorkflowExpression.Validate(sourceTag, nameof(sourceTag), required: false);
+            WorkflowExpression.Validate(privacyRule, nameof(privacyRule), required: false);
+            WorkflowExpression.Validate(rule, nameof(rule), required: false);
+            WorkflowExpression.Validate(condition, nameof(condition), required: false);
+            WorkflowExpression.Validate(ids, nameof(ids), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(priceRange, nameof(priceRange), required: false);
+            WorkflowExpression.Validate(brandCode, nameof(brandCode), required: false);
+            WorkflowExpression.Validate(brandId, nameof(brandId), required: false);
+            WorkflowExpression.Validate(attribute, nameof(attribute), required: false);
+            WorkflowExpression.Validate(pathCategory, nameof(pathCategory), required: false);
+            WorkflowExpression.Validate(categoryId, nameof(categoryId), required: false);
+            WorkflowExpression.Validate(additionalCategoryId, nameof(additionalCategoryId), required: false);
+            WorkflowExpression.Validate(stockAvailabilityId, nameof(stockAvailabilityId), required: false);
+            WorkflowExpression.Validate(attributeSetId, nameof(attributeSetId), required: false);
+            WorkflowExpression.Validate(priceCategoryId, nameof(priceCategoryId), required: false);
+            WorkflowExpression.Validate(hasMedia, nameof(hasMedia), required: false);
+            WorkflowExpression.Validate(masterId, nameof(masterId), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<ProblemDetails>(() =>
+            {
+                var apiCallPath = "/api/ProductVariants/flat";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (price != null)
+                    callPayload.Queries["Price"] = ExpressionConverter.Convert(price);
+                if (maxPrice != null)
+                    callPayload.Queries["MaxPrice"] = ExpressionConverter.Convert(maxPrice);
+                if (size1 != null)
+                    callPayload.Queries["Size1"] = ExpressionConverter.Convert(size1);
+                if (size2 != null)
+                    callPayload.Queries["Size2"] = ExpressionConverter.Convert(size2);
+                if (size3 != null)
+                    callPayload.Queries["Size3"] = ExpressionConverter.Convert(size3);
+                if (insertDate != null)
+                    callPayload.Queries["InsertDate"] = ExpressionConverter.Convert(insertDate);
+                if (date1 != null)
+                    callPayload.Queries["Date1"] = ExpressionConverter.Convert(date1);
+                if (date2 != null)
+                    callPayload.Queries["Date2"] = ExpressionConverter.Convert(date2);
+                if (date3 != null)
+                    callPayload.Queries["Date3"] = ExpressionConverter.Convert(date3);
+                if (date1DateRange != null)
+                    callPayload.Queries["Date1DateRange"] = ExpressionConverter.Convert(date1DateRange);
+                if (date2DateRange != null)
+                    callPayload.Queries["Date2DateRange"] = ExpressionConverter.Convert(date2DateRange);
+                if (date3DateRange != null)
+                    callPayload.Queries["Date3DateRange"] = ExpressionConverter.Convert(date3DateRange);
+                if (insertDateRange != null)
+                    callPayload.Queries["InsertDateRange"] = ExpressionConverter.Convert(insertDateRange);
+                if (search != null)
+                    callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                if (minPrice != null)
+                    callPayload.Queries["MinPrice"] = ExpressionConverter.Convert(minPrice);
+                if (status != null)
+                    callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                if (availability != null)
+                    callPayload.Queries["Availability"] = ExpressionConverter.Convert(availability);
+                if (tag != null)
+                    callPayload.Queries["Tag"] = ExpressionConverter.Convert(tag);
+                if (sourceTag != null)
+                    callPayload.Queries["SourceTag"] = ExpressionConverter.Convert(sourceTag);
+                if (privacyRule != null)
+                    callPayload.Queries["PrivacyRule"] = ExpressionConverter.Convert(privacyRule);
+                if (rule != null)
+                    callPayload.Queries["Rule"] = ExpressionConverter.Convert(rule);
+                if (condition != null)
+                    callPayload.Queries["Condition"] = ExpressionConverter.Convert(condition);
+                if (ids != null)
+                    callPayload.Queries["Ids"] = ExpressionConverter.Convert(ids);
+                if (id != null)
+                    callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                if (priceRange != null)
+                    callPayload.Queries["PriceRange"] = ExpressionConverter.Convert(priceRange);
+                if (brandCode != null)
+                    callPayload.Queries["BrandCode"] = ExpressionConverter.Convert(brandCode);
+                if (brandId != null)
+                    callPayload.Queries["BrandId"] = ExpressionConverter.Convert(brandId);
+                if (attribute != null)
+                    callPayload.Queries["Attribute"] = ExpressionConverter.Convert(attribute);
+                if (pathCategory != null)
+                    callPayload.Queries["PathCategory"] = ExpressionConverter.Convert(pathCategory);
+                if (categoryId != null)
+                    callPayload.Queries["CategoryId"] = ExpressionConverter.Convert(categoryId);
+                if (additionalCategoryId != null)
+                    callPayload.Queries["AdditionalCategoryId"] = ExpressionConverter.Convert(additionalCategoryId);
+                if (stockAvailabilityId != null)
+                    callPayload.Queries["StockAvailabilityId"] = ExpressionConverter.Convert(stockAvailabilityId);
+                if (attributeSetId != null)
+                    callPayload.Queries["AttributeSetId"] = ExpressionConverter.Convert(attributeSetId);
+                if (priceCategoryId != null)
+                    callPayload.Queries["PriceCategoryId"] = ExpressionConverter.Convert(priceCategoryId);
+                if (hasMedia != null)
+                    callPayload.Queries["HasMedia"] = ExpressionConverter.Convert(hasMedia);
+                if (masterId != null)
+                    callPayload.Queries["MasterId"] = ExpressionConverter.Convert(masterId);
+                if (page != null)
+                    callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                return new ApiConnectionAction<ProblemDetails>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<UnitDTO[]> UnitsGETGetAll(Expression<Func<string>> name = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        [WorkflowExpressionFactory(nameof(__BuildRelatedProductsGETGetRelated))]
+        public IBodyWorkflowAction<RelatedProductVariantDTO> RelatedProductsGETGetRelated([WorkflowExpression] Func<string> productId, [WorkflowExpression] Func<string> variantId)
         {
-            var apiCallPath = "/api/Units";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<UnitDTO[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<ProblemDetails> CartDELETERemoveFromCart(Expression<Func<string>> token, Expression<Func<string>> productVariantId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RelatedProductVariantDTO> __BuildRelatedProductsGETGetRelated(WorkflowExpression<string> productId, WorkflowExpression<string> variantId)
         {
-            var apiCallPath = String.Format("/api/Cart/{0}/Items/{1}", ExpressionConverter.ConvertWithUrlEncoding(token, 1), ExpressionConverter.ConvertWithUrlEncoding(productVariantId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProblemDetails>(callPayload);
+            WorkflowExpression.Validate(productId, nameof(productId), required: true);
+            WorkflowExpression.Validate(variantId, nameof(variantId), required: true);
+            return new DeferredBodyAction<RelatedProductVariantDTO>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/RelatedProducts/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1), ExpressionConverter.ConvertWithUrlEncoding(variantId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RelatedProductVariantDTO>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<AssortmentValueDTO[]> AssortmentValueGETGetAll(Expression<Func<string>> customerid, Expression<Func<statusInput>> status = null, Expression<Func<sourceInput>> source = null, Expression<Func<string>> type = null, Expression<Func<string>> category = null, Expression<Func<string>> id = null, Expression<Func<string>> productId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        [WorkflowExpressionFactory(nameof(__BuildStockAvailabilityGETGetAll))]
+        public IBodyWorkflowAction<StockAvailabilityDTO[]> StockAvailabilityGETGetAll([WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = String.Format("/api/assortment/{0}/values", ExpressionConverter.ConvertWithUrlEncoding(customerid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (source != null)
-                callPayload.Queries["Source"] = ExpressionConverter.Convert(source);
-            if (type != null)
-                callPayload.Queries["Type"] = ExpressionConverter.Convert(type);
-            if (category != null)
-                callPayload.Queries["Category"] = ExpressionConverter.Convert(category);
-            if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (productId != null)
-                callPayload.Queries["ProductId"] = ExpressionConverter.Convert(productId);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<AssortmentValueDTO[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<CustomerDTO[]> CustomersGETGetAll(Expression<Func<statusInput>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> name = null, Expression<Func<string>> salesmanId = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StockAvailabilityDTO[]> __BuildStockAvailabilityGETGetAll(WorkflowExpression<string> title = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
-            var apiCallPath = "/api/Customers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
-            if (name != null)
-                callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
-            if (salesmanId != null)
-                callPayload.Queries["SalesmanId"] = ExpressionConverter.Convert(salesmanId);
-            if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<CustomerDTO[]>(callPayload);
+            WorkflowExpression.Validate(title, nameof(title), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<StockAvailabilityDTO[]>(() =>
+            {
+                var apiCallPath = "/api/StockAvailability";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (title != null)
+                    callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
+                if (page != null)
+                    callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                return new ApiConnectionAction<StockAvailabilityDTO[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<InventoryLevelDTO[]> InventoryLevelsGETGetByVariantId(Expression<Func<string>> variantId)
+        [WorkflowExpressionFactory(nameof(__BuildUnitsGETGetAll))]
+        public IBodyWorkflowAction<UnitDTO[]> UnitsGETGetAll([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = String.Format("/api/InventoryLevels/variant/{0}", ExpressionConverter.ConvertWithUrlEncoding(variantId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<InventoryLevelDTO[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<OrderDTO[]> OrderGETGetAll(Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> customerId = null, Expression<Func<string>> orderStatus = null, Expression<Func<string>> status = null, Expression<Func<string>> tag = null, Expression<Func<string>> customerCode = null, Expression<Func<string>> customerTin = null, Expression<Func<string>> insertDate = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UnitDTO[]> __BuildUnitsGETGetAll(WorkflowExpression<string> name = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
         {
-            var apiCallPath = "/api/Order";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
-            if (code != null)
-                callPayload.Queries["Code"] = ExpressionConverter.Convert(code);
-            if (customerId != null)
-                callPayload.Queries["CustomerId"] = ExpressionConverter.Convert(customerId);
-            if (orderStatus != null)
-                callPayload.Queries["OrderStatus"] = ExpressionConverter.Convert(orderStatus);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (tag != null)
-                callPayload.Queries["Tag"] = ExpressionConverter.Convert(tag);
-            if (customerCode != null)
-                callPayload.Queries["CustomerCode"] = ExpressionConverter.Convert(customerCode);
-            if (customerTin != null)
-                callPayload.Queries["CustomerTin"] = ExpressionConverter.Convert(customerTin);
-            if (insertDate != null)
-                callPayload.Queries["InsertDate"] = ExpressionConverter.Convert(insertDate);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<OrderDTO[]>(callPayload);
+            WorkflowExpression.Validate(name, nameof(name), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<UnitDTO[]>(() =>
+            {
+                var apiCallPath = "/api/Units";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (name != null)
+                    callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
+                if (page != null)
+                    callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                return new ApiConnectionAction<UnitDTO[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
+        [WorkflowExpressionFactory(nameof(__BuildCartDELETERemoveFromCart))]
+        public IBodyWorkflowAction<ProblemDetails> CartDELETERemoveFromCart([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> productVariantId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProblemDetails> __BuildCartDELETERemoveFromCart(WorkflowExpression<string> token, WorkflowExpression<string> productVariantId)
+        {
+            WorkflowExpression.Validate(token, nameof(token), required: true);
+            WorkflowExpression.Validate(productVariantId, nameof(productVariantId), required: true);
+            return new DeferredBodyAction<ProblemDetails>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Cart/{0}/Items/{1}", ExpressionConverter.ConvertWithUrlEncoding(token, 1), ExpressionConverter.ConvertWithUrlEncoding(productVariantId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProblemDetails>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
+        [WorkflowExpressionFactory(nameof(__BuildAssortmentValueGETGetAll))]
+        public IBodyWorkflowAction<AssortmentValueDTO[]> AssortmentValueGETGetAll([WorkflowExpression] Func<string> customerid, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<sourceInput> source = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> productId = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AssortmentValueDTO[]> __BuildAssortmentValueGETGetAll(WorkflowExpression<string> customerid, WorkflowExpression<statusInput> status = null, WorkflowExpression<sourceInput> source = null, WorkflowExpression<string> type = null, WorkflowExpression<string> category = null, WorkflowExpression<string> id = null, WorkflowExpression<string> productId = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
+        {
+            WorkflowExpression.Validate(customerid, nameof(customerid), required: true);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            WorkflowExpression.Validate(source, nameof(source), required: false);
+            WorkflowExpression.Validate(type, nameof(type), required: false);
+            WorkflowExpression.Validate(category, nameof(category), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(productId, nameof(productId), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<AssortmentValueDTO[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/assortment/{0}/values", ExpressionConverter.ConvertWithUrlEncoding(customerid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (status != null)
+                    callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                if (source != null)
+                    callPayload.Queries["Source"] = ExpressionConverter.Convert(source);
+                if (type != null)
+                    callPayload.Queries["Type"] = ExpressionConverter.Convert(type);
+                if (category != null)
+                    callPayload.Queries["Category"] = ExpressionConverter.Convert(category);
+                if (id != null)
+                    callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                if (productId != null)
+                    callPayload.Queries["ProductId"] = ExpressionConverter.Convert(productId);
+                if (page != null)
+                    callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                return new ApiConnectionAction<AssortmentValueDTO[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
+        [WorkflowExpressionFactory(nameof(__BuildCustomersGETGetAll))]
+        public IBodyWorkflowAction<CustomerDTO[]> CustomersGETGetAll([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> salesmanId = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CustomerDTO[]> __BuildCustomersGETGetAll(WorkflowExpression<statusInput> status = null, WorkflowExpression<string> search = null, WorkflowExpression<string> name = null, WorkflowExpression<string> salesmanId = null, WorkflowExpression<string> id = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
+        {
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            WorkflowExpression.Validate(search, nameof(search), required: false);
+            WorkflowExpression.Validate(name, nameof(name), required: false);
+            WorkflowExpression.Validate(salesmanId, nameof(salesmanId), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<CustomerDTO[]>(() =>
+            {
+                var apiCallPath = "/api/Customers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (status != null)
+                    callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                if (search != null)
+                    callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                if (name != null)
+                    callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
+                if (salesmanId != null)
+                    callPayload.Queries["SalesmanId"] = ExpressionConverter.Convert(salesmanId);
+                if (id != null)
+                    callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                if (page != null)
+                    callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                return new ApiConnectionAction<CustomerDTO[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
+        [WorkflowExpressionFactory(nameof(__BuildInventoryLevelsGETGetByVariantId))]
+        public IBodyWorkflowAction<InventoryLevelDTO[]> InventoryLevelsGETGetByVariantId([WorkflowExpression] Func<string> variantId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InventoryLevelDTO[]> __BuildInventoryLevelsGETGetByVariantId(WorkflowExpression<string> variantId)
+        {
+            WorkflowExpression.Validate(variantId, nameof(variantId), required: true);
+            return new DeferredBodyAction<InventoryLevelDTO[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/InventoryLevels/variant/{0}", ExpressionConverter.ConvertWithUrlEncoding(variantId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<InventoryLevelDTO[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
+        [WorkflowExpressionFactory(nameof(__BuildOrderGETGetAll))]
+        public IBodyWorkflowAction<OrderDTO[]> OrderGETGetAll([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> customerId = null, [WorkflowExpression] Func<string> orderStatus = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<string> customerCode = null, [WorkflowExpression] Func<string> customerTin = null, [WorkflowExpression] Func<string> insertDate = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OrderDTO[]> __BuildOrderGETGetAll(WorkflowExpression<string> search = null, WorkflowExpression<string> code = null, WorkflowExpression<string> customerId = null, WorkflowExpression<string> orderStatus = null, WorkflowExpression<string> status = null, WorkflowExpression<string> tag = null, WorkflowExpression<string> customerCode = null, WorkflowExpression<string> customerTin = null, WorkflowExpression<string> insertDate = null, WorkflowExpression<int> page = null, WorkflowExpression<int> pageSize = null, WorkflowExpression<string> sort = null)
+        {
+            WorkflowExpression.Validate(search, nameof(search), required: false);
+            WorkflowExpression.Validate(code, nameof(code), required: false);
+            WorkflowExpression.Validate(customerId, nameof(customerId), required: false);
+            WorkflowExpression.Validate(orderStatus, nameof(orderStatus), required: false);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            WorkflowExpression.Validate(tag, nameof(tag), required: false);
+            WorkflowExpression.Validate(customerCode, nameof(customerCode), required: false);
+            WorkflowExpression.Validate(customerTin, nameof(customerTin), required: false);
+            WorkflowExpression.Validate(insertDate, nameof(insertDate), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(pageSize, nameof(pageSize), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<OrderDTO[]>(() =>
+            {
+                var apiCallPath = "/api/Order";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
+                if (code != null)
+                    callPayload.Queries["Code"] = ExpressionConverter.Convert(code);
+                if (customerId != null)
+                    callPayload.Queries["CustomerId"] = ExpressionConverter.Convert(customerId);
+                if (orderStatus != null)
+                    callPayload.Queries["OrderStatus"] = ExpressionConverter.Convert(orderStatus);
+                if (status != null)
+                    callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                if (tag != null)
+                    callPayload.Queries["Tag"] = ExpressionConverter.Convert(tag);
+                if (customerCode != null)
+                    callPayload.Queries["CustomerCode"] = ExpressionConverter.Convert(customerCode);
+                if (customerTin != null)
+                    callPayload.Queries["CustomerTin"] = ExpressionConverter.Convert(customerTin);
+                if (insertDate != null)
+                    callPayload.Queries["InsertDate"] = ExpressionConverter.Convert(insertDate);
+                if (page != null)
+                    callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
+                return new ApiConnectionAction<OrderDTO[]>(callPayload);
+            });
         }
     }
 
     public class ShopranosTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ProductCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/api/webhook/register/product/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [WorkflowExpressionFactory(nameof(__BuildProductCreatedTrigger))]
+        public IWorkflowTrigger ProductCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger ProductUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildProductCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/product/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/webhook/register/product/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger ProductDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildProductUpdatedTrigger))]
+        public IWorkflowTrigger ProductUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/product/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger CategoryCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildProductUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/category/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/webhook/register/product/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger CategoryUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildProductDeletedTrigger))]
+        public IWorkflowTrigger ProductDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/category/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger CategoryDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildProductDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/category/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/webhook/register/product/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger BrandCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCategoryCreatedTrigger))]
+        public IWorkflowTrigger CategoryCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/brand/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger BrandUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCategoryCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/brand/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/webhook/register/category/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger BrandDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCategoryUpdatedTrigger))]
+        public IWorkflowTrigger CategoryUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/brand/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger UnitCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCategoryUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/unit/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/webhook/register/category/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger UnitUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCategoryDeletedTrigger))]
+        public IWorkflowTrigger CategoryDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/unit/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger UnitDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCategoryDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/unit/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/webhook/register/category/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger AttributeCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildBrandCreatedTrigger))]
+        public IWorkflowTrigger BrandCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/attribute/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger AttributeUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildBrandCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/attribute/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/webhook/register/brand/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger AttributeDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildBrandUpdatedTrigger))]
+        public IWorkflowTrigger BrandUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/attribute/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger AttributeSetCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildBrandUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/attributeset/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/webhook/register/brand/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger AttributeSetUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildBrandDeletedTrigger))]
+        public IWorkflowTrigger BrandDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/attributeset/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger AttributeSetDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildBrandDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/attributeset/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/webhook/register/brand/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger CheckoutCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildUnitCreatedTrigger))]
+        public IWorkflowTrigger UnitCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/checkout/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger CheckoutCompletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildUnitCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/checkout/completed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/webhook/register/unit/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger CustomerCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildUnitUpdatedTrigger))]
+        public IWorkflowTrigger UnitUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/customer/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger CustomerUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildUnitUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/customer/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/webhook/register/unit/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger CustomerDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildUnitDeletedTrigger))]
+        public IWorkflowTrigger UnitDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/customer/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger OrderCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildUnitDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/order/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/webhook/register/unit/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger OrderUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildAttributeCreatedTrigger))]
+        public IWorkflowTrigger AttributeCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/order/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger OrderDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildAttributeCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/order/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/webhook/register/attribute/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger InventoryLevelCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildAttributeUpdatedTrigger))]
+        public IWorkflowTrigger AttributeUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/inventorylevel/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger InventoryLevelUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildAttributeUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/inventorylevel/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/webhook/register/attribute/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger InventoryLevelDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildAttributeDeletedTrigger))]
+        public IWorkflowTrigger AttributeDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/inventorylevel/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger PaymentInitiatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildAttributeDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/payment/initiated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/webhook/register/attribute/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger PaymentCompletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildAttributeSetCreatedTrigger))]
+        public IWorkflowTrigger AttributeSetCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/payment/completed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildAttributeSetCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/attributeset/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildAttributeSetUpdatedTrigger))]
+        public IWorkflowTrigger AttributeSetUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildAttributeSetUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/attributeset/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildAttributeSetDeletedTrigger))]
+        public IWorkflowTrigger AttributeSetDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildAttributeSetDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/attributeset/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildCheckoutCreatedTrigger))]
+        public IWorkflowTrigger CheckoutCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCheckoutCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/checkout/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildCheckoutCompletedTrigger))]
+        public IWorkflowTrigger CheckoutCompletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCheckoutCompletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/checkout/completed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildCustomerCreatedTrigger))]
+        public IWorkflowTrigger CustomerCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCustomerCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/customer/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildCustomerUpdatedTrigger))]
+        public IWorkflowTrigger CustomerUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCustomerUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/customer/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildCustomerDeletedTrigger))]
+        public IWorkflowTrigger CustomerDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCustomerDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/customer/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOrderCreatedTrigger))]
+        public IWorkflowTrigger OrderCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildOrderCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/order/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOrderUpdatedTrigger))]
+        public IWorkflowTrigger OrderUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildOrderUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/order/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOrderDeletedTrigger))]
+        public IWorkflowTrigger OrderDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildOrderDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/order/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildInventoryLevelCreatedTrigger))]
+        public IWorkflowTrigger InventoryLevelCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildInventoryLevelCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/inventorylevel/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildInventoryLevelUpdatedTrigger))]
+        public IWorkflowTrigger InventoryLevelUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildInventoryLevelUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/inventorylevel/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildInventoryLevelDeletedTrigger))]
+        public IWorkflowTrigger InventoryLevelDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildInventoryLevelDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/inventorylevel/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildPaymentInitiatedTrigger))]
+        public IWorkflowTrigger PaymentInitiatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildPaymentInitiatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/payment/initiated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildPaymentCompletedTrigger))]
+        public IWorkflowTrigger PaymentCompletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildPaymentCompletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/api/webhook/register/payment/completed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

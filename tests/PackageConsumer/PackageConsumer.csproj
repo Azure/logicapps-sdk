@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <WorkflowSdkVersion Condition="'$(WorkflowSdkVersion)' == ''">1.0.0-preview.3-native-csharp.1</WorkflowSdkVersion>
+  </PropertyGroup>
+  <ItemGroup><PackageReference Include="Microsoft.Azure.Workflows.Sdk" Version="$(WorkflowSdkVersion)" /></ItemGroup>
+</Project>

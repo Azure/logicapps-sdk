@@ -4,31 +4,55 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.What3wordsip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class What3wordsipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "what3wordsip")]
-        public IBodyWorkflowAction<ConvertToWordResponse> ConvertToWord(Expression<Func<string>> coordinates)
+        [WorkflowExpressionFactory(nameof(__BuildConvertToWord))]
+        public IBodyWorkflowAction<ConvertToWordResponse> ConvertToWord([WorkflowExpression] Func<string> coordinates)
         {
-            var apiCallPath = "/convert-to-3wa";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["coordinates"] = ExpressionConverter.Convert(coordinates);
-            return new ApiConnectionAction<ConvertToWordResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "what3wordsip")]
-        public IBodyWorkflowAction<ConvertToLatLngResponse> ConvertToLatLng(Expression<Func<string>> words)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ConvertToWordResponse> __BuildConvertToWord(WorkflowExpression<string> coordinates)
         {
-            var apiCallPath = "/convert-to-coordinates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["words"] = ExpressionConverter.Convert(words);
-            return new ApiConnectionAction<ConvertToLatLngResponse>(callPayload);
+            WorkflowExpression.Validate(coordinates, nameof(coordinates), required: true);
+            return new DeferredBodyAction<ConvertToWordResponse>(() =>
+            {
+                var apiCallPath = "/convert-to-3wa";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["coordinates"] = ExpressionConverter.Convert(coordinates);
+                return new ApiConnectionAction<ConvertToWordResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "what3wordsip")]
+        [WorkflowExpressionFactory(nameof(__BuildConvertToLatLng))]
+        public IBodyWorkflowAction<ConvertToLatLngResponse> ConvertToLatLng([WorkflowExpression] Func<string> words)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "what3wordsip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ConvertToLatLngResponse> __BuildConvertToLatLng(WorkflowExpression<string> words)
+        {
+            WorkflowExpression.Validate(words, nameof(words), required: true);
+            return new DeferredBodyAction<ConvertToLatLngResponse>(() =>
+            {
+                var apiCallPath = "/convert-to-coordinates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["words"] = ExpressionConverter.Convert(words);
+                return new ApiConnectionAction<ConvertToLatLngResponse>(callPayload);
+            });
         }
     }
 

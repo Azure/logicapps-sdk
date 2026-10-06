@@ -4,43 +4,81 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DisqusActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<CreatePostResponse> Create(Expression<Func<string>> thread, Expression<Func<string>> message)
+        [WorkflowExpressionFactory(nameof(__BuildCreate))]
+        public IBodyWorkflowAction<CreatePostResponse> Create([WorkflowExpression] Func<string> thread, [WorkflowExpression] Func<string> message)
         {
-            var apiCallPath = "/posts/create.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
-            callPayload.Queries["message"] = ExpressionConverter.Convert(message);
-            return new ApiConnectionAction<CreatePostResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<CreatePostResponse> ReplyTo(Expression<Func<string>> parent, Expression<Func<string>> message)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreatePostResponse> __BuildCreate(WorkflowExpression<string> thread, WorkflowExpression<string> message)
         {
-            var apiCallPath = "/reply/posts/create.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["parent"] = ExpressionConverter.Convert(parent);
-            callPayload.Queries["message"] = ExpressionConverter.Convert(message);
-            return new ApiConnectionAction<CreatePostResponse>(callPayload);
+            WorkflowExpression.Validate(thread, nameof(thread), required: true);
+            WorkflowExpression.Validate(message, nameof(message), required: true);
+            return new DeferredBodyAction<CreatePostResponse>(() =>
+            {
+                var apiCallPath = "/posts/create.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
+                callPayload.Queries["message"] = ExpressionConverter.Convert(message);
+                return new ApiConnectionAction<CreatePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<OperationResultResponse> Remove(Expression<Func<string>> post)
+        [WorkflowExpressionFactory(nameof(__BuildReplyTo))]
+        public IBodyWorkflowAction<CreatePostResponse> ReplyTo([WorkflowExpression] Func<string> parent, [WorkflowExpression] Func<string> message)
         {
-            var apiCallPath = "/posts/remove.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["post"] = ExpressionConverter.Convert(post);
-            return new ApiConnectionAction<OperationResultResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreatePostResponse> __BuildReplyTo(WorkflowExpression<string> parent, WorkflowExpression<string> message)
+        {
+            WorkflowExpression.Validate(parent, nameof(parent), required: true);
+            WorkflowExpression.Validate(message, nameof(message), required: true);
+            return new DeferredBodyAction<CreatePostResponse>(() =>
+            {
+                var apiCallPath = "/reply/posts/create.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["parent"] = ExpressionConverter.Convert(parent);
+                callPayload.Queries["message"] = ExpressionConverter.Convert(message);
+                return new ApiConnectionAction<CreatePostResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
+        [WorkflowExpressionFactory(nameof(__BuildRemove))]
+        public IBodyWorkflowAction<OperationResultResponse> Remove([WorkflowExpression] Func<string> post)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OperationResultResponse> __BuildRemove(WorkflowExpression<string> post)
+        {
+            WorkflowExpression.Validate(post, nameof(post), required: true);
+            return new DeferredBodyAction<OperationResultResponse>(() =>
+            {
+                var apiCallPath = "/posts/remove.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["post"] = ExpressionConverter.Convert(post);
+                return new ApiConnectionAction<OperationResultResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
@@ -55,93 +93,189 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<EmptyResponse> SubscribeToThread(Expression<Func<string>> thread)
+        [WorkflowExpressionFactory(nameof(__BuildSubscribeToThread))]
+        public IBodyWorkflowAction<EmptyResponse> SubscribeToThread([WorkflowExpression] Func<string> thread)
         {
-            var apiCallPath = "/threads/subscribe.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
-            return new ApiConnectionAction<EmptyResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<OperationResultResponse> OpenThread(Expression<Func<string>> thread)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EmptyResponse> __BuildSubscribeToThread(WorkflowExpression<string> thread)
         {
-            var apiCallPath = "/threads/open.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
-            return new ApiConnectionAction<OperationResultResponse>(callPayload);
+            WorkflowExpression.Validate(thread, nameof(thread), required: true);
+            return new DeferredBodyAction<EmptyResponse>(() =>
+            {
+                var apiCallPath = "/threads/subscribe.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
+                return new ApiConnectionAction<EmptyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<OperationResultResponse> CloseThread(Expression<Func<string>> thread)
+        [WorkflowExpressionFactory(nameof(__BuildOpenThread))]
+        public IBodyWorkflowAction<OperationResultResponse> OpenThread([WorkflowExpression] Func<string> thread)
         {
-            var apiCallPath = "/threads/close.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
-            return new ApiConnectionAction<OperationResultResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<RecommendThreadResponse> RecommendThread(Expression<Func<string>> thread)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OperationResultResponse> __BuildOpenThread(WorkflowExpression<string> thread)
         {
-            var apiCallPath = "/threads/vote.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
-            callPayload.Queries["vote"] = Convert.ToString("1");
-            return new ApiConnectionAction<RecommendThreadResponse>(callPayload);
+            WorkflowExpression.Validate(thread, nameof(thread), required: true);
+            return new DeferredBodyAction<OperationResultResponse>(() =>
+            {
+                var apiCallPath = "/threads/open.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
+                return new ApiConnectionAction<OperationResultResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<GetThreadResponse> GetThread(Expression<Func<string>> thread)
+        [WorkflowExpressionFactory(nameof(__BuildCloseThread))]
+        public IBodyWorkflowAction<OperationResultResponse> CloseThread([WorkflowExpression] Func<string> thread)
         {
-            var apiCallPath = "/threads/details.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
-            return new ApiConnectionAction<GetThreadResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<Thread[]> GetForumThreads(Expression<Func<string>> forum)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OperationResultResponse> __BuildCloseThread(WorkflowExpression<string> thread)
         {
-            var apiCallPath = "/forums/listThreads.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["forum"] = ExpressionConverter.Convert(forum);
-            callPayload.Queries["order"] = Convert.ToString("desc");
-            callPayload.Queries["limit"] = Convert.ToString(100);
-            return new ApiConnectionAction<Thread[]>(callPayload);
+            WorkflowExpression.Validate(thread, nameof(thread), required: true);
+            return new DeferredBodyAction<OperationResultResponse>(() =>
+            {
+                var apiCallPath = "/threads/close.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
+                return new ApiConnectionAction<OperationResultResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
+        [WorkflowExpressionFactory(nameof(__BuildRecommendThread))]
+        public IBodyWorkflowAction<RecommendThreadResponse> RecommendThread([WorkflowExpression] Func<string> thread)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RecommendThreadResponse> __BuildRecommendThread(WorkflowExpression<string> thread)
+        {
+            WorkflowExpression.Validate(thread, nameof(thread), required: true);
+            return new DeferredBodyAction<RecommendThreadResponse>(() =>
+            {
+                var apiCallPath = "/threads/vote.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
+                callPayload.Queries["vote"] = Convert.ToString("1");
+                return new ApiConnectionAction<RecommendThreadResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
+        [WorkflowExpressionFactory(nameof(__BuildGetThread))]
+        public IBodyWorkflowAction<GetThreadResponse> GetThread([WorkflowExpression] Func<string> thread)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetThreadResponse> __BuildGetThread(WorkflowExpression<string> thread)
+        {
+            WorkflowExpression.Validate(thread, nameof(thread), required: true);
+            return new DeferredBodyAction<GetThreadResponse>(() =>
+            {
+                var apiCallPath = "/threads/details.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
+                return new ApiConnectionAction<GetThreadResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
+        [WorkflowExpressionFactory(nameof(__BuildGetForumThreads))]
+        public IBodyWorkflowAction<Thread[]> GetForumThreads([WorkflowExpression] Func<string> forum)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Thread[]> __BuildGetForumThreads(WorkflowExpression<string> forum)
+        {
+            WorkflowExpression.Validate(forum, nameof(forum), required: true);
+            return new DeferredBodyAction<Thread[]>(() =>
+            {
+                var apiCallPath = "/forums/listThreads.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["forum"] = ExpressionConverter.Convert(forum);
+                callPayload.Queries["order"] = Convert.ToString("desc");
+                callPayload.Queries["limit"] = Convert.ToString(100);
+                return new ApiConnectionAction<Thread[]>(callPayload);
+            });
         }
     }
 
     public class DisqusTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Post[]> OnPostCreated(Expression<Func<string>> forum, Expression<Func<string>> thread = null, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildOnPostCreated))]
+        public IBodyWorkflowTrigger<Post[]> OnPostCreated([WorkflowExpression] Func<string> forum, [WorkflowExpression] Func<string> thread = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/posts/list.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["forum"] = ExpressionConverter.Convert(forum);
-            if (thread != null)
-                callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
-            callPayload.Queries["order"] = Convert.ToString("desc");
-            callPayload.Queries["limit"] = Convert.ToString(75);
-            return new ApiConnectionTrigger<Post[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<Thread[]> OnThreadCreated(Expression<Func<string>> forum, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<Post[]> __BuildOnPostCreated(WorkflowExpression<string> forum, WorkflowExpression<string> thread = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/threads/list.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["forum"] = ExpressionConverter.Convert(forum);
-            callPayload.Queries["order"] = Convert.ToString("desc");
-            callPayload.Queries["limit"] = Convert.ToString(75);
-            return new ApiConnectionTrigger<Thread[]>(callPayload, triggerName, recurrence);
+            WorkflowExpression.Validate(forum, nameof(forum), required: true);
+            WorkflowExpression.Validate(thread, nameof(thread), required: false);
+            return new DeferredBodyTrigger<Post[]>(() =>
+            {
+                var apiCallPath = "/posts/list.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["forum"] = ExpressionConverter.Convert(forum);
+                if (thread != null)
+                    callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
+                callPayload.Queries["order"] = Convert.ToString("desc");
+                callPayload.Queries["limit"] = Convert.ToString(75);
+                return new ApiConnectionTrigger<Post[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnThreadCreated))]
+        public IBodyWorkflowTrigger<Thread[]> OnThreadCreated([WorkflowExpression] Func<string> forum, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<Thread[]> __BuildOnThreadCreated(WorkflowExpression<string> forum, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(forum, nameof(forum), required: true);
+            return new DeferredBodyTrigger<Thread[]>(() =>
+            {
+                var apiCallPath = "/threads/list.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["forum"] = ExpressionConverter.Convert(forum);
+                callPayload.Queries["order"] = Convert.ToString("desc");
+                callPayload.Queries["limit"] = Convert.ToString(75);
+                return new ApiConnectionTrigger<Thread[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

@@ -4,145 +4,219 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class WoodpeckerActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<ProspectsGetResponseItem[]> ProspectsGet(Expression<Func<string>> search = null, Expression<Func<string>> activity = null, Expression<Func<string>> campaignId = null, Expression<Func<bool>> campaignsDetail = null, Expression<Func<sortInput>> sort = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
+        [WorkflowExpressionFactory(nameof(__BuildProspectsGet))]
+        public IBodyWorkflowAction<ProspectsGetResponseItem[]> ProspectsGet([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> activity = null, [WorkflowExpression] Func<string> campaignId = null, [WorkflowExpression] Func<bool> campaignsDetail = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/prospects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (activity != null)
-                callPayload.Queries["activity"] = ExpressionConverter.Convert(activity);
-            if (campaignId != null)
-                callPayload.Queries["campaign_id"] = ExpressionConverter.Convert(campaignId);
-            if (campaignsDetail != null)
-                callPayload.Queries["campaigns_detail"] = ExpressionConverter.Convert(campaignsDetail);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<ProspectsGetResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<string> ProspectsDelete(Expression<Func<int>> id = null, Expression<Func<int>> campaignsId = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProspectsGetResponseItem[]> __BuildProspectsGet(WorkflowExpression<string> search = null, WorkflowExpression<string> activity = null, WorkflowExpression<string> campaignId = null, WorkflowExpression<bool> campaignsDetail = null, WorkflowExpression<sortInput> sort = null, WorkflowExpression<statusInput> status = null, WorkflowExpression<int> perPage = null, WorkflowExpression<int> page = null)
         {
-            var apiCallPath = "/prospects";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (campaignsId != null)
-                callPayload.Queries["campaigns_id"] = ExpressionConverter.Convert(campaignsId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowExpression.Validate(search, nameof(search), required: false);
+            WorkflowExpression.Validate(activity, nameof(activity), required: false);
+            WorkflowExpression.Validate(campaignId, nameof(campaignId), required: false);
+            WorkflowExpression.Validate(campaignsDetail, nameof(campaignsDetail), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            WorkflowExpression.Validate(perPage, nameof(perPage), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<ProspectsGetResponseItem[]>(() =>
+            {
+                var apiCallPath = "/prospects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                if (activity != null)
+                    callPayload.Queries["activity"] = ExpressionConverter.Convert(activity);
+                if (campaignId != null)
+                    callPayload.Queries["campaign_id"] = ExpressionConverter.Convert(campaignId);
+                if (campaignsDetail != null)
+                    callPayload.Queries["campaigns_detail"] = ExpressionConverter.Convert(campaignsDetail);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<ProspectsGetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<ProspectsPostResponse> Prospects(Expression<Func<bodyupdateInput>> bodyupdate = null, Expression<Func<bodyforceInput>> bodyforce = null, Expression<Func<bodyprospectsInputItem[]>> bodyprospects = null)
+        [WorkflowExpressionFactory(nameof(__BuildProspectsDelete))]
+        public IBodyWorkflowAction<string> ProspectsDelete([WorkflowExpression] Func<int> id = null, [WorkflowExpression] Func<int> campaignsId = null)
         {
-            var apiCallPath = "/add_prospects_list";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyupdate != null)
-            {
-                body["update"] = ExpressionConverter.ConvertO(bodyupdate);
-                bodypropCount++;
-            }
-
-            if (bodyforce != null)
-            {
-                body["force"] = ExpressionConverter.ConvertO(bodyforce);
-                bodypropCount++;
-            }
-
-            if (bodyprospects != null)
-            {
-                body["prospects"] = ExpressionConverter.ConvertO(bodyprospects);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ProspectsPostResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<ProspectsCampaignPostResponse> ProspectsCampaign(Expression<Func<int>> bodycampaigncampaignId = null, Expression<Func<bodyupdateInput>> bodyupdate = null, Expression<Func<bodyforceInput>> bodyforce = null, Expression<Func<bodyprospectsInputItem2[]>> bodyprospects = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildProspectsDelete(WorkflowExpression<int> id = null, WorkflowExpression<int> campaignsId = null)
         {
-            var apiCallPath = "/add_prospects_campaign";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var campaignObject = new JObject();
-            var campaignObjectpropCount = 0;
-            if (bodycampaigncampaignId != null)
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            WorkflowExpression.Validate(campaignsId, nameof(campaignsId), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                campaignObject["campaign_id"] = ExpressionConverter.ConvertO(bodycampaigncampaignId);
-                campaignObjectpropCount++;
-            }
-
-            if (campaignObjectpropCount > 0)
-            {
-                body["campaign"] = campaignObject;
-                bodypropCount++;
-            }
-
-            if (bodyupdate != null)
-            {
-                body["update"] = ExpressionConverter.ConvertO(bodyupdate);
-                bodypropCount++;
-            }
-
-            if (bodyforce != null)
-            {
-                body["force"] = ExpressionConverter.ConvertO(bodyforce);
-                bodypropCount++;
-            }
-
-            if (bodyprospects != null)
-            {
-                body["prospects"] = ExpressionConverter.ConvertO(bodyprospects);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ProspectsCampaignPostResponse>(callPayload);
+                var apiCallPath = "/prospects";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (campaignsId != null)
+                    callPayload.Queries["campaigns_id"] = ExpressionConverter.Convert(campaignsId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<CampaignsGetResponseItem[]> CampaignsGet(Expression<Func<statusInput>> status = null, Expression<Func<int>> id = null)
+        [WorkflowExpressionFactory(nameof(__BuildProspects))]
+        public IBodyWorkflowAction<ProspectsPostResponse> Prospects([WorkflowExpression] Func<bodyupdateInput> bodyupdate = null, [WorkflowExpression] Func<bodyforceInput> bodyforce = null, [WorkflowExpression] Func<bodyprospectsInputItem[]> bodyprospects = null)
         {
-            var apiCallPath = "/campaign_list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<CampaignsGetResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProspectsPostResponse> __BuildProspects(WorkflowExpression<bodyupdateInput> bodyupdate = null, WorkflowExpression<bodyforceInput> bodyforce = null, WorkflowExpression<bodyprospectsInputItem[]> bodyprospects = null)
+        {
+            WorkflowExpression.Validate(bodyupdate, nameof(bodyupdate), required: false);
+            WorkflowExpression.Validate(bodyforce, nameof(bodyforce), required: false);
+            WorkflowExpression.Validate(bodyprospects, nameof(bodyprospects), required: false);
+            return new DeferredBodyAction<ProspectsPostResponse>(() =>
+            {
+                var apiCallPath = "/add_prospects_list";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyupdate != null)
+                {
+                    body["update"] = ExpressionConverter.ConvertO(bodyupdate);
+                    bodypropCount++;
+                }
+
+                if (bodyforce != null)
+                {
+                    body["force"] = ExpressionConverter.ConvertO(bodyforce);
+                    bodypropCount++;
+                }
+
+                if (bodyprospects != null)
+                {
+                    body["prospects"] = ExpressionConverter.ConvertO(bodyprospects);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ProspectsPostResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
+        [WorkflowExpressionFactory(nameof(__BuildProspectsCampaign))]
+        public IBodyWorkflowAction<ProspectsCampaignPostResponse> ProspectsCampaign([WorkflowExpression] Func<int> bodycampaigncampaignId = null, [WorkflowExpression] Func<bodyupdateInput> bodyupdate = null, [WorkflowExpression] Func<bodyforceInput> bodyforce = null, [WorkflowExpression] Func<bodyprospectsInputItem2[]> bodyprospects = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProspectsCampaignPostResponse> __BuildProspectsCampaign(WorkflowExpression<int> bodycampaigncampaignId = null, WorkflowExpression<bodyupdateInput> bodyupdate = null, WorkflowExpression<bodyforceInput> bodyforce = null, WorkflowExpression<bodyprospectsInputItem2[]> bodyprospects = null)
+        {
+            WorkflowExpression.Validate(bodycampaigncampaignId, nameof(bodycampaigncampaignId), required: false);
+            WorkflowExpression.Validate(bodyupdate, nameof(bodyupdate), required: false);
+            WorkflowExpression.Validate(bodyforce, nameof(bodyforce), required: false);
+            WorkflowExpression.Validate(bodyprospects, nameof(bodyprospects), required: false);
+            return new DeferredBodyAction<ProspectsCampaignPostResponse>(() =>
+            {
+                var apiCallPath = "/add_prospects_campaign";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var campaignObject = new JObject();
+                var campaignObjectpropCount = 0;
+                if (bodycampaigncampaignId != null)
+                {
+                    campaignObject["campaign_id"] = ExpressionConverter.ConvertO(bodycampaigncampaignId);
+                    campaignObjectpropCount++;
+                }
+
+                if (campaignObjectpropCount > 0)
+                {
+                    body["campaign"] = campaignObject;
+                    bodypropCount++;
+                }
+
+                if (bodyupdate != null)
+                {
+                    body["update"] = ExpressionConverter.ConvertO(bodyupdate);
+                    bodypropCount++;
+                }
+
+                if (bodyforce != null)
+                {
+                    body["force"] = ExpressionConverter.ConvertO(bodyforce);
+                    bodypropCount++;
+                }
+
+                if (bodyprospects != null)
+                {
+                    body["prospects"] = ExpressionConverter.ConvertO(bodyprospects);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ProspectsCampaignPostResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
+        [WorkflowExpressionFactory(nameof(__BuildCampaignsGet))]
+        public IBodyWorkflowAction<CampaignsGetResponseItem[]> CampaignsGet([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> id = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CampaignsGetResponseItem[]> __BuildCampaignsGet(WorkflowExpression<statusInput> status = null, WorkflowExpression<int> id = null)
+        {
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            WorkflowExpression.Validate(id, nameof(id), required: false);
+            return new DeferredBodyAction<CampaignsGetResponseItem[]>(() =>
+            {
+                var apiCallPath = "/campaign_list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<CampaignsGetResponseItem[]>(callPayload);
+            });
         }
     }
 

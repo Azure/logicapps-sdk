@@ -4,30 +4,46 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TradegovActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<BSPResponse> BusinessServiceProvidersSearch(Expression<Func<string>> q = null, Expression<Func<string>> categories = null, Expression<Func<string>> itaOffices = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__BuildBusinessServiceProvidersSearch))]
+        public IBodyWorkflowAction<BSPResponse> BusinessServiceProvidersSearch([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<string> itaOffices = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/business_service_providers/v1/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (categories != null)
-                callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
-            if (itaOffices != null)
-                callPayload.Queries["ita_offices"] = ExpressionConverter.Convert(itaOffices);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<BSPResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BSPResponse> __BuildBusinessServiceProvidersSearch(WorkflowExpression<string> q = null, WorkflowExpression<string> categories = null, WorkflowExpression<string> itaOffices = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(categories, nameof(categories), required: false);
+            WorkflowExpression.Validate(itaOffices, nameof(itaOffices), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<BSPResponse>(() =>
+            {
+                var apiCallPath = "/business_service_providers/v1/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (categories != null)
+                    callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
+                if (itaOffices != null)
+                    callPayload.Queries["ita_offices"] = ExpressionConverter.Convert(itaOffices);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<BSPResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
@@ -40,36 +56,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<ScreeningListSearchResponse> ConsolidatedScreeningListSearch(Expression<Func<string>> name = null, Expression<Func<fuzzyNameInput>> fuzzyName = null, Expression<Func<string>> sources = null, Expression<Func<string>> types = null, Expression<Func<string>> countries = null, Expression<Func<string>> address = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> fullAddress = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__BuildConsolidatedScreeningListSearch))]
+        public IBodyWorkflowAction<ScreeningListSearchResponse> ConsolidatedScreeningListSearch([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<fuzzyNameInput> fuzzyName = null, [WorkflowExpression] Func<string> sources = null, [WorkflowExpression] Func<string> types = null, [WorkflowExpression] Func<string> countries = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> fullAddress = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/consolidated_screening_list/v1/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (fuzzyName != null)
-                callPayload.Queries["fuzzy_name"] = ExpressionConverter.Convert(fuzzyName);
-            if (sources != null)
-                callPayload.Queries["sources"] = ExpressionConverter.Convert(sources);
-            if (types != null)
-                callPayload.Queries["types"] = ExpressionConverter.Convert(types);
-            if (countries != null)
-                callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
-            if (address != null)
-                callPayload.Queries["address"] = ExpressionConverter.Convert(address);
-            if (city != null)
-                callPayload.Queries["city"] = ExpressionConverter.Convert(city);
-            if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
-            if (postalCode != null)
-                callPayload.Queries["postal_code"] = ExpressionConverter.Convert(postalCode);
-            if (fullAddress != null)
-                callPayload.Queries["full_address"] = ExpressionConverter.Convert(fullAddress);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ScreeningListSearchResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScreeningListSearchResponse> __BuildConsolidatedScreeningListSearch(WorkflowExpression<string> name = null, WorkflowExpression<fuzzyNameInput> fuzzyName = null, WorkflowExpression<string> sources = null, WorkflowExpression<string> types = null, WorkflowExpression<string> countries = null, WorkflowExpression<string> address = null, WorkflowExpression<string> city = null, WorkflowExpression<string> state = null, WorkflowExpression<string> postalCode = null, WorkflowExpression<string> fullAddress = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(name, nameof(name), required: false);
+            WorkflowExpression.Validate(fuzzyName, nameof(fuzzyName), required: false);
+            WorkflowExpression.Validate(sources, nameof(sources), required: false);
+            WorkflowExpression.Validate(types, nameof(types), required: false);
+            WorkflowExpression.Validate(countries, nameof(countries), required: false);
+            WorkflowExpression.Validate(address, nameof(address), required: false);
+            WorkflowExpression.Validate(city, nameof(city), required: false);
+            WorkflowExpression.Validate(state, nameof(state), required: false);
+            WorkflowExpression.Validate(postalCode, nameof(postalCode), required: false);
+            WorkflowExpression.Validate(fullAddress, nameof(fullAddress), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ScreeningListSearchResponse>(() =>
+            {
+                var apiCallPath = "/consolidated_screening_list/v1/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                if (fuzzyName != null)
+                    callPayload.Queries["fuzzy_name"] = ExpressionConverter.Convert(fuzzyName);
+                if (sources != null)
+                    callPayload.Queries["sources"] = ExpressionConverter.Convert(sources);
+                if (types != null)
+                    callPayload.Queries["types"] = ExpressionConverter.Convert(types);
+                if (countries != null)
+                    callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
+                if (address != null)
+                    callPayload.Queries["address"] = ExpressionConverter.Convert(address);
+                if (city != null)
+                    callPayload.Queries["city"] = ExpressionConverter.Convert(city);
+                if (state != null)
+                    callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                if (postalCode != null)
+                    callPayload.Queries["postal_code"] = ExpressionConverter.Convert(postalCode);
+                if (fullAddress != null)
+                    callPayload.Queries["full_address"] = ExpressionConverter.Convert(fullAddress);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ScreeningListSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
@@ -82,52 +121,96 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<DeMinimisListResponse> DeMinimisList(Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeMinimisList))]
+        public IBodyWorkflowAction<DeMinimisListResponse> DeMinimisList([WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = "/de_minimis/v1/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<DeMinimisListResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<DeMinimisListResponse> DeMinimisSearch(Expression<Func<string>> countryCodes = null, Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeMinimisListResponse> __BuildDeMinimisList(WorkflowExpression<int> size = null, WorkflowExpression<int> offset = null)
         {
-            var apiCallPath = "/de_minimis/v1/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (countryCodes != null)
-                callPayload.Queries["country_codes"] = ExpressionConverter.Convert(countryCodes);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<DeMinimisListResponse>(callPayload);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<DeMinimisListResponse>(() =>
+            {
+                var apiCallPath = "/de_minimis/v1/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                return new ApiConnectionAction<DeMinimisListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<ITAOfficeSearchResponse> ITAOfficeLocationsSearch(Expression<Func<string>> q = null, Expression<Func<string>> countryCodes = null, Expression<Func<string>> states = null, Expression<Func<string>> assignedZipCodes = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeMinimisSearch))]
+        public IBodyWorkflowAction<DeMinimisListResponse> DeMinimisSearch([WorkflowExpression] Func<string> countryCodes = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = "/ita_office_locations/v1/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (countryCodes != null)
-                callPayload.Queries["country_codes"] = ExpressionConverter.Convert(countryCodes);
-            if (states != null)
-                callPayload.Queries["states"] = ExpressionConverter.Convert(states);
-            if (assignedZipCodes != null)
-                callPayload.Queries["assigned_zip_codes"] = ExpressionConverter.Convert(assignedZipCodes);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ITAOfficeSearchResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeMinimisListResponse> __BuildDeMinimisSearch(WorkflowExpression<string> countryCodes = null, WorkflowExpression<int> size = null, WorkflowExpression<int> offset = null)
+        {
+            WorkflowExpression.Validate(countryCodes, nameof(countryCodes), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<DeMinimisListResponse>(() =>
+            {
+                var apiCallPath = "/de_minimis/v1/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (countryCodes != null)
+                    callPayload.Queries["country_codes"] = ExpressionConverter.Convert(countryCodes);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                return new ApiConnectionAction<DeMinimisListResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
+        [WorkflowExpressionFactory(nameof(__BuildITAOfficeLocationsSearch))]
+        public IBodyWorkflowAction<ITAOfficeSearchResponse> ITAOfficeLocationsSearch([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> countryCodes = null, [WorkflowExpression] Func<string> states = null, [WorkflowExpression] Func<string> assignedZipCodes = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> size = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ITAOfficeSearchResponse> __BuildITAOfficeLocationsSearch(WorkflowExpression<string> q = null, WorkflowExpression<string> countryCodes = null, WorkflowExpression<string> states = null, WorkflowExpression<string> assignedZipCodes = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(countryCodes, nameof(countryCodes), required: false);
+            WorkflowExpression.Validate(states, nameof(states), required: false);
+            WorkflowExpression.Validate(assignedZipCodes, nameof(assignedZipCodes), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ITAOfficeSearchResponse>(() =>
+            {
+                var apiCallPath = "/ita_office_locations/v1/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (countryCodes != null)
+                    callPayload.Queries["country_codes"] = ExpressionConverter.Convert(countryCodes);
+                if (states != null)
+                    callPayload.Queries["states"] = ExpressionConverter.Convert(states);
+                if (assignedZipCodes != null)
+                    callPayload.Queries["assigned_zip_codes"] = ExpressionConverter.Convert(assignedZipCodes);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ITAOfficeSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
@@ -140,32 +223,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<TradeEventSearchResponse> TradeEventsSearch(Expression<Func<string>> sources = null, Expression<Func<string>> countries = null, Expression<Func<string>> eventTypes = null, Expression<Func<string>> industries = null, Expression<Func<string>> states = null, Expression<Func<string>> q = null, Expression<Func<string>> startDateRangeFrom = null, Expression<Func<string>> startDateRangeTo = null, Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
+        [WorkflowExpressionFactory(nameof(__BuildTradeEventsSearch))]
+        public IBodyWorkflowAction<TradeEventSearchResponse> TradeEventsSearch([WorkflowExpression] Func<string> sources = null, [WorkflowExpression] Func<string> countries = null, [WorkflowExpression] Func<string> eventTypes = null, [WorkflowExpression] Func<string> industries = null, [WorkflowExpression] Func<string> states = null, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> startDateRangeFrom = null, [WorkflowExpression] Func<string> startDateRangeTo = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = "/trade_events/v1/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sources != null)
-                callPayload.Queries["sources"] = ExpressionConverter.Convert(sources);
-            if (countries != null)
-                callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
-            if (eventTypes != null)
-                callPayload.Queries["event_types"] = ExpressionConverter.Convert(eventTypes);
-            if (industries != null)
-                callPayload.Queries["industries"] = ExpressionConverter.Convert(industries);
-            if (states != null)
-                callPayload.Queries["states"] = ExpressionConverter.Convert(states);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (startDateRangeFrom != null)
-                callPayload.Queries["start_date_range[from]"] = ExpressionConverter.Convert(startDateRangeFrom);
-            if (startDateRangeTo != null)
-                callPayload.Queries["start_date_range[to]"] = ExpressionConverter.Convert(startDateRangeTo);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<TradeEventSearchResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TradeEventSearchResponse> __BuildTradeEventsSearch(WorkflowExpression<string> sources = null, WorkflowExpression<string> countries = null, WorkflowExpression<string> eventTypes = null, WorkflowExpression<string> industries = null, WorkflowExpression<string> states = null, WorkflowExpression<string> q = null, WorkflowExpression<string> startDateRangeFrom = null, WorkflowExpression<string> startDateRangeTo = null, WorkflowExpression<int> size = null, WorkflowExpression<int> offset = null)
+        {
+            WorkflowExpression.Validate(sources, nameof(sources), required: false);
+            WorkflowExpression.Validate(countries, nameof(countries), required: false);
+            WorkflowExpression.Validate(eventTypes, nameof(eventTypes), required: false);
+            WorkflowExpression.Validate(industries, nameof(industries), required: false);
+            WorkflowExpression.Validate(states, nameof(states), required: false);
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(startDateRangeFrom, nameof(startDateRangeFrom), required: false);
+            WorkflowExpression.Validate(startDateRangeTo, nameof(startDateRangeTo), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<TradeEventSearchResponse>(() =>
+            {
+                var apiCallPath = "/trade_events/v1/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sources != null)
+                    callPayload.Queries["sources"] = ExpressionConverter.Convert(sources);
+                if (countries != null)
+                    callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
+                if (eventTypes != null)
+                    callPayload.Queries["event_types"] = ExpressionConverter.Convert(eventTypes);
+                if (industries != null)
+                    callPayload.Queries["industries"] = ExpressionConverter.Convert(industries);
+                if (states != null)
+                    callPayload.Queries["states"] = ExpressionConverter.Convert(states);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (startDateRangeFrom != null)
+                    callPayload.Queries["start_date_range[from]"] = ExpressionConverter.Convert(startDateRangeFrom);
+                if (startDateRangeTo != null)
+                    callPayload.Queries["start_date_range[to]"] = ExpressionConverter.Convert(startDateRangeTo);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                return new ApiConnectionAction<TradeEventSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
@@ -178,28 +282,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
-        public IBodyWorkflowAction<TradeLeadsSearchResponse> SearchTradeLeads(Expression<Func<string>> q = null, Expression<Func<string>> countryCodes = null, Expression<Func<string>> tenderStartDateRangeFrom = null, Expression<Func<string>> tenderStartDateRangeTo = null, Expression<Func<string>> contractStartDateRangeFrom = null, Expression<Func<string>> contractStartDateRangeTo = null, Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearchTradeLeads))]
+        public IBodyWorkflowAction<TradeLeadsSearchResponse> SearchTradeLeads([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> countryCodes = null, [WorkflowExpression] Func<string> tenderStartDateRangeFrom = null, [WorkflowExpression] Func<string> tenderStartDateRangeTo = null, [WorkflowExpression] Func<string> contractStartDateRangeFrom = null, [WorkflowExpression] Func<string> contractStartDateRangeTo = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = "/trade_leads/v1/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (countryCodes != null)
-                callPayload.Queries["country_codes"] = ExpressionConverter.Convert(countryCodes);
-            if (tenderStartDateRangeFrom != null)
-                callPayload.Queries["tender_start_date_range[from]"] = ExpressionConverter.Convert(tenderStartDateRangeFrom);
-            if (tenderStartDateRangeTo != null)
-                callPayload.Queries["tender_start_date_range[to]"] = ExpressionConverter.Convert(tenderStartDateRangeTo);
-            if (contractStartDateRangeFrom != null)
-                callPayload.Queries["contract_start_date_range[from]"] = ExpressionConverter.Convert(contractStartDateRangeFrom);
-            if (contractStartDateRangeTo != null)
-                callPayload.Queries["contract_start_date_range[to]"] = ExpressionConverter.Convert(contractStartDateRangeTo);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<TradeLeadsSearchResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TradeLeadsSearchResponse> __BuildSearchTradeLeads(WorkflowExpression<string> q = null, WorkflowExpression<string> countryCodes = null, WorkflowExpression<string> tenderStartDateRangeFrom = null, WorkflowExpression<string> tenderStartDateRangeTo = null, WorkflowExpression<string> contractStartDateRangeFrom = null, WorkflowExpression<string> contractStartDateRangeTo = null, WorkflowExpression<int> size = null, WorkflowExpression<int> offset = null)
+        {
+            WorkflowExpression.Validate(q, nameof(q), required: false);
+            WorkflowExpression.Validate(countryCodes, nameof(countryCodes), required: false);
+            WorkflowExpression.Validate(tenderStartDateRangeFrom, nameof(tenderStartDateRangeFrom), required: false);
+            WorkflowExpression.Validate(tenderStartDateRangeTo, nameof(tenderStartDateRangeTo), required: false);
+            WorkflowExpression.Validate(contractStartDateRangeFrom, nameof(contractStartDateRangeFrom), required: false);
+            WorkflowExpression.Validate(contractStartDateRangeTo, nameof(contractStartDateRangeTo), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            return new DeferredBodyAction<TradeLeadsSearchResponse>(() =>
+            {
+                var apiCallPath = "/trade_leads/v1/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (countryCodes != null)
+                    callPayload.Queries["country_codes"] = ExpressionConverter.Convert(countryCodes);
+                if (tenderStartDateRangeFrom != null)
+                    callPayload.Queries["tender_start_date_range[from]"] = ExpressionConverter.Convert(tenderStartDateRangeFrom);
+                if (tenderStartDateRangeTo != null)
+                    callPayload.Queries["tender_start_date_range[to]"] = ExpressionConverter.Convert(tenderStartDateRangeTo);
+                if (contractStartDateRangeFrom != null)
+                    callPayload.Queries["contract_start_date_range[from]"] = ExpressionConverter.Convert(contractStartDateRangeFrom);
+                if (contractStartDateRangeTo != null)
+                    callPayload.Queries["contract_start_date_range[to]"] = ExpressionConverter.Convert(contractStartDateRangeTo);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                return new ApiConnectionAction<TradeLeadsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]

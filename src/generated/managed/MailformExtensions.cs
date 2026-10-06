@@ -4,29 +4,79 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailform
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MailformActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailform")]
-        public IBodyWorkflowAction<CreateOrderResponse> CreateOrder(Expression<Func<serviceInput>> service, Expression<Func<string>> toName, Expression<Func<string>> toAddress1, Expression<Func<string>> toCity, Expression<Func<string>> toState, Expression<Func<string>> toPostcode, Expression<Func<string>> fromName, Expression<Func<string>> fromAddress1, Expression<Func<string>> fromCity, Expression<Func<string>> fromState, Expression<Func<string>> fromPostcode, Expression<Func<object>> file = null, Expression<Func<string>> url = null, Expression<Func<string>> customerReference = null, Expression<Func<string>> webhook = null, Expression<Func<bool>> simplex = null, Expression<Func<bool>> color = null, Expression<Func<bool>> flat = null, Expression<Func<bool>> returnEnvelope = null, Expression<Func<bool>> stamp = null, Expression<Func<string>> message = null, Expression<Func<string>> toOrganization = null, Expression<Func<string>> toAddress2 = null, Expression<Func<string>> toCountry = null, Expression<Func<string>> fromOrganization = null, Expression<Func<string>> fromAddress2 = null, Expression<Func<string>> fromCountry = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateOrder))]
+        public IBodyWorkflowAction<CreateOrderResponse> CreateOrder([WorkflowExpression] Func<serviceInput> service, [WorkflowExpression] Func<string> toName, [WorkflowExpression] Func<string> toAddress1, [WorkflowExpression] Func<string> toCity, [WorkflowExpression] Func<string> toState, [WorkflowExpression] Func<string> toPostcode, [WorkflowExpression] Func<string> fromName, [WorkflowExpression] Func<string> fromAddress1, [WorkflowExpression] Func<string> fromCity, [WorkflowExpression] Func<string> fromState, [WorkflowExpression] Func<string> fromPostcode, [WorkflowExpression] Func<object> file = null, [WorkflowExpression] Func<string> url = null, [WorkflowExpression] Func<string> customerReference = null, [WorkflowExpression] Func<string> webhook = null, [WorkflowExpression] Func<bool> simplex = null, [WorkflowExpression] Func<bool> color = null, [WorkflowExpression] Func<bool> flat = null, [WorkflowExpression] Func<bool> returnEnvelope = null, [WorkflowExpression] Func<bool> stamp = null, [WorkflowExpression] Func<string> message = null, [WorkflowExpression] Func<string> toOrganization = null, [WorkflowExpression] Func<string> toAddress2 = null, [WorkflowExpression] Func<string> toCountry = null, [WorkflowExpression] Func<string> fromOrganization = null, [WorkflowExpression] Func<string> fromAddress2 = null, [WorkflowExpression] Func<string> fromCountry = null)
         {
-            var apiCallPath = "/v1/orders";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CreateOrderResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailform")]
-        public IBodyWorkflowAction<GetOrderResponse> GetOrder(Expression<Func<string>> id)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateOrderResponse> __BuildCreateOrder(WorkflowExpression<serviceInput> service, WorkflowExpression<string> toName, WorkflowExpression<string> toAddress1, WorkflowExpression<string> toCity, WorkflowExpression<string> toState, WorkflowExpression<string> toPostcode, WorkflowExpression<string> fromName, WorkflowExpression<string> fromAddress1, WorkflowExpression<string> fromCity, WorkflowExpression<string> fromState, WorkflowExpression<string> fromPostcode, WorkflowExpression<object> file = null, WorkflowExpression<string> url = null, WorkflowExpression<string> customerReference = null, WorkflowExpression<string> webhook = null, WorkflowExpression<bool> simplex = null, WorkflowExpression<bool> color = null, WorkflowExpression<bool> flat = null, WorkflowExpression<bool> returnEnvelope = null, WorkflowExpression<bool> stamp = null, WorkflowExpression<string> message = null, WorkflowExpression<string> toOrganization = null, WorkflowExpression<string> toAddress2 = null, WorkflowExpression<string> toCountry = null, WorkflowExpression<string> fromOrganization = null, WorkflowExpression<string> fromAddress2 = null, WorkflowExpression<string> fromCountry = null)
         {
-            var apiCallPath = String.Format("/v1/orders/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetOrderResponse>(callPayload);
+            WorkflowExpression.Validate(service, nameof(service), required: true);
+            WorkflowExpression.Validate(toName, nameof(toName), required: true);
+            WorkflowExpression.Validate(toAddress1, nameof(toAddress1), required: true);
+            WorkflowExpression.Validate(toCity, nameof(toCity), required: true);
+            WorkflowExpression.Validate(toState, nameof(toState), required: true);
+            WorkflowExpression.Validate(toPostcode, nameof(toPostcode), required: true);
+            WorkflowExpression.Validate(fromName, nameof(fromName), required: true);
+            WorkflowExpression.Validate(fromAddress1, nameof(fromAddress1), required: true);
+            WorkflowExpression.Validate(fromCity, nameof(fromCity), required: true);
+            WorkflowExpression.Validate(fromState, nameof(fromState), required: true);
+            WorkflowExpression.Validate(fromPostcode, nameof(fromPostcode), required: true);
+            WorkflowExpression.Validate(file, nameof(file), required: false);
+            WorkflowExpression.Validate(url, nameof(url), required: false);
+            WorkflowExpression.Validate(customerReference, nameof(customerReference), required: false);
+            WorkflowExpression.Validate(webhook, nameof(webhook), required: false);
+            WorkflowExpression.Validate(simplex, nameof(simplex), required: false);
+            WorkflowExpression.Validate(color, nameof(color), required: false);
+            WorkflowExpression.Validate(flat, nameof(flat), required: false);
+            WorkflowExpression.Validate(returnEnvelope, nameof(returnEnvelope), required: false);
+            WorkflowExpression.Validate(stamp, nameof(stamp), required: false);
+            WorkflowExpression.Validate(message, nameof(message), required: false);
+            WorkflowExpression.Validate(toOrganization, nameof(toOrganization), required: false);
+            WorkflowExpression.Validate(toAddress2, nameof(toAddress2), required: false);
+            WorkflowExpression.Validate(toCountry, nameof(toCountry), required: false);
+            WorkflowExpression.Validate(fromOrganization, nameof(fromOrganization), required: false);
+            WorkflowExpression.Validate(fromAddress2, nameof(fromAddress2), required: false);
+            WorkflowExpression.Validate(fromCountry, nameof(fromCountry), required: false);
+            return new DeferredBodyAction<CreateOrderResponse>(() =>
+            {
+                var apiCallPath = "/v1/orders";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CreateOrderResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailform")]
+        [WorkflowExpressionFactory(nameof(__BuildGetOrder))]
+        public IBodyWorkflowAction<GetOrderResponse> GetOrder([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailform")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetOrderResponse> __BuildGetOrder(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetOrderResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/orders/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetOrderResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailform")]

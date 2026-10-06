@@ -4,21 +4,33 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Peltarion
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class PeltarionActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "peltarion")]
-        public IBodyWorkflowAction<CallapiResponse> Callapi(Expression<Func<string>> peltarionbody)
+        [WorkflowExpressionFactory(nameof(__BuildCallapi))]
+        public IBodyWorkflowAction<CallapiResponse> Callapi([WorkflowExpression] Func<string> peltarionbody)
         {
-            var apiCallPath = "/api/forwardcall";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["peltarionbody"] = ExpressionConverter.Convert(peltarionbody);
-            return new ApiConnectionAction<CallapiResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "peltarion")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CallapiResponse> __BuildCallapi(WorkflowExpression<string> peltarionbody)
+        {
+            WorkflowExpression.Validate(peltarionbody, nameof(peltarionbody), required: true);
+            return new DeferredBodyAction<CallapiResponse>(() =>
+            {
+                var apiCallPath = "/api/forwardcall";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["peltarionbody"] = ExpressionConverter.Convert(peltarionbody);
+                return new ApiConnectionAction<CallapiResponse>(callPayload);
+            });
         }
     }
 

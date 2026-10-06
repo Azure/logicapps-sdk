@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,31 +14,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
 
     public class FeatheryformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<FormCompletionResponse> FormCompletion(Expression<Func<string>> formKey, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildFormCompletion))]
+        public IBodyWorkflowTrigger<FormCompletionResponse> FormCompletion([WorkflowExpression] Func<string> formKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/power-automate/poll/form_completion/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_key"] = ExpressionConverter.Convert(formKey);
-            return new ApiConnectionTrigger<FormCompletionResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<DataReceivedResponse> DataReceived(Expression<Func<string>> formKey, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<FormCompletionResponse> __BuildFormCompletion(WorkflowExpression<string> formKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/power-automate/poll/data_received/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_key"] = ExpressionConverter.Convert(formKey);
-            return new ApiConnectionTrigger<DataReceivedResponse>(callPayload, triggerName, recurrence);
+            WorkflowExpression.Validate(formKey, nameof(formKey), required: true);
+            return new DeferredBodyTrigger<FormCompletionResponse>(() =>
+            {
+                var apiCallPath = "/trigger/power-automate/poll/form_completion/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["form_key"] = ExpressionConverter.Convert(formKey);
+                return new ApiConnectionTrigger<FormCompletionResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<NewFileResponse> NewFile(Expression<Func<string>> formKey, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildDataReceived))]
+        public IBodyWorkflowTrigger<DataReceivedResponse> DataReceived([WorkflowExpression] Func<string> formKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/power-automate/poll/file/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_key"] = ExpressionConverter.Convert(formKey);
-            return new ApiConnectionTrigger<NewFileResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<DataReceivedResponse> __BuildDataReceived(WorkflowExpression<string> formKey, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(formKey, nameof(formKey), required: true);
+            return new DeferredBodyTrigger<DataReceivedResponse>(() =>
+            {
+                var apiCallPath = "/trigger/power-automate/poll/data_received/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["form_key"] = ExpressionConverter.Convert(formKey);
+                return new ApiConnectionTrigger<DataReceivedResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildNewFile))]
+        public IBodyWorkflowTrigger<NewFileResponse> NewFile([WorkflowExpression] Func<string> formKey, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<NewFileResponse> __BuildNewFile(WorkflowExpression<string> formKey, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(formKey, nameof(formKey), required: true);
+            return new DeferredBodyTrigger<NewFileResponse>(() =>
+            {
+                var apiCallPath = "/trigger/power-automate/poll/file/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["form_key"] = ExpressionConverter.Convert(formKey);
+                return new ApiConnectionTrigger<NewFileResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -30,23 +29,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
-        public IWorkflowAction CreateScheduleTaskRun(Expression<Func<string>> bodyrobotId, Expression<Func<string>> bodytaskFileId)
+        [WorkflowExpressionFactory(nameof(__BuildCreateScheduleTaskRun))]
+        public IWorkflowAction CreateScheduleTaskRun([WorkflowExpression] Func<string> bodyrobotId, [WorkflowExpression] Func<string> bodytaskFileId)
         {
-            var apiCallPath = "/v1/task-schedules";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["robot_id"] = ExpressionConverter.ConvertO(bodyrobotId);
-            bodypropCount++;
-            body["task_file_id"] = ExpressionConverter.ConvertO(bodytaskFileId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionAction(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateScheduleTaskRun(WorkflowExpression<string> bodyrobotId, WorkflowExpression<string> bodytaskFileId)
+        {
+            WorkflowExpression.Validate(bodyrobotId, nameof(bodyrobotId), required: true);
+            WorkflowExpression.Validate(bodytaskFileId, nameof(bodytaskFileId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/v1/task-schedules";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["robot_id"] = ExpressionConverter.ConvertO(bodyrobotId);
+                bodypropCount++;
+                body["task_file_id"] = ExpressionConverter.ConvertO(bodytaskFileId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

@@ -4,199 +4,256 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class XcgatepreviewActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
-        public IBodyWorkflowAction<LoginAuthResponse> LoginAuth(Expression<Func<string>> host = null, Expression<Func<string>> bodycompanyCd = null, Expression<Func<string>> bodyuserCd = null, Expression<Func<string>> bodypassword = null)
+        [WorkflowExpressionFactory(nameof(__BuildLoginAuth))]
+        public IBodyWorkflowAction<LoginAuthResponse> LoginAuth([WorkflowExpression] Func<string> host = null, [WorkflowExpression] Func<string> bodycompanyCd = null, [WorkflowExpression] Func<string> bodyuserCd = null, [WorkflowExpression] Func<string> bodypassword = null)
         {
-            var apiCallPath = "/webapi/login/auth";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (host != null)
-                callPayload.Queries["host"] = ExpressionConverter.Convert(host);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycompanyCd != null)
-            {
-                body["companyCd"] = ExpressionConverter.ConvertO(bodycompanyCd);
-                bodypropCount++;
-            }
-
-            if (bodyuserCd != null)
-            {
-                body["userCd"] = ExpressionConverter.ConvertO(bodyuserCd);
-                bodypropCount++;
-            }
-
-            if (bodypassword != null)
-            {
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LoginAuthResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
-        public IBodyWorkflowAction<ActionFindResponse> ActionFind(Expression<Func<string>> host = null, Expression<Func<string>> bodycompanyCd = null, Expression<Func<string>> bodyuserUCd = null, Expression<Func<string>> bodyauthKey = null, Expression<Func<string[]>> bodyreportCdList = null, Expression<Func<string>> bodyfindstatement = null, Expression<Func<bodyfindstatementListInputItem[]>> bodyfindstatementList = null, Expression<Func<bodysortListInputItem[]>> bodysortList = null, Expression<Func<string>> bodypageSize = null, Expression<Func<string>> bodypageNo = null, Expression<Func<bodyrequestListInputItem[]>> bodyrequestList = null, Expression<Func<string>> bodyenableEpoch = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LoginAuthResponse> __BuildLoginAuth(WorkflowExpression<string> host = null, WorkflowExpression<string> bodycompanyCd = null, WorkflowExpression<string> bodyuserCd = null, WorkflowExpression<string> bodypassword = null)
         {
-            var apiCallPath = "/webapi/action/find";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (host != null)
-                callPayload.Queries["host"] = ExpressionConverter.Convert(host);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycompanyCd != null)
+            WorkflowExpression.Validate(host, nameof(host), required: false);
+            WorkflowExpression.Validate(bodycompanyCd, nameof(bodycompanyCd), required: false);
+            WorkflowExpression.Validate(bodyuserCd, nameof(bodyuserCd), required: false);
+            WorkflowExpression.Validate(bodypassword, nameof(bodypassword), required: false);
+            return new DeferredBodyAction<LoginAuthResponse>(() =>
             {
-                body["companyCd"] = ExpressionConverter.ConvertO(bodycompanyCd);
-                bodypropCount++;
-            }
+                var apiCallPath = "/webapi/login/auth";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (host != null)
+                    callPayload.Queries["host"] = ExpressionConverter.Convert(host);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycompanyCd != null)
+                {
+                    body["companyCd"] = ExpressionConverter.ConvertO(bodycompanyCd);
+                    bodypropCount++;
+                }
 
-            if (bodyuserUCd != null)
-            {
-                body["userUCd"] = ExpressionConverter.ConvertO(bodyuserUCd);
-                bodypropCount++;
-            }
+                if (bodyuserCd != null)
+                {
+                    body["userCd"] = ExpressionConverter.ConvertO(bodyuserCd);
+                    bodypropCount++;
+                }
 
-            if (bodyauthKey != null)
-            {
-                body["authKey"] = ExpressionConverter.ConvertO(bodyauthKey);
-                bodypropCount++;
-            }
+                if (bodypassword != null)
+                {
+                    body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                    bodypropCount++;
+                }
 
-            if (bodyreportCdList != null)
-            {
-                body["reportCdList"] = ExpressionConverter.ConvertO(bodyreportCdList);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            var findObject = new JObject();
-            var findObjectpropCount = 0;
-            if (bodyfindstatement != null)
-            {
-                findObject["statement"] = ExpressionConverter.ConvertO(bodyfindstatement);
-                findObjectpropCount++;
-            }
-
-            if (bodyfindstatementList != null)
-            {
-                findObject["statementList"] = ExpressionConverter.ConvertO(bodyfindstatementList);
-                findObjectpropCount++;
-            }
-
-            if (findObjectpropCount > 0)
-            {
-                body["find"] = findObject;
-                bodypropCount++;
-            }
-
-            if (bodysortList != null)
-            {
-                body["sortList"] = ExpressionConverter.ConvertO(bodysortList);
-                bodypropCount++;
-            }
-
-            if (bodypageSize != null)
-            {
-                body["pageSize"] = ExpressionConverter.ConvertO(bodypageSize);
-                bodypropCount++;
-            }
-
-            if (bodypageNo != null)
-            {
-                body["pageNo"] = ExpressionConverter.ConvertO(bodypageNo);
-                bodypropCount++;
-            }
-
-            if (bodyrequestList != null)
-            {
-                body["requestList"] = ExpressionConverter.ConvertO(bodyrequestList);
-                bodypropCount++;
-            }
-
-            if (bodyenableEpoch != null)
-            {
-                body["enableEpoch"] = ExpressionConverter.ConvertO(bodyenableEpoch);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ActionFindResponse>(callPayload);
+                return new ApiConnectionAction<LoginAuthResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
-        public IBodyWorkflowAction<ActionGetResponse> ActionGet(Expression<Func<string>> host = null, Expression<Func<string>> bodycompanyCd = null, Expression<Func<string>> bodyuserUCd = null, Expression<Func<string>> bodyauthKey = null, Expression<Func<string>> bodyreportCd = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytrxCdx = null, Expression<Func<string>> bodyenableEpoch = null)
+        [WorkflowExpressionFactory(nameof(__BuildActionFind))]
+        public IBodyWorkflowAction<ActionFindResponse> ActionFind([WorkflowExpression] Func<string> host = null, [WorkflowExpression] Func<string> bodycompanyCd = null, [WorkflowExpression] Func<string> bodyuserUCd = null, [WorkflowExpression] Func<string> bodyauthKey = null, [WorkflowExpression] Func<string[]> bodyreportCdList = null, [WorkflowExpression] Func<string> bodyfindstatement = null, [WorkflowExpression] Func<bodyfindstatementListInputItem[]> bodyfindstatementList = null, [WorkflowExpression] Func<bodysortListInputItem[]> bodysortList = null, [WorkflowExpression] Func<string> bodypageSize = null, [WorkflowExpression] Func<string> bodypageNo = null, [WorkflowExpression] Func<bodyrequestListInputItem[]> bodyrequestList = null, [WorkflowExpression] Func<string> bodyenableEpoch = null)
         {
-            var apiCallPath = "/webapi/action/get";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (host != null)
-                callPayload.Queries["host"] = ExpressionConverter.Convert(host);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycompanyCd != null)
-            {
-                body["companyCd"] = ExpressionConverter.ConvertO(bodycompanyCd);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyuserUCd != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ActionFindResponse> __BuildActionFind(WorkflowExpression<string> host = null, WorkflowExpression<string> bodycompanyCd = null, WorkflowExpression<string> bodyuserUCd = null, WorkflowExpression<string> bodyauthKey = null, WorkflowExpression<string[]> bodyreportCdList = null, WorkflowExpression<string> bodyfindstatement = null, WorkflowExpression<bodyfindstatementListInputItem[]> bodyfindstatementList = null, WorkflowExpression<bodysortListInputItem[]> bodysortList = null, WorkflowExpression<string> bodypageSize = null, WorkflowExpression<string> bodypageNo = null, WorkflowExpression<bodyrequestListInputItem[]> bodyrequestList = null, WorkflowExpression<string> bodyenableEpoch = null)
+        {
+            WorkflowExpression.Validate(host, nameof(host), required: false);
+            WorkflowExpression.Validate(bodycompanyCd, nameof(bodycompanyCd), required: false);
+            WorkflowExpression.Validate(bodyuserUCd, nameof(bodyuserUCd), required: false);
+            WorkflowExpression.Validate(bodyauthKey, nameof(bodyauthKey), required: false);
+            WorkflowExpression.Validate(bodyreportCdList, nameof(bodyreportCdList), required: false);
+            WorkflowExpression.Validate(bodyfindstatement, nameof(bodyfindstatement), required: false);
+            WorkflowExpression.Validate(bodyfindstatementList, nameof(bodyfindstatementList), required: false);
+            WorkflowExpression.Validate(bodysortList, nameof(bodysortList), required: false);
+            WorkflowExpression.Validate(bodypageSize, nameof(bodypageSize), required: false);
+            WorkflowExpression.Validate(bodypageNo, nameof(bodypageNo), required: false);
+            WorkflowExpression.Validate(bodyrequestList, nameof(bodyrequestList), required: false);
+            WorkflowExpression.Validate(bodyenableEpoch, nameof(bodyenableEpoch), required: false);
+            return new DeferredBodyAction<ActionFindResponse>(() =>
             {
-                body["userUCd"] = ExpressionConverter.ConvertO(bodyuserUCd);
-                bodypropCount++;
-            }
+                var apiCallPath = "/webapi/action/find";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (host != null)
+                    callPayload.Queries["host"] = ExpressionConverter.Convert(host);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycompanyCd != null)
+                {
+                    body["companyCd"] = ExpressionConverter.ConvertO(bodycompanyCd);
+                    bodypropCount++;
+                }
 
-            if (bodyauthKey != null)
+                if (bodyuserUCd != null)
+                {
+                    body["userUCd"] = ExpressionConverter.ConvertO(bodyuserUCd);
+                    bodypropCount++;
+                }
+
+                if (bodyauthKey != null)
+                {
+                    body["authKey"] = ExpressionConverter.ConvertO(bodyauthKey);
+                    bodypropCount++;
+                }
+
+                if (bodyreportCdList != null)
+                {
+                    body["reportCdList"] = ExpressionConverter.ConvertO(bodyreportCdList);
+                    bodypropCount++;
+                }
+
+                var findObject = new JObject();
+                var findObjectpropCount = 0;
+                if (bodyfindstatement != null)
+                {
+                    findObject["statement"] = ExpressionConverter.ConvertO(bodyfindstatement);
+                    findObjectpropCount++;
+                }
+
+                if (bodyfindstatementList != null)
+                {
+                    findObject["statementList"] = ExpressionConverter.ConvertO(bodyfindstatementList);
+                    findObjectpropCount++;
+                }
+
+                if (findObjectpropCount > 0)
+                {
+                    body["find"] = findObject;
+                    bodypropCount++;
+                }
+
+                if (bodysortList != null)
+                {
+                    body["sortList"] = ExpressionConverter.ConvertO(bodysortList);
+                    bodypropCount++;
+                }
+
+                if (bodypageSize != null)
+                {
+                    body["pageSize"] = ExpressionConverter.ConvertO(bodypageSize);
+                    bodypropCount++;
+                }
+
+                if (bodypageNo != null)
+                {
+                    body["pageNo"] = ExpressionConverter.ConvertO(bodypageNo);
+                    bodypropCount++;
+                }
+
+                if (bodyrequestList != null)
+                {
+                    body["requestList"] = ExpressionConverter.ConvertO(bodyrequestList);
+                    bodypropCount++;
+                }
+
+                if (bodyenableEpoch != null)
+                {
+                    body["enableEpoch"] = ExpressionConverter.ConvertO(bodyenableEpoch);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ActionFindResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
+        [WorkflowExpressionFactory(nameof(__BuildActionGet))]
+        public IBodyWorkflowAction<ActionGetResponse> ActionGet([WorkflowExpression] Func<string> host = null, [WorkflowExpression] Func<string> bodycompanyCd = null, [WorkflowExpression] Func<string> bodyuserUCd = null, [WorkflowExpression] Func<string> bodyauthKey = null, [WorkflowExpression] Func<string> bodyreportCd = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytrxCdx = null, [WorkflowExpression] Func<string> bodyenableEpoch = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ActionGetResponse> __BuildActionGet(WorkflowExpression<string> host = null, WorkflowExpression<string> bodycompanyCd = null, WorkflowExpression<string> bodyuserUCd = null, WorkflowExpression<string> bodyauthKey = null, WorkflowExpression<string> bodyreportCd = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<string> bodytrxCdx = null, WorkflowExpression<string> bodyenableEpoch = null)
+        {
+            WorkflowExpression.Validate(host, nameof(host), required: false);
+            WorkflowExpression.Validate(bodycompanyCd, nameof(bodycompanyCd), required: false);
+            WorkflowExpression.Validate(bodyuserUCd, nameof(bodyuserUCd), required: false);
+            WorkflowExpression.Validate(bodyauthKey, nameof(bodyauthKey), required: false);
+            WorkflowExpression.Validate(bodyreportCd, nameof(bodyreportCd), required: false);
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowExpression.Validate(bodytrxCdx, nameof(bodytrxCdx), required: false);
+            WorkflowExpression.Validate(bodyenableEpoch, nameof(bodyenableEpoch), required: false);
+            return new DeferredBodyAction<ActionGetResponse>(() =>
             {
-                body["authKey"] = ExpressionConverter.ConvertO(bodyauthKey);
-                bodypropCount++;
-            }
+                var apiCallPath = "/webapi/action/get";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (host != null)
+                    callPayload.Queries["host"] = ExpressionConverter.Convert(host);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycompanyCd != null)
+                {
+                    body["companyCd"] = ExpressionConverter.ConvertO(bodycompanyCd);
+                    bodypropCount++;
+                }
 
-            if (bodyreportCd != null)
-            {
-                body["reportCd"] = ExpressionConverter.ConvertO(bodyreportCd);
-                bodypropCount++;
-            }
+                if (bodyuserUCd != null)
+                {
+                    body["userUCd"] = ExpressionConverter.ConvertO(bodyuserUCd);
+                    bodypropCount++;
+                }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                if (bodyauthKey != null)
+                {
+                    body["authKey"] = ExpressionConverter.ConvertO(bodyauthKey);
+                    bodypropCount++;
+                }
 
-            if (bodytrxCdx != null)
-            {
-                body["trxCdx"] = ExpressionConverter.ConvertO(bodytrxCdx);
-                bodypropCount++;
-            }
+                if (bodyreportCd != null)
+                {
+                    body["reportCd"] = ExpressionConverter.ConvertO(bodyreportCd);
+                    bodypropCount++;
+                }
 
-            if (bodyenableEpoch != null)
-            {
-                body["enableEpoch"] = ExpressionConverter.ConvertO(bodyenableEpoch);
-                bodypropCount++;
-            }
+                if (bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodytrxCdx != null)
+                {
+                    body["trxCdx"] = ExpressionConverter.ConvertO(bodytrxCdx);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ActionGetResponse>(callPayload);
+                if (bodyenableEpoch != null)
+                {
+                    body["enableEpoch"] = ExpressionConverter.ConvertO(bodyenableEpoch);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ActionGetResponse>(callPayload);
+            });
         }
     }
 

@@ -4,83 +4,160 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class NearearthobjectwebipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<FeedResponse> Feed(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<bool>> detailed = null)
+        [WorkflowExpressionFactory(nameof(__BuildFeed))]
+        public IBodyWorkflowAction<FeedResponse> Feed([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<bool> detailed = null)
         {
-            var apiCallPath = "/feed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startDate != null)
-                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-            if (detailed != null)
-                callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
-            return new ApiConnectionAction<FeedResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<FeedTodayResponse> FeedToday(Expression<Func<bool>> detailed = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FeedResponse> __BuildFeed(WorkflowExpression<string> startDate = null, WorkflowExpression<string> endDate = null, WorkflowExpression<bool> detailed = null)
         {
-            var apiCallPath = "/feed/today";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (detailed != null)
-                callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
-            return new ApiConnectionAction<FeedTodayResponse>(callPayload);
+            WorkflowExpression.Validate(startDate, nameof(startDate), required: false);
+            WorkflowExpression.Validate(endDate, nameof(endDate), required: false);
+            WorkflowExpression.Validate(detailed, nameof(detailed), required: false);
+            return new DeferredBodyAction<FeedResponse>(() =>
+            {
+                var apiCallPath = "/feed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startDate != null)
+                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
+                if (detailed != null)
+                    callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
+                return new ApiConnectionAction<FeedResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<NeoResponse> Neo(Expression<Func<int>> page = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__BuildFeedToday))]
+        public IBodyWorkflowAction<FeedTodayResponse> FeedToday([WorkflowExpression] Func<bool> detailed = null)
         {
-            var apiCallPath = "/neo/browse";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<NeoResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<NeoIDResponse> NeoID(Expression<Func<string>> iD)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FeedTodayResponse> __BuildFeedToday(WorkflowExpression<bool> detailed = null)
         {
-            var apiCallPath = String.Format("/neo/{0}", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<NeoIDResponse>(callPayload);
+            WorkflowExpression.Validate(detailed, nameof(detailed), required: false);
+            return new DeferredBodyAction<FeedTodayResponse>(() =>
+            {
+                var apiCallPath = "/feed/today";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (detailed != null)
+                    callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
+                return new ApiConnectionAction<FeedTodayResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<SentryResponse> Sentry(Expression<Func<bool>> isActive = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null)
+        [WorkflowExpressionFactory(nameof(__BuildNeo))]
+        public IBodyWorkflowAction<NeoResponse> Neo([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/neo/sentry";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (isActive != null)
-                callPayload.Queries["is_active"] = ExpressionConverter.Convert(isActive);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<SentryResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<SentryIDResponse> SentryID(Expression<Func<string>> iD)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NeoResponse> __BuildNeo(WorkflowExpression<int> page = null, WorkflowExpression<int> size = null)
         {
-            var apiCallPath = String.Format("/neo/sentry/{0}", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SentryIDResponse>(callPayload);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<NeoResponse>(() =>
+            {
+                var apiCallPath = "/neo/browse";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<NeoResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
+        [WorkflowExpressionFactory(nameof(__BuildNeoID))]
+        public IBodyWorkflowAction<NeoIDResponse> NeoID([WorkflowExpression] Func<string> iD)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NeoIDResponse> __BuildNeoID(WorkflowExpression<string> iD)
+        {
+            WorkflowExpression.Validate(iD, nameof(iD), required: true);
+            return new DeferredBodyAction<NeoIDResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/neo/{0}", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<NeoIDResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
+        [WorkflowExpressionFactory(nameof(__BuildSentry))]
+        public IBodyWorkflowAction<SentryResponse> Sentry([WorkflowExpression] Func<bool> isActive = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SentryResponse> __BuildSentry(WorkflowExpression<bool> isActive = null, WorkflowExpression<int> page = null, WorkflowExpression<int> size = null)
+        {
+            WorkflowExpression.Validate(isActive, nameof(isActive), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<SentryResponse>(() =>
+            {
+                var apiCallPath = "/neo/sentry";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (isActive != null)
+                    callPayload.Queries["is_active"] = ExpressionConverter.Convert(isActive);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<SentryResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
+        [WorkflowExpressionFactory(nameof(__BuildSentryID))]
+        public IBodyWorkflowAction<SentryIDResponse> SentryID([WorkflowExpression] Func<string> iD)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SentryIDResponse> __BuildSentryID(WorkflowExpression<string> iD)
+        {
+            WorkflowExpression.Validate(iD, nameof(iD), required: true);
+            return new DeferredBodyAction<SentryIDResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/neo/sentry/{0}", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SentryIDResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]

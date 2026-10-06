@@ -4,203 +4,273 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MinisouphtmlparserActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<FetchHTMLResponse> FetchHTML(Expression<Func<string>> bodyurl)
-        {
-            var apiCallPath = "/fetch-html";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["operation"] = "fetch_html";
-            bodypropCount++;
-            bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<FetchHTMLResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
+        [WorkflowExpressionFactory(nameof(__BuildFetchHTML))]
+        public IBodyWorkflowAction<FetchHTMLResponse> FetchHTML([WorkflowExpression] Func<string> bodyurl)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<SelectElementsResponse> SelectElements(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodyselector, Expression<Func<bodyselectorTypeInput>> bodyselectorType = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FetchHTMLResponse> __BuildFetchHTML(WorkflowExpression<string> bodyurl)
         {
-            var apiCallPath = "/select";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["operation"] = "select";
-            bodypropCount++;
-            bodypropCount++;
-            body["html"] = ExpressionConverter.ConvertO(bodyhtml);
-            bodypropCount++;
-            body["selector"] = ExpressionConverter.ConvertO(bodyselector);
-            if (bodyselectorType != null)
+            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: true);
+            return new DeferredBodyAction<FetchHTMLResponse>(() =>
             {
+                var apiCallPath = "/fetch-html";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["operation"] = "fetch_html";
+                bodypropCount++;
+                bodypropCount++;
+                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FetchHTMLResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
+        [WorkflowExpressionFactory(nameof(__BuildSelectElements))]
+        public IBodyWorkflowAction<SelectElementsResponse> SelectElements([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodyselector, [WorkflowExpression] Func<bodyselectorTypeInput> bodyselectorType = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SelectElementsResponse> __BuildSelectElements(WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodyselector, WorkflowExpression<bodyselectorTypeInput> bodyselectorType = null)
+        {
+            WorkflowExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
+            WorkflowExpression.Validate(bodyselector, nameof(bodyselector), required: true);
+            WorkflowExpression.Validate(bodyselectorType, nameof(bodyselectorType), required: false);
+            return new DeferredBodyAction<SelectElementsResponse>(() =>
+            {
+                var apiCallPath = "/select";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["operation"] = "select";
+                bodypropCount++;
+                bodypropCount++;
+                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+                bodypropCount++;
+                body["selector"] = ExpressionConverter.ConvertO(bodyselector);
                 if (bodyselectorType != null)
                 {
-                    body["selector_type"] = ExpressionConverter.ConvertO(bodyselectorType);
+                    if (bodyselectorType != null)
+                    {
+                        body["selector_type"] = ExpressionConverter.ConvertO(bodyselectorType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["selector_type"] = "css";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["selector_type"] = "css";
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SelectElementsResponse>(callPayload);
+                return new ApiConnectionAction<SelectElementsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<ExtractValuesResponse> ExtractValues(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodyselector, Expression<Func<string>> bodyattribute, Expression<Func<bodyselectorTypeInput>> bodyselectorType = null)
+        [WorkflowExpressionFactory(nameof(__BuildExtractValues))]
+        public IBodyWorkflowAction<ExtractValuesResponse> ExtractValues([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodyselector, [WorkflowExpression] Func<string> bodyattribute, [WorkflowExpression] Func<bodyselectorTypeInput> bodyselectorType = null)
         {
-            var apiCallPath = "/extract";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["operation"] = "extract";
-            bodypropCount++;
-            bodypropCount++;
-            body["html"] = ExpressionConverter.ConvertO(bodyhtml);
-            bodypropCount++;
-            body["selector"] = ExpressionConverter.ConvertO(bodyselector);
-            bodypropCount++;
-            body["attribute"] = ExpressionConverter.ConvertO(bodyattribute);
-            if (bodyselectorType != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExtractValuesResponse> __BuildExtractValues(WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodyselector, WorkflowExpression<string> bodyattribute, WorkflowExpression<bodyselectorTypeInput> bodyselectorType = null)
+        {
+            WorkflowExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
+            WorkflowExpression.Validate(bodyselector, nameof(bodyselector), required: true);
+            WorkflowExpression.Validate(bodyattribute, nameof(bodyattribute), required: true);
+            WorkflowExpression.Validate(bodyselectorType, nameof(bodyselectorType), required: false);
+            return new DeferredBodyAction<ExtractValuesResponse>(() =>
             {
+                var apiCallPath = "/extract";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["operation"] = "extract";
+                bodypropCount++;
+                bodypropCount++;
+                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+                bodypropCount++;
+                body["selector"] = ExpressionConverter.ConvertO(bodyselector);
+                bodypropCount++;
+                body["attribute"] = ExpressionConverter.ConvertO(bodyattribute);
                 if (bodyselectorType != null)
                 {
-                    body["selector_type"] = ExpressionConverter.ConvertO(bodyselectorType);
+                    if (bodyselectorType != null)
+                    {
+                        body["selector_type"] = ExpressionConverter.ConvertO(bodyselectorType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["selector_type"] = "css";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["selector_type"] = "css";
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ExtractValuesResponse>(callPayload);
+                return new ApiConnectionAction<ExtractValuesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<FindAllElementsResponse> FindAllElements(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodytagName, Expression<Func<string>> bodyattributesid = null, Expression<Func<string>> bodyattributesClass = null)
+        [WorkflowExpressionFactory(nameof(__BuildFindAllElements))]
+        public IBodyWorkflowAction<FindAllElementsResponse> FindAllElements([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodytagName, [WorkflowExpression] Func<string> bodyattributesid = null, [WorkflowExpression] Func<string> bodyattributesClass = null)
         {
-            var apiCallPath = "/find-all";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["operation"] = "find_all";
-            bodypropCount++;
-            bodypropCount++;
-            body["html"] = ExpressionConverter.ConvertO(bodyhtml);
-            bodypropCount++;
-            body["tag_name"] = ExpressionConverter.ConvertO(bodytagName);
-            var attributesObject = new JObject();
-            var attributesObjectpropCount = 0;
-            if (bodyattributesid != null)
-            {
-                attributesObject["id"] = ExpressionConverter.ConvertO(bodyattributesid);
-                attributesObjectpropCount++;
-            }
-
-            if (bodyattributesClass != null)
-            {
-                attributesObject["class"] = ExpressionConverter.ConvertO(bodyattributesClass);
-                attributesObjectpropCount++;
-            }
-
-            if (attributesObjectpropCount > 0)
-            {
-                body["attributes"] = attributesObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FindAllElementsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<ParseTableResponse> ParseTable(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodytableSelector = null, Expression<Func<bool>> bodyheaderRowsExist = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FindAllElementsResponse> __BuildFindAllElements(WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodytagName, WorkflowExpression<string> bodyattributesid = null, WorkflowExpression<string> bodyattributesClass = null)
         {
-            var apiCallPath = "/parse-table";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["operation"] = "parse_table";
-            bodypropCount++;
-            bodypropCount++;
-            body["html"] = ExpressionConverter.ConvertO(bodyhtml);
-            if (bodytableSelector != null)
+            WorkflowExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
+            WorkflowExpression.Validate(bodytagName, nameof(bodytagName), required: true);
+            WorkflowExpression.Validate(bodyattributesid, nameof(bodyattributesid), required: false);
+            WorkflowExpression.Validate(bodyattributesClass, nameof(bodyattributesClass), required: false);
+            return new DeferredBodyAction<FindAllElementsResponse>(() =>
             {
+                var apiCallPath = "/find-all";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["operation"] = "find_all";
+                bodypropCount++;
+                bodypropCount++;
+                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
+                bodypropCount++;
+                body["tag_name"] = ExpressionConverter.ConvertO(bodytagName);
+                var attributesObject = new JObject();
+                var attributesObjectpropCount = 0;
+                if (bodyattributesid != null)
+                {
+                    attributesObject["id"] = ExpressionConverter.ConvertO(bodyattributesid);
+                    attributesObjectpropCount++;
+                }
+
+                if (bodyattributesClass != null)
+                {
+                    attributesObject["class"] = ExpressionConverter.ConvertO(bodyattributesClass);
+                    attributesObjectpropCount++;
+                }
+
+                if (attributesObjectpropCount > 0)
+                {
+                    body["attributes"] = attributesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FindAllElementsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
+        [WorkflowExpressionFactory(nameof(__BuildParseTable))]
+        public IBodyWorkflowAction<ParseTableResponse> ParseTable([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodytableSelector = null, [WorkflowExpression] Func<bool> bodyheaderRowsExist = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ParseTableResponse> __BuildParseTable(WorkflowExpression<string> bodyhtml, WorkflowExpression<string> bodytableSelector = null, WorkflowExpression<bool> bodyheaderRowsExist = null)
+        {
+            WorkflowExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
+            WorkflowExpression.Validate(bodytableSelector, nameof(bodytableSelector), required: false);
+            WorkflowExpression.Validate(bodyheaderRowsExist, nameof(bodyheaderRowsExist), required: false);
+            return new DeferredBodyAction<ParseTableResponse>(() =>
+            {
+                var apiCallPath = "/parse-table";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["operation"] = "parse_table";
+                bodypropCount++;
+                bodypropCount++;
+                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
                 if (bodytableSelector != null)
                 {
-                    body["table_selector"] = ExpressionConverter.ConvertO(bodytableSelector);
+                    if (bodytableSelector != null)
+                    {
+                        body["table_selector"] = ExpressionConverter.ConvertO(bodytableSelector);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["table_selector"] = "table";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["table_selector"] = "table";
-                bodypropCount++;
-            }
-
-            if (bodyheaderRowsExist != null)
-            {
                 if (bodyheaderRowsExist != null)
                 {
-                    body["header_rows_exist"] = ExpressionConverter.ConvertO(bodyheaderRowsExist);
+                    if (bodyheaderRowsExist != null)
+                    {
+                        body["header_rows_exist"] = ExpressionConverter.ConvertO(bodyheaderRowsExist);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["header_rows_exist"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["header_rows_exist"] = true;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ParseTableResponse>(callPayload);
+                return new ApiConnectionAction<ParseTableResponse>(callPayload);
+            });
         }
     }
 

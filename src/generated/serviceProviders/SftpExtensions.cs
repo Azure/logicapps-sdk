@@ -5,7 +5,6 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
 {
     using System;
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -13,291 +12,468 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
 
     public class SftpActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
-        public IBodyWorkflowAction<GetFileContentOutput> GetFileContent(Expression<Func<string>> filePath, Expression<Func<bool>> inferContentType = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            if (inferContentType != null)
-            {
-                serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
-            }
-            else
-            {
-                serviceProviderParameters["inferContentType"] = true;
-            }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "getFileContent", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetFileContentOutput>(serviceProviderInput);
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [WorkflowExpressionFactory(nameof(__BuildGetFileContent))]
+        public IBodyWorkflowAction<GetFileContentOutput> GetFileContent([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> inferContentType = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
-        public IBodyWorkflowAction<UploadFileContentOutput> UploadFileContent(Expression<Func<string>> filePath, Expression<Func<bool>> overWriteFileIfExists, Expression<Func<string>> content = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetFileContentOutput> __BuildGetFileContent(WorkflowExpression<string> filePath, WorkflowExpression<bool> inferContentType = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            if (content != null)
+            WorkflowExpression.Validate(filePath, nameof(filePath), required: true);
+            WorkflowExpression.Validate(inferContentType, nameof(inferContentType), required: false);
+            return new DeferredBodyAction<GetFileContentOutput>(() =>
             {
-                serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
-            }
-
-            serviceProviderParameters["overWriteFileIfExists"] = ExpressionConverter.ConvertO(overWriteFileIfExists);
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "uploadFileContent", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<UploadFileContentOutput>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
-        public IOutputWorkflowAction<JToken> GetMetadata(Expression<Func<string>> fileOrFolderPath)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["fileOrFolderPath"] = ExpressionConverter.ConvertO(fileOrFolderPath);
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "getMetadata", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
-        public IBodyWorkflowAction<ListFolderOutputItem[]> ListFolder(Expression<Func<string>> folderPath, Expression<Func<bool>> filesOnly = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-            if (filesOnly != null)
-            {
-                serviceProviderParameters["filesOnly"] = ExpressionConverter.ConvertO(filesOnly);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "listFolder", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ListFolderOutputItem[]>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
-        public IBodyWorkflowAction<DeleteFileOutput> DeleteFile(Expression<Func<string>> filePath, Expression<Func<bool>> skipDelete = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            if (skipDelete != null)
-            {
-                serviceProviderParameters["skipDelete"] = ExpressionConverter.ConvertO(skipDelete);
-            }
-            else
-            {
-                serviceProviderParameters["skipDelete"] = false;
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "deleteFile", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<DeleteFileOutput>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
-        public IBodyWorkflowAction<CreateFolderOutput> CreateFolder(Expression<Func<string>> folderPath)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "createFolder", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<CreateFolderOutput>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
-        public IBodyWorkflowAction<RenameFileOutput> RenameFile(Expression<Func<string>> filePath, Expression<Func<string>> newFileName, Expression<Func<bool>> fetchMetadata = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            serviceProviderParameters["newFileName"] = ExpressionConverter.ConvertO(newFileName);
-            if (fetchMetadata != null)
-            {
-                serviceProviderParameters["fetchMetadata"] = ExpressionConverter.ConvertO(fetchMetadata);
-            }
-            else
-            {
-                serviceProviderParameters["fetchMetadata"] = false;
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "renameFile", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<RenameFileOutput>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
-        public IBodyWorkflowAction<CopyFileOutput> CopyFile(Expression<Func<string>> sourceFilePath, Expression<Func<string>> destinationFilePath, Expression<Func<bool>> overWriteFileIfExists = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["sourceFilePath"] = ExpressionConverter.ConvertO(sourceFilePath);
-            serviceProviderParameters["destinationFilePath"] = ExpressionConverter.ConvertO(destinationFilePath);
-            if (overWriteFileIfExists != null)
-            {
-                serviceProviderParameters["overWriteFileIfExists"] = ExpressionConverter.ConvertO(overWriteFileIfExists);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "copyFile", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<CopyFileOutput>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
-        public IBodyWorkflowAction<JToken> GetFileContentV2(Expression<Func<string>> filePath, Expression<Func<bool>> inferContentType = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            if (inferContentType != null)
-            {
-                serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
-            }
-            else
-            {
-                serviceProviderParameters["inferContentType"] = true;
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "getFileContentV2", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
-        public IBodyWorkflowAction<ExtractArchiveOutputItem[]> ExtractArchive(Expression<Func<string>> folderPath, Expression<Func<string>> filePath = null, Expression<Func<ExtractArchiveInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null, Expression<Func<string>> content = null)
-        {
-            var serviceProviderParameters = new JObject();
-            if (filePath != null)
-            {
+                var serviceProviderParameters = new JObject();
                 serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
-            }
+                if (inferContentType != null)
+                {
+                    serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
+                }
+                else
+                {
+                    serviceProviderParameters["inferContentType"] = true;
+                }
 
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-            if (overwriteExistingFilesBehaviour != null)
-            {
-                serviceProviderParameters["overwriteExistingFilesBehaviour"] = ExpressionConverter.ConvertO(overwriteExistingFilesBehaviour);
-            }
-
-            if (content != null)
-            {
-                serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "extractArchive", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ExtractArchiveOutputItem[]>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "getFileContent", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<GetFileContentOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
-        public IWorkflowAction DeleteFolder(Expression<Func<string>> folderPath, Expression<Func<bool>> recursiveDelete = null)
+        [WorkflowExpressionFactory(nameof(__BuildUploadFileContent))]
+        public IBodyWorkflowAction<UploadFileContentOutput> UploadFileContent([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> overWriteFileIfExists, [WorkflowExpression] Func<string> content = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-            if (recursiveDelete != null)
-            {
-                serviceProviderParameters["recursiveDelete"] = ExpressionConverter.ConvertO(recursiveDelete);
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UploadFileContentOutput> __BuildUploadFileContent(WorkflowExpression<string> filePath, WorkflowExpression<bool> overWriteFileIfExists, WorkflowExpression<string> content = null)
+        {
+            WorkflowExpression.Validate(filePath, nameof(filePath), required: true);
+            WorkflowExpression.Validate(overWriteFileIfExists, nameof(overWriteFileIfExists), required: true);
+            WorkflowExpression.Validate(content, nameof(content), required: false);
+            return new DeferredBodyAction<UploadFileContentOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "deleteFolder", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
+                if (content != null)
+                {
+                    serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+                }
+
+                serviceProviderParameters["overWriteFileIfExists"] = ExpressionConverter.ConvertO(overWriteFileIfExists);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "uploadFileContent", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<UploadFileContentOutput>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [WorkflowExpressionFactory(nameof(__BuildGetMetadata))]
+        public IOutputWorkflowAction<JToken> GetMetadata([WorkflowExpression] Func<string> fileOrFolderPath)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildGetMetadata(WorkflowExpression<string> fileOrFolderPath)
+        {
+            WorkflowExpression.Validate(fileOrFolderPath, nameof(fileOrFolderPath), required: true);
+            return new DeferredOutputAction<JToken>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["fileOrFolderPath"] = ExpressionConverter.ConvertO(fileOrFolderPath);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "getMetadata", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [WorkflowExpressionFactory(nameof(__BuildListFolder))]
+        public IBodyWorkflowAction<ListFolderOutputItem[]> ListFolder([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<bool> filesOnly = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListFolderOutputItem[]> __BuildListFolder(WorkflowExpression<string> folderPath, WorkflowExpression<bool> filesOnly = null)
+        {
+            WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
+            WorkflowExpression.Validate(filesOnly, nameof(filesOnly), required: false);
+            return new DeferredBodyAction<ListFolderOutputItem[]>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
+                if (filesOnly != null)
+                {
+                    serviceProviderParameters["filesOnly"] = ExpressionConverter.ConvertO(filesOnly);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "listFolder", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<ListFolderOutputItem[]>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteFile))]
+        public IBodyWorkflowAction<DeleteFileOutput> DeleteFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> skipDelete = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteFileOutput> __BuildDeleteFile(WorkflowExpression<string> filePath, WorkflowExpression<bool> skipDelete = null)
+        {
+            WorkflowExpression.Validate(filePath, nameof(filePath), required: true);
+            WorkflowExpression.Validate(skipDelete, nameof(skipDelete), required: false);
+            return new DeferredBodyAction<DeleteFileOutput>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
+                if (skipDelete != null)
+                {
+                    serviceProviderParameters["skipDelete"] = ExpressionConverter.ConvertO(skipDelete);
+                }
+                else
+                {
+                    serviceProviderParameters["skipDelete"] = false;
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "deleteFile", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<DeleteFileOutput>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateFolder))]
+        public IBodyWorkflowAction<CreateFolderOutput> CreateFolder([WorkflowExpression] Func<string> folderPath)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateFolderOutput> __BuildCreateFolder(WorkflowExpression<string> folderPath)
+        {
+            WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredBodyAction<CreateFolderOutput>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "createFolder", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<CreateFolderOutput>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [WorkflowExpressionFactory(nameof(__BuildRenameFile))]
+        public IBodyWorkflowAction<RenameFileOutput> RenameFile([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<string> newFileName, [WorkflowExpression] Func<bool> fetchMetadata = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RenameFileOutput> __BuildRenameFile(WorkflowExpression<string> filePath, WorkflowExpression<string> newFileName, WorkflowExpression<bool> fetchMetadata = null)
+        {
+            WorkflowExpression.Validate(filePath, nameof(filePath), required: true);
+            WorkflowExpression.Validate(newFileName, nameof(newFileName), required: true);
+            WorkflowExpression.Validate(fetchMetadata, nameof(fetchMetadata), required: false);
+            return new DeferredBodyAction<RenameFileOutput>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
+                serviceProviderParameters["newFileName"] = ExpressionConverter.ConvertO(newFileName);
+                if (fetchMetadata != null)
+                {
+                    serviceProviderParameters["fetchMetadata"] = ExpressionConverter.ConvertO(fetchMetadata);
+                }
+                else
+                {
+                    serviceProviderParameters["fetchMetadata"] = false;
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "renameFile", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<RenameFileOutput>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [WorkflowExpressionFactory(nameof(__BuildCopyFile))]
+        public IBodyWorkflowAction<CopyFileOutput> CopyFile([WorkflowExpression] Func<string> sourceFilePath, [WorkflowExpression] Func<string> destinationFilePath, [WorkflowExpression] Func<bool> overWriteFileIfExists = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CopyFileOutput> __BuildCopyFile(WorkflowExpression<string> sourceFilePath, WorkflowExpression<string> destinationFilePath, WorkflowExpression<bool> overWriteFileIfExists = null)
+        {
+            WorkflowExpression.Validate(sourceFilePath, nameof(sourceFilePath), required: true);
+            WorkflowExpression.Validate(destinationFilePath, nameof(destinationFilePath), required: true);
+            WorkflowExpression.Validate(overWriteFileIfExists, nameof(overWriteFileIfExists), required: false);
+            return new DeferredBodyAction<CopyFileOutput>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["sourceFilePath"] = ExpressionConverter.ConvertO(sourceFilePath);
+                serviceProviderParameters["destinationFilePath"] = ExpressionConverter.ConvertO(destinationFilePath);
+                if (overWriteFileIfExists != null)
+                {
+                    serviceProviderParameters["overWriteFileIfExists"] = ExpressionConverter.ConvertO(overWriteFileIfExists);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "copyFile", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<CopyFileOutput>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [WorkflowExpressionFactory(nameof(__BuildGetFileContentV2))]
+        public IBodyWorkflowAction<JToken> GetFileContentV2([WorkflowExpression] Func<string> filePath, [WorkflowExpression] Func<bool> inferContentType = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildGetFileContentV2(WorkflowExpression<string> filePath, WorkflowExpression<bool> inferContentType = null)
+        {
+            WorkflowExpression.Validate(filePath, nameof(filePath), required: true);
+            WorkflowExpression.Validate(inferContentType, nameof(inferContentType), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
+                if (inferContentType != null)
+                {
+                    serviceProviderParameters["inferContentType"] = ExpressionConverter.ConvertO(inferContentType);
+                }
+                else
+                {
+                    serviceProviderParameters["inferContentType"] = true;
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "getFileContentV2", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<JToken>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [WorkflowExpressionFactory(nameof(__BuildExtractArchive))]
+        public IBodyWorkflowAction<ExtractArchiveOutputItem[]> ExtractArchive([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<string> filePath = null, [WorkflowExpression] Func<ExtractArchiveInputOverwriteExistingFilesBehaviourType> overwriteExistingFilesBehaviour = null, [WorkflowExpression] Func<string> content = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExtractArchiveOutputItem[]> __BuildExtractArchive(WorkflowExpression<string> folderPath, WorkflowExpression<string> filePath = null, WorkflowExpression<ExtractArchiveInputOverwriteExistingFilesBehaviourType> overwriteExistingFilesBehaviour = null, WorkflowExpression<string> content = null)
+        {
+            WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
+            WorkflowExpression.Validate(filePath, nameof(filePath), required: false);
+            WorkflowExpression.Validate(overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
+            WorkflowExpression.Validate(content, nameof(content), required: false);
+            return new DeferredBodyAction<ExtractArchiveOutputItem[]>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                if (filePath != null)
+                {
+                    serviceProviderParameters["filePath"] = ExpressionConverter.ConvertO(filePath);
+                }
+
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
+                if (overwriteExistingFilesBehaviour != null)
+                {
+                    serviceProviderParameters["overwriteExistingFilesBehaviour"] = ExpressionConverter.ConvertO(overwriteExistingFilesBehaviour);
+                }
+
+                if (content != null)
+                {
+                    serviceProviderParameters["content"] = ExpressionConverter.ConvertO(content);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "extractArchive", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<ExtractArchiveOutputItem[]>(serviceProviderInput);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteFolder))]
+        public IWorkflowAction DeleteFolder([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<bool> recursiveDelete = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Sftp")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteFolder(WorkflowExpression<string> folderPath, WorkflowExpression<bool> recursiveDelete = null)
+        {
+            WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
+            WorkflowExpression.Validate(recursiveDelete, nameof(recursiveDelete), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
+                if (recursiveDelete != null)
+                {
+                    serviceProviderParameters["recursiveDelete"] = ExpressionConverter.ConvertO(recursiveDelete);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "deleteFolder", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction(serviceProviderInput);
+            });
         }
     }
 
     public class SftpTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> WhenFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<bool>> includeFileContent = null, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFilesCutoffTimestamp = null, Expression<Func<string[]>> ignoreFileExtensions = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildWhenFilesAreAddedOrModified))]
+        public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> WhenFilesAreAddedOrModified([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<bool> includeFileContent = null, [WorkflowExpression] Func<int> maxFileCount = null, [WorkflowExpression] Func<string> oldFilesCutoffTimestamp = null, [WorkflowExpression] Func<string[]> ignoreFileExtensions = null, FlowRecurrence recurrence = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-            if (includeFileContent != null)
-            {
-                serviceProviderParameters["includeFileContent"] = ExpressionConverter.ConvertO(includeFileContent);
-            }
-            else
-            {
-                serviceProviderParameters["includeFileContent"] = false;
-            }
-
-            if (maxFileCount != null)
-            {
-                serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(maxFileCount);
-            }
-
-            if (oldFilesCutoffTimestamp != null)
-            {
-                serviceProviderParameters["oldFilesCutoffTimestamp"] = ExpressionConverter.ConvertO(oldFilesCutoffTimestamp);
-            }
-
-            if (ignoreFileExtensions != null)
-            {
-                serviceProviderParameters["ignoreFileExtensions"] = ExpressionConverter.ConvertO(ignoreFileExtensions);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "whenFilesAreAddedOrModified", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<WhenFileIsAddedOrModifiedOutput> WhenFileIsAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<bool>> includeFileContent = null, Expression<Func<string>> oldFilesCutoffTimestamp = null, Expression<Func<string[]>> ignoreFileExtensions = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> __BuildWhenFilesAreAddedOrModified(WorkflowExpression<string> folderPath, WorkflowExpression<bool> includeFileContent = null, WorkflowExpression<int> maxFileCount = null, WorkflowExpression<string> oldFilesCutoffTimestamp = null, WorkflowExpression<string[]> ignoreFileExtensions = null, FlowRecurrence recurrence = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
-            if (includeFileContent != null)
+            WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
+            WorkflowExpression.Validate(includeFileContent, nameof(includeFileContent), required: false);
+            WorkflowExpression.Validate(maxFileCount, nameof(maxFileCount), required: false);
+            WorkflowExpression.Validate(oldFilesCutoffTimestamp, nameof(oldFilesCutoffTimestamp), required: false);
+            WorkflowExpression.Validate(ignoreFileExtensions, nameof(ignoreFileExtensions), required: false);
+            return new DeferredBodyTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(() =>
             {
-                serviceProviderParameters["includeFileContent"] = ExpressionConverter.ConvertO(includeFileContent);
-            }
-            else
-            {
-                serviceProviderParameters["includeFileContent"] = false;
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
+                if (includeFileContent != null)
+                {
+                    serviceProviderParameters["includeFileContent"] = ExpressionConverter.ConvertO(includeFileContent);
+                }
+                else
+                {
+                    serviceProviderParameters["includeFileContent"] = false;
+                }
 
-            if (oldFilesCutoffTimestamp != null)
-            {
-                serviceProviderParameters["oldFilesCutoffTimestamp"] = ExpressionConverter.ConvertO(oldFilesCutoffTimestamp);
-            }
+                if (maxFileCount != null)
+                {
+                    serviceProviderParameters["maxFileCount"] = ExpressionConverter.ConvertO(maxFileCount);
+                }
 
-            if (ignoreFileExtensions != null)
-            {
-                serviceProviderParameters["ignoreFileExtensions"] = ExpressionConverter.ConvertO(ignoreFileExtensions);
-            }
+                if (oldFilesCutoffTimestamp != null)
+                {
+                    serviceProviderParameters["oldFilesCutoffTimestamp"] = ExpressionConverter.ConvertO(oldFilesCutoffTimestamp);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
+                if (ignoreFileExtensions != null)
+                {
+                    serviceProviderParameters["ignoreFileExtensions"] = ExpressionConverter.ConvertO(ignoreFileExtensions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "whenFilesAreAddedOrModified", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            }, "ServiceProviderTrigger");
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildWhenFileIsAddedOrModified))]
+        public IBodyWorkflowTrigger<WhenFileIsAddedOrModifiedOutput> WhenFileIsAddedOrModified([WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<bool> includeFileContent = null, [WorkflowExpression] Func<string> oldFilesCutoffTimestamp = null, [WorkflowExpression] Func<string[]> ignoreFileExtensions = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<WhenFileIsAddedOrModifiedOutput> __BuildWhenFileIsAddedOrModified(WorkflowExpression<string> folderPath, WorkflowExpression<bool> includeFileContent = null, WorkflowExpression<string> oldFilesCutoffTimestamp = null, WorkflowExpression<string[]> ignoreFileExtensions = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
+            WorkflowExpression.Validate(includeFileContent, nameof(includeFileContent), required: false);
+            WorkflowExpression.Validate(oldFilesCutoffTimestamp, nameof(oldFilesCutoffTimestamp), required: false);
+            WorkflowExpression.Validate(ignoreFileExtensions, nameof(ignoreFileExtensions), required: false);
+            return new DeferredBodyTrigger<WhenFileIsAddedOrModifiedOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "whenFileIsAddedOrModified", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<WhenFileIsAddedOrModifiedOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["folderPath"] = ExpressionConverter.ConvertO(folderPath);
+                if (includeFileContent != null)
+                {
+                    serviceProviderParameters["includeFileContent"] = ExpressionConverter.ConvertO(includeFileContent);
+                }
+                else
+                {
+                    serviceProviderParameters["includeFileContent"] = false;
+                }
+
+                if (oldFilesCutoffTimestamp != null)
+                {
+                    serviceProviderParameters["oldFilesCutoffTimestamp"] = ExpressionConverter.ConvertO(oldFilesCutoffTimestamp);
+                }
+
+                if (ignoreFileExtensions != null)
+                {
+                    serviceProviderParameters["ignoreFileExtensions"] = ExpressionConverter.ConvertO(ignoreFileExtensions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Sftp", operationId: "whenFileIsAddedOrModified", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<WhenFileIsAddedOrModifiedOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            }, "ServiceProviderTrigger");
         }
     }
 

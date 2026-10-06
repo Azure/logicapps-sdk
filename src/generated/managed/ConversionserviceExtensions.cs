@@ -4,21 +4,33 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Conversionservice
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ConversionserviceActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "conversionservice")]
-        public IBodyWorkflowAction<string> HtmlToText(Expression<Func<string>> content = null)
+        [WorkflowExpressionFactory(nameof(__BuildHtmlToText))]
+        public IBodyWorkflowAction<string> HtmlToText([WorkflowExpression] Func<string> content = null)
         {
-            var apiCallPath = "/html2text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(content);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "conversionservice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildHtmlToText(WorkflowExpression<string> content = null)
+        {
+            WorkflowExpression.Validate(content, nameof(content), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/html2text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(content);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

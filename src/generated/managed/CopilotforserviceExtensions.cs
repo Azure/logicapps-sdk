@@ -4,63 +4,87 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CopilotforserviceActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
-        public IBodyWorkflowAction<OrchestratorConnectorResponse> NaturalQueryTextSearch(Expression<Func<string>> bodyprompt = null)
+        [WorkflowExpressionFactory(nameof(__BuildNaturalQueryTextSearch))]
+        public IBodyWorkflowAction<OrchestratorConnectorResponse> NaturalQueryTextSearch([WorkflowExpression] Func<string> bodyprompt = null)
         {
-            var apiCallPath = "/api/orchestrator/connector";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprompt != null)
-            {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<OrchestratorConnectorResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
-        public IBodyWorkflowAction<OrchestratorConnectorResponse> ExecuteSkill(Expression<Func<string>> bodyskillId = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OrchestratorConnectorResponse> __BuildNaturalQueryTextSearch(WorkflowExpression<string> bodyprompt = null)
         {
-            var apiCallPath = "/api/orchestrator/executeSkill";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyskillId != null)
+            WorkflowExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
+            return new DeferredBodyAction<OrchestratorConnectorResponse>(() =>
             {
-                body["SkillId"] = ExpressionConverter.ConvertO(bodyskillId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/orchestrator/connector";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprompt != null)
+                {
+                    body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                    bodypropCount++;
+                }
 
-            var inputParametersObject = new JObject();
-            var inputParametersObjectpropCount = 0;
-            if (inputParametersObjectpropCount > 0)
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<OrchestratorConnectorResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
+        [WorkflowExpressionFactory(nameof(__BuildExecuteSkill))]
+        public IBodyWorkflowAction<OrchestratorConnectorResponse> ExecuteSkill([WorkflowExpression] Func<string> bodyskillId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OrchestratorConnectorResponse> __BuildExecuteSkill(WorkflowExpression<string> bodyskillId = null)
+        {
+            WorkflowExpression.Validate(bodyskillId, nameof(bodyskillId), required: false);
+            return new DeferredBodyAction<OrchestratorConnectorResponse>(() =>
             {
-                body["InputParameters"] = inputParametersObject;
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/orchestrator/executeSkill";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyskillId != null)
+                {
+                    body["SkillId"] = ExpressionConverter.ConvertO(bodyskillId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var inputParametersObject = new JObject();
+                var inputParametersObjectpropCount = 0;
+                if (inputParametersObjectpropCount > 0)
+                {
+                    body["InputParameters"] = inputParametersObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<OrchestratorConnectorResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<OrchestratorConnectorResponse>(callPayload);
+            });
         }
     }
 

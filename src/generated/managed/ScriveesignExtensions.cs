@@ -4,496 +4,750 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ScriveesignActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<JToken> GetDocJson(Expression<Func<string>> bodydocumentId)
+        [WorkflowExpressionFactory(nameof(__BuildGetDocJson))]
+        public IBodyWorkflowAction<JToken> GetDocJson([WorkflowExpression] Func<string> bodydocumentId)
         {
-            var apiCallPath = "/getdocumentjson";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            if (bodypropCount > 0)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildGetDocJson(WorkflowExpression<string> bodydocumentId)
+        {
+            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<string> GetDocStatus(Expression<Func<string>> bodydocumentId)
-        {
-            var apiCallPath = "/getdocumentstatus";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<string> GetPartyStatus(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypartyId)
-        {
-            var apiCallPath = "/getpartystatus";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            bodypropCount++;
-            body["partyId"] = ExpressionConverter.ConvertO(bodypartyId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<JToken> UpdatePartyEmail(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypartyId, Expression<Func<string>> bodypartyEmail)
-        {
-            var apiCallPath = "/updatepartyemail";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            bodypropCount++;
-            body["partyId"] = ExpressionConverter.ConvertO(bodypartyId);
-            bodypropCount++;
-            body["partyEmail"] = ExpressionConverter.ConvertO(bodypartyEmail);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<JToken> SendReminder(Expression<Func<string>> bodydocumentId)
-        {
-            var apiCallPath = "/sendreminder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<string> GetDocumentPdfContent(Expression<Func<string>> bodydocumentId)
-        {
-            var apiCallPath = "/getdocumentpdfcontent";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<string> NewDocumentFromTemplate(Expression<Func<string>> templateIdDynamic)
-        {
-            var apiCallPath = String.Format("/newfromtemplate/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIdDynamic, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<string> StartSigning(Expression<Func<string>> bodydocumentId)
-        {
-            var apiCallPath = "/startsigning";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction UpdateDocJson(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentJson)
-        {
-            var apiCallPath = "/updatedocumentjson";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            bodypropCount++;
-            body["documentJson"] = ExpressionConverter.ConvertO(bodydocumentJson);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction UpdatePartiesFields(Expression<Func<string>> templateIDDynamic, Expression<Func<object>> dynamicTemplateSchema = null)
-        {
-            var apiCallPath = String.Format("/updatepartiesfields/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIDDynamic, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicTemplateSchema);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction UpdatePartiesProperties(Expression<Func<string>> templateIDDynamic, Expression<Func<object>> dynamicTemplateMetaSchema = null)
-        {
-            var apiCallPath = String.Format("/updatepartiesproperties/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIDDynamic, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicTemplateMetaSchema);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<JToken> SetFile(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypdfContent)
-        {
-            var apiCallPath = "/setfile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            bodypropCount++;
-            body["pdfContent"] = ExpressionConverter.ConvertO(bodypdfContent);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IBodyWorkflowAction<string> NewFromPdf(Expression<Func<string>> bodypdfContent, Expression<Func<bodyauthorRoleInput>> bodyauthorRole)
-        {
-            var apiCallPath = "/newfrompdf";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["pdfContent"] = ExpressionConverter.ConvertO(bodypdfContent);
-            bodypropCount++;
-            body["authorRole"] = ExpressionConverter.ConvertO(bodyauthorRole);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction AppendFile(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypdfContent)
-        {
-            var apiCallPath = "/appendfile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            bodypropCount++;
-            body["pdfContent"] = ExpressionConverter.ConvertO(bodypdfContent);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction Cancel(Expression<Func<string>> bodydocumentId)
-        {
-            var apiCallPath = "/cancel";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction AddParty(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypartyEmail, Expression<Func<bodypartyRoleInput>> bodypartyRole, Expression<Func<string>> bodyfirstname = null, Expression<Func<string>> bodylastname = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodymobile = null, Expression<Func<string>> bodypersonalNumber = null, Expression<Func<double>> bodysignOrder = null, Expression<Func<bodydeliveryMethodInput>> bodydeliveryMethod = null, Expression<Func<bodyauthenticationToViewInput>> bodyauthenticationToView = null, Expression<Func<bodyauthenticationToViewArchivedInput>> bodyauthenticationToViewArchived = null, Expression<Func<bodyauthenticationToSignInput>> bodyauthenticationToSign = null, Expression<Func<bodyconfirmationInput>> bodyconfirmation = null)
-        {
-            var apiCallPath = "/addparty";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            bodypropCount++;
-            body["partyEmail"] = ExpressionConverter.ConvertO(bodypartyEmail);
-            bodypropCount++;
-            body["partyRole"] = ExpressionConverter.ConvertO(bodypartyRole);
-            if (bodyfirstname != null)
-            {
-                body["firstname"] = ExpressionConverter.ConvertO(bodyfirstname);
+                var apiCallPath = "/getdocumentjson";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodylastname != null)
-            {
-                body["lastname"] = ExpressionConverter.ConvertO(bodylastname);
-                bodypropCount++;
-            }
-
-            if (bodycompany != null)
-            {
-                body["company"] = ExpressionConverter.ConvertO(bodycompany);
-                bodypropCount++;
-            }
-
-            if (bodymobile != null)
-            {
-                body["mobile"] = ExpressionConverter.ConvertO(bodymobile);
-                bodypropCount++;
-            }
-
-            if (bodypersonalNumber != null)
-            {
-                body["personalNumber"] = ExpressionConverter.ConvertO(bodypersonalNumber);
-                bodypropCount++;
-            }
-
-            if (bodysignOrder != null)
-            {
-                body["signOrder"] = ExpressionConverter.ConvertO(bodysignOrder);
-                bodypropCount++;
-            }
-
-            if (bodydeliveryMethod != null)
-            {
-                if (bodydeliveryMethod != null)
+                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                if (bodypropCount > 0)
                 {
-                    body["deliveryMethod"] = ExpressionConverter.ConvertO(bodydeliveryMethod);
-                    bodypropCount++;
+                    callPayload.Body = body;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["deliveryMethod"] = "email";
-                bodypropCount++;
-            }
-
-            if (bodyauthenticationToView != null)
-            {
-                if (bodyauthenticationToView != null)
-                {
-                    body["authenticationToView"] = ExpressionConverter.ConvertO(bodyauthenticationToView);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["authenticationToView"] = "standard";
-                bodypropCount++;
-            }
-
-            if (bodyauthenticationToViewArchived != null)
-            {
-                if (bodyauthenticationToViewArchived != null)
-                {
-                    body["authenticationToViewArchived"] = ExpressionConverter.ConvertO(bodyauthenticationToViewArchived);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["authenticationToViewArchived"] = "standard";
-                bodypropCount++;
-            }
-
-            if (bodyauthenticationToSign != null)
-            {
-                if (bodyauthenticationToSign != null)
-                {
-                    body["authenticationToSign"] = ExpressionConverter.ConvertO(bodyauthenticationToSign);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["authenticationToSign"] = "standard";
-                bodypropCount++;
-            }
-
-            if (bodyconfirmation != null)
-            {
-                if (bodyconfirmation != null)
-                {
-                    body["confirmation"] = ExpressionConverter.ConvertO(bodyconfirmation);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["confirmation"] = "email";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
-        public IWorkflowAction SetAuthorAttachment(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyattachmentName, Expression<Func<bodyrequiredInput>> bodyrequired, Expression<Func<bodyaddToSealedFileInput>> bodyaddToSealedFile, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodypdfContent = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetDocStatus))]
+        public IBodyWorkflowAction<string> GetDocStatus([WorkflowExpression] Func<string> bodydocumentId)
         {
-            var apiCallPath = "/setattachment";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileId != null)
-            {
-                body["fileId"] = ExpressionConverter.ConvertO(bodyfileId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            bodypropCount++;
-            body["attachmentName"] = ExpressionConverter.ConvertO(bodyattachmentName);
-            bodypropCount++;
-            body["required"] = ExpressionConverter.ConvertO(bodyrequired);
-            bodypropCount++;
-            body["addToSealedFile"] = ExpressionConverter.ConvertO(bodyaddToSealedFile);
-            if (bodypdfContent != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetDocStatus(WorkflowExpression<string> bodydocumentId)
+        {
+            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
+                var apiCallPath = "/getdocumentstatus";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [WorkflowExpressionFactory(nameof(__BuildGetPartyStatus))]
+        public IBodyWorkflowAction<string> GetPartyStatus([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypartyId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetPartyStatus(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodypartyId)
+        {
+            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            WorkflowExpression.Validate(bodypartyId, nameof(bodypartyId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/getpartystatus";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                bodypropCount++;
+                body["partyId"] = ExpressionConverter.ConvertO(bodypartyId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdatePartyEmail))]
+        public IBodyWorkflowAction<JToken> UpdatePartyEmail([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypartyId, [WorkflowExpression] Func<string> bodypartyEmail)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildUpdatePartyEmail(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodypartyId, WorkflowExpression<string> bodypartyEmail)
+        {
+            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            WorkflowExpression.Validate(bodypartyId, nameof(bodypartyId), required: true);
+            WorkflowExpression.Validate(bodypartyEmail, nameof(bodypartyEmail), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/updatepartyemail";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                bodypropCount++;
+                body["partyId"] = ExpressionConverter.ConvertO(bodypartyId);
+                bodypropCount++;
+                body["partyEmail"] = ExpressionConverter.ConvertO(bodypartyEmail);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [WorkflowExpressionFactory(nameof(__BuildSendReminder))]
+        public IBodyWorkflowAction<JToken> SendReminder([WorkflowExpression] Func<string> bodydocumentId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildSendReminder(WorkflowExpression<string> bodydocumentId)
+        {
+            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/sendreminder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDocumentPdfContent))]
+        public IBodyWorkflowAction<string> GetDocumentPdfContent([WorkflowExpression] Func<string> bodydocumentId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetDocumentPdfContent(WorkflowExpression<string> bodydocumentId)
+        {
+            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/getdocumentpdfcontent";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [WorkflowExpressionFactory(nameof(__BuildNewDocumentFromTemplate))]
+        public IBodyWorkflowAction<string> NewDocumentFromTemplate([WorkflowExpression] Func<string> templateIdDynamic)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildNewDocumentFromTemplate(WorkflowExpression<string> templateIdDynamic)
+        {
+            WorkflowExpression.Validate(templateIdDynamic, nameof(templateIdDynamic), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/newfromtemplate/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIdDynamic, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [WorkflowExpressionFactory(nameof(__BuildStartSigning))]
+        public IBodyWorkflowAction<string> StartSigning([WorkflowExpression] Func<string> bodydocumentId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildStartSigning(WorkflowExpression<string> bodydocumentId)
+        {
+            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/startsigning";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateDocJson))]
+        public IWorkflowAction UpdateDocJson([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodydocumentJson)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUpdateDocJson(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodydocumentJson)
+        {
+            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            WorkflowExpression.Validate(bodydocumentJson, nameof(bodydocumentJson), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/updatedocumentjson";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                bodypropCount++;
+                body["documentJson"] = ExpressionConverter.ConvertO(bodydocumentJson);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdatePartiesFields))]
+        public IWorkflowAction UpdatePartiesFields([WorkflowExpression] Func<string> templateIDDynamic, [WorkflowExpression] Func<object> dynamicTemplateSchema = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUpdatePartiesFields(WorkflowExpression<string> templateIDDynamic, WorkflowExpression<object> dynamicTemplateSchema = null)
+        {
+            WorkflowExpression.Validate(templateIDDynamic, nameof(templateIDDynamic), required: true);
+            WorkflowExpression.Validate(dynamicTemplateSchema, nameof(dynamicTemplateSchema), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updatepartiesfields/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIDDynamic, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(dynamicTemplateSchema);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdatePartiesProperties))]
+        public IWorkflowAction UpdatePartiesProperties([WorkflowExpression] Func<string> templateIDDynamic, [WorkflowExpression] Func<object> dynamicTemplateMetaSchema = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUpdatePartiesProperties(WorkflowExpression<string> templateIDDynamic, WorkflowExpression<object> dynamicTemplateMetaSchema = null)
+        {
+            WorkflowExpression.Validate(templateIDDynamic, nameof(templateIDDynamic), required: true);
+            WorkflowExpression.Validate(dynamicTemplateMetaSchema, nameof(dynamicTemplateMetaSchema), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updatepartiesproperties/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIDDynamic, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(dynamicTemplateMetaSchema);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [WorkflowExpressionFactory(nameof(__BuildSetFile))]
+        public IBodyWorkflowAction<JToken> SetFile([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypdfContent)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildSetFile(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodypdfContent)
+        {
+            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            WorkflowExpression.Validate(bodypdfContent, nameof(bodypdfContent), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/setfile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                bodypropCount++;
+                body["pdfContent"] = ExpressionConverter.ConvertO(bodypdfContent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [WorkflowExpressionFactory(nameof(__BuildNewFromPdf))]
+        public IBodyWorkflowAction<string> NewFromPdf([WorkflowExpression] Func<string> bodypdfContent, [WorkflowExpression] Func<bodyauthorRoleInput> bodyauthorRole)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildNewFromPdf(WorkflowExpression<string> bodypdfContent, WorkflowExpression<bodyauthorRoleInput> bodyauthorRole)
+        {
+            WorkflowExpression.Validate(bodypdfContent, nameof(bodypdfContent), required: true);
+            WorkflowExpression.Validate(bodyauthorRole, nameof(bodyauthorRole), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/newfrompdf";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
                 body["pdfContent"] = ExpressionConverter.ConvertO(bodypdfContent);
                 bodypropCount++;
-            }
+                body["authorRole"] = ExpressionConverter.ConvertO(bodyauthorRole);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [WorkflowExpressionFactory(nameof(__BuildAppendFile))]
+        public IWorkflowAction AppendFile([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypdfContent)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAppendFile(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodypdfContent)
+        {
+            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            WorkflowExpression.Validate(bodypdfContent, nameof(bodypdfContent), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/appendfile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                bodypropCount++;
+                body["pdfContent"] = ExpressionConverter.ConvertO(bodypdfContent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [WorkflowExpressionFactory(nameof(__BuildCancel))]
+        public IWorkflowAction Cancel([WorkflowExpression] Func<string> bodydocumentId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCancel(WorkflowExpression<string> bodydocumentId)
+        {
+            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/cancel";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [WorkflowExpressionFactory(nameof(__BuildAddParty))]
+        public IWorkflowAction AddParty([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodypartyEmail, [WorkflowExpression] Func<bodypartyRoleInput> bodypartyRole, [WorkflowExpression] Func<string> bodyfirstname = null, [WorkflowExpression] Func<string> bodylastname = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodymobile = null, [WorkflowExpression] Func<string> bodypersonalNumber = null, [WorkflowExpression] Func<double> bodysignOrder = null, [WorkflowExpression] Func<bodydeliveryMethodInput> bodydeliveryMethod = null, [WorkflowExpression] Func<bodyauthenticationToViewInput> bodyauthenticationToView = null, [WorkflowExpression] Func<bodyauthenticationToViewArchivedInput> bodyauthenticationToViewArchived = null, [WorkflowExpression] Func<bodyauthenticationToSignInput> bodyauthenticationToSign = null, [WorkflowExpression] Func<bodyconfirmationInput> bodyconfirmation = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAddParty(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodypartyEmail, WorkflowExpression<bodypartyRoleInput> bodypartyRole, WorkflowExpression<string> bodyfirstname = null, WorkflowExpression<string> bodylastname = null, WorkflowExpression<string> bodycompany = null, WorkflowExpression<string> bodymobile = null, WorkflowExpression<string> bodypersonalNumber = null, WorkflowExpression<double> bodysignOrder = null, WorkflowExpression<bodydeliveryMethodInput> bodydeliveryMethod = null, WorkflowExpression<bodyauthenticationToViewInput> bodyauthenticationToView = null, WorkflowExpression<bodyauthenticationToViewArchivedInput> bodyauthenticationToViewArchived = null, WorkflowExpression<bodyauthenticationToSignInput> bodyauthenticationToSign = null, WorkflowExpression<bodyconfirmationInput> bodyconfirmation = null)
+        {
+            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            WorkflowExpression.Validate(bodypartyEmail, nameof(bodypartyEmail), required: true);
+            WorkflowExpression.Validate(bodypartyRole, nameof(bodypartyRole), required: true);
+            WorkflowExpression.Validate(bodyfirstname, nameof(bodyfirstname), required: false);
+            WorkflowExpression.Validate(bodylastname, nameof(bodylastname), required: false);
+            WorkflowExpression.Validate(bodycompany, nameof(bodycompany), required: false);
+            WorkflowExpression.Validate(bodymobile, nameof(bodymobile), required: false);
+            WorkflowExpression.Validate(bodypersonalNumber, nameof(bodypersonalNumber), required: false);
+            WorkflowExpression.Validate(bodysignOrder, nameof(bodysignOrder), required: false);
+            WorkflowExpression.Validate(bodydeliveryMethod, nameof(bodydeliveryMethod), required: false);
+            WorkflowExpression.Validate(bodyauthenticationToView, nameof(bodyauthenticationToView), required: false);
+            WorkflowExpression.Validate(bodyauthenticationToViewArchived, nameof(bodyauthenticationToViewArchived), required: false);
+            WorkflowExpression.Validate(bodyauthenticationToSign, nameof(bodyauthenticationToSign), required: false);
+            WorkflowExpression.Validate(bodyconfirmation, nameof(bodyconfirmation), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/addparty";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                bodypropCount++;
+                body["partyEmail"] = ExpressionConverter.ConvertO(bodypartyEmail);
+                bodypropCount++;
+                body["partyRole"] = ExpressionConverter.ConvertO(bodypartyRole);
+                if (bodyfirstname != null)
+                {
+                    body["firstname"] = ExpressionConverter.ConvertO(bodyfirstname);
+                    bodypropCount++;
+                }
+
+                if (bodylastname != null)
+                {
+                    body["lastname"] = ExpressionConverter.ConvertO(bodylastname);
+                    bodypropCount++;
+                }
+
+                if (bodycompany != null)
+                {
+                    body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                    bodypropCount++;
+                }
+
+                if (bodymobile != null)
+                {
+                    body["mobile"] = ExpressionConverter.ConvertO(bodymobile);
+                    bodypropCount++;
+                }
+
+                if (bodypersonalNumber != null)
+                {
+                    body["personalNumber"] = ExpressionConverter.ConvertO(bodypersonalNumber);
+                    bodypropCount++;
+                }
+
+                if (bodysignOrder != null)
+                {
+                    body["signOrder"] = ExpressionConverter.ConvertO(bodysignOrder);
+                    bodypropCount++;
+                }
+
+                if (bodydeliveryMethod != null)
+                {
+                    if (bodydeliveryMethod != null)
+                    {
+                        body["deliveryMethod"] = ExpressionConverter.ConvertO(bodydeliveryMethod);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["deliveryMethod"] = "email";
+                    bodypropCount++;
+                }
+
+                if (bodyauthenticationToView != null)
+                {
+                    if (bodyauthenticationToView != null)
+                    {
+                        body["authenticationToView"] = ExpressionConverter.ConvertO(bodyauthenticationToView);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["authenticationToView"] = "standard";
+                    bodypropCount++;
+                }
+
+                if (bodyauthenticationToViewArchived != null)
+                {
+                    if (bodyauthenticationToViewArchived != null)
+                    {
+                        body["authenticationToViewArchived"] = ExpressionConverter.ConvertO(bodyauthenticationToViewArchived);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["authenticationToViewArchived"] = "standard";
+                    bodypropCount++;
+                }
+
+                if (bodyauthenticationToSign != null)
+                {
+                    if (bodyauthenticationToSign != null)
+                    {
+                        body["authenticationToSign"] = ExpressionConverter.ConvertO(bodyauthenticationToSign);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["authenticationToSign"] = "standard";
+                    bodypropCount++;
+                }
+
+                if (bodyconfirmation != null)
+                {
+                    if (bodyconfirmation != null)
+                    {
+                        body["confirmation"] = ExpressionConverter.ConvertO(bodyconfirmation);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["confirmation"] = "email";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [WorkflowExpressionFactory(nameof(__BuildSetAuthorAttachment))]
+        public IWorkflowAction SetAuthorAttachment([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyattachmentName, [WorkflowExpression] Func<bodyrequiredInput> bodyrequired, [WorkflowExpression] Func<bodyaddToSealedFileInput> bodyaddToSealedFile, [WorkflowExpression] Func<string> bodyfileId = null, [WorkflowExpression] Func<string> bodypdfContent = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSetAuthorAttachment(WorkflowExpression<string> bodydocumentId, WorkflowExpression<string> bodyattachmentName, WorkflowExpression<bodyrequiredInput> bodyrequired, WorkflowExpression<bodyaddToSealedFileInput> bodyaddToSealedFile, WorkflowExpression<string> bodyfileId = null, WorkflowExpression<string> bodypdfContent = null)
+        {
+            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            WorkflowExpression.Validate(bodyattachmentName, nameof(bodyattachmentName), required: true);
+            WorkflowExpression.Validate(bodyrequired, nameof(bodyrequired), required: true);
+            WorkflowExpression.Validate(bodyaddToSealedFile, nameof(bodyaddToSealedFile), required: true);
+            WorkflowExpression.Validate(bodyfileId, nameof(bodyfileId), required: false);
+            WorkflowExpression.Validate(bodypdfContent, nameof(bodypdfContent), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/setattachment";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileId != null)
+                {
+                    body["fileId"] = ExpressionConverter.ConvertO(bodyfileId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                bodypropCount++;
+                body["attachmentName"] = ExpressionConverter.ConvertO(bodyattachmentName);
+                bodypropCount++;
+                body["required"] = ExpressionConverter.ConvertO(bodyrequired);
+                bodypropCount++;
+                body["addToSealedFile"] = ExpressionConverter.ConvertO(bodyaddToSealedFile);
+                if (bodypdfContent != null)
+                {
+                    body["pdfContent"] = ExpressionConverter.ConvertO(bodypdfContent);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
     public class ScriveesignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string> StartAndOnDocumentSign(Expression<Func<string>> bodydocumentId, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/webhooks/signed/createandstart";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            body["webhookUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+        [WorkflowExpressionFactory(nameof(__BuildStartAndOnDocumentSign))]
+        public IBodyWorkflowTrigger<string> StartAndOnDocumentSign([WorkflowExpression] Func<string> bodydocumentId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<string> WebhookFromTemplateSign(Expression<Func<string>> templateIdDynamic, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<string> __BuildStartAndOnDocumentSign(WorkflowExpression<string> bodydocumentId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/webhooks/signedfromtemplate/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIdDynamic, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webhookUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            return new DeferredBodyTrigger<string>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhooks/signed/createandstart";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                body["webhookUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildWebhookFromTemplateSign))]
+        public IBodyWorkflowTrigger<string> WebhookFromTemplateSign([WorkflowExpression] Func<string> templateIdDynamic, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<string> __BuildWebhookFromTemplateSign(WorkflowExpression<string> templateIdDynamic, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(templateIdDynamic, nameof(templateIdDynamic), required: true);
+            return new DeferredBodyTrigger<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhooks/signedfromtemplate/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateIdDynamic, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webhookUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
         public IBodyWorkflowTrigger<PollSignedDocumentsResponse> PollSignedDocuments(string triggerName = null, FlowRecurrence recurrence = null)

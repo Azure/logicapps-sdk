@@ -4,23 +4,37 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flowforma
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class FlowformaActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flowforma")]
-        public IBodyWorkflowAction<FlowCreatedResponse> CreateForm(Expression<Func<string>> connectionUrl, Expression<Func<string>> flows, Expression<Func<object>> question = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateForm))]
+        public IBodyWorkflowAction<FlowCreatedResponse> CreateForm([WorkflowExpression] Func<string> connectionUrl, [WorkflowExpression] Func<string> flows, [WorkflowExpression] Func<object> question = null)
         {
-            var apiCallPath = "/api/flowforma";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["connectionUrl"] = ExpressionConverter.Convert(connectionUrl);
-            callPayload.Queries["flows"] = ExpressionConverter.Convert(flows);
-            callPayload.Body = ExpressionConverter.ConvertO(question);
-            return new ApiConnectionAction<FlowCreatedResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flowforma")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FlowCreatedResponse> __BuildCreateForm(WorkflowExpression<string> connectionUrl, WorkflowExpression<string> flows, WorkflowExpression<object> question = null)
+        {
+            WorkflowExpression.Validate(connectionUrl, nameof(connectionUrl), required: true);
+            WorkflowExpression.Validate(flows, nameof(flows), required: true);
+            WorkflowExpression.Validate(question, nameof(question), required: false);
+            return new DeferredBodyAction<FlowCreatedResponse>(() =>
+            {
+                var apiCallPath = "/api/flowforma";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["connectionUrl"] = ExpressionConverter.Convert(connectionUrl);
+                callPayload.Queries["flows"] = ExpressionConverter.Convert(flows);
+                callPayload.Body = ExpressionConverter.ConvertO(question);
+                return new ApiConnectionAction<FlowCreatedResponse>(callPayload);
+            });
         }
     }
 

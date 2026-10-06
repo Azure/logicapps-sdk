@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todayinhistoryip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,12 +20,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todayinhistoryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todayinhistoryip")]
-        public IBodyWorkflowAction<DayGetResponse> DayGet(Expression<Func<string>> month, Expression<Func<string>> day)
+        [WorkflowExpressionFactory(nameof(__BuildDayGet))]
+        public IBodyWorkflowAction<DayGetResponse> DayGet([WorkflowExpression] Func<string> month, [WorkflowExpression] Func<string> day)
         {
-            var apiCallPath = String.Format("/date/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DayGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todayinhistoryip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DayGetResponse> __BuildDayGet(WorkflowExpression<string> month, WorkflowExpression<string> day)
+        {
+            WorkflowExpression.Validate(month, nameof(month), required: true);
+            WorkflowExpression.Validate(day, nameof(day), required: true);
+            return new DeferredBodyAction<DayGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/date/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DayGetResponse>(callPayload);
+            });
         }
     }
 

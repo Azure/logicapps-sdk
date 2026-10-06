@@ -4,37 +4,51 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Triggercmd
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TriggercmdActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "triggercmd")]
-        public IBodyWorkflowAction<string> RunCommand(Expression<Func<string>> bodycomputer, Expression<Func<string>> bodytrigger, Expression<Func<string>> bodyParams = null)
+        [WorkflowExpressionFactory(nameof(__BuildRunCommand))]
+        public IBodyWorkflowAction<string> RunCommand([WorkflowExpression] Func<string> bodycomputer, [WorkflowExpression] Func<string> bodytrigger, [WorkflowExpression] Func<string> bodyParams = null)
         {
-            var apiCallPath = "/oauth/flow/trigger";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["computer"] = ExpressionConverter.ConvertO(bodycomputer);
-            bodypropCount++;
-            body["trigger"] = ExpressionConverter.ConvertO(bodytrigger);
-            if (bodyParams != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "triggercmd")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildRunCommand(WorkflowExpression<string> bodycomputer, WorkflowExpression<string> bodytrigger, WorkflowExpression<string> bodyParams = null)
+        {
+            WorkflowExpression.Validate(bodycomputer, nameof(bodycomputer), required: true);
+            WorkflowExpression.Validate(bodytrigger, nameof(bodytrigger), required: true);
+            WorkflowExpression.Validate(bodyParams, nameof(bodyParams), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["params"] = ExpressionConverter.ConvertO(bodyParams);
+                var apiCallPath = "/oauth/flow/trigger";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["computer"] = ExpressionConverter.ConvertO(bodycomputer);
+                bodypropCount++;
+                body["trigger"] = ExpressionConverter.ConvertO(bodytrigger);
+                if (bodyParams != null)
+                {
+                    body["params"] = ExpressionConverter.ConvertO(bodyParams);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

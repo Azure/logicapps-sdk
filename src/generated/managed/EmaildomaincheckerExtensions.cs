@@ -4,23 +4,36 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class EmaildomaincheckerActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emaildomainchecker")]
-        public IBodyWorkflowAction<CheckDomainResponse> CheckDomain(Expression<Func<string>> domain, Expression<Func<endpointInput>> endpoint)
+        [WorkflowExpressionFactory(nameof(__BuildCheckDomain))]
+        public IBodyWorkflowAction<CheckDomainResponse> CheckDomain([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<endpointInput> endpoint)
         {
-            var apiCallPath = "/checkDomain/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
-            callPayload.Queries["endpoint"] = ExpressionConverter.Convert(endpoint);
-            callPayload.Headers["cf"] = Convert.ToString("sk");
-            return new ApiConnectionAction<CheckDomainResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emaildomainchecker")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CheckDomainResponse> __BuildCheckDomain(WorkflowExpression<string> domain, WorkflowExpression<endpointInput> endpoint)
+        {
+            WorkflowExpression.Validate(domain, nameof(domain), required: true);
+            WorkflowExpression.Validate(endpoint, nameof(endpoint), required: true);
+            return new DeferredBodyAction<CheckDomainResponse>(() =>
+            {
+                var apiCallPath = "/checkDomain/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+                callPayload.Queries["endpoint"] = ExpressionConverter.Convert(endpoint);
+                callPayload.Headers["cf"] = Convert.ToString("sk");
+                return new ApiConnectionAction<CheckDomainResponse>(callPayload);
+            });
         }
     }
 

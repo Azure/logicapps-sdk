@@ -4,31 +4,55 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsforms
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class VeteransaffairsformsActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
-        public IBodyWorkflowAction<ListFormsResponse> ListForms(Expression<Func<string>> query = null)
+        [WorkflowExpressionFactory(nameof(__BuildListForms))]
+        public IBodyWorkflowAction<ListFormsResponse> ListForms([WorkflowExpression] Func<string> query = null)
         {
-            var apiCallPath = "/forms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            return new ApiConnectionAction<ListFormsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
-        public IBodyWorkflowAction<FormShow> GetFormByName(Expression<Func<string>> formName)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListFormsResponse> __BuildListForms(WorkflowExpression<string> query = null)
         {
-            var apiCallPath = String.Format("/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(formName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FormShow>(callPayload);
+            WorkflowExpression.Validate(query, nameof(query), required: false);
+            return new DeferredBodyAction<ListFormsResponse>(() =>
+            {
+                var apiCallPath = "/forms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (query != null)
+                    callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                return new ApiConnectionAction<ListFormsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
+        [WorkflowExpressionFactory(nameof(__BuildGetFormByName))]
+        public IBodyWorkflowAction<FormShow> GetFormByName([WorkflowExpression] Func<string> formName)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FormShow> __BuildGetFormByName(WorkflowExpression<string> formName)
+        {
+            WorkflowExpression.Validate(formName, nameof(formName), required: true);
+            return new DeferredBodyAction<FormShow>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(formName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FormShow>(callPayload);
+            });
         }
     }
 

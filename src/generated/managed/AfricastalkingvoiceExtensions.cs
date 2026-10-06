@@ -4,37 +4,52 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AfricastalkingvoiceActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingvoice")]
-        public IBodyWorkflowAction<CallResponse> Call(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyfrom, Expression<Func<string[]>> bodyto, Expression<Func<bodyactionsInputItem[]>> bodyactions)
-        {
-            var apiCallPath = "/call";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
-            bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-            bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["actions"] = ExpressionConverter.ConvertO(bodyactions);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<CallResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingvoice")]
+        [WorkflowExpressionFactory(nameof(__BuildCall))]
+        public IBodyWorkflowAction<CallResponse> Call([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<bodyactionsInputItem[]> bodyactions)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingvoice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CallResponse> __BuildCall(WorkflowExpression<string> bodyusername, WorkflowExpression<string> bodyfrom, WorkflowExpression<string[]> bodyto, WorkflowExpression<bodyactionsInputItem[]> bodyactions)
+        {
+            WorkflowExpression.Validate(bodyusername, nameof(bodyusername), required: true);
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowExpression.Validate(bodyactions, nameof(bodyactions), required: true);
+            return new DeferredBodyAction<CallResponse>(() =>
+            {
+                var apiCallPath = "/call";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["username"] = ExpressionConverter.ConvertO(bodyusername);
+                bodypropCount++;
+                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                bodypropCount++;
+                body["to"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["actions"] = ExpressionConverter.ConvertO(bodyactions);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CallResponse>(callPayload);
+            });
         }
     }
 

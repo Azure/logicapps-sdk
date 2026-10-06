@@ -4,29 +4,58 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class FederalreservemarketsActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
-        public IBodyWorkflowAction<GetTreasurySecuritiesOperationsByStatusResponse> GetTreasurySecuritiesOperationsByStatus(Expression<Func<operationInput>> operation, Expression<Func<statusInput>> status, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
+        [WorkflowExpressionFactory(nameof(__BuildGetTreasurySecuritiesOperationsByStatus))]
+        public IBodyWorkflowAction<GetTreasurySecuritiesOperationsByStatusResponse> GetTreasurySecuritiesOperationsByStatus([WorkflowExpression] Func<operationInput> operation, [WorkflowExpression] Func<statusInput> status, [WorkflowExpression] Func<includeInput> include, [WorkflowExpression] Func<formatInput> format)
         {
-            var apiCallPath = String.Format("/tsy/{0}/{1}/{2}/latest.{3}", ExpressionConverter.ConvertWithUrlEncoding(operation, 1), ExpressionConverter.ConvertWithUrlEncoding(status, 1), ExpressionConverter.ConvertWithUrlEncoding(include, 1), ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTreasurySecuritiesOperationsByStatusResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
-        public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse> GetSecuritiesLendingOperations(Expression<Func<operationInput>> operation, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetTreasurySecuritiesOperationsByStatusResponse> __BuildGetTreasurySecuritiesOperationsByStatus(WorkflowExpression<operationInput> operation, WorkflowExpression<statusInput> status, WorkflowExpression<includeInput> include, WorkflowExpression<formatInput> format)
         {
-            var apiCallPath = String.Format("/seclending/{0}/results/{1}/latest.{2}", ExpressionConverter.ConvertWithUrlEncoding(operation, 1), ExpressionConverter.ConvertWithUrlEncoding(include, 1), ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSecuritiesLendingOperationsResponse>(callPayload);
+            WorkflowExpression.Validate(operation, nameof(operation), required: true);
+            WorkflowExpression.Validate(status, nameof(status), required: true);
+            WorkflowExpression.Validate(include, nameof(include), required: true);
+            WorkflowExpression.Validate(format, nameof(format), required: true);
+            return new DeferredBodyAction<GetTreasurySecuritiesOperationsByStatusResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tsy/{0}/{1}/{2}/latest.{3}", ExpressionConverter.ConvertWithUrlEncoding(operation, 1), ExpressionConverter.ConvertWithUrlEncoding(status, 1), ExpressionConverter.ConvertWithUrlEncoding(include, 1), ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTreasurySecuritiesOperationsByStatusResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
+        [WorkflowExpressionFactory(nameof(__BuildGetSecuritiesLendingOperations))]
+        public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse> GetSecuritiesLendingOperations([WorkflowExpression] Func<operationInput> operation, [WorkflowExpression] Func<includeInput> include, [WorkflowExpression] Func<formatInput> format)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse> __BuildGetSecuritiesLendingOperations(WorkflowExpression<operationInput> operation, WorkflowExpression<includeInput> include, WorkflowExpression<formatInput> format)
+        {
+            WorkflowExpression.Validate(operation, nameof(operation), required: true);
+            WorkflowExpression.Validate(include, nameof(include), required: true);
+            WorkflowExpression.Validate(format, nameof(format), required: true);
+            return new DeferredBodyAction<GetSecuritiesLendingOperationsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/seclending/{0}/results/{1}/latest.{2}", ExpressionConverter.ConvertWithUrlEncoding(operation, 1), ExpressionConverter.ConvertWithUrlEncoding(include, 1), ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSecuritiesLendingOperationsResponse>(callPayload);
+            });
         }
     }
 

@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,885 +20,1070 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreateOpportunityResponse> CreateOpportunity(Expression<Func<int>> bodyopportunitypartypartyId, Expression<Func<int>> bodyopportunitymilestoneid, Expression<Func<string>> bodyopportunityname = null, Expression<Func<string>> bodyopportunitydescription = null, Expression<Func<bodyopportunitydurationBasisInput>> bodyopportunitydurationBasis = null, Expression<Func<string>> bodyopportunityduration = null, Expression<Func<string>> bodyopportunityexpectedCloseDate = null, Expression<Func<int>> bodyopportunitywinningProbability = null, Expression<Func<int>> bodyopportunityexpectedamount = null, Expression<Func<string>> bodyopportunityexpectedcurrency = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateOpportunity))]
+        public IBodyWorkflowAction<CreateOpportunityResponse> CreateOpportunity([WorkflowExpression] Func<int> bodyopportunitypartypartyId, [WorkflowExpression] Func<int> bodyopportunitymilestoneid, [WorkflowExpression] Func<string> bodyopportunityname = null, [WorkflowExpression] Func<string> bodyopportunitydescription = null, [WorkflowExpression] Func<bodyopportunitydurationBasisInput> bodyopportunitydurationBasis = null, [WorkflowExpression] Func<string> bodyopportunityduration = null, [WorkflowExpression] Func<string> bodyopportunityexpectedCloseDate = null, [WorkflowExpression] Func<int> bodyopportunitywinningProbability = null, [WorkflowExpression] Func<int> bodyopportunityexpectedamount = null, [WorkflowExpression] Func<string> bodyopportunityexpectedcurrency = null)
         {
-            var apiCallPath = "/opportunities";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var opportunityObject = new JObject();
-            var opportunityObjectpropCount = 0;
-            if (bodyopportunityname != null)
-            {
-                opportunityObject["name"] = ExpressionConverter.ConvertO(bodyopportunityname);
-                opportunityObjectpropCount++;
-            }
-
-            var partyObject = new JObject();
-            var partyObjectpropCount = 0;
-            partyObjectpropCount++;
-            partyObject["id"] = ExpressionConverter.ConvertO(bodyopportunitypartypartyId);
-            if (partyObjectpropCount > 0)
-            {
-                opportunityObject["party"] = partyObject;
-                opportunityObjectpropCount++;
-            }
-
-            var milestoneObject = new JObject();
-            var milestoneObjectpropCount = 0;
-            milestoneObjectpropCount++;
-            milestoneObject["id"] = ExpressionConverter.ConvertO(bodyopportunitymilestoneid);
-            if (milestoneObjectpropCount > 0)
-            {
-                opportunityObject["milestone"] = milestoneObject;
-                opportunityObjectpropCount++;
-            }
-
-            if (bodyopportunitydescription != null)
-            {
-                opportunityObject["description"] = ExpressionConverter.ConvertO(bodyopportunitydescription);
-                opportunityObjectpropCount++;
-            }
-
-            if (bodyopportunitydurationBasis != null)
-            {
-                opportunityObject["durationBasis"] = ExpressionConverter.ConvertO(bodyopportunitydurationBasis);
-                opportunityObjectpropCount++;
-            }
-
-            if (bodyopportunityduration != null)
-            {
-                opportunityObject["duration"] = ExpressionConverter.ConvertO(bodyopportunityduration);
-                opportunityObjectpropCount++;
-            }
-
-            if (bodyopportunityexpectedCloseDate != null)
-            {
-                opportunityObject["expectedCloseOn"] = ExpressionConverter.ConvertO(bodyopportunityexpectedCloseDate);
-                opportunityObjectpropCount++;
-            }
-
-            if (bodyopportunitywinningProbability != null)
-            {
-                opportunityObject["probability"] = ExpressionConverter.ConvertO(bodyopportunitywinningProbability);
-                opportunityObjectpropCount++;
-            }
-
-            var valueObject = new JObject();
-            var valueObjectpropCount = 0;
-            if (bodyopportunityexpectedamount != null)
-            {
-                valueObject["amount"] = ExpressionConverter.ConvertO(bodyopportunityexpectedamount);
-                valueObjectpropCount++;
-            }
-
-            if (bodyopportunityexpectedcurrency != null)
-            {
-                valueObject["currency"] = ExpressionConverter.ConvertO(bodyopportunityexpectedcurrency);
-                valueObjectpropCount++;
-            }
-
-            if (valueObjectpropCount > 0)
-            {
-                opportunityObject["value"] = valueObject;
-                opportunityObjectpropCount++;
-            }
-
-            if (opportunityObjectpropCount > 0)
-            {
-                body["opportunity"] = opportunityObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateOpportunityResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<GetOpportunityResponse> GetOpportunity(Expression<Func<string>> opportunityId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateOpportunityResponse> __BuildCreateOpportunity(WorkflowExpression<int> bodyopportunitypartypartyId, WorkflowExpression<int> bodyopportunitymilestoneid, WorkflowExpression<string> bodyopportunityname = null, WorkflowExpression<string> bodyopportunitydescription = null, WorkflowExpression<bodyopportunitydurationBasisInput> bodyopportunitydurationBasis = null, WorkflowExpression<string> bodyopportunityduration = null, WorkflowExpression<string> bodyopportunityexpectedCloseDate = null, WorkflowExpression<int> bodyopportunitywinningProbability = null, WorkflowExpression<int> bodyopportunityexpectedamount = null, WorkflowExpression<string> bodyopportunityexpectedcurrency = null)
         {
-            var apiCallPath = String.Format("/opportunities/{0}", ExpressionConverter.ConvertWithUrlEncoding(opportunityId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetOpportunityResponse>(callPayload);
+            WorkflowExpression.Validate(bodyopportunitypartypartyId, nameof(bodyopportunitypartypartyId), required: true);
+            WorkflowExpression.Validate(bodyopportunitymilestoneid, nameof(bodyopportunitymilestoneid), required: true);
+            WorkflowExpression.Validate(bodyopportunityname, nameof(bodyopportunityname), required: false);
+            WorkflowExpression.Validate(bodyopportunitydescription, nameof(bodyopportunitydescription), required: false);
+            WorkflowExpression.Validate(bodyopportunitydurationBasis, nameof(bodyopportunitydurationBasis), required: false);
+            WorkflowExpression.Validate(bodyopportunityduration, nameof(bodyopportunityduration), required: false);
+            WorkflowExpression.Validate(bodyopportunityexpectedCloseDate, nameof(bodyopportunityexpectedCloseDate), required: false);
+            WorkflowExpression.Validate(bodyopportunitywinningProbability, nameof(bodyopportunitywinningProbability), required: false);
+            WorkflowExpression.Validate(bodyopportunityexpectedamount, nameof(bodyopportunityexpectedamount), required: false);
+            WorkflowExpression.Validate(bodyopportunityexpectedcurrency, nameof(bodyopportunityexpectedcurrency), required: false);
+            return new DeferredBodyAction<CreateOpportunityResponse>(() =>
+            {
+                var apiCallPath = "/opportunities";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var opportunityObject = new JObject();
+                var opportunityObjectpropCount = 0;
+                if (bodyopportunityname != null)
+                {
+                    opportunityObject["name"] = ExpressionConverter.ConvertO(bodyopportunityname);
+                    opportunityObjectpropCount++;
+                }
+
+                var partyObject = new JObject();
+                var partyObjectpropCount = 0;
+                partyObjectpropCount++;
+                partyObject["id"] = ExpressionConverter.ConvertO(bodyopportunitypartypartyId);
+                if (partyObjectpropCount > 0)
+                {
+                    opportunityObject["party"] = partyObject;
+                    opportunityObjectpropCount++;
+                }
+
+                var milestoneObject = new JObject();
+                var milestoneObjectpropCount = 0;
+                milestoneObjectpropCount++;
+                milestoneObject["id"] = ExpressionConverter.ConvertO(bodyopportunitymilestoneid);
+                if (milestoneObjectpropCount > 0)
+                {
+                    opportunityObject["milestone"] = milestoneObject;
+                    opportunityObjectpropCount++;
+                }
+
+                if (bodyopportunitydescription != null)
+                {
+                    opportunityObject["description"] = ExpressionConverter.ConvertO(bodyopportunitydescription);
+                    opportunityObjectpropCount++;
+                }
+
+                if (bodyopportunitydurationBasis != null)
+                {
+                    opportunityObject["durationBasis"] = ExpressionConverter.ConvertO(bodyopportunitydurationBasis);
+                    opportunityObjectpropCount++;
+                }
+
+                if (bodyopportunityduration != null)
+                {
+                    opportunityObject["duration"] = ExpressionConverter.ConvertO(bodyopportunityduration);
+                    opportunityObjectpropCount++;
+                }
+
+                if (bodyopportunityexpectedCloseDate != null)
+                {
+                    opportunityObject["expectedCloseOn"] = ExpressionConverter.ConvertO(bodyopportunityexpectedCloseDate);
+                    opportunityObjectpropCount++;
+                }
+
+                if (bodyopportunitywinningProbability != null)
+                {
+                    opportunityObject["probability"] = ExpressionConverter.ConvertO(bodyopportunitywinningProbability);
+                    opportunityObjectpropCount++;
+                }
+
+                var valueObject = new JObject();
+                var valueObjectpropCount = 0;
+                if (bodyopportunityexpectedamount != null)
+                {
+                    valueObject["amount"] = ExpressionConverter.ConvertO(bodyopportunityexpectedamount);
+                    valueObjectpropCount++;
+                }
+
+                if (bodyopportunityexpectedcurrency != null)
+                {
+                    valueObject["currency"] = ExpressionConverter.ConvertO(bodyopportunityexpectedcurrency);
+                    valueObjectpropCount++;
+                }
+
+                if (valueObjectpropCount > 0)
+                {
+                    opportunityObject["value"] = valueObject;
+                    opportunityObjectpropCount++;
+                }
+
+                if (opportunityObjectpropCount > 0)
+                {
+                    body["opportunity"] = opportunityObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateOpportunityResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<UpdateOpportunityResponse> UpdateOpportunity(Expression<Func<string>> opportunityId, Expression<Func<int>> bodyopportunitypartypartyId, Expression<Func<int>> bodyopportunitymilestonemilestoneId, Expression<Func<string>> bodyopportunityname = null, Expression<Func<string>> bodyopportunitydescription = null, Expression<Func<bodyopportunitydurationBasisInput>> bodyopportunitydurationBasis = null, Expression<Func<string>> bodyopportunityduration = null, Expression<Func<string>> bodyopportunityexpectedCloseDate = null, Expression<Func<int>> bodyopportunitywinningProbability = null, Expression<Func<int>> bodyopportunityexpectedamount = null, Expression<Func<string>> bodyopportunityexpectedcurrency = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetOpportunity))]
+        public IBodyWorkflowAction<GetOpportunityResponse> GetOpportunity([WorkflowExpression] Func<string> opportunityId)
         {
-            var apiCallPath = String.Format("/opportunities/{0}", ExpressionConverter.ConvertWithUrlEncoding(opportunityId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var opportunityObject = new JObject();
-            var opportunityObjectpropCount = 0;
-            if (bodyopportunityname != null)
-            {
-                opportunityObject["name"] = ExpressionConverter.ConvertO(bodyopportunityname);
-                opportunityObjectpropCount++;
-            }
-
-            var partyObject = new JObject();
-            var partyObjectpropCount = 0;
-            partyObjectpropCount++;
-            partyObject["id"] = ExpressionConverter.ConvertO(bodyopportunitypartypartyId);
-            if (partyObjectpropCount > 0)
-            {
-                opportunityObject["party"] = partyObject;
-                opportunityObjectpropCount++;
-            }
-
-            var milestoneObject = new JObject();
-            var milestoneObjectpropCount = 0;
-            milestoneObjectpropCount++;
-            milestoneObject["id"] = ExpressionConverter.ConvertO(bodyopportunitymilestonemilestoneId);
-            if (milestoneObjectpropCount > 0)
-            {
-                opportunityObject["milestone"] = milestoneObject;
-                opportunityObjectpropCount++;
-            }
-
-            if (bodyopportunitydescription != null)
-            {
-                opportunityObject["description"] = ExpressionConverter.ConvertO(bodyopportunitydescription);
-                opportunityObjectpropCount++;
-            }
-
-            if (bodyopportunitydurationBasis != null)
-            {
-                opportunityObject["durationBasis"] = ExpressionConverter.ConvertO(bodyopportunitydurationBasis);
-                opportunityObjectpropCount++;
-            }
-
-            if (bodyopportunityduration != null)
-            {
-                opportunityObject["duration"] = ExpressionConverter.ConvertO(bodyopportunityduration);
-                opportunityObjectpropCount++;
-            }
-
-            if (bodyopportunityexpectedCloseDate != null)
-            {
-                opportunityObject["expectedCloseOn"] = ExpressionConverter.ConvertO(bodyopportunityexpectedCloseDate);
-                opportunityObjectpropCount++;
-            }
-
-            if (bodyopportunitywinningProbability != null)
-            {
-                opportunityObject["probability"] = ExpressionConverter.ConvertO(bodyopportunitywinningProbability);
-                opportunityObjectpropCount++;
-            }
-
-            var valueObject = new JObject();
-            var valueObjectpropCount = 0;
-            if (bodyopportunityexpectedamount != null)
-            {
-                valueObject["amount"] = ExpressionConverter.ConvertO(bodyopportunityexpectedamount);
-                valueObjectpropCount++;
-            }
-
-            if (bodyopportunityexpectedcurrency != null)
-            {
-                valueObject["currency"] = ExpressionConverter.ConvertO(bodyopportunityexpectedcurrency);
-                valueObjectpropCount++;
-            }
-
-            if (valueObjectpropCount > 0)
-            {
-                opportunityObject["value"] = valueObject;
-                opportunityObjectpropCount++;
-            }
-
-            if (opportunityObjectpropCount > 0)
-            {
-                body["opportunity"] = opportunityObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateOpportunityResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<string> DeleteOpportunity(Expression<Func<string>> opportunityId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetOpportunityResponse> __BuildGetOpportunity(WorkflowExpression<string> opportunityId)
         {
-            var apiCallPath = String.Format("/opportunities/{0}", ExpressionConverter.ConvertWithUrlEncoding(opportunityId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowExpression.Validate(opportunityId, nameof(opportunityId), required: true);
+            return new DeferredBodyAction<GetOpportunityResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/opportunities/{0}", ExpressionConverter.ConvertWithUrlEncoding(opportunityId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetOpportunityResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreatePersonResponse> CreatePerson(Expression<Func<string>> bodypartylastName = null, Expression<Func<string>> bodypartyfirstName = null, Expression<Func<bodypartytitleInput>> bodypartytitle = null, Expression<Func<string>> bodypartyjobTitle = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyorganisationId = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateOpportunity))]
+        public IBodyWorkflowAction<UpdateOpportunityResponse> UpdateOpportunity([WorkflowExpression] Func<string> opportunityId, [WorkflowExpression] Func<int> bodyopportunitypartypartyId, [WorkflowExpression] Func<int> bodyopportunitymilestonemilestoneId, [WorkflowExpression] Func<string> bodyopportunityname = null, [WorkflowExpression] Func<string> bodyopportunitydescription = null, [WorkflowExpression] Func<bodyopportunitydurationBasisInput> bodyopportunitydurationBasis = null, [WorkflowExpression] Func<string> bodyopportunityduration = null, [WorkflowExpression] Func<string> bodyopportunityexpectedCloseDate = null, [WorkflowExpression] Func<int> bodyopportunitywinningProbability = null, [WorkflowExpression] Func<int> bodyopportunityexpectedamount = null, [WorkflowExpression] Func<string> bodyopportunityexpectedcurrency = null)
         {
-            var apiCallPath = "/person/parties";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var partyObject = new JObject();
-            var partyObjectpropCount = 0;
-            if (bodypartylastName != null)
-            {
-                partyObject["lastName"] = ExpressionConverter.ConvertO(bodypartylastName);
-                partyObjectpropCount++;
-            }
-
-            if (bodypartyfirstName != null)
-            {
-                partyObject["firstName"] = ExpressionConverter.ConvertO(bodypartyfirstName);
-                partyObjectpropCount++;
-            }
-
-            if (bodypartytitle != null)
-            {
-                partyObject["title"] = ExpressionConverter.ConvertO(bodypartytitle);
-                partyObjectpropCount++;
-            }
-
-            if (bodypartyjobTitle != null)
-            {
-                partyObject["jobTitle"] = ExpressionConverter.ConvertO(bodypartyjobTitle);
-                partyObjectpropCount++;
-            }
-
-            if (bodypartyabout != null)
-            {
-                partyObject["about"] = ExpressionConverter.ConvertO(bodypartyabout);
-                partyObjectpropCount++;
-            }
-
-            if (bodypartyorganisationId != null)
-            {
-                partyObject["organisation"] = ExpressionConverter.ConvertO(bodypartyorganisationId);
-                partyObjectpropCount++;
-            }
-
-            var phoneNumbersObject = new JObject();
-            var phoneNumbersObjectpropCount = 0;
-            if (bodypartyphoneNumbersphoneNumber != null)
-            {
-                phoneNumbersObject["number"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneNumber);
-                phoneNumbersObjectpropCount++;
-            }
-
-            if (bodypartyphoneNumbersphoneType != null)
-            {
-                phoneNumbersObject["type"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneType);
-                phoneNumbersObjectpropCount++;
-            }
-
-            if (phoneNumbersObjectpropCount > 0)
-            {
-                partyObject["phoneNumbers"] = phoneNumbersObject;
-                partyObjectpropCount++;
-            }
-
-            var emailAddressesObject = new JObject();
-            var emailAddressesObjectpropCount = 0;
-            if (bodypartyemailAddressesemailAddress != null)
-            {
-                emailAddressesObject["address"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailAddress);
-                emailAddressesObjectpropCount++;
-            }
-
-            if (bodypartyemailAddressesemailType != null)
-            {
-                emailAddressesObject["type"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailType);
-                emailAddressesObjectpropCount++;
-            }
-
-            if (emailAddressesObjectpropCount > 0)
-            {
-                partyObject["emailAddresses"] = emailAddressesObject;
-                partyObjectpropCount++;
-            }
-
-            var websitesObject = new JObject();
-            var websitesObjectpropCount = 0;
-            if (bodypartywebsiteswebsiteAddress != null)
-            {
-                websitesObject["address"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteAddress);
-                websitesObjectpropCount++;
-            }
-
-            if (bodypartywebsiteswebsiteService != null)
-            {
-                websitesObject["service"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteService);
-                websitesObjectpropCount++;
-            }
-
-            if (bodypartywebsiteswebsiteType != null)
-            {
-                websitesObject["type"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteType);
-                websitesObjectpropCount++;
-            }
-
-            if (websitesObjectpropCount > 0)
-            {
-                partyObject["websites"] = websitesObject;
-                partyObjectpropCount++;
-            }
-
-            var addressesObject = new JObject();
-            var addressesObjectpropCount = 0;
-            if (bodypartyaddressesaddressStreet != null)
-            {
-                addressesObject["street"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressStreet);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressCity != null)
-            {
-                addressesObject["city"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCity);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressState != null)
-            {
-                addressesObject["state"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressState);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressZip != null)
-            {
-                addressesObject["zip"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressZip);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressCountry != null)
-            {
-                addressesObject["country"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCountry);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressType != null)
-            {
-                addressesObject["type"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressType);
-                addressesObjectpropCount++;
-            }
-
-            if (addressesObjectpropCount > 0)
-            {
-                partyObject["addresses"] = addressesObject;
-                partyObjectpropCount++;
-            }
-
-            if (bodypartytags != null)
-            {
-                partyObject["tags"] = ExpressionConverter.ConvertO(bodypartytags);
-                partyObjectpropCount++;
-            }
-
-            partyObject["type"] = "person";
-            partyObjectpropCount++;
-            if (partyObjectpropCount > 0)
-            {
-                body["party"] = partyObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreatePersonResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<UpdatePersonResponse> UpdatePerson(Expression<Func<string>> personId, Expression<Func<string>> bodypartylastName = null, Expression<Func<string>> bodypartyfirstName = null, Expression<Func<bodypartytitleInput>> bodypartytitle = null, Expression<Func<string>> bodypartyjobTitle = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyorganisationId = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateOpportunityResponse> __BuildUpdateOpportunity(WorkflowExpression<string> opportunityId, WorkflowExpression<int> bodyopportunitypartypartyId, WorkflowExpression<int> bodyopportunitymilestonemilestoneId, WorkflowExpression<string> bodyopportunityname = null, WorkflowExpression<string> bodyopportunitydescription = null, WorkflowExpression<bodyopportunitydurationBasisInput> bodyopportunitydurationBasis = null, WorkflowExpression<string> bodyopportunityduration = null, WorkflowExpression<string> bodyopportunityexpectedCloseDate = null, WorkflowExpression<int> bodyopportunitywinningProbability = null, WorkflowExpression<int> bodyopportunityexpectedamount = null, WorkflowExpression<string> bodyopportunityexpectedcurrency = null)
         {
-            var apiCallPath = String.Format("/person/parties/{0}", ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var partyObject = new JObject();
-            var partyObjectpropCount = 0;
-            if (bodypartylastName != null)
+            WorkflowExpression.Validate(opportunityId, nameof(opportunityId), required: true);
+            WorkflowExpression.Validate(bodyopportunitypartypartyId, nameof(bodyopportunitypartypartyId), required: true);
+            WorkflowExpression.Validate(bodyopportunitymilestonemilestoneId, nameof(bodyopportunitymilestonemilestoneId), required: true);
+            WorkflowExpression.Validate(bodyopportunityname, nameof(bodyopportunityname), required: false);
+            WorkflowExpression.Validate(bodyopportunitydescription, nameof(bodyopportunitydescription), required: false);
+            WorkflowExpression.Validate(bodyopportunitydurationBasis, nameof(bodyopportunitydurationBasis), required: false);
+            WorkflowExpression.Validate(bodyopportunityduration, nameof(bodyopportunityduration), required: false);
+            WorkflowExpression.Validate(bodyopportunityexpectedCloseDate, nameof(bodyopportunityexpectedCloseDate), required: false);
+            WorkflowExpression.Validate(bodyopportunitywinningProbability, nameof(bodyopportunitywinningProbability), required: false);
+            WorkflowExpression.Validate(bodyopportunityexpectedamount, nameof(bodyopportunityexpectedamount), required: false);
+            WorkflowExpression.Validate(bodyopportunityexpectedcurrency, nameof(bodyopportunityexpectedcurrency), required: false);
+            return new DeferredBodyAction<UpdateOpportunityResponse>(() =>
             {
-                partyObject["lastName"] = ExpressionConverter.ConvertO(bodypartylastName);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/opportunities/{0}", ExpressionConverter.ConvertWithUrlEncoding(opportunityId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var opportunityObject = new JObject();
+                var opportunityObjectpropCount = 0;
+                if (bodyopportunityname != null)
+                {
+                    opportunityObject["name"] = ExpressionConverter.ConvertO(bodyopportunityname);
+                    opportunityObjectpropCount++;
+                }
+
+                var partyObject = new JObject();
+                var partyObjectpropCount = 0;
                 partyObjectpropCount++;
-            }
+                partyObject["id"] = ExpressionConverter.ConvertO(bodyopportunitypartypartyId);
+                if (partyObjectpropCount > 0)
+                {
+                    opportunityObject["party"] = partyObject;
+                    opportunityObjectpropCount++;
+                }
 
-            if (bodypartyfirstName != null)
-            {
-                partyObject["firstName"] = ExpressionConverter.ConvertO(bodypartyfirstName);
-                partyObjectpropCount++;
-            }
+                var milestoneObject = new JObject();
+                var milestoneObjectpropCount = 0;
+                milestoneObjectpropCount++;
+                milestoneObject["id"] = ExpressionConverter.ConvertO(bodyopportunitymilestonemilestoneId);
+                if (milestoneObjectpropCount > 0)
+                {
+                    opportunityObject["milestone"] = milestoneObject;
+                    opportunityObjectpropCount++;
+                }
 
-            if (bodypartytitle != null)
-            {
-                partyObject["title"] = ExpressionConverter.ConvertO(bodypartytitle);
-                partyObjectpropCount++;
-            }
+                if (bodyopportunitydescription != null)
+                {
+                    opportunityObject["description"] = ExpressionConverter.ConvertO(bodyopportunitydescription);
+                    opportunityObjectpropCount++;
+                }
 
-            if (bodypartyjobTitle != null)
-            {
-                partyObject["jobTitle"] = ExpressionConverter.ConvertO(bodypartyjobTitle);
-                partyObjectpropCount++;
-            }
+                if (bodyopportunitydurationBasis != null)
+                {
+                    opportunityObject["durationBasis"] = ExpressionConverter.ConvertO(bodyopportunitydurationBasis);
+                    opportunityObjectpropCount++;
+                }
 
-            if (bodypartyabout != null)
-            {
-                partyObject["about"] = ExpressionConverter.ConvertO(bodypartyabout);
-                partyObjectpropCount++;
-            }
+                if (bodyopportunityduration != null)
+                {
+                    opportunityObject["duration"] = ExpressionConverter.ConvertO(bodyopportunityduration);
+                    opportunityObjectpropCount++;
+                }
 
-            if (bodypartyorganisationId != null)
-            {
-                partyObject["organisation"] = ExpressionConverter.ConvertO(bodypartyorganisationId);
-                partyObjectpropCount++;
-            }
+                if (bodyopportunityexpectedCloseDate != null)
+                {
+                    opportunityObject["expectedCloseOn"] = ExpressionConverter.ConvertO(bodyopportunityexpectedCloseDate);
+                    opportunityObjectpropCount++;
+                }
 
-            var phoneNumbersObject = new JObject();
-            var phoneNumbersObjectpropCount = 0;
-            if (bodypartyphoneNumbersphoneNumber != null)
-            {
-                phoneNumbersObject["number"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneNumber);
-                phoneNumbersObjectpropCount++;
-            }
+                if (bodyopportunitywinningProbability != null)
+                {
+                    opportunityObject["probability"] = ExpressionConverter.ConvertO(bodyopportunitywinningProbability);
+                    opportunityObjectpropCount++;
+                }
 
-            if (bodypartyphoneNumbersphoneType != null)
-            {
-                phoneNumbersObject["type"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneType);
-                phoneNumbersObjectpropCount++;
-            }
+                var valueObject = new JObject();
+                var valueObjectpropCount = 0;
+                if (bodyopportunityexpectedamount != null)
+                {
+                    valueObject["amount"] = ExpressionConverter.ConvertO(bodyopportunityexpectedamount);
+                    valueObjectpropCount++;
+                }
 
-            if (phoneNumbersObjectpropCount > 0)
-            {
-                partyObject["phoneNumbers"] = phoneNumbersObject;
-                partyObjectpropCount++;
-            }
+                if (bodyopportunityexpectedcurrency != null)
+                {
+                    valueObject["currency"] = ExpressionConverter.ConvertO(bodyopportunityexpectedcurrency);
+                    valueObjectpropCount++;
+                }
 
-            var emailAddressesObject = new JObject();
-            var emailAddressesObjectpropCount = 0;
-            if (bodypartyemailAddressesemailAddress != null)
-            {
-                emailAddressesObject["address"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailAddress);
-                emailAddressesObjectpropCount++;
-            }
+                if (valueObjectpropCount > 0)
+                {
+                    opportunityObject["value"] = valueObject;
+                    opportunityObjectpropCount++;
+                }
 
-            if (bodypartyemailAddressesemailType != null)
-            {
-                emailAddressesObject["type"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailType);
-                emailAddressesObjectpropCount++;
-            }
+                if (opportunityObjectpropCount > 0)
+                {
+                    body["opportunity"] = opportunityObject;
+                    bodypropCount++;
+                }
 
-            if (emailAddressesObjectpropCount > 0)
-            {
-                partyObject["emailAddresses"] = emailAddressesObject;
-                partyObjectpropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            var websitesObject = new JObject();
-            var websitesObjectpropCount = 0;
-            if (bodypartywebsiteswebsiteAddress != null)
-            {
-                websitesObject["address"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteAddress);
-                websitesObjectpropCount++;
-            }
-
-            if (bodypartywebsiteswebsiteService != null)
-            {
-                websitesObject["service"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteService);
-                websitesObjectpropCount++;
-            }
-
-            if (bodypartywebsiteswebsiteType != null)
-            {
-                websitesObject["type"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteType);
-                websitesObjectpropCount++;
-            }
-
-            if (websitesObjectpropCount > 0)
-            {
-                partyObject["websites"] = websitesObject;
-                partyObjectpropCount++;
-            }
-
-            var addressesObject = new JObject();
-            var addressesObjectpropCount = 0;
-            if (bodypartyaddressesaddressStreet != null)
-            {
-                addressesObject["street"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressStreet);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressCity != null)
-            {
-                addressesObject["city"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCity);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressState != null)
-            {
-                addressesObject["state"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressState);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressZip != null)
-            {
-                addressesObject["zip"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressZip);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressCountry != null)
-            {
-                addressesObject["country"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCountry);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressType != null)
-            {
-                addressesObject["type"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressType);
-                addressesObjectpropCount++;
-            }
-
-            if (addressesObjectpropCount > 0)
-            {
-                partyObject["addresses"] = addressesObject;
-                partyObjectpropCount++;
-            }
-
-            if (bodypartytags != null)
-            {
-                partyObject["tags"] = ExpressionConverter.ConvertO(bodypartytags);
-                partyObjectpropCount++;
-            }
-
-            partyObject["type"] = "person";
-            partyObjectpropCount++;
-            if (partyObjectpropCount > 0)
-            {
-                body["party"] = partyObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdatePersonResponse>(callPayload);
+                return new ApiConnectionAction<UpdateOpportunityResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreateOrganisationResponse> CreateOrganisation(Expression<Func<string>> bodypartyname = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteOpportunity))]
+        public IBodyWorkflowAction<string> DeleteOpportunity([WorkflowExpression] Func<string> opportunityId)
         {
-            var apiCallPath = "/organisation/parties";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var partyObject = new JObject();
-            var partyObjectpropCount = 0;
-            if (bodypartyname != null)
-            {
-                partyObject["name"] = ExpressionConverter.ConvertO(bodypartyname);
-                partyObjectpropCount++;
-            }
-
-            if (bodypartyabout != null)
-            {
-                partyObject["about"] = ExpressionConverter.ConvertO(bodypartyabout);
-                partyObjectpropCount++;
-            }
-
-            var phoneNumbersObject = new JObject();
-            var phoneNumbersObjectpropCount = 0;
-            if (bodypartyphoneNumbersphoneNumber != null)
-            {
-                phoneNumbersObject["number"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneNumber);
-                phoneNumbersObjectpropCount++;
-            }
-
-            if (bodypartyphoneNumbersphoneType != null)
-            {
-                phoneNumbersObject["type"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneType);
-                phoneNumbersObjectpropCount++;
-            }
-
-            if (phoneNumbersObjectpropCount > 0)
-            {
-                partyObject["phoneNumbers"] = phoneNumbersObject;
-                partyObjectpropCount++;
-            }
-
-            var emailAddressesObject = new JObject();
-            var emailAddressesObjectpropCount = 0;
-            if (bodypartyemailAddressesemailAddress != null)
-            {
-                emailAddressesObject["address"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailAddress);
-                emailAddressesObjectpropCount++;
-            }
-
-            if (bodypartyemailAddressesemailType != null)
-            {
-                emailAddressesObject["type"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailType);
-                emailAddressesObjectpropCount++;
-            }
-
-            if (emailAddressesObjectpropCount > 0)
-            {
-                partyObject["emailAddresses"] = emailAddressesObject;
-                partyObjectpropCount++;
-            }
-
-            var websitesObject = new JObject();
-            var websitesObjectpropCount = 0;
-            if (bodypartywebsiteswebsiteAddress != null)
-            {
-                websitesObject["address"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteAddress);
-                websitesObjectpropCount++;
-            }
-
-            if (bodypartywebsiteswebsiteService != null)
-            {
-                websitesObject["service"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteService);
-                websitesObjectpropCount++;
-            }
-
-            if (bodypartywebsiteswebsiteType != null)
-            {
-                websitesObject["type"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteType);
-                websitesObjectpropCount++;
-            }
-
-            if (websitesObjectpropCount > 0)
-            {
-                partyObject["websites"] = websitesObject;
-                partyObjectpropCount++;
-            }
-
-            var addressesObject = new JObject();
-            var addressesObjectpropCount = 0;
-            if (bodypartyaddressesaddressStreet != null)
-            {
-                addressesObject["street"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressStreet);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressCity != null)
-            {
-                addressesObject["city"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCity);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressState != null)
-            {
-                addressesObject["state"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressState);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressZip != null)
-            {
-                addressesObject["zip"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressZip);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressCountry != null)
-            {
-                addressesObject["country"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCountry);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressType != null)
-            {
-                addressesObject["type"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressType);
-                addressesObjectpropCount++;
-            }
-
-            if (addressesObjectpropCount > 0)
-            {
-                partyObject["addresses"] = addressesObject;
-                partyObjectpropCount++;
-            }
-
-            if (bodypartytags != null)
-            {
-                partyObject["tags"] = ExpressionConverter.ConvertO(bodypartytags);
-                partyObjectpropCount++;
-            }
-
-            partyObject["type"] = "organisation";
-            partyObjectpropCount++;
-            if (partyObjectpropCount > 0)
-            {
-                body["party"] = partyObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateOrganisationResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<UpdateOrganisationResponse> UpdateOrganisation(Expression<Func<string>> id, Expression<Func<string>> bodypartyname = null, Expression<Func<string>> bodypartyabout = null, Expression<Func<string>> bodypartyphoneNumbersphoneNumber = null, Expression<Func<bodypartyphoneNumbersphoneTypeInput>> bodypartyphoneNumbersphoneType = null, Expression<Func<string>> bodypartyemailAddressesemailAddress = null, Expression<Func<bodypartyemailAddressesemailTypeInput>> bodypartyemailAddressesemailType = null, Expression<Func<string>> bodypartywebsiteswebsiteAddress = null, Expression<Func<bodypartywebsiteswebsiteServiceInput>> bodypartywebsiteswebsiteService = null, Expression<Func<bodypartywebsiteswebsiteTypeInput>> bodypartywebsiteswebsiteType = null, Expression<Func<string>> bodypartyaddressesaddressStreet = null, Expression<Func<string>> bodypartyaddressesaddressCity = null, Expression<Func<string>> bodypartyaddressesaddressState = null, Expression<Func<string>> bodypartyaddressesaddressZip = null, Expression<Func<string>> bodypartyaddressesaddressCountry = null, Expression<Func<bodypartyaddressesaddressTypeInput>> bodypartyaddressesaddressType = null, Expression<Func<string>> bodypartytags = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildDeleteOpportunity(WorkflowExpression<string> opportunityId)
         {
-            var apiCallPath = String.Format("/organisation/parties/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var partyObject = new JObject();
-            var partyObjectpropCount = 0;
-            if (bodypartyname != null)
+            WorkflowExpression.Validate(opportunityId, nameof(opportunityId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                partyObject["name"] = ExpressionConverter.ConvertO(bodypartyname);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/opportunities/{0}", ExpressionConverter.ConvertWithUrlEncoding(opportunityId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
+        [WorkflowExpressionFactory(nameof(__BuildCreatePerson))]
+        public IBodyWorkflowAction<CreatePersonResponse> CreatePerson([WorkflowExpression] Func<string> bodypartylastName = null, [WorkflowExpression] Func<string> bodypartyfirstName = null, [WorkflowExpression] Func<bodypartytitleInput> bodypartytitle = null, [WorkflowExpression] Func<string> bodypartyjobTitle = null, [WorkflowExpression] Func<string> bodypartyabout = null, [WorkflowExpression] Func<string> bodypartyorganisationId = null, [WorkflowExpression] Func<string> bodypartyphoneNumbersphoneNumber = null, [WorkflowExpression] Func<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, [WorkflowExpression] Func<string> bodypartyemailAddressesemailAddress = null, [WorkflowExpression] Func<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, [WorkflowExpression] Func<string> bodypartywebsiteswebsiteAddress = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressStreet = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCity = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressState = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressZip = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCountry = null, [WorkflowExpression] Func<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, [WorkflowExpression] Func<string> bodypartytags = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreatePersonResponse> __BuildCreatePerson(WorkflowExpression<string> bodypartylastName = null, WorkflowExpression<string> bodypartyfirstName = null, WorkflowExpression<bodypartytitleInput> bodypartytitle = null, WorkflowExpression<string> bodypartyjobTitle = null, WorkflowExpression<string> bodypartyabout = null, WorkflowExpression<string> bodypartyorganisationId = null, WorkflowExpression<string> bodypartyphoneNumbersphoneNumber = null, WorkflowExpression<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, WorkflowExpression<string> bodypartyemailAddressesemailAddress = null, WorkflowExpression<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, WorkflowExpression<string> bodypartywebsiteswebsiteAddress = null, WorkflowExpression<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, WorkflowExpression<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, WorkflowExpression<string> bodypartyaddressesaddressStreet = null, WorkflowExpression<string> bodypartyaddressesaddressCity = null, WorkflowExpression<string> bodypartyaddressesaddressState = null, WorkflowExpression<string> bodypartyaddressesaddressZip = null, WorkflowExpression<string> bodypartyaddressesaddressCountry = null, WorkflowExpression<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, WorkflowExpression<string> bodypartytags = null)
+        {
+            WorkflowExpression.Validate(bodypartylastName, nameof(bodypartylastName), required: false);
+            WorkflowExpression.Validate(bodypartyfirstName, nameof(bodypartyfirstName), required: false);
+            WorkflowExpression.Validate(bodypartytitle, nameof(bodypartytitle), required: false);
+            WorkflowExpression.Validate(bodypartyjobTitle, nameof(bodypartyjobTitle), required: false);
+            WorkflowExpression.Validate(bodypartyabout, nameof(bodypartyabout), required: false);
+            WorkflowExpression.Validate(bodypartyorganisationId, nameof(bodypartyorganisationId), required: false);
+            WorkflowExpression.Validate(bodypartyphoneNumbersphoneNumber, nameof(bodypartyphoneNumbersphoneNumber), required: false);
+            WorkflowExpression.Validate(bodypartyphoneNumbersphoneType, nameof(bodypartyphoneNumbersphoneType), required: false);
+            WorkflowExpression.Validate(bodypartyemailAddressesemailAddress, nameof(bodypartyemailAddressesemailAddress), required: false);
+            WorkflowExpression.Validate(bodypartyemailAddressesemailType, nameof(bodypartyemailAddressesemailType), required: false);
+            WorkflowExpression.Validate(bodypartywebsiteswebsiteAddress, nameof(bodypartywebsiteswebsiteAddress), required: false);
+            WorkflowExpression.Validate(bodypartywebsiteswebsiteService, nameof(bodypartywebsiteswebsiteService), required: false);
+            WorkflowExpression.Validate(bodypartywebsiteswebsiteType, nameof(bodypartywebsiteswebsiteType), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressStreet, nameof(bodypartyaddressesaddressStreet), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressCity, nameof(bodypartyaddressesaddressCity), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressState, nameof(bodypartyaddressesaddressState), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressZip, nameof(bodypartyaddressesaddressZip), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
+            WorkflowExpression.Validate(bodypartytags, nameof(bodypartytags), required: false);
+            return new DeferredBodyAction<CreatePersonResponse>(() =>
+            {
+                var apiCallPath = "/person/parties";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var partyObject = new JObject();
+                var partyObjectpropCount = 0;
+                if (bodypartylastName != null)
+                {
+                    partyObject["lastName"] = ExpressionConverter.ConvertO(bodypartylastName);
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartyfirstName != null)
+                {
+                    partyObject["firstName"] = ExpressionConverter.ConvertO(bodypartyfirstName);
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartytitle != null)
+                {
+                    partyObject["title"] = ExpressionConverter.ConvertO(bodypartytitle);
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartyjobTitle != null)
+                {
+                    partyObject["jobTitle"] = ExpressionConverter.ConvertO(bodypartyjobTitle);
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartyabout != null)
+                {
+                    partyObject["about"] = ExpressionConverter.ConvertO(bodypartyabout);
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartyorganisationId != null)
+                {
+                    partyObject["organisation"] = ExpressionConverter.ConvertO(bodypartyorganisationId);
+                    partyObjectpropCount++;
+                }
+
+                var phoneNumbersObject = new JObject();
+                var phoneNumbersObjectpropCount = 0;
+                if (bodypartyphoneNumbersphoneNumber != null)
+                {
+                    phoneNumbersObject["number"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneNumber);
+                    phoneNumbersObjectpropCount++;
+                }
+
+                if (bodypartyphoneNumbersphoneType != null)
+                {
+                    phoneNumbersObject["type"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneType);
+                    phoneNumbersObjectpropCount++;
+                }
+
+                if (phoneNumbersObjectpropCount > 0)
+                {
+                    partyObject["phoneNumbers"] = phoneNumbersObject;
+                    partyObjectpropCount++;
+                }
+
+                var emailAddressesObject = new JObject();
+                var emailAddressesObjectpropCount = 0;
+                if (bodypartyemailAddressesemailAddress != null)
+                {
+                    emailAddressesObject["address"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailAddress);
+                    emailAddressesObjectpropCount++;
+                }
+
+                if (bodypartyemailAddressesemailType != null)
+                {
+                    emailAddressesObject["type"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailType);
+                    emailAddressesObjectpropCount++;
+                }
+
+                if (emailAddressesObjectpropCount > 0)
+                {
+                    partyObject["emailAddresses"] = emailAddressesObject;
+                    partyObjectpropCount++;
+                }
+
+                var websitesObject = new JObject();
+                var websitesObjectpropCount = 0;
+                if (bodypartywebsiteswebsiteAddress != null)
+                {
+                    websitesObject["address"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteAddress);
+                    websitesObjectpropCount++;
+                }
+
+                if (bodypartywebsiteswebsiteService != null)
+                {
+                    websitesObject["service"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteService);
+                    websitesObjectpropCount++;
+                }
+
+                if (bodypartywebsiteswebsiteType != null)
+                {
+                    websitesObject["type"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteType);
+                    websitesObjectpropCount++;
+                }
+
+                if (websitesObjectpropCount > 0)
+                {
+                    partyObject["websites"] = websitesObject;
+                    partyObjectpropCount++;
+                }
+
+                var addressesObject = new JObject();
+                var addressesObjectpropCount = 0;
+                if (bodypartyaddressesaddressStreet != null)
+                {
+                    addressesObject["street"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressStreet);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressCity != null)
+                {
+                    addressesObject["city"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCity);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressState != null)
+                {
+                    addressesObject["state"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressState);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressZip != null)
+                {
+                    addressesObject["zip"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressZip);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressCountry != null)
+                {
+                    addressesObject["country"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCountry);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressType != null)
+                {
+                    addressesObject["type"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressType);
+                    addressesObjectpropCount++;
+                }
+
+                if (addressesObjectpropCount > 0)
+                {
+                    partyObject["addresses"] = addressesObject;
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartytags != null)
+                {
+                    partyObject["tags"] = ExpressionConverter.ConvertO(bodypartytags);
+                    partyObjectpropCount++;
+                }
+
+                partyObject["type"] = "person";
                 partyObjectpropCount++;
-            }
+                if (partyObjectpropCount > 0)
+                {
+                    body["party"] = partyObject;
+                    bodypropCount++;
+                }
 
-            if (bodypartyabout != null)
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreatePersonResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdatePerson))]
+        public IBodyWorkflowAction<UpdatePersonResponse> UpdatePerson([WorkflowExpression] Func<string> personId, [WorkflowExpression] Func<string> bodypartylastName = null, [WorkflowExpression] Func<string> bodypartyfirstName = null, [WorkflowExpression] Func<bodypartytitleInput> bodypartytitle = null, [WorkflowExpression] Func<string> bodypartyjobTitle = null, [WorkflowExpression] Func<string> bodypartyabout = null, [WorkflowExpression] Func<string> bodypartyorganisationId = null, [WorkflowExpression] Func<string> bodypartyphoneNumbersphoneNumber = null, [WorkflowExpression] Func<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, [WorkflowExpression] Func<string> bodypartyemailAddressesemailAddress = null, [WorkflowExpression] Func<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, [WorkflowExpression] Func<string> bodypartywebsiteswebsiteAddress = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressStreet = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCity = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressState = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressZip = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCountry = null, [WorkflowExpression] Func<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, [WorkflowExpression] Func<string> bodypartytags = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdatePersonResponse> __BuildUpdatePerson(WorkflowExpression<string> personId, WorkflowExpression<string> bodypartylastName = null, WorkflowExpression<string> bodypartyfirstName = null, WorkflowExpression<bodypartytitleInput> bodypartytitle = null, WorkflowExpression<string> bodypartyjobTitle = null, WorkflowExpression<string> bodypartyabout = null, WorkflowExpression<string> bodypartyorganisationId = null, WorkflowExpression<string> bodypartyphoneNumbersphoneNumber = null, WorkflowExpression<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, WorkflowExpression<string> bodypartyemailAddressesemailAddress = null, WorkflowExpression<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, WorkflowExpression<string> bodypartywebsiteswebsiteAddress = null, WorkflowExpression<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, WorkflowExpression<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, WorkflowExpression<string> bodypartyaddressesaddressStreet = null, WorkflowExpression<string> bodypartyaddressesaddressCity = null, WorkflowExpression<string> bodypartyaddressesaddressState = null, WorkflowExpression<string> bodypartyaddressesaddressZip = null, WorkflowExpression<string> bodypartyaddressesaddressCountry = null, WorkflowExpression<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, WorkflowExpression<string> bodypartytags = null)
+        {
+            WorkflowExpression.Validate(personId, nameof(personId), required: true);
+            WorkflowExpression.Validate(bodypartylastName, nameof(bodypartylastName), required: false);
+            WorkflowExpression.Validate(bodypartyfirstName, nameof(bodypartyfirstName), required: false);
+            WorkflowExpression.Validate(bodypartytitle, nameof(bodypartytitle), required: false);
+            WorkflowExpression.Validate(bodypartyjobTitle, nameof(bodypartyjobTitle), required: false);
+            WorkflowExpression.Validate(bodypartyabout, nameof(bodypartyabout), required: false);
+            WorkflowExpression.Validate(bodypartyorganisationId, nameof(bodypartyorganisationId), required: false);
+            WorkflowExpression.Validate(bodypartyphoneNumbersphoneNumber, nameof(bodypartyphoneNumbersphoneNumber), required: false);
+            WorkflowExpression.Validate(bodypartyphoneNumbersphoneType, nameof(bodypartyphoneNumbersphoneType), required: false);
+            WorkflowExpression.Validate(bodypartyemailAddressesemailAddress, nameof(bodypartyemailAddressesemailAddress), required: false);
+            WorkflowExpression.Validate(bodypartyemailAddressesemailType, nameof(bodypartyemailAddressesemailType), required: false);
+            WorkflowExpression.Validate(bodypartywebsiteswebsiteAddress, nameof(bodypartywebsiteswebsiteAddress), required: false);
+            WorkflowExpression.Validate(bodypartywebsiteswebsiteService, nameof(bodypartywebsiteswebsiteService), required: false);
+            WorkflowExpression.Validate(bodypartywebsiteswebsiteType, nameof(bodypartywebsiteswebsiteType), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressStreet, nameof(bodypartyaddressesaddressStreet), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressCity, nameof(bodypartyaddressesaddressCity), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressState, nameof(bodypartyaddressesaddressState), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressZip, nameof(bodypartyaddressesaddressZip), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
+            WorkflowExpression.Validate(bodypartytags, nameof(bodypartytags), required: false);
+            return new DeferredBodyAction<UpdatePersonResponse>(() =>
             {
-                partyObject["about"] = ExpressionConverter.ConvertO(bodypartyabout);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/person/parties/{0}", ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var partyObject = new JObject();
+                var partyObjectpropCount = 0;
+                if (bodypartylastName != null)
+                {
+                    partyObject["lastName"] = ExpressionConverter.ConvertO(bodypartylastName);
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartyfirstName != null)
+                {
+                    partyObject["firstName"] = ExpressionConverter.ConvertO(bodypartyfirstName);
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartytitle != null)
+                {
+                    partyObject["title"] = ExpressionConverter.ConvertO(bodypartytitle);
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartyjobTitle != null)
+                {
+                    partyObject["jobTitle"] = ExpressionConverter.ConvertO(bodypartyjobTitle);
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartyabout != null)
+                {
+                    partyObject["about"] = ExpressionConverter.ConvertO(bodypartyabout);
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartyorganisationId != null)
+                {
+                    partyObject["organisation"] = ExpressionConverter.ConvertO(bodypartyorganisationId);
+                    partyObjectpropCount++;
+                }
+
+                var phoneNumbersObject = new JObject();
+                var phoneNumbersObjectpropCount = 0;
+                if (bodypartyphoneNumbersphoneNumber != null)
+                {
+                    phoneNumbersObject["number"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneNumber);
+                    phoneNumbersObjectpropCount++;
+                }
+
+                if (bodypartyphoneNumbersphoneType != null)
+                {
+                    phoneNumbersObject["type"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneType);
+                    phoneNumbersObjectpropCount++;
+                }
+
+                if (phoneNumbersObjectpropCount > 0)
+                {
+                    partyObject["phoneNumbers"] = phoneNumbersObject;
+                    partyObjectpropCount++;
+                }
+
+                var emailAddressesObject = new JObject();
+                var emailAddressesObjectpropCount = 0;
+                if (bodypartyemailAddressesemailAddress != null)
+                {
+                    emailAddressesObject["address"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailAddress);
+                    emailAddressesObjectpropCount++;
+                }
+
+                if (bodypartyemailAddressesemailType != null)
+                {
+                    emailAddressesObject["type"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailType);
+                    emailAddressesObjectpropCount++;
+                }
+
+                if (emailAddressesObjectpropCount > 0)
+                {
+                    partyObject["emailAddresses"] = emailAddressesObject;
+                    partyObjectpropCount++;
+                }
+
+                var websitesObject = new JObject();
+                var websitesObjectpropCount = 0;
+                if (bodypartywebsiteswebsiteAddress != null)
+                {
+                    websitesObject["address"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteAddress);
+                    websitesObjectpropCount++;
+                }
+
+                if (bodypartywebsiteswebsiteService != null)
+                {
+                    websitesObject["service"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteService);
+                    websitesObjectpropCount++;
+                }
+
+                if (bodypartywebsiteswebsiteType != null)
+                {
+                    websitesObject["type"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteType);
+                    websitesObjectpropCount++;
+                }
+
+                if (websitesObjectpropCount > 0)
+                {
+                    partyObject["websites"] = websitesObject;
+                    partyObjectpropCount++;
+                }
+
+                var addressesObject = new JObject();
+                var addressesObjectpropCount = 0;
+                if (bodypartyaddressesaddressStreet != null)
+                {
+                    addressesObject["street"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressStreet);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressCity != null)
+                {
+                    addressesObject["city"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCity);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressState != null)
+                {
+                    addressesObject["state"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressState);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressZip != null)
+                {
+                    addressesObject["zip"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressZip);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressCountry != null)
+                {
+                    addressesObject["country"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCountry);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressType != null)
+                {
+                    addressesObject["type"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressType);
+                    addressesObjectpropCount++;
+                }
+
+                if (addressesObjectpropCount > 0)
+                {
+                    partyObject["addresses"] = addressesObject;
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartytags != null)
+                {
+                    partyObject["tags"] = ExpressionConverter.ConvertO(bodypartytags);
+                    partyObjectpropCount++;
+                }
+
+                partyObject["type"] = "person";
                 partyObjectpropCount++;
-            }
+                if (partyObjectpropCount > 0)
+                {
+                    body["party"] = partyObject;
+                    bodypropCount++;
+                }
 
-            var phoneNumbersObject = new JObject();
-            var phoneNumbersObjectpropCount = 0;
-            if (bodypartyphoneNumbersphoneNumber != null)
-            {
-                phoneNumbersObject["number"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneNumber);
-                phoneNumbersObjectpropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypartyphoneNumbersphoneType != null)
-            {
-                phoneNumbersObject["type"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneType);
-                phoneNumbersObjectpropCount++;
-            }
+                return new ApiConnectionAction<UpdatePersonResponse>(callPayload);
+            });
+        }
 
-            if (phoneNumbersObjectpropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateOrganisation))]
+        public IBodyWorkflowAction<CreateOrganisationResponse> CreateOrganisation([WorkflowExpression] Func<string> bodypartyname = null, [WorkflowExpression] Func<string> bodypartyabout = null, [WorkflowExpression] Func<string> bodypartyphoneNumbersphoneNumber = null, [WorkflowExpression] Func<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, [WorkflowExpression] Func<string> bodypartyemailAddressesemailAddress = null, [WorkflowExpression] Func<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, [WorkflowExpression] Func<string> bodypartywebsiteswebsiteAddress = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressStreet = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCity = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressState = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressZip = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCountry = null, [WorkflowExpression] Func<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, [WorkflowExpression] Func<string> bodypartytags = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateOrganisationResponse> __BuildCreateOrganisation(WorkflowExpression<string> bodypartyname = null, WorkflowExpression<string> bodypartyabout = null, WorkflowExpression<string> bodypartyphoneNumbersphoneNumber = null, WorkflowExpression<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, WorkflowExpression<string> bodypartyemailAddressesemailAddress = null, WorkflowExpression<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, WorkflowExpression<string> bodypartywebsiteswebsiteAddress = null, WorkflowExpression<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, WorkflowExpression<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, WorkflowExpression<string> bodypartyaddressesaddressStreet = null, WorkflowExpression<string> bodypartyaddressesaddressCity = null, WorkflowExpression<string> bodypartyaddressesaddressState = null, WorkflowExpression<string> bodypartyaddressesaddressZip = null, WorkflowExpression<string> bodypartyaddressesaddressCountry = null, WorkflowExpression<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, WorkflowExpression<string> bodypartytags = null)
+        {
+            WorkflowExpression.Validate(bodypartyname, nameof(bodypartyname), required: false);
+            WorkflowExpression.Validate(bodypartyabout, nameof(bodypartyabout), required: false);
+            WorkflowExpression.Validate(bodypartyphoneNumbersphoneNumber, nameof(bodypartyphoneNumbersphoneNumber), required: false);
+            WorkflowExpression.Validate(bodypartyphoneNumbersphoneType, nameof(bodypartyphoneNumbersphoneType), required: false);
+            WorkflowExpression.Validate(bodypartyemailAddressesemailAddress, nameof(bodypartyemailAddressesemailAddress), required: false);
+            WorkflowExpression.Validate(bodypartyemailAddressesemailType, nameof(bodypartyemailAddressesemailType), required: false);
+            WorkflowExpression.Validate(bodypartywebsiteswebsiteAddress, nameof(bodypartywebsiteswebsiteAddress), required: false);
+            WorkflowExpression.Validate(bodypartywebsiteswebsiteService, nameof(bodypartywebsiteswebsiteService), required: false);
+            WorkflowExpression.Validate(bodypartywebsiteswebsiteType, nameof(bodypartywebsiteswebsiteType), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressStreet, nameof(bodypartyaddressesaddressStreet), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressCity, nameof(bodypartyaddressesaddressCity), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressState, nameof(bodypartyaddressesaddressState), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressZip, nameof(bodypartyaddressesaddressZip), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
+            WorkflowExpression.Validate(bodypartytags, nameof(bodypartytags), required: false);
+            return new DeferredBodyAction<CreateOrganisationResponse>(() =>
             {
-                partyObject["phoneNumbers"] = phoneNumbersObject;
+                var apiCallPath = "/organisation/parties";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var partyObject = new JObject();
+                var partyObjectpropCount = 0;
+                if (bodypartyname != null)
+                {
+                    partyObject["name"] = ExpressionConverter.ConvertO(bodypartyname);
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartyabout != null)
+                {
+                    partyObject["about"] = ExpressionConverter.ConvertO(bodypartyabout);
+                    partyObjectpropCount++;
+                }
+
+                var phoneNumbersObject = new JObject();
+                var phoneNumbersObjectpropCount = 0;
+                if (bodypartyphoneNumbersphoneNumber != null)
+                {
+                    phoneNumbersObject["number"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneNumber);
+                    phoneNumbersObjectpropCount++;
+                }
+
+                if (bodypartyphoneNumbersphoneType != null)
+                {
+                    phoneNumbersObject["type"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneType);
+                    phoneNumbersObjectpropCount++;
+                }
+
+                if (phoneNumbersObjectpropCount > 0)
+                {
+                    partyObject["phoneNumbers"] = phoneNumbersObject;
+                    partyObjectpropCount++;
+                }
+
+                var emailAddressesObject = new JObject();
+                var emailAddressesObjectpropCount = 0;
+                if (bodypartyemailAddressesemailAddress != null)
+                {
+                    emailAddressesObject["address"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailAddress);
+                    emailAddressesObjectpropCount++;
+                }
+
+                if (bodypartyemailAddressesemailType != null)
+                {
+                    emailAddressesObject["type"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailType);
+                    emailAddressesObjectpropCount++;
+                }
+
+                if (emailAddressesObjectpropCount > 0)
+                {
+                    partyObject["emailAddresses"] = emailAddressesObject;
+                    partyObjectpropCount++;
+                }
+
+                var websitesObject = new JObject();
+                var websitesObjectpropCount = 0;
+                if (bodypartywebsiteswebsiteAddress != null)
+                {
+                    websitesObject["address"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteAddress);
+                    websitesObjectpropCount++;
+                }
+
+                if (bodypartywebsiteswebsiteService != null)
+                {
+                    websitesObject["service"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteService);
+                    websitesObjectpropCount++;
+                }
+
+                if (bodypartywebsiteswebsiteType != null)
+                {
+                    websitesObject["type"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteType);
+                    websitesObjectpropCount++;
+                }
+
+                if (websitesObjectpropCount > 0)
+                {
+                    partyObject["websites"] = websitesObject;
+                    partyObjectpropCount++;
+                }
+
+                var addressesObject = new JObject();
+                var addressesObjectpropCount = 0;
+                if (bodypartyaddressesaddressStreet != null)
+                {
+                    addressesObject["street"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressStreet);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressCity != null)
+                {
+                    addressesObject["city"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCity);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressState != null)
+                {
+                    addressesObject["state"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressState);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressZip != null)
+                {
+                    addressesObject["zip"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressZip);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressCountry != null)
+                {
+                    addressesObject["country"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCountry);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressType != null)
+                {
+                    addressesObject["type"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressType);
+                    addressesObjectpropCount++;
+                }
+
+                if (addressesObjectpropCount > 0)
+                {
+                    partyObject["addresses"] = addressesObject;
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartytags != null)
+                {
+                    partyObject["tags"] = ExpressionConverter.ConvertO(bodypartytags);
+                    partyObjectpropCount++;
+                }
+
+                partyObject["type"] = "organisation";
                 partyObjectpropCount++;
-            }
+                if (partyObjectpropCount > 0)
+                {
+                    body["party"] = partyObject;
+                    bodypropCount++;
+                }
 
-            var emailAddressesObject = new JObject();
-            var emailAddressesObjectpropCount = 0;
-            if (bodypartyemailAddressesemailAddress != null)
-            {
-                emailAddressesObject["address"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailAddress);
-                emailAddressesObjectpropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypartyemailAddressesemailType != null)
-            {
-                emailAddressesObject["type"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailType);
-                emailAddressesObjectpropCount++;
-            }
+                return new ApiConnectionAction<CreateOrganisationResponse>(callPayload);
+            });
+        }
 
-            if (emailAddressesObjectpropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateOrganisation))]
+        public IBodyWorkflowAction<UpdateOrganisationResponse> UpdateOrganisation([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodypartyname = null, [WorkflowExpression] Func<string> bodypartyabout = null, [WorkflowExpression] Func<string> bodypartyphoneNumbersphoneNumber = null, [WorkflowExpression] Func<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, [WorkflowExpression] Func<string> bodypartyemailAddressesemailAddress = null, [WorkflowExpression] Func<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, [WorkflowExpression] Func<string> bodypartywebsiteswebsiteAddress = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, [WorkflowExpression] Func<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressStreet = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCity = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressState = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressZip = null, [WorkflowExpression] Func<string> bodypartyaddressesaddressCountry = null, [WorkflowExpression] Func<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, [WorkflowExpression] Func<string> bodypartytags = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateOrganisationResponse> __BuildUpdateOrganisation(WorkflowExpression<string> id, WorkflowExpression<string> bodypartyname = null, WorkflowExpression<string> bodypartyabout = null, WorkflowExpression<string> bodypartyphoneNumbersphoneNumber = null, WorkflowExpression<bodypartyphoneNumbersphoneTypeInput> bodypartyphoneNumbersphoneType = null, WorkflowExpression<string> bodypartyemailAddressesemailAddress = null, WorkflowExpression<bodypartyemailAddressesemailTypeInput> bodypartyemailAddressesemailType = null, WorkflowExpression<string> bodypartywebsiteswebsiteAddress = null, WorkflowExpression<bodypartywebsiteswebsiteServiceInput> bodypartywebsiteswebsiteService = null, WorkflowExpression<bodypartywebsiteswebsiteTypeInput> bodypartywebsiteswebsiteType = null, WorkflowExpression<string> bodypartyaddressesaddressStreet = null, WorkflowExpression<string> bodypartyaddressesaddressCity = null, WorkflowExpression<string> bodypartyaddressesaddressState = null, WorkflowExpression<string> bodypartyaddressesaddressZip = null, WorkflowExpression<string> bodypartyaddressesaddressCountry = null, WorkflowExpression<bodypartyaddressesaddressTypeInput> bodypartyaddressesaddressType = null, WorkflowExpression<string> bodypartytags = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(bodypartyname, nameof(bodypartyname), required: false);
+            WorkflowExpression.Validate(bodypartyabout, nameof(bodypartyabout), required: false);
+            WorkflowExpression.Validate(bodypartyphoneNumbersphoneNumber, nameof(bodypartyphoneNumbersphoneNumber), required: false);
+            WorkflowExpression.Validate(bodypartyphoneNumbersphoneType, nameof(bodypartyphoneNumbersphoneType), required: false);
+            WorkflowExpression.Validate(bodypartyemailAddressesemailAddress, nameof(bodypartyemailAddressesemailAddress), required: false);
+            WorkflowExpression.Validate(bodypartyemailAddressesemailType, nameof(bodypartyemailAddressesemailType), required: false);
+            WorkflowExpression.Validate(bodypartywebsiteswebsiteAddress, nameof(bodypartywebsiteswebsiteAddress), required: false);
+            WorkflowExpression.Validate(bodypartywebsiteswebsiteService, nameof(bodypartywebsiteswebsiteService), required: false);
+            WorkflowExpression.Validate(bodypartywebsiteswebsiteType, nameof(bodypartywebsiteswebsiteType), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressStreet, nameof(bodypartyaddressesaddressStreet), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressCity, nameof(bodypartyaddressesaddressCity), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressState, nameof(bodypartyaddressesaddressState), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressZip, nameof(bodypartyaddressesaddressZip), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressCountry, nameof(bodypartyaddressesaddressCountry), required: false);
+            WorkflowExpression.Validate(bodypartyaddressesaddressType, nameof(bodypartyaddressesaddressType), required: false);
+            WorkflowExpression.Validate(bodypartytags, nameof(bodypartytags), required: false);
+            return new DeferredBodyAction<UpdateOrganisationResponse>(() =>
             {
-                partyObject["emailAddresses"] = emailAddressesObject;
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organisation/parties/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var partyObject = new JObject();
+                var partyObjectpropCount = 0;
+                if (bodypartyname != null)
+                {
+                    partyObject["name"] = ExpressionConverter.ConvertO(bodypartyname);
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartyabout != null)
+                {
+                    partyObject["about"] = ExpressionConverter.ConvertO(bodypartyabout);
+                    partyObjectpropCount++;
+                }
+
+                var phoneNumbersObject = new JObject();
+                var phoneNumbersObjectpropCount = 0;
+                if (bodypartyphoneNumbersphoneNumber != null)
+                {
+                    phoneNumbersObject["number"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneNumber);
+                    phoneNumbersObjectpropCount++;
+                }
+
+                if (bodypartyphoneNumbersphoneType != null)
+                {
+                    phoneNumbersObject["type"] = ExpressionConverter.ConvertO(bodypartyphoneNumbersphoneType);
+                    phoneNumbersObjectpropCount++;
+                }
+
+                if (phoneNumbersObjectpropCount > 0)
+                {
+                    partyObject["phoneNumbers"] = phoneNumbersObject;
+                    partyObjectpropCount++;
+                }
+
+                var emailAddressesObject = new JObject();
+                var emailAddressesObjectpropCount = 0;
+                if (bodypartyemailAddressesemailAddress != null)
+                {
+                    emailAddressesObject["address"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailAddress);
+                    emailAddressesObjectpropCount++;
+                }
+
+                if (bodypartyemailAddressesemailType != null)
+                {
+                    emailAddressesObject["type"] = ExpressionConverter.ConvertO(bodypartyemailAddressesemailType);
+                    emailAddressesObjectpropCount++;
+                }
+
+                if (emailAddressesObjectpropCount > 0)
+                {
+                    partyObject["emailAddresses"] = emailAddressesObject;
+                    partyObjectpropCount++;
+                }
+
+                var websitesObject = new JObject();
+                var websitesObjectpropCount = 0;
+                if (bodypartywebsiteswebsiteAddress != null)
+                {
+                    websitesObject["address"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteAddress);
+                    websitesObjectpropCount++;
+                }
+
+                if (bodypartywebsiteswebsiteService != null)
+                {
+                    websitesObject["service"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteService);
+                    websitesObjectpropCount++;
+                }
+
+                if (bodypartywebsiteswebsiteType != null)
+                {
+                    websitesObject["type"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteType);
+                    websitesObjectpropCount++;
+                }
+
+                if (websitesObjectpropCount > 0)
+                {
+                    partyObject["websites"] = websitesObject;
+                    partyObjectpropCount++;
+                }
+
+                var addressesObject = new JObject();
+                var addressesObjectpropCount = 0;
+                if (bodypartyaddressesaddressStreet != null)
+                {
+                    addressesObject["street"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressStreet);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressCity != null)
+                {
+                    addressesObject["city"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCity);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressState != null)
+                {
+                    addressesObject["state"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressState);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressZip != null)
+                {
+                    addressesObject["zip"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressZip);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressCountry != null)
+                {
+                    addressesObject["country"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCountry);
+                    addressesObjectpropCount++;
+                }
+
+                if (bodypartyaddressesaddressType != null)
+                {
+                    addressesObject["type"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressType);
+                    addressesObjectpropCount++;
+                }
+
+                if (addressesObjectpropCount > 0)
+                {
+                    partyObject["addresses"] = addressesObject;
+                    partyObjectpropCount++;
+                }
+
+                if (bodypartytags != null)
+                {
+                    partyObject["tags"] = ExpressionConverter.ConvertO(bodypartytags);
+                    partyObjectpropCount++;
+                }
+
+                partyObject["type"] = "organisation";
                 partyObjectpropCount++;
-            }
+                if (partyObjectpropCount > 0)
+                {
+                    body["party"] = partyObject;
+                    bodypropCount++;
+                }
 
-            var websitesObject = new JObject();
-            var websitesObjectpropCount = 0;
-            if (bodypartywebsiteswebsiteAddress != null)
-            {
-                websitesObject["address"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteAddress);
-                websitesObjectpropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypartywebsiteswebsiteService != null)
-            {
-                websitesObject["service"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteService);
-                websitesObjectpropCount++;
-            }
-
-            if (bodypartywebsiteswebsiteType != null)
-            {
-                websitesObject["type"] = ExpressionConverter.ConvertO(bodypartywebsiteswebsiteType);
-                websitesObjectpropCount++;
-            }
-
-            if (websitesObjectpropCount > 0)
-            {
-                partyObject["websites"] = websitesObject;
-                partyObjectpropCount++;
-            }
-
-            var addressesObject = new JObject();
-            var addressesObjectpropCount = 0;
-            if (bodypartyaddressesaddressStreet != null)
-            {
-                addressesObject["street"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressStreet);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressCity != null)
-            {
-                addressesObject["city"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCity);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressState != null)
-            {
-                addressesObject["state"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressState);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressZip != null)
-            {
-                addressesObject["zip"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressZip);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressCountry != null)
-            {
-                addressesObject["country"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressCountry);
-                addressesObjectpropCount++;
-            }
-
-            if (bodypartyaddressesaddressType != null)
-            {
-                addressesObject["type"] = ExpressionConverter.ConvertO(bodypartyaddressesaddressType);
-                addressesObjectpropCount++;
-            }
-
-            if (addressesObjectpropCount > 0)
-            {
-                partyObject["addresses"] = addressesObject;
-                partyObjectpropCount++;
-            }
-
-            if (bodypartytags != null)
-            {
-                partyObject["tags"] = ExpressionConverter.ConvertO(bodypartytags);
-                partyObjectpropCount++;
-            }
-
-            partyObject["type"] = "organisation";
-            partyObjectpropCount++;
-            if (partyObjectpropCount > 0)
-            {
-                body["party"] = partyObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateOrganisationResponse>(callPayload);
+                return new ApiConnectionAction<UpdateOrganisationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
@@ -930,21 +1114,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<GetPartyResponse> GetParty(Expression<Func<string>> personId)
+        [WorkflowExpressionFactory(nameof(__BuildGetParty))]
+        public IBodyWorkflowAction<GetPartyResponse> GetParty([WorkflowExpression] Func<string> personId)
         {
-            var apiCallPath = String.Format("/parties/{0}", ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPartyResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<string> DeleteParty(Expression<Func<string>> personId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetPartyResponse> __BuildGetParty(WorkflowExpression<string> personId)
         {
-            var apiCallPath = String.Format("/parties/{0}", ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowExpression.Validate(personId, nameof(personId), required: true);
+            return new DeferredBodyAction<GetPartyResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parties/{0}", ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetPartyResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteParty))]
+        public IBodyWorkflowAction<string> DeleteParty([WorkflowExpression] Func<string> personId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildDeleteParty(WorkflowExpression<string> personId)
+        {
+            WorkflowExpression.Validate(personId, nameof(personId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parties/{0}", ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
@@ -957,91 +1165,119 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> bodytaskdescription = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<string>> bodytaskdueTime = null, Expression<Func<string>> bodytaskdetails = null, Expression<Func<int>> bodytaskpartyid = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateTask))]
+        public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> bodytaskdescription = null, [WorkflowExpression] Func<string> bodytaskdueDate = null, [WorkflowExpression] Func<string> bodytaskdueTime = null, [WorkflowExpression] Func<string> bodytaskdetails = null, [WorkflowExpression] Func<int> bodytaskpartyid = null)
         {
-            var apiCallPath = "/tasks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var taskObject = new JObject();
-            var taskObjectpropCount = 0;
-            if (bodytaskdescription != null)
-            {
-                taskObject["description"] = ExpressionConverter.ConvertO(bodytaskdescription);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskdueDate != null)
-            {
-                taskObject["dueOn"] = ExpressionConverter.ConvertO(bodytaskdueDate);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskdueTime != null)
-            {
-                taskObject["dueTime"] = ExpressionConverter.ConvertO(bodytaskdueTime);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskdetails != null)
-            {
-                taskObject["detail"] = ExpressionConverter.ConvertO(bodytaskdetails);
-                taskObjectpropCount++;
-            }
-
-            var partyObject = new JObject();
-            var partyObjectpropCount = 0;
-            if (bodytaskpartyid != null)
-            {
-                partyObject["id"] = ExpressionConverter.ConvertO(bodytaskpartyid);
-                partyObjectpropCount++;
-            }
-
-            if (partyObjectpropCount > 0)
-            {
-                taskObject["party"] = partyObject;
-                taskObjectpropCount++;
-            }
-
-            if (taskObjectpropCount > 0)
-            {
-                body["task"] = taskObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
-        public IBodyWorkflowAction<CompleteTaskResponse> CompleteTask(Expression<Func<string>> taskId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateTaskResponse> __BuildCreateTask(WorkflowExpression<string> bodytaskdescription = null, WorkflowExpression<string> bodytaskdueDate = null, WorkflowExpression<string> bodytaskdueTime = null, WorkflowExpression<string> bodytaskdetails = null, WorkflowExpression<int> bodytaskpartyid = null)
         {
-            var apiCallPath = String.Format("/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var taskObject = new JObject();
-            var taskObjectpropCount = 0;
-            taskObject["status"] = "completed";
-            taskObjectpropCount++;
-            if (taskObjectpropCount > 0)
+            WorkflowExpression.Validate(bodytaskdescription, nameof(bodytaskdescription), required: false);
+            WorkflowExpression.Validate(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
+            WorkflowExpression.Validate(bodytaskdueTime, nameof(bodytaskdueTime), required: false);
+            WorkflowExpression.Validate(bodytaskdetails, nameof(bodytaskdetails), required: false);
+            WorkflowExpression.Validate(bodytaskpartyid, nameof(bodytaskpartyid), required: false);
+            return new DeferredBodyAction<CreateTaskResponse>(() =>
             {
-                body["task"] = taskObject;
-                bodypropCount++;
-            }
+                var apiCallPath = "/tasks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var taskObject = new JObject();
+                var taskObjectpropCount = 0;
+                if (bodytaskdescription != null)
+                {
+                    taskObject["description"] = ExpressionConverter.ConvertO(bodytaskdescription);
+                    taskObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
+                if (bodytaskdueDate != null)
+                {
+                    taskObject["dueOn"] = ExpressionConverter.ConvertO(bodytaskdueDate);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskdueTime != null)
+                {
+                    taskObject["dueTime"] = ExpressionConverter.ConvertO(bodytaskdueTime);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskdetails != null)
+                {
+                    taskObject["detail"] = ExpressionConverter.ConvertO(bodytaskdetails);
+                    taskObjectpropCount++;
+                }
+
+                var partyObject = new JObject();
+                var partyObjectpropCount = 0;
+                if (bodytaskpartyid != null)
+                {
+                    partyObject["id"] = ExpressionConverter.ConvertO(bodytaskpartyid);
+                    partyObjectpropCount++;
+                }
+
+                if (partyObjectpropCount > 0)
+                {
+                    taskObject["party"] = partyObject;
+                    taskObjectpropCount++;
+                }
+
+                if (taskObjectpropCount > 0)
+                {
+                    body["task"] = taskObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
+        [WorkflowExpressionFactory(nameof(__BuildCompleteTask))]
+        public IBodyWorkflowAction<CompleteTaskResponse> CompleteTask([WorkflowExpression] Func<string> taskId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "capsulecrm")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CompleteTaskResponse> __BuildCompleteTask(WorkflowExpression<string> taskId)
+        {
+            WorkflowExpression.Validate(taskId, nameof(taskId), required: true);
+            return new DeferredBodyAction<CompleteTaskResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var taskObject = new JObject();
+                var taskObjectpropCount = 0;
+                taskObject["status"] = "completed";
+                taskObjectpropCount++;
+                if (taskObjectpropCount > 0)
+                {
+                    body["task"] = taskObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CompleteTaskResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CompleteTaskResponse>(callPayload);
+            });
         }
     }
 

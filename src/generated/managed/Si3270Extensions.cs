@@ -4,21 +4,35 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Si3270
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class Si3270Actions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "si3270")]
-        public IBodyWorkflowAction<JToken> ExecuteMethod(Expression<Func<string>> hidxName, Expression<Func<string>> methodName, Expression<Func<object>> parameters = null)
+        [WorkflowExpressionFactory(nameof(__BuildExecuteMethod))]
+        public IBodyWorkflowAction<JToken> ExecuteMethod([WorkflowExpression] Func<string> hidxName, [WorkflowExpression] Func<string> methodName, [WorkflowExpression] Func<object> parameters = null)
         {
-            var apiCallPath = String.Format("/hidx/{0}/methods/{1}/call", ExpressionConverter.ConvertWithUrlEncoding(hidxName, 1), ExpressionConverter.ConvertWithUrlEncoding(methodName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(parameters);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "si3270")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildExecuteMethod(WorkflowExpression<string> hidxName, WorkflowExpression<string> methodName, WorkflowExpression<object> parameters = null)
+        {
+            WorkflowExpression.Validate(hidxName, nameof(hidxName), required: true);
+            WorkflowExpression.Validate(methodName, nameof(methodName), required: true);
+            WorkflowExpression.Validate(parameters, nameof(parameters), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/hidx/{0}/methods/{1}/call", ExpressionConverter.ConvertWithUrlEncoding(hidxName, 1), ExpressionConverter.ConvertWithUrlEncoding(methodName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(parameters);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

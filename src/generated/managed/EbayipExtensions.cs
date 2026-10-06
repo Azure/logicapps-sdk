@@ -4,1411 +4,1823 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class EbayipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetDefaultCategoryTreeIdResponse> GetDefaultCategoryTreeId(Expression<Func<string>> marketplaceId, Expression<Func<string>> acceptLanguage)
+        [WorkflowExpressionFactory(nameof(__BuildGetDefaultCategoryTreeId))]
+        public IBodyWorkflowAction<GetDefaultCategoryTreeIdResponse> GetDefaultCategoryTreeId([WorkflowExpression] Func<string> marketplaceId, [WorkflowExpression] Func<string> acceptLanguage)
         {
-            var apiCallPath = "/commerce/taxonomy/v1/get_default_category_tree_id";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["marketplace_id"] = ExpressionConverter.Convert(marketplaceId);
-            callPayload.Headers["Accept-Language"] = ExpressionConverter.Convert(acceptLanguage);
-            return new ApiConnectionAction<GetDefaultCategoryTreeIdResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetCategorySuggestionsResponse> GetCategorySuggestions(Expression<Func<string>> categoryTreeId, Expression<Func<string>> q)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDefaultCategoryTreeIdResponse> __BuildGetDefaultCategoryTreeId(WorkflowExpression<string> marketplaceId, WorkflowExpression<string> acceptLanguage)
         {
-            var apiCallPath = String.Format("/commerce/taxonomy/v1/category_tree/{0}/get_category_suggestions", ExpressionConverter.ConvertWithUrlEncoding(categoryTreeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
-            callPayload.Headers["Accept-Encoding"] = Convert.ToString("application/gzip");
-            return new ApiConnectionAction<GetCategorySuggestionsResponse>(callPayload);
+            WorkflowExpression.Validate(marketplaceId, nameof(marketplaceId), required: true);
+            WorkflowExpression.Validate(acceptLanguage, nameof(acceptLanguage), required: true);
+            return new DeferredBodyAction<GetDefaultCategoryTreeIdResponse>(() =>
+            {
+                var apiCallPath = "/commerce/taxonomy/v1/get_default_category_tree_id";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["marketplace_id"] = ExpressionConverter.Convert(marketplaceId);
+                callPayload.Headers["Accept-Language"] = ExpressionConverter.Convert(acceptLanguage);
+                return new ApiConnectionAction<GetDefaultCategoryTreeIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetItemAspectsResponse> GetItemAspects(Expression<Func<string>> categoryTreeId, Expression<Func<string>> categoryId)
+        [WorkflowExpressionFactory(nameof(__BuildGetCategorySuggestions))]
+        public IBodyWorkflowAction<GetCategorySuggestionsResponse> GetCategorySuggestions([WorkflowExpression] Func<string> categoryTreeId, [WorkflowExpression] Func<string> q)
         {
-            var apiCallPath = String.Format("/commerce/taxonomy/v1/category_tree/{0}/get_item_aspects_for_category", ExpressionConverter.ConvertWithUrlEncoding(categoryTreeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["category_id"] = ExpressionConverter.Convert(categoryId);
-            return new ApiConnectionAction<GetItemAspectsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetFulfillmentPoliciesResponse> GetFulfillmentPolicies(Expression<Func<string>> marketplaceId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCategorySuggestionsResponse> __BuildGetCategorySuggestions(WorkflowExpression<string> categoryTreeId, WorkflowExpression<string> q)
         {
-            var apiCallPath = "/sell/account/v1/fulfillment_policy";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["marketplace_id"] = ExpressionConverter.Convert(marketplaceId);
-            return new ApiConnectionAction<GetFulfillmentPoliciesResponse>(callPayload);
+            WorkflowExpression.Validate(categoryTreeId, nameof(categoryTreeId), required: true);
+            WorkflowExpression.Validate(q, nameof(q), required: true);
+            return new DeferredBodyAction<GetCategorySuggestionsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/commerce/taxonomy/v1/category_tree/{0}/get_category_suggestions", ExpressionConverter.ConvertWithUrlEncoding(categoryTreeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
+                callPayload.Headers["Accept-Encoding"] = Convert.ToString("application/gzip");
+                return new ApiConnectionAction<GetCategorySuggestionsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetFulfillmentPolicyResponse> GetFulfillmentPolicy(Expression<Func<string>> fulfillmentPolicyId)
+        [WorkflowExpressionFactory(nameof(__BuildGetItemAspects))]
+        public IBodyWorkflowAction<GetItemAspectsResponse> GetItemAspects([WorkflowExpression] Func<string> categoryTreeId, [WorkflowExpression] Func<string> categoryId)
         {
-            var apiCallPath = String.Format("/sell/account/v1/fulfillment_policy/{0}", ExpressionConverter.ConvertWithUrlEncoding(fulfillmentPolicyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetFulfillmentPolicyResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetPaymentPolicyResponse> GetPaymentPolicy(Expression<Func<string>> paymentPolicyId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetItemAspectsResponse> __BuildGetItemAspects(WorkflowExpression<string> categoryTreeId, WorkflowExpression<string> categoryId)
         {
-            var apiCallPath = String.Format("/sell/account/v1/payment_policy/{0}", ExpressionConverter.ConvertWithUrlEncoding(paymentPolicyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPaymentPolicyResponse>(callPayload);
+            WorkflowExpression.Validate(categoryTreeId, nameof(categoryTreeId), required: true);
+            WorkflowExpression.Validate(categoryId, nameof(categoryId), required: true);
+            return new DeferredBodyAction<GetItemAspectsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/commerce/taxonomy/v1/category_tree/{0}/get_item_aspects_for_category", ExpressionConverter.ConvertWithUrlEncoding(categoryTreeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["category_id"] = ExpressionConverter.Convert(categoryId);
+                return new ApiConnectionAction<GetItemAspectsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetReturnPoliciesResponse> GetReturnPolicies(Expression<Func<string>> marketplaceId)
+        [WorkflowExpressionFactory(nameof(__BuildGetFulfillmentPolicies))]
+        public IBodyWorkflowAction<GetFulfillmentPoliciesResponse> GetFulfillmentPolicies([WorkflowExpression] Func<string> marketplaceId)
         {
-            var apiCallPath = "/sell/account/v1/return_policy";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["marketplace_id"] = ExpressionConverter.Convert(marketplaceId);
-            return new ApiConnectionAction<GetReturnPoliciesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetReturnPolicyResponse> GetReturnPolicy(Expression<Func<string>> returnPolicyId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetFulfillmentPoliciesResponse> __BuildGetFulfillmentPolicies(WorkflowExpression<string> marketplaceId)
         {
-            var apiCallPath = String.Format("/sell/account/v1/return_policy/{0}", ExpressionConverter.ConvertWithUrlEncoding(returnPolicyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetReturnPolicyResponse>(callPayload);
+            WorkflowExpression.Validate(marketplaceId, nameof(marketplaceId), required: true);
+            return new DeferredBodyAction<GetFulfillmentPoliciesResponse>(() =>
+            {
+                var apiCallPath = "/sell/account/v1/fulfillment_policy";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["marketplace_id"] = ExpressionConverter.Convert(marketplaceId);
+                return new ApiConnectionAction<GetFulfillmentPoliciesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetInventoryItemResponse> GetInventoryItem(Expression<Func<string>> sku)
+        [WorkflowExpressionFactory(nameof(__BuildGetFulfillmentPolicy))]
+        public IBodyWorkflowAction<GetFulfillmentPolicyResponse> GetFulfillmentPolicy([WorkflowExpression] Func<string> fulfillmentPolicyId)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/inventory_item/{0}", ExpressionConverter.ConvertWithUrlEncoding(sku, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
-            return new ApiConnectionAction<GetInventoryItemResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<CreateOrReplaceInventoryItemResponse> CreateOrReplaceInventoryItem(Expression<Func<string>> sku, Expression<Func<string>> contentLanguage, Expression<Func<bodyavailabilitypickupAtLocationAvailabilityInputItem[]>> bodyavailabilitypickupAtLocationAvailability = null, Expression<Func<bodyavailabilityshipToLocationAvailabilityavailabilityDistributionsInputItem[]>> bodyavailabilityshipToLocationAvailabilityavailabilityDistributions = null, Expression<Func<int>> bodyavailabilityshipToLocationAvailabilityquantity = null, Expression<Func<bodyconditionInput>> bodycondition = null, Expression<Func<string>> bodyconditionDescription = null, Expression<Func<double>> bodypackageWeightAndSizedimensionsheight = null, Expression<Func<double>> bodypackageWeightAndSizedimensionslength = null, Expression<Func<bodypackageWeightAndSizedimensionsunitInput>> bodypackageWeightAndSizedimensionsunit = null, Expression<Func<double>> bodypackageWeightAndSizedimensionswidth = null, Expression<Func<bodypackageWeightAndSizepackageTypeInput>> bodypackageWeightAndSizepackageType = null, Expression<Func<bodypackageWeightAndSizeweightunitInput>> bodypackageWeightAndSizeweightunit = null, Expression<Func<double>> bodypackageWeightAndSizeweightvalue = null, Expression<Func<string>> bodyproductbrand = null, Expression<Func<string>> bodyproductdescription = null, Expression<Func<string[]>> bodyproductean = null, Expression<Func<string>> bodyproductepid = null, Expression<Func<string[]>> bodyproductimageUrls = null, Expression<Func<string[]>> bodyproductisbn = null, Expression<Func<string>> bodyproductmpn = null, Expression<Func<string>> bodyproductsubtitle = null, Expression<Func<string>> bodyproducttitle = null, Expression<Func<string[]>> bodyproductupc = null, Expression<Func<string[]>> bodyproductvideoIds = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetFulfillmentPolicyResponse> __BuildGetFulfillmentPolicy(WorkflowExpression<string> fulfillmentPolicyId)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/inventory_item/{0}", ExpressionConverter.ConvertWithUrlEncoding(sku, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
-            callPayload.Headers["Content-Language"] = ExpressionConverter.Convert(contentLanguage);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var availabilityObject = new JObject();
-            var availabilityObjectpropCount = 0;
-            if (bodyavailabilitypickupAtLocationAvailability != null)
+            WorkflowExpression.Validate(fulfillmentPolicyId, nameof(fulfillmentPolicyId), required: true);
+            return new DeferredBodyAction<GetFulfillmentPolicyResponse>(() =>
             {
-                availabilityObject["pickupAtLocationAvailability"] = ExpressionConverter.ConvertO(bodyavailabilitypickupAtLocationAvailability);
-                availabilityObjectpropCount++;
-            }
-
-            var shipToLocationAvailabilityObject = new JObject();
-            var shipToLocationAvailabilityObjectpropCount = 0;
-            if (bodyavailabilityshipToLocationAvailabilityavailabilityDistributions != null)
-            {
-                shipToLocationAvailabilityObject["availabilityDistributions"] = ExpressionConverter.ConvertO(bodyavailabilityshipToLocationAvailabilityavailabilityDistributions);
-                shipToLocationAvailabilityObjectpropCount++;
-            }
-
-            if (bodyavailabilityshipToLocationAvailabilityquantity != null)
-            {
-                shipToLocationAvailabilityObject["quantity"] = ExpressionConverter.ConvertO(bodyavailabilityshipToLocationAvailabilityquantity);
-                shipToLocationAvailabilityObjectpropCount++;
-            }
-
-            if (shipToLocationAvailabilityObjectpropCount > 0)
-            {
-                availabilityObject["shipToLocationAvailability"] = shipToLocationAvailabilityObject;
-                availabilityObjectpropCount++;
-            }
-
-            if (availabilityObjectpropCount > 0)
-            {
-                body["availability"] = availabilityObject;
-                bodypropCount++;
-            }
-
-            if (bodycondition != null)
-            {
-                body["condition"] = ExpressionConverter.ConvertO(bodycondition);
-                bodypropCount++;
-            }
-
-            if (bodyconditionDescription != null)
-            {
-                body["conditionDescription"] = ExpressionConverter.ConvertO(bodyconditionDescription);
-                bodypropCount++;
-            }
-
-            var packageWeightAndSizeObject = new JObject();
-            var packageWeightAndSizeObjectpropCount = 0;
-            var dimensionsObject = new JObject();
-            var dimensionsObjectpropCount = 0;
-            if (bodypackageWeightAndSizedimensionsheight != null)
-            {
-                dimensionsObject["height"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizedimensionsheight);
-                dimensionsObjectpropCount++;
-            }
-
-            if (bodypackageWeightAndSizedimensionslength != null)
-            {
-                dimensionsObject["length"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizedimensionslength);
-                dimensionsObjectpropCount++;
-            }
-
-            if (bodypackageWeightAndSizedimensionsunit != null)
-            {
-                dimensionsObject["unit"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizedimensionsunit);
-                dimensionsObjectpropCount++;
-            }
-
-            if (bodypackageWeightAndSizedimensionswidth != null)
-            {
-                dimensionsObject["width"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizedimensionswidth);
-                dimensionsObjectpropCount++;
-            }
-
-            if (dimensionsObjectpropCount > 0)
-            {
-                packageWeightAndSizeObject["dimensions"] = dimensionsObject;
-                packageWeightAndSizeObjectpropCount++;
-            }
-
-            if (bodypackageWeightAndSizepackageType != null)
-            {
-                packageWeightAndSizeObject["packageType"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizepackageType);
-                packageWeightAndSizeObjectpropCount++;
-            }
-
-            var weightObject = new JObject();
-            var weightObjectpropCount = 0;
-            if (bodypackageWeightAndSizeweightunit != null)
-            {
-                weightObject["unit"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizeweightunit);
-                weightObjectpropCount++;
-            }
-
-            if (bodypackageWeightAndSizeweightvalue != null)
-            {
-                weightObject["value"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizeweightvalue);
-                weightObjectpropCount++;
-            }
-
-            if (weightObjectpropCount > 0)
-            {
-                packageWeightAndSizeObject["weight"] = weightObject;
-                packageWeightAndSizeObjectpropCount++;
-            }
-
-            if (packageWeightAndSizeObjectpropCount > 0)
-            {
-                body["packageWeightAndSize"] = packageWeightAndSizeObject;
-                bodypropCount++;
-            }
-
-            var productObject = new JObject();
-            var productObjectpropCount = 0;
-            var aspectsObject = new JObject();
-            var aspectsObjectpropCount = 0;
-            if (aspectsObjectpropCount > 0)
-            {
-                productObject["aspects"] = aspectsObject;
-                productObjectpropCount++;
-            }
-
-            if (bodyproductbrand != null)
-            {
-                productObject["brand"] = ExpressionConverter.ConvertO(bodyproductbrand);
-                productObjectpropCount++;
-            }
-
-            if (bodyproductdescription != null)
-            {
-                productObject["description"] = ExpressionConverter.ConvertO(bodyproductdescription);
-                productObjectpropCount++;
-            }
-
-            if (bodyproductean != null)
-            {
-                productObject["ean"] = ExpressionConverter.ConvertO(bodyproductean);
-                productObjectpropCount++;
-            }
-
-            if (bodyproductepid != null)
-            {
-                productObject["epid"] = ExpressionConverter.ConvertO(bodyproductepid);
-                productObjectpropCount++;
-            }
-
-            if (bodyproductimageUrls != null)
-            {
-                productObject["imageUrls"] = ExpressionConverter.ConvertO(bodyproductimageUrls);
-                productObjectpropCount++;
-            }
-
-            if (bodyproductisbn != null)
-            {
-                productObject["isbn"] = ExpressionConverter.ConvertO(bodyproductisbn);
-                productObjectpropCount++;
-            }
-
-            if (bodyproductmpn != null)
-            {
-                productObject["mpn"] = ExpressionConverter.ConvertO(bodyproductmpn);
-                productObjectpropCount++;
-            }
-
-            if (bodyproductsubtitle != null)
-            {
-                productObject["subtitle"] = ExpressionConverter.ConvertO(bodyproductsubtitle);
-                productObjectpropCount++;
-            }
-
-            if (bodyproducttitle != null)
-            {
-                productObject["title"] = ExpressionConverter.ConvertO(bodyproducttitle);
-                productObjectpropCount++;
-            }
-
-            if (bodyproductupc != null)
-            {
-                productObject["upc"] = ExpressionConverter.ConvertO(bodyproductupc);
-                productObjectpropCount++;
-            }
-
-            if (bodyproductvideoIds != null)
-            {
-                productObject["videoIds"] = ExpressionConverter.ConvertO(bodyproductvideoIds);
-                productObjectpropCount++;
-            }
-
-            if (productObjectpropCount > 0)
-            {
-                body["product"] = productObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateOrReplaceInventoryItemResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/account/v1/fulfillment_policy/{0}", ExpressionConverter.ConvertWithUrlEncoding(fulfillmentPolicyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetFulfillmentPolicyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetInventoryItemsResponse> GetInventoryItems(Expression<Func<string>> Limit = null, Expression<Func<string>> Offset = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetPaymentPolicy))]
+        public IBodyWorkflowAction<GetPaymentPolicyResponse> GetPaymentPolicy([WorkflowExpression] Func<string> paymentPolicyId)
         {
-            var apiCallPath = "/sell/inventory/v1/inventory_item";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Limit != null)
-                callPayload.Queries[" limit"] = ExpressionConverter.Convert(Limit);
-            if (Offset != null)
-                callPayload.Queries[" offset"] = ExpressionConverter.Convert(Offset);
-            callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
-            return new ApiConnectionAction<GetInventoryItemsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetInventoryLocationResponse> GetInventoryLocation(Expression<Func<string>> merchantLocationKey)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetPaymentPolicyResponse> __BuildGetPaymentPolicy(WorkflowExpression<string> paymentPolicyId)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/location/{0}", ExpressionConverter.ConvertWithUrlEncoding(merchantLocationKey, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetInventoryLocationResponse>(callPayload);
+            WorkflowExpression.Validate(paymentPolicyId, nameof(paymentPolicyId), required: true);
+            return new DeferredBodyAction<GetPaymentPolicyResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/account/v1/payment_policy/{0}", ExpressionConverter.ConvertWithUrlEncoding(paymentPolicyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetPaymentPolicyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<string> CreateInventoryLocation(Expression<Func<string>> merchantLocationKey, Expression<Func<string>> bodylocationaddressaddressLine1 = null, Expression<Func<string>> bodylocationaddressaddressLine2 = null, Expression<Func<string>> bodylocationaddresscity = null, Expression<Func<string>> bodylocationaddresscountry = null, Expression<Func<string>> bodylocationaddresscounty = null, Expression<Func<string>> bodylocationaddresspostalCode = null, Expression<Func<string>> bodylocationaddressstateOrProvince = null, Expression<Func<string>> bodylocationgeoCoordinateslatitude = null, Expression<Func<string>> bodylocationgeoCoordinateslongitude = null, Expression<Func<string>> bodylocationAdditionalInformation = null, Expression<Func<string>> bodylocationInstructions = null, Expression<Func<bodylocationTypesInputItem[]>> bodylocationTypes = null, Expression<Func<string>> bodylocationWebUrl = null, Expression<Func<string>> bodymerchantLocationStatus = null, Expression<Func<string>> bodyname = null, Expression<Func<bodyoperatingHoursInputItem[]>> bodyoperatingHours = null, Expression<Func<string>> bodyphone = null, Expression<Func<bodyspecialHoursInputItem[]>> bodyspecialHours = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetReturnPolicies))]
+        public IBodyWorkflowAction<GetReturnPoliciesResponse> GetReturnPolicies([WorkflowExpression] Func<string> marketplaceId)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/location/{0}", ExpressionConverter.ConvertWithUrlEncoding(merchantLocationKey, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            var addressObject = new JObject();
-            var addressObjectpropCount = 0;
-            if (bodylocationaddressaddressLine1 != null)
-            {
-                addressObject["addressLine1"] = ExpressionConverter.ConvertO(bodylocationaddressaddressLine1);
-                addressObjectpropCount++;
-            }
-
-            if (bodylocationaddressaddressLine2 != null)
-            {
-                addressObject["addressLine2"] = ExpressionConverter.ConvertO(bodylocationaddressaddressLine2);
-                addressObjectpropCount++;
-            }
-
-            if (bodylocationaddresscity != null)
-            {
-                addressObject["city"] = ExpressionConverter.ConvertO(bodylocationaddresscity);
-                addressObjectpropCount++;
-            }
-
-            if (bodylocationaddresscountry != null)
-            {
-                addressObject["country"] = ExpressionConverter.ConvertO(bodylocationaddresscountry);
-                addressObjectpropCount++;
-            }
-
-            if (bodylocationaddresscounty != null)
-            {
-                addressObject["county"] = ExpressionConverter.ConvertO(bodylocationaddresscounty);
-                addressObjectpropCount++;
-            }
-
-            if (bodylocationaddresspostalCode != null)
-            {
-                addressObject["postalCode"] = ExpressionConverter.ConvertO(bodylocationaddresspostalCode);
-                addressObjectpropCount++;
-            }
-
-            if (bodylocationaddressstateOrProvince != null)
-            {
-                addressObject["stateOrProvince"] = ExpressionConverter.ConvertO(bodylocationaddressstateOrProvince);
-                addressObjectpropCount++;
-            }
-
-            if (addressObjectpropCount > 0)
-            {
-                locationObject["address"] = addressObject;
-                locationObjectpropCount++;
-            }
-
-            var geoCoordinatesObject = new JObject();
-            var geoCoordinatesObjectpropCount = 0;
-            if (bodylocationgeoCoordinateslatitude != null)
-            {
-                geoCoordinatesObject["latitude"] = ExpressionConverter.ConvertO(bodylocationgeoCoordinateslatitude);
-                geoCoordinatesObjectpropCount++;
-            }
-
-            if (bodylocationgeoCoordinateslongitude != null)
-            {
-                geoCoordinatesObject["longitude"] = ExpressionConverter.ConvertO(bodylocationgeoCoordinateslongitude);
-                geoCoordinatesObjectpropCount++;
-            }
-
-            if (geoCoordinatesObjectpropCount > 0)
-            {
-                locationObject["geoCoordinates"] = geoCoordinatesObject;
-                locationObjectpropCount++;
-            }
-
-            if (locationObjectpropCount > 0)
-            {
-                body["location"] = locationObject;
-                bodypropCount++;
-            }
-
-            if (bodylocationAdditionalInformation != null)
-            {
-                body["locationAdditionalInformation"] = ExpressionConverter.ConvertO(bodylocationAdditionalInformation);
-                bodypropCount++;
-            }
-
-            if (bodylocationInstructions != null)
-            {
-                body["locationInstructions"] = ExpressionConverter.ConvertO(bodylocationInstructions);
-                bodypropCount++;
-            }
-
-            if (bodylocationTypes != null)
-            {
-                body["locationTypes"] = ExpressionConverter.ConvertO(bodylocationTypes);
-                bodypropCount++;
-            }
-
-            if (bodylocationWebUrl != null)
-            {
-                body["locationWebUrl"] = ExpressionConverter.ConvertO(bodylocationWebUrl);
-                bodypropCount++;
-            }
-
-            if (bodymerchantLocationStatus != null)
-            {
-                body["merchantLocationStatus"] = ExpressionConverter.ConvertO(bodymerchantLocationStatus);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodyoperatingHours != null)
-            {
-                body["operatingHours"] = ExpressionConverter.ConvertO(bodyoperatingHours);
-                bodypropCount++;
-            }
-
-            if (bodyphone != null)
-            {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
-                bodypropCount++;
-            }
-
-            if (bodyspecialHours != null)
-            {
-                body["specialHours"] = ExpressionConverter.ConvertO(bodyspecialHours);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetInventoryLocationsResponse> GetInventoryLocations(Expression<Func<string>> Offset = null, Expression<Func<string>> Limit = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetReturnPoliciesResponse> __BuildGetReturnPolicies(WorkflowExpression<string> marketplaceId)
         {
-            var apiCallPath = "/sell/inventory/v1/location";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Offset != null)
-                callPayload.Queries[" offset"] = ExpressionConverter.Convert(Offset);
-            if (Limit != null)
-                callPayload.Queries[" limit"] = ExpressionConverter.Convert(Limit);
-            return new ApiConnectionAction<GetInventoryLocationsResponse>(callPayload);
+            WorkflowExpression.Validate(marketplaceId, nameof(marketplaceId), required: true);
+            return new DeferredBodyAction<GetReturnPoliciesResponse>(() =>
+            {
+                var apiCallPath = "/sell/account/v1/return_policy";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["marketplace_id"] = ExpressionConverter.Convert(marketplaceId);
+                return new ApiConnectionAction<GetReturnPoliciesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetItemConditionPoliciesResponse> GetItemConditionPolicies(Expression<Func<string>> marketplaceId, Expression<Func<string>> Filter = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetReturnPolicy))]
+        public IBodyWorkflowAction<GetReturnPolicyResponse> GetReturnPolicy([WorkflowExpression] Func<string> returnPolicyId)
         {
-            var apiCallPath = String.Format("/sell/metadata/v1/marketplace/{0}/get_item_condition_policies", ExpressionConverter.ConvertWithUrlEncoding(marketplaceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Filter != null)
-                callPayload.Queries[" filter"] = ExpressionConverter.Convert(Filter);
-            return new ApiConnectionAction<GetItemConditionPoliciesResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetOffersResponse> GetOffers(Expression<Func<string>> sku, Expression<Func<string>> MarketplaceId = null, Expression<Func<string>> Format = null, Expression<Func<string>> Limit = null, Expression<Func<string>> Offset = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetReturnPolicyResponse> __BuildGetReturnPolicy(WorkflowExpression<string> returnPolicyId)
         {
-            var apiCallPath = "/sell/inventory/v1/offer";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sku"] = ExpressionConverter.Convert(sku);
-            if (MarketplaceId != null)
-                callPayload.Queries[" marketplace_id"] = ExpressionConverter.Convert(MarketplaceId);
-            if (Format != null)
-                callPayload.Queries[" format"] = ExpressionConverter.Convert(Format);
-            if (Limit != null)
-                callPayload.Queries[" limit"] = ExpressionConverter.Convert(Limit);
-            if (Offset != null)
-                callPayload.Queries[" offset"] = ExpressionConverter.Convert(Offset);
-            callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
-            return new ApiConnectionAction<GetOffersResponse>(callPayload);
+            WorkflowExpression.Validate(returnPolicyId, nameof(returnPolicyId), required: true);
+            return new DeferredBodyAction<GetReturnPolicyResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/account/v1/return_policy/{0}", ExpressionConverter.ConvertWithUrlEncoding(returnPolicyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetReturnPolicyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<CreateOfferResponse> CreateOffer(Expression<Func<int>> bodyavailableQuantity = null, Expression<Func<string>> bodycategoryId = null, Expression<Func<string>> bodycharitycharityId = null, Expression<Func<string>> bodycharitydonationPercentage = null, Expression<Func<string>> bodyextendedProducerResponsibilityproducerProductId = null, Expression<Func<string>> bodyextendedProducerResponsibilityproductPackageId = null, Expression<Func<string>> bodyextendedProducerResponsibilityshipmentPackageId = null, Expression<Func<string>> bodyextendedProducerResponsibilityproductDocumentationId = null, Expression<Func<string>> bodyextendedProducerResponsibilityecoParticipationFeecurrency = null, Expression<Func<string>> bodyextendedProducerResponsibilityecoParticipationFeevalue = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<bool>> bodyhideBuyerDetails = null, Expression<Func<bool>> bodyincludeCatalogProductDetails = null, Expression<Func<string>> bodylistingDescription = null, Expression<Func<bodylistingDurationInput>> bodylistingDuration = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoAcceptPricevalue = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoDeclinePricevalue = null, Expression<Func<bool>> bodylistingPoliciesbestOfferTermsbestOfferEnabled = null, Expression<Func<bool>> bodylistingPolicieseBayPlusIfEligible = null, Expression<Func<string>> bodylistingPoliciesfulfillmentPolicyId = null, Expression<Func<string>> bodylistingPoliciespaymentPolicyId = null, Expression<Func<string[]>> bodylistingPoliciesproductCompliancePolicyIds = null, Expression<Func<string>> bodylistingPoliciesreturnPolicyId = null, Expression<Func<bodylistingPoliciesshippingCostOverridesInputItem[]>> bodylistingPoliciesshippingCostOverrides = null, Expression<Func<string>> bodylistingPoliciestakeBackPolicyId = null, Expression<Func<string>> bodylistingStartDate = null, Expression<Func<int>> bodylotSize = null, Expression<Func<string>> bodymarketplaceId = null, Expression<Func<string>> bodymerchantLocationKey = null, Expression<Func<string>> bodypricingSummaryauctionReservePricecurrency = null, Expression<Func<string>> bodypricingSummaryauctionReservePricevalue = null, Expression<Func<string>> bodypricingSummaryauctionStartPricecurrency = null, Expression<Func<string>> bodypricingSummaryauctionStartPricevalue = null, Expression<Func<string>> bodypricingSummaryminimumAdvertisedPricecurrency = null, Expression<Func<string>> bodypricingSummaryminimumAdvertisedPricevalue = null, Expression<Func<bodypricingSummaryoriginallySoldForRetailPriceOnInput>> bodypricingSummaryoriginallySoldForRetailPriceOn = null, Expression<Func<string>> bodypricingSummaryoriginalRetailPricecurrency = null, Expression<Func<string>> bodypricingSummaryoriginalRetailPricevalue = null, Expression<Func<string>> bodypricingSummarypricecurrency = null, Expression<Func<string>> bodypricingSummarypricevalue = null, Expression<Func<bodypricingSummarypricingVisibilityInput>> bodypricingSummarypricingVisibility = null, Expression<Func<int>> bodyquantityLimitPerBuyer = null, Expression<Func<string>> bodysecondaryCategoryId = null, Expression<Func<string>> bodysku = null, Expression<Func<string[]>> bodystoreCategoryNames = null, Expression<Func<bool>> bodytaxapplyTax = null, Expression<Func<string>> bodytaxthirdPartyTaxCategory = null, Expression<Func<double>> bodytaxvatPercentage = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetInventoryItem))]
+        public IBodyWorkflowAction<GetInventoryItemResponse> GetInventoryItem([WorkflowExpression] Func<string> sku)
         {
-            var apiCallPath = "/sell/inventory/v1/offer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Language"] = Convert.ToString("en-US");
-            callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyavailableQuantity != null)
-            {
-                body["availableQuantity"] = ExpressionConverter.ConvertO(bodyavailableQuantity);
-                bodypropCount++;
-            }
-
-            if (bodycategoryId != null)
-            {
-                body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
-                bodypropCount++;
-            }
-
-            var charityObject = new JObject();
-            var charityObjectpropCount = 0;
-            if (bodycharitycharityId != null)
-            {
-                charityObject["charityId"] = ExpressionConverter.ConvertO(bodycharitycharityId);
-                charityObjectpropCount++;
-            }
-
-            if (bodycharitydonationPercentage != null)
-            {
-                charityObject["donationPercentage"] = ExpressionConverter.ConvertO(bodycharitydonationPercentage);
-                charityObjectpropCount++;
-            }
-
-            if (charityObjectpropCount > 0)
-            {
-                body["charity"] = charityObject;
-                bodypropCount++;
-            }
-
-            var extendedProducerResponsibilityObject = new JObject();
-            var extendedProducerResponsibilityObjectpropCount = 0;
-            if (bodyextendedProducerResponsibilityproducerProductId != null)
-            {
-                extendedProducerResponsibilityObject["producerProductId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproducerProductId);
-                extendedProducerResponsibilityObjectpropCount++;
-            }
-
-            if (bodyextendedProducerResponsibilityproductPackageId != null)
-            {
-                extendedProducerResponsibilityObject["productPackageId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproductPackageId);
-                extendedProducerResponsibilityObjectpropCount++;
-            }
-
-            if (bodyextendedProducerResponsibilityshipmentPackageId != null)
-            {
-                extendedProducerResponsibilityObject["shipmentPackageId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityshipmentPackageId);
-                extendedProducerResponsibilityObjectpropCount++;
-            }
-
-            if (bodyextendedProducerResponsibilityproductDocumentationId != null)
-            {
-                extendedProducerResponsibilityObject["productDocumentationId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproductDocumentationId);
-                extendedProducerResponsibilityObjectpropCount++;
-            }
-
-            var ecoParticipationFeeObject = new JObject();
-            var ecoParticipationFeeObjectpropCount = 0;
-            if (bodyextendedProducerResponsibilityecoParticipationFeecurrency != null)
-            {
-                ecoParticipationFeeObject["currency"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityecoParticipationFeecurrency);
-                ecoParticipationFeeObjectpropCount++;
-            }
-
-            if (bodyextendedProducerResponsibilityecoParticipationFeevalue != null)
-            {
-                ecoParticipationFeeObject["value"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityecoParticipationFeevalue);
-                ecoParticipationFeeObjectpropCount++;
-            }
-
-            if (ecoParticipationFeeObjectpropCount > 0)
-            {
-                extendedProducerResponsibilityObject["ecoParticipationFee"] = ecoParticipationFeeObject;
-                extendedProducerResponsibilityObjectpropCount++;
-            }
-
-            if (extendedProducerResponsibilityObjectpropCount > 0)
-            {
-                body["extendedProducerResponsibility"] = extendedProducerResponsibilityObject;
-                bodypropCount++;
-            }
-
-            if (bodyformat != null)
-            {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
-                bodypropCount++;
-            }
-
-            if (bodyhideBuyerDetails != null)
-            {
-                body["hideBuyerDetails"] = ExpressionConverter.ConvertO(bodyhideBuyerDetails);
-                bodypropCount++;
-            }
-
-            if (bodyincludeCatalogProductDetails != null)
-            {
-                body["includeCatalogProductDetails"] = ExpressionConverter.ConvertO(bodyincludeCatalogProductDetails);
-                bodypropCount++;
-            }
-
-            if (bodylistingDescription != null)
-            {
-                body["listingDescription"] = ExpressionConverter.ConvertO(bodylistingDescription);
-                bodypropCount++;
-            }
-
-            if (bodylistingDuration != null)
-            {
-                body["listingDuration"] = ExpressionConverter.ConvertO(bodylistingDuration);
-                bodypropCount++;
-            }
-
-            var listingPoliciesObject = new JObject();
-            var listingPoliciesObjectpropCount = 0;
-            var bestOfferTermsObject = new JObject();
-            var bestOfferTermsObjectpropCount = 0;
-            var autoAcceptPriceObject = new JObject();
-            var autoAcceptPriceObjectpropCount = 0;
-            if (bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency != null)
-            {
-                autoAcceptPriceObject["currency"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency);
-                autoAcceptPriceObjectpropCount++;
-            }
-
-            if (bodylistingPoliciesbestOfferTermsautoAcceptPricevalue != null)
-            {
-                autoAcceptPriceObject["value"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue);
-                autoAcceptPriceObjectpropCount++;
-            }
-
-            if (autoAcceptPriceObjectpropCount > 0)
-            {
-                bestOfferTermsObject["autoAcceptPrice"] = autoAcceptPriceObject;
-                bestOfferTermsObjectpropCount++;
-            }
-
-            var autoDeclinePriceObject = new JObject();
-            var autoDeclinePriceObjectpropCount = 0;
-            if (bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency != null)
-            {
-                autoDeclinePriceObject["currency"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency);
-                autoDeclinePriceObjectpropCount++;
-            }
-
-            if (bodylistingPoliciesbestOfferTermsautoDeclinePricevalue != null)
-            {
-                autoDeclinePriceObject["value"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue);
-                autoDeclinePriceObjectpropCount++;
-            }
-
-            if (autoDeclinePriceObjectpropCount > 0)
-            {
-                bestOfferTermsObject["autoDeclinePrice"] = autoDeclinePriceObject;
-                bestOfferTermsObjectpropCount++;
-            }
-
-            if (bodylistingPoliciesbestOfferTermsbestOfferEnabled != null)
-            {
-                bestOfferTermsObject["bestOfferEnabled"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsbestOfferEnabled);
-                bestOfferTermsObjectpropCount++;
-            }
-
-            if (bestOfferTermsObjectpropCount > 0)
-            {
-                listingPoliciesObject["bestOfferTerms"] = bestOfferTermsObject;
-                listingPoliciesObjectpropCount++;
-            }
-
-            if (bodylistingPolicieseBayPlusIfEligible != null)
-            {
-                listingPoliciesObject["eBayPlusIfEligible"] = ExpressionConverter.ConvertO(bodylistingPolicieseBayPlusIfEligible);
-                listingPoliciesObjectpropCount++;
-            }
-
-            if (bodylistingPoliciesfulfillmentPolicyId != null)
-            {
-                listingPoliciesObject["fulfillmentPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciesfulfillmentPolicyId);
-                listingPoliciesObjectpropCount++;
-            }
-
-            if (bodylistingPoliciespaymentPolicyId != null)
-            {
-                listingPoliciesObject["paymentPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciespaymentPolicyId);
-                listingPoliciesObjectpropCount++;
-            }
-
-            if (bodylistingPoliciesproductCompliancePolicyIds != null)
-            {
-                listingPoliciesObject["productCompliancePolicyIds"] = ExpressionConverter.ConvertO(bodylistingPoliciesproductCompliancePolicyIds);
-                listingPoliciesObjectpropCount++;
-            }
-
-            if (bodylistingPoliciesreturnPolicyId != null)
-            {
-                listingPoliciesObject["returnPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciesreturnPolicyId);
-                listingPoliciesObjectpropCount++;
-            }
-
-            if (bodylistingPoliciesshippingCostOverrides != null)
-            {
-                listingPoliciesObject["shippingCostOverrides"] = ExpressionConverter.ConvertO(bodylistingPoliciesshippingCostOverrides);
-                listingPoliciesObjectpropCount++;
-            }
-
-            if (bodylistingPoliciestakeBackPolicyId != null)
-            {
-                listingPoliciesObject["takeBackPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciestakeBackPolicyId);
-                listingPoliciesObjectpropCount++;
-            }
-
-            if (listingPoliciesObjectpropCount > 0)
-            {
-                body["listingPolicies"] = listingPoliciesObject;
-                bodypropCount++;
-            }
-
-            if (bodylistingStartDate != null)
-            {
-                body["listingStartDate"] = ExpressionConverter.ConvertO(bodylistingStartDate);
-                bodypropCount++;
-            }
-
-            if (bodylotSize != null)
-            {
-                body["lotSize"] = ExpressionConverter.ConvertO(bodylotSize);
-                bodypropCount++;
-            }
-
-            if (bodymarketplaceId != null)
-            {
-                body["marketplaceId"] = ExpressionConverter.ConvertO(bodymarketplaceId);
-                bodypropCount++;
-            }
-
-            if (bodymerchantLocationKey != null)
-            {
-                body["merchantLocationKey"] = ExpressionConverter.ConvertO(bodymerchantLocationKey);
-                bodypropCount++;
-            }
-
-            var pricingSummaryObject = new JObject();
-            var pricingSummaryObjectpropCount = 0;
-            var auctionReservePriceObject = new JObject();
-            var auctionReservePriceObjectpropCount = 0;
-            if (bodypricingSummaryauctionReservePricecurrency != null)
-            {
-                auctionReservePriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionReservePricecurrency);
-                auctionReservePriceObjectpropCount++;
-            }
-
-            if (bodypricingSummaryauctionReservePricevalue != null)
-            {
-                auctionReservePriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionReservePricevalue);
-                auctionReservePriceObjectpropCount++;
-            }
-
-            if (auctionReservePriceObjectpropCount > 0)
-            {
-                pricingSummaryObject["auctionReservePrice"] = auctionReservePriceObject;
-                pricingSummaryObjectpropCount++;
-            }
-
-            var auctionStartPriceObject = new JObject();
-            var auctionStartPriceObjectpropCount = 0;
-            if (bodypricingSummaryauctionStartPricecurrency != null)
-            {
-                auctionStartPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionStartPricecurrency);
-                auctionStartPriceObjectpropCount++;
-            }
-
-            if (bodypricingSummaryauctionStartPricevalue != null)
-            {
-                auctionStartPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionStartPricevalue);
-                auctionStartPriceObjectpropCount++;
-            }
-
-            if (auctionStartPriceObjectpropCount > 0)
-            {
-                pricingSummaryObject["auctionStartPrice"] = auctionStartPriceObject;
-                pricingSummaryObjectpropCount++;
-            }
-
-            var minimumAdvertisedPriceObject = new JObject();
-            var minimumAdvertisedPriceObjectpropCount = 0;
-            if (bodypricingSummaryminimumAdvertisedPricecurrency != null)
-            {
-                minimumAdvertisedPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryminimumAdvertisedPricecurrency);
-                minimumAdvertisedPriceObjectpropCount++;
-            }
-
-            if (bodypricingSummaryminimumAdvertisedPricevalue != null)
-            {
-                minimumAdvertisedPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryminimumAdvertisedPricevalue);
-                minimumAdvertisedPriceObjectpropCount++;
-            }
-
-            if (minimumAdvertisedPriceObjectpropCount > 0)
-            {
-                pricingSummaryObject["minimumAdvertisedPrice"] = minimumAdvertisedPriceObject;
-                pricingSummaryObjectpropCount++;
-            }
-
-            if (bodypricingSummaryoriginallySoldForRetailPriceOn != null)
-            {
-                pricingSummaryObject["originallySoldForRetailPriceOn"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginallySoldForRetailPriceOn);
-                pricingSummaryObjectpropCount++;
-            }
-
-            var originalRetailPriceObject = new JObject();
-            var originalRetailPriceObjectpropCount = 0;
-            if (bodypricingSummaryoriginalRetailPricecurrency != null)
-            {
-                originalRetailPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginalRetailPricecurrency);
-                originalRetailPriceObjectpropCount++;
-            }
-
-            if (bodypricingSummaryoriginalRetailPricevalue != null)
-            {
-                originalRetailPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginalRetailPricevalue);
-                originalRetailPriceObjectpropCount++;
-            }
-
-            if (originalRetailPriceObjectpropCount > 0)
-            {
-                pricingSummaryObject["originalRetailPrice"] = originalRetailPriceObject;
-                pricingSummaryObjectpropCount++;
-            }
-
-            var priceObject = new JObject();
-            var priceObjectpropCount = 0;
-            if (bodypricingSummarypricecurrency != null)
-            {
-                priceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummarypricecurrency);
-                priceObjectpropCount++;
-            }
-
-            if (bodypricingSummarypricevalue != null)
-            {
-                priceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummarypricevalue);
-                priceObjectpropCount++;
-            }
-
-            if (priceObjectpropCount > 0)
-            {
-                pricingSummaryObject["price"] = priceObject;
-                pricingSummaryObjectpropCount++;
-            }
-
-            if (bodypricingSummarypricingVisibility != null)
-            {
-                pricingSummaryObject["pricingVisibility"] = ExpressionConverter.ConvertO(bodypricingSummarypricingVisibility);
-                pricingSummaryObjectpropCount++;
-            }
-
-            if (pricingSummaryObjectpropCount > 0)
-            {
-                body["pricingSummary"] = pricingSummaryObject;
-                bodypropCount++;
-            }
-
-            if (bodyquantityLimitPerBuyer != null)
-            {
-                body["quantityLimitPerBuyer"] = ExpressionConverter.ConvertO(bodyquantityLimitPerBuyer);
-                bodypropCount++;
-            }
-
-            if (bodysecondaryCategoryId != null)
-            {
-                body["secondaryCategoryId"] = ExpressionConverter.ConvertO(bodysecondaryCategoryId);
-                bodypropCount++;
-            }
-
-            if (bodysku != null)
-            {
-                body["sku"] = ExpressionConverter.ConvertO(bodysku);
-                bodypropCount++;
-            }
-
-            if (bodystoreCategoryNames != null)
-            {
-                body["storeCategoryNames"] = ExpressionConverter.ConvertO(bodystoreCategoryNames);
-                bodypropCount++;
-            }
-
-            var taxObject = new JObject();
-            var taxObjectpropCount = 0;
-            if (bodytaxapplyTax != null)
-            {
-                taxObject["applyTax"] = ExpressionConverter.ConvertO(bodytaxapplyTax);
-                taxObjectpropCount++;
-            }
-
-            if (bodytaxthirdPartyTaxCategory != null)
-            {
-                taxObject["thirdPartyTaxCategory"] = ExpressionConverter.ConvertO(bodytaxthirdPartyTaxCategory);
-                taxObjectpropCount++;
-            }
-
-            if (bodytaxvatPercentage != null)
-            {
-                taxObject["vatPercentage"] = ExpressionConverter.ConvertO(bodytaxvatPercentage);
-                taxObjectpropCount++;
-            }
-
-            if (taxObjectpropCount > 0)
-            {
-                body["tax"] = taxObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateOfferResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<GetOfferResponse> GetOffer(Expression<Func<string>> offerId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetInventoryItemResponse> __BuildGetInventoryItem(WorkflowExpression<string> sku)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/offer/{0}", ExpressionConverter.ConvertWithUrlEncoding(offerId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
-            return new ApiConnectionAction<GetOfferResponse>(callPayload);
+            WorkflowExpression.Validate(sku, nameof(sku), required: true);
+            return new DeferredBodyAction<GetInventoryItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/inventory_item/{0}", ExpressionConverter.ConvertWithUrlEncoding(sku, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
+                return new ApiConnectionAction<GetInventoryItemResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<string> DeleteOffer(Expression<Func<string>> offerId)
+        [WorkflowExpressionFactory(nameof(__BuildCreateOrReplaceInventoryItem))]
+        public IBodyWorkflowAction<CreateOrReplaceInventoryItemResponse> CreateOrReplaceInventoryItem([WorkflowExpression] Func<string> sku, [WorkflowExpression] Func<string> contentLanguage, [WorkflowExpression] Func<bodyavailabilitypickupAtLocationAvailabilityInputItem[]> bodyavailabilitypickupAtLocationAvailability = null, [WorkflowExpression] Func<bodyavailabilityshipToLocationAvailabilityavailabilityDistributionsInputItem[]> bodyavailabilityshipToLocationAvailabilityavailabilityDistributions = null, [WorkflowExpression] Func<int> bodyavailabilityshipToLocationAvailabilityquantity = null, [WorkflowExpression] Func<bodyconditionInput> bodycondition = null, [WorkflowExpression] Func<string> bodyconditionDescription = null, [WorkflowExpression] Func<double> bodypackageWeightAndSizedimensionsheight = null, [WorkflowExpression] Func<double> bodypackageWeightAndSizedimensionslength = null, [WorkflowExpression] Func<bodypackageWeightAndSizedimensionsunitInput> bodypackageWeightAndSizedimensionsunit = null, [WorkflowExpression] Func<double> bodypackageWeightAndSizedimensionswidth = null, [WorkflowExpression] Func<bodypackageWeightAndSizepackageTypeInput> bodypackageWeightAndSizepackageType = null, [WorkflowExpression] Func<bodypackageWeightAndSizeweightunitInput> bodypackageWeightAndSizeweightunit = null, [WorkflowExpression] Func<double> bodypackageWeightAndSizeweightvalue = null, [WorkflowExpression] Func<string> bodyproductbrand = null, [WorkflowExpression] Func<string> bodyproductdescription = null, [WorkflowExpression] Func<string[]> bodyproductean = null, [WorkflowExpression] Func<string> bodyproductepid = null, [WorkflowExpression] Func<string[]> bodyproductimageUrls = null, [WorkflowExpression] Func<string[]> bodyproductisbn = null, [WorkflowExpression] Func<string> bodyproductmpn = null, [WorkflowExpression] Func<string> bodyproductsubtitle = null, [WorkflowExpression] Func<string> bodyproducttitle = null, [WorkflowExpression] Func<string[]> bodyproductupc = null, [WorkflowExpression] Func<string[]> bodyproductvideoIds = null)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/offer/{0}", ExpressionConverter.ConvertWithUrlEncoding(offerId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<UpdateOfferResponse> UpdateOffer(Expression<Func<string>> offerId, Expression<Func<int>> bodyavailableQuantity = null, Expression<Func<string>> bodycategoryId = null, Expression<Func<string>> bodycharitycharityId = null, Expression<Func<string>> bodycharitydonationPercentage = null, Expression<Func<string>> bodyextendedProducerResponsibilityproducerProductId = null, Expression<Func<string>> bodyextendedProducerResponsibilityproductPackageId = null, Expression<Func<string>> bodyextendedProducerResponsibilityshipmentPackageId = null, Expression<Func<string>> bodyextendedProducerResponsibilityproductDocumentationId = null, Expression<Func<string>> bodyextendedProducerResponsibilityecoParticipationFeecurrency = null, Expression<Func<string>> bodyextendedProducerResponsibilityecoParticipationFeevalue = null, Expression<Func<bool>> bodyhideBuyerDetails = null, Expression<Func<bool>> bodyincludeCatalogProductDetails = null, Expression<Func<string>> bodylistingDescription = null, Expression<Func<bodylistingDurationInput>> bodylistingDuration = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoAcceptPricevalue = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency = null, Expression<Func<string>> bodylistingPoliciesbestOfferTermsautoDeclinePricevalue = null, Expression<Func<bool>> bodylistingPoliciesbestOfferTermsbestOfferEnabled = null, Expression<Func<bool>> bodylistingPolicieseBayPlusIfEligible = null, Expression<Func<string>> bodylistingPoliciesfulfillmentPolicyId = null, Expression<Func<string>> bodylistingPoliciespaymentPolicyId = null, Expression<Func<string[]>> bodylistingPoliciesproductCompliancePolicyIds = null, Expression<Func<string>> bodylistingPoliciesreturnPolicyId = null, Expression<Func<bodylistingPoliciesshippingCostOverridesInputItem2[]>> bodylistingPoliciesshippingCostOverrides = null, Expression<Func<string>> bodylistingPoliciestakeBackPolicyId = null, Expression<Func<string>> bodylistingStartDate = null, Expression<Func<int>> bodylotSize = null, Expression<Func<string>> bodymerchantLocationKey = null, Expression<Func<string>> bodypricingSummaryauctionReservePricecurrency = null, Expression<Func<string>> bodypricingSummaryauctionReservePricevalue = null, Expression<Func<string>> bodypricingSummaryauctionStartPricecurrency = null, Expression<Func<string>> bodypricingSummaryauctionStartPricevalue = null, Expression<Func<string>> bodypricingSummaryminimumAdvertisedPricecurrency = null, Expression<Func<string>> bodypricingSummaryminimumAdvertisedPricevalue = null, Expression<Func<bodypricingSummaryoriginallySoldForRetailPriceOnInput>> bodypricingSummaryoriginallySoldForRetailPriceOn = null, Expression<Func<string>> bodypricingSummaryoriginalRetailPricecurrency = null, Expression<Func<string>> bodypricingSummaryoriginalRetailPricevalue = null, Expression<Func<string>> bodypricingSummarypricecurrency = null, Expression<Func<string>> bodypricingSummarypricevalue = null, Expression<Func<bodypricingSummarypricingVisibilityInput>> bodypricingSummarypricingVisibility = null, Expression<Func<int>> bodyquantityLimitPerBuyer = null, Expression<Func<string>> bodysecondaryCategoryId = null, Expression<Func<string[]>> bodystoreCategoryNames = null, Expression<Func<bool>> bodytaxapplyTax = null, Expression<Func<string>> bodytaxthirdPartyTaxCategory = null, Expression<Func<double>> bodytaxvatPercentage = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateOrReplaceInventoryItemResponse> __BuildCreateOrReplaceInventoryItem(WorkflowExpression<string> sku, WorkflowExpression<string> contentLanguage, WorkflowExpression<bodyavailabilitypickupAtLocationAvailabilityInputItem[]> bodyavailabilitypickupAtLocationAvailability = null, WorkflowExpression<bodyavailabilityshipToLocationAvailabilityavailabilityDistributionsInputItem[]> bodyavailabilityshipToLocationAvailabilityavailabilityDistributions = null, WorkflowExpression<int> bodyavailabilityshipToLocationAvailabilityquantity = null, WorkflowExpression<bodyconditionInput> bodycondition = null, WorkflowExpression<string> bodyconditionDescription = null, WorkflowExpression<double> bodypackageWeightAndSizedimensionsheight = null, WorkflowExpression<double> bodypackageWeightAndSizedimensionslength = null, WorkflowExpression<bodypackageWeightAndSizedimensionsunitInput> bodypackageWeightAndSizedimensionsunit = null, WorkflowExpression<double> bodypackageWeightAndSizedimensionswidth = null, WorkflowExpression<bodypackageWeightAndSizepackageTypeInput> bodypackageWeightAndSizepackageType = null, WorkflowExpression<bodypackageWeightAndSizeweightunitInput> bodypackageWeightAndSizeweightunit = null, WorkflowExpression<double> bodypackageWeightAndSizeweightvalue = null, WorkflowExpression<string> bodyproductbrand = null, WorkflowExpression<string> bodyproductdescription = null, WorkflowExpression<string[]> bodyproductean = null, WorkflowExpression<string> bodyproductepid = null, WorkflowExpression<string[]> bodyproductimageUrls = null, WorkflowExpression<string[]> bodyproductisbn = null, WorkflowExpression<string> bodyproductmpn = null, WorkflowExpression<string> bodyproductsubtitle = null, WorkflowExpression<string> bodyproducttitle = null, WorkflowExpression<string[]> bodyproductupc = null, WorkflowExpression<string[]> bodyproductvideoIds = null)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/offer/{0}", ExpressionConverter.ConvertWithUrlEncoding(offerId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Language"] = Convert.ToString("en-US");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyavailableQuantity != null)
+            WorkflowExpression.Validate(sku, nameof(sku), required: true);
+            WorkflowExpression.Validate(contentLanguage, nameof(contentLanguage), required: true);
+            WorkflowExpression.Validate(bodyavailabilitypickupAtLocationAvailability, nameof(bodyavailabilitypickupAtLocationAvailability), required: false);
+            WorkflowExpression.Validate(bodyavailabilityshipToLocationAvailabilityavailabilityDistributions, nameof(bodyavailabilityshipToLocationAvailabilityavailabilityDistributions), required: false);
+            WorkflowExpression.Validate(bodyavailabilityshipToLocationAvailabilityquantity, nameof(bodyavailabilityshipToLocationAvailabilityquantity), required: false);
+            WorkflowExpression.Validate(bodycondition, nameof(bodycondition), required: false);
+            WorkflowExpression.Validate(bodyconditionDescription, nameof(bodyconditionDescription), required: false);
+            WorkflowExpression.Validate(bodypackageWeightAndSizedimensionsheight, nameof(bodypackageWeightAndSizedimensionsheight), required: false);
+            WorkflowExpression.Validate(bodypackageWeightAndSizedimensionslength, nameof(bodypackageWeightAndSizedimensionslength), required: false);
+            WorkflowExpression.Validate(bodypackageWeightAndSizedimensionsunit, nameof(bodypackageWeightAndSizedimensionsunit), required: false);
+            WorkflowExpression.Validate(bodypackageWeightAndSizedimensionswidth, nameof(bodypackageWeightAndSizedimensionswidth), required: false);
+            WorkflowExpression.Validate(bodypackageWeightAndSizepackageType, nameof(bodypackageWeightAndSizepackageType), required: false);
+            WorkflowExpression.Validate(bodypackageWeightAndSizeweightunit, nameof(bodypackageWeightAndSizeweightunit), required: false);
+            WorkflowExpression.Validate(bodypackageWeightAndSizeweightvalue, nameof(bodypackageWeightAndSizeweightvalue), required: false);
+            WorkflowExpression.Validate(bodyproductbrand, nameof(bodyproductbrand), required: false);
+            WorkflowExpression.Validate(bodyproductdescription, nameof(bodyproductdescription), required: false);
+            WorkflowExpression.Validate(bodyproductean, nameof(bodyproductean), required: false);
+            WorkflowExpression.Validate(bodyproductepid, nameof(bodyproductepid), required: false);
+            WorkflowExpression.Validate(bodyproductimageUrls, nameof(bodyproductimageUrls), required: false);
+            WorkflowExpression.Validate(bodyproductisbn, nameof(bodyproductisbn), required: false);
+            WorkflowExpression.Validate(bodyproductmpn, nameof(bodyproductmpn), required: false);
+            WorkflowExpression.Validate(bodyproductsubtitle, nameof(bodyproductsubtitle), required: false);
+            WorkflowExpression.Validate(bodyproducttitle, nameof(bodyproducttitle), required: false);
+            WorkflowExpression.Validate(bodyproductupc, nameof(bodyproductupc), required: false);
+            WorkflowExpression.Validate(bodyproductvideoIds, nameof(bodyproductvideoIds), required: false);
+            return new DeferredBodyAction<CreateOrReplaceInventoryItemResponse>(() =>
             {
-                body["availableQuantity"] = ExpressionConverter.ConvertO(bodyavailableQuantity);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/inventory_item/{0}", ExpressionConverter.ConvertWithUrlEncoding(sku, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
+                callPayload.Headers["Content-Language"] = ExpressionConverter.Convert(contentLanguage);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var availabilityObject = new JObject();
+                var availabilityObjectpropCount = 0;
+                if (bodyavailabilitypickupAtLocationAvailability != null)
+                {
+                    availabilityObject["pickupAtLocationAvailability"] = ExpressionConverter.ConvertO(bodyavailabilitypickupAtLocationAvailability);
+                    availabilityObjectpropCount++;
+                }
 
-            if (bodycategoryId != null)
-            {
-                body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
-                bodypropCount++;
-            }
+                var shipToLocationAvailabilityObject = new JObject();
+                var shipToLocationAvailabilityObjectpropCount = 0;
+                if (bodyavailabilityshipToLocationAvailabilityavailabilityDistributions != null)
+                {
+                    shipToLocationAvailabilityObject["availabilityDistributions"] = ExpressionConverter.ConvertO(bodyavailabilityshipToLocationAvailabilityavailabilityDistributions);
+                    shipToLocationAvailabilityObjectpropCount++;
+                }
 
-            var charityObject = new JObject();
-            var charityObjectpropCount = 0;
-            if (bodycharitycharityId != null)
-            {
-                charityObject["charityId"] = ExpressionConverter.ConvertO(bodycharitycharityId);
-                charityObjectpropCount++;
-            }
+                if (bodyavailabilityshipToLocationAvailabilityquantity != null)
+                {
+                    shipToLocationAvailabilityObject["quantity"] = ExpressionConverter.ConvertO(bodyavailabilityshipToLocationAvailabilityquantity);
+                    shipToLocationAvailabilityObjectpropCount++;
+                }
 
-            if (bodycharitydonationPercentage != null)
-            {
-                charityObject["donationPercentage"] = ExpressionConverter.ConvertO(bodycharitydonationPercentage);
-                charityObjectpropCount++;
-            }
+                if (shipToLocationAvailabilityObjectpropCount > 0)
+                {
+                    availabilityObject["shipToLocationAvailability"] = shipToLocationAvailabilityObject;
+                    availabilityObjectpropCount++;
+                }
 
-            if (charityObjectpropCount > 0)
-            {
-                body["charity"] = charityObject;
-                bodypropCount++;
-            }
+                if (availabilityObjectpropCount > 0)
+                {
+                    body["availability"] = availabilityObject;
+                    bodypropCount++;
+                }
 
-            var extendedProducerResponsibilityObject = new JObject();
-            var extendedProducerResponsibilityObjectpropCount = 0;
-            if (bodyextendedProducerResponsibilityproducerProductId != null)
-            {
-                extendedProducerResponsibilityObject["producerProductId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproducerProductId);
-                extendedProducerResponsibilityObjectpropCount++;
-            }
+                if (bodycondition != null)
+                {
+                    body["condition"] = ExpressionConverter.ConvertO(bodycondition);
+                    bodypropCount++;
+                }
 
-            if (bodyextendedProducerResponsibilityproductPackageId != null)
-            {
-                extendedProducerResponsibilityObject["productPackageId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproductPackageId);
-                extendedProducerResponsibilityObjectpropCount++;
-            }
+                if (bodyconditionDescription != null)
+                {
+                    body["conditionDescription"] = ExpressionConverter.ConvertO(bodyconditionDescription);
+                    bodypropCount++;
+                }
 
-            if (bodyextendedProducerResponsibilityshipmentPackageId != null)
-            {
-                extendedProducerResponsibilityObject["shipmentPackageId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityshipmentPackageId);
-                extendedProducerResponsibilityObjectpropCount++;
-            }
+                var packageWeightAndSizeObject = new JObject();
+                var packageWeightAndSizeObjectpropCount = 0;
+                var dimensionsObject = new JObject();
+                var dimensionsObjectpropCount = 0;
+                if (bodypackageWeightAndSizedimensionsheight != null)
+                {
+                    dimensionsObject["height"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizedimensionsheight);
+                    dimensionsObjectpropCount++;
+                }
 
-            if (bodyextendedProducerResponsibilityproductDocumentationId != null)
-            {
-                extendedProducerResponsibilityObject["productDocumentationId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproductDocumentationId);
-                extendedProducerResponsibilityObjectpropCount++;
-            }
+                if (bodypackageWeightAndSizedimensionslength != null)
+                {
+                    dimensionsObject["length"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizedimensionslength);
+                    dimensionsObjectpropCount++;
+                }
 
-            var ecoParticipationFeeObject = new JObject();
-            var ecoParticipationFeeObjectpropCount = 0;
-            if (bodyextendedProducerResponsibilityecoParticipationFeecurrency != null)
-            {
-                ecoParticipationFeeObject["currency"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityecoParticipationFeecurrency);
-                ecoParticipationFeeObjectpropCount++;
-            }
+                if (bodypackageWeightAndSizedimensionsunit != null)
+                {
+                    dimensionsObject["unit"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizedimensionsunit);
+                    dimensionsObjectpropCount++;
+                }
 
-            if (bodyextendedProducerResponsibilityecoParticipationFeevalue != null)
-            {
-                ecoParticipationFeeObject["value"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityecoParticipationFeevalue);
-                ecoParticipationFeeObjectpropCount++;
-            }
+                if (bodypackageWeightAndSizedimensionswidth != null)
+                {
+                    dimensionsObject["width"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizedimensionswidth);
+                    dimensionsObjectpropCount++;
+                }
 
-            if (ecoParticipationFeeObjectpropCount > 0)
-            {
-                extendedProducerResponsibilityObject["ecoParticipationFee"] = ecoParticipationFeeObject;
-                extendedProducerResponsibilityObjectpropCount++;
-            }
+                if (dimensionsObjectpropCount > 0)
+                {
+                    packageWeightAndSizeObject["dimensions"] = dimensionsObject;
+                    packageWeightAndSizeObjectpropCount++;
+                }
 
-            if (extendedProducerResponsibilityObjectpropCount > 0)
-            {
-                body["extendedProducerResponsibility"] = extendedProducerResponsibilityObject;
-                bodypropCount++;
-            }
+                if (bodypackageWeightAndSizepackageType != null)
+                {
+                    packageWeightAndSizeObject["packageType"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizepackageType);
+                    packageWeightAndSizeObjectpropCount++;
+                }
 
-            if (bodyhideBuyerDetails != null)
-            {
-                body["hideBuyerDetails"] = ExpressionConverter.ConvertO(bodyhideBuyerDetails);
-                bodypropCount++;
-            }
+                var weightObject = new JObject();
+                var weightObjectpropCount = 0;
+                if (bodypackageWeightAndSizeweightunit != null)
+                {
+                    weightObject["unit"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizeweightunit);
+                    weightObjectpropCount++;
+                }
 
-            if (bodyincludeCatalogProductDetails != null)
-            {
-                body["includeCatalogProductDetails"] = ExpressionConverter.ConvertO(bodyincludeCatalogProductDetails);
-                bodypropCount++;
-            }
+                if (bodypackageWeightAndSizeweightvalue != null)
+                {
+                    weightObject["value"] = ExpressionConverter.ConvertO(bodypackageWeightAndSizeweightvalue);
+                    weightObjectpropCount++;
+                }
 
-            if (bodylistingDescription != null)
-            {
-                body["listingDescription"] = ExpressionConverter.ConvertO(bodylistingDescription);
-                bodypropCount++;
-            }
+                if (weightObjectpropCount > 0)
+                {
+                    packageWeightAndSizeObject["weight"] = weightObject;
+                    packageWeightAndSizeObjectpropCount++;
+                }
 
-            if (bodylistingDuration != null)
-            {
-                body["listingDuration"] = ExpressionConverter.ConvertO(bodylistingDuration);
-                bodypropCount++;
-            }
+                if (packageWeightAndSizeObjectpropCount > 0)
+                {
+                    body["packageWeightAndSize"] = packageWeightAndSizeObject;
+                    bodypropCount++;
+                }
 
-            var listingPoliciesObject = new JObject();
-            var listingPoliciesObjectpropCount = 0;
-            var bestOfferTermsObject = new JObject();
-            var bestOfferTermsObjectpropCount = 0;
-            var autoAcceptPriceObject = new JObject();
-            var autoAcceptPriceObjectpropCount = 0;
-            if (bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency != null)
-            {
-                autoAcceptPriceObject["currency"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency);
-                autoAcceptPriceObjectpropCount++;
-            }
+                var productObject = new JObject();
+                var productObjectpropCount = 0;
+                var aspectsObject = new JObject();
+                var aspectsObjectpropCount = 0;
+                if (aspectsObjectpropCount > 0)
+                {
+                    productObject["aspects"] = aspectsObject;
+                    productObjectpropCount++;
+                }
 
-            if (bodylistingPoliciesbestOfferTermsautoAcceptPricevalue != null)
-            {
-                autoAcceptPriceObject["value"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue);
-                autoAcceptPriceObjectpropCount++;
-            }
+                if (bodyproductbrand != null)
+                {
+                    productObject["brand"] = ExpressionConverter.ConvertO(bodyproductbrand);
+                    productObjectpropCount++;
+                }
 
-            if (autoAcceptPriceObjectpropCount > 0)
-            {
-                bestOfferTermsObject["autoAcceptPrice"] = autoAcceptPriceObject;
-                bestOfferTermsObjectpropCount++;
-            }
+                if (bodyproductdescription != null)
+                {
+                    productObject["description"] = ExpressionConverter.ConvertO(bodyproductdescription);
+                    productObjectpropCount++;
+                }
 
-            var autoDeclinePriceObject = new JObject();
-            var autoDeclinePriceObjectpropCount = 0;
-            if (bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency != null)
-            {
-                autoDeclinePriceObject["currency"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency);
-                autoDeclinePriceObjectpropCount++;
-            }
+                if (bodyproductean != null)
+                {
+                    productObject["ean"] = ExpressionConverter.ConvertO(bodyproductean);
+                    productObjectpropCount++;
+                }
 
-            if (bodylistingPoliciesbestOfferTermsautoDeclinePricevalue != null)
-            {
-                autoDeclinePriceObject["value"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue);
-                autoDeclinePriceObjectpropCount++;
-            }
+                if (bodyproductepid != null)
+                {
+                    productObject["epid"] = ExpressionConverter.ConvertO(bodyproductepid);
+                    productObjectpropCount++;
+                }
 
-            if (autoDeclinePriceObjectpropCount > 0)
-            {
-                bestOfferTermsObject["autoDeclinePrice"] = autoDeclinePriceObject;
-                bestOfferTermsObjectpropCount++;
-            }
+                if (bodyproductimageUrls != null)
+                {
+                    productObject["imageUrls"] = ExpressionConverter.ConvertO(bodyproductimageUrls);
+                    productObjectpropCount++;
+                }
 
-            if (bodylistingPoliciesbestOfferTermsbestOfferEnabled != null)
-            {
-                bestOfferTermsObject["bestOfferEnabled"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsbestOfferEnabled);
-                bestOfferTermsObjectpropCount++;
-            }
+                if (bodyproductisbn != null)
+                {
+                    productObject["isbn"] = ExpressionConverter.ConvertO(bodyproductisbn);
+                    productObjectpropCount++;
+                }
 
-            if (bestOfferTermsObjectpropCount > 0)
-            {
-                listingPoliciesObject["bestOfferTerms"] = bestOfferTermsObject;
-                listingPoliciesObjectpropCount++;
-            }
+                if (bodyproductmpn != null)
+                {
+                    productObject["mpn"] = ExpressionConverter.ConvertO(bodyproductmpn);
+                    productObjectpropCount++;
+                }
 
-            if (bodylistingPolicieseBayPlusIfEligible != null)
-            {
-                listingPoliciesObject["eBayPlusIfEligible"] = ExpressionConverter.ConvertO(bodylistingPolicieseBayPlusIfEligible);
-                listingPoliciesObjectpropCount++;
-            }
+                if (bodyproductsubtitle != null)
+                {
+                    productObject["subtitle"] = ExpressionConverter.ConvertO(bodyproductsubtitle);
+                    productObjectpropCount++;
+                }
 
-            if (bodylistingPoliciesfulfillmentPolicyId != null)
-            {
-                listingPoliciesObject["fulfillmentPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciesfulfillmentPolicyId);
-                listingPoliciesObjectpropCount++;
-            }
+                if (bodyproducttitle != null)
+                {
+                    productObject["title"] = ExpressionConverter.ConvertO(bodyproducttitle);
+                    productObjectpropCount++;
+                }
 
-            if (bodylistingPoliciespaymentPolicyId != null)
-            {
-                listingPoliciesObject["paymentPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciespaymentPolicyId);
-                listingPoliciesObjectpropCount++;
-            }
+                if (bodyproductupc != null)
+                {
+                    productObject["upc"] = ExpressionConverter.ConvertO(bodyproductupc);
+                    productObjectpropCount++;
+                }
 
-            if (bodylistingPoliciesproductCompliancePolicyIds != null)
-            {
-                listingPoliciesObject["productCompliancePolicyIds"] = ExpressionConverter.ConvertO(bodylistingPoliciesproductCompliancePolicyIds);
-                listingPoliciesObjectpropCount++;
-            }
+                if (bodyproductvideoIds != null)
+                {
+                    productObject["videoIds"] = ExpressionConverter.ConvertO(bodyproductvideoIds);
+                    productObjectpropCount++;
+                }
 
-            if (bodylistingPoliciesreturnPolicyId != null)
-            {
-                listingPoliciesObject["returnPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciesreturnPolicyId);
-                listingPoliciesObjectpropCount++;
-            }
+                if (productObjectpropCount > 0)
+                {
+                    body["product"] = productObject;
+                    bodypropCount++;
+                }
 
-            if (bodylistingPoliciesshippingCostOverrides != null)
-            {
-                listingPoliciesObject["shippingCostOverrides"] = ExpressionConverter.ConvertO(bodylistingPoliciesshippingCostOverrides);
-                listingPoliciesObjectpropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodylistingPoliciestakeBackPolicyId != null)
-            {
-                listingPoliciesObject["takeBackPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciestakeBackPolicyId);
-                listingPoliciesObjectpropCount++;
-            }
-
-            if (listingPoliciesObjectpropCount > 0)
-            {
-                body["listingPolicies"] = listingPoliciesObject;
-                bodypropCount++;
-            }
-
-            if (bodylistingStartDate != null)
-            {
-                body["listingStartDate"] = ExpressionConverter.ConvertO(bodylistingStartDate);
-                bodypropCount++;
-            }
-
-            if (bodylotSize != null)
-            {
-                body["lotSize"] = ExpressionConverter.ConvertO(bodylotSize);
-                bodypropCount++;
-            }
-
-            if (bodymerchantLocationKey != null)
-            {
-                body["merchantLocationKey"] = ExpressionConverter.ConvertO(bodymerchantLocationKey);
-                bodypropCount++;
-            }
-
-            var pricingSummaryObject = new JObject();
-            var pricingSummaryObjectpropCount = 0;
-            var auctionReservePriceObject = new JObject();
-            var auctionReservePriceObjectpropCount = 0;
-            if (bodypricingSummaryauctionReservePricecurrency != null)
-            {
-                auctionReservePriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionReservePricecurrency);
-                auctionReservePriceObjectpropCount++;
-            }
-
-            if (bodypricingSummaryauctionReservePricevalue != null)
-            {
-                auctionReservePriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionReservePricevalue);
-                auctionReservePriceObjectpropCount++;
-            }
-
-            if (auctionReservePriceObjectpropCount > 0)
-            {
-                pricingSummaryObject["auctionReservePrice"] = auctionReservePriceObject;
-                pricingSummaryObjectpropCount++;
-            }
-
-            var auctionStartPriceObject = new JObject();
-            var auctionStartPriceObjectpropCount = 0;
-            if (bodypricingSummaryauctionStartPricecurrency != null)
-            {
-                auctionStartPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionStartPricecurrency);
-                auctionStartPriceObjectpropCount++;
-            }
-
-            if (bodypricingSummaryauctionStartPricevalue != null)
-            {
-                auctionStartPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionStartPricevalue);
-                auctionStartPriceObjectpropCount++;
-            }
-
-            if (auctionStartPriceObjectpropCount > 0)
-            {
-                pricingSummaryObject["auctionStartPrice"] = auctionStartPriceObject;
-                pricingSummaryObjectpropCount++;
-            }
-
-            var minimumAdvertisedPriceObject = new JObject();
-            var minimumAdvertisedPriceObjectpropCount = 0;
-            if (bodypricingSummaryminimumAdvertisedPricecurrency != null)
-            {
-                minimumAdvertisedPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryminimumAdvertisedPricecurrency);
-                minimumAdvertisedPriceObjectpropCount++;
-            }
-
-            if (bodypricingSummaryminimumAdvertisedPricevalue != null)
-            {
-                minimumAdvertisedPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryminimumAdvertisedPricevalue);
-                minimumAdvertisedPriceObjectpropCount++;
-            }
-
-            if (minimumAdvertisedPriceObjectpropCount > 0)
-            {
-                pricingSummaryObject["minimumAdvertisedPrice"] = minimumAdvertisedPriceObject;
-                pricingSummaryObjectpropCount++;
-            }
-
-            if (bodypricingSummaryoriginallySoldForRetailPriceOn != null)
-            {
-                pricingSummaryObject["originallySoldForRetailPriceOn"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginallySoldForRetailPriceOn);
-                pricingSummaryObjectpropCount++;
-            }
-
-            var originalRetailPriceObject = new JObject();
-            var originalRetailPriceObjectpropCount = 0;
-            if (bodypricingSummaryoriginalRetailPricecurrency != null)
-            {
-                originalRetailPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginalRetailPricecurrency);
-                originalRetailPriceObjectpropCount++;
-            }
-
-            if (bodypricingSummaryoriginalRetailPricevalue != null)
-            {
-                originalRetailPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginalRetailPricevalue);
-                originalRetailPriceObjectpropCount++;
-            }
-
-            if (originalRetailPriceObjectpropCount > 0)
-            {
-                pricingSummaryObject["originalRetailPrice"] = originalRetailPriceObject;
-                pricingSummaryObjectpropCount++;
-            }
-
-            var priceObject = new JObject();
-            var priceObjectpropCount = 0;
-            if (bodypricingSummarypricecurrency != null)
-            {
-                priceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummarypricecurrency);
-                priceObjectpropCount++;
-            }
-
-            if (bodypricingSummarypricevalue != null)
-            {
-                priceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummarypricevalue);
-                priceObjectpropCount++;
-            }
-
-            if (priceObjectpropCount > 0)
-            {
-                pricingSummaryObject["price"] = priceObject;
-                pricingSummaryObjectpropCount++;
-            }
-
-            if (bodypricingSummarypricingVisibility != null)
-            {
-                pricingSummaryObject["pricingVisibility"] = ExpressionConverter.ConvertO(bodypricingSummarypricingVisibility);
-                pricingSummaryObjectpropCount++;
-            }
-
-            if (pricingSummaryObjectpropCount > 0)
-            {
-                body["pricingSummary"] = pricingSummaryObject;
-                bodypropCount++;
-            }
-
-            if (bodyquantityLimitPerBuyer != null)
-            {
-                body["quantityLimitPerBuyer"] = ExpressionConverter.ConvertO(bodyquantityLimitPerBuyer);
-                bodypropCount++;
-            }
-
-            if (bodysecondaryCategoryId != null)
-            {
-                body["secondaryCategoryId"] = ExpressionConverter.ConvertO(bodysecondaryCategoryId);
-                bodypropCount++;
-            }
-
-            if (bodystoreCategoryNames != null)
-            {
-                body["storeCategoryNames"] = ExpressionConverter.ConvertO(bodystoreCategoryNames);
-                bodypropCount++;
-            }
-
-            var taxObject = new JObject();
-            var taxObjectpropCount = 0;
-            if (bodytaxapplyTax != null)
-            {
-                taxObject["applyTax"] = ExpressionConverter.ConvertO(bodytaxapplyTax);
-                taxObjectpropCount++;
-            }
-
-            if (bodytaxthirdPartyTaxCategory != null)
-            {
-                taxObject["thirdPartyTaxCategory"] = ExpressionConverter.ConvertO(bodytaxthirdPartyTaxCategory);
-                taxObjectpropCount++;
-            }
-
-            if (bodytaxvatPercentage != null)
-            {
-                taxObject["vatPercentage"] = ExpressionConverter.ConvertO(bodytaxvatPercentage);
-                taxObjectpropCount++;
-            }
-
-            if (taxObjectpropCount > 0)
-            {
-                body["tax"] = taxObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateOfferResponse>(callPayload);
+                return new ApiConnectionAction<CreateOrReplaceInventoryItemResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<WithdrawOfferResponse> WithdrawOffer(Expression<Func<string>> offerId)
+        [WorkflowExpressionFactory(nameof(__BuildGetInventoryItems))]
+        public IBodyWorkflowAction<GetInventoryItemsResponse> GetInventoryItems([WorkflowExpression] Func<string> Limit = null, [WorkflowExpression] Func<string> Offset = null)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/offer/{0}/withdraw", ExpressionConverter.ConvertWithUrlEncoding(offerId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
-            return new ApiConnectionAction<WithdrawOfferResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
-        public IBodyWorkflowAction<PublishOfferResponse> PublishOffer(Expression<Func<string>> offerId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetInventoryItemsResponse> __BuildGetInventoryItems(WorkflowExpression<string> Limit = null, WorkflowExpression<string> Offset = null)
         {
-            var apiCallPath = String.Format("/sell/inventory/v1/offer/{0}/publish/", ExpressionConverter.ConvertWithUrlEncoding(offerId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
-            return new ApiConnectionAction<PublishOfferResponse>(callPayload);
+            WorkflowExpression.Validate(Limit, nameof(Limit), required: false);
+            WorkflowExpression.Validate(Offset, nameof(Offset), required: false);
+            return new DeferredBodyAction<GetInventoryItemsResponse>(() =>
+            {
+                var apiCallPath = "/sell/inventory/v1/inventory_item";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (Limit != null)
+                    callPayload.Queries[" limit"] = ExpressionConverter.Convert(Limit);
+                if (Offset != null)
+                    callPayload.Queries[" offset"] = ExpressionConverter.Convert(Offset);
+                callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
+                return new ApiConnectionAction<GetInventoryItemsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetInventoryLocation))]
+        public IBodyWorkflowAction<GetInventoryLocationResponse> GetInventoryLocation([WorkflowExpression] Func<string> merchantLocationKey)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetInventoryLocationResponse> __BuildGetInventoryLocation(WorkflowExpression<string> merchantLocationKey)
+        {
+            WorkflowExpression.Validate(merchantLocationKey, nameof(merchantLocationKey), required: true);
+            return new DeferredBodyAction<GetInventoryLocationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/location/{0}", ExpressionConverter.ConvertWithUrlEncoding(merchantLocationKey, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetInventoryLocationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateInventoryLocation))]
+        public IBodyWorkflowAction<string> CreateInventoryLocation([WorkflowExpression] Func<string> merchantLocationKey, [WorkflowExpression] Func<string> bodylocationaddressaddressLine1 = null, [WorkflowExpression] Func<string> bodylocationaddressaddressLine2 = null, [WorkflowExpression] Func<string> bodylocationaddresscity = null, [WorkflowExpression] Func<string> bodylocationaddresscountry = null, [WorkflowExpression] Func<string> bodylocationaddresscounty = null, [WorkflowExpression] Func<string> bodylocationaddresspostalCode = null, [WorkflowExpression] Func<string> bodylocationaddressstateOrProvince = null, [WorkflowExpression] Func<string> bodylocationgeoCoordinateslatitude = null, [WorkflowExpression] Func<string> bodylocationgeoCoordinateslongitude = null, [WorkflowExpression] Func<string> bodylocationAdditionalInformation = null, [WorkflowExpression] Func<string> bodylocationInstructions = null, [WorkflowExpression] Func<bodylocationTypesInputItem[]> bodylocationTypes = null, [WorkflowExpression] Func<string> bodylocationWebUrl = null, [WorkflowExpression] Func<string> bodymerchantLocationStatus = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bodyoperatingHoursInputItem[]> bodyoperatingHours = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<bodyspecialHoursInputItem[]> bodyspecialHours = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildCreateInventoryLocation(WorkflowExpression<string> merchantLocationKey, WorkflowExpression<string> bodylocationaddressaddressLine1 = null, WorkflowExpression<string> bodylocationaddressaddressLine2 = null, WorkflowExpression<string> bodylocationaddresscity = null, WorkflowExpression<string> bodylocationaddresscountry = null, WorkflowExpression<string> bodylocationaddresscounty = null, WorkflowExpression<string> bodylocationaddresspostalCode = null, WorkflowExpression<string> bodylocationaddressstateOrProvince = null, WorkflowExpression<string> bodylocationgeoCoordinateslatitude = null, WorkflowExpression<string> bodylocationgeoCoordinateslongitude = null, WorkflowExpression<string> bodylocationAdditionalInformation = null, WorkflowExpression<string> bodylocationInstructions = null, WorkflowExpression<bodylocationTypesInputItem[]> bodylocationTypes = null, WorkflowExpression<string> bodylocationWebUrl = null, WorkflowExpression<string> bodymerchantLocationStatus = null, WorkflowExpression<string> bodyname = null, WorkflowExpression<bodyoperatingHoursInputItem[]> bodyoperatingHours = null, WorkflowExpression<string> bodyphone = null, WorkflowExpression<bodyspecialHoursInputItem[]> bodyspecialHours = null)
+        {
+            WorkflowExpression.Validate(merchantLocationKey, nameof(merchantLocationKey), required: true);
+            WorkflowExpression.Validate(bodylocationaddressaddressLine1, nameof(bodylocationaddressaddressLine1), required: false);
+            WorkflowExpression.Validate(bodylocationaddressaddressLine2, nameof(bodylocationaddressaddressLine2), required: false);
+            WorkflowExpression.Validate(bodylocationaddresscity, nameof(bodylocationaddresscity), required: false);
+            WorkflowExpression.Validate(bodylocationaddresscountry, nameof(bodylocationaddresscountry), required: false);
+            WorkflowExpression.Validate(bodylocationaddresscounty, nameof(bodylocationaddresscounty), required: false);
+            WorkflowExpression.Validate(bodylocationaddresspostalCode, nameof(bodylocationaddresspostalCode), required: false);
+            WorkflowExpression.Validate(bodylocationaddressstateOrProvince, nameof(bodylocationaddressstateOrProvince), required: false);
+            WorkflowExpression.Validate(bodylocationgeoCoordinateslatitude, nameof(bodylocationgeoCoordinateslatitude), required: false);
+            WorkflowExpression.Validate(bodylocationgeoCoordinateslongitude, nameof(bodylocationgeoCoordinateslongitude), required: false);
+            WorkflowExpression.Validate(bodylocationAdditionalInformation, nameof(bodylocationAdditionalInformation), required: false);
+            WorkflowExpression.Validate(bodylocationInstructions, nameof(bodylocationInstructions), required: false);
+            WorkflowExpression.Validate(bodylocationTypes, nameof(bodylocationTypes), required: false);
+            WorkflowExpression.Validate(bodylocationWebUrl, nameof(bodylocationWebUrl), required: false);
+            WorkflowExpression.Validate(bodymerchantLocationStatus, nameof(bodymerchantLocationStatus), required: false);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodyoperatingHours, nameof(bodyoperatingHours), required: false);
+            WorkflowExpression.Validate(bodyphone, nameof(bodyphone), required: false);
+            WorkflowExpression.Validate(bodyspecialHours, nameof(bodyspecialHours), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/location/{0}", ExpressionConverter.ConvertWithUrlEncoding(merchantLocationKey, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var locationObject = new JObject();
+                var locationObjectpropCount = 0;
+                var addressObject = new JObject();
+                var addressObjectpropCount = 0;
+                if (bodylocationaddressaddressLine1 != null)
+                {
+                    addressObject["addressLine1"] = ExpressionConverter.ConvertO(bodylocationaddressaddressLine1);
+                    addressObjectpropCount++;
+                }
+
+                if (bodylocationaddressaddressLine2 != null)
+                {
+                    addressObject["addressLine2"] = ExpressionConverter.ConvertO(bodylocationaddressaddressLine2);
+                    addressObjectpropCount++;
+                }
+
+                if (bodylocationaddresscity != null)
+                {
+                    addressObject["city"] = ExpressionConverter.ConvertO(bodylocationaddresscity);
+                    addressObjectpropCount++;
+                }
+
+                if (bodylocationaddresscountry != null)
+                {
+                    addressObject["country"] = ExpressionConverter.ConvertO(bodylocationaddresscountry);
+                    addressObjectpropCount++;
+                }
+
+                if (bodylocationaddresscounty != null)
+                {
+                    addressObject["county"] = ExpressionConverter.ConvertO(bodylocationaddresscounty);
+                    addressObjectpropCount++;
+                }
+
+                if (bodylocationaddresspostalCode != null)
+                {
+                    addressObject["postalCode"] = ExpressionConverter.ConvertO(bodylocationaddresspostalCode);
+                    addressObjectpropCount++;
+                }
+
+                if (bodylocationaddressstateOrProvince != null)
+                {
+                    addressObject["stateOrProvince"] = ExpressionConverter.ConvertO(bodylocationaddressstateOrProvince);
+                    addressObjectpropCount++;
+                }
+
+                if (addressObjectpropCount > 0)
+                {
+                    locationObject["address"] = addressObject;
+                    locationObjectpropCount++;
+                }
+
+                var geoCoordinatesObject = new JObject();
+                var geoCoordinatesObjectpropCount = 0;
+                if (bodylocationgeoCoordinateslatitude != null)
+                {
+                    geoCoordinatesObject["latitude"] = ExpressionConverter.ConvertO(bodylocationgeoCoordinateslatitude);
+                    geoCoordinatesObjectpropCount++;
+                }
+
+                if (bodylocationgeoCoordinateslongitude != null)
+                {
+                    geoCoordinatesObject["longitude"] = ExpressionConverter.ConvertO(bodylocationgeoCoordinateslongitude);
+                    geoCoordinatesObjectpropCount++;
+                }
+
+                if (geoCoordinatesObjectpropCount > 0)
+                {
+                    locationObject["geoCoordinates"] = geoCoordinatesObject;
+                    locationObjectpropCount++;
+                }
+
+                if (locationObjectpropCount > 0)
+                {
+                    body["location"] = locationObject;
+                    bodypropCount++;
+                }
+
+                if (bodylocationAdditionalInformation != null)
+                {
+                    body["locationAdditionalInformation"] = ExpressionConverter.ConvertO(bodylocationAdditionalInformation);
+                    bodypropCount++;
+                }
+
+                if (bodylocationInstructions != null)
+                {
+                    body["locationInstructions"] = ExpressionConverter.ConvertO(bodylocationInstructions);
+                    bodypropCount++;
+                }
+
+                if (bodylocationTypes != null)
+                {
+                    body["locationTypes"] = ExpressionConverter.ConvertO(bodylocationTypes);
+                    bodypropCount++;
+                }
+
+                if (bodylocationWebUrl != null)
+                {
+                    body["locationWebUrl"] = ExpressionConverter.ConvertO(bodylocationWebUrl);
+                    bodypropCount++;
+                }
+
+                if (bodymerchantLocationStatus != null)
+                {
+                    body["merchantLocationStatus"] = ExpressionConverter.ConvertO(bodymerchantLocationStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyoperatingHours != null)
+                {
+                    body["operatingHours"] = ExpressionConverter.ConvertO(bodyoperatingHours);
+                    bodypropCount++;
+                }
+
+                if (bodyphone != null)
+                {
+                    body["phone"] = ExpressionConverter.ConvertO(bodyphone);
+                    bodypropCount++;
+                }
+
+                if (bodyspecialHours != null)
+                {
+                    body["specialHours"] = ExpressionConverter.ConvertO(bodyspecialHours);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetInventoryLocations))]
+        public IBodyWorkflowAction<GetInventoryLocationsResponse> GetInventoryLocations([WorkflowExpression] Func<string> Offset = null, [WorkflowExpression] Func<string> Limit = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetInventoryLocationsResponse> __BuildGetInventoryLocations(WorkflowExpression<string> Offset = null, WorkflowExpression<string> Limit = null)
+        {
+            WorkflowExpression.Validate(Offset, nameof(Offset), required: false);
+            WorkflowExpression.Validate(Limit, nameof(Limit), required: false);
+            return new DeferredBodyAction<GetInventoryLocationsResponse>(() =>
+            {
+                var apiCallPath = "/sell/inventory/v1/location";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (Offset != null)
+                    callPayload.Queries[" offset"] = ExpressionConverter.Convert(Offset);
+                if (Limit != null)
+                    callPayload.Queries[" limit"] = ExpressionConverter.Convert(Limit);
+                return new ApiConnectionAction<GetInventoryLocationsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetItemConditionPolicies))]
+        public IBodyWorkflowAction<GetItemConditionPoliciesResponse> GetItemConditionPolicies([WorkflowExpression] Func<string> marketplaceId, [WorkflowExpression] Func<string> Filter = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetItemConditionPoliciesResponse> __BuildGetItemConditionPolicies(WorkflowExpression<string> marketplaceId, WorkflowExpression<string> Filter = null)
+        {
+            WorkflowExpression.Validate(marketplaceId, nameof(marketplaceId), required: true);
+            WorkflowExpression.Validate(Filter, nameof(Filter), required: false);
+            return new DeferredBodyAction<GetItemConditionPoliciesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/metadata/v1/marketplace/{0}/get_item_condition_policies", ExpressionConverter.ConvertWithUrlEncoding(marketplaceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (Filter != null)
+                    callPayload.Queries[" filter"] = ExpressionConverter.Convert(Filter);
+                return new ApiConnectionAction<GetItemConditionPoliciesResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetOffers))]
+        public IBodyWorkflowAction<GetOffersResponse> GetOffers([WorkflowExpression] Func<string> sku, [WorkflowExpression] Func<string> MarketplaceId = null, [WorkflowExpression] Func<string> Format = null, [WorkflowExpression] Func<string> Limit = null, [WorkflowExpression] Func<string> Offset = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetOffersResponse> __BuildGetOffers(WorkflowExpression<string> sku, WorkflowExpression<string> MarketplaceId = null, WorkflowExpression<string> Format = null, WorkflowExpression<string> Limit = null, WorkflowExpression<string> Offset = null)
+        {
+            WorkflowExpression.Validate(sku, nameof(sku), required: true);
+            WorkflowExpression.Validate(MarketplaceId, nameof(MarketplaceId), required: false);
+            WorkflowExpression.Validate(Format, nameof(Format), required: false);
+            WorkflowExpression.Validate(Limit, nameof(Limit), required: false);
+            WorkflowExpression.Validate(Offset, nameof(Offset), required: false);
+            return new DeferredBodyAction<GetOffersResponse>(() =>
+            {
+                var apiCallPath = "/sell/inventory/v1/offer";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sku"] = ExpressionConverter.Convert(sku);
+                if (MarketplaceId != null)
+                    callPayload.Queries[" marketplace_id"] = ExpressionConverter.Convert(MarketplaceId);
+                if (Format != null)
+                    callPayload.Queries[" format"] = ExpressionConverter.Convert(Format);
+                if (Limit != null)
+                    callPayload.Queries[" limit"] = ExpressionConverter.Convert(Limit);
+                if (Offset != null)
+                    callPayload.Queries[" offset"] = ExpressionConverter.Convert(Offset);
+                callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
+                return new ApiConnectionAction<GetOffersResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateOffer))]
+        public IBodyWorkflowAction<CreateOfferResponse> CreateOffer([WorkflowExpression] Func<int> bodyavailableQuantity = null, [WorkflowExpression] Func<string> bodycategoryId = null, [WorkflowExpression] Func<string> bodycharitycharityId = null, [WorkflowExpression] Func<string> bodycharitydonationPercentage = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityproducerProductId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityproductPackageId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityshipmentPackageId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityproductDocumentationId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityecoParticipationFeecurrency = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityecoParticipationFeevalue = null, [WorkflowExpression] Func<bodyformatInput> bodyformat = null, [WorkflowExpression] Func<bool> bodyhideBuyerDetails = null, [WorkflowExpression] Func<bool> bodyincludeCatalogProductDetails = null, [WorkflowExpression] Func<string> bodylistingDescription = null, [WorkflowExpression] Func<bodylistingDurationInput> bodylistingDuration = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoAcceptPricevalue = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoDeclinePricevalue = null, [WorkflowExpression] Func<bool> bodylistingPoliciesbestOfferTermsbestOfferEnabled = null, [WorkflowExpression] Func<bool> bodylistingPolicieseBayPlusIfEligible = null, [WorkflowExpression] Func<string> bodylistingPoliciesfulfillmentPolicyId = null, [WorkflowExpression] Func<string> bodylistingPoliciespaymentPolicyId = null, [WorkflowExpression] Func<string[]> bodylistingPoliciesproductCompliancePolicyIds = null, [WorkflowExpression] Func<string> bodylistingPoliciesreturnPolicyId = null, [WorkflowExpression] Func<bodylistingPoliciesshippingCostOverridesInputItem[]> bodylistingPoliciesshippingCostOverrides = null, [WorkflowExpression] Func<string> bodylistingPoliciestakeBackPolicyId = null, [WorkflowExpression] Func<string> bodylistingStartDate = null, [WorkflowExpression] Func<int> bodylotSize = null, [WorkflowExpression] Func<string> bodymarketplaceId = null, [WorkflowExpression] Func<string> bodymerchantLocationKey = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionReservePricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionReservePricevalue = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionStartPricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionStartPricevalue = null, [WorkflowExpression] Func<string> bodypricingSummaryminimumAdvertisedPricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryminimumAdvertisedPricevalue = null, [WorkflowExpression] Func<bodypricingSummaryoriginallySoldForRetailPriceOnInput> bodypricingSummaryoriginallySoldForRetailPriceOn = null, [WorkflowExpression] Func<string> bodypricingSummaryoriginalRetailPricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryoriginalRetailPricevalue = null, [WorkflowExpression] Func<string> bodypricingSummarypricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummarypricevalue = null, [WorkflowExpression] Func<bodypricingSummarypricingVisibilityInput> bodypricingSummarypricingVisibility = null, [WorkflowExpression] Func<int> bodyquantityLimitPerBuyer = null, [WorkflowExpression] Func<string> bodysecondaryCategoryId = null, [WorkflowExpression] Func<string> bodysku = null, [WorkflowExpression] Func<string[]> bodystoreCategoryNames = null, [WorkflowExpression] Func<bool> bodytaxapplyTax = null, [WorkflowExpression] Func<string> bodytaxthirdPartyTaxCategory = null, [WorkflowExpression] Func<double> bodytaxvatPercentage = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateOfferResponse> __BuildCreateOffer(WorkflowExpression<int> bodyavailableQuantity = null, WorkflowExpression<string> bodycategoryId = null, WorkflowExpression<string> bodycharitycharityId = null, WorkflowExpression<string> bodycharitydonationPercentage = null, WorkflowExpression<string> bodyextendedProducerResponsibilityproducerProductId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityproductPackageId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityshipmentPackageId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityproductDocumentationId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityecoParticipationFeecurrency = null, WorkflowExpression<string> bodyextendedProducerResponsibilityecoParticipationFeevalue = null, WorkflowExpression<bodyformatInput> bodyformat = null, WorkflowExpression<bool> bodyhideBuyerDetails = null, WorkflowExpression<bool> bodyincludeCatalogProductDetails = null, WorkflowExpression<string> bodylistingDescription = null, WorkflowExpression<bodylistingDurationInput> bodylistingDuration = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoAcceptPricevalue = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoDeclinePricevalue = null, WorkflowExpression<bool> bodylistingPoliciesbestOfferTermsbestOfferEnabled = null, WorkflowExpression<bool> bodylistingPolicieseBayPlusIfEligible = null, WorkflowExpression<string> bodylistingPoliciesfulfillmentPolicyId = null, WorkflowExpression<string> bodylistingPoliciespaymentPolicyId = null, WorkflowExpression<string[]> bodylistingPoliciesproductCompliancePolicyIds = null, WorkflowExpression<string> bodylistingPoliciesreturnPolicyId = null, WorkflowExpression<bodylistingPoliciesshippingCostOverridesInputItem[]> bodylistingPoliciesshippingCostOverrides = null, WorkflowExpression<string> bodylistingPoliciestakeBackPolicyId = null, WorkflowExpression<string> bodylistingStartDate = null, WorkflowExpression<int> bodylotSize = null, WorkflowExpression<string> bodymarketplaceId = null, WorkflowExpression<string> bodymerchantLocationKey = null, WorkflowExpression<string> bodypricingSummaryauctionReservePricecurrency = null, WorkflowExpression<string> bodypricingSummaryauctionReservePricevalue = null, WorkflowExpression<string> bodypricingSummaryauctionStartPricecurrency = null, WorkflowExpression<string> bodypricingSummaryauctionStartPricevalue = null, WorkflowExpression<string> bodypricingSummaryminimumAdvertisedPricecurrency = null, WorkflowExpression<string> bodypricingSummaryminimumAdvertisedPricevalue = null, WorkflowExpression<bodypricingSummaryoriginallySoldForRetailPriceOnInput> bodypricingSummaryoriginallySoldForRetailPriceOn = null, WorkflowExpression<string> bodypricingSummaryoriginalRetailPricecurrency = null, WorkflowExpression<string> bodypricingSummaryoriginalRetailPricevalue = null, WorkflowExpression<string> bodypricingSummarypricecurrency = null, WorkflowExpression<string> bodypricingSummarypricevalue = null, WorkflowExpression<bodypricingSummarypricingVisibilityInput> bodypricingSummarypricingVisibility = null, WorkflowExpression<int> bodyquantityLimitPerBuyer = null, WorkflowExpression<string> bodysecondaryCategoryId = null, WorkflowExpression<string> bodysku = null, WorkflowExpression<string[]> bodystoreCategoryNames = null, WorkflowExpression<bool> bodytaxapplyTax = null, WorkflowExpression<string> bodytaxthirdPartyTaxCategory = null, WorkflowExpression<double> bodytaxvatPercentage = null)
+        {
+            WorkflowExpression.Validate(bodyavailableQuantity, nameof(bodyavailableQuantity), required: false);
+            WorkflowExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
+            WorkflowExpression.Validate(bodycharitycharityId, nameof(bodycharitycharityId), required: false);
+            WorkflowExpression.Validate(bodycharitydonationPercentage, nameof(bodycharitydonationPercentage), required: false);
+            WorkflowExpression.Validate(bodyextendedProducerResponsibilityproducerProductId, nameof(bodyextendedProducerResponsibilityproducerProductId), required: false);
+            WorkflowExpression.Validate(bodyextendedProducerResponsibilityproductPackageId, nameof(bodyextendedProducerResponsibilityproductPackageId), required: false);
+            WorkflowExpression.Validate(bodyextendedProducerResponsibilityshipmentPackageId, nameof(bodyextendedProducerResponsibilityshipmentPackageId), required: false);
+            WorkflowExpression.Validate(bodyextendedProducerResponsibilityproductDocumentationId, nameof(bodyextendedProducerResponsibilityproductDocumentationId), required: false);
+            WorkflowExpression.Validate(bodyextendedProducerResponsibilityecoParticipationFeecurrency, nameof(bodyextendedProducerResponsibilityecoParticipationFeecurrency), required: false);
+            WorkflowExpression.Validate(bodyextendedProducerResponsibilityecoParticipationFeevalue, nameof(bodyextendedProducerResponsibilityecoParticipationFeevalue), required: false);
+            WorkflowExpression.Validate(bodyformat, nameof(bodyformat), required: false);
+            WorkflowExpression.Validate(bodyhideBuyerDetails, nameof(bodyhideBuyerDetails), required: false);
+            WorkflowExpression.Validate(bodyincludeCatalogProductDetails, nameof(bodyincludeCatalogProductDetails), required: false);
+            WorkflowExpression.Validate(bodylistingDescription, nameof(bodylistingDescription), required: false);
+            WorkflowExpression.Validate(bodylistingDuration, nameof(bodylistingDuration), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency, nameof(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue, nameof(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency, nameof(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue, nameof(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesbestOfferTermsbestOfferEnabled, nameof(bodylistingPoliciesbestOfferTermsbestOfferEnabled), required: false);
+            WorkflowExpression.Validate(bodylistingPolicieseBayPlusIfEligible, nameof(bodylistingPolicieseBayPlusIfEligible), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesfulfillmentPolicyId, nameof(bodylistingPoliciesfulfillmentPolicyId), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciespaymentPolicyId, nameof(bodylistingPoliciespaymentPolicyId), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesproductCompliancePolicyIds, nameof(bodylistingPoliciesproductCompliancePolicyIds), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesreturnPolicyId, nameof(bodylistingPoliciesreturnPolicyId), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesshippingCostOverrides, nameof(bodylistingPoliciesshippingCostOverrides), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciestakeBackPolicyId, nameof(bodylistingPoliciestakeBackPolicyId), required: false);
+            WorkflowExpression.Validate(bodylistingStartDate, nameof(bodylistingStartDate), required: false);
+            WorkflowExpression.Validate(bodylotSize, nameof(bodylotSize), required: false);
+            WorkflowExpression.Validate(bodymarketplaceId, nameof(bodymarketplaceId), required: false);
+            WorkflowExpression.Validate(bodymerchantLocationKey, nameof(bodymerchantLocationKey), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryauctionReservePricecurrency, nameof(bodypricingSummaryauctionReservePricecurrency), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryauctionReservePricevalue, nameof(bodypricingSummaryauctionReservePricevalue), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryauctionStartPricecurrency, nameof(bodypricingSummaryauctionStartPricecurrency), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryauctionStartPricevalue, nameof(bodypricingSummaryauctionStartPricevalue), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryminimumAdvertisedPricecurrency, nameof(bodypricingSummaryminimumAdvertisedPricecurrency), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryminimumAdvertisedPricevalue, nameof(bodypricingSummaryminimumAdvertisedPricevalue), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryoriginallySoldForRetailPriceOn, nameof(bodypricingSummaryoriginallySoldForRetailPriceOn), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryoriginalRetailPricecurrency, nameof(bodypricingSummaryoriginalRetailPricecurrency), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryoriginalRetailPricevalue, nameof(bodypricingSummaryoriginalRetailPricevalue), required: false);
+            WorkflowExpression.Validate(bodypricingSummarypricecurrency, nameof(bodypricingSummarypricecurrency), required: false);
+            WorkflowExpression.Validate(bodypricingSummarypricevalue, nameof(bodypricingSummarypricevalue), required: false);
+            WorkflowExpression.Validate(bodypricingSummarypricingVisibility, nameof(bodypricingSummarypricingVisibility), required: false);
+            WorkflowExpression.Validate(bodyquantityLimitPerBuyer, nameof(bodyquantityLimitPerBuyer), required: false);
+            WorkflowExpression.Validate(bodysecondaryCategoryId, nameof(bodysecondaryCategoryId), required: false);
+            WorkflowExpression.Validate(bodysku, nameof(bodysku), required: false);
+            WorkflowExpression.Validate(bodystoreCategoryNames, nameof(bodystoreCategoryNames), required: false);
+            WorkflowExpression.Validate(bodytaxapplyTax, nameof(bodytaxapplyTax), required: false);
+            WorkflowExpression.Validate(bodytaxthirdPartyTaxCategory, nameof(bodytaxthirdPartyTaxCategory), required: false);
+            WorkflowExpression.Validate(bodytaxvatPercentage, nameof(bodytaxvatPercentage), required: false);
+            return new DeferredBodyAction<CreateOfferResponse>(() =>
+            {
+                var apiCallPath = "/sell/inventory/v1/offer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Language"] = Convert.ToString("en-US");
+                callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyavailableQuantity != null)
+                {
+                    body["availableQuantity"] = ExpressionConverter.ConvertO(bodyavailableQuantity);
+                    bodypropCount++;
+                }
+
+                if (bodycategoryId != null)
+                {
+                    body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
+                    bodypropCount++;
+                }
+
+                var charityObject = new JObject();
+                var charityObjectpropCount = 0;
+                if (bodycharitycharityId != null)
+                {
+                    charityObject["charityId"] = ExpressionConverter.ConvertO(bodycharitycharityId);
+                    charityObjectpropCount++;
+                }
+
+                if (bodycharitydonationPercentage != null)
+                {
+                    charityObject["donationPercentage"] = ExpressionConverter.ConvertO(bodycharitydonationPercentage);
+                    charityObjectpropCount++;
+                }
+
+                if (charityObjectpropCount > 0)
+                {
+                    body["charity"] = charityObject;
+                    bodypropCount++;
+                }
+
+                var extendedProducerResponsibilityObject = new JObject();
+                var extendedProducerResponsibilityObjectpropCount = 0;
+                if (bodyextendedProducerResponsibilityproducerProductId != null)
+                {
+                    extendedProducerResponsibilityObject["producerProductId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproducerProductId);
+                    extendedProducerResponsibilityObjectpropCount++;
+                }
+
+                if (bodyextendedProducerResponsibilityproductPackageId != null)
+                {
+                    extendedProducerResponsibilityObject["productPackageId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproductPackageId);
+                    extendedProducerResponsibilityObjectpropCount++;
+                }
+
+                if (bodyextendedProducerResponsibilityshipmentPackageId != null)
+                {
+                    extendedProducerResponsibilityObject["shipmentPackageId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityshipmentPackageId);
+                    extendedProducerResponsibilityObjectpropCount++;
+                }
+
+                if (bodyextendedProducerResponsibilityproductDocumentationId != null)
+                {
+                    extendedProducerResponsibilityObject["productDocumentationId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproductDocumentationId);
+                    extendedProducerResponsibilityObjectpropCount++;
+                }
+
+                var ecoParticipationFeeObject = new JObject();
+                var ecoParticipationFeeObjectpropCount = 0;
+                if (bodyextendedProducerResponsibilityecoParticipationFeecurrency != null)
+                {
+                    ecoParticipationFeeObject["currency"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityecoParticipationFeecurrency);
+                    ecoParticipationFeeObjectpropCount++;
+                }
+
+                if (bodyextendedProducerResponsibilityecoParticipationFeevalue != null)
+                {
+                    ecoParticipationFeeObject["value"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityecoParticipationFeevalue);
+                    ecoParticipationFeeObjectpropCount++;
+                }
+
+                if (ecoParticipationFeeObjectpropCount > 0)
+                {
+                    extendedProducerResponsibilityObject["ecoParticipationFee"] = ecoParticipationFeeObject;
+                    extendedProducerResponsibilityObjectpropCount++;
+                }
+
+                if (extendedProducerResponsibilityObjectpropCount > 0)
+                {
+                    body["extendedProducerResponsibility"] = extendedProducerResponsibilityObject;
+                    bodypropCount++;
+                }
+
+                if (bodyformat != null)
+                {
+                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    bodypropCount++;
+                }
+
+                if (bodyhideBuyerDetails != null)
+                {
+                    body["hideBuyerDetails"] = ExpressionConverter.ConvertO(bodyhideBuyerDetails);
+                    bodypropCount++;
+                }
+
+                if (bodyincludeCatalogProductDetails != null)
+                {
+                    body["includeCatalogProductDetails"] = ExpressionConverter.ConvertO(bodyincludeCatalogProductDetails);
+                    bodypropCount++;
+                }
+
+                if (bodylistingDescription != null)
+                {
+                    body["listingDescription"] = ExpressionConverter.ConvertO(bodylistingDescription);
+                    bodypropCount++;
+                }
+
+                if (bodylistingDuration != null)
+                {
+                    body["listingDuration"] = ExpressionConverter.ConvertO(bodylistingDuration);
+                    bodypropCount++;
+                }
+
+                var listingPoliciesObject = new JObject();
+                var listingPoliciesObjectpropCount = 0;
+                var bestOfferTermsObject = new JObject();
+                var bestOfferTermsObjectpropCount = 0;
+                var autoAcceptPriceObject = new JObject();
+                var autoAcceptPriceObjectpropCount = 0;
+                if (bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency != null)
+                {
+                    autoAcceptPriceObject["currency"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency);
+                    autoAcceptPriceObjectpropCount++;
+                }
+
+                if (bodylistingPoliciesbestOfferTermsautoAcceptPricevalue != null)
+                {
+                    autoAcceptPriceObject["value"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue);
+                    autoAcceptPriceObjectpropCount++;
+                }
+
+                if (autoAcceptPriceObjectpropCount > 0)
+                {
+                    bestOfferTermsObject["autoAcceptPrice"] = autoAcceptPriceObject;
+                    bestOfferTermsObjectpropCount++;
+                }
+
+                var autoDeclinePriceObject = new JObject();
+                var autoDeclinePriceObjectpropCount = 0;
+                if (bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency != null)
+                {
+                    autoDeclinePriceObject["currency"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency);
+                    autoDeclinePriceObjectpropCount++;
+                }
+
+                if (bodylistingPoliciesbestOfferTermsautoDeclinePricevalue != null)
+                {
+                    autoDeclinePriceObject["value"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue);
+                    autoDeclinePriceObjectpropCount++;
+                }
+
+                if (autoDeclinePriceObjectpropCount > 0)
+                {
+                    bestOfferTermsObject["autoDeclinePrice"] = autoDeclinePriceObject;
+                    bestOfferTermsObjectpropCount++;
+                }
+
+                if (bodylistingPoliciesbestOfferTermsbestOfferEnabled != null)
+                {
+                    bestOfferTermsObject["bestOfferEnabled"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsbestOfferEnabled);
+                    bestOfferTermsObjectpropCount++;
+                }
+
+                if (bestOfferTermsObjectpropCount > 0)
+                {
+                    listingPoliciesObject["bestOfferTerms"] = bestOfferTermsObject;
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (bodylistingPolicieseBayPlusIfEligible != null)
+                {
+                    listingPoliciesObject["eBayPlusIfEligible"] = ExpressionConverter.ConvertO(bodylistingPolicieseBayPlusIfEligible);
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (bodylistingPoliciesfulfillmentPolicyId != null)
+                {
+                    listingPoliciesObject["fulfillmentPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciesfulfillmentPolicyId);
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (bodylistingPoliciespaymentPolicyId != null)
+                {
+                    listingPoliciesObject["paymentPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciespaymentPolicyId);
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (bodylistingPoliciesproductCompliancePolicyIds != null)
+                {
+                    listingPoliciesObject["productCompliancePolicyIds"] = ExpressionConverter.ConvertO(bodylistingPoliciesproductCompliancePolicyIds);
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (bodylistingPoliciesreturnPolicyId != null)
+                {
+                    listingPoliciesObject["returnPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciesreturnPolicyId);
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (bodylistingPoliciesshippingCostOverrides != null)
+                {
+                    listingPoliciesObject["shippingCostOverrides"] = ExpressionConverter.ConvertO(bodylistingPoliciesshippingCostOverrides);
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (bodylistingPoliciestakeBackPolicyId != null)
+                {
+                    listingPoliciesObject["takeBackPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciestakeBackPolicyId);
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (listingPoliciesObjectpropCount > 0)
+                {
+                    body["listingPolicies"] = listingPoliciesObject;
+                    bodypropCount++;
+                }
+
+                if (bodylistingStartDate != null)
+                {
+                    body["listingStartDate"] = ExpressionConverter.ConvertO(bodylistingStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodylotSize != null)
+                {
+                    body["lotSize"] = ExpressionConverter.ConvertO(bodylotSize);
+                    bodypropCount++;
+                }
+
+                if (bodymarketplaceId != null)
+                {
+                    body["marketplaceId"] = ExpressionConverter.ConvertO(bodymarketplaceId);
+                    bodypropCount++;
+                }
+
+                if (bodymerchantLocationKey != null)
+                {
+                    body["merchantLocationKey"] = ExpressionConverter.ConvertO(bodymerchantLocationKey);
+                    bodypropCount++;
+                }
+
+                var pricingSummaryObject = new JObject();
+                var pricingSummaryObjectpropCount = 0;
+                var auctionReservePriceObject = new JObject();
+                var auctionReservePriceObjectpropCount = 0;
+                if (bodypricingSummaryauctionReservePricecurrency != null)
+                {
+                    auctionReservePriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionReservePricecurrency);
+                    auctionReservePriceObjectpropCount++;
+                }
+
+                if (bodypricingSummaryauctionReservePricevalue != null)
+                {
+                    auctionReservePriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionReservePricevalue);
+                    auctionReservePriceObjectpropCount++;
+                }
+
+                if (auctionReservePriceObjectpropCount > 0)
+                {
+                    pricingSummaryObject["auctionReservePrice"] = auctionReservePriceObject;
+                    pricingSummaryObjectpropCount++;
+                }
+
+                var auctionStartPriceObject = new JObject();
+                var auctionStartPriceObjectpropCount = 0;
+                if (bodypricingSummaryauctionStartPricecurrency != null)
+                {
+                    auctionStartPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionStartPricecurrency);
+                    auctionStartPriceObjectpropCount++;
+                }
+
+                if (bodypricingSummaryauctionStartPricevalue != null)
+                {
+                    auctionStartPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionStartPricevalue);
+                    auctionStartPriceObjectpropCount++;
+                }
+
+                if (auctionStartPriceObjectpropCount > 0)
+                {
+                    pricingSummaryObject["auctionStartPrice"] = auctionStartPriceObject;
+                    pricingSummaryObjectpropCount++;
+                }
+
+                var minimumAdvertisedPriceObject = new JObject();
+                var minimumAdvertisedPriceObjectpropCount = 0;
+                if (bodypricingSummaryminimumAdvertisedPricecurrency != null)
+                {
+                    minimumAdvertisedPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryminimumAdvertisedPricecurrency);
+                    minimumAdvertisedPriceObjectpropCount++;
+                }
+
+                if (bodypricingSummaryminimumAdvertisedPricevalue != null)
+                {
+                    minimumAdvertisedPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryminimumAdvertisedPricevalue);
+                    minimumAdvertisedPriceObjectpropCount++;
+                }
+
+                if (minimumAdvertisedPriceObjectpropCount > 0)
+                {
+                    pricingSummaryObject["minimumAdvertisedPrice"] = minimumAdvertisedPriceObject;
+                    pricingSummaryObjectpropCount++;
+                }
+
+                if (bodypricingSummaryoriginallySoldForRetailPriceOn != null)
+                {
+                    pricingSummaryObject["originallySoldForRetailPriceOn"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginallySoldForRetailPriceOn);
+                    pricingSummaryObjectpropCount++;
+                }
+
+                var originalRetailPriceObject = new JObject();
+                var originalRetailPriceObjectpropCount = 0;
+                if (bodypricingSummaryoriginalRetailPricecurrency != null)
+                {
+                    originalRetailPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginalRetailPricecurrency);
+                    originalRetailPriceObjectpropCount++;
+                }
+
+                if (bodypricingSummaryoriginalRetailPricevalue != null)
+                {
+                    originalRetailPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginalRetailPricevalue);
+                    originalRetailPriceObjectpropCount++;
+                }
+
+                if (originalRetailPriceObjectpropCount > 0)
+                {
+                    pricingSummaryObject["originalRetailPrice"] = originalRetailPriceObject;
+                    pricingSummaryObjectpropCount++;
+                }
+
+                var priceObject = new JObject();
+                var priceObjectpropCount = 0;
+                if (bodypricingSummarypricecurrency != null)
+                {
+                    priceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummarypricecurrency);
+                    priceObjectpropCount++;
+                }
+
+                if (bodypricingSummarypricevalue != null)
+                {
+                    priceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummarypricevalue);
+                    priceObjectpropCount++;
+                }
+
+                if (priceObjectpropCount > 0)
+                {
+                    pricingSummaryObject["price"] = priceObject;
+                    pricingSummaryObjectpropCount++;
+                }
+
+                if (bodypricingSummarypricingVisibility != null)
+                {
+                    pricingSummaryObject["pricingVisibility"] = ExpressionConverter.ConvertO(bodypricingSummarypricingVisibility);
+                    pricingSummaryObjectpropCount++;
+                }
+
+                if (pricingSummaryObjectpropCount > 0)
+                {
+                    body["pricingSummary"] = pricingSummaryObject;
+                    bodypropCount++;
+                }
+
+                if (bodyquantityLimitPerBuyer != null)
+                {
+                    body["quantityLimitPerBuyer"] = ExpressionConverter.ConvertO(bodyquantityLimitPerBuyer);
+                    bodypropCount++;
+                }
+
+                if (bodysecondaryCategoryId != null)
+                {
+                    body["secondaryCategoryId"] = ExpressionConverter.ConvertO(bodysecondaryCategoryId);
+                    bodypropCount++;
+                }
+
+                if (bodysku != null)
+                {
+                    body["sku"] = ExpressionConverter.ConvertO(bodysku);
+                    bodypropCount++;
+                }
+
+                if (bodystoreCategoryNames != null)
+                {
+                    body["storeCategoryNames"] = ExpressionConverter.ConvertO(bodystoreCategoryNames);
+                    bodypropCount++;
+                }
+
+                var taxObject = new JObject();
+                var taxObjectpropCount = 0;
+                if (bodytaxapplyTax != null)
+                {
+                    taxObject["applyTax"] = ExpressionConverter.ConvertO(bodytaxapplyTax);
+                    taxObjectpropCount++;
+                }
+
+                if (bodytaxthirdPartyTaxCategory != null)
+                {
+                    taxObject["thirdPartyTaxCategory"] = ExpressionConverter.ConvertO(bodytaxthirdPartyTaxCategory);
+                    taxObjectpropCount++;
+                }
+
+                if (bodytaxvatPercentage != null)
+                {
+                    taxObject["vatPercentage"] = ExpressionConverter.ConvertO(bodytaxvatPercentage);
+                    taxObjectpropCount++;
+                }
+
+                if (taxObjectpropCount > 0)
+                {
+                    body["tax"] = taxObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateOfferResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetOffer))]
+        public IBodyWorkflowAction<GetOfferResponse> GetOffer([WorkflowExpression] Func<string> offerId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetOfferResponse> __BuildGetOffer(WorkflowExpression<string> offerId)
+        {
+            WorkflowExpression.Validate(offerId, nameof(offerId), required: true);
+            return new DeferredBodyAction<GetOfferResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}", ExpressionConverter.ConvertWithUrlEncoding(offerId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
+                return new ApiConnectionAction<GetOfferResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteOffer))]
+        public IBodyWorkflowAction<string> DeleteOffer([WorkflowExpression] Func<string> offerId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildDeleteOffer(WorkflowExpression<string> offerId)
+        {
+            WorkflowExpression.Validate(offerId, nameof(offerId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}", ExpressionConverter.ConvertWithUrlEncoding(offerId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateOffer))]
+        public IBodyWorkflowAction<UpdateOfferResponse> UpdateOffer([WorkflowExpression] Func<string> offerId, [WorkflowExpression] Func<int> bodyavailableQuantity = null, [WorkflowExpression] Func<string> bodycategoryId = null, [WorkflowExpression] Func<string> bodycharitycharityId = null, [WorkflowExpression] Func<string> bodycharitydonationPercentage = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityproducerProductId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityproductPackageId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityshipmentPackageId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityproductDocumentationId = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityecoParticipationFeecurrency = null, [WorkflowExpression] Func<string> bodyextendedProducerResponsibilityecoParticipationFeevalue = null, [WorkflowExpression] Func<bool> bodyhideBuyerDetails = null, [WorkflowExpression] Func<bool> bodyincludeCatalogProductDetails = null, [WorkflowExpression] Func<string> bodylistingDescription = null, [WorkflowExpression] Func<bodylistingDurationInput> bodylistingDuration = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoAcceptPricevalue = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency = null, [WorkflowExpression] Func<string> bodylistingPoliciesbestOfferTermsautoDeclinePricevalue = null, [WorkflowExpression] Func<bool> bodylistingPoliciesbestOfferTermsbestOfferEnabled = null, [WorkflowExpression] Func<bool> bodylistingPolicieseBayPlusIfEligible = null, [WorkflowExpression] Func<string> bodylistingPoliciesfulfillmentPolicyId = null, [WorkflowExpression] Func<string> bodylistingPoliciespaymentPolicyId = null, [WorkflowExpression] Func<string[]> bodylistingPoliciesproductCompliancePolicyIds = null, [WorkflowExpression] Func<string> bodylistingPoliciesreturnPolicyId = null, [WorkflowExpression] Func<bodylistingPoliciesshippingCostOverridesInputItem2[]> bodylistingPoliciesshippingCostOverrides = null, [WorkflowExpression] Func<string> bodylistingPoliciestakeBackPolicyId = null, [WorkflowExpression] Func<string> bodylistingStartDate = null, [WorkflowExpression] Func<int> bodylotSize = null, [WorkflowExpression] Func<string> bodymerchantLocationKey = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionReservePricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionReservePricevalue = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionStartPricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryauctionStartPricevalue = null, [WorkflowExpression] Func<string> bodypricingSummaryminimumAdvertisedPricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryminimumAdvertisedPricevalue = null, [WorkflowExpression] Func<bodypricingSummaryoriginallySoldForRetailPriceOnInput> bodypricingSummaryoriginallySoldForRetailPriceOn = null, [WorkflowExpression] Func<string> bodypricingSummaryoriginalRetailPricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummaryoriginalRetailPricevalue = null, [WorkflowExpression] Func<string> bodypricingSummarypricecurrency = null, [WorkflowExpression] Func<string> bodypricingSummarypricevalue = null, [WorkflowExpression] Func<bodypricingSummarypricingVisibilityInput> bodypricingSummarypricingVisibility = null, [WorkflowExpression] Func<int> bodyquantityLimitPerBuyer = null, [WorkflowExpression] Func<string> bodysecondaryCategoryId = null, [WorkflowExpression] Func<string[]> bodystoreCategoryNames = null, [WorkflowExpression] Func<bool> bodytaxapplyTax = null, [WorkflowExpression] Func<string> bodytaxthirdPartyTaxCategory = null, [WorkflowExpression] Func<double> bodytaxvatPercentage = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateOfferResponse> __BuildUpdateOffer(WorkflowExpression<string> offerId, WorkflowExpression<int> bodyavailableQuantity = null, WorkflowExpression<string> bodycategoryId = null, WorkflowExpression<string> bodycharitycharityId = null, WorkflowExpression<string> bodycharitydonationPercentage = null, WorkflowExpression<string> bodyextendedProducerResponsibilityproducerProductId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityproductPackageId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityshipmentPackageId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityproductDocumentationId = null, WorkflowExpression<string> bodyextendedProducerResponsibilityecoParticipationFeecurrency = null, WorkflowExpression<string> bodyextendedProducerResponsibilityecoParticipationFeevalue = null, WorkflowExpression<bool> bodyhideBuyerDetails = null, WorkflowExpression<bool> bodyincludeCatalogProductDetails = null, WorkflowExpression<string> bodylistingDescription = null, WorkflowExpression<bodylistingDurationInput> bodylistingDuration = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoAcceptPricevalue = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency = null, WorkflowExpression<string> bodylistingPoliciesbestOfferTermsautoDeclinePricevalue = null, WorkflowExpression<bool> bodylistingPoliciesbestOfferTermsbestOfferEnabled = null, WorkflowExpression<bool> bodylistingPolicieseBayPlusIfEligible = null, WorkflowExpression<string> bodylistingPoliciesfulfillmentPolicyId = null, WorkflowExpression<string> bodylistingPoliciespaymentPolicyId = null, WorkflowExpression<string[]> bodylistingPoliciesproductCompliancePolicyIds = null, WorkflowExpression<string> bodylistingPoliciesreturnPolicyId = null, WorkflowExpression<bodylistingPoliciesshippingCostOverridesInputItem2[]> bodylistingPoliciesshippingCostOverrides = null, WorkflowExpression<string> bodylistingPoliciestakeBackPolicyId = null, WorkflowExpression<string> bodylistingStartDate = null, WorkflowExpression<int> bodylotSize = null, WorkflowExpression<string> bodymerchantLocationKey = null, WorkflowExpression<string> bodypricingSummaryauctionReservePricecurrency = null, WorkflowExpression<string> bodypricingSummaryauctionReservePricevalue = null, WorkflowExpression<string> bodypricingSummaryauctionStartPricecurrency = null, WorkflowExpression<string> bodypricingSummaryauctionStartPricevalue = null, WorkflowExpression<string> bodypricingSummaryminimumAdvertisedPricecurrency = null, WorkflowExpression<string> bodypricingSummaryminimumAdvertisedPricevalue = null, WorkflowExpression<bodypricingSummaryoriginallySoldForRetailPriceOnInput> bodypricingSummaryoriginallySoldForRetailPriceOn = null, WorkflowExpression<string> bodypricingSummaryoriginalRetailPricecurrency = null, WorkflowExpression<string> bodypricingSummaryoriginalRetailPricevalue = null, WorkflowExpression<string> bodypricingSummarypricecurrency = null, WorkflowExpression<string> bodypricingSummarypricevalue = null, WorkflowExpression<bodypricingSummarypricingVisibilityInput> bodypricingSummarypricingVisibility = null, WorkflowExpression<int> bodyquantityLimitPerBuyer = null, WorkflowExpression<string> bodysecondaryCategoryId = null, WorkflowExpression<string[]> bodystoreCategoryNames = null, WorkflowExpression<bool> bodytaxapplyTax = null, WorkflowExpression<string> bodytaxthirdPartyTaxCategory = null, WorkflowExpression<double> bodytaxvatPercentage = null)
+        {
+            WorkflowExpression.Validate(offerId, nameof(offerId), required: true);
+            WorkflowExpression.Validate(bodyavailableQuantity, nameof(bodyavailableQuantity), required: false);
+            WorkflowExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
+            WorkflowExpression.Validate(bodycharitycharityId, nameof(bodycharitycharityId), required: false);
+            WorkflowExpression.Validate(bodycharitydonationPercentage, nameof(bodycharitydonationPercentage), required: false);
+            WorkflowExpression.Validate(bodyextendedProducerResponsibilityproducerProductId, nameof(bodyextendedProducerResponsibilityproducerProductId), required: false);
+            WorkflowExpression.Validate(bodyextendedProducerResponsibilityproductPackageId, nameof(bodyextendedProducerResponsibilityproductPackageId), required: false);
+            WorkflowExpression.Validate(bodyextendedProducerResponsibilityshipmentPackageId, nameof(bodyextendedProducerResponsibilityshipmentPackageId), required: false);
+            WorkflowExpression.Validate(bodyextendedProducerResponsibilityproductDocumentationId, nameof(bodyextendedProducerResponsibilityproductDocumentationId), required: false);
+            WorkflowExpression.Validate(bodyextendedProducerResponsibilityecoParticipationFeecurrency, nameof(bodyextendedProducerResponsibilityecoParticipationFeecurrency), required: false);
+            WorkflowExpression.Validate(bodyextendedProducerResponsibilityecoParticipationFeevalue, nameof(bodyextendedProducerResponsibilityecoParticipationFeevalue), required: false);
+            WorkflowExpression.Validate(bodyhideBuyerDetails, nameof(bodyhideBuyerDetails), required: false);
+            WorkflowExpression.Validate(bodyincludeCatalogProductDetails, nameof(bodyincludeCatalogProductDetails), required: false);
+            WorkflowExpression.Validate(bodylistingDescription, nameof(bodylistingDescription), required: false);
+            WorkflowExpression.Validate(bodylistingDuration, nameof(bodylistingDuration), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency, nameof(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue, nameof(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency, nameof(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue, nameof(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesbestOfferTermsbestOfferEnabled, nameof(bodylistingPoliciesbestOfferTermsbestOfferEnabled), required: false);
+            WorkflowExpression.Validate(bodylistingPolicieseBayPlusIfEligible, nameof(bodylistingPolicieseBayPlusIfEligible), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesfulfillmentPolicyId, nameof(bodylistingPoliciesfulfillmentPolicyId), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciespaymentPolicyId, nameof(bodylistingPoliciespaymentPolicyId), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesproductCompliancePolicyIds, nameof(bodylistingPoliciesproductCompliancePolicyIds), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesreturnPolicyId, nameof(bodylistingPoliciesreturnPolicyId), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciesshippingCostOverrides, nameof(bodylistingPoliciesshippingCostOverrides), required: false);
+            WorkflowExpression.Validate(bodylistingPoliciestakeBackPolicyId, nameof(bodylistingPoliciestakeBackPolicyId), required: false);
+            WorkflowExpression.Validate(bodylistingStartDate, nameof(bodylistingStartDate), required: false);
+            WorkflowExpression.Validate(bodylotSize, nameof(bodylotSize), required: false);
+            WorkflowExpression.Validate(bodymerchantLocationKey, nameof(bodymerchantLocationKey), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryauctionReservePricecurrency, nameof(bodypricingSummaryauctionReservePricecurrency), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryauctionReservePricevalue, nameof(bodypricingSummaryauctionReservePricevalue), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryauctionStartPricecurrency, nameof(bodypricingSummaryauctionStartPricecurrency), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryauctionStartPricevalue, nameof(bodypricingSummaryauctionStartPricevalue), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryminimumAdvertisedPricecurrency, nameof(bodypricingSummaryminimumAdvertisedPricecurrency), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryminimumAdvertisedPricevalue, nameof(bodypricingSummaryminimumAdvertisedPricevalue), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryoriginallySoldForRetailPriceOn, nameof(bodypricingSummaryoriginallySoldForRetailPriceOn), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryoriginalRetailPricecurrency, nameof(bodypricingSummaryoriginalRetailPricecurrency), required: false);
+            WorkflowExpression.Validate(bodypricingSummaryoriginalRetailPricevalue, nameof(bodypricingSummaryoriginalRetailPricevalue), required: false);
+            WorkflowExpression.Validate(bodypricingSummarypricecurrency, nameof(bodypricingSummarypricecurrency), required: false);
+            WorkflowExpression.Validate(bodypricingSummarypricevalue, nameof(bodypricingSummarypricevalue), required: false);
+            WorkflowExpression.Validate(bodypricingSummarypricingVisibility, nameof(bodypricingSummarypricingVisibility), required: false);
+            WorkflowExpression.Validate(bodyquantityLimitPerBuyer, nameof(bodyquantityLimitPerBuyer), required: false);
+            WorkflowExpression.Validate(bodysecondaryCategoryId, nameof(bodysecondaryCategoryId), required: false);
+            WorkflowExpression.Validate(bodystoreCategoryNames, nameof(bodystoreCategoryNames), required: false);
+            WorkflowExpression.Validate(bodytaxapplyTax, nameof(bodytaxapplyTax), required: false);
+            WorkflowExpression.Validate(bodytaxthirdPartyTaxCategory, nameof(bodytaxthirdPartyTaxCategory), required: false);
+            WorkflowExpression.Validate(bodytaxvatPercentage, nameof(bodytaxvatPercentage), required: false);
+            return new DeferredBodyAction<UpdateOfferResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}", ExpressionConverter.ConvertWithUrlEncoding(offerId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Language"] = Convert.ToString("en-US");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyavailableQuantity != null)
+                {
+                    body["availableQuantity"] = ExpressionConverter.ConvertO(bodyavailableQuantity);
+                    bodypropCount++;
+                }
+
+                if (bodycategoryId != null)
+                {
+                    body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
+                    bodypropCount++;
+                }
+
+                var charityObject = new JObject();
+                var charityObjectpropCount = 0;
+                if (bodycharitycharityId != null)
+                {
+                    charityObject["charityId"] = ExpressionConverter.ConvertO(bodycharitycharityId);
+                    charityObjectpropCount++;
+                }
+
+                if (bodycharitydonationPercentage != null)
+                {
+                    charityObject["donationPercentage"] = ExpressionConverter.ConvertO(bodycharitydonationPercentage);
+                    charityObjectpropCount++;
+                }
+
+                if (charityObjectpropCount > 0)
+                {
+                    body["charity"] = charityObject;
+                    bodypropCount++;
+                }
+
+                var extendedProducerResponsibilityObject = new JObject();
+                var extendedProducerResponsibilityObjectpropCount = 0;
+                if (bodyextendedProducerResponsibilityproducerProductId != null)
+                {
+                    extendedProducerResponsibilityObject["producerProductId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproducerProductId);
+                    extendedProducerResponsibilityObjectpropCount++;
+                }
+
+                if (bodyextendedProducerResponsibilityproductPackageId != null)
+                {
+                    extendedProducerResponsibilityObject["productPackageId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproductPackageId);
+                    extendedProducerResponsibilityObjectpropCount++;
+                }
+
+                if (bodyextendedProducerResponsibilityshipmentPackageId != null)
+                {
+                    extendedProducerResponsibilityObject["shipmentPackageId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityshipmentPackageId);
+                    extendedProducerResponsibilityObjectpropCount++;
+                }
+
+                if (bodyextendedProducerResponsibilityproductDocumentationId != null)
+                {
+                    extendedProducerResponsibilityObject["productDocumentationId"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityproductDocumentationId);
+                    extendedProducerResponsibilityObjectpropCount++;
+                }
+
+                var ecoParticipationFeeObject = new JObject();
+                var ecoParticipationFeeObjectpropCount = 0;
+                if (bodyextendedProducerResponsibilityecoParticipationFeecurrency != null)
+                {
+                    ecoParticipationFeeObject["currency"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityecoParticipationFeecurrency);
+                    ecoParticipationFeeObjectpropCount++;
+                }
+
+                if (bodyextendedProducerResponsibilityecoParticipationFeevalue != null)
+                {
+                    ecoParticipationFeeObject["value"] = ExpressionConverter.ConvertO(bodyextendedProducerResponsibilityecoParticipationFeevalue);
+                    ecoParticipationFeeObjectpropCount++;
+                }
+
+                if (ecoParticipationFeeObjectpropCount > 0)
+                {
+                    extendedProducerResponsibilityObject["ecoParticipationFee"] = ecoParticipationFeeObject;
+                    extendedProducerResponsibilityObjectpropCount++;
+                }
+
+                if (extendedProducerResponsibilityObjectpropCount > 0)
+                {
+                    body["extendedProducerResponsibility"] = extendedProducerResponsibilityObject;
+                    bodypropCount++;
+                }
+
+                if (bodyhideBuyerDetails != null)
+                {
+                    body["hideBuyerDetails"] = ExpressionConverter.ConvertO(bodyhideBuyerDetails);
+                    bodypropCount++;
+                }
+
+                if (bodyincludeCatalogProductDetails != null)
+                {
+                    body["includeCatalogProductDetails"] = ExpressionConverter.ConvertO(bodyincludeCatalogProductDetails);
+                    bodypropCount++;
+                }
+
+                if (bodylistingDescription != null)
+                {
+                    body["listingDescription"] = ExpressionConverter.ConvertO(bodylistingDescription);
+                    bodypropCount++;
+                }
+
+                if (bodylistingDuration != null)
+                {
+                    body["listingDuration"] = ExpressionConverter.ConvertO(bodylistingDuration);
+                    bodypropCount++;
+                }
+
+                var listingPoliciesObject = new JObject();
+                var listingPoliciesObjectpropCount = 0;
+                var bestOfferTermsObject = new JObject();
+                var bestOfferTermsObjectpropCount = 0;
+                var autoAcceptPriceObject = new JObject();
+                var autoAcceptPriceObjectpropCount = 0;
+                if (bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency != null)
+                {
+                    autoAcceptPriceObject["currency"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoAcceptPricecurrency);
+                    autoAcceptPriceObjectpropCount++;
+                }
+
+                if (bodylistingPoliciesbestOfferTermsautoAcceptPricevalue != null)
+                {
+                    autoAcceptPriceObject["value"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoAcceptPricevalue);
+                    autoAcceptPriceObjectpropCount++;
+                }
+
+                if (autoAcceptPriceObjectpropCount > 0)
+                {
+                    bestOfferTermsObject["autoAcceptPrice"] = autoAcceptPriceObject;
+                    bestOfferTermsObjectpropCount++;
+                }
+
+                var autoDeclinePriceObject = new JObject();
+                var autoDeclinePriceObjectpropCount = 0;
+                if (bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency != null)
+                {
+                    autoDeclinePriceObject["currency"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoDeclinePricecurrency);
+                    autoDeclinePriceObjectpropCount++;
+                }
+
+                if (bodylistingPoliciesbestOfferTermsautoDeclinePricevalue != null)
+                {
+                    autoDeclinePriceObject["value"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsautoDeclinePricevalue);
+                    autoDeclinePriceObjectpropCount++;
+                }
+
+                if (autoDeclinePriceObjectpropCount > 0)
+                {
+                    bestOfferTermsObject["autoDeclinePrice"] = autoDeclinePriceObject;
+                    bestOfferTermsObjectpropCount++;
+                }
+
+                if (bodylistingPoliciesbestOfferTermsbestOfferEnabled != null)
+                {
+                    bestOfferTermsObject["bestOfferEnabled"] = ExpressionConverter.ConvertO(bodylistingPoliciesbestOfferTermsbestOfferEnabled);
+                    bestOfferTermsObjectpropCount++;
+                }
+
+                if (bestOfferTermsObjectpropCount > 0)
+                {
+                    listingPoliciesObject["bestOfferTerms"] = bestOfferTermsObject;
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (bodylistingPolicieseBayPlusIfEligible != null)
+                {
+                    listingPoliciesObject["eBayPlusIfEligible"] = ExpressionConverter.ConvertO(bodylistingPolicieseBayPlusIfEligible);
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (bodylistingPoliciesfulfillmentPolicyId != null)
+                {
+                    listingPoliciesObject["fulfillmentPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciesfulfillmentPolicyId);
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (bodylistingPoliciespaymentPolicyId != null)
+                {
+                    listingPoliciesObject["paymentPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciespaymentPolicyId);
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (bodylistingPoliciesproductCompliancePolicyIds != null)
+                {
+                    listingPoliciesObject["productCompliancePolicyIds"] = ExpressionConverter.ConvertO(bodylistingPoliciesproductCompliancePolicyIds);
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (bodylistingPoliciesreturnPolicyId != null)
+                {
+                    listingPoliciesObject["returnPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciesreturnPolicyId);
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (bodylistingPoliciesshippingCostOverrides != null)
+                {
+                    listingPoliciesObject["shippingCostOverrides"] = ExpressionConverter.ConvertO(bodylistingPoliciesshippingCostOverrides);
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (bodylistingPoliciestakeBackPolicyId != null)
+                {
+                    listingPoliciesObject["takeBackPolicyId"] = ExpressionConverter.ConvertO(bodylistingPoliciestakeBackPolicyId);
+                    listingPoliciesObjectpropCount++;
+                }
+
+                if (listingPoliciesObjectpropCount > 0)
+                {
+                    body["listingPolicies"] = listingPoliciesObject;
+                    bodypropCount++;
+                }
+
+                if (bodylistingStartDate != null)
+                {
+                    body["listingStartDate"] = ExpressionConverter.ConvertO(bodylistingStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodylotSize != null)
+                {
+                    body["lotSize"] = ExpressionConverter.ConvertO(bodylotSize);
+                    bodypropCount++;
+                }
+
+                if (bodymerchantLocationKey != null)
+                {
+                    body["merchantLocationKey"] = ExpressionConverter.ConvertO(bodymerchantLocationKey);
+                    bodypropCount++;
+                }
+
+                var pricingSummaryObject = new JObject();
+                var pricingSummaryObjectpropCount = 0;
+                var auctionReservePriceObject = new JObject();
+                var auctionReservePriceObjectpropCount = 0;
+                if (bodypricingSummaryauctionReservePricecurrency != null)
+                {
+                    auctionReservePriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionReservePricecurrency);
+                    auctionReservePriceObjectpropCount++;
+                }
+
+                if (bodypricingSummaryauctionReservePricevalue != null)
+                {
+                    auctionReservePriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionReservePricevalue);
+                    auctionReservePriceObjectpropCount++;
+                }
+
+                if (auctionReservePriceObjectpropCount > 0)
+                {
+                    pricingSummaryObject["auctionReservePrice"] = auctionReservePriceObject;
+                    pricingSummaryObjectpropCount++;
+                }
+
+                var auctionStartPriceObject = new JObject();
+                var auctionStartPriceObjectpropCount = 0;
+                if (bodypricingSummaryauctionStartPricecurrency != null)
+                {
+                    auctionStartPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionStartPricecurrency);
+                    auctionStartPriceObjectpropCount++;
+                }
+
+                if (bodypricingSummaryauctionStartPricevalue != null)
+                {
+                    auctionStartPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryauctionStartPricevalue);
+                    auctionStartPriceObjectpropCount++;
+                }
+
+                if (auctionStartPriceObjectpropCount > 0)
+                {
+                    pricingSummaryObject["auctionStartPrice"] = auctionStartPriceObject;
+                    pricingSummaryObjectpropCount++;
+                }
+
+                var minimumAdvertisedPriceObject = new JObject();
+                var minimumAdvertisedPriceObjectpropCount = 0;
+                if (bodypricingSummaryminimumAdvertisedPricecurrency != null)
+                {
+                    minimumAdvertisedPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryminimumAdvertisedPricecurrency);
+                    minimumAdvertisedPriceObjectpropCount++;
+                }
+
+                if (bodypricingSummaryminimumAdvertisedPricevalue != null)
+                {
+                    minimumAdvertisedPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryminimumAdvertisedPricevalue);
+                    minimumAdvertisedPriceObjectpropCount++;
+                }
+
+                if (minimumAdvertisedPriceObjectpropCount > 0)
+                {
+                    pricingSummaryObject["minimumAdvertisedPrice"] = minimumAdvertisedPriceObject;
+                    pricingSummaryObjectpropCount++;
+                }
+
+                if (bodypricingSummaryoriginallySoldForRetailPriceOn != null)
+                {
+                    pricingSummaryObject["originallySoldForRetailPriceOn"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginallySoldForRetailPriceOn);
+                    pricingSummaryObjectpropCount++;
+                }
+
+                var originalRetailPriceObject = new JObject();
+                var originalRetailPriceObjectpropCount = 0;
+                if (bodypricingSummaryoriginalRetailPricecurrency != null)
+                {
+                    originalRetailPriceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginalRetailPricecurrency);
+                    originalRetailPriceObjectpropCount++;
+                }
+
+                if (bodypricingSummaryoriginalRetailPricevalue != null)
+                {
+                    originalRetailPriceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummaryoriginalRetailPricevalue);
+                    originalRetailPriceObjectpropCount++;
+                }
+
+                if (originalRetailPriceObjectpropCount > 0)
+                {
+                    pricingSummaryObject["originalRetailPrice"] = originalRetailPriceObject;
+                    pricingSummaryObjectpropCount++;
+                }
+
+                var priceObject = new JObject();
+                var priceObjectpropCount = 0;
+                if (bodypricingSummarypricecurrency != null)
+                {
+                    priceObject["currency"] = ExpressionConverter.ConvertO(bodypricingSummarypricecurrency);
+                    priceObjectpropCount++;
+                }
+
+                if (bodypricingSummarypricevalue != null)
+                {
+                    priceObject["value"] = ExpressionConverter.ConvertO(bodypricingSummarypricevalue);
+                    priceObjectpropCount++;
+                }
+
+                if (priceObjectpropCount > 0)
+                {
+                    pricingSummaryObject["price"] = priceObject;
+                    pricingSummaryObjectpropCount++;
+                }
+
+                if (bodypricingSummarypricingVisibility != null)
+                {
+                    pricingSummaryObject["pricingVisibility"] = ExpressionConverter.ConvertO(bodypricingSummarypricingVisibility);
+                    pricingSummaryObjectpropCount++;
+                }
+
+                if (pricingSummaryObjectpropCount > 0)
+                {
+                    body["pricingSummary"] = pricingSummaryObject;
+                    bodypropCount++;
+                }
+
+                if (bodyquantityLimitPerBuyer != null)
+                {
+                    body["quantityLimitPerBuyer"] = ExpressionConverter.ConvertO(bodyquantityLimitPerBuyer);
+                    bodypropCount++;
+                }
+
+                if (bodysecondaryCategoryId != null)
+                {
+                    body["secondaryCategoryId"] = ExpressionConverter.ConvertO(bodysecondaryCategoryId);
+                    bodypropCount++;
+                }
+
+                if (bodystoreCategoryNames != null)
+                {
+                    body["storeCategoryNames"] = ExpressionConverter.ConvertO(bodystoreCategoryNames);
+                    bodypropCount++;
+                }
+
+                var taxObject = new JObject();
+                var taxObjectpropCount = 0;
+                if (bodytaxapplyTax != null)
+                {
+                    taxObject["applyTax"] = ExpressionConverter.ConvertO(bodytaxapplyTax);
+                    taxObjectpropCount++;
+                }
+
+                if (bodytaxthirdPartyTaxCategory != null)
+                {
+                    taxObject["thirdPartyTaxCategory"] = ExpressionConverter.ConvertO(bodytaxthirdPartyTaxCategory);
+                    taxObjectpropCount++;
+                }
+
+                if (bodytaxvatPercentage != null)
+                {
+                    taxObject["vatPercentage"] = ExpressionConverter.ConvertO(bodytaxvatPercentage);
+                    taxObjectpropCount++;
+                }
+
+                if (taxObjectpropCount > 0)
+                {
+                    body["tax"] = taxObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateOfferResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [WorkflowExpressionFactory(nameof(__BuildWithdrawOffer))]
+        public IBodyWorkflowAction<WithdrawOfferResponse> WithdrawOffer([WorkflowExpression] Func<string> offerId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WithdrawOfferResponse> __BuildWithdrawOffer(WorkflowExpression<string> offerId)
+        {
+            WorkflowExpression.Validate(offerId, nameof(offerId), required: true);
+            return new DeferredBodyAction<WithdrawOfferResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}/withdraw", ExpressionConverter.ConvertWithUrlEncoding(offerId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
+                return new ApiConnectionAction<WithdrawOfferResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [WorkflowExpressionFactory(nameof(__BuildPublishOffer))]
+        public IBodyWorkflowAction<PublishOfferResponse> PublishOffer([WorkflowExpression] Func<string> offerId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebayip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PublishOfferResponse> __BuildPublishOffer(WorkflowExpression<string> offerId)
+        {
+            WorkflowExpression.Validate(offerId, nameof(offerId), required: true);
+            return new DeferredBodyAction<PublishOfferResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sell/inventory/v1/offer/{0}/publish/", ExpressionConverter.ConvertWithUrlEncoding(offerId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept-Language"] = Convert.ToString("en-US");
+                return new ApiConnectionAction<PublishOfferResponse>(callPayload);
+            });
         }
     }
 

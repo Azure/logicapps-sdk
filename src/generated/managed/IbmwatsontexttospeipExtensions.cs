@@ -4,32 +4,45 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class IbmwatsontexttospeipActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        public IBodyWorkflowAction<SynthesizeResponse> Synthesize(Expression<Func<string>> bodytext, Expression<Func<voiceInput>> voice = null)
-        {
-            var apiCallPath = "/v1/synthesize";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
-            if (voice != null)
-                callPayload.Queries["voice"] = ExpressionConverter.Convert(voice);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<SynthesizeResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
+        [WorkflowExpressionFactory(nameof(__BuildSynthesize))]
+        public IBodyWorkflowAction<SynthesizeResponse> Synthesize([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<voiceInput> voice = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SynthesizeResponse> __BuildSynthesize(WorkflowExpression<string> bodytext, WorkflowExpression<voiceInput> voice = null)
+        {
+            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
+            WorkflowExpression.Validate(voice, nameof(voice), required: false);
+            return new DeferredBodyAction<SynthesizeResponse>(() =>
+            {
+                var apiCallPath = "/v1/synthesize";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
+                if (voice != null)
+                    callPayload.Queries["voice"] = ExpressionConverter.Convert(voice);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SynthesizeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
@@ -42,26 +55,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        public IBodyWorkflowAction<PronunciationResponse> Pronunciation(Expression<Func<voiceInput>> voice = null, Expression<Func<string>> text = null)
+        [WorkflowExpressionFactory(nameof(__BuildPronunciation))]
+        public IBodyWorkflowAction<PronunciationResponse> Pronunciation([WorkflowExpression] Func<voiceInput> voice = null, [WorkflowExpression] Func<string> text = null)
         {
-            var apiCallPath = "/v1/pronunciation";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
-            if (voice != null)
-                callPayload.Queries["voice"] = ExpressionConverter.Convert(voice);
-            if (text != null)
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
-            return new ApiConnectionAction<PronunciationResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        public IBodyWorkflowAction<GetVoiceResponse> GetVoice(Expression<Func<string>> voice)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PronunciationResponse> __BuildPronunciation(WorkflowExpression<voiceInput> voice = null, WorkflowExpression<string> text = null)
         {
-            var apiCallPath = String.Format("/v1/voices/{0}", ExpressionConverter.ConvertWithUrlEncoding(voice, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetVoiceResponse>(callPayload);
+            WorkflowExpression.Validate(voice, nameof(voice), required: false);
+            WorkflowExpression.Validate(text, nameof(text), required: false);
+            return new DeferredBodyAction<PronunciationResponse>(() =>
+            {
+                var apiCallPath = "/v1/pronunciation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
+                if (voice != null)
+                    callPayload.Queries["voice"] = ExpressionConverter.Convert(voice);
+                if (text != null)
+                    callPayload.Queries["text"] = ExpressionConverter.Convert(text);
+                return new ApiConnectionAction<PronunciationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetVoice))]
+        public IBodyWorkflowAction<GetVoiceResponse> GetVoice([WorkflowExpression] Func<string> voice)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetVoiceResponse> __BuildGetVoice(WorkflowExpression<string> voice)
+        {
+            WorkflowExpression.Validate(voice, nameof(voice), required: true);
+            return new DeferredBodyAction<GetVoiceResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/voices/{0}", ExpressionConverter.ConvertWithUrlEncoding(voice, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetVoiceResponse>(callPayload);
+            });
         }
     }
 

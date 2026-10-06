@@ -4,59 +4,75 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class PureleadsActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pureleads")]
-        public IWorkflowAction NewLeadSubmission(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname, Expression<Func<string>> bodymobileNo = null, Expression<Func<string>> bodysecondaryEmail = null, Expression<Func<int>> bodylifecycleStageName = null)
+        [WorkflowExpressionFactory(nameof(__BuildNewLeadSubmission))]
+        public IWorkflowAction NewLeadSubmission([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodymobileNo = null, [WorkflowExpression] Func<string> bodysecondaryEmail = null, [WorkflowExpression] Func<int> bodylifecycleStageName = null)
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodymobileNo != null)
-            {
-                body["mobile_no"] = ExpressionConverter.ConvertO(bodymobileNo);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodysecondaryEmail != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pureleads")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildNewLeadSubmission(WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodymobileNo = null, WorkflowExpression<string> bodysecondaryEmail = null, WorkflowExpression<int> bodylifecycleStageName = null)
+        {
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodymobileNo, nameof(bodymobileNo), required: false);
+            WorkflowExpression.Validate(bodysecondaryEmail, nameof(bodysecondaryEmail), required: false);
+            WorkflowExpression.Validate(bodylifecycleStageName, nameof(bodylifecycleStageName), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["secondary_email"] = ExpressionConverter.ConvertO(bodysecondaryEmail);
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodylifecycleStageName != null)
-            {
-                if (bodylifecycleStageName != null)
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodymobileNo != null)
                 {
-                    body["lifecycle_stage_name"] = ExpressionConverter.ConvertO(bodylifecycleStageName);
+                    body["mobile_no"] = ExpressionConverter.ConvertO(bodymobileNo);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["lifecycle_stage_name"] = 1;
-                bodypropCount++;
-            }
+                if (bodysecondaryEmail != null)
+                {
+                    body["secondary_email"] = ExpressionConverter.ConvertO(bodysecondaryEmail);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodylifecycleStageName != null)
+                {
+                    if (bodylifecycleStageName != null)
+                    {
+                        body["lifecycle_stage_name"] = ExpressionConverter.ConvertO(bodylifecycleStageName);
+                        bodypropCount++;
+                    }
 
-            return new ApiConnectionAction(callPayload);
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["lifecycle_stage_name"] = 1;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

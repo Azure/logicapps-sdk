@@ -4,39 +4,79 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class NasafirmsActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
-        public IWorkflowAction GetArea(Expression<Func<string>> source, Expression<Func<string>> areaCoord, Expression<Func<dayRangeInput>> dayRange)
+        [WorkflowExpressionFactory(nameof(__BuildGetArea))]
+        public IWorkflowAction GetArea([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> areaCoord, [WorkflowExpression] Func<dayRangeInput> dayRange)
         {
-            var apiCallPath = String.Format("/api/area/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(areaCoord, 1), ExpressionConverter.ConvertWithUrlEncoding(dayRange, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
-        public IWorkflowAction GetCountry(Expression<Func<string>> source, Expression<Func<string>> country, Expression<Func<dayRangeInput>> dayRange)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetArea(WorkflowExpression<string> source, WorkflowExpression<string> areaCoord, WorkflowExpression<dayRangeInput> dayRange)
         {
-            var apiCallPath = String.Format("/api/country/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(country, 1), ExpressionConverter.ConvertWithUrlEncoding(dayRange, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            WorkflowExpression.Validate(source, nameof(source), required: true);
+            WorkflowExpression.Validate(areaCoord, nameof(areaCoord), required: true);
+            WorkflowExpression.Validate(dayRange, nameof(dayRange), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/area/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(areaCoord, 1), ExpressionConverter.ConvertWithUrlEncoding(dayRange, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
-        public IBodyWorkflowAction<CheckMapKeyResponse> CheckMapKey(Expression<Func<string>> mAPKEY)
+        [WorkflowExpressionFactory(nameof(__BuildGetCountry))]
+        public IWorkflowAction GetCountry([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> country, [WorkflowExpression] Func<dayRangeInput> dayRange)
         {
-            var apiCallPath = "/mapserver/mapkey_status/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["MAP_KEY"] = ExpressionConverter.Convert(mAPKEY);
-            return new ApiConnectionAction<CheckMapKeyResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetCountry(WorkflowExpression<string> source, WorkflowExpression<string> country, WorkflowExpression<dayRangeInput> dayRange)
+        {
+            WorkflowExpression.Validate(source, nameof(source), required: true);
+            WorkflowExpression.Validate(country, nameof(country), required: true);
+            WorkflowExpression.Validate(dayRange, nameof(dayRange), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/country/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(country, 1), ExpressionConverter.ConvertWithUrlEncoding(dayRange, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
+        [WorkflowExpressionFactory(nameof(__BuildCheckMapKey))]
+        public IBodyWorkflowAction<CheckMapKeyResponse> CheckMapKey([WorkflowExpression] Func<string> mAPKEY)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CheckMapKeyResponse> __BuildCheckMapKey(WorkflowExpression<string> mAPKEY)
+        {
+            WorkflowExpression.Validate(mAPKEY, nameof(mAPKEY), required: true);
+            return new DeferredBodyAction<CheckMapKeyResponse>(() =>
+            {
+                var apiCallPath = "/mapserver/mapkey_status/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["MAP_KEY"] = ExpressionConverter.Convert(mAPKEY);
+                return new ApiConnectionAction<CheckMapKeyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]

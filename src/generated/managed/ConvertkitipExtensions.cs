@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -30,58 +29,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<FormSubAddResponse> FormSubAdd(Expression<Func<string>> formId, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<int[]>> bodytags = null)
+        [WorkflowExpressionFactory(nameof(__BuildFormSubAdd))]
+        public IBodyWorkflowAction<FormSubAddResponse> FormSubAdd([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<int[]> bodytags = null)
         {
-            var apiCallPath = String.Format("/forms/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyfirstName != null)
-            {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
-
-            var fieldsObject = new JObject();
-            var fieldsObjectpropCount = 0;
-            if (fieldsObjectpropCount > 0)
-            {
-                body["fields"] = fieldsObject;
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FormSubAddResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<FormSubListResponse> FormSubList(Expression<Func<string>> formId, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<subscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FormSubAddResponse> __BuildFormSubAdd(WorkflowExpression<string> formId, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<int[]> bodytags = null)
         {
-            var apiCallPath = String.Format("/forms/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sort_order"] = Convert.ToString("asc");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["subscriber_state"] = Convert.ToString("active");
-            if (subscriberState != null)
-                callPayload.Queries["subscriber_state"] = ExpressionConverter.Convert(subscriberState);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<FormSubListResponse>(callPayload);
+            WorkflowExpression.Validate(formId, nameof(formId), required: true);
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            WorkflowExpression.Validate(bodytags, nameof(bodytags), required: false);
+            return new DeferredBodyAction<FormSubAddResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forms/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                var fieldsObject = new JObject();
+                var fieldsObjectpropCount = 0;
+                if (fieldsObjectpropCount > 0)
+                {
+                    body["fields"] = fieldsObject;
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FormSubAddResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [WorkflowExpressionFactory(nameof(__BuildFormSubList))]
+        public IBodyWorkflowAction<FormSubListResponse> FormSubList([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<subscriberStateInput> subscriberState = null, [WorkflowExpression] Func<int> page = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FormSubListResponse> __BuildFormSubList(WorkflowExpression<string> formId, WorkflowExpression<sortOrderInput> sortOrder = null, WorkflowExpression<subscriberStateInput> subscriberState = null, WorkflowExpression<int> page = null)
+        {
+            WorkflowExpression.Validate(formId, nameof(formId), required: true);
+            WorkflowExpression.Validate(sortOrder, nameof(sortOrder), required: false);
+            WorkflowExpression.Validate(subscriberState, nameof(subscriberState), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<FormSubListResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forms/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sort_order"] = Convert.ToString("asc");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["subscriber_state"] = Convert.ToString("active");
+                if (subscriberState != null)
+                    callPayload.Queries["subscriber_state"] = ExpressionConverter.Convert(subscriberState);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<FormSubListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
@@ -94,58 +123,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SequenceSubAddResponse> SequenceSubAdd(Expression<Func<string>> sequenceId, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<int[]>> bodytags = null)
+        [WorkflowExpressionFactory(nameof(__BuildSequenceSubAdd))]
+        public IBodyWorkflowAction<SequenceSubAddResponse> SequenceSubAdd([WorkflowExpression] Func<string> sequenceId, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<int[]> bodytags = null)
         {
-            var apiCallPath = String.Format("/sequences/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(sequenceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyfirstName != null)
-            {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
-
-            var fieldsObject = new JObject();
-            var fieldsObjectpropCount = 0;
-            if (fieldsObjectpropCount > 0)
-            {
-                body["fields"] = fieldsObject;
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SequenceSubAddResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SequenceSubListResponse> SequenceSubList(Expression<Func<string>> sequenceId, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<subscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SequenceSubAddResponse> __BuildSequenceSubAdd(WorkflowExpression<string> sequenceId, WorkflowExpression<string> bodyemail, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<int[]> bodytags = null)
         {
-            var apiCallPath = String.Format("/sequences/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(sequenceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sort_order"] = Convert.ToString("asc");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["subscriber_state"] = Convert.ToString("active");
-            if (subscriberState != null)
-                callPayload.Queries["subscriber_state"] = ExpressionConverter.Convert(subscriberState);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<SequenceSubListResponse>(callPayload);
+            WorkflowExpression.Validate(sequenceId, nameof(sequenceId), required: true);
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            WorkflowExpression.Validate(bodytags, nameof(bodytags), required: false);
+            return new DeferredBodyAction<SequenceSubAddResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sequences/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(sequenceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                var fieldsObject = new JObject();
+                var fieldsObjectpropCount = 0;
+                if (fieldsObjectpropCount > 0)
+                {
+                    body["fields"] = fieldsObject;
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SequenceSubAddResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [WorkflowExpressionFactory(nameof(__BuildSequenceSubList))]
+        public IBodyWorkflowAction<SequenceSubListResponse> SequenceSubList([WorkflowExpression] Func<string> sequenceId, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<subscriberStateInput> subscriberState = null, [WorkflowExpression] Func<int> page = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SequenceSubListResponse> __BuildSequenceSubList(WorkflowExpression<string> sequenceId, WorkflowExpression<sortOrderInput> sortOrder = null, WorkflowExpression<subscriberStateInput> subscriberState = null, WorkflowExpression<int> page = null)
+        {
+            WorkflowExpression.Validate(sequenceId, nameof(sequenceId), required: true);
+            WorkflowExpression.Validate(sortOrder, nameof(sortOrder), required: false);
+            WorkflowExpression.Validate(subscriberState, nameof(subscriberState), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<SequenceSubListResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sequences/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(sequenceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sort_order"] = Convert.ToString("asc");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["subscriber_state"] = Convert.ToString("active");
+                if (subscriberState != null)
+                    callPayload.Queries["subscriber_state"] = ExpressionConverter.Convert(subscriberState);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<SequenceSubListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
@@ -158,218 +217,355 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagAddResponse> TagAdd(Expression<Func<string>> bodytagname = null)
+        [WorkflowExpressionFactory(nameof(__BuildTagAdd))]
+        public IBodyWorkflowAction<TagAddResponse> TagAdd([WorkflowExpression] Func<string> bodytagname = null)
         {
-            var apiCallPath = "/tags";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var tagObject = new JObject();
-            var tagObjectpropCount = 0;
-            if (bodytagname != null)
-            {
-                tagObject["name"] = ExpressionConverter.ConvertO(bodytagname);
-                tagObjectpropCount++;
-            }
-
-            if (tagObjectpropCount > 0)
-            {
-                body["tag"] = tagObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TagAddResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagSubResponse> TagSub(Expression<Func<string>> tagId, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<int[]>> bodytags = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TagAddResponse> __BuildTagAdd(WorkflowExpression<string> bodytagname = null)
         {
-            var apiCallPath = String.Format("/tags/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyemail != null)
+            WorkflowExpression.Validate(bodytagname, nameof(bodytagname), required: false);
+            return new DeferredBodyAction<TagAddResponse>(() =>
             {
+                var apiCallPath = "/tags";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var tagObject = new JObject();
+                var tagObjectpropCount = 0;
+                if (bodytagname != null)
+                {
+                    tagObject["name"] = ExpressionConverter.ConvertO(bodytagname);
+                    tagObjectpropCount++;
+                }
+
+                if (tagObjectpropCount > 0)
+                {
+                    body["tag"] = tagObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TagAddResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [WorkflowExpressionFactory(nameof(__BuildTagSub))]
+        public IBodyWorkflowAction<TagSubResponse> TagSub([WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<int[]> bodytags = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TagSubResponse> __BuildTagSub(WorkflowExpression<string> tagId, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<int[]> bodytags = null)
+        {
+            WorkflowExpression.Validate(tagId, nameof(tagId), required: true);
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            WorkflowExpression.Validate(bodytags, nameof(bodytags), required: false);
+            return new DeferredBodyAction<TagSubResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tags/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyemail != null)
+                {
+                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                var fieldsObject = new JObject();
+                var fieldsObjectpropCount = 0;
+                if (fieldsObjectpropCount > 0)
+                {
+                    body["fields"] = fieldsObject;
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TagSubResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [WorkflowExpressionFactory(nameof(__BuildTagSubRemove))]
+        public IBodyWorkflowAction<TagSubRemoveResponse> TagSubRemove([WorkflowExpression] Func<string> subscriberId, [WorkflowExpression] Func<string> tagId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TagSubRemoveResponse> __BuildTagSubRemove(WorkflowExpression<string> subscriberId, WorkflowExpression<string> tagId)
+        {
+            WorkflowExpression.Validate(subscriberId, nameof(subscriberId), required: true);
+            WorkflowExpression.Validate(tagId, nameof(tagId), required: true);
+            return new DeferredBodyAction<TagSubRemoveResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TagSubRemoveResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [WorkflowExpressionFactory(nameof(__BuildTagSubRemoveEmail))]
+        public IBodyWorkflowAction<TagSubRemoveEmailResponse> TagSubRemoveEmail([WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodyemail)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TagSubRemoveEmailResponse> __BuildTagSubRemoveEmail(WorkflowExpression<string> tagId, WorkflowExpression<string> bodyemail)
+        {
+            WorkflowExpression.Validate(tagId, nameof(tagId), required: true);
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            return new DeferredBodyAction<TagSubRemoveEmailResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tags/{0}/unsubscribe", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
                 body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TagSubRemoveEmailResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [WorkflowExpressionFactory(nameof(__BuildTagSubList))]
+        public IBodyWorkflowAction<TagSubListResponse> TagSubList([WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<subscriberStateInput> subscriberState = null, [WorkflowExpression] Func<int> page = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TagSubListResponse> __BuildTagSubList(WorkflowExpression<string> tagId, WorkflowExpression<sortOrderInput> sortOrder = null, WorkflowExpression<subscriberStateInput> subscriberState = null, WorkflowExpression<int> page = null)
+        {
+            WorkflowExpression.Validate(tagId, nameof(tagId), required: true);
+            WorkflowExpression.Validate(sortOrder, nameof(sortOrder), required: false);
+            WorkflowExpression.Validate(subscriberState, nameof(subscriberState), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<TagSubListResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tags/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sort_order"] = Convert.ToString("asc");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["subscriber_state"] = Convert.ToString("active");
+                if (subscriberState != null)
+                    callPayload.Queries["subscriber_state"] = ExpressionConverter.Convert(subscriberState);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<TagSubListResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [WorkflowExpressionFactory(nameof(__BuildSubscriberList))]
+        public IBodyWorkflowAction<SubscriberListResponse> SubscriberList([WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> updatedFrom = null, [WorkflowExpression] Func<string> updatedTo = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<string> emailAddress = null, [WorkflowExpression] Func<int> page = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SubscriberListResponse> __BuildSubscriberList(WorkflowExpression<string> from = null, WorkflowExpression<string> to = null, WorkflowExpression<string> updatedFrom = null, WorkflowExpression<string> updatedTo = null, WorkflowExpression<sortOrderInput> sortOrder = null, WorkflowExpression<sortFieldInput> sortField = null, WorkflowExpression<string> emailAddress = null, WorkflowExpression<int> page = null)
+        {
+            WorkflowExpression.Validate(from, nameof(from), required: false);
+            WorkflowExpression.Validate(to, nameof(to), required: false);
+            WorkflowExpression.Validate(updatedFrom, nameof(updatedFrom), required: false);
+            WorkflowExpression.Validate(updatedTo, nameof(updatedTo), required: false);
+            WorkflowExpression.Validate(sortOrder, nameof(sortOrder), required: false);
+            WorkflowExpression.Validate(sortField, nameof(sortField), required: false);
+            WorkflowExpression.Validate(emailAddress, nameof(emailAddress), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<SubscriberListResponse>(() =>
+            {
+                var apiCallPath = "/subscribers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                if (to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                if (updatedFrom != null)
+                    callPayload.Queries["updated_from"] = ExpressionConverter.Convert(updatedFrom);
+                if (updatedTo != null)
+                    callPayload.Queries["updated_to"] = ExpressionConverter.Convert(updatedTo);
+                callPayload.Queries["sort_order"] = Convert.ToString("asc");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["sort_field"] = Convert.ToString("");
+                if (sortField != null)
+                    callPayload.Queries["sort_field"] = ExpressionConverter.Convert(sortField);
+                if (emailAddress != null)
+                    callPayload.Queries["email_address"] = ExpressionConverter.Convert(emailAddress);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<SubscriberListResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [WorkflowExpressionFactory(nameof(__BuildSubscriberGet))]
+        public IBodyWorkflowAction<SubscriberGetResponse> SubscriberGet([WorkflowExpression] Func<string> subscriberId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SubscriberGetResponse> __BuildSubscriberGet(WorkflowExpression<string> subscriberId)
+        {
+            WorkflowExpression.Validate(subscriberId, nameof(subscriberId), required: true);
+            return new DeferredBodyAction<SubscriberGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscribers/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SubscriberGetResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [WorkflowExpressionFactory(nameof(__BuildSubscriberUpdate))]
+        public IBodyWorkflowAction<SubscriberUpdateResponse> SubscriberUpdate([WorkflowExpression] Func<string> subscriberId, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodyemailAddress = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SubscriberUpdateResponse> __BuildSubscriberUpdate(WorkflowExpression<string> subscriberId, WorkflowExpression<string> bodyfirstName = null, WorkflowExpression<string> bodyemailAddress = null)
+        {
+            WorkflowExpression.Validate(subscriberId, nameof(subscriberId), required: true);
+            WorkflowExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            WorkflowExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
+            return new DeferredBodyAction<SubscriberUpdateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscribers/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodyemailAddress != null)
+                {
+                    body["email_address"] = ExpressionConverter.ConvertO(bodyemailAddress);
+                    bodypropCount++;
+                }
+
+                var fieldsObject = new JObject();
+                var fieldsObjectpropCount = 0;
+                if (fieldsObjectpropCount > 0)
+                {
+                    body["fields"] = fieldsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SubscriberUpdateResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [WorkflowExpressionFactory(nameof(__BuildSubscriberUnsub))]
+        public IBodyWorkflowAction<SubscriberUnsubResponse> SubscriberUnsub([WorkflowExpression] Func<string> bodyemail)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SubscriberUnsubResponse> __BuildSubscriberUnsub(WorkflowExpression<string> bodyemail)
+        {
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            return new DeferredBodyAction<SubscriberUnsubResponse>(() =>
+            {
+                var apiCallPath = "/unsubscribe";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyfirstName != null)
-            {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
-
-            var fieldsObject = new JObject();
-            var fieldsObjectpropCount = 0;
-            if (fieldsObjectpropCount > 0)
-            {
-                body["fields"] = fieldsObject;
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TagSubResponse>(callPayload);
+                return new ApiConnectionAction<SubscriberUnsubResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagSubRemoveResponse> TagSubRemove(Expression<Func<string>> subscriberId, Expression<Func<string>> tagId)
+        [WorkflowExpressionFactory(nameof(__BuildSubscriberTags))]
+        public IBodyWorkflowAction<SubscriberTagsResponse> SubscriberTags([WorkflowExpression] Func<string> subscriberId)
         {
-            var apiCallPath = String.Format("/subscribers/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TagSubRemoveResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagSubRemoveEmailResponse> TagSubRemoveEmail(Expression<Func<string>> tagId, Expression<Func<string>> bodyemail)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SubscriberTagsResponse> __BuildSubscriberTags(WorkflowExpression<string> subscriberId)
         {
-            var apiCallPath = String.Format("/tags/{0}/unsubscribe", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(subscriberId, nameof(subscriberId), required: true);
+            return new DeferredBodyAction<SubscriberTagsResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TagSubRemoveEmailResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagSubListResponse> TagSubList(Expression<Func<string>> tagId, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<subscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
-        {
-            var apiCallPath = String.Format("/tags/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sort_order"] = Convert.ToString("asc");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["subscriber_state"] = Convert.ToString("active");
-            if (subscriberState != null)
-                callPayload.Queries["subscriber_state"] = ExpressionConverter.Convert(subscriberState);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<TagSubListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberListResponse> SubscriberList(Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> updatedFrom = null, Expression<Func<string>> updatedTo = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<string>> emailAddress = null, Expression<Func<int>> page = null)
-        {
-            var apiCallPath = "/subscribers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            if (updatedFrom != null)
-                callPayload.Queries["updated_from"] = ExpressionConverter.Convert(updatedFrom);
-            if (updatedTo != null)
-                callPayload.Queries["updated_to"] = ExpressionConverter.Convert(updatedTo);
-            callPayload.Queries["sort_order"] = Convert.ToString("asc");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["sort_field"] = Convert.ToString("");
-            if (sortField != null)
-                callPayload.Queries["sort_field"] = ExpressionConverter.Convert(sortField);
-            if (emailAddress != null)
-                callPayload.Queries["email_address"] = ExpressionConverter.Convert(emailAddress);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<SubscriberListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberGetResponse> SubscriberGet(Expression<Func<string>> subscriberId)
-        {
-            var apiCallPath = String.Format("/subscribers/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SubscriberGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberUpdateResponse> SubscriberUpdate(Expression<Func<string>> subscriberId, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodyemailAddress = null)
-        {
-            var apiCallPath = String.Format("/subscribers/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfirstName != null)
-            {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
-
-            if (bodyemailAddress != null)
-            {
-                body["email_address"] = ExpressionConverter.ConvertO(bodyemailAddress);
-                bodypropCount++;
-            }
-
-            var fieldsObject = new JObject();
-            var fieldsObjectpropCount = 0;
-            if (fieldsObjectpropCount > 0)
-            {
-                body["fields"] = fieldsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SubscriberUpdateResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberUnsubResponse> SubscriberUnsub(Expression<Func<string>> bodyemail)
-        {
-            var apiCallPath = "/unsubscribe";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SubscriberUnsubResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberTagsResponse> SubscriberTags(Expression<Func<string>> subscriberId)
-        {
-            var apiCallPath = String.Format("/subscribers/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SubscriberTagsResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SubscriberTagsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
@@ -382,298 +578,424 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastAddResponse> BroadcastAdd(Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyemailLayoutTemplate = null, Expression<Func<bool>> bodyPublic = null, Expression<Func<string>> bodypublishedAt = null, Expression<Func<string>> bodysendAt = null, Expression<Func<string>> bodythumbnailAlt = null, Expression<Func<string>> bodythumbnailUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildBroadcastAdd))]
+        public IBodyWorkflowAction<BroadcastAddResponse> BroadcastAdd([WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyemailLayoutTemplate = null, [WorkflowExpression] Func<bool> bodyPublic = null, [WorkflowExpression] Func<string> bodypublishedAt = null, [WorkflowExpression] Func<string> bodysendAt = null, [WorkflowExpression] Func<string> bodythumbnailAlt = null, [WorkflowExpression] Func<string> bodythumbnailUrl = null)
         {
-            var apiCallPath = "/broadcasts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodysubject != null)
-            {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-                bodypropCount++;
-            }
-
-            if (bodycontent != null)
-            {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
-
-            if (bodyemailAddress != null)
-            {
-                body["email_address"] = ExpressionConverter.ConvertO(bodyemailAddress);
-                bodypropCount++;
-            }
-
-            if (bodyemailLayoutTemplate != null)
-            {
-                body["email_layout_template"] = ExpressionConverter.ConvertO(bodyemailLayoutTemplate);
-                bodypropCount++;
-            }
-
-            if (bodyPublic != null)
-            {
-                body["public"] = ExpressionConverter.ConvertO(bodyPublic);
-                bodypropCount++;
-            }
-
-            if (bodypublishedAt != null)
-            {
-                body["published_at"] = ExpressionConverter.ConvertO(bodypublishedAt);
-                bodypropCount++;
-            }
-
-            if (bodysendAt != null)
-            {
-                body["send_at"] = ExpressionConverter.ConvertO(bodysendAt);
-                bodypropCount++;
-            }
-
-            if (bodythumbnailAlt != null)
-            {
-                body["thumbnail_alt"] = ExpressionConverter.ConvertO(bodythumbnailAlt);
-                bodypropCount++;
-            }
-
-            if (bodythumbnailUrl != null)
-            {
-                body["thumbnail_url"] = ExpressionConverter.ConvertO(bodythumbnailUrl);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<BroadcastAddResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastGetResponse> BroadcastGet(Expression<Func<string>> broadcastId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BroadcastAddResponse> __BuildBroadcastAdd(WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<string> bodyemailAddress = null, WorkflowExpression<string> bodyemailLayoutTemplate = null, WorkflowExpression<bool> bodyPublic = null, WorkflowExpression<string> bodypublishedAt = null, WorkflowExpression<string> bodysendAt = null, WorkflowExpression<string> bodythumbnailAlt = null, WorkflowExpression<string> bodythumbnailUrl = null)
         {
-            var apiCallPath = String.Format("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BroadcastGetResponse>(callPayload);
+            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: false);
+            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: false);
+            WorkflowExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
+            WorkflowExpression.Validate(bodyemailLayoutTemplate, nameof(bodyemailLayoutTemplate), required: false);
+            WorkflowExpression.Validate(bodyPublic, nameof(bodyPublic), required: false);
+            WorkflowExpression.Validate(bodypublishedAt, nameof(bodypublishedAt), required: false);
+            WorkflowExpression.Validate(bodysendAt, nameof(bodysendAt), required: false);
+            WorkflowExpression.Validate(bodythumbnailAlt, nameof(bodythumbnailAlt), required: false);
+            WorkflowExpression.Validate(bodythumbnailUrl, nameof(bodythumbnailUrl), required: false);
+            return new DeferredBodyAction<BroadcastAddResponse>(() =>
+            {
+                var apiCallPath = "/broadcasts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodysubject != null)
+                {
+                    body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                    bodypropCount++;
+                }
+
+                if (bodycontent != null)
+                {
+                    body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                    bodypropCount++;
+                }
+
+                if (bodyemailAddress != null)
+                {
+                    body["email_address"] = ExpressionConverter.ConvertO(bodyemailAddress);
+                    bodypropCount++;
+                }
+
+                if (bodyemailLayoutTemplate != null)
+                {
+                    body["email_layout_template"] = ExpressionConverter.ConvertO(bodyemailLayoutTemplate);
+                    bodypropCount++;
+                }
+
+                if (bodyPublic != null)
+                {
+                    body["public"] = ExpressionConverter.ConvertO(bodyPublic);
+                    bodypropCount++;
+                }
+
+                if (bodypublishedAt != null)
+                {
+                    body["published_at"] = ExpressionConverter.ConvertO(bodypublishedAt);
+                    bodypropCount++;
+                }
+
+                if (bodysendAt != null)
+                {
+                    body["send_at"] = ExpressionConverter.ConvertO(bodysendAt);
+                    bodypropCount++;
+                }
+
+                if (bodythumbnailAlt != null)
+                {
+                    body["thumbnail_alt"] = ExpressionConverter.ConvertO(bodythumbnailAlt);
+                    bodypropCount++;
+                }
+
+                if (bodythumbnailUrl != null)
+                {
+                    body["thumbnail_url"] = ExpressionConverter.ConvertO(bodythumbnailUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<BroadcastAddResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastUpdateResponse> BroadcastUpdate(Expression<Func<string>> broadcastId, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyemailLayoutTemplate = null, Expression<Func<bool>> bodyPublic = null, Expression<Func<string>> bodypublishedAt = null, Expression<Func<string>> bodysendAt = null, Expression<Func<string>> bodythumbnailAlt = null, Expression<Func<string>> bodythumbnailUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildBroadcastGet))]
+        public IBodyWorkflowAction<BroadcastGetResponse> BroadcastGet([WorkflowExpression] Func<string> broadcastId)
         {
-            var apiCallPath = String.Format("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodysubject != null)
-            {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-                bodypropCount++;
-            }
-
-            if (bodycontent != null)
-            {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
-
-            if (bodyemailAddress != null)
-            {
-                body["email_address"] = ExpressionConverter.ConvertO(bodyemailAddress);
-                bodypropCount++;
-            }
-
-            if (bodyemailLayoutTemplate != null)
-            {
-                body["email_layout_template"] = ExpressionConverter.ConvertO(bodyemailLayoutTemplate);
-                bodypropCount++;
-            }
-
-            if (bodyPublic != null)
-            {
-                body["public"] = ExpressionConverter.ConvertO(bodyPublic);
-                bodypropCount++;
-            }
-
-            if (bodypublishedAt != null)
-            {
-                body["published_at"] = ExpressionConverter.ConvertO(bodypublishedAt);
-                bodypropCount++;
-            }
-
-            if (bodysendAt != null)
-            {
-                body["send_at"] = ExpressionConverter.ConvertO(bodysendAt);
-                bodypropCount++;
-            }
-
-            if (bodythumbnailAlt != null)
-            {
-                body["thumbnail_alt"] = ExpressionConverter.ConvertO(bodythumbnailAlt);
-                bodypropCount++;
-            }
-
-            if (bodythumbnailUrl != null)
-            {
-                body["thumbnail_url"] = ExpressionConverter.ConvertO(bodythumbnailUrl);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<BroadcastUpdateResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<string> BroadcastDelete(Expression<Func<string>> broadcastId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BroadcastGetResponse> __BuildBroadcastGet(WorkflowExpression<string> broadcastId)
         {
-            var apiCallPath = String.Format("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowExpression.Validate(broadcastId, nameof(broadcastId), required: true);
+            return new DeferredBodyAction<BroadcastGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BroadcastGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastGetStatResponse> BroadcastGetStat(Expression<Func<string>> broadcastId)
+        [WorkflowExpressionFactory(nameof(__BuildBroadcastUpdate))]
+        public IBodyWorkflowAction<BroadcastUpdateResponse> BroadcastUpdate([WorkflowExpression] Func<string> broadcastId, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyemailLayoutTemplate = null, [WorkflowExpression] Func<bool> bodyPublic = null, [WorkflowExpression] Func<string> bodypublishedAt = null, [WorkflowExpression] Func<string> bodysendAt = null, [WorkflowExpression] Func<string> bodythumbnailAlt = null, [WorkflowExpression] Func<string> bodythumbnailUrl = null)
         {
-            var apiCallPath = String.Format("/broadcasts/{0}/stats", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BroadcastGetStatResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<PurchaseListResponse> PurchaseList(Expression<Func<int>> page = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BroadcastUpdateResponse> __BuildBroadcastUpdate(WorkflowExpression<string> broadcastId, WorkflowExpression<string> bodydescription = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<string> bodyemailAddress = null, WorkflowExpression<string> bodyemailLayoutTemplate = null, WorkflowExpression<bool> bodyPublic = null, WorkflowExpression<string> bodypublishedAt = null, WorkflowExpression<string> bodysendAt = null, WorkflowExpression<string> bodythumbnailAlt = null, WorkflowExpression<string> bodythumbnailUrl = null)
         {
-            var apiCallPath = "/purchases";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<PurchaseListResponse>(callPayload);
+            WorkflowExpression.Validate(broadcastId, nameof(broadcastId), required: true);
+            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: false);
+            WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: false);
+            WorkflowExpression.Validate(bodyemailAddress, nameof(bodyemailAddress), required: false);
+            WorkflowExpression.Validate(bodyemailLayoutTemplate, nameof(bodyemailLayoutTemplate), required: false);
+            WorkflowExpression.Validate(bodyPublic, nameof(bodyPublic), required: false);
+            WorkflowExpression.Validate(bodypublishedAt, nameof(bodypublishedAt), required: false);
+            WorkflowExpression.Validate(bodysendAt, nameof(bodysendAt), required: false);
+            WorkflowExpression.Validate(bodythumbnailAlt, nameof(bodythumbnailAlt), required: false);
+            WorkflowExpression.Validate(bodythumbnailUrl, nameof(bodythumbnailUrl), required: false);
+            return new DeferredBodyAction<BroadcastUpdateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodysubject != null)
+                {
+                    body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                    bodypropCount++;
+                }
+
+                if (bodycontent != null)
+                {
+                    body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                    bodypropCount++;
+                }
+
+                if (bodyemailAddress != null)
+                {
+                    body["email_address"] = ExpressionConverter.ConvertO(bodyemailAddress);
+                    bodypropCount++;
+                }
+
+                if (bodyemailLayoutTemplate != null)
+                {
+                    body["email_layout_template"] = ExpressionConverter.ConvertO(bodyemailLayoutTemplate);
+                    bodypropCount++;
+                }
+
+                if (bodyPublic != null)
+                {
+                    body["public"] = ExpressionConverter.ConvertO(bodyPublic);
+                    bodypropCount++;
+                }
+
+                if (bodypublishedAt != null)
+                {
+                    body["published_at"] = ExpressionConverter.ConvertO(bodypublishedAt);
+                    bodypropCount++;
+                }
+
+                if (bodysendAt != null)
+                {
+                    body["send_at"] = ExpressionConverter.ConvertO(bodysendAt);
+                    bodypropCount++;
+                }
+
+                if (bodythumbnailAlt != null)
+                {
+                    body["thumbnail_alt"] = ExpressionConverter.ConvertO(bodythumbnailAlt);
+                    bodypropCount++;
+                }
+
+                if (bodythumbnailUrl != null)
+                {
+                    body["thumbnail_url"] = ExpressionConverter.ConvertO(bodythumbnailUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<BroadcastUpdateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<PurchaseAddResponse> PurchaseAdd(Expression<Func<string>> bodypurchasetransactionId = null, Expression<Func<string>> bodypurchaseemailAddress = null, Expression<Func<string>> bodypurchasefirstName = null, Expression<Func<string>> bodypurchasecurrency = null, Expression<Func<string>> bodypurchasetransactionTime = null, Expression<Func<int>> bodypurchasesubtotal = null, Expression<Func<int>> bodypurchasetax = null, Expression<Func<int>> bodypurchaseshipping = null, Expression<Func<int>> bodypurchasediscount = null, Expression<Func<int>> bodypurchasetotal = null, Expression<Func<string>> bodypurchasestatus = null, Expression<Func<bodypurchaseproductsInputItem[]>> bodypurchaseproducts = null)
+        [WorkflowExpressionFactory(nameof(__BuildBroadcastDelete))]
+        public IBodyWorkflowAction<string> BroadcastDelete([WorkflowExpression] Func<string> broadcastId)
         {
-            var apiCallPath = "/purchases";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var purchaseObject = new JObject();
-            var purchaseObjectpropCount = 0;
-            if (bodypurchasetransactionId != null)
-            {
-                purchaseObject["transaction_id"] = ExpressionConverter.ConvertO(bodypurchasetransactionId);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchaseemailAddress != null)
-            {
-                purchaseObject["email_address"] = ExpressionConverter.ConvertO(bodypurchaseemailAddress);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasefirstName != null)
-            {
-                purchaseObject["first_name"] = ExpressionConverter.ConvertO(bodypurchasefirstName);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasecurrency != null)
-            {
-                purchaseObject["currency"] = ExpressionConverter.ConvertO(bodypurchasecurrency);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasetransactionTime != null)
-            {
-                purchaseObject["transaction_time"] = ExpressionConverter.ConvertO(bodypurchasetransactionTime);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasesubtotal != null)
-            {
-                purchaseObject["subtotal"] = ExpressionConverter.ConvertO(bodypurchasesubtotal);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasetax != null)
-            {
-                purchaseObject["tax"] = ExpressionConverter.ConvertO(bodypurchasetax);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchaseshipping != null)
-            {
-                purchaseObject["shipping"] = ExpressionConverter.ConvertO(bodypurchaseshipping);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasediscount != null)
-            {
-                purchaseObject["discount"] = ExpressionConverter.ConvertO(bodypurchasediscount);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasetotal != null)
-            {
-                purchaseObject["total"] = ExpressionConverter.ConvertO(bodypurchasetotal);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasestatus != null)
-            {
-                purchaseObject["status"] = ExpressionConverter.ConvertO(bodypurchasestatus);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchaseproducts != null)
-            {
-                purchaseObject["products"] = ExpressionConverter.ConvertO(bodypurchaseproducts);
-                purchaseObjectpropCount++;
-            }
-
-            if (purchaseObjectpropCount > 0)
-            {
-                body["purchase"] = purchaseObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PurchaseAddResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<PurchaseGetResponse> PurchaseGet(Expression<Func<string>> purchaseId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildBroadcastDelete(WorkflowExpression<string> broadcastId)
         {
-            var apiCallPath = String.Format("/purchases/{0}", ExpressionConverter.ConvertWithUrlEncoding(purchaseId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PurchaseGetResponse>(callPayload);
+            WorkflowExpression.Validate(broadcastId, nameof(broadcastId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [WorkflowExpressionFactory(nameof(__BuildBroadcastGetStat))]
+        public IBodyWorkflowAction<BroadcastGetStatResponse> BroadcastGetStat([WorkflowExpression] Func<string> broadcastId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BroadcastGetStatResponse> __BuildBroadcastGetStat(WorkflowExpression<string> broadcastId)
+        {
+            WorkflowExpression.Validate(broadcastId, nameof(broadcastId), required: true);
+            return new DeferredBodyAction<BroadcastGetStatResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}/stats", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BroadcastGetStatResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [WorkflowExpressionFactory(nameof(__BuildPurchaseList))]
+        public IBodyWorkflowAction<PurchaseListResponse> PurchaseList([WorkflowExpression] Func<int> page = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PurchaseListResponse> __BuildPurchaseList(WorkflowExpression<int> page = null)
+        {
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<PurchaseListResponse>(() =>
+            {
+                var apiCallPath = "/purchases";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<PurchaseListResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [WorkflowExpressionFactory(nameof(__BuildPurchaseAdd))]
+        public IBodyWorkflowAction<PurchaseAddResponse> PurchaseAdd([WorkflowExpression] Func<string> bodypurchasetransactionId = null, [WorkflowExpression] Func<string> bodypurchaseemailAddress = null, [WorkflowExpression] Func<string> bodypurchasefirstName = null, [WorkflowExpression] Func<string> bodypurchasecurrency = null, [WorkflowExpression] Func<string> bodypurchasetransactionTime = null, [WorkflowExpression] Func<int> bodypurchasesubtotal = null, [WorkflowExpression] Func<int> bodypurchasetax = null, [WorkflowExpression] Func<int> bodypurchaseshipping = null, [WorkflowExpression] Func<int> bodypurchasediscount = null, [WorkflowExpression] Func<int> bodypurchasetotal = null, [WorkflowExpression] Func<string> bodypurchasestatus = null, [WorkflowExpression] Func<bodypurchaseproductsInputItem[]> bodypurchaseproducts = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PurchaseAddResponse> __BuildPurchaseAdd(WorkflowExpression<string> bodypurchasetransactionId = null, WorkflowExpression<string> bodypurchaseemailAddress = null, WorkflowExpression<string> bodypurchasefirstName = null, WorkflowExpression<string> bodypurchasecurrency = null, WorkflowExpression<string> bodypurchasetransactionTime = null, WorkflowExpression<int> bodypurchasesubtotal = null, WorkflowExpression<int> bodypurchasetax = null, WorkflowExpression<int> bodypurchaseshipping = null, WorkflowExpression<int> bodypurchasediscount = null, WorkflowExpression<int> bodypurchasetotal = null, WorkflowExpression<string> bodypurchasestatus = null, WorkflowExpression<bodypurchaseproductsInputItem[]> bodypurchaseproducts = null)
+        {
+            WorkflowExpression.Validate(bodypurchasetransactionId, nameof(bodypurchasetransactionId), required: false);
+            WorkflowExpression.Validate(bodypurchaseemailAddress, nameof(bodypurchaseemailAddress), required: false);
+            WorkflowExpression.Validate(bodypurchasefirstName, nameof(bodypurchasefirstName), required: false);
+            WorkflowExpression.Validate(bodypurchasecurrency, nameof(bodypurchasecurrency), required: false);
+            WorkflowExpression.Validate(bodypurchasetransactionTime, nameof(bodypurchasetransactionTime), required: false);
+            WorkflowExpression.Validate(bodypurchasesubtotal, nameof(bodypurchasesubtotal), required: false);
+            WorkflowExpression.Validate(bodypurchasetax, nameof(bodypurchasetax), required: false);
+            WorkflowExpression.Validate(bodypurchaseshipping, nameof(bodypurchaseshipping), required: false);
+            WorkflowExpression.Validate(bodypurchasediscount, nameof(bodypurchasediscount), required: false);
+            WorkflowExpression.Validate(bodypurchasetotal, nameof(bodypurchasetotal), required: false);
+            WorkflowExpression.Validate(bodypurchasestatus, nameof(bodypurchasestatus), required: false);
+            WorkflowExpression.Validate(bodypurchaseproducts, nameof(bodypurchaseproducts), required: false);
+            return new DeferredBodyAction<PurchaseAddResponse>(() =>
+            {
+                var apiCallPath = "/purchases";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var purchaseObject = new JObject();
+                var purchaseObjectpropCount = 0;
+                if (bodypurchasetransactionId != null)
+                {
+                    purchaseObject["transaction_id"] = ExpressionConverter.ConvertO(bodypurchasetransactionId);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchaseemailAddress != null)
+                {
+                    purchaseObject["email_address"] = ExpressionConverter.ConvertO(bodypurchaseemailAddress);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasefirstName != null)
+                {
+                    purchaseObject["first_name"] = ExpressionConverter.ConvertO(bodypurchasefirstName);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasecurrency != null)
+                {
+                    purchaseObject["currency"] = ExpressionConverter.ConvertO(bodypurchasecurrency);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasetransactionTime != null)
+                {
+                    purchaseObject["transaction_time"] = ExpressionConverter.ConvertO(bodypurchasetransactionTime);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasesubtotal != null)
+                {
+                    purchaseObject["subtotal"] = ExpressionConverter.ConvertO(bodypurchasesubtotal);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasetax != null)
+                {
+                    purchaseObject["tax"] = ExpressionConverter.ConvertO(bodypurchasetax);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchaseshipping != null)
+                {
+                    purchaseObject["shipping"] = ExpressionConverter.ConvertO(bodypurchaseshipping);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasediscount != null)
+                {
+                    purchaseObject["discount"] = ExpressionConverter.ConvertO(bodypurchasediscount);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasetotal != null)
+                {
+                    purchaseObject["total"] = ExpressionConverter.ConvertO(bodypurchasetotal);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasestatus != null)
+                {
+                    purchaseObject["status"] = ExpressionConverter.ConvertO(bodypurchasestatus);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchaseproducts != null)
+                {
+                    purchaseObject["products"] = ExpressionConverter.ConvertO(bodypurchaseproducts);
+                    purchaseObjectpropCount++;
+                }
+
+                if (purchaseObjectpropCount > 0)
+                {
+                    body["purchase"] = purchaseObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PurchaseAddResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [WorkflowExpressionFactory(nameof(__BuildPurchaseGet))]
+        public IBodyWorkflowAction<PurchaseGetResponse> PurchaseGet([WorkflowExpression] Func<string> purchaseId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PurchaseGetResponse> __BuildPurchaseGet(WorkflowExpression<string> purchaseId)
+        {
+            WorkflowExpression.Validate(purchaseId, nameof(purchaseId), required: true);
+            return new DeferredBodyAction<PurchaseGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/purchases/{0}", ExpressionConverter.ConvertWithUrlEncoding(purchaseId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PurchaseGetResponse>(callPayload);
+            });
         }
     }
 

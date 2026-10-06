@@ -4,105 +4,140 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AdpemployeeselfserviActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<CreateContactResponse> CreateContact(Expression<Func<string>> bodycontactName, Expression<Func<bodyrelationInput>> bodyrelation, Expression<Func<bool>> bodyisPrimary, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodyaddressLine3 = null, Expression<Func<string>> bodyaddressCity = null, Expression<Func<string>> bodyaddressState = null, Expression<Func<string>> bodyaddressCountry = null, Expression<Func<string>> bodyaddressPostalCode = null, Expression<Func<bodyphonesInputItem[]>> bodyphones = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateContact))]
+        public IBodyWorkflowAction<CreateContactResponse> CreateContact([WorkflowExpression] Func<string> bodycontactName, [WorkflowExpression] Func<bodyrelationInput> bodyrelation, [WorkflowExpression] Func<bool> bodyisPrimary, [WorkflowExpression] Func<string> bodyaddressLine1 = null, [WorkflowExpression] Func<string> bodyaddressLine2 = null, [WorkflowExpression] Func<string> bodyaddressLine3 = null, [WorkflowExpression] Func<string> bodyaddressCity = null, [WorkflowExpression] Func<string> bodyaddressState = null, [WorkflowExpression] Func<string> bodyaddressCountry = null, [WorkflowExpression] Func<string> bodyaddressPostalCode = null, [WorkflowExpression] Func<bodyphonesInputItem[]> bodyphones = null, [WorkflowExpression] Func<bodyemailsInputItem[]> bodyemails = null)
         {
-            var apiCallPath = "/api/create-emergency-contact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["contactName"] = ExpressionConverter.ConvertO(bodycontactName);
-            if (bodyaddressLine1 != null)
-            {
-                body["addressLine1"] = ExpressionConverter.ConvertO(bodyaddressLine1);
-                bodypropCount++;
-            }
-
-            if (bodyaddressLine2 != null)
-            {
-                body["addressLine2"] = ExpressionConverter.ConvertO(bodyaddressLine2);
-                bodypropCount++;
-            }
-
-            if (bodyaddressLine3 != null)
-            {
-                body["addressLine3"] = ExpressionConverter.ConvertO(bodyaddressLine3);
-                bodypropCount++;
-            }
-
-            if (bodyaddressCity != null)
-            {
-                body["addressCity"] = ExpressionConverter.ConvertO(bodyaddressCity);
-                bodypropCount++;
-            }
-
-            if (bodyaddressState != null)
-            {
-                body["addressState"] = ExpressionConverter.ConvertO(bodyaddressState);
-                bodypropCount++;
-            }
-
-            if (bodyaddressCountry != null)
-            {
-                body["addressCountry"] = ExpressionConverter.ConvertO(bodyaddressCountry);
-                bodypropCount++;
-            }
-
-            if (bodyaddressPostalCode != null)
-            {
-                body["addressPostalCode"] = ExpressionConverter.ConvertO(bodyaddressPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodyphones != null)
-            {
-                body["phones"] = ExpressionConverter.ConvertO(bodyphones);
-                bodypropCount++;
-            }
-
-            if (bodyemails != null)
-            {
-                body["emails"] = ExpressionConverter.ConvertO(bodyemails);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["relation"] = ExpressionConverter.ConvertO(bodyrelation);
-            bodypropCount++;
-            body["isPrimary"] = ExpressionConverter.ConvertO(bodyisPrimary);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateContactResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<DeleteContactsResponse> DeleteContacts(Expression<Func<string[]>> bodyitemIds)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateContactResponse> __BuildCreateContact(WorkflowExpression<string> bodycontactName, WorkflowExpression<bodyrelationInput> bodyrelation, WorkflowExpression<bool> bodyisPrimary, WorkflowExpression<string> bodyaddressLine1 = null, WorkflowExpression<string> bodyaddressLine2 = null, WorkflowExpression<string> bodyaddressLine3 = null, WorkflowExpression<string> bodyaddressCity = null, WorkflowExpression<string> bodyaddressState = null, WorkflowExpression<string> bodyaddressCountry = null, WorkflowExpression<string> bodyaddressPostalCode = null, WorkflowExpression<bodyphonesInputItem[]> bodyphones = null, WorkflowExpression<bodyemailsInputItem[]> bodyemails = null)
         {
-            var apiCallPath = "/api/delete-emergency-contacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["itemIds"] = ExpressionConverter.ConvertO(bodyitemIds);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodycontactName, nameof(bodycontactName), required: true);
+            WorkflowExpression.Validate(bodyrelation, nameof(bodyrelation), required: true);
+            WorkflowExpression.Validate(bodyisPrimary, nameof(bodyisPrimary), required: true);
+            WorkflowExpression.Validate(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
+            WorkflowExpression.Validate(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
+            WorkflowExpression.Validate(bodyaddressLine3, nameof(bodyaddressLine3), required: false);
+            WorkflowExpression.Validate(bodyaddressCity, nameof(bodyaddressCity), required: false);
+            WorkflowExpression.Validate(bodyaddressState, nameof(bodyaddressState), required: false);
+            WorkflowExpression.Validate(bodyaddressCountry, nameof(bodyaddressCountry), required: false);
+            WorkflowExpression.Validate(bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
+            WorkflowExpression.Validate(bodyphones, nameof(bodyphones), required: false);
+            WorkflowExpression.Validate(bodyemails, nameof(bodyemails), required: false);
+            return new DeferredBodyAction<CreateContactResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/create-emergency-contact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["contactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                if (bodyaddressLine1 != null)
+                {
+                    body["addressLine1"] = ExpressionConverter.ConvertO(bodyaddressLine1);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<DeleteContactsResponse>(callPayload);
+                if (bodyaddressLine2 != null)
+                {
+                    body["addressLine2"] = ExpressionConverter.ConvertO(bodyaddressLine2);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressLine3 != null)
+                {
+                    body["addressLine3"] = ExpressionConverter.ConvertO(bodyaddressLine3);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressCity != null)
+                {
+                    body["addressCity"] = ExpressionConverter.ConvertO(bodyaddressCity);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressState != null)
+                {
+                    body["addressState"] = ExpressionConverter.ConvertO(bodyaddressState);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressCountry != null)
+                {
+                    body["addressCountry"] = ExpressionConverter.ConvertO(bodyaddressCountry);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressPostalCode != null)
+                {
+                    body["addressPostalCode"] = ExpressionConverter.ConvertO(bodyaddressPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodyphones != null)
+                {
+                    body["phones"] = ExpressionConverter.ConvertO(bodyphones);
+                    bodypropCount++;
+                }
+
+                if (bodyemails != null)
+                {
+                    body["emails"] = ExpressionConverter.ConvertO(bodyemails);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["relation"] = ExpressionConverter.ConvertO(bodyrelation);
+                bodypropCount++;
+                body["isPrimary"] = ExpressionConverter.ConvertO(bodyisPrimary);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateContactResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteContacts))]
+        public IBodyWorkflowAction<DeleteContactsResponse> DeleteContacts([WorkflowExpression] Func<string[]> bodyitemIds)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteContactsResponse> __BuildDeleteContacts(WorkflowExpression<string[]> bodyitemIds)
+        {
+            WorkflowExpression.Validate(bodyitemIds, nameof(bodyitemIds), required: true);
+            return new DeferredBodyAction<DeleteContactsResponse>(() =>
+            {
+                var apiCallPath = "/api/delete-emergency-contacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["itemIds"] = ExpressionConverter.ConvertO(bodyitemIds);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DeleteContactsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
@@ -142,127 +177,167 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<UpdateContactResponse> UpdateContact(Expression<Func<string>> bodyitemId, Expression<Func<string>> bodycontactName, Expression<Func<bodyrelationInput>> bodyrelation, Expression<Func<bool>> bodyisPrimary, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodyaddressLine3 = null, Expression<Func<string>> bodyaddressCity = null, Expression<Func<string>> bodyaddressState = null, Expression<Func<string>> bodyaddressCountry = null, Expression<Func<string>> bodyaddressPostalCode = null, Expression<Func<bodyphonesInputItem2[]>> bodyphones = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateContact))]
+        public IBodyWorkflowAction<UpdateContactResponse> UpdateContact([WorkflowExpression] Func<string> bodyitemId, [WorkflowExpression] Func<string> bodycontactName, [WorkflowExpression] Func<bodyrelationInput> bodyrelation, [WorkflowExpression] Func<bool> bodyisPrimary, [WorkflowExpression] Func<string> bodyaddressLine1 = null, [WorkflowExpression] Func<string> bodyaddressLine2 = null, [WorkflowExpression] Func<string> bodyaddressLine3 = null, [WorkflowExpression] Func<string> bodyaddressCity = null, [WorkflowExpression] Func<string> bodyaddressState = null, [WorkflowExpression] Func<string> bodyaddressCountry = null, [WorkflowExpression] Func<string> bodyaddressPostalCode = null, [WorkflowExpression] Func<bodyphonesInputItem2[]> bodyphones = null, [WorkflowExpression] Func<bodyemailsInputItem[]> bodyemails = null)
         {
-            var apiCallPath = "/api/update-emergency-contact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["itemId"] = ExpressionConverter.ConvertO(bodyitemId);
-            bodypropCount++;
-            body["contactName"] = ExpressionConverter.ConvertO(bodycontactName);
-            if (bodyaddressLine1 != null)
-            {
-                body["addressLine1"] = ExpressionConverter.ConvertO(bodyaddressLine1);
-                bodypropCount++;
-            }
-
-            if (bodyaddressLine2 != null)
-            {
-                body["addressLine2"] = ExpressionConverter.ConvertO(bodyaddressLine2);
-                bodypropCount++;
-            }
-
-            if (bodyaddressLine3 != null)
-            {
-                body["addressLine3"] = ExpressionConverter.ConvertO(bodyaddressLine3);
-                bodypropCount++;
-            }
-
-            if (bodyaddressCity != null)
-            {
-                body["addressCity"] = ExpressionConverter.ConvertO(bodyaddressCity);
-                bodypropCount++;
-            }
-
-            if (bodyaddressState != null)
-            {
-                body["addressState"] = ExpressionConverter.ConvertO(bodyaddressState);
-                bodypropCount++;
-            }
-
-            if (bodyaddressCountry != null)
-            {
-                body["addressCountry"] = ExpressionConverter.ConvertO(bodyaddressCountry);
-                bodypropCount++;
-            }
-
-            if (bodyaddressPostalCode != null)
-            {
-                body["addressPostalCode"] = ExpressionConverter.ConvertO(bodyaddressPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodyphones != null)
-            {
-                body["phones"] = ExpressionConverter.ConvertO(bodyphones);
-                bodypropCount++;
-            }
-
-            if (bodyemails != null)
-            {
-                body["emails"] = ExpressionConverter.ConvertO(bodyemails);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["relation"] = ExpressionConverter.ConvertO(bodyrelation);
-            bodypropCount++;
-            body["isPrimary"] = ExpressionConverter.ConvertO(bodyisPrimary);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateContactResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<UpdateUserResponse> UpdateUser(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodymobileCountry = null, Expression<Func<string>> bodymobileArea = null, Expression<Func<string>> bodymobileNumber = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateContactResponse> __BuildUpdateContact(WorkflowExpression<string> bodyitemId, WorkflowExpression<string> bodycontactName, WorkflowExpression<bodyrelationInput> bodyrelation, WorkflowExpression<bool> bodyisPrimary, WorkflowExpression<string> bodyaddressLine1 = null, WorkflowExpression<string> bodyaddressLine2 = null, WorkflowExpression<string> bodyaddressLine3 = null, WorkflowExpression<string> bodyaddressCity = null, WorkflowExpression<string> bodyaddressState = null, WorkflowExpression<string> bodyaddressCountry = null, WorkflowExpression<string> bodyaddressPostalCode = null, WorkflowExpression<bodyphonesInputItem2[]> bodyphones = null, WorkflowExpression<bodyemailsInputItem[]> bodyemails = null)
         {
-            var apiCallPath = "/api/update-profile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            WorkflowExpression.Validate(bodyitemId, nameof(bodyitemId), required: true);
+            WorkflowExpression.Validate(bodycontactName, nameof(bodycontactName), required: true);
+            WorkflowExpression.Validate(bodyrelation, nameof(bodyrelation), required: true);
+            WorkflowExpression.Validate(bodyisPrimary, nameof(bodyisPrimary), required: true);
+            WorkflowExpression.Validate(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
+            WorkflowExpression.Validate(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
+            WorkflowExpression.Validate(bodyaddressLine3, nameof(bodyaddressLine3), required: false);
+            WorkflowExpression.Validate(bodyaddressCity, nameof(bodyaddressCity), required: false);
+            WorkflowExpression.Validate(bodyaddressState, nameof(bodyaddressState), required: false);
+            WorkflowExpression.Validate(bodyaddressCountry, nameof(bodyaddressCountry), required: false);
+            WorkflowExpression.Validate(bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
+            WorkflowExpression.Validate(bodyphones, nameof(bodyphones), required: false);
+            WorkflowExpression.Validate(bodyemails, nameof(bodyemails), required: false);
+            return new DeferredBodyAction<UpdateContactResponse>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/api/update-emergency-contact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyemail != null)
-            {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["itemId"] = ExpressionConverter.ConvertO(bodyitemId);
                 bodypropCount++;
-            }
+                body["contactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                if (bodyaddressLine1 != null)
+                {
+                    body["addressLine1"] = ExpressionConverter.ConvertO(bodyaddressLine1);
+                    bodypropCount++;
+                }
 
-            if (bodymobileCountry != null)
-            {
-                body["mobileCountry"] = ExpressionConverter.ConvertO(bodymobileCountry);
+                if (bodyaddressLine2 != null)
+                {
+                    body["addressLine2"] = ExpressionConverter.ConvertO(bodyaddressLine2);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressLine3 != null)
+                {
+                    body["addressLine3"] = ExpressionConverter.ConvertO(bodyaddressLine3);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressCity != null)
+                {
+                    body["addressCity"] = ExpressionConverter.ConvertO(bodyaddressCity);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressState != null)
+                {
+                    body["addressState"] = ExpressionConverter.ConvertO(bodyaddressState);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressCountry != null)
+                {
+                    body["addressCountry"] = ExpressionConverter.ConvertO(bodyaddressCountry);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressPostalCode != null)
+                {
+                    body["addressPostalCode"] = ExpressionConverter.ConvertO(bodyaddressPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodyphones != null)
+                {
+                    body["phones"] = ExpressionConverter.ConvertO(bodyphones);
+                    bodypropCount++;
+                }
+
+                if (bodyemails != null)
+                {
+                    body["emails"] = ExpressionConverter.ConvertO(bodyemails);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodymobileArea != null)
-            {
-                body["mobileArea"] = ExpressionConverter.ConvertO(bodymobileArea);
+                body["relation"] = ExpressionConverter.ConvertO(bodyrelation);
                 bodypropCount++;
-            }
+                body["isPrimary"] = ExpressionConverter.ConvertO(bodyisPrimary);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodymobileNumber != null)
+                return new ApiConnectionAction<UpdateContactResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateUser))]
+        public IBodyWorkflowAction<UpdateUserResponse> UpdateUser([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodymobileCountry = null, [WorkflowExpression] Func<string> bodymobileArea = null, [WorkflowExpression] Func<string> bodymobileNumber = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateUserResponse> __BuildUpdateUser(WorkflowExpression<string> bodyname = null, WorkflowExpression<string> bodyemail = null, WorkflowExpression<string> bodymobileCountry = null, WorkflowExpression<string> bodymobileArea = null, WorkflowExpression<string> bodymobileNumber = null)
+        {
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            WorkflowExpression.Validate(bodymobileCountry, nameof(bodymobileCountry), required: false);
+            WorkflowExpression.Validate(bodymobileArea, nameof(bodymobileArea), required: false);
+            WorkflowExpression.Validate(bodymobileNumber, nameof(bodymobileNumber), required: false);
+            return new DeferredBodyAction<UpdateUserResponse>(() =>
             {
-                body["mobileNumber"] = ExpressionConverter.ConvertO(bodymobileNumber);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/update-profile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyemail != null)
+                {
+                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateUserResponse>(callPayload);
+                if (bodymobileCountry != null)
+                {
+                    body["mobileCountry"] = ExpressionConverter.ConvertO(bodymobileCountry);
+                    bodypropCount++;
+                }
+
+                if (bodymobileArea != null)
+                {
+                    body["mobileArea"] = ExpressionConverter.ConvertO(bodymobileArea);
+                    bodypropCount++;
+                }
+
+                if (bodymobileNumber != null)
+                {
+                    body["mobileNumber"] = ExpressionConverter.ConvertO(bodymobileNumber);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateUserResponse>(callPayload);
+            });
         }
     }
 

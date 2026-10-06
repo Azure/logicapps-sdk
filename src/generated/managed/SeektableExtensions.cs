@@ -4,57 +4,100 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seektable
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SeektableActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
-        public IBodyWorkflowAction<string> CubeImportCsv(Expression<Func<string>> cubeId, Expression<Func<string>> filename = null)
+        [WorkflowExpressionFactory(nameof(__BuildCubeImportCsv))]
+        public IBodyWorkflowAction<string> CubeImportCsv([WorkflowExpression] Func<string> cubeId, [WorkflowExpression] Func<string> filename = null)
         {
-            var apiCallPath = "/api/cube/import/csv";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["cubeId"] = ExpressionConverter.Convert(cubeId);
-            if (filename != null)
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
-            var cSVContent = new JObject();
-            var cSVContentpropCount = 0;
-            if (cSVContentpropCount > 0)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildCubeImportCsv(WorkflowExpression<string> cubeId, WorkflowExpression<string> filename = null)
+        {
+            WorkflowExpression.Validate(cubeId, nameof(cubeId), required: true);
+            WorkflowExpression.Validate(filename, nameof(filename), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = cSVContent;
-            }
+                var apiCallPath = "/api/cube/import/csv";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["cubeId"] = ExpressionConverter.Convert(cubeId);
+                if (filename != null)
+                    callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
+                var cSVContent = new JObject();
+                var cSVContentpropCount = 0;
+                if (cSVContentpropCount > 0)
+                {
+                    callPayload.Body = cSVContent;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
-        public IBodyWorkflowAction<string> ReportExport(Expression<Func<string>> reportId, Expression<Func<formatInput>> format, Expression<Func<bool>> htmlInlineStyle = null, Expression<Func<bool>> chartOnly = null)
+        [WorkflowExpressionFactory(nameof(__BuildReportExport))]
+        public IBodyWorkflowAction<string> ReportExport([WorkflowExpression] Func<string> reportId, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<bool> htmlInlineStyle = null, [WorkflowExpression] Func<bool> chartOnly = null)
         {
-            var apiCallPath = String.Format("/api/report/{0}/export", ExpressionConverter.ConvertWithUrlEncoding(reportId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (htmlInlineStyle != null)
-                callPayload.Queries["html_inline_style"] = ExpressionConverter.Convert(htmlInlineStyle);
-            if (chartOnly != null)
-                callPayload.Queries["chart_only"] = ExpressionConverter.Convert(chartOnly);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
-        public IBodyWorkflowAction<string> ReportShareByEmail(Expression<Func<string>> reportId, Expression<Func<string>> to, Expression<Func<string>> subject, Expression<Func<string>> message = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildReportExport(WorkflowExpression<string> reportId, WorkflowExpression<formatInput> format, WorkflowExpression<bool> htmlInlineStyle = null, WorkflowExpression<bool> chartOnly = null)
         {
-            var apiCallPath = String.Format("/api/report/{0}/share/email", ExpressionConverter.ConvertWithUrlEncoding(reportId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
-            if (message != null)
-                callPayload.Queries["message"] = ExpressionConverter.Convert(message);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowExpression.Validate(reportId, nameof(reportId), required: true);
+            WorkflowExpression.Validate(format, nameof(format), required: true);
+            WorkflowExpression.Validate(htmlInlineStyle, nameof(htmlInlineStyle), required: false);
+            WorkflowExpression.Validate(chartOnly, nameof(chartOnly), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/report/{0}/export", ExpressionConverter.ConvertWithUrlEncoding(reportId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (htmlInlineStyle != null)
+                    callPayload.Queries["html_inline_style"] = ExpressionConverter.Convert(htmlInlineStyle);
+                if (chartOnly != null)
+                    callPayload.Queries["chart_only"] = ExpressionConverter.Convert(chartOnly);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
+        [WorkflowExpressionFactory(nameof(__BuildReportShareByEmail))]
+        public IBodyWorkflowAction<string> ReportShareByEmail([WorkflowExpression] Func<string> reportId, [WorkflowExpression] Func<string> to, [WorkflowExpression] Func<string> subject, [WorkflowExpression] Func<string> message = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildReportShareByEmail(WorkflowExpression<string> reportId, WorkflowExpression<string> to, WorkflowExpression<string> subject, WorkflowExpression<string> message = null)
+        {
+            WorkflowExpression.Validate(reportId, nameof(reportId), required: true);
+            WorkflowExpression.Validate(to, nameof(to), required: true);
+            WorkflowExpression.Validate(subject, nameof(subject), required: true);
+            WorkflowExpression.Validate(message, nameof(message), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/report/{0}/share/email", ExpressionConverter.ConvertWithUrlEncoding(reportId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
+                if (message != null)
+                    callPayload.Queries["message"] = ExpressionConverter.Convert(message);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

@@ -4,288 +4,359 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datablend
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DatablendActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        public IBodyWorkflowAction<GroupSearch> GroupsSearch(Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodylimit = null, Expression<Func<bodyordersInputItem[]>> bodyorders = null)
+        [WorkflowExpressionFactory(nameof(__BuildGroupsSearch))]
+        public IBodyWorkflowAction<GroupSearch> GroupsSearch([WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<bodyordersInputItem[]> bodyorders = null)
         {
-            var apiCallPath = "/groups/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyoffset != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GroupSearch> __BuildGroupsSearch(WorkflowExpression<int> bodyoffset = null, WorkflowExpression<int> bodylimit = null, WorkflowExpression<bodyordersInputItem[]> bodyorders = null)
+        {
+            WorkflowExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
+            WorkflowExpression.Validate(bodylimit, nameof(bodylimit), required: false);
+            WorkflowExpression.Validate(bodyorders, nameof(bodyorders), required: false);
+            return new DeferredBodyAction<GroupSearch>(() =>
             {
+                var apiCallPath = "/groups/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodyoffset != null)
                 {
-                    body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                    if (bodyoffset != null)
+                    {
+                        body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["offset"] = 0;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["offset"] = 0;
-                bodypropCount++;
-            }
-
-            if (bodylimit != null)
-            {
                 if (bodylimit != null)
                 {
-                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    if (bodylimit != null)
+                    {
+                        body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["limit"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["limit"] = 1;
-                bodypropCount++;
-            }
+                if (bodyorders != null)
+                {
+                    body["orders"] = ExpressionConverter.ConvertO(bodyorders);
+                    bodypropCount++;
+                }
 
-            if (bodyorders != null)
-            {
-                body["orders"] = ExpressionConverter.ConvertO(bodyorders);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GroupSearch>(callPayload);
+                return new ApiConnectionAction<GroupSearch>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        public IBodyWorkflowAction<QueryExecutionResults> GetQueryExecutionById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetQueryExecutionById))]
+        public IBodyWorkflowAction<QueryExecutionResults> GetQueryExecutionById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/query-executions/{0}/results", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<QueryExecutionResults>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        public IBodyWorkflowAction<WorkflowExecutionsSearch> WorkflowExecutionsSearch(Expression<Func<int>> bodylimit = null, Expression<Func<int>> bodyoffset = null, Expression<Func<bodyordersInputItem[]>> bodyorders = null, Expression<Func<string>> bodypredicatepath = null, Expression<Func<string>> bodypredicatevalue = null, Expression<Func<string>> bodypredicatecomparator = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<QueryExecutionResults> __BuildGetQueryExecutionById(WorkflowExpression<string> id)
         {
-            var apiCallPath = "/workflow-executions/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodylimit != null)
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<QueryExecutionResults>(() =>
             {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/query-executions/{0}/results", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<QueryExecutionResults>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
+        [WorkflowExpressionFactory(nameof(__BuildWorkflowExecutionsSearch))]
+        public IBodyWorkflowAction<WorkflowExecutionsSearch> WorkflowExecutionsSearch([WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<bodyordersInputItem[]> bodyorders = null, [WorkflowExpression] Func<string> bodypredicatepath = null, [WorkflowExpression] Func<string> bodypredicatevalue = null, [WorkflowExpression] Func<string> bodypredicatecomparator = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkflowExecutionsSearch> __BuildWorkflowExecutionsSearch(WorkflowExpression<int> bodylimit = null, WorkflowExpression<int> bodyoffset = null, WorkflowExpression<bodyordersInputItem[]> bodyorders = null, WorkflowExpression<string> bodypredicatepath = null, WorkflowExpression<string> bodypredicatevalue = null, WorkflowExpression<string> bodypredicatecomparator = null)
+        {
+            WorkflowExpression.Validate(bodylimit, nameof(bodylimit), required: false);
+            WorkflowExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
+            WorkflowExpression.Validate(bodyorders, nameof(bodyorders), required: false);
+            WorkflowExpression.Validate(bodypredicatepath, nameof(bodypredicatepath), required: false);
+            WorkflowExpression.Validate(bodypredicatevalue, nameof(bodypredicatevalue), required: false);
+            WorkflowExpression.Validate(bodypredicatecomparator, nameof(bodypredicatecomparator), required: false);
+            return new DeferredBodyAction<WorkflowExecutionsSearch>(() =>
+            {
+                var apiCallPath = "/workflow-executions/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodylimit != null)
                 {
-                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    if (bodylimit != null)
+                    {
+                        body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["limit"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["limit"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodyoffset != null)
-            {
                 if (bodyoffset != null)
                 {
-                    body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                    if (bodyoffset != null)
+                    {
+                        body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["offset"] = 0;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["offset"] = 0;
-                bodypropCount++;
-            }
+                if (bodyorders != null)
+                {
+                    body["orders"] = ExpressionConverter.ConvertO(bodyorders);
+                    bodypropCount++;
+                }
 
-            if (bodyorders != null)
-            {
-                body["orders"] = ExpressionConverter.ConvertO(bodyorders);
-                bodypropCount++;
-            }
-
-            var predicateObject = new JObject();
-            var predicateObjectpropCount = 0;
-            if (bodypredicatepath != null)
-            {
+                var predicateObject = new JObject();
+                var predicateObjectpropCount = 0;
                 if (bodypredicatepath != null)
                 {
-                    predicateObject["path"] = ExpressionConverter.ConvertO(bodypredicatepath);
+                    if (bodypredicatepath != null)
+                    {
+                        predicateObject["path"] = ExpressionConverter.ConvertO(bodypredicatepath);
+                        predicateObjectpropCount++;
+                    }
+
+                    predicateObjectpropCount++;
+                }
+                else
+                {
+                    predicateObject["path"] = "parent.id";
                     predicateObjectpropCount++;
                 }
 
-                predicateObjectpropCount++;
-            }
-            else
-            {
-                predicateObject["path"] = "parent.id";
-                predicateObjectpropCount++;
-            }
+                if (bodypredicatevalue != null)
+                {
+                    predicateObject["value"] = ExpressionConverter.ConvertO(bodypredicatevalue);
+                    predicateObjectpropCount++;
+                }
 
-            if (bodypredicatevalue != null)
-            {
-                predicateObject["value"] = ExpressionConverter.ConvertO(bodypredicatevalue);
-                predicateObjectpropCount++;
-            }
-
-            if (bodypredicatecomparator != null)
-            {
                 if (bodypredicatecomparator != null)
                 {
-                    predicateObject["comparator"] = ExpressionConverter.ConvertO(bodypredicatecomparator);
+                    if (bodypredicatecomparator != null)
+                    {
+                        predicateObject["comparator"] = ExpressionConverter.ConvertO(bodypredicatecomparator);
+                        predicateObjectpropCount++;
+                    }
+
+                    predicateObjectpropCount++;
+                }
+                else
+                {
+                    predicateObject["comparator"] = "EqualTo";
                     predicateObjectpropCount++;
                 }
 
-                predicateObjectpropCount++;
-            }
-            else
-            {
-                predicateObject["comparator"] = "EqualTo";
-                predicateObjectpropCount++;
-            }
+                if (predicateObjectpropCount > 0)
+                {
+                    body["predicate"] = predicateObject;
+                    bodypropCount++;
+                }
 
-            if (predicateObjectpropCount > 0)
-            {
-                body["predicate"] = predicateObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkflowExecutionsSearch>(callPayload);
+                return new ApiConnectionAction<WorkflowExecutionsSearch>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        public IBodyWorkflowAction<WorkflowExecutions> WorkflowExecutions(Expression<Func<string>> bodyparentid = null)
+        [WorkflowExpressionFactory(nameof(__BuildWorkflowExecutions))]
+        public IBodyWorkflowAction<WorkflowExecutions> WorkflowExecutions([WorkflowExpression] Func<string> bodyparentid = null)
         {
-            var apiCallPath = "/workflow-executions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var parentObject = new JObject();
-            var parentObjectpropCount = 0;
-            if (bodyparentid != null)
-            {
-                parentObject["id"] = ExpressionConverter.ConvertO(bodyparentid);
-                parentObjectpropCount++;
-            }
-
-            if (parentObjectpropCount > 0)
-            {
-                body["parent"] = parentObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkflowExecutions>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
-        public IBodyWorkflowAction<WorkflowsSearch> WorkflowsSearch(Expression<Func<int>> bodyoffset = null, Expression<Func<bodyordersInputItem[]>> bodyorders = null, Expression<Func<string>> bodypredicatepath = null, Expression<Func<string>> bodypredicatevalue = null, Expression<Func<string>> bodypredicatecomparator = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkflowExecutions> __BuildWorkflowExecutions(WorkflowExpression<string> bodyparentid = null)
         {
-            var apiCallPath = "/workflows/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyoffset != null)
+            WorkflowExpression.Validate(bodyparentid, nameof(bodyparentid), required: false);
+            return new DeferredBodyAction<WorkflowExecutions>(() =>
             {
-                if (bodyoffset != null)
+                var apiCallPath = "/workflow-executions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var parentObject = new JObject();
+                var parentObjectpropCount = 0;
+                if (bodyparentid != null)
                 {
-                    body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                    parentObject["id"] = ExpressionConverter.ConvertO(bodyparentid);
+                    parentObjectpropCount++;
+                }
+
+                if (parentObjectpropCount > 0)
+                {
+                    body["parent"] = parentObject;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["offset"] = 0;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyorders != null)
-            {
-                body["orders"] = ExpressionConverter.ConvertO(bodyorders);
-                bodypropCount++;
-            }
+                return new ApiConnectionAction<WorkflowExecutions>(callPayload);
+            });
+        }
 
-            var predicateObject = new JObject();
-            var predicateObjectpropCount = 0;
-            if (bodypredicatepath != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
+        [WorkflowExpressionFactory(nameof(__BuildWorkflowsSearch))]
+        public IBodyWorkflowAction<WorkflowsSearch> WorkflowsSearch([WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<bodyordersInputItem[]> bodyorders = null, [WorkflowExpression] Func<string> bodypredicatepath = null, [WorkflowExpression] Func<string> bodypredicatevalue = null, [WorkflowExpression] Func<string> bodypredicatecomparator = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datablend")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkflowsSearch> __BuildWorkflowsSearch(WorkflowExpression<int> bodyoffset = null, WorkflowExpression<bodyordersInputItem[]> bodyorders = null, WorkflowExpression<string> bodypredicatepath = null, WorkflowExpression<string> bodypredicatevalue = null, WorkflowExpression<string> bodypredicatecomparator = null)
+        {
+            WorkflowExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
+            WorkflowExpression.Validate(bodyorders, nameof(bodyorders), required: false);
+            WorkflowExpression.Validate(bodypredicatepath, nameof(bodypredicatepath), required: false);
+            WorkflowExpression.Validate(bodypredicatevalue, nameof(bodypredicatevalue), required: false);
+            WorkflowExpression.Validate(bodypredicatecomparator, nameof(bodypredicatecomparator), required: false);
+            return new DeferredBodyAction<WorkflowsSearch>(() =>
             {
+                var apiCallPath = "/workflows/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyoffset != null)
+                {
+                    if (bodyoffset != null)
+                    {
+                        body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["offset"] = 0;
+                    bodypropCount++;
+                }
+
+                if (bodyorders != null)
+                {
+                    body["orders"] = ExpressionConverter.ConvertO(bodyorders);
+                    bodypropCount++;
+                }
+
+                var predicateObject = new JObject();
+                var predicateObjectpropCount = 0;
                 if (bodypredicatepath != null)
                 {
-                    predicateObject["path"] = ExpressionConverter.ConvertO(bodypredicatepath);
+                    if (bodypredicatepath != null)
+                    {
+                        predicateObject["path"] = ExpressionConverter.ConvertO(bodypredicatepath);
+                        predicateObjectpropCount++;
+                    }
+
+                    predicateObjectpropCount++;
+                }
+                else
+                {
+                    predicateObject["path"] = "group.id";
                     predicateObjectpropCount++;
                 }
 
-                predicateObjectpropCount++;
-            }
-            else
-            {
-                predicateObject["path"] = "group.id";
-                predicateObjectpropCount++;
-            }
+                if (bodypredicatevalue != null)
+                {
+                    predicateObject["value"] = ExpressionConverter.ConvertO(bodypredicatevalue);
+                    predicateObjectpropCount++;
+                }
 
-            if (bodypredicatevalue != null)
-            {
-                predicateObject["value"] = ExpressionConverter.ConvertO(bodypredicatevalue);
-                predicateObjectpropCount++;
-            }
-
-            if (bodypredicatecomparator != null)
-            {
                 if (bodypredicatecomparator != null)
                 {
-                    predicateObject["comparator"] = ExpressionConverter.ConvertO(bodypredicatecomparator);
+                    if (bodypredicatecomparator != null)
+                    {
+                        predicateObject["comparator"] = ExpressionConverter.ConvertO(bodypredicatecomparator);
+                        predicateObjectpropCount++;
+                    }
+
+                    predicateObjectpropCount++;
+                }
+                else
+                {
+                    predicateObject["comparator"] = "EqualTo";
                     predicateObjectpropCount++;
                 }
 
-                predicateObjectpropCount++;
-            }
-            else
-            {
-                predicateObject["comparator"] = "EqualTo";
-                predicateObjectpropCount++;
-            }
+                if (predicateObjectpropCount > 0)
+                {
+                    body["predicate"] = predicateObject;
+                    bodypropCount++;
+                }
 
-            if (predicateObjectpropCount > 0)
-            {
-                body["predicate"] = predicateObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkflowsSearch>(callPayload);
+                return new ApiConnectionAction<WorkflowsSearch>(callPayload);
+            });
         }
     }
 

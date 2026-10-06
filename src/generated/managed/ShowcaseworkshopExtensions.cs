@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,61 +14,95 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
 
     public class ShowcaseworkshopTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ShowcaseShareSendEmail(Expression<Func<string>> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/main/integrations/ms_create_webhook/share_send_email";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(workshopUid);
-            callPayload.Queries["event_name"] = Convert.ToString("share_send_email");
-            var requestBodyOfWebhook = new JObject();
-            var requestBodyOfWebhookpropCount = 0;
-            requestBodyOfWebhook["callback_url"] = "@listCallbackUrl()";
-            requestBodyOfWebhookpropCount++;
-            if (requestBodyOfWebhookpropCount > 0)
-            {
-                callPayload.Body = requestBodyOfWebhook;
-            }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [WorkflowExpressionFactory(nameof(__BuildShowcaseShareSendEmail))]
+        public IWorkflowTrigger ShowcaseShareSendEmail([WorkflowExpression] Func<string> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger ShowcaseSharedPageView(Expression<Func<string>> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildShowcaseShareSendEmail(WorkflowExpression<string> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_view";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(workshopUid);
-            callPayload.Queries["event_name"] = Convert.ToString("shared_page_view");
-            var requestBodyOfWebhook = new JObject();
-            var requestBodyOfWebhookpropCount = 0;
-            requestBodyOfWebhook["callback_url"] = "@listCallbackUrl()";
-            requestBodyOfWebhookpropCount++;
-            if (requestBodyOfWebhookpropCount > 0)
+            WorkflowExpression.Validate(workshopUid, nameof(workshopUid), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = requestBodyOfWebhook;
-            }
+                var apiCallPath = "/main/integrations/ms_create_webhook/share_send_email";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(workshopUid);
+                callPayload.Queries["event_name"] = Convert.ToString("share_send_email");
+                var requestBodyOfWebhook = new JObject();
+                var requestBodyOfWebhookpropCount = 0;
+                requestBodyOfWebhook["callback_url"] = "#{listCallbackUrl()}";
+                requestBodyOfWebhookpropCount++;
+                if (requestBodyOfWebhookpropCount > 0)
+                {
+                    callPayload.Body = requestBodyOfWebhook;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger ShowcaseSharedPageDownload(Expression<Func<string>> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildShowcaseSharedPageView))]
+        public IWorkflowTrigger ShowcaseSharedPageView([WorkflowExpression] Func<string> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_download";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(workshopUid);
-            callPayload.Queries["event_name"] = Convert.ToString("shared_page_download");
-            var requestBodyOfWebhook = new JObject();
-            var requestBodyOfWebhookpropCount = 0;
-            requestBodyOfWebhook["callback_url"] = "@listCallbackUrl()";
-            requestBodyOfWebhookpropCount++;
-            if (requestBodyOfWebhookpropCount > 0)
-            {
-                callPayload.Body = requestBodyOfWebhook;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildShowcaseSharedPageView(WorkflowExpression<string> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(workshopUid, nameof(workshopUid), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_view";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(workshopUid);
+                callPayload.Queries["event_name"] = Convert.ToString("shared_page_view");
+                var requestBodyOfWebhook = new JObject();
+                var requestBodyOfWebhookpropCount = 0;
+                requestBodyOfWebhook["callback_url"] = "#{listCallbackUrl()}";
+                requestBodyOfWebhookpropCount++;
+                if (requestBodyOfWebhookpropCount > 0)
+                {
+                    callPayload.Body = requestBodyOfWebhook;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildShowcaseSharedPageDownload))]
+        public IWorkflowTrigger ShowcaseSharedPageDownload([WorkflowExpression] Func<string> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildShowcaseSharedPageDownload(WorkflowExpression<string> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(workshopUid, nameof(workshopUid), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/main/integrations/ms_create_webhook/shared_page_download";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workshop_uid"] = ExpressionConverter.Convert(workshopUid);
+                callPayload.Queries["event_name"] = Convert.ToString("shared_page_download");
+                var requestBodyOfWebhook = new JObject();
+                var requestBodyOfWebhookpropCount = 0;
+                requestBodyOfWebhook["callback_url"] = "#{listCallbackUrl()}";
+                requestBodyOfWebhookpropCount++;
+                if (requestBodyOfWebhookpropCount > 0)
+                {
+                    callPayload.Body = requestBodyOfWebhook;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 }

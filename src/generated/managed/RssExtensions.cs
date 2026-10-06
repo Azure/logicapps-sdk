@@ -4,41 +4,68 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class RssActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rss")]
-        public IBodyWorkflowAction<FeedItem[]> ListFeedItems(Expression<Func<string>> feedUrl, Expression<Func<string>> since = null, Expression<Func<sincePropertyInput>> sinceProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildListFeedItems))]
+        public IBodyWorkflowAction<FeedItem[]> ListFeedItems([WorkflowExpression] Func<string> feedUrl, [WorkflowExpression] Func<string> since = null, [WorkflowExpression] Func<sincePropertyInput> sinceProperty = null)
         {
-            var apiCallPath = "/ListFeedItems";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["feedUrl"] = ExpressionConverter.Convert(feedUrl);
-            if (since != null)
-                callPayload.Queries["since"] = ExpressionConverter.Convert(since);
-            callPayload.Queries["sinceProperty"] = Convert.ToString("PublishDate");
-            if (sinceProperty != null)
-                callPayload.Queries["sinceProperty"] = ExpressionConverter.Convert(sinceProperty);
-            return new ApiConnectionAction<FeedItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rss")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FeedItem[]> __BuildListFeedItems(WorkflowExpression<string> feedUrl, WorkflowExpression<string> since = null, WorkflowExpression<sincePropertyInput> sinceProperty = null)
+        {
+            WorkflowExpression.Validate(feedUrl, nameof(feedUrl), required: true);
+            WorkflowExpression.Validate(since, nameof(since), required: false);
+            WorkflowExpression.Validate(sinceProperty, nameof(sinceProperty), required: false);
+            return new DeferredBodyAction<FeedItem[]>(() =>
+            {
+                var apiCallPath = "/ListFeedItems";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["feedUrl"] = ExpressionConverter.Convert(feedUrl);
+                if (since != null)
+                    callPayload.Queries["since"] = ExpressionConverter.Convert(since);
+                callPayload.Queries["sinceProperty"] = Convert.ToString("PublishDate");
+                if (sinceProperty != null)
+                    callPayload.Queries["sinceProperty"] = ExpressionConverter.Convert(sinceProperty);
+                return new ApiConnectionAction<FeedItem[]>(callPayload);
+            });
         }
     }
 
     public class RssTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerBatchResponseFeedItem> OnNewFeed(Expression<Func<string>> feedUrl, Expression<Func<sincePropertyInput>> sinceProperty = null, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildOnNewFeed))]
+        public IBodyWorkflowTrigger<TriggerBatchResponseFeedItem> OnNewFeed([WorkflowExpression] Func<string> feedUrl, [WorkflowExpression] Func<sincePropertyInput> sinceProperty = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/OnNewFeed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["feedUrl"] = ExpressionConverter.Convert(feedUrl);
-            callPayload.Queries["sinceProperty"] = Convert.ToString("PublishDate");
-            if (sinceProperty != null)
-                callPayload.Queries["sinceProperty"] = ExpressionConverter.Convert(sinceProperty);
-            return new ApiConnectionTrigger<TriggerBatchResponseFeedItem>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<TriggerBatchResponseFeedItem> __BuildOnNewFeed(WorkflowExpression<string> feedUrl, WorkflowExpression<sincePropertyInput> sinceProperty = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(feedUrl, nameof(feedUrl), required: true);
+            WorkflowExpression.Validate(sinceProperty, nameof(sinceProperty), required: false);
+            return new DeferredBodyTrigger<TriggerBatchResponseFeedItem>(() =>
+            {
+                var apiCallPath = "/OnNewFeed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["feedUrl"] = ExpressionConverter.Convert(feedUrl);
+                callPayload.Queries["sinceProperty"] = Convert.ToString("PublishDate");
+                if (sinceProperty != null)
+                    callPayload.Queries["sinceProperty"] = ExpressionConverter.Convert(sinceProperty);
+                return new ApiConnectionTrigger<TriggerBatchResponseFeedItem>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

@@ -4,81 +4,99 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SkribblesignActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skribblesign")]
-        public IBodyWorkflowAction<ErrorResponse> CreateSeal(Expression<Func<string>> requestcontent, Expression<Func<string>> requesttitle = null, Expression<Func<string>> requestsealForSealing = null, Expression<Func<string>> requestvisualSignatureformField = null, Expression<Func<string>> requestvisualSignatureimagecontent = null, Expression<Func<string>> requestvisualSignatureimagecontentType = null, Expression<Func<Position[]>> requestvisualSignaturepositions = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateSeal))]
+        public IBodyWorkflowAction<ErrorResponse> CreateSeal([WorkflowExpression] Func<string> requestcontent, [WorkflowExpression] Func<string> requesttitle = null, [WorkflowExpression] Func<string> requestsealForSealing = null, [WorkflowExpression] Func<string> requestvisualSignatureformField = null, [WorkflowExpression] Func<string> requestvisualSignatureimagecontent = null, [WorkflowExpression] Func<string> requestvisualSignatureimagecontentType = null, [WorkflowExpression] Func<Position[]> requestvisualSignaturepositions = null)
         {
-            var apiCallPath = "/seal";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requesttitle != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skribblesign")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ErrorResponse> __BuildCreateSeal(WorkflowExpression<string> requestcontent, WorkflowExpression<string> requesttitle = null, WorkflowExpression<string> requestsealForSealing = null, WorkflowExpression<string> requestvisualSignatureformField = null, WorkflowExpression<string> requestvisualSignatureimagecontent = null, WorkflowExpression<string> requestvisualSignatureimagecontentType = null, WorkflowExpression<Position[]> requestvisualSignaturepositions = null)
+        {
+            WorkflowExpression.Validate(requestcontent, nameof(requestcontent), required: true);
+            WorkflowExpression.Validate(requesttitle, nameof(requesttitle), required: false);
+            WorkflowExpression.Validate(requestsealForSealing, nameof(requestsealForSealing), required: false);
+            WorkflowExpression.Validate(requestvisualSignatureformField, nameof(requestvisualSignatureformField), required: false);
+            WorkflowExpression.Validate(requestvisualSignatureimagecontent, nameof(requestvisualSignatureimagecontent), required: false);
+            WorkflowExpression.Validate(requestvisualSignatureimagecontentType, nameof(requestvisualSignatureimagecontentType), required: false);
+            WorkflowExpression.Validate(requestvisualSignaturepositions, nameof(requestvisualSignaturepositions), required: false);
+            return new DeferredBodyAction<ErrorResponse>(() =>
             {
-                request["title"] = ExpressionConverter.ConvertO(requesttitle);
+                var apiCallPath = "/seal";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requesttitle != null)
+                {
+                    request["title"] = ExpressionConverter.ConvertO(requesttitle);
+                    requestpropCount++;
+                }
+
                 requestpropCount++;
-            }
+                request["content"] = ExpressionConverter.ConvertO(requestcontent);
+                if (requestsealForSealing != null)
+                {
+                    request["account_name"] = ExpressionConverter.ConvertO(requestsealForSealing);
+                    requestpropCount++;
+                }
 
-            requestpropCount++;
-            request["content"] = ExpressionConverter.ConvertO(requestcontent);
-            if (requestsealForSealing != null)
-            {
-                request["account_name"] = ExpressionConverter.ConvertO(requestsealForSealing);
-                requestpropCount++;
-            }
+                var visualSignatureObject = new JObject();
+                var visualSignatureObjectpropCount = 0;
+                if (requestvisualSignatureformField != null)
+                {
+                    visualSignatureObject["form_field"] = ExpressionConverter.ConvertO(requestvisualSignatureformField);
+                    visualSignatureObjectpropCount++;
+                }
 
-            var visualSignatureObject = new JObject();
-            var visualSignatureObjectpropCount = 0;
-            if (requestvisualSignatureformField != null)
-            {
-                visualSignatureObject["form_field"] = ExpressionConverter.ConvertO(requestvisualSignatureformField);
-                visualSignatureObjectpropCount++;
-            }
+                var imageObject = new JObject();
+                var imageObjectpropCount = 0;
+                if (requestvisualSignatureimagecontent != null)
+                {
+                    imageObject["content"] = ExpressionConverter.ConvertO(requestvisualSignatureimagecontent);
+                    imageObjectpropCount++;
+                }
 
-            var imageObject = new JObject();
-            var imageObjectpropCount = 0;
-            if (requestvisualSignatureimagecontent != null)
-            {
-                imageObject["content"] = ExpressionConverter.ConvertO(requestvisualSignatureimagecontent);
-                imageObjectpropCount++;
-            }
+                if (requestvisualSignatureimagecontentType != null)
+                {
+                    imageObject["content_type"] = ExpressionConverter.ConvertO(requestvisualSignatureimagecontentType);
+                    imageObjectpropCount++;
+                }
 
-            if (requestvisualSignatureimagecontentType != null)
-            {
-                imageObject["content_type"] = ExpressionConverter.ConvertO(requestvisualSignatureimagecontentType);
-                imageObjectpropCount++;
-            }
+                if (imageObjectpropCount > 0)
+                {
+                    visualSignatureObject["image"] = imageObject;
+                    visualSignatureObjectpropCount++;
+                }
 
-            if (imageObjectpropCount > 0)
-            {
-                visualSignatureObject["image"] = imageObject;
-                visualSignatureObjectpropCount++;
-            }
+                if (requestvisualSignaturepositions != null)
+                {
+                    visualSignatureObject["positions"] = ExpressionConverter.ConvertO(requestvisualSignaturepositions);
+                    visualSignatureObjectpropCount++;
+                }
 
-            if (requestvisualSignaturepositions != null)
-            {
-                visualSignatureObject["positions"] = ExpressionConverter.ConvertO(requestvisualSignaturepositions);
-                visualSignatureObjectpropCount++;
-            }
+                if (visualSignatureObjectpropCount > 0)
+                {
+                    request["visual_signature"] = visualSignatureObject;
+                    requestpropCount++;
+                }
 
-            if (visualSignatureObjectpropCount > 0)
-            {
-                request["visual_signature"] = visualSignatureObject;
-                requestpropCount++;
-            }
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<ErrorResponse>(callPayload);
+                return new ApiConnectionAction<ErrorResponse>(callPayload);
+            });
         }
     }
 

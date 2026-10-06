@@ -4,261 +4,499 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CloudmersivevideoandmediaActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> AudioConvertToMp3(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> bitRate = null)
+        [WorkflowExpressionFactory(nameof(__BuildAudioConvertToMp3))]
+        public IBodyWorkflowAction<string> AudioConvertToMp3([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> bitRate = null)
         {
-            var apiCallPath = "/video/convert/to/mp3";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            if (bitRate != null)
-                callPayload.Headers["bitRate"] = ExpressionConverter.Convert(bitRate);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> AudioConvertToM4a(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> bitRate = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildAudioConvertToMp3(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> bitRate = null)
         {
-            var apiCallPath = "/video/convert/to/m4a";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            if (bitRate != null)
-                callPayload.Headers["bitRate"] = ExpressionConverter.Convert(bitRate);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: false);
+            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            WorkflowExpression.Validate(bitRate, nameof(bitRate), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/video/convert/to/mp3";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fileUrl != null)
+                    callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                if (bitRate != null)
+                    callPayload.Headers["bitRate"] = ExpressionConverter.Convert(bitRate);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> AudioConvertToAac(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> bitRate = null)
+        [WorkflowExpressionFactory(nameof(__BuildAudioConvertToM4a))]
+        public IBodyWorkflowAction<string> AudioConvertToM4a([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> bitRate = null)
         {
-            var apiCallPath = "/video/convert/to/aac";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            if (bitRate != null)
-                callPayload.Headers["bitRate"] = ExpressionConverter.Convert(bitRate);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> AudioConvertToWav(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<double>> sampleRate = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildAudioConvertToM4a(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> bitRate = null)
         {
-            var apiCallPath = "/video/convert/to/wav";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            if (sampleRate != null)
-                callPayload.Headers["sampleRate"] = ExpressionConverter.Convert(sampleRate);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: false);
+            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            WorkflowExpression.Validate(bitRate, nameof(bitRate), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/video/convert/to/m4a";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fileUrl != null)
+                    callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                if (bitRate != null)
+                    callPayload.Headers["bitRate"] = ExpressionConverter.Convert(bitRate);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<MediaInformation> VideoGetInfo(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildAudioConvertToAac))]
+        public IBodyWorkflowAction<string> AudioConvertToAac([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> bitRate = null)
         {
-            var apiCallPath = "/video/convert/get-info";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            return new ApiConnectionAction<MediaInformation>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> VideoConvertToWebm(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<bool>> preserveAspectRatio = null, Expression<Func<int>> frameRate = null, Expression<Func<int>> quality = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildAudioConvertToAac(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> bitRate = null)
         {
-            var apiCallPath = "/video/convert/to/webm";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            if (maxWidth != null)
-                callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
-            if (maxHeight != null)
-                callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
-            if (preserveAspectRatio != null)
-                callPayload.Headers["preserveAspectRatio"] = ExpressionConverter.Convert(preserveAspectRatio);
-            if (frameRate != null)
-                callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
-            if (quality != null)
-                callPayload.Headers["quality"] = ExpressionConverter.Convert(quality);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: false);
+            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            WorkflowExpression.Validate(bitRate, nameof(bitRate), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/video/convert/to/aac";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fileUrl != null)
+                    callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                if (bitRate != null)
+                    callPayload.Headers["bitRate"] = ExpressionConverter.Convert(bitRate);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> VideoConvertToMov(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<bool>> preserveAspectRatio = null, Expression<Func<int>> frameRate = null, Expression<Func<int>> quality = null)
+        [WorkflowExpressionFactory(nameof(__BuildAudioConvertToWav))]
+        public IBodyWorkflowAction<string> AudioConvertToWav([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<double> sampleRate = null)
         {
-            var apiCallPath = "/video/convert/to/mov";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            if (maxWidth != null)
-                callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
-            if (maxHeight != null)
-                callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
-            if (preserveAspectRatio != null)
-                callPayload.Headers["preserveAspectRatio"] = ExpressionConverter.Convert(preserveAspectRatio);
-            if (frameRate != null)
-                callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
-            if (quality != null)
-                callPayload.Headers["quality"] = ExpressionConverter.Convert(quality);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> VideoConvertToMp4(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<bool>> preserveAspectRatio = null, Expression<Func<int>> frameRate = null, Expression<Func<int>> quality = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildAudioConvertToWav(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<double> sampleRate = null)
         {
-            var apiCallPath = "/video/convert/to/mp4";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            if (maxWidth != null)
-                callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
-            if (maxHeight != null)
-                callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
-            if (preserveAspectRatio != null)
-                callPayload.Headers["preserveAspectRatio"] = ExpressionConverter.Convert(preserveAspectRatio);
-            if (frameRate != null)
-                callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
-            if (quality != null)
-                callPayload.Headers["quality"] = ExpressionConverter.Convert(quality);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: false);
+            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            WorkflowExpression.Validate(sampleRate, nameof(sampleRate), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/video/convert/to/wav";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fileUrl != null)
+                    callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                if (sampleRate != null)
+                    callPayload.Headers["sampleRate"] = ExpressionConverter.Convert(sampleRate);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> VideoConvertToGif(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<bool>> preserveAspectRatio = null, Expression<Func<int>> frameRate = null, Expression<Func<string>> startTime = null, Expression<Func<string>> timeSpan = null)
+        [WorkflowExpressionFactory(nameof(__BuildVideoGetInfo))]
+        public IBodyWorkflowAction<MediaInformation> VideoGetInfo([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null)
         {
-            var apiCallPath = "/video/convert/to/gif";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            if (maxWidth != null)
-                callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
-            if (maxHeight != null)
-                callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
-            if (preserveAspectRatio != null)
-                callPayload.Headers["preserveAspectRatio"] = ExpressionConverter.Convert(preserveAspectRatio);
-            if (frameRate != null)
-                callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
-            if (startTime != null)
-                callPayload.Headers["startTime"] = ExpressionConverter.Convert(startTime);
-            if (timeSpan != null)
-                callPayload.Headers["timeSpan"] = ExpressionConverter.Convert(timeSpan);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> VideoResizeVideo(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<int>> frameRate = null, Expression<Func<int>> quality = null, Expression<Func<string>> extension = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MediaInformation> __BuildVideoGetInfo(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null)
         {
-            var apiCallPath = "/video/resize/preserveAspectRatio";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            if (maxWidth != null)
-                callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
-            if (maxHeight != null)
-                callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
-            if (frameRate != null)
-                callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
-            if (quality != null)
-                callPayload.Headers["quality"] = ExpressionConverter.Convert(quality);
-            if (extension != null)
-                callPayload.Headers["extension"] = ExpressionConverter.Convert(extension);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: false);
+            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            return new DeferredBodyAction<MediaInformation>(() =>
+            {
+                var apiCallPath = "/video/convert/get-info";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fileUrl != null)
+                    callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                return new ApiConnectionAction<MediaInformation>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> VideoResizeVideoSimple(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<int>> frameRate = null, Expression<Func<int>> quality = null, Expression<Func<string>> extension = null)
+        [WorkflowExpressionFactory(nameof(__BuildVideoConvertToWebm))]
+        public IBodyWorkflowAction<string> VideoConvertToWebm([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> maxWidth = null, [WorkflowExpression] Func<int> maxHeight = null, [WorkflowExpression] Func<bool> preserveAspectRatio = null, [WorkflowExpression] Func<int> frameRate = null, [WorkflowExpression] Func<int> quality = null)
         {
-            var apiCallPath = "/video/resize/target";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            if (maxWidth != null)
-                callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
-            if (maxHeight != null)
-                callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
-            if (frameRate != null)
-                callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
-            if (quality != null)
-                callPayload.Headers["quality"] = ExpressionConverter.Convert(quality);
-            if (extension != null)
-                callPayload.Headers["extension"] = ExpressionConverter.Convert(extension);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> VideoCutVideo(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<string>> startTime = null, Expression<Func<string>> timeSpan = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildVideoConvertToWebm(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> maxWidth = null, WorkflowExpression<int> maxHeight = null, WorkflowExpression<bool> preserveAspectRatio = null, WorkflowExpression<int> frameRate = null, WorkflowExpression<int> quality = null)
         {
-            var apiCallPath = "/video/cut";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            if (startTime != null)
-                callPayload.Headers["startTime"] = ExpressionConverter.Convert(startTime);
-            if (timeSpan != null)
-                callPayload.Headers["timeSpan"] = ExpressionConverter.Convert(timeSpan);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: false);
+            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            WorkflowExpression.Validate(maxWidth, nameof(maxWidth), required: false);
+            WorkflowExpression.Validate(maxHeight, nameof(maxHeight), required: false);
+            WorkflowExpression.Validate(preserveAspectRatio, nameof(preserveAspectRatio), required: false);
+            WorkflowExpression.Validate(frameRate, nameof(frameRate), required: false);
+            WorkflowExpression.Validate(quality, nameof(quality), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/video/convert/to/webm";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fileUrl != null)
+                    callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                if (maxWidth != null)
+                    callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
+                if (maxHeight != null)
+                    callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
+                if (preserveAspectRatio != null)
+                    callPayload.Headers["preserveAspectRatio"] = ExpressionConverter.Convert(preserveAspectRatio);
+                if (frameRate != null)
+                    callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
+                if (quality != null)
+                    callPayload.Headers["quality"] = ExpressionConverter.Convert(quality);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<SplitVideoResult> VideoSplitVideo(Expression<Func<string>> splitTime, Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<string>> timeSpan = null)
+        [WorkflowExpressionFactory(nameof(__BuildVideoConvertToMov))]
+        public IBodyWorkflowAction<string> VideoConvertToMov([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> maxWidth = null, [WorkflowExpression] Func<int> maxHeight = null, [WorkflowExpression] Func<bool> preserveAspectRatio = null, [WorkflowExpression] Func<int> frameRate = null, [WorkflowExpression] Func<int> quality = null)
         {
-            var apiCallPath = "/video/split";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            callPayload.Headers["splitTime"] = ExpressionConverter.Convert(splitTime);
-            if (timeSpan != null)
-                callPayload.Headers["timeSpan"] = ExpressionConverter.Convert(timeSpan);
-            return new ApiConnectionAction<SplitVideoResult>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<StillFramesResult> VideoConvertToStillFrames(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<double>> framesPerSecond = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildVideoConvertToMov(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> maxWidth = null, WorkflowExpression<int> maxHeight = null, WorkflowExpression<bool> preserveAspectRatio = null, WorkflowExpression<int> frameRate = null, WorkflowExpression<int> quality = null)
         {
-            var apiCallPath = "/video/convert/to/still-frames";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            if (maxWidth != null)
-                callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
-            if (maxHeight != null)
-                callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
-            if (framesPerSecond != null)
-                callPayload.Headers["framesPerSecond"] = ExpressionConverter.Convert(framesPerSecond);
-            return new ApiConnectionAction<StillFramesResult>(callPayload);
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: false);
+            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            WorkflowExpression.Validate(maxWidth, nameof(maxWidth), required: false);
+            WorkflowExpression.Validate(maxHeight, nameof(maxHeight), required: false);
+            WorkflowExpression.Validate(preserveAspectRatio, nameof(preserveAspectRatio), required: false);
+            WorkflowExpression.Validate(frameRate, nameof(frameRate), required: false);
+            WorkflowExpression.Validate(quality, nameof(quality), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/video/convert/to/mov";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fileUrl != null)
+                    callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                if (maxWidth != null)
+                    callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
+                if (maxHeight != null)
+                    callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
+                if (preserveAspectRatio != null)
+                    callPayload.Headers["preserveAspectRatio"] = ExpressionConverter.Convert(preserveAspectRatio);
+                if (frameRate != null)
+                    callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
+                if (quality != null)
+                    callPayload.Headers["quality"] = ExpressionConverter.Convert(quality);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<NsfwResult> VideoScanForNsfw(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<double>> framesPerSecond = null)
+        [WorkflowExpressionFactory(nameof(__BuildVideoConvertToMp4))]
+        public IBodyWorkflowAction<string> VideoConvertToMp4([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> maxWidth = null, [WorkflowExpression] Func<int> maxHeight = null, [WorkflowExpression] Func<bool> preserveAspectRatio = null, [WorkflowExpression] Func<int> frameRate = null, [WorkflowExpression] Func<int> quality = null)
         {
-            var apiCallPath = "/video/scan/nsfw";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fileUrl != null)
-                callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            if (framesPerSecond != null)
-                callPayload.Headers["framesPerSecond"] = ExpressionConverter.Convert(framesPerSecond);
-            return new ApiConnectionAction<NsfwResult>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildVideoConvertToMp4(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> maxWidth = null, WorkflowExpression<int> maxHeight = null, WorkflowExpression<bool> preserveAspectRatio = null, WorkflowExpression<int> frameRate = null, WorkflowExpression<int> quality = null)
+        {
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: false);
+            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            WorkflowExpression.Validate(maxWidth, nameof(maxWidth), required: false);
+            WorkflowExpression.Validate(maxHeight, nameof(maxHeight), required: false);
+            WorkflowExpression.Validate(preserveAspectRatio, nameof(preserveAspectRatio), required: false);
+            WorkflowExpression.Validate(frameRate, nameof(frameRate), required: false);
+            WorkflowExpression.Validate(quality, nameof(quality), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/video/convert/to/mp4";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fileUrl != null)
+                    callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                if (maxWidth != null)
+                    callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
+                if (maxHeight != null)
+                    callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
+                if (preserveAspectRatio != null)
+                    callPayload.Headers["preserveAspectRatio"] = ExpressionConverter.Convert(preserveAspectRatio);
+                if (frameRate != null)
+                    callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
+                if (quality != null)
+                    callPayload.Headers["quality"] = ExpressionConverter.Convert(quality);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
+        [WorkflowExpressionFactory(nameof(__BuildVideoConvertToGif))]
+        public IBodyWorkflowAction<string> VideoConvertToGif([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> maxWidth = null, [WorkflowExpression] Func<int> maxHeight = null, [WorkflowExpression] Func<bool> preserveAspectRatio = null, [WorkflowExpression] Func<int> frameRate = null, [WorkflowExpression] Func<string> startTime = null, [WorkflowExpression] Func<string> timeSpan = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildVideoConvertToGif(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> maxWidth = null, WorkflowExpression<int> maxHeight = null, WorkflowExpression<bool> preserveAspectRatio = null, WorkflowExpression<int> frameRate = null, WorkflowExpression<string> startTime = null, WorkflowExpression<string> timeSpan = null)
+        {
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: false);
+            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            WorkflowExpression.Validate(maxWidth, nameof(maxWidth), required: false);
+            WorkflowExpression.Validate(maxHeight, nameof(maxHeight), required: false);
+            WorkflowExpression.Validate(preserveAspectRatio, nameof(preserveAspectRatio), required: false);
+            WorkflowExpression.Validate(frameRate, nameof(frameRate), required: false);
+            WorkflowExpression.Validate(startTime, nameof(startTime), required: false);
+            WorkflowExpression.Validate(timeSpan, nameof(timeSpan), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/video/convert/to/gif";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fileUrl != null)
+                    callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                if (maxWidth != null)
+                    callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
+                if (maxHeight != null)
+                    callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
+                if (preserveAspectRatio != null)
+                    callPayload.Headers["preserveAspectRatio"] = ExpressionConverter.Convert(preserveAspectRatio);
+                if (frameRate != null)
+                    callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
+                if (startTime != null)
+                    callPayload.Headers["startTime"] = ExpressionConverter.Convert(startTime);
+                if (timeSpan != null)
+                    callPayload.Headers["timeSpan"] = ExpressionConverter.Convert(timeSpan);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
+        [WorkflowExpressionFactory(nameof(__BuildVideoResizeVideo))]
+        public IBodyWorkflowAction<string> VideoResizeVideo([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> maxWidth = null, [WorkflowExpression] Func<int> maxHeight = null, [WorkflowExpression] Func<int> frameRate = null, [WorkflowExpression] Func<int> quality = null, [WorkflowExpression] Func<string> extension = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildVideoResizeVideo(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> maxWidth = null, WorkflowExpression<int> maxHeight = null, WorkflowExpression<int> frameRate = null, WorkflowExpression<int> quality = null, WorkflowExpression<string> extension = null)
+        {
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: false);
+            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            WorkflowExpression.Validate(maxWidth, nameof(maxWidth), required: false);
+            WorkflowExpression.Validate(maxHeight, nameof(maxHeight), required: false);
+            WorkflowExpression.Validate(frameRate, nameof(frameRate), required: false);
+            WorkflowExpression.Validate(quality, nameof(quality), required: false);
+            WorkflowExpression.Validate(extension, nameof(extension), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/video/resize/preserveAspectRatio";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fileUrl != null)
+                    callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                if (maxWidth != null)
+                    callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
+                if (maxHeight != null)
+                    callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
+                if (frameRate != null)
+                    callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
+                if (quality != null)
+                    callPayload.Headers["quality"] = ExpressionConverter.Convert(quality);
+                if (extension != null)
+                    callPayload.Headers["extension"] = ExpressionConverter.Convert(extension);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
+        [WorkflowExpressionFactory(nameof(__BuildVideoResizeVideoSimple))]
+        public IBodyWorkflowAction<string> VideoResizeVideoSimple([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> maxWidth = null, [WorkflowExpression] Func<int> maxHeight = null, [WorkflowExpression] Func<int> frameRate = null, [WorkflowExpression] Func<int> quality = null, [WorkflowExpression] Func<string> extension = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildVideoResizeVideoSimple(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> maxWidth = null, WorkflowExpression<int> maxHeight = null, WorkflowExpression<int> frameRate = null, WorkflowExpression<int> quality = null, WorkflowExpression<string> extension = null)
+        {
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: false);
+            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            WorkflowExpression.Validate(maxWidth, nameof(maxWidth), required: false);
+            WorkflowExpression.Validate(maxHeight, nameof(maxHeight), required: false);
+            WorkflowExpression.Validate(frameRate, nameof(frameRate), required: false);
+            WorkflowExpression.Validate(quality, nameof(quality), required: false);
+            WorkflowExpression.Validate(extension, nameof(extension), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/video/resize/target";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fileUrl != null)
+                    callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                if (maxWidth != null)
+                    callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
+                if (maxHeight != null)
+                    callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
+                if (frameRate != null)
+                    callPayload.Headers["frameRate"] = ExpressionConverter.Convert(frameRate);
+                if (quality != null)
+                    callPayload.Headers["quality"] = ExpressionConverter.Convert(quality);
+                if (extension != null)
+                    callPayload.Headers["extension"] = ExpressionConverter.Convert(extension);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
+        [WorkflowExpressionFactory(nameof(__BuildVideoCutVideo))]
+        public IBodyWorkflowAction<string> VideoCutVideo([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<string> startTime = null, [WorkflowExpression] Func<string> timeSpan = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildVideoCutVideo(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<string> startTime = null, WorkflowExpression<string> timeSpan = null)
+        {
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: false);
+            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            WorkflowExpression.Validate(startTime, nameof(startTime), required: false);
+            WorkflowExpression.Validate(timeSpan, nameof(timeSpan), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/video/cut";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fileUrl != null)
+                    callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                if (startTime != null)
+                    callPayload.Headers["startTime"] = ExpressionConverter.Convert(startTime);
+                if (timeSpan != null)
+                    callPayload.Headers["timeSpan"] = ExpressionConverter.Convert(timeSpan);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
+        [WorkflowExpressionFactory(nameof(__BuildVideoSplitVideo))]
+        public IBodyWorkflowAction<SplitVideoResult> VideoSplitVideo([WorkflowExpression] Func<string> splitTime, [WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<string> timeSpan = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SplitVideoResult> __BuildVideoSplitVideo(WorkflowExpression<string> splitTime, WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<string> timeSpan = null)
+        {
+            WorkflowExpression.Validate(splitTime, nameof(splitTime), required: true);
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: false);
+            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            WorkflowExpression.Validate(timeSpan, nameof(timeSpan), required: false);
+            return new DeferredBodyAction<SplitVideoResult>(() =>
+            {
+                var apiCallPath = "/video/split";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fileUrl != null)
+                    callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                callPayload.Headers["splitTime"] = ExpressionConverter.Convert(splitTime);
+                if (timeSpan != null)
+                    callPayload.Headers["timeSpan"] = ExpressionConverter.Convert(timeSpan);
+                return new ApiConnectionAction<SplitVideoResult>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
+        [WorkflowExpressionFactory(nameof(__BuildVideoConvertToStillFrames))]
+        public IBodyWorkflowAction<StillFramesResult> VideoConvertToStillFrames([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> maxWidth = null, [WorkflowExpression] Func<int> maxHeight = null, [WorkflowExpression] Func<double> framesPerSecond = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StillFramesResult> __BuildVideoConvertToStillFrames(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<int> maxWidth = null, WorkflowExpression<int> maxHeight = null, WorkflowExpression<double> framesPerSecond = null)
+        {
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: false);
+            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            WorkflowExpression.Validate(maxWidth, nameof(maxWidth), required: false);
+            WorkflowExpression.Validate(maxHeight, nameof(maxHeight), required: false);
+            WorkflowExpression.Validate(framesPerSecond, nameof(framesPerSecond), required: false);
+            return new DeferredBodyAction<StillFramesResult>(() =>
+            {
+                var apiCallPath = "/video/convert/to/still-frames";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fileUrl != null)
+                    callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                if (maxWidth != null)
+                    callPayload.Headers["maxWidth"] = ExpressionConverter.Convert(maxWidth);
+                if (maxHeight != null)
+                    callPayload.Headers["maxHeight"] = ExpressionConverter.Convert(maxHeight);
+                if (framesPerSecond != null)
+                    callPayload.Headers["framesPerSecond"] = ExpressionConverter.Convert(framesPerSecond);
+                return new ApiConnectionAction<StillFramesResult>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
+        [WorkflowExpressionFactory(nameof(__BuildVideoScanForNsfw))]
+        public IBodyWorkflowAction<NsfwResult> VideoScanForNsfw([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<double> framesPerSecond = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NsfwResult> __BuildVideoScanForNsfw(WorkflowExpression<object> inputFile = null, WorkflowExpression<string> fileUrl = null, WorkflowExpression<double> framesPerSecond = null)
+        {
+            WorkflowExpression.Validate(inputFile, nameof(inputFile), required: false);
+            WorkflowExpression.Validate(fileUrl, nameof(fileUrl), required: false);
+            WorkflowExpression.Validate(framesPerSecond, nameof(framesPerSecond), required: false);
+            return new DeferredBodyAction<NsfwResult>(() =>
+            {
+                var apiCallPath = "/video/scan/nsfw";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fileUrl != null)
+                    callPayload.Headers["fileUrl"] = ExpressionConverter.Convert(fileUrl);
+                if (framesPerSecond != null)
+                    callPayload.Headers["framesPerSecond"] = ExpressionConverter.Convert(framesPerSecond);
+                return new ApiConnectionAction<NsfwResult>(callPayload);
+            });
         }
     }
 

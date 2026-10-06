@@ -4,66 +4,94 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TabscannerreceiptocrActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
-        public IBodyWorkflowAction<Process> Process(Expression<Func<string>> bodyimage = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodydocumentType = null, Expression<Func<string>> bodydefaultDateParsing = null, Expression<Func<string>> bodydecimalPlaces = null)
+        [WorkflowExpressionFactory(nameof(__BuildProcess))]
+        public IBodyWorkflowAction<Process> Process([WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodydocumentType = null, [WorkflowExpression] Func<string> bodydefaultDateParsing = null, [WorkflowExpression] Func<string> bodydecimalPlaces = null)
         {
-            var apiCallPath = "/api/2/processbase64";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyimage != null)
-            {
-                body["image"] = ExpressionConverter.ConvertO(bodyimage);
-                bodypropCount++;
-            }
-
-            if (bodyregion != null)
-            {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
-                bodypropCount++;
-            }
-
-            if (bodydocumentType != null)
-            {
-                body["documentType"] = ExpressionConverter.ConvertO(bodydocumentType);
-                bodypropCount++;
-            }
-
-            if (bodydefaultDateParsing != null)
-            {
-                body["defaultDateParsing"] = ExpressionConverter.ConvertO(bodydefaultDateParsing);
-                bodypropCount++;
-            }
-
-            if (bodydecimalPlaces != null)
-            {
-                body["decimalPlaces"] = ExpressionConverter.ConvertO(bodydecimalPlaces);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Process>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
-        public IBodyWorkflowAction<Result> Result(Expression<Func<string>> token)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Process> __BuildProcess(WorkflowExpression<string> bodyimage = null, WorkflowExpression<string> bodyregion = null, WorkflowExpression<string> bodydocumentType = null, WorkflowExpression<string> bodydefaultDateParsing = null, WorkflowExpression<string> bodydecimalPlaces = null)
         {
-            var apiCallPath = String.Format("/api/result/{0}", ExpressionConverter.ConvertWithUrlEncoding(token, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Result>(callPayload);
+            WorkflowExpression.Validate(bodyimage, nameof(bodyimage), required: false);
+            WorkflowExpression.Validate(bodyregion, nameof(bodyregion), required: false);
+            WorkflowExpression.Validate(bodydocumentType, nameof(bodydocumentType), required: false);
+            WorkflowExpression.Validate(bodydefaultDateParsing, nameof(bodydefaultDateParsing), required: false);
+            WorkflowExpression.Validate(bodydecimalPlaces, nameof(bodydecimalPlaces), required: false);
+            return new DeferredBodyAction<Process>(() =>
+            {
+                var apiCallPath = "/api/2/processbase64";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyimage != null)
+                {
+                    body["image"] = ExpressionConverter.ConvertO(bodyimage);
+                    bodypropCount++;
+                }
+
+                if (bodyregion != null)
+                {
+                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentType != null)
+                {
+                    body["documentType"] = ExpressionConverter.ConvertO(bodydocumentType);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultDateParsing != null)
+                {
+                    body["defaultDateParsing"] = ExpressionConverter.ConvertO(bodydefaultDateParsing);
+                    bodypropCount++;
+                }
+
+                if (bodydecimalPlaces != null)
+                {
+                    body["decimalPlaces"] = ExpressionConverter.ConvertO(bodydecimalPlaces);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Process>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
+        [WorkflowExpressionFactory(nameof(__BuildResult))]
+        public IBodyWorkflowAction<Result> Result([WorkflowExpression] Func<string> token)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Result> __BuildResult(WorkflowExpression<string> token)
+        {
+            WorkflowExpression.Validate(token, nameof(token), required: true);
+            return new DeferredBodyAction<Result>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/result/{0}", ExpressionConverter.ConvertWithUrlEncoding(token, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Result>(callPayload);
+            });
         }
     }
 

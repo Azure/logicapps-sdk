@@ -4,79 +4,109 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class StormboardActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
-        public IBodyWorkflowAction<CreateIdeaResponse> CreateIdea(Expression<Func<int>> bodystormid, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodydata, Expression<Func<bodycolorInput>> bodycolor)
-        {
-            var apiCallPath = "/ideas";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["stormid"] = ExpressionConverter.ConvertO(bodystormid);
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
-            bodypropCount++;
-            body["color"] = ExpressionConverter.ConvertO(bodycolor);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<CreateIdeaResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateIdea))]
+        public IBodyWorkflowAction<CreateIdeaResponse> CreateIdea([WorkflowExpression] Func<int> bodystormid, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<bodycolorInput> bodycolor)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
-        public IBodyWorkflowAction<CreateStormResponse> CreateStorm(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyplan, Expression<Func<string>> bodygoals = null, Expression<Func<bool>> bodyideacreator = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateIdeaResponse> __BuildCreateIdea(WorkflowExpression<int> bodystormid, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<string> bodydata, WorkflowExpression<bodycolorInput> bodycolor)
         {
-            var apiCallPath = "/storms";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            bodypropCount++;
-            body["plan"] = ExpressionConverter.ConvertO(bodyplan);
-            if (bodygoals != null)
+            WorkflowExpression.Validate(bodystormid, nameof(bodystormid), required: true);
+            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: true);
+            WorkflowExpression.Validate(bodydata, nameof(bodydata), required: true);
+            WorkflowExpression.Validate(bodycolor, nameof(bodycolor), required: true);
+            return new DeferredBodyAction<CreateIdeaResponse>(() =>
             {
-                body["goals"] = ExpressionConverter.ConvertO(bodygoals);
+                var apiCallPath = "/ideas";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyideacreator != null)
-            {
-                if (bodyideacreator != null)
+                body["stormid"] = ExpressionConverter.ConvertO(bodystormid);
+                bodypropCount++;
+                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                bodypropCount++;
+                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                bodypropCount++;
+                body["color"] = ExpressionConverter.ConvertO(bodycolor);
+                if (bodypropCount > 0)
                 {
-                    body["ideacreator"] = ExpressionConverter.ConvertO(bodyideacreator);
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateIdeaResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateStorm))]
+        public IBodyWorkflowAction<CreateStormResponse> CreateStorm([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyplan, [WorkflowExpression] Func<string> bodygoals = null, [WorkflowExpression] Func<bool> bodyideacreator = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateStormResponse> __BuildCreateStorm(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodyplan, WorkflowExpression<string> bodygoals = null, WorkflowExpression<bool> bodyideacreator = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            WorkflowExpression.Validate(bodyplan, nameof(bodyplan), required: true);
+            WorkflowExpression.Validate(bodygoals, nameof(bodygoals), required: false);
+            WorkflowExpression.Validate(bodyideacreator, nameof(bodyideacreator), required: false);
+            return new DeferredBodyAction<CreateStormResponse>(() =>
+            {
+                var apiCallPath = "/storms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                bodypropCount++;
+                body["plan"] = ExpressionConverter.ConvertO(bodyplan);
+                if (bodygoals != null)
+                {
+                    body["goals"] = ExpressionConverter.ConvertO(bodygoals);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["ideacreator"] = true;
-                bodypropCount++;
-            }
+                if (bodyideacreator != null)
+                {
+                    if (bodyideacreator != null)
+                    {
+                        body["ideacreator"] = ExpressionConverter.ConvertO(bodyideacreator);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["ideacreator"] = true;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateStormResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateStormResponse>(callPayload);
+            });
         }
     }
 
@@ -92,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var bodypropCount = 0;
             body["service"] = "MicrosoftFlow";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["events"] = "idea.color";
             bodypropCount++;
@@ -114,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var bodypropCount = 0;
             body["service"] = "MicrosoftFlow";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["events"] = "idea.section";
             bodypropCount++;
@@ -136,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var bodypropCount = 0;
             body["service"] = "MicrosoftFlow";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["events"] = "idea.create";
             bodypropCount++;
@@ -158,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var bodypropCount = 0;
             body["service"] = "MicrosoftFlow";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["events"] = "idea.delete";
             bodypropCount++;
@@ -180,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var bodypropCount = 0;
             body["service"] = "MicrosoftFlow";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["events"] = "comment.create";
             bodypropCount++;

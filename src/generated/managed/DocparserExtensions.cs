@@ -4,54 +4,94 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DocparserActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
-        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument(Expression<Func<string>> parserId, Expression<Func<object>> file, Expression<Func<string>> remoteId = null)
+        [WorkflowExpressionFactory(nameof(__BuildUploadDocument))]
+        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument([WorkflowExpression] Func<string> parserId, [WorkflowExpression] Func<object> file, [WorkflowExpression] Func<string> remoteId = null)
         {
-            var apiCallPath = String.Format("/document/upload/{0}", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (remoteId != null)
-                callPayload.Queries["remote_id"] = ExpressionConverter.Convert(remoteId);
-            return new ApiConnectionAction<UploadDocumentResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
-        public IBodyWorkflowAction<FetchDocumentResponse> FetchDocument(Expression<Func<string>> parserId, Expression<Func<string>> url, Expression<Func<string>> remoteId = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UploadDocumentResponse> __BuildUploadDocument(WorkflowExpression<string> parserId, WorkflowExpression<object> file, WorkflowExpression<string> remoteId = null)
         {
-            var apiCallPath = String.Format("/document/fetch/{0}", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            if (remoteId != null)
-                callPayload.Queries["remote_id"] = ExpressionConverter.Convert(remoteId);
-            return new ApiConnectionAction<FetchDocumentResponse>(callPayload);
+            WorkflowExpression.Validate(parserId, nameof(parserId), required: true);
+            WorkflowExpression.Validate(file, nameof(file), required: true);
+            WorkflowExpression.Validate(remoteId, nameof(remoteId), required: false);
+            return new DeferredBodyAction<UploadDocumentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/upload/{0}", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (remoteId != null)
+                    callPayload.Queries["remote_id"] = ExpressionConverter.Convert(remoteId);
+                return new ApiConnectionAction<UploadDocumentResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
+        [WorkflowExpressionFactory(nameof(__BuildFetchDocument))]
+        public IBodyWorkflowAction<FetchDocumentResponse> FetchDocument([WorkflowExpression] Func<string> parserId, [WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> remoteId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FetchDocumentResponse> __BuildFetchDocument(WorkflowExpression<string> parserId, WorkflowExpression<string> url, WorkflowExpression<string> remoteId = null)
+        {
+            WorkflowExpression.Validate(parserId, nameof(parserId), required: true);
+            WorkflowExpression.Validate(url, nameof(url), required: true);
+            WorkflowExpression.Validate(remoteId, nameof(remoteId), required: false);
+            return new DeferredBodyAction<FetchDocumentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/fetch/{0}", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+                if (remoteId != null)
+                    callPayload.Queries["remote_id"] = ExpressionConverter.Convert(remoteId);
+                return new ApiConnectionAction<FetchDocumentResponse>(callPayload);
+            });
         }
     }
 
     public class DocparserTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreateReponse> WebhookCreate(Expression<Func<string>> parserId, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = String.Format("/webhook/subscribe/{0}/flow", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var targetUrl = new JObject();
-            var targetUrlpropCount = 0;
-            targetUrl["target_url"] = "@listCallbackUrl()";
-            targetUrlpropCount++;
-            if (targetUrlpropCount > 0)
-            {
-                callPayload.Body = targetUrl;
-            }
 
-            return new ApiConnectionTrigger<WebhookCreateReponse>(callPayload, triggerName, recurrence);
+        [WorkflowExpressionFactory(nameof(__BuildWebhookCreate))]
+        public IBodyWorkflowTrigger<WebhookCreateReponse> WebhookCreate([WorkflowExpression] Func<string> parserId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<WebhookCreateReponse> __BuildWebhookCreate(WorkflowExpression<string> parserId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(parserId, nameof(parserId), required: true);
+            return new DeferredBodyTrigger<WebhookCreateReponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhook/subscribe/{0}/flow", ExpressionConverter.ConvertWithUrlEncoding(parserId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var targetUrl = new JObject();
+                var targetUrlpropCount = 0;
+                targetUrl["target_url"] = "#{listCallbackUrl()}";
+                targetUrlpropCount++;
+                if (targetUrlpropCount > 0)
+                {
+                    callPayload.Body = targetUrl;
+                }
+
+                return new ApiConnectionTrigger<WebhookCreateReponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

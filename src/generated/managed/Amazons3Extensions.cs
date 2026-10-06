@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -30,61 +29,118 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
-        public IBodyWorkflowAction<S3ObjectCollection> ListObjects(Expression<Func<string>> bucketName, Expression<Func<string>> bucketRegion = null, Expression<Func<int>> maxObjectCount = null, Expression<Func<string>> continuationToken = null)
+        [WorkflowExpressionFactory(nameof(__BuildListObjects))]
+        public IBodyWorkflowAction<S3ObjectCollection> ListObjects([WorkflowExpression] Func<string> bucketName, [WorkflowExpression] Func<string> bucketRegion = null, [WorkflowExpression] Func<int> maxObjectCount = null, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            var apiCallPath = "/buckets/objects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
-            if (bucketRegion != null)
-                callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
-            callPayload.Queries["maxObjectCount"] = Convert.ToString(100);
-            if (maxObjectCount != null)
-                callPayload.Queries["maxObjectCount"] = ExpressionConverter.Convert(maxObjectCount);
-            if (continuationToken != null)
-                callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(continuationToken);
-            return new ApiConnectionAction<S3ObjectCollection>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
-        public IBodyWorkflowAction<S3ObjectDeepMetadata> GetObjectMetadata(Expression<Func<string>> bucketName, Expression<Func<string>> objectKey, Expression<Func<string>> bucketRegion = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<S3ObjectCollection> __BuildListObjects(WorkflowExpression<string> bucketName, WorkflowExpression<string> bucketRegion = null, WorkflowExpression<int> maxObjectCount = null, WorkflowExpression<string> continuationToken = null)
         {
-            var apiCallPath = "/buckets/objects/metadata";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
-            callPayload.Queries["objectKey"] = ExpressionConverter.Convert(objectKey);
-            if (bucketRegion != null)
-                callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
-            return new ApiConnectionAction<S3ObjectDeepMetadata>(callPayload);
+            WorkflowExpression.Validate(bucketName, nameof(bucketName), required: true);
+            WorkflowExpression.Validate(bucketRegion, nameof(bucketRegion), required: false);
+            WorkflowExpression.Validate(maxObjectCount, nameof(maxObjectCount), required: false);
+            WorkflowExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            return new DeferredBodyAction<S3ObjectCollection>(() =>
+            {
+                var apiCallPath = "/buckets/objects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
+                if (bucketRegion != null)
+                    callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
+                callPayload.Queries["maxObjectCount"] = Convert.ToString(100);
+                if (maxObjectCount != null)
+                    callPayload.Queries["maxObjectCount"] = ExpressionConverter.Convert(maxObjectCount);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(continuationToken);
+                return new ApiConnectionAction<S3ObjectCollection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
-        public IBodyWorkflowAction<string> GetObjectContent(Expression<Func<string>> bucketName, Expression<Func<string>> objectKey, Expression<Func<string>> bucketRegion = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetObjectMetadata))]
+        public IBodyWorkflowAction<S3ObjectDeepMetadata> GetObjectMetadata([WorkflowExpression] Func<string> bucketName, [WorkflowExpression] Func<string> objectKey, [WorkflowExpression] Func<string> bucketRegion = null)
         {
-            var apiCallPath = "/buckets/objects/content";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
-            callPayload.Queries["objectKey"] = ExpressionConverter.Convert(objectKey);
-            if (bucketRegion != null)
-                callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<S3ObjectDeepMetadata> __BuildGetObjectMetadata(WorkflowExpression<string> bucketName, WorkflowExpression<string> objectKey, WorkflowExpression<string> bucketRegion = null)
+        {
+            WorkflowExpression.Validate(bucketName, nameof(bucketName), required: true);
+            WorkflowExpression.Validate(objectKey, nameof(objectKey), required: true);
+            WorkflowExpression.Validate(bucketRegion, nameof(bucketRegion), required: false);
+            return new DeferredBodyAction<S3ObjectDeepMetadata>(() =>
+            {
+                var apiCallPath = "/buckets/objects/metadata";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
+                callPayload.Queries["objectKey"] = ExpressionConverter.Convert(objectKey);
+                if (bucketRegion != null)
+                    callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
+                return new ApiConnectionAction<S3ObjectDeepMetadata>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
+        [WorkflowExpressionFactory(nameof(__BuildGetObjectContent))]
+        public IBodyWorkflowAction<string> GetObjectContent([WorkflowExpression] Func<string> bucketName, [WorkflowExpression] Func<string> objectKey, [WorkflowExpression] Func<string> bucketRegion = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetObjectContent(WorkflowExpression<string> bucketName, WorkflowExpression<string> objectKey, WorkflowExpression<string> bucketRegion = null)
+        {
+            WorkflowExpression.Validate(bucketName, nameof(bucketName), required: true);
+            WorkflowExpression.Validate(objectKey, nameof(objectKey), required: true);
+            WorkflowExpression.Validate(bucketRegion, nameof(bucketRegion), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/buckets/objects/content";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
+                callPayload.Queries["objectKey"] = ExpressionConverter.Convert(objectKey);
+                if (bucketRegion != null)
+                    callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
     public class Amazons3Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<S3ObjectDeepMetadata> OnObjectUpdate(Expression<Func<string>> bucketName, Expression<Func<string>> objectKey, Expression<Func<string>> bucketRegion = null, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildOnObjectUpdate))]
+        public IBodyWorkflowTrigger<S3ObjectDeepMetadata> OnObjectUpdate([WorkflowExpression] Func<string> bucketName, [WorkflowExpression] Func<string> objectKey, [WorkflowExpression] Func<string> bucketRegion = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/buckets/objects/onupdate";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
-            callPayload.Queries["objectKey"] = ExpressionConverter.Convert(objectKey);
-            if (bucketRegion != null)
-                callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
-            return new ApiConnectionTrigger<S3ObjectDeepMetadata>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<S3ObjectDeepMetadata> __BuildOnObjectUpdate(WorkflowExpression<string> bucketName, WorkflowExpression<string> objectKey, WorkflowExpression<string> bucketRegion = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bucketName, nameof(bucketName), required: true);
+            WorkflowExpression.Validate(objectKey, nameof(objectKey), required: true);
+            WorkflowExpression.Validate(bucketRegion, nameof(bucketRegion), required: false);
+            return new DeferredBodyTrigger<S3ObjectDeepMetadata>(() =>
+            {
+                var apiCallPath = "/buckets/objects/onupdate";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
+                callPayload.Queries["objectKey"] = ExpressionConverter.Convert(objectKey);
+                if (bucketRegion != null)
+                    callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
+                return new ApiConnectionTrigger<S3ObjectDeepMetadata>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

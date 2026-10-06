@@ -4,41 +4,77 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class WebhoodurlscannerActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
-        public IBodyWorkflowAction<Scan[]> GetScans(Expression<Func<statusInput>> status = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetScans))]
+        public IBodyWorkflowAction<Scan[]> GetScans([WorkflowExpression] Func<statusInput> status = null)
         {
-            var apiCallPath = "/beta/scans";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["status"] = Convert.ToString("done");
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<Scan[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
-        public IBodyWorkflowAction<Scan> GetScanById(Expression<Func<string>> scanId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Scan[]> __BuildGetScans(WorkflowExpression<statusInput> status = null)
         {
-            var apiCallPath = String.Format("/beta/scans/{0}", ExpressionConverter.ConvertWithUrlEncoding(scanId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Scan>(callPayload);
+            WorkflowExpression.Validate(status, nameof(status), required: false);
+            return new DeferredBodyAction<Scan[]>(() =>
+            {
+                var apiCallPath = "/beta/scans";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["status"] = Convert.ToString("done");
+                if (status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                return new ApiConnectionAction<Scan[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
-        public IWorkflowAction GetScreenshotByScanId(Expression<Func<string>> scanId)
+        [WorkflowExpressionFactory(nameof(__BuildGetScanById))]
+        public IBodyWorkflowAction<Scan> GetScanById([WorkflowExpression] Func<string> scanId)
         {
-            var apiCallPath = String.Format("/beta/scans/{0}/screenshot", ExpressionConverter.ConvertWithUrlEncoding(scanId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Scan> __BuildGetScanById(WorkflowExpression<string> scanId)
+        {
+            WorkflowExpression.Validate(scanId, nameof(scanId), required: true);
+            return new DeferredBodyAction<Scan>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/scans/{0}", ExpressionConverter.ConvertWithUrlEncoding(scanId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Scan>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
+        [WorkflowExpressionFactory(nameof(__BuildGetScreenshotByScanId))]
+        public IWorkflowAction GetScreenshotByScanId([WorkflowExpression] Func<string> scanId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetScreenshotByScanId(WorkflowExpression<string> scanId)
+        {
+            WorkflowExpression.Validate(scanId, nameof(scanId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/scans/{0}/screenshot", ExpressionConverter.ConvertWithUrlEncoding(scanId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

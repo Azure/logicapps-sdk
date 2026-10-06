@@ -4,42 +4,67 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CardsforpowerappsActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
-        public IBodyWorkflowAction<CreateCardResult> CreateCardInstance(Expression<Func<string>> cardId, Expression<Func<object>> cardRequestinputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateCardInstance))]
+        public IBodyWorkflowAction<CreateCardResult> CreateCardInstance([WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<object> cardRequestinputs = null)
         {
-            var apiCallPath = String.Format("/cards/cards/{0}/instances", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var cardRequest = new JObject();
-            var cardRequestpropCount = 0;
-            if (cardRequestinputs != null)
-            {
-                cardRequest["inputs"] = ExpressionConverter.ConvertO(cardRequestinputs);
-                cardRequestpropCount++;
-            }
-
-            if (cardRequestpropCount > 0)
-            {
-                callPayload.Body = cardRequest;
-            }
-
-            return new ApiConnectionAction<CreateCardResult>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
-        public IBodyWorkflowAction<PowerCardDescription> GetCardDescription(Expression<Func<string>> cardId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateCardResult> __BuildCreateCardInstance(WorkflowExpression<string> cardId, WorkflowExpression<object> cardRequestinputs = null)
         {
-            var apiCallPath = String.Format("/cards/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PowerCardDescription>(callPayload);
+            WorkflowExpression.Validate(cardId, nameof(cardId), required: true);
+            WorkflowExpression.Validate(cardRequestinputs, nameof(cardRequestinputs), required: false);
+            return new DeferredBodyAction<CreateCardResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/cards/{0}/instances", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var cardRequest = new JObject();
+                var cardRequestpropCount = 0;
+                if (cardRequestinputs != null)
+                {
+                    cardRequest["inputs"] = ExpressionConverter.ConvertO(cardRequestinputs);
+                    cardRequestpropCount++;
+                }
+
+                if (cardRequestpropCount > 0)
+                {
+                    callPayload.Body = cardRequest;
+                }
+
+                return new ApiConnectionAction<CreateCardResult>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
+        [WorkflowExpressionFactory(nameof(__BuildGetCardDescription))]
+        public IBodyWorkflowAction<PowerCardDescription> GetCardDescription([WorkflowExpression] Func<string> cardId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PowerCardDescription> __BuildGetCardDescription(WorkflowExpression<string> cardId)
+        {
+            WorkflowExpression.Validate(cardId, nameof(cardId), required: true);
+            return new DeferredBodyAction<PowerCardDescription>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PowerCardDescription>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
@@ -59,39 +84,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
-        public IBodyWorkflowAction<GenerateCardResponse> GenerateCard(Expression<Func<CardAction[]>> generateCardRequestactions = null, Expression<Func<string>> generateCardRequestdescription = null)
+        [WorkflowExpressionFactory(nameof(__BuildGenerateCard))]
+        public IBodyWorkflowAction<GenerateCardResponse> GenerateCard([WorkflowExpression] Func<CardAction[]> generateCardRequestactions = null, [WorkflowExpression] Func<string> generateCardRequestdescription = null)
         {
-            var apiCallPath = "/cards/generate/card";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var generateCardRequest = new JObject();
-            var generateCardRequestpropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (dataObjectpropCount > 0)
-            {
-                generateCardRequest["data"] = dataObject;
-                generateCardRequestpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (generateCardRequestactions != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GenerateCardResponse> __BuildGenerateCard(WorkflowExpression<CardAction[]> generateCardRequestactions = null, WorkflowExpression<string> generateCardRequestdescription = null)
+        {
+            WorkflowExpression.Validate(generateCardRequestactions, nameof(generateCardRequestactions), required: false);
+            WorkflowExpression.Validate(generateCardRequestdescription, nameof(generateCardRequestdescription), required: false);
+            return new DeferredBodyAction<GenerateCardResponse>(() =>
             {
-                generateCardRequest["actions"] = ExpressionConverter.ConvertO(generateCardRequestactions);
-                generateCardRequestpropCount++;
-            }
+                var apiCallPath = "/cards/generate/card";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var generateCardRequest = new JObject();
+                var generateCardRequestpropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (dataObjectpropCount > 0)
+                {
+                    generateCardRequest["data"] = dataObject;
+                    generateCardRequestpropCount++;
+                }
 
-            if (generateCardRequestdescription != null)
-            {
-                generateCardRequest["description"] = ExpressionConverter.ConvertO(generateCardRequestdescription);
-                generateCardRequestpropCount++;
-            }
+                if (generateCardRequestactions != null)
+                {
+                    generateCardRequest["actions"] = ExpressionConverter.ConvertO(generateCardRequestactions);
+                    generateCardRequestpropCount++;
+                }
 
-            if (generateCardRequestpropCount > 0)
-            {
-                callPayload.Body = generateCardRequest;
-            }
+                if (generateCardRequestdescription != null)
+                {
+                    generateCardRequest["description"] = ExpressionConverter.ConvertO(generateCardRequestdescription);
+                    generateCardRequestpropCount++;
+                }
 
-            return new ApiConnectionAction<GenerateCardResponse>(callPayload);
+                if (generateCardRequestpropCount > 0)
+                {
+                    callPayload.Body = generateCardRequest;
+                }
+
+                return new ApiConnectionAction<GenerateCardResponse>(callPayload);
+            });
         }
     }
 

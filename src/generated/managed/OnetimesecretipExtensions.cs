@@ -4,71 +4,137 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class OnetimesecretipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
-        public IBodyWorkflowAction<GenerateSecretResponse> GenerateSecret(Expression<Func<string>> passphrase = null, Expression<Func<int>> ttl = null, Expression<Func<string>> recipient = null)
+        [WorkflowExpressionFactory(nameof(__BuildGenerateSecret))]
+        public IBodyWorkflowAction<GenerateSecretResponse> GenerateSecret([WorkflowExpression] Func<string> passphrase = null, [WorkflowExpression] Func<int> ttl = null, [WorkflowExpression] Func<string> recipient = null)
         {
-            var apiCallPath = "/generate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (passphrase != null)
-                callPayload.Queries["passphrase"] = ExpressionConverter.Convert(passphrase);
-            if (ttl != null)
-                callPayload.Queries["ttl"] = ExpressionConverter.Convert(ttl);
-            if (recipient != null)
-                callPayload.Queries["recipient"] = ExpressionConverter.Convert(recipient);
-            return new ApiConnectionAction<GenerateSecretResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
-        public IBodyWorkflowAction<CreateSecretResponse> CreateSecret(Expression<Func<string>> secret, Expression<Func<string>> ttl = null, Expression<Func<string>> passphrase = null, Expression<Func<string>> recipient = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GenerateSecretResponse> __BuildGenerateSecret(WorkflowExpression<string> passphrase = null, WorkflowExpression<int> ttl = null, WorkflowExpression<string> recipient = null)
         {
-            var apiCallPath = "/share";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["secret"] = ExpressionConverter.Convert(secret);
-            if (ttl != null)
-                callPayload.Queries["ttl"] = ExpressionConverter.Convert(ttl);
-            if (passphrase != null)
-                callPayload.Queries["passphrase"] = ExpressionConverter.Convert(passphrase);
-            if (recipient != null)
-                callPayload.Queries["recipient"] = ExpressionConverter.Convert(recipient);
-            return new ApiConnectionAction<CreateSecretResponse>(callPayload);
+            WorkflowExpression.Validate(passphrase, nameof(passphrase), required: false);
+            WorkflowExpression.Validate(ttl, nameof(ttl), required: false);
+            WorkflowExpression.Validate(recipient, nameof(recipient), required: false);
+            return new DeferredBodyAction<GenerateSecretResponse>(() =>
+            {
+                var apiCallPath = "/generate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (passphrase != null)
+                    callPayload.Queries["passphrase"] = ExpressionConverter.Convert(passphrase);
+                if (ttl != null)
+                    callPayload.Queries["ttl"] = ExpressionConverter.Convert(ttl);
+                if (recipient != null)
+                    callPayload.Queries["recipient"] = ExpressionConverter.Convert(recipient);
+                return new ApiConnectionAction<GenerateSecretResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
-        public IBodyWorkflowAction<RetrieveSecretResponse> RetrieveSecret(Expression<Func<string>> sECRETKEY, Expression<Func<string>> passphrase = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateSecret))]
+        public IBodyWorkflowAction<CreateSecretResponse> CreateSecret([WorkflowExpression] Func<string> secret, [WorkflowExpression] Func<string> ttl = null, [WorkflowExpression] Func<string> passphrase = null, [WorkflowExpression] Func<string> recipient = null)
         {
-            var apiCallPath = String.Format("/secret/{0}", ExpressionConverter.ConvertWithUrlEncoding(sECRETKEY, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (passphrase != null)
-                callPayload.Queries["passphrase"] = ExpressionConverter.Convert(passphrase);
-            return new ApiConnectionAction<RetrieveSecretResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
-        public IBodyWorkflowAction<RetrieveMetadataResponse> RetrieveMetadata(Expression<Func<string>> mETADATAKEY)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateSecretResponse> __BuildCreateSecret(WorkflowExpression<string> secret, WorkflowExpression<string> ttl = null, WorkflowExpression<string> passphrase = null, WorkflowExpression<string> recipient = null)
         {
-            var apiCallPath = String.Format("/private/{0}", ExpressionConverter.ConvertWithUrlEncoding(mETADATAKEY, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RetrieveMetadataResponse>(callPayload);
+            WorkflowExpression.Validate(secret, nameof(secret), required: true);
+            WorkflowExpression.Validate(ttl, nameof(ttl), required: false);
+            WorkflowExpression.Validate(passphrase, nameof(passphrase), required: false);
+            WorkflowExpression.Validate(recipient, nameof(recipient), required: false);
+            return new DeferredBodyAction<CreateSecretResponse>(() =>
+            {
+                var apiCallPath = "/share";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["secret"] = ExpressionConverter.Convert(secret);
+                if (ttl != null)
+                    callPayload.Queries["ttl"] = ExpressionConverter.Convert(ttl);
+                if (passphrase != null)
+                    callPayload.Queries["passphrase"] = ExpressionConverter.Convert(passphrase);
+                if (recipient != null)
+                    callPayload.Queries["recipient"] = ExpressionConverter.Convert(recipient);
+                return new ApiConnectionAction<CreateSecretResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
-        public IBodyWorkflowAction<BurnASecretResponse> BurnASecret(Expression<Func<string>> mETADATAKEY)
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveSecret))]
+        public IBodyWorkflowAction<RetrieveSecretResponse> RetrieveSecret([WorkflowExpression] Func<string> sECRETKEY, [WorkflowExpression] Func<string> passphrase = null)
         {
-            var apiCallPath = String.Format("/private/{0}/burn", ExpressionConverter.ConvertWithUrlEncoding(mETADATAKEY, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BurnASecretResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RetrieveSecretResponse> __BuildRetrieveSecret(WorkflowExpression<string> sECRETKEY, WorkflowExpression<string> passphrase = null)
+        {
+            WorkflowExpression.Validate(sECRETKEY, nameof(sECRETKEY), required: true);
+            WorkflowExpression.Validate(passphrase, nameof(passphrase), required: false);
+            return new DeferredBodyAction<RetrieveSecretResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secret/{0}", ExpressionConverter.ConvertWithUrlEncoding(sECRETKEY, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (passphrase != null)
+                    callPayload.Queries["passphrase"] = ExpressionConverter.Convert(passphrase);
+                return new ApiConnectionAction<RetrieveSecretResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveMetadata))]
+        public IBodyWorkflowAction<RetrieveMetadataResponse> RetrieveMetadata([WorkflowExpression] Func<string> mETADATAKEY)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RetrieveMetadataResponse> __BuildRetrieveMetadata(WorkflowExpression<string> mETADATAKEY)
+        {
+            WorkflowExpression.Validate(mETADATAKEY, nameof(mETADATAKEY), required: true);
+            return new DeferredBodyAction<RetrieveMetadataResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/private/{0}", ExpressionConverter.ConvertWithUrlEncoding(mETADATAKEY, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RetrieveMetadataResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
+        [WorkflowExpressionFactory(nameof(__BuildBurnASecret))]
+        public IBodyWorkflowAction<BurnASecretResponse> BurnASecret([WorkflowExpression] Func<string> mETADATAKEY)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BurnASecretResponse> __BuildBurnASecret(WorkflowExpression<string> mETADATAKEY)
+        {
+            WorkflowExpression.Validate(mETADATAKEY, nameof(mETADATAKEY), required: true);
+            return new DeferredBodyAction<BurnASecretResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/private/{0}/burn", ExpressionConverter.ConvertWithUrlEncoding(mETADATAKEY, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BurnASecretResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]

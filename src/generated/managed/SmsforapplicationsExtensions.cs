@@ -4,53 +4,94 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SmsforapplicationsActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
-        public IBodyWorkflowAction<JobReport[]> ListJobs(Expression<Func<bool>> jobIdsOnly, Expression<Func<string>> fromTs = null, Expression<Func<string>> toTs = null, Expression<Func<bool>> open = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
+        [WorkflowExpressionFactory(nameof(__BuildListJobs))]
+        public IBodyWorkflowAction<JobReport[]> ListJobs([WorkflowExpression] Func<bool> jobIdsOnly, [WorkflowExpression] Func<string> fromTs = null, [WorkflowExpression] Func<string> toTs = null, [WorkflowExpression] Func<bool> open = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/jobs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["jobIdsOnly"] = ExpressionConverter.Convert(jobIdsOnly);
-            if (fromTs != null)
-                callPayload.Queries["fromTs"] = ExpressionConverter.Convert(fromTs);
-            if (toTs != null)
-                callPayload.Queries["toTs"] = ExpressionConverter.Convert(toTs);
-            callPayload.Queries["open"] = Convert.ToString(false);
-            if (open != null)
-                callPayload.Queries["open"] = ExpressionConverter.Convert(open);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            callPayload.Queries["limit"] = Convert.ToString(100);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<JobReport[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
-        public IBodyWorkflowAction<JobReport> GetJob(Expression<Func<string>> jobId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JobReport[]> __BuildListJobs(WorkflowExpression<bool> jobIdsOnly, WorkflowExpression<string> fromTs = null, WorkflowExpression<string> toTs = null, WorkflowExpression<bool> open = null, WorkflowExpression<int> offset = null, WorkflowExpression<int> limit = null)
         {
-            var apiCallPath = String.Format("/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JobReport>(callPayload);
+            WorkflowExpression.Validate(jobIdsOnly, nameof(jobIdsOnly), required: true);
+            WorkflowExpression.Validate(fromTs, nameof(fromTs), required: false);
+            WorkflowExpression.Validate(toTs, nameof(toTs), required: false);
+            WorkflowExpression.Validate(open, nameof(open), required: false);
+            WorkflowExpression.Validate(offset, nameof(offset), required: false);
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<JobReport[]>(() =>
+            {
+                var apiCallPath = "/jobs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["jobIdsOnly"] = ExpressionConverter.Convert(jobIdsOnly);
+                if (fromTs != null)
+                    callPayload.Queries["fromTs"] = ExpressionConverter.Convert(fromTs);
+                if (toTs != null)
+                    callPayload.Queries["toTs"] = ExpressionConverter.Convert(toTs);
+                callPayload.Queries["open"] = Convert.ToString(false);
+                if (open != null)
+                    callPayload.Queries["open"] = ExpressionConverter.Convert(open);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                callPayload.Queries["limit"] = Convert.ToString(100);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                return new ApiConnectionAction<JobReport[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
-        public IBodyWorkflowAction<RecipientReport[]> ListRecipients(Expression<Func<string>> jobId)
+        [WorkflowExpressionFactory(nameof(__BuildGetJob))]
+        public IBodyWorkflowAction<JobReport> GetJob([WorkflowExpression] Func<string> jobId)
         {
-            var apiCallPath = "/sms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["jobId"] = ExpressionConverter.Convert(jobId);
-            return new ApiConnectionAction<RecipientReport[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JobReport> __BuildGetJob(WorkflowExpression<string> jobId)
+        {
+            WorkflowExpression.Validate(jobId, nameof(jobId), required: true);
+            return new DeferredBodyAction<JobReport>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JobReport>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
+        [WorkflowExpressionFactory(nameof(__BuildListRecipients))]
+        public IBodyWorkflowAction<RecipientReport[]> ListRecipients([WorkflowExpression] Func<string> jobId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RecipientReport[]> __BuildListRecipients(WorkflowExpression<string> jobId)
+        {
+            WorkflowExpression.Validate(jobId, nameof(jobId), required: true);
+            return new DeferredBodyAction<RecipientReport[]>(() =>
+            {
+                var apiCallPath = "/sms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["jobId"] = ExpressionConverter.Convert(jobId);
+                return new ApiConnectionAction<RecipientReport[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]

@@ -4,267 +4,329 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TesseroninvoiceActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse> GetServiceAssignmentsDispatcher(Expression<Func<int>> bodyskip, Expression<Func<string>> bodysearch = null, Expression<Func<int>> bodyorderColumns = null, Expression<Func<bool>> bodyorderByAsc = null, Expression<Func<bool>> bodytakeAll = null, Expression<Func<string>> bodyadditionalSearchDatadateTimeFrom = null, Expression<Func<string>> bodyadditionalSearchDatadateTimeTo = null, Expression<Func<double>> bodyadditionalSearchDataquantityFrom = null, Expression<Func<double>> bodyadditionalSearchDataquantityTo = null, Expression<Func<int[]>> bodyadditionalSearchDatauserIds = null, Expression<Func<string[]>> bodyadditionalSearchDataserviceArticles = null, Expression<Func<int>> bodyadditionalSearchDataassignmentStatusId = null, Expression<Func<bool>> bodyadditionalSearchDataisInvoice = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetServiceAssignmentsDispatcher))]
+        public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse> GetServiceAssignmentsDispatcher([WorkflowExpression] Func<int> bodyskip, [WorkflowExpression] Func<string> bodysearch = null, [WorkflowExpression] Func<int> bodyorderColumns = null, [WorkflowExpression] Func<bool> bodyorderByAsc = null, [WorkflowExpression] Func<bool> bodytakeAll = null, [WorkflowExpression] Func<string> bodyadditionalSearchDatadateTimeFrom = null, [WorkflowExpression] Func<string> bodyadditionalSearchDatadateTimeTo = null, [WorkflowExpression] Func<double> bodyadditionalSearchDataquantityFrom = null, [WorkflowExpression] Func<double> bodyadditionalSearchDataquantityTo = null, [WorkflowExpression] Func<int[]> bodyadditionalSearchDatauserIds = null, [WorkflowExpression] Func<string[]> bodyadditionalSearchDataserviceArticles = null, [WorkflowExpression] Func<int> bodyadditionalSearchDataassignmentStatusId = null, [WorkflowExpression] Func<bool> bodyadditionalSearchDataisInvoice = null)
         {
-            var apiCallPath = "/GetServiceAssignmentsDispatcher";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Skip"] = ExpressionConverter.ConvertO(bodyskip);
-            body["PageSize"] = 25;
-            bodypropCount++;
-            if (bodysearch != null)
-            {
-                body["Search"] = ExpressionConverter.ConvertO(bodysearch);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodyorderColumns != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse> __BuildGetServiceAssignmentsDispatcher(WorkflowExpression<int> bodyskip, WorkflowExpression<string> bodysearch = null, WorkflowExpression<int> bodyorderColumns = null, WorkflowExpression<bool> bodyorderByAsc = null, WorkflowExpression<bool> bodytakeAll = null, WorkflowExpression<string> bodyadditionalSearchDatadateTimeFrom = null, WorkflowExpression<string> bodyadditionalSearchDatadateTimeTo = null, WorkflowExpression<double> bodyadditionalSearchDataquantityFrom = null, WorkflowExpression<double> bodyadditionalSearchDataquantityTo = null, WorkflowExpression<int[]> bodyadditionalSearchDatauserIds = null, WorkflowExpression<string[]> bodyadditionalSearchDataserviceArticles = null, WorkflowExpression<int> bodyadditionalSearchDataassignmentStatusId = null, WorkflowExpression<bool> bodyadditionalSearchDataisInvoice = null)
+        {
+            WorkflowExpression.Validate(bodyskip, nameof(bodyskip), required: true);
+            WorkflowExpression.Validate(bodysearch, nameof(bodysearch), required: false);
+            WorkflowExpression.Validate(bodyorderColumns, nameof(bodyorderColumns), required: false);
+            WorkflowExpression.Validate(bodyorderByAsc, nameof(bodyorderByAsc), required: false);
+            WorkflowExpression.Validate(bodytakeAll, nameof(bodytakeAll), required: false);
+            WorkflowExpression.Validate(bodyadditionalSearchDatadateTimeFrom, nameof(bodyadditionalSearchDatadateTimeFrom), required: false);
+            WorkflowExpression.Validate(bodyadditionalSearchDatadateTimeTo, nameof(bodyadditionalSearchDatadateTimeTo), required: false);
+            WorkflowExpression.Validate(bodyadditionalSearchDataquantityFrom, nameof(bodyadditionalSearchDataquantityFrom), required: false);
+            WorkflowExpression.Validate(bodyadditionalSearchDataquantityTo, nameof(bodyadditionalSearchDataquantityTo), required: false);
+            WorkflowExpression.Validate(bodyadditionalSearchDatauserIds, nameof(bodyadditionalSearchDatauserIds), required: false);
+            WorkflowExpression.Validate(bodyadditionalSearchDataserviceArticles, nameof(bodyadditionalSearchDataserviceArticles), required: false);
+            WorkflowExpression.Validate(bodyadditionalSearchDataassignmentStatusId, nameof(bodyadditionalSearchDataassignmentStatusId), required: false);
+            WorkflowExpression.Validate(bodyadditionalSearchDataisInvoice, nameof(bodyadditionalSearchDataisInvoice), required: false);
+            return new DeferredBodyAction<GetServiceAssignmentsDispatcherResponse>(() =>
             {
-                body["OrderColumns"] = ExpressionConverter.ConvertO(bodyorderColumns);
+                var apiCallPath = "/GetServiceAssignmentsDispatcher";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["Skip"] = ExpressionConverter.ConvertO(bodyskip);
+                body["PageSize"] = 25;
+                bodypropCount++;
+                if (bodysearch != null)
+                {
+                    body["Search"] = ExpressionConverter.ConvertO(bodysearch);
+                    bodypropCount++;
+                }
 
-            if (bodyorderByAsc != null)
-            {
+                if (bodyorderColumns != null)
+                {
+                    body["OrderColumns"] = ExpressionConverter.ConvertO(bodyorderColumns);
+                    bodypropCount++;
+                }
+
                 if (bodyorderByAsc != null)
                 {
-                    body["OrderByAsc"] = ExpressionConverter.ConvertO(bodyorderByAsc);
+                    if (bodyorderByAsc != null)
+                    {
+                        body["OrderByAsc"] = ExpressionConverter.ConvertO(bodyorderByAsc);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["OrderByAsc"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["OrderByAsc"] = false;
-                bodypropCount++;
-            }
-
-            if (bodytakeAll != null)
-            {
                 if (bodytakeAll != null)
                 {
-                    body["TakeAll"] = ExpressionConverter.ConvertO(bodytakeAll);
+                    if (bodytakeAll != null)
+                    {
+                        body["TakeAll"] = ExpressionConverter.ConvertO(bodytakeAll);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["TakeAll"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["TakeAll"] = false;
-                bodypropCount++;
-            }
+                var additionalSearchDataObject = new JObject();
+                var additionalSearchDataObjectpropCount = 0;
+                if (bodyadditionalSearchDatadateTimeFrom != null)
+                {
+                    additionalSearchDataObject["DateTimeFrom"] = ExpressionConverter.ConvertO(bodyadditionalSearchDatadateTimeFrom);
+                    additionalSearchDataObjectpropCount++;
+                }
 
-            var additionalSearchDataObject = new JObject();
-            var additionalSearchDataObjectpropCount = 0;
-            if (bodyadditionalSearchDatadateTimeFrom != null)
-            {
-                additionalSearchDataObject["DateTimeFrom"] = ExpressionConverter.ConvertO(bodyadditionalSearchDatadateTimeFrom);
-                additionalSearchDataObjectpropCount++;
-            }
+                if (bodyadditionalSearchDatadateTimeTo != null)
+                {
+                    additionalSearchDataObject["DateTimeTo"] = ExpressionConverter.ConvertO(bodyadditionalSearchDatadateTimeTo);
+                    additionalSearchDataObjectpropCount++;
+                }
 
-            if (bodyadditionalSearchDatadateTimeTo != null)
-            {
-                additionalSearchDataObject["DateTimeTo"] = ExpressionConverter.ConvertO(bodyadditionalSearchDatadateTimeTo);
-                additionalSearchDataObjectpropCount++;
-            }
+                if (bodyadditionalSearchDataquantityFrom != null)
+                {
+                    additionalSearchDataObject["QuantityFrom"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataquantityFrom);
+                    additionalSearchDataObjectpropCount++;
+                }
 
-            if (bodyadditionalSearchDataquantityFrom != null)
-            {
-                additionalSearchDataObject["QuantityFrom"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataquantityFrom);
-                additionalSearchDataObjectpropCount++;
-            }
+                if (bodyadditionalSearchDataquantityTo != null)
+                {
+                    additionalSearchDataObject["QuantityTo"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataquantityTo);
+                    additionalSearchDataObjectpropCount++;
+                }
 
-            if (bodyadditionalSearchDataquantityTo != null)
-            {
-                additionalSearchDataObject["QuantityTo"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataquantityTo);
-                additionalSearchDataObjectpropCount++;
-            }
+                if (bodyadditionalSearchDatauserIds != null)
+                {
+                    additionalSearchDataObject["UserIds"] = ExpressionConverter.ConvertO(bodyadditionalSearchDatauserIds);
+                    additionalSearchDataObjectpropCount++;
+                }
 
-            if (bodyadditionalSearchDatauserIds != null)
-            {
-                additionalSearchDataObject["UserIds"] = ExpressionConverter.ConvertO(bodyadditionalSearchDatauserIds);
-                additionalSearchDataObjectpropCount++;
-            }
+                if (bodyadditionalSearchDataserviceArticles != null)
+                {
+                    additionalSearchDataObject["ServiceArticles"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataserviceArticles);
+                    additionalSearchDataObjectpropCount++;
+                }
 
-            if (bodyadditionalSearchDataserviceArticles != null)
-            {
-                additionalSearchDataObject["ServiceArticles"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataserviceArticles);
-                additionalSearchDataObjectpropCount++;
-            }
+                if (bodyadditionalSearchDataassignmentStatusId != null)
+                {
+                    additionalSearchDataObject["AssignmentStatusId"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataassignmentStatusId);
+                    additionalSearchDataObjectpropCount++;
+                }
 
-            if (bodyadditionalSearchDataassignmentStatusId != null)
-            {
-                additionalSearchDataObject["AssignmentStatusId"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataassignmentStatusId);
-                additionalSearchDataObjectpropCount++;
-            }
+                if (bodyadditionalSearchDataisInvoice != null)
+                {
+                    additionalSearchDataObject["IsInvoice"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataisInvoice);
+                    additionalSearchDataObjectpropCount++;
+                }
 
-            if (bodyadditionalSearchDataisInvoice != null)
-            {
-                additionalSearchDataObject["IsInvoice"] = ExpressionConverter.ConvertO(bodyadditionalSearchDataisInvoice);
-                additionalSearchDataObjectpropCount++;
-            }
+                if (additionalSearchDataObjectpropCount > 0)
+                {
+                    body["AdditionalSearchData"] = additionalSearchDataObject;
+                    bodypropCount++;
+                }
 
-            if (additionalSearchDataObjectpropCount > 0)
-            {
-                body["AdditionalSearchData"] = additionalSearchDataObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetServiceAssignmentsDispatcherResponse>(callPayload);
+                return new ApiConnectionAction<GetServiceAssignmentsDispatcherResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        public IBodyWorkflowAction<CreateActivityRecordingResponse> CreateActivityRecording(Expression<Func<string>> bodydateFrom, Expression<Func<string>> bodyquantity = null, Expression<Func<string>> bodydateTo = null, Expression<Func<string>> bodybookText = null, Expression<Func<string>> bodynoteText = null, Expression<Func<int>> bodyprojectId = null, Expression<Func<int>> bodyprojectPhaseId = null, Expression<Func<int>> bodyticketid = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateActivityRecording))]
+        public IBodyWorkflowAction<CreateActivityRecordingResponse> CreateActivityRecording([WorkflowExpression] Func<string> bodydateFrom, [WorkflowExpression] Func<string> bodyquantity = null, [WorkflowExpression] Func<string> bodydateTo = null, [WorkflowExpression] Func<string> bodybookText = null, [WorkflowExpression] Func<string> bodynoteText = null, [WorkflowExpression] Func<int> bodyprojectId = null, [WorkflowExpression] Func<int> bodyprojectPhaseId = null, [WorkflowExpression] Func<int> bodyticketid = null)
         {
-            var apiCallPath = "/CreateActivityRecording";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["dateFrom"] = ExpressionConverter.ConvertO(bodydateFrom);
-            if (bodyquantity != null)
-            {
-                body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (bodydateTo != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateActivityRecordingResponse> __BuildCreateActivityRecording(WorkflowExpression<string> bodydateFrom, WorkflowExpression<string> bodyquantity = null, WorkflowExpression<string> bodydateTo = null, WorkflowExpression<string> bodybookText = null, WorkflowExpression<string> bodynoteText = null, WorkflowExpression<int> bodyprojectId = null, WorkflowExpression<int> bodyprojectPhaseId = null, WorkflowExpression<int> bodyticketid = null)
+        {
+            WorkflowExpression.Validate(bodydateFrom, nameof(bodydateFrom), required: true);
+            WorkflowExpression.Validate(bodyquantity, nameof(bodyquantity), required: false);
+            WorkflowExpression.Validate(bodydateTo, nameof(bodydateTo), required: false);
+            WorkflowExpression.Validate(bodybookText, nameof(bodybookText), required: false);
+            WorkflowExpression.Validate(bodynoteText, nameof(bodynoteText), required: false);
+            WorkflowExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
+            WorkflowExpression.Validate(bodyprojectPhaseId, nameof(bodyprojectPhaseId), required: false);
+            WorkflowExpression.Validate(bodyticketid, nameof(bodyticketid), required: false);
+            return new DeferredBodyAction<CreateActivityRecordingResponse>(() =>
             {
+                var apiCallPath = "/CreateActivityRecording";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["dateFrom"] = ExpressionConverter.ConvertO(bodydateFrom);
+                if (bodyquantity != null)
+                {
+                    body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
+                    bodypropCount++;
+                }
+
+                if (bodydateTo != null)
+                {
+                    body["dateTo"] = ExpressionConverter.ConvertO(bodydateTo);
+                    bodypropCount++;
+                }
+
+                if (bodybookText != null)
+                {
+                    body["bookText"] = ExpressionConverter.ConvertO(bodybookText);
+                    bodypropCount++;
+                }
+
+                if (bodynoteText != null)
+                {
+                    body["noteText"] = ExpressionConverter.ConvertO(bodynoteText);
+                    bodypropCount++;
+                }
+
+                if (bodyprojectId != null)
+                {
+                    body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+                    bodypropCount++;
+                }
+
+                if (bodyprojectPhaseId != null)
+                {
+                    body["projectPhaseId"] = ExpressionConverter.ConvertO(bodyprojectPhaseId);
+                    bodypropCount++;
+                }
+
+                if (bodyticketid != null)
+                {
+                    body["ticketid"] = ExpressionConverter.ConvertO(bodyticketid);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateActivityRecordingResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateInvoicePositionNote))]
+        public IBodyWorkflowAction<CreateInvoicePositionNoteResponse> CreateInvoicePositionNote([WorkflowExpression] Func<string> bodydateFrom, [WorkflowExpression] Func<string> bodydateTo, [WorkflowExpression] Func<int> bodypause = null, [WorkflowExpression] Func<bool> bodynoInvoice = null, [WorkflowExpression] Func<bool> bodyextraCharge = null, [WorkflowExpression] Func<string> bodyhint = null, [WorkflowExpression] Func<string> bodyserviceContractId = null, [WorkflowExpression] Func<string> bodyuserName = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateInvoicePositionNoteResponse> __BuildCreateInvoicePositionNote(WorkflowExpression<string> bodydateFrom, WorkflowExpression<string> bodydateTo, WorkflowExpression<int> bodypause = null, WorkflowExpression<bool> bodynoInvoice = null, WorkflowExpression<bool> bodyextraCharge = null, WorkflowExpression<string> bodyhint = null, WorkflowExpression<string> bodyserviceContractId = null, WorkflowExpression<string> bodyuserName = null)
+        {
+            WorkflowExpression.Validate(bodydateFrom, nameof(bodydateFrom), required: true);
+            WorkflowExpression.Validate(bodydateTo, nameof(bodydateTo), required: true);
+            WorkflowExpression.Validate(bodypause, nameof(bodypause), required: false);
+            WorkflowExpression.Validate(bodynoInvoice, nameof(bodynoInvoice), required: false);
+            WorkflowExpression.Validate(bodyextraCharge, nameof(bodyextraCharge), required: false);
+            WorkflowExpression.Validate(bodyhint, nameof(bodyhint), required: false);
+            WorkflowExpression.Validate(bodyserviceContractId, nameof(bodyserviceContractId), required: false);
+            WorkflowExpression.Validate(bodyuserName, nameof(bodyuserName), required: false);
+            return new DeferredBodyAction<CreateInvoicePositionNoteResponse>(() =>
+            {
+                var apiCallPath = "/CreateInvoicePositionNote";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["dateFrom"] = ExpressionConverter.ConvertO(bodydateFrom);
+                bodypropCount++;
                 body["dateTo"] = ExpressionConverter.ConvertO(bodydateTo);
-                bodypropCount++;
-            }
+                if (bodypause != null)
+                {
+                    body["pause"] = ExpressionConverter.ConvertO(bodypause);
+                    bodypropCount++;
+                }
 
-            if (bodybookText != null)
-            {
-                body["bookText"] = ExpressionConverter.ConvertO(bodybookText);
-                bodypropCount++;
-            }
-
-            if (bodynoteText != null)
-            {
-                body["noteText"] = ExpressionConverter.ConvertO(bodynoteText);
-                bodypropCount++;
-            }
-
-            if (bodyprojectId != null)
-            {
-                body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
-                bodypropCount++;
-            }
-
-            if (bodyprojectPhaseId != null)
-            {
-                body["projectPhaseId"] = ExpressionConverter.ConvertO(bodyprojectPhaseId);
-                bodypropCount++;
-            }
-
-            if (bodyticketid != null)
-            {
-                body["ticketid"] = ExpressionConverter.ConvertO(bodyticketid);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateActivityRecordingResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        public IBodyWorkflowAction<CreateInvoicePositionNoteResponse> CreateInvoicePositionNote(Expression<Func<string>> bodydateFrom, Expression<Func<string>> bodydateTo, Expression<Func<int>> bodypause = null, Expression<Func<bool>> bodynoInvoice = null, Expression<Func<bool>> bodyextraCharge = null, Expression<Func<string>> bodyhint = null, Expression<Func<string>> bodyserviceContractId = null, Expression<Func<string>> bodyuserName = null)
-        {
-            var apiCallPath = "/CreateInvoicePositionNote";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["dateFrom"] = ExpressionConverter.ConvertO(bodydateFrom);
-            bodypropCount++;
-            body["dateTo"] = ExpressionConverter.ConvertO(bodydateTo);
-            if (bodypause != null)
-            {
-                body["pause"] = ExpressionConverter.ConvertO(bodypause);
-                bodypropCount++;
-            }
-
-            if (bodynoInvoice != null)
-            {
                 if (bodynoInvoice != null)
                 {
-                    body["noInvoice"] = ExpressionConverter.ConvertO(bodynoInvoice);
+                    if (bodynoInvoice != null)
+                    {
+                        body["noInvoice"] = ExpressionConverter.ConvertO(bodynoInvoice);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["noInvoice"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["noInvoice"] = false;
-                bodypropCount++;
-            }
-
-            if (bodyextraCharge != null)
-            {
                 if (bodyextraCharge != null)
                 {
-                    body["extraCharge"] = ExpressionConverter.ConvertO(bodyextraCharge);
+                    if (bodyextraCharge != null)
+                    {
+                        body["extraCharge"] = ExpressionConverter.ConvertO(bodyextraCharge);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["extraCharge"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["extraCharge"] = true;
-                bodypropCount++;
-            }
+                if (bodyhint != null)
+                {
+                    body["hint"] = ExpressionConverter.ConvertO(bodyhint);
+                    bodypropCount++;
+                }
 
-            if (bodyhint != null)
-            {
-                body["hint"] = ExpressionConverter.ConvertO(bodyhint);
-                bodypropCount++;
-            }
+                if (bodyserviceContractId != null)
+                {
+                    body["serviceContractId"] = ExpressionConverter.ConvertO(bodyserviceContractId);
+                    bodypropCount++;
+                }
 
-            if (bodyserviceContractId != null)
-            {
-                body["serviceContractId"] = ExpressionConverter.ConvertO(bodyserviceContractId);
-                bodypropCount++;
-            }
+                if (bodyuserName != null)
+                {
+                    body["userName"] = ExpressionConverter.ConvertO(bodyuserName);
+                    bodypropCount++;
+                }
 
-            if (bodyuserName != null)
-            {
-                body["userName"] = ExpressionConverter.ConvertO(bodyuserName);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateInvoicePositionNoteResponse>(callPayload);
+                return new ApiConnectionAction<CreateInvoicePositionNoteResponse>(callPayload);
+            });
         }
     }
 

@@ -4,47 +4,110 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class IpqsfraudandriskscorActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        public IBodyWorkflowAction<IPREPUTATIONResponse> IPREPUTATION(Expression<Func<string>> ip, Expression<Func<strictnessInput>> strictness, Expression<Func<string>> userAgent = null, Expression<Func<string>> userLanguage = null, Expression<Func<bool>> fast = null, Expression<Func<bool>> mobile = null, Expression<Func<bool>> allowPublicAccessPoints = null, Expression<Func<bool>> lighterPenalties = null)
+        [WorkflowExpressionFactory(nameof(__BuildIPREPUTATION))]
+        public IBodyWorkflowAction<IPREPUTATIONResponse> IPREPUTATION([WorkflowExpression] Func<string> ip, [WorkflowExpression] Func<strictnessInput> strictness, [WorkflowExpression] Func<string> userAgent = null, [WorkflowExpression] Func<string> userLanguage = null, [WorkflowExpression] Func<bool> fast = null, [WorkflowExpression] Func<bool> mobile = null, [WorkflowExpression] Func<bool> allowPublicAccessPoints = null, [WorkflowExpression] Func<bool> lighterPenalties = null)
         {
-            var apiCallPath = "/ip";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IPREPUTATIONResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        public IBodyWorkflowAction<EMAILREPUTATIONResponse> EMAILREPUTATION(Expression<Func<string>> email, Expression<Func<abuseStrictnessInput>> abuseStrictness, Expression<Func<bool>> fast = null, Expression<Func<int>> timeout = null, Expression<Func<bool>> suggestDomain = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IPREPUTATIONResponse> __BuildIPREPUTATION(WorkflowExpression<string> ip, WorkflowExpression<strictnessInput> strictness, WorkflowExpression<string> userAgent = null, WorkflowExpression<string> userLanguage = null, WorkflowExpression<bool> fast = null, WorkflowExpression<bool> mobile = null, WorkflowExpression<bool> allowPublicAccessPoints = null, WorkflowExpression<bool> lighterPenalties = null)
         {
-            var apiCallPath = "/email";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EMAILREPUTATIONResponse>(callPayload);
+            WorkflowExpression.Validate(ip, nameof(ip), required: true);
+            WorkflowExpression.Validate(strictness, nameof(strictness), required: true);
+            WorkflowExpression.Validate(userAgent, nameof(userAgent), required: false);
+            WorkflowExpression.Validate(userLanguage, nameof(userLanguage), required: false);
+            WorkflowExpression.Validate(fast, nameof(fast), required: false);
+            WorkflowExpression.Validate(mobile, nameof(mobile), required: false);
+            WorkflowExpression.Validate(allowPublicAccessPoints, nameof(allowPublicAccessPoints), required: false);
+            WorkflowExpression.Validate(lighterPenalties, nameof(lighterPenalties), required: false);
+            return new DeferredBodyAction<IPREPUTATIONResponse>(() =>
+            {
+                var apiCallPath = "/ip";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<IPREPUTATIONResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        public IBodyWorkflowAction<URLREPUTATIONResponse> URLREPUTATION(Expression<Func<string>> url, Expression<Func<strictnessInput>> strictness, Expression<Func<bool>> fast = null)
+        [WorkflowExpressionFactory(nameof(__BuildEMAILREPUTATION))]
+        public IBodyWorkflowAction<EMAILREPUTATIONResponse> EMAILREPUTATION([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<abuseStrictnessInput> abuseStrictness, [WorkflowExpression] Func<bool> fast = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<bool> suggestDomain = null)
         {
-            var apiCallPath = "/url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<URLREPUTATIONResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        public IBodyWorkflowAction<PHONEREPUTATIONResponse> PHONEREPUTATION(Expression<Func<string>> phone, Expression<Func<strictnessInput>> strictness, Expression<Func<string>> country = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EMAILREPUTATIONResponse> __BuildEMAILREPUTATION(WorkflowExpression<string> email, WorkflowExpression<abuseStrictnessInput> abuseStrictness, WorkflowExpression<bool> fast = null, WorkflowExpression<int> timeout = null, WorkflowExpression<bool> suggestDomain = null)
         {
-            var apiCallPath = "/phone";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PHONEREPUTATIONResponse>(callPayload);
+            WorkflowExpression.Validate(email, nameof(email), required: true);
+            WorkflowExpression.Validate(abuseStrictness, nameof(abuseStrictness), required: true);
+            WorkflowExpression.Validate(fast, nameof(fast), required: false);
+            WorkflowExpression.Validate(timeout, nameof(timeout), required: false);
+            WorkflowExpression.Validate(suggestDomain, nameof(suggestDomain), required: false);
+            return new DeferredBodyAction<EMAILREPUTATIONResponse>(() =>
+            {
+                var apiCallPath = "/email";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EMAILREPUTATIONResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
+        [WorkflowExpressionFactory(nameof(__BuildURLREPUTATION))]
+        public IBodyWorkflowAction<URLREPUTATIONResponse> URLREPUTATION([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<strictnessInput> strictness, [WorkflowExpression] Func<bool> fast = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<URLREPUTATIONResponse> __BuildURLREPUTATION(WorkflowExpression<string> url, WorkflowExpression<strictnessInput> strictness, WorkflowExpression<bool> fast = null)
+        {
+            WorkflowExpression.Validate(url, nameof(url), required: true);
+            WorkflowExpression.Validate(strictness, nameof(strictness), required: true);
+            WorkflowExpression.Validate(fast, nameof(fast), required: false);
+            return new DeferredBodyAction<URLREPUTATIONResponse>(() =>
+            {
+                var apiCallPath = "/url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<URLREPUTATIONResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
+        [WorkflowExpressionFactory(nameof(__BuildPHONEREPUTATION))]
+        public IBodyWorkflowAction<PHONEREPUTATIONResponse> PHONEREPUTATION([WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<strictnessInput> strictness, [WorkflowExpression] Func<string> country = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PHONEREPUTATIONResponse> __BuildPHONEREPUTATION(WorkflowExpression<string> phone, WorkflowExpression<strictnessInput> strictness, WorkflowExpression<string> country = null)
+        {
+            WorkflowExpression.Validate(phone, nameof(phone), required: true);
+            WorkflowExpression.Validate(strictness, nameof(strictness), required: true);
+            WorkflowExpression.Validate(country, nameof(country), required: false);
+            return new DeferredBodyAction<PHONEREPUTATIONResponse>(() =>
+            {
+                var apiCallPath = "/phone";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PHONEREPUTATIONResponse>(callPayload);
+            });
         }
     }
 

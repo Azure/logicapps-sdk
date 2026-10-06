@@ -4,74 +4,126 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class GsasitescanningActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
-        public IBodyWorkflowAction<AnalysisDto> AnalysisControllerGetResults(Expression<Func<string>> targetUrlDomain = null, Expression<Func<string>> finalUrlDomain = null, Expression<Func<bool>> finalUrlLive = null, Expression<Func<bool>> targetUrlRedirects = null, Expression<Func<string>> targetUrlAgencyOwner = null, Expression<Func<string>> targetUrlBureauOwner = null, Expression<Func<primaryScanStatusInput>> primaryScanStatus = null, Expression<Func<bool>> dapDetectedFinalUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildAnalysisControllerGetResults))]
+        public IBodyWorkflowAction<AnalysisDto> AnalysisControllerGetResults([WorkflowExpression] Func<string> targetUrlDomain = null, [WorkflowExpression] Func<string> finalUrlDomain = null, [WorkflowExpression] Func<bool> finalUrlLive = null, [WorkflowExpression] Func<bool> targetUrlRedirects = null, [WorkflowExpression] Func<string> targetUrlAgencyOwner = null, [WorkflowExpression] Func<string> targetUrlBureauOwner = null, [WorkflowExpression] Func<primaryScanStatusInput> primaryScanStatus = null, [WorkflowExpression] Func<bool> dapDetectedFinalUrl = null)
         {
-            var apiCallPath = "/analysis";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (targetUrlDomain != null)
-                callPayload.Queries["target_url_domain"] = ExpressionConverter.Convert(targetUrlDomain);
-            if (finalUrlDomain != null)
-                callPayload.Queries["final_url_domain"] = ExpressionConverter.Convert(finalUrlDomain);
-            if (finalUrlLive != null)
-                callPayload.Queries["final_url_live"] = ExpressionConverter.Convert(finalUrlLive);
-            if (targetUrlRedirects != null)
-                callPayload.Queries["target_url_redirects"] = ExpressionConverter.Convert(targetUrlRedirects);
-            if (targetUrlAgencyOwner != null)
-                callPayload.Queries["target_url_agency_owner"] = ExpressionConverter.Convert(targetUrlAgencyOwner);
-            if (targetUrlBureauOwner != null)
-                callPayload.Queries["target_url_bureau_owner"] = ExpressionConverter.Convert(targetUrlBureauOwner);
-            if (primaryScanStatus != null)
-                callPayload.Queries["primary_scan_status"] = ExpressionConverter.Convert(primaryScanStatus);
-            if (dapDetectedFinalUrl != null)
-                callPayload.Queries["dap_detected_final_url"] = ExpressionConverter.Convert(dapDetectedFinalUrl);
-            return new ApiConnectionAction<AnalysisDto>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
-        public IBodyWorkflowAction<PaginatedWebsiteResponseDto> WebsiteControllerGetResults(Expression<Func<string>> targetUrlDomain = null, Expression<Func<string>> finalUrlDomain = null, Expression<Func<bool>> finalUrlLive = null, Expression<Func<bool>> targetUrlRedirects = null, Expression<Func<string>> targetUrlAgencyOwner = null, Expression<Func<string>> targetUrlBureauOwner = null, Expression<Func<primaryScanStatusInput>> primaryScanStatus = null, Expression<Func<bool>> dapDetectedFinalUrl = null, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AnalysisDto> __BuildAnalysisControllerGetResults(WorkflowExpression<string> targetUrlDomain = null, WorkflowExpression<string> finalUrlDomain = null, WorkflowExpression<bool> finalUrlLive = null, WorkflowExpression<bool> targetUrlRedirects = null, WorkflowExpression<string> targetUrlAgencyOwner = null, WorkflowExpression<string> targetUrlBureauOwner = null, WorkflowExpression<primaryScanStatusInput> primaryScanStatus = null, WorkflowExpression<bool> dapDetectedFinalUrl = null)
         {
-            var apiCallPath = "/websites";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (targetUrlDomain != null)
-                callPayload.Queries["target_url_domain"] = ExpressionConverter.Convert(targetUrlDomain);
-            if (finalUrlDomain != null)
-                callPayload.Queries["final_url_domain"] = ExpressionConverter.Convert(finalUrlDomain);
-            if (finalUrlLive != null)
-                callPayload.Queries["final_url_live"] = ExpressionConverter.Convert(finalUrlLive);
-            if (targetUrlRedirects != null)
-                callPayload.Queries["target_url_redirects"] = ExpressionConverter.Convert(targetUrlRedirects);
-            if (targetUrlAgencyOwner != null)
-                callPayload.Queries["target_url_agency_owner"] = ExpressionConverter.Convert(targetUrlAgencyOwner);
-            if (targetUrlBureauOwner != null)
-                callPayload.Queries["target_url_bureau_owner"] = ExpressionConverter.Convert(targetUrlBureauOwner);
-            if (primaryScanStatus != null)
-                callPayload.Queries["primary_scan_status"] = ExpressionConverter.Convert(primaryScanStatus);
-            if (dapDetectedFinalUrl != null)
-                callPayload.Queries["dap_detected_final_url"] = ExpressionConverter.Convert(dapDetectedFinalUrl);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<PaginatedWebsiteResponseDto>(callPayload);
+            WorkflowExpression.Validate(targetUrlDomain, nameof(targetUrlDomain), required: false);
+            WorkflowExpression.Validate(finalUrlDomain, nameof(finalUrlDomain), required: false);
+            WorkflowExpression.Validate(finalUrlLive, nameof(finalUrlLive), required: false);
+            WorkflowExpression.Validate(targetUrlRedirects, nameof(targetUrlRedirects), required: false);
+            WorkflowExpression.Validate(targetUrlAgencyOwner, nameof(targetUrlAgencyOwner), required: false);
+            WorkflowExpression.Validate(targetUrlBureauOwner, nameof(targetUrlBureauOwner), required: false);
+            WorkflowExpression.Validate(primaryScanStatus, nameof(primaryScanStatus), required: false);
+            WorkflowExpression.Validate(dapDetectedFinalUrl, nameof(dapDetectedFinalUrl), required: false);
+            return new DeferredBodyAction<AnalysisDto>(() =>
+            {
+                var apiCallPath = "/analysis";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (targetUrlDomain != null)
+                    callPayload.Queries["target_url_domain"] = ExpressionConverter.Convert(targetUrlDomain);
+                if (finalUrlDomain != null)
+                    callPayload.Queries["final_url_domain"] = ExpressionConverter.Convert(finalUrlDomain);
+                if (finalUrlLive != null)
+                    callPayload.Queries["final_url_live"] = ExpressionConverter.Convert(finalUrlLive);
+                if (targetUrlRedirects != null)
+                    callPayload.Queries["target_url_redirects"] = ExpressionConverter.Convert(targetUrlRedirects);
+                if (targetUrlAgencyOwner != null)
+                    callPayload.Queries["target_url_agency_owner"] = ExpressionConverter.Convert(targetUrlAgencyOwner);
+                if (targetUrlBureauOwner != null)
+                    callPayload.Queries["target_url_bureau_owner"] = ExpressionConverter.Convert(targetUrlBureauOwner);
+                if (primaryScanStatus != null)
+                    callPayload.Queries["primary_scan_status"] = ExpressionConverter.Convert(primaryScanStatus);
+                if (dapDetectedFinalUrl != null)
+                    callPayload.Queries["dap_detected_final_url"] = ExpressionConverter.Convert(dapDetectedFinalUrl);
+                return new ApiConnectionAction<AnalysisDto>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
-        public IBodyWorkflowAction<WebsiteApiResultDto> WebsiteControllerGetResultByUrl(Expression<Func<string>> url)
+        [WorkflowExpressionFactory(nameof(__BuildWebsiteControllerGetResults))]
+        public IBodyWorkflowAction<PaginatedWebsiteResponseDto> WebsiteControllerGetResults([WorkflowExpression] Func<string> targetUrlDomain = null, [WorkflowExpression] Func<string> finalUrlDomain = null, [WorkflowExpression] Func<bool> finalUrlLive = null, [WorkflowExpression] Func<bool> targetUrlRedirects = null, [WorkflowExpression] Func<string> targetUrlAgencyOwner = null, [WorkflowExpression] Func<string> targetUrlBureauOwner = null, [WorkflowExpression] Func<primaryScanStatusInput> primaryScanStatus = null, [WorkflowExpression] Func<bool> dapDetectedFinalUrl = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = String.Format("/websites/{0}", ExpressionConverter.ConvertWithUrlEncoding(url, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<WebsiteApiResultDto>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PaginatedWebsiteResponseDto> __BuildWebsiteControllerGetResults(WorkflowExpression<string> targetUrlDomain = null, WorkflowExpression<string> finalUrlDomain = null, WorkflowExpression<bool> finalUrlLive = null, WorkflowExpression<bool> targetUrlRedirects = null, WorkflowExpression<string> targetUrlAgencyOwner = null, WorkflowExpression<string> targetUrlBureauOwner = null, WorkflowExpression<primaryScanStatusInput> primaryScanStatus = null, WorkflowExpression<bool> dapDetectedFinalUrl = null, WorkflowExpression<int> limit = null, WorkflowExpression<int> page = null)
+        {
+            WorkflowExpression.Validate(targetUrlDomain, nameof(targetUrlDomain), required: false);
+            WorkflowExpression.Validate(finalUrlDomain, nameof(finalUrlDomain), required: false);
+            WorkflowExpression.Validate(finalUrlLive, nameof(finalUrlLive), required: false);
+            WorkflowExpression.Validate(targetUrlRedirects, nameof(targetUrlRedirects), required: false);
+            WorkflowExpression.Validate(targetUrlAgencyOwner, nameof(targetUrlAgencyOwner), required: false);
+            WorkflowExpression.Validate(targetUrlBureauOwner, nameof(targetUrlBureauOwner), required: false);
+            WorkflowExpression.Validate(primaryScanStatus, nameof(primaryScanStatus), required: false);
+            WorkflowExpression.Validate(dapDetectedFinalUrl, nameof(dapDetectedFinalUrl), required: false);
+            WorkflowExpression.Validate(limit, nameof(limit), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<PaginatedWebsiteResponseDto>(() =>
+            {
+                var apiCallPath = "/websites";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (targetUrlDomain != null)
+                    callPayload.Queries["target_url_domain"] = ExpressionConverter.Convert(targetUrlDomain);
+                if (finalUrlDomain != null)
+                    callPayload.Queries["final_url_domain"] = ExpressionConverter.Convert(finalUrlDomain);
+                if (finalUrlLive != null)
+                    callPayload.Queries["final_url_live"] = ExpressionConverter.Convert(finalUrlLive);
+                if (targetUrlRedirects != null)
+                    callPayload.Queries["target_url_redirects"] = ExpressionConverter.Convert(targetUrlRedirects);
+                if (targetUrlAgencyOwner != null)
+                    callPayload.Queries["target_url_agency_owner"] = ExpressionConverter.Convert(targetUrlAgencyOwner);
+                if (targetUrlBureauOwner != null)
+                    callPayload.Queries["target_url_bureau_owner"] = ExpressionConverter.Convert(targetUrlBureauOwner);
+                if (primaryScanStatus != null)
+                    callPayload.Queries["primary_scan_status"] = ExpressionConverter.Convert(primaryScanStatus);
+                if (dapDetectedFinalUrl != null)
+                    callPayload.Queries["dap_detected_final_url"] = ExpressionConverter.Convert(dapDetectedFinalUrl);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<PaginatedWebsiteResponseDto>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
+        [WorkflowExpressionFactory(nameof(__BuildWebsiteControllerGetResultByUrl))]
+        public IBodyWorkflowAction<WebsiteApiResultDto> WebsiteControllerGetResultByUrl([WorkflowExpression] Func<string> url)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WebsiteApiResultDto> __BuildWebsiteControllerGetResultByUrl(WorkflowExpression<string> url)
+        {
+            WorkflowExpression.Validate(url, nameof(url), required: true);
+            return new DeferredBodyAction<WebsiteApiResultDto>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/websites/{0}", ExpressionConverter.ConvertWithUrlEncoding(url, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<WebsiteApiResultDto>(callPayload);
+            });
         }
     }
 

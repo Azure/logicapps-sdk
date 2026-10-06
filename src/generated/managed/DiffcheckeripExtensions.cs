@@ -4,59 +4,86 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DiffcheckeripActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
-        public IBodyWorkflowAction<CheckTextResponse> CheckText(Expression<Func<string>> bodyleft, Expression<Func<string>> bodyright, Expression<Func<diffLevelInput>> diffLevel = null)
-        {
-            var apiCallPath = "/public/text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["output_type"] = Convert.ToString("json");
-            callPayload.Queries["diff_level"] = Convert.ToString("word");
-            if (diffLevel != null)
-                callPayload.Queries["diff_level"] = ExpressionConverter.Convert(diffLevel);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["left"] = ExpressionConverter.ConvertO(bodyleft);
-            bodypropCount++;
-            body["right"] = ExpressionConverter.ConvertO(bodyright);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<CheckTextResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
+        [WorkflowExpressionFactory(nameof(__BuildCheckText))]
+        public IBodyWorkflowAction<CheckTextResponse> CheckText([WorkflowExpression] Func<string> bodyleft, [WorkflowExpression] Func<string> bodyright, [WorkflowExpression] Func<diffLevelInput> diffLevel = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
-        public IBodyWorkflowAction<CheckImageResponse> CheckImage(Expression<Func<string>> bodyleftImage, Expression<Func<string>> bodyrightImage)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CheckTextResponse> __BuildCheckText(WorkflowExpression<string> bodyleft, WorkflowExpression<string> bodyright, WorkflowExpression<diffLevelInput> diffLevel = null)
         {
-            var apiCallPath = "/public/image";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["input_type"] = Convert.ToString("json");
-            callPayload.Queries["output_type"] = Convert.ToString("json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["left_image"] = ExpressionConverter.ConvertO(bodyleftImage);
-            bodypropCount++;
-            body["right_image"] = ExpressionConverter.ConvertO(bodyrightImage);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(bodyleft, nameof(bodyleft), required: true);
+            WorkflowExpression.Validate(bodyright, nameof(bodyright), required: true);
+            WorkflowExpression.Validate(diffLevel, nameof(diffLevel), required: false);
+            return new DeferredBodyAction<CheckTextResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/public/text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["output_type"] = Convert.ToString("json");
+                callPayload.Queries["diff_level"] = Convert.ToString("word");
+                if (diffLevel != null)
+                    callPayload.Queries["diff_level"] = ExpressionConverter.Convert(diffLevel);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["left"] = ExpressionConverter.ConvertO(bodyleft);
+                bodypropCount++;
+                body["right"] = ExpressionConverter.ConvertO(bodyright);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CheckImageResponse>(callPayload);
+                return new ApiConnectionAction<CheckTextResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
+        [WorkflowExpressionFactory(nameof(__BuildCheckImage))]
+        public IBodyWorkflowAction<CheckImageResponse> CheckImage([WorkflowExpression] Func<string> bodyleftImage, [WorkflowExpression] Func<string> bodyrightImage)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CheckImageResponse> __BuildCheckImage(WorkflowExpression<string> bodyleftImage, WorkflowExpression<string> bodyrightImage)
+        {
+            WorkflowExpression.Validate(bodyleftImage, nameof(bodyleftImage), required: true);
+            WorkflowExpression.Validate(bodyrightImage, nameof(bodyrightImage), required: true);
+            return new DeferredBodyAction<CheckImageResponse>(() =>
+            {
+                var apiCallPath = "/public/image";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["input_type"] = Convert.ToString("json");
+                callPayload.Queries["output_type"] = Convert.ToString("json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["left_image"] = ExpressionConverter.ConvertO(bodyleftImage);
+                bodypropCount++;
+                body["right_image"] = ExpressionConverter.ConvertO(bodyrightImage);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CheckImageResponse>(callPayload);
+            });
         }
     }
 

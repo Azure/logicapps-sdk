@@ -4,37 +4,63 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class FinnishbisipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
-        public IBodyWorkflowAction<CompanyByBISCodeResponse> CompanyByBISCode(Expression<Func<string>> businessId)
+        [WorkflowExpressionFactory(nameof(__BuildCompanyByBISCode))]
+        public IBodyWorkflowAction<CompanyByBISCodeResponse> CompanyByBISCode([WorkflowExpression] Func<string> businessId)
         {
-            var apiCallPath = String.Format("/bis/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(businessId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CompanyByBISCodeResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
-        public IBodyWorkflowAction<CompanySearchResponse> CompanySearch(Expression<Func<string>> name = null, Expression<Func<int>> maxResults = null, Expression<Func<bool>> totalResults = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CompanyByBISCodeResponse> __BuildCompanyByBISCode(WorkflowExpression<string> businessId)
         {
-            var apiCallPath = "/bis/v1";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            callPayload.Queries["maxResults"] = Convert.ToString(10);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
-            callPayload.Queries["totalResults"] = Convert.ToString(true);
-            if (totalResults != null)
-                callPayload.Queries["totalResults"] = ExpressionConverter.Convert(totalResults);
-            return new ApiConnectionAction<CompanySearchResponse>(callPayload);
+            WorkflowExpression.Validate(businessId, nameof(businessId), required: true);
+            return new DeferredBodyAction<CompanyByBISCodeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/bis/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(businessId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CompanyByBISCodeResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
+        [WorkflowExpressionFactory(nameof(__BuildCompanySearch))]
+        public IBodyWorkflowAction<CompanySearchResponse> CompanySearch([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> maxResults = null, [WorkflowExpression] Func<bool> totalResults = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CompanySearchResponse> __BuildCompanySearch(WorkflowExpression<string> name = null, WorkflowExpression<int> maxResults = null, WorkflowExpression<bool> totalResults = null)
+        {
+            WorkflowExpression.Validate(name, nameof(name), required: false);
+            WorkflowExpression.Validate(maxResults, nameof(maxResults), required: false);
+            WorkflowExpression.Validate(totalResults, nameof(totalResults), required: false);
+            return new DeferredBodyAction<CompanySearchResponse>(() =>
+            {
+                var apiCallPath = "/bis/v1";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["maxResults"] = Convert.ToString(10);
+                if (maxResults != null)
+                    callPayload.Queries["maxResults"] = ExpressionConverter.Convert(maxResults);
+                callPayload.Queries["totalResults"] = Convert.ToString(true);
+                if (totalResults != null)
+                    callPayload.Queries["totalResults"] = ExpressionConverter.Convert(totalResults);
+                return new ApiConnectionAction<CompanySearchResponse>(callPayload);
+            });
         }
     }
 

@@ -4,59 +4,76 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aheadintranet
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AheadintranetActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aheadintranet")]
-        public IWorkflowAction AheadReceiveExternalActivity(Expression<Func<string>> bodytitle, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodymediaUrl = null, Expression<Func<bodysourceInput>> bodysource = null, Expression<Func<string>> bodytargetAudience = null)
+        [WorkflowExpressionFactory(nameof(__BuildAheadReceiveExternalActivity))]
+        public IWorkflowAction AheadReceiveExternalActivity([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodymediaUrl = null, [WorkflowExpression] Func<bodysourceInput> bodysource = null, [WorkflowExpression] Func<string> bodytargetAudience = null)
         {
-            var apiCallPath = "/api/ReceiveExternalActivity";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodytext != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aheadintranet")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAheadReceiveExternalActivity(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodytext = null, WorkflowExpression<string> bodyurl = null, WorkflowExpression<string> bodymediaUrl = null, WorkflowExpression<bodysourceInput> bodysource = null, WorkflowExpression<string> bodytargetAudience = null)
+        {
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: false);
+            WorkflowExpression.Validate(bodyurl, nameof(bodyurl), required: false);
+            WorkflowExpression.Validate(bodymediaUrl, nameof(bodymediaUrl), required: false);
+            WorkflowExpression.Validate(bodysource, nameof(bodysource), required: false);
+            WorkflowExpression.Validate(bodytargetAudience, nameof(bodytargetAudience), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["Text"] = ExpressionConverter.ConvertO(bodytext);
+                var apiCallPath = "/api/ReceiveExternalActivity";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodytext != null)
+                {
+                    body["Text"] = ExpressionConverter.ConvertO(bodytext);
+                    bodypropCount++;
+                }
 
-            if (bodyurl != null)
-            {
-                body["Url"] = ExpressionConverter.ConvertO(bodyurl);
-                bodypropCount++;
-            }
+                if (bodyurl != null)
+                {
+                    body["Url"] = ExpressionConverter.ConvertO(bodyurl);
+                    bodypropCount++;
+                }
 
-            if (bodymediaUrl != null)
-            {
-                body["MediaUrl"] = ExpressionConverter.ConvertO(bodymediaUrl);
-                bodypropCount++;
-            }
+                if (bodymediaUrl != null)
+                {
+                    body["MediaUrl"] = ExpressionConverter.ConvertO(bodymediaUrl);
+                    bodypropCount++;
+                }
 
-            if (bodysource != null)
-            {
-                body["Source"] = ExpressionConverter.ConvertO(bodysource);
-                bodypropCount++;
-            }
+                if (bodysource != null)
+                {
+                    body["Source"] = ExpressionConverter.ConvertO(bodysource);
+                    bodypropCount++;
+                }
 
-            if (bodytargetAudience != null)
-            {
-                body["TargetAudience"] = ExpressionConverter.ConvertO(bodytargetAudience);
-                bodypropCount++;
-            }
+                if (bodytargetAudience != null)
+                {
+                    body["TargetAudience"] = ExpressionConverter.ConvertO(bodytargetAudience);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

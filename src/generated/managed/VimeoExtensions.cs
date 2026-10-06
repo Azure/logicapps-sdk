@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -25,16 +24,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
             return new ApiConnectionTrigger<Video[]>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<VideoWithChannelId[]> OnNewVideoInChannel(Expression<Func<string>> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewVideoInChannel))]
+        public IBodyWorkflowTrigger<VideoWithChannelId[]> OnNewVideoInChannel([WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/channels/videos";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["channelId"] = ExpressionConverter.Convert(channelId);
-            callPayload.Queries["fields"] = Convert.ToString("user,uri,name,description,link,created_time,modified_time");
-            callPayload.Queries["sort"] = Convert.ToString("added");
-            callPayload.Queries["per_page"] = Convert.ToString(50);
-            return new ApiConnectionTrigger<VideoWithChannelId[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<VideoWithChannelId[]> __BuildOnNewVideoInChannel(WorkflowExpression<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(channelId, nameof(channelId), required: true);
+            return new DeferredBodyTrigger<VideoWithChannelId[]>(() =>
+            {
+                var apiCallPath = "/trigger/channels/videos";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["channelId"] = ExpressionConverter.Convert(channelId);
+                callPayload.Queries["fields"] = Convert.ToString("user,uri,name,description,link,created_time,modified_time");
+                callPayload.Queries["sort"] = Convert.ToString("added");
+                callPayload.Queries["per_page"] = Convert.ToString(50);
+                return new ApiConnectionTrigger<VideoWithChannelId[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

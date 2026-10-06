@@ -4,245 +4,347 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class LexofficeActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseArticlesGet> FilteringArticles(Expression<Func<string>> articleNumber = null, Expression<Func<string>> gtin = null, Expression<Func<string>> type = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
+        [WorkflowExpressionFactory(nameof(__BuildFilteringArticles))]
+        public IBodyWorkflowAction<ResponseArticlesGet> FilteringArticles([WorkflowExpression] Func<string> articleNumber = null, [WorkflowExpression] Func<string> gtin = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = "/articles";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (articleNumber != null)
-                callPayload.Queries["articleNumber"] = ExpressionConverter.Convert(articleNumber);
-            if (gtin != null)
-                callPayload.Queries["gtin"] = ExpressionConverter.Convert(gtin);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<ResponseArticlesGet>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseArticlesPost> CreateArticle(Expression<Func<string>> bodyarticleNumber = null, Expression<Func<double>> bodypricegrossPrice = null, Expression<Func<string>> bodypriceleadingPrice = null, Expression<Func<double>> bodypricenetPrice = null, Expression<Func<double>> bodypricetaxRate = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodyunitName = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseArticlesGet> __BuildFilteringArticles(WorkflowExpression<string> articleNumber = null, WorkflowExpression<string> gtin = null, WorkflowExpression<string> type = null, WorkflowExpression<int> page = null, WorkflowExpression<int> size = null, WorkflowExpression<string> sort = null)
         {
-            var apiCallPath = "/articles";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyarticleNumber != null)
+            WorkflowExpression.Validate(articleNumber, nameof(articleNumber), required: false);
+            WorkflowExpression.Validate(gtin, nameof(gtin), required: false);
+            WorkflowExpression.Validate(type, nameof(type), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<ResponseArticlesGet>(() =>
             {
-                body["articleNumber"] = ExpressionConverter.ConvertO(bodyarticleNumber);
-                bodypropCount++;
-            }
-
-            var priceObject = new JObject();
-            var priceObjectpropCount = 0;
-            if (bodypricegrossPrice != null)
-            {
-                priceObject["grossPrice"] = ExpressionConverter.ConvertO(bodypricegrossPrice);
-                priceObjectpropCount++;
-            }
-
-            if (bodypriceleadingPrice != null)
-            {
-                priceObject["leadingPrice"] = ExpressionConverter.ConvertO(bodypriceleadingPrice);
-                priceObjectpropCount++;
-            }
-
-            if (bodypricenetPrice != null)
-            {
-                priceObject["netPrice"] = ExpressionConverter.ConvertO(bodypricenetPrice);
-                priceObjectpropCount++;
-            }
-
-            if (bodypricetaxRate != null)
-            {
-                priceObject["taxRate"] = ExpressionConverter.ConvertO(bodypricetaxRate);
-                priceObjectpropCount++;
-            }
-
-            if (priceObjectpropCount > 0)
-            {
-                body["price"] = priceObject;
-                bodypropCount++;
-            }
-
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodyunitName != null)
-            {
-                body["unitName"] = ExpressionConverter.ConvertO(bodyunitName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseArticlesPost>(callPayload);
+                var apiCallPath = "/articles";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (articleNumber != null)
+                    callPayload.Queries["articleNumber"] = ExpressionConverter.Convert(articleNumber);
+                if (gtin != null)
+                    callPayload.Queries["gtin"] = ExpressionConverter.Convert(gtin);
+                if (type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<ResponseArticlesGet>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveAnArticleResponse> RetrieveAnArticle(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCreateArticle))]
+        public IBodyWorkflowAction<ResponseArticlesPost> CreateArticle([WorkflowExpression] Func<string> bodyarticleNumber = null, [WorkflowExpression] Func<double> bodypricegrossPrice = null, [WorkflowExpression] Func<string> bodypriceleadingPrice = null, [WorkflowExpression] Func<double> bodypricenetPrice = null, [WorkflowExpression] Func<double> bodypricetaxRate = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodyunitName = null)
         {
-            var apiCallPath = String.Format("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveAnArticleResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IWorkflowAction DeleteAnArticle(Expression<Func<string>> id)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseArticlesPost> __BuildCreateArticle(WorkflowExpression<string> bodyarticleNumber = null, WorkflowExpression<double> bodypricegrossPrice = null, WorkflowExpression<string> bodypriceleadingPrice = null, WorkflowExpression<double> bodypricenetPrice = null, WorkflowExpression<double> bodypricetaxRate = null, WorkflowExpression<string> bodytitle = null, WorkflowExpression<bodytypeInput> bodytype = null, WorkflowExpression<string> bodyunitName = null)
         {
-            var apiCallPath = String.Format("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseArticlesIdGet> UpdateAnArticle(Expression<Func<string>> id, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyunitName, Expression<Func<int>> bodyversion, Expression<Func<string>> bodyarticleNumber = null, Expression<Func<string>> bodygtin = null, Expression<Func<string>> bodynote = null, Expression<Func<double>> bodypricegrossPrice = null, Expression<Func<bodypriceleadingPriceInput>> bodypriceleadingPrice = null, Expression<Func<double>> bodypricenetPrice = null, Expression<Func<double>> bodypricetaxRate = null, Expression<Func<string>> bodytitle = null)
-        {
-            var apiCallPath = String.Format("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyarticleNumber != null)
+            WorkflowExpression.Validate(bodyarticleNumber, nameof(bodyarticleNumber), required: false);
+            WorkflowExpression.Validate(bodypricegrossPrice, nameof(bodypricegrossPrice), required: false);
+            WorkflowExpression.Validate(bodypriceleadingPrice, nameof(bodypriceleadingPrice), required: false);
+            WorkflowExpression.Validate(bodypricenetPrice, nameof(bodypricenetPrice), required: false);
+            WorkflowExpression.Validate(bodypricetaxRate, nameof(bodypricetaxRate), required: false);
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: false);
+            WorkflowExpression.Validate(bodyunitName, nameof(bodyunitName), required: false);
+            return new DeferredBodyAction<ResponseArticlesPost>(() =>
             {
-                body["articleNumber"] = ExpressionConverter.ConvertO(bodyarticleNumber);
-                bodypropCount++;
-            }
+                var apiCallPath = "/articles";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyarticleNumber != null)
+                {
+                    body["articleNumber"] = ExpressionConverter.ConvertO(bodyarticleNumber);
+                    bodypropCount++;
+                }
 
-            if (bodygtin != null)
-            {
-                body["gtin"] = ExpressionConverter.ConvertO(bodygtin);
-                bodypropCount++;
-            }
+                var priceObject = new JObject();
+                var priceObjectpropCount = 0;
+                if (bodypricegrossPrice != null)
+                {
+                    priceObject["grossPrice"] = ExpressionConverter.ConvertO(bodypricegrossPrice);
+                    priceObjectpropCount++;
+                }
 
-            if (bodynote != null)
-            {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
-                bodypropCount++;
-            }
-
-            var priceObject = new JObject();
-            var priceObjectpropCount = 0;
-            if (bodypricegrossPrice != null)
-            {
-                priceObject["grossPrice"] = ExpressionConverter.ConvertO(bodypricegrossPrice);
-                priceObjectpropCount++;
-            }
-
-            if (bodypriceleadingPrice != null)
-            {
                 if (bodypriceleadingPrice != null)
                 {
                     priceObject["leadingPrice"] = ExpressionConverter.ConvertO(bodypriceleadingPrice);
                     priceObjectpropCount++;
                 }
 
-                priceObjectpropCount++;
-            }
-            else
-            {
-                priceObject["leadingPrice"] = "GROSS";
-                priceObjectpropCount++;
-            }
+                if (bodypricenetPrice != null)
+                {
+                    priceObject["netPrice"] = ExpressionConverter.ConvertO(bodypricenetPrice);
+                    priceObjectpropCount++;
+                }
 
-            if (bodypricenetPrice != null)
-            {
-                priceObject["netPrice"] = ExpressionConverter.ConvertO(bodypricenetPrice);
-                priceObjectpropCount++;
-            }
+                if (bodypricetaxRate != null)
+                {
+                    priceObject["taxRate"] = ExpressionConverter.ConvertO(bodypricetaxRate);
+                    priceObjectpropCount++;
+                }
 
-            if (bodypricetaxRate != null)
-            {
-                priceObject["taxRate"] = ExpressionConverter.ConvertO(bodypricetaxRate);
-                priceObjectpropCount++;
-            }
+                if (priceObjectpropCount > 0)
+                {
+                    body["price"] = priceObject;
+                    bodypropCount++;
+                }
 
-            if (priceObjectpropCount > 0)
-            {
-                body["price"] = priceObject;
-                bodypropCount++;
-            }
+                if (bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                if (bodytype != null)
+                {
+                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            bodypropCount++;
-            body["unitName"] = ExpressionConverter.ConvertO(bodyunitName);
-            bodypropCount++;
-            body["version"] = ExpressionConverter.ConvertO(bodyversion);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyunitName != null)
+                {
+                    body["unitName"] = ExpressionConverter.ConvertO(bodyunitName);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ResponseArticlesIdGet>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResponseArticlesPost>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseContactsGet> RetrieveAllContacts(Expression<Func<int>> number = null, Expression<Func<string>> email = null, Expression<Func<string>> name = null, Expression<Func<bool>> vendor = null, Expression<Func<bool>> customer = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveAnArticle))]
+        public IBodyWorkflowAction<RetrieveAnArticleResponse> RetrieveAnArticle([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (number != null)
-                callPayload.Queries["number"] = ExpressionConverter.Convert(number);
-            if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (vendor != null)
-                callPayload.Queries["vendor"] = ExpressionConverter.Convert(vendor);
-            if (customer != null)
-                callPayload.Queries["customer"] = ExpressionConverter.Convert(customer);
-            callPayload.Queries["page"] = Convert.ToString(0);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["size"] = Convert.ToString(250);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<ResponseContactsGet>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RetrieveAnArticleResponse> __BuildRetrieveAnArticle(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RetrieveAnArticleResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveAnArticleResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteAnArticle))]
+        public IWorkflowAction DeleteAnArticle([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteAnArticle(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateAnArticle))]
+        public IBodyWorkflowAction<ResponseArticlesIdGet> UpdateAnArticle([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodyunitName, [WorkflowExpression] Func<int> bodyversion, [WorkflowExpression] Func<string> bodyarticleNumber = null, [WorkflowExpression] Func<string> bodygtin = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<double> bodypricegrossPrice = null, [WorkflowExpression] Func<bodypriceleadingPriceInput> bodypriceleadingPrice = null, [WorkflowExpression] Func<double> bodypricenetPrice = null, [WorkflowExpression] Func<double> bodypricetaxRate = null, [WorkflowExpression] Func<string> bodytitle = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseArticlesIdGet> __BuildUpdateAnArticle(WorkflowExpression<string> id, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<string> bodyunitName, WorkflowExpression<int> bodyversion, WorkflowExpression<string> bodyarticleNumber = null, WorkflowExpression<string> bodygtin = null, WorkflowExpression<string> bodynote = null, WorkflowExpression<double> bodypricegrossPrice = null, WorkflowExpression<bodypriceleadingPriceInput> bodypriceleadingPrice = null, WorkflowExpression<double> bodypricenetPrice = null, WorkflowExpression<double> bodypricetaxRate = null, WorkflowExpression<string> bodytitle = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: true);
+            WorkflowExpression.Validate(bodyunitName, nameof(bodyunitName), required: true);
+            WorkflowExpression.Validate(bodyversion, nameof(bodyversion), required: true);
+            WorkflowExpression.Validate(bodyarticleNumber, nameof(bodyarticleNumber), required: false);
+            WorkflowExpression.Validate(bodygtin, nameof(bodygtin), required: false);
+            WorkflowExpression.Validate(bodynote, nameof(bodynote), required: false);
+            WorkflowExpression.Validate(bodypricegrossPrice, nameof(bodypricegrossPrice), required: false);
+            WorkflowExpression.Validate(bodypriceleadingPrice, nameof(bodypriceleadingPrice), required: false);
+            WorkflowExpression.Validate(bodypricenetPrice, nameof(bodypricenetPrice), required: false);
+            WorkflowExpression.Validate(bodypricetaxRate, nameof(bodypricetaxRate), required: false);
+            WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            return new DeferredBodyAction<ResponseArticlesIdGet>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyarticleNumber != null)
+                {
+                    body["articleNumber"] = ExpressionConverter.ConvertO(bodyarticleNumber);
+                    bodypropCount++;
+                }
+
+                if (bodygtin != null)
+                {
+                    body["gtin"] = ExpressionConverter.ConvertO(bodygtin);
+                    bodypropCount++;
+                }
+
+                if (bodynote != null)
+                {
+                    body["note"] = ExpressionConverter.ConvertO(bodynote);
+                    bodypropCount++;
+                }
+
+                var priceObject = new JObject();
+                var priceObjectpropCount = 0;
+                if (bodypricegrossPrice != null)
+                {
+                    priceObject["grossPrice"] = ExpressionConverter.ConvertO(bodypricegrossPrice);
+                    priceObjectpropCount++;
+                }
+
+                if (bodypriceleadingPrice != null)
+                {
+                    if (bodypriceleadingPrice != null)
+                    {
+                        priceObject["leadingPrice"] = ExpressionConverter.ConvertO(bodypriceleadingPrice);
+                        priceObjectpropCount++;
+                    }
+
+                    priceObjectpropCount++;
+                }
+                else
+                {
+                    priceObject["leadingPrice"] = "GROSS";
+                    priceObjectpropCount++;
+                }
+
+                if (bodypricenetPrice != null)
+                {
+                    priceObject["netPrice"] = ExpressionConverter.ConvertO(bodypricenetPrice);
+                    priceObjectpropCount++;
+                }
+
+                if (bodypricetaxRate != null)
+                {
+                    priceObject["taxRate"] = ExpressionConverter.ConvertO(bodypricetaxRate);
+                    priceObjectpropCount++;
+                }
+
+                if (priceObjectpropCount > 0)
+                {
+                    body["price"] = priceObject;
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                bodypropCount++;
+                body["unitName"] = ExpressionConverter.ConvertO(bodyunitName);
+                bodypropCount++;
+                body["version"] = ExpressionConverter.ConvertO(bodyversion);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResponseArticlesIdGet>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveAllContacts))]
+        public IBodyWorkflowAction<ResponseContactsGet> RetrieveAllContacts([WorkflowExpression] Func<int> number = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<bool> vendor = null, [WorkflowExpression] Func<bool> customer = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseContactsGet> __BuildRetrieveAllContacts(WorkflowExpression<int> number = null, WorkflowExpression<string> email = null, WorkflowExpression<string> name = null, WorkflowExpression<bool> vendor = null, WorkflowExpression<bool> customer = null, WorkflowExpression<int> page = null, WorkflowExpression<int> size = null, WorkflowExpression<string> sort = null)
+        {
+            WorkflowExpression.Validate(number, nameof(number), required: false);
+            WorkflowExpression.Validate(email, nameof(email), required: false);
+            WorkflowExpression.Validate(name, nameof(name), required: false);
+            WorkflowExpression.Validate(vendor, nameof(vendor), required: false);
+            WorkflowExpression.Validate(customer, nameof(customer), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<ResponseContactsGet>(() =>
+            {
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (number != null)
+                    callPayload.Queries["number"] = ExpressionConverter.Convert(number);
+                if (email != null)
+                    callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                if (name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                if (vendor != null)
+                    callPayload.Queries["vendor"] = ExpressionConverter.Convert(vendor);
+                if (customer != null)
+                    callPayload.Queries["customer"] = ExpressionConverter.Convert(customer);
+                callPayload.Queries["page"] = Convert.ToString(0);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["size"] = Convert.ToString(250);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<ResponseContactsGet>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -264,31 +366,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveContactResponse> RetrieveContact(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveContact))]
+        public IBodyWorkflowAction<RetrieveContactResponse> RetrieveContact([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveContactResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseContactsIdPut> UpdateContact(Expression<Func<string>> id)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RetrieveContactResponse> __BuildRetrieveContact(WorkflowExpression<string> id)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RetrieveContactResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveContactResponse>(callPayload);
+            });
+        }
 
-            return new ApiConnectionAction<ResponseContactsIdPut>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateContact))]
+        public IBodyWorkflowAction<ResponseContactsIdPut> UpdateContact([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseContactsIdPut> __BuildUpdateContact(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ResponseContactsIdPut>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResponseContactsIdPut>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -302,135 +428,256 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseCreditNotesPost> CreateCreditNote(Expression<Func<bool>> finalize, Expression<Func<string>> precedingSalesVoucherId = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateCreditNote))]
+        public IBodyWorkflowAction<ResponseCreditNotesPost> CreateCreditNote([WorkflowExpression] Func<bool> finalize, [WorkflowExpression] Func<string> precedingSalesVoucherId = null)
         {
-            var apiCallPath = "/credit-notes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (precedingSalesVoucherId != null)
-                callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(precedingSalesVoucherId);
-            callPayload.Queries["finalize"] = ExpressionConverter.Convert(finalize);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseCreditNotesPost> __BuildCreateCreditNote(WorkflowExpression<bool> finalize, WorkflowExpression<string> precedingSalesVoucherId = null)
+        {
+            WorkflowExpression.Validate(finalize, nameof(finalize), required: true);
+            WorkflowExpression.Validate(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
+            return new DeferredBodyAction<ResponseCreditNotesPost>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/credit-notes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (precedingSalesVoucherId != null)
+                    callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(precedingSalesVoucherId);
+                callPayload.Queries["finalize"] = ExpressionConverter.Convert(finalize);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ResponseCreditNotesPost>(callPayload);
+                return new ApiConnectionAction<ResponseCreditNotesPost>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveCreditNoteResponse> RetrieveCreditNote(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveCreditNote))]
+        public IBodyWorkflowAction<RetrieveCreditNoteResponse> RetrieveCreditNote([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/credit-notes/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveCreditNoteResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RenderCreditNoteDocumentResponse> RenderCreditNoteDocument(Expression<Func<string>> id)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RetrieveCreditNoteResponse> __BuildRetrieveCreditNote(WorkflowExpression<string> id)
         {
-            var apiCallPath = String.Format("/credit-notes/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RenderCreditNoteDocumentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseDeliveryNotesPost> CreateDeliveryNote(Expression<Func<string>> precedingSalesVoucherId = null)
-        {
-            var apiCallPath = "/delivery-notes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (precedingSalesVoucherId != null)
-                callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(precedingSalesVoucherId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RetrieveCreditNoteResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseDeliveryNotesPost>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/credit-notes/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveCreditNoteResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RenderDeliveryNoteDocumentResponse> RenderDeliveryNoteDocument(Expression<Func<string>> deliveryNoteid)
+        [WorkflowExpressionFactory(nameof(__BuildRenderCreditNoteDocument))]
+        public IBodyWorkflowAction<RenderCreditNoteDocumentResponse> RenderCreditNoteDocument([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/delivery-notes/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(deliveryNoteid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RenderDeliveryNoteDocumentResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveDeliveryNoteResponse> RetrieveDeliveryNote(Expression<Func<string>> id)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RenderCreditNoteDocumentResponse> __BuildRenderCreditNoteDocument(WorkflowExpression<string> id)
         {
-            var apiCallPath = String.Format("/delivery-notes/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveDeliveryNoteResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveDownPaymentInvoiceResponse> RetrieveDownPaymentInvoice(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/down-payment-invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveDownPaymentInvoiceResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseDunningsPost> CreateDunning(Expression<Func<string>> precedingSalesVoucherId = null)
-        {
-            var apiCallPath = "/dunnings";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (precedingSalesVoucherId != null)
-                callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(precedingSalesVoucherId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RenderCreditNoteDocumentResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseDunningsPost>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/credit-notes/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RenderCreditNoteDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveDunningResponse> RetrieveDunning(Expression<Func<string>> dunningsid)
+        [WorkflowExpressionFactory(nameof(__BuildCreateDeliveryNote))]
+        public IBodyWorkflowAction<ResponseDeliveryNotesPost> CreateDeliveryNote([WorkflowExpression] Func<string> precedingSalesVoucherId = null)
         {
-            var apiCallPath = String.Format("/dunnings/{0}", ExpressionConverter.ConvertWithUrlEncoding(dunningsid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveDunningResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RenderDunningDocumentResponse> RenderDunningDocument(Expression<Func<string>> dunningsid)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseDeliveryNotesPost> __BuildCreateDeliveryNote(WorkflowExpression<string> precedingSalesVoucherId = null)
         {
-            var apiCallPath = String.Format("/dunnings/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(dunningsid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RenderDunningDocumentResponse>(callPayload);
+            WorkflowExpression.Validate(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
+            return new DeferredBodyAction<ResponseDeliveryNotesPost>(() =>
+            {
+                var apiCallPath = "/delivery-notes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (precedingSalesVoucherId != null)
+                    callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(precedingSalesVoucherId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResponseDeliveryNotesPost>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildRenderDeliveryNoteDocument))]
+        public IBodyWorkflowAction<RenderDeliveryNoteDocumentResponse> RenderDeliveryNoteDocument([WorkflowExpression] Func<string> deliveryNoteid)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RenderDeliveryNoteDocumentResponse> __BuildRenderDeliveryNoteDocument(WorkflowExpression<string> deliveryNoteid)
+        {
+            WorkflowExpression.Validate(deliveryNoteid, nameof(deliveryNoteid), required: true);
+            return new DeferredBodyAction<RenderDeliveryNoteDocumentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/delivery-notes/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(deliveryNoteid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RenderDeliveryNoteDocumentResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveDeliveryNote))]
+        public IBodyWorkflowAction<RetrieveDeliveryNoteResponse> RetrieveDeliveryNote([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RetrieveDeliveryNoteResponse> __BuildRetrieveDeliveryNote(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RetrieveDeliveryNoteResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/delivery-notes/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveDeliveryNoteResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveDownPaymentInvoice))]
+        public IBodyWorkflowAction<RetrieveDownPaymentInvoiceResponse> RetrieveDownPaymentInvoice([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RetrieveDownPaymentInvoiceResponse> __BuildRetrieveDownPaymentInvoice(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RetrieveDownPaymentInvoiceResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/down-payment-invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveDownPaymentInvoiceResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateDunning))]
+        public IBodyWorkflowAction<ResponseDunningsPost> CreateDunning([WorkflowExpression] Func<string> precedingSalesVoucherId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseDunningsPost> __BuildCreateDunning(WorkflowExpression<string> precedingSalesVoucherId = null)
+        {
+            WorkflowExpression.Validate(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
+            return new DeferredBodyAction<ResponseDunningsPost>(() =>
+            {
+                var apiCallPath = "/dunnings";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (precedingSalesVoucherId != null)
+                    callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(precedingSalesVoucherId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResponseDunningsPost>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveDunning))]
+        public IBodyWorkflowAction<RetrieveDunningResponse> RetrieveDunning([WorkflowExpression] Func<string> dunningsid)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RetrieveDunningResponse> __BuildRetrieveDunning(WorkflowExpression<string> dunningsid)
+        {
+            WorkflowExpression.Validate(dunningsid, nameof(dunningsid), required: true);
+            return new DeferredBodyAction<RetrieveDunningResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/dunnings/{0}", ExpressionConverter.ConvertWithUrlEncoding(dunningsid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveDunningResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildRenderDunningDocument))]
+        public IBodyWorkflowAction<RenderDunningDocumentResponse> RenderDunningDocument([WorkflowExpression] Func<string> dunningsid)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RenderDunningDocumentResponse> __BuildRenderDunningDocument(WorkflowExpression<string> dunningsid)
+        {
+            WorkflowExpression.Validate(dunningsid, nameof(dunningsid), required: true);
+            return new DeferredBodyAction<RenderDunningDocumentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/dunnings/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(dunningsid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RenderDunningDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -444,126 +691,249 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<EventSubscriptionResponse> RetrieveAEventSubscription(Expression<Func<string>> subscriptionId)
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveAEventSubscription))]
+        public IBodyWorkflowAction<EventSubscriptionResponse> RetrieveAEventSubscription([WorkflowExpression] Func<string> subscriptionId)
         {
-            var apiCallPath = String.Format("/event-subscriptions/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<EventSubscriptionResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IWorkflowAction DeleteEventSubscription(Expression<Func<string>> subscriptionId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EventSubscriptionResponse> __BuildRetrieveAEventSubscription(WorkflowExpression<string> subscriptionId)
         {
-            var apiCallPath = String.Format("/event-subscriptions/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseFilesPost> UploadFileLexoffice(Expression<Func<object>> file, Expression<Func<string>> type)
-        {
-            var apiCallPath = "/files";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResponseFilesPost>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<object> DownloadFileLexoffice(Expression<Func<string>> fileId, Expression<Func<acceptInput>> accept = null)
-        {
-            var apiCallPath = String.Format("/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("*/*");
-            if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<object>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseInvoicesPost> CreateInvoice(Expression<Func<bool>> finalize, Expression<Func<string>> precedingSalesVoucherId = null)
-        {
-            var apiCallPath = "/invoices";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (precedingSalesVoucherId != null)
-                callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(precedingSalesVoucherId);
-            callPayload.Queries["finalize"] = ExpressionConverter.Convert(finalize);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            return new DeferredBodyAction<EventSubscriptionResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseInvoicesPost>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event-subscriptions/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<EventSubscriptionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveInvoiceResponse> RetrieveInvoice(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteEventSubscription))]
+        public IWorkflowAction DeleteEventSubscription([WorkflowExpression] Func<string> subscriptionId)
         {
-            var apiCallPath = String.Format("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveInvoiceResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RenderInvoiceDocumentResponse> RenderInvoiceDocument(Expression<Func<string>> id)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteEventSubscription(WorkflowExpression<string> subscriptionId)
         {
-            var apiCallPath = String.Format("/invoices/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RenderInvoiceDocumentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseOrderConfirmationsPost> CreateOrderConfirmation(Expression<Func<string>> precedingSalesVoucherId = null)
-        {
-            var apiCallPath = "/order-confirmations";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (precedingSalesVoucherId != null)
-                callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(precedingSalesVoucherId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseOrderConfirmationsPost>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event-subscriptions/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveOrderConfirmationResponse> RetrieveOrderConfirmation(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildUploadFileLexoffice))]
+        public IBodyWorkflowAction<ResponseFilesPost> UploadFileLexoffice([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<string> type)
         {
-            var apiCallPath = String.Format("/order-confirmations/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveOrderConfirmationResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RenderOrderConfirmationDocumentResponse> RenderOrderConfirmationDocument(Expression<Func<string>> id)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseFilesPost> __BuildUploadFileLexoffice(WorkflowExpression<object> file, WorkflowExpression<string> type)
         {
-            var apiCallPath = String.Format("/order-confirmations/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RenderOrderConfirmationDocumentResponse>(callPayload);
+            WorkflowExpression.Validate(file, nameof(file), required: true);
+            WorkflowExpression.Validate(type, nameof(type), required: true);
+            return new DeferredBodyAction<ResponseFilesPost>(() =>
+            {
+                var apiCallPath = "/files";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ResponseFilesPost>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildDownloadFileLexoffice))]
+        public IBodyWorkflowAction<object> DownloadFileLexoffice([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<acceptInput> accept = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<object> __BuildDownloadFileLexoffice(WorkflowExpression<string> fileId, WorkflowExpression<acceptInput> accept = null)
+        {
+            WorkflowExpression.Validate(fileId, nameof(fileId), required: true);
+            WorkflowExpression.Validate(accept, nameof(accept), required: false);
+            return new DeferredBodyAction<object>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("*/*");
+                if (accept != null)
+                    callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<object>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateInvoice))]
+        public IBodyWorkflowAction<ResponseInvoicesPost> CreateInvoice([WorkflowExpression] Func<bool> finalize, [WorkflowExpression] Func<string> precedingSalesVoucherId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseInvoicesPost> __BuildCreateInvoice(WorkflowExpression<bool> finalize, WorkflowExpression<string> precedingSalesVoucherId = null)
+        {
+            WorkflowExpression.Validate(finalize, nameof(finalize), required: true);
+            WorkflowExpression.Validate(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
+            return new DeferredBodyAction<ResponseInvoicesPost>(() =>
+            {
+                var apiCallPath = "/invoices";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (precedingSalesVoucherId != null)
+                    callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(precedingSalesVoucherId);
+                callPayload.Queries["finalize"] = ExpressionConverter.Convert(finalize);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResponseInvoicesPost>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveInvoice))]
+        public IBodyWorkflowAction<RetrieveInvoiceResponse> RetrieveInvoice([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RetrieveInvoiceResponse> __BuildRetrieveInvoice(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RetrieveInvoiceResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveInvoiceResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildRenderInvoiceDocument))]
+        public IBodyWorkflowAction<RenderInvoiceDocumentResponse> RenderInvoiceDocument([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RenderInvoiceDocumentResponse> __BuildRenderInvoiceDocument(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RenderInvoiceDocumentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RenderInvoiceDocumentResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateOrderConfirmation))]
+        public IBodyWorkflowAction<ResponseOrderConfirmationsPost> CreateOrderConfirmation([WorkflowExpression] Func<string> precedingSalesVoucherId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseOrderConfirmationsPost> __BuildCreateOrderConfirmation(WorkflowExpression<string> precedingSalesVoucherId = null)
+        {
+            WorkflowExpression.Validate(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
+            return new DeferredBodyAction<ResponseOrderConfirmationsPost>(() =>
+            {
+                var apiCallPath = "/order-confirmations";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (precedingSalesVoucherId != null)
+                    callPayload.Queries["precedingSalesVoucherId"] = ExpressionConverter.Convert(precedingSalesVoucherId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResponseOrderConfirmationsPost>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveOrderConfirmation))]
+        public IBodyWorkflowAction<RetrieveOrderConfirmationResponse> RetrieveOrderConfirmation([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RetrieveOrderConfirmationResponse> __BuildRetrieveOrderConfirmation(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RetrieveOrderConfirmationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/order-confirmations/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveOrderConfirmationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildRenderOrderConfirmationDocument))]
+        public IBodyWorkflowAction<RenderOrderConfirmationDocumentResponse> RenderOrderConfirmationDocument([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RenderOrderConfirmationDocumentResponse> __BuildRenderOrderConfirmationDocument(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RenderOrderConfirmationDocumentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/order-confirmations/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RenderOrderConfirmationDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -577,13 +947,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrievePaymentInformationResponse> RetrievePaymentInformation(Expression<Func<string>> voucherId)
+        [WorkflowExpressionFactory(nameof(__BuildRetrievePaymentInformation))]
+        public IBodyWorkflowAction<RetrievePaymentInformationResponse> RetrievePaymentInformation([WorkflowExpression] Func<string> voucherId)
         {
-            var apiCallPath = String.Format("/payments/{0}", ExpressionConverter.ConvertWithUrlEncoding(voucherId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrievePaymentInformationResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RetrievePaymentInformationResponse> __BuildRetrievePaymentInformation(WorkflowExpression<string> voucherId)
+        {
+            WorkflowExpression.Validate(voucherId, nameof(voucherId), required: true);
+            return new DeferredBodyAction<RetrievePaymentInformationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/payments/{0}", ExpressionConverter.ConvertWithUrlEncoding(voucherId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrievePaymentInformationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
@@ -607,332 +989,507 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseQuotationsPost> CreateQuotation(Expression<Func<bool>> finalize)
+        [WorkflowExpressionFactory(nameof(__BuildCreateQuotation))]
+        public IBodyWorkflowAction<ResponseQuotationsPost> CreateQuotation([WorkflowExpression] Func<bool> finalize)
         {
-            var apiCallPath = "/quotations";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["finalize"] = ExpressionConverter.Convert(finalize);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseQuotationsPost>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveQuotationResponse> RetrieveQuotation(Expression<Func<string>> id)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseQuotationsPost> __BuildCreateQuotation(WorkflowExpression<bool> finalize)
         {
-            var apiCallPath = String.Format("/quotations/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveQuotationResponse>(callPayload);
+            WorkflowExpression.Validate(finalize, nameof(finalize), required: true);
+            return new DeferredBodyAction<ResponseQuotationsPost>(() =>
+            {
+                var apiCallPath = "/quotations";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["finalize"] = ExpressionConverter.Convert(finalize);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResponseQuotationsPost>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RenderQuotationDocumentResponse> RenderQuotationDocument(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveQuotation))]
+        public IBodyWorkflowAction<RetrieveQuotationResponse> RetrieveQuotation([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/quotations/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RenderQuotationDocumentResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseRecurringTemplatesGet> RetrieveAllRecurringTemplates(Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RetrieveQuotationResponse> __BuildRetrieveQuotation(WorkflowExpression<string> id)
         {
-            var apiCallPath = "/recurring-templates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<ResponseRecurringTemplatesGet>(callPayload);
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RetrieveQuotationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/quotations/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveQuotationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveRecurringTemplateResponse> RetrieveRecurringTemplate(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildRenderQuotationDocument))]
+        public IBodyWorkflowAction<RenderQuotationDocumentResponse> RenderQuotationDocument([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/recurring-templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveRecurringTemplateResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseVoucherlistGet> RetrieveAndFilterVoucherlist(Expression<Func<voucherTypeInput>> voucherType, Expression<Func<voucherStatusInput>> voucherStatus, Expression<Func<bool>> archived = null, Expression<Func<string>> contactId = null, Expression<Func<string>> voucherDateFrom = null, Expression<Func<string>> voucherDateTo = null, Expression<Func<string>> createdDateFrom = null, Expression<Func<string>> createdDateTo = null, Expression<Func<string>> updatedDateFrom = null, Expression<Func<string>> updatedDateTo = null, Expression<Func<string>> voucherNumber = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RenderQuotationDocumentResponse> __BuildRenderQuotationDocument(WorkflowExpression<string> id)
         {
-            var apiCallPath = "/voucherlist";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["voucherType"] = ExpressionConverter.Convert(voucherType);
-            callPayload.Queries["voucherStatus"] = ExpressionConverter.Convert(voucherStatus);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (contactId != null)
-                callPayload.Queries["contactId"] = ExpressionConverter.Convert(contactId);
-            if (voucherDateFrom != null)
-                callPayload.Queries["voucherDateFrom"] = ExpressionConverter.Convert(voucherDateFrom);
-            if (voucherDateTo != null)
-                callPayload.Queries["voucherDateTo"] = ExpressionConverter.Convert(voucherDateTo);
-            if (createdDateFrom != null)
-                callPayload.Queries["createdDateFrom"] = ExpressionConverter.Convert(createdDateFrom);
-            if (createdDateTo != null)
-                callPayload.Queries["createdDateTo"] = ExpressionConverter.Convert(createdDateTo);
-            if (updatedDateFrom != null)
-                callPayload.Queries["updatedDateFrom"] = ExpressionConverter.Convert(updatedDateFrom);
-            if (updatedDateTo != null)
-                callPayload.Queries["updatedDateTo"] = ExpressionConverter.Convert(updatedDateTo);
-            if (voucherNumber != null)
-                callPayload.Queries["voucherNumber"] = ExpressionConverter.Convert(voucherNumber);
-            callPayload.Queries["page"] = Convert.ToString(0);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["size"] = Convert.ToString(250);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            callPayload.Queries["sort"] = Convert.ToString("voucherNumber,DESC");
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<ResponseVoucherlistGet>(callPayload);
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RenderQuotationDocumentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/quotations/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RenderQuotationDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseVouchersPost> CreateVoucher(Expression<Func<bodytaxTypeInput>> bodytaxType, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodyvoucherItemsInputItem[]>> bodyvoucherItems, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<double>> bodytotalGrossAmount = null, Expression<Func<double>> bodytotalTaxAmount = null, Expression<Func<bool>> bodyuseCollectiveContact = null, Expression<Func<string>> bodyvoucherDate = null, Expression<Func<string>> bodyvoucherNumber = null, Expression<Func<bodyvoucherStatusInput>> bodyvoucherStatus = null)
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveAllRecurringTemplates))]
+        public IBodyWorkflowAction<ResponseRecurringTemplatesGet> RetrieveAllRecurringTemplates([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = "/vouchers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontactId != null)
-            {
-                body["contactId"] = ExpressionConverter.ConvertO(bodycontactId);
-                bodypropCount++;
-            }
-
-            if (bodydueDate != null)
-            {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodyshippingDate != null)
-            {
-                body["shippingDate"] = ExpressionConverter.ConvertO(bodyshippingDate);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["taxType"] = ExpressionConverter.ConvertO(bodytaxType);
-            if (bodytotalGrossAmount != null)
-            {
-                body["totalGrossAmount"] = ExpressionConverter.ConvertO(bodytotalGrossAmount);
-                bodypropCount++;
-            }
-
-            if (bodytotalTaxAmount != null)
-            {
-                body["totalTaxAmount"] = ExpressionConverter.ConvertO(bodytotalTaxAmount);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            if (bodyuseCollectiveContact != null)
-            {
-                body["useCollectiveContact"] = ExpressionConverter.ConvertO(bodyuseCollectiveContact);
-                bodypropCount++;
-            }
-
-            if (bodyvoucherDate != null)
-            {
-                body["voucherDate"] = ExpressionConverter.ConvertO(bodyvoucherDate);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["voucherItems"] = ExpressionConverter.ConvertO(bodyvoucherItems);
-            if (bodyvoucherNumber != null)
-            {
-                body["voucherNumber"] = ExpressionConverter.ConvertO(bodyvoucherNumber);
-                bodypropCount++;
-            }
-
-            if (bodyvoucherStatus != null)
-            {
-                body["voucherStatus"] = ExpressionConverter.ConvertO(bodyvoucherStatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseVouchersPost>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<RetrieveVoucherResponse> RetrieveVoucher(Expression<Func<string>> id)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseRecurringTemplatesGet> __BuildRetrieveAllRecurringTemplates(WorkflowExpression<int> page = null, WorkflowExpression<int> size = null, WorkflowExpression<string> sort = null)
         {
-            var apiCallPath = String.Format("/vouchers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrieveVoucherResponse>(callPayload);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<ResponseRecurringTemplatesGet>(() =>
+            {
+                var apiCallPath = "/recurring-templates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<ResponseRecurringTemplatesGet>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IBodyWorkflowAction<ResponseVouchersIdPut> UpdateVoucher(Expression<Func<string>> id, Expression<Func<bodytaxTypeInput>> bodytaxType, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodyvoucherItemsInputItem[]>> bodyvoucherItems, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string[]>> bodyfiles = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<double>> bodytotalGrossAmount = null, Expression<Func<double>> bodytotalTaxAmount = null, Expression<Func<bool>> bodyuseCollectiveContact = null, Expression<Func<int>> bodyversion = null, Expression<Func<string>> bodyvoucherDate = null, Expression<Func<string>> bodyvoucherNumber = null, Expression<Func<bodyvoucherStatusInput>> bodyvoucherStatus = null)
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveRecurringTemplate))]
+        public IBodyWorkflowAction<RetrieveRecurringTemplateResponse> RetrieveRecurringTemplate([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/vouchers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontactId != null)
-            {
-                body["contactId"] = ExpressionConverter.ConvertO(bodycontactId);
-                bodypropCount++;
-            }
-
-            if (bodydueDate != null)
-            {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
-                bodypropCount++;
-            }
-
-            if (bodyfiles != null)
-            {
-                body["files"] = ExpressionConverter.ConvertO(bodyfiles);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodyshippingDate != null)
-            {
-                body["shippingDate"] = ExpressionConverter.ConvertO(bodyshippingDate);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["taxType"] = ExpressionConverter.ConvertO(bodytaxType);
-            if (bodytotalGrossAmount != null)
-            {
-                body["totalGrossAmount"] = ExpressionConverter.ConvertO(bodytotalGrossAmount);
-                bodypropCount++;
-            }
-
-            if (bodytotalTaxAmount != null)
-            {
-                body["totalTaxAmount"] = ExpressionConverter.ConvertO(bodytotalTaxAmount);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            if (bodyuseCollectiveContact != null)
-            {
-                body["useCollectiveContact"] = ExpressionConverter.ConvertO(bodyuseCollectiveContact);
-                bodypropCount++;
-            }
-
-            if (bodyversion != null)
-            {
-                body["version"] = ExpressionConverter.ConvertO(bodyversion);
-                bodypropCount++;
-            }
-
-            if (bodyvoucherDate != null)
-            {
-                body["voucherDate"] = ExpressionConverter.ConvertO(bodyvoucherDate);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["voucherItems"] = ExpressionConverter.ConvertO(bodyvoucherItems);
-            if (bodyvoucherNumber != null)
-            {
-                body["voucherNumber"] = ExpressionConverter.ConvertO(bodyvoucherNumber);
-                bodypropCount++;
-            }
-
-            if (bodyvoucherStatus != null)
-            {
-                body["voucherStatus"] = ExpressionConverter.ConvertO(bodyvoucherStatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseVouchersIdPut>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
-        public IWorkflowAction UploadFileVoucherLexoffice(Expression<Func<string>> id, Expression<Func<object>> file)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RetrieveRecurringTemplateResponse> __BuildRetrieveRecurringTemplate(WorkflowExpression<string> id)
         {
-            var apiCallPath = String.Format("/vouchers/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RetrieveRecurringTemplateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recurring-templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveRecurringTemplateResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveAndFilterVoucherlist))]
+        public IBodyWorkflowAction<ResponseVoucherlistGet> RetrieveAndFilterVoucherlist([WorkflowExpression] Func<voucherTypeInput> voucherType, [WorkflowExpression] Func<voucherStatusInput> voucherStatus, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> contactId = null, [WorkflowExpression] Func<string> voucherDateFrom = null, [WorkflowExpression] Func<string> voucherDateTo = null, [WorkflowExpression] Func<string> createdDateFrom = null, [WorkflowExpression] Func<string> createdDateTo = null, [WorkflowExpression] Func<string> updatedDateFrom = null, [WorkflowExpression] Func<string> updatedDateTo = null, [WorkflowExpression] Func<string> voucherNumber = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> sort = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseVoucherlistGet> __BuildRetrieveAndFilterVoucherlist(WorkflowExpression<voucherTypeInput> voucherType, WorkflowExpression<voucherStatusInput> voucherStatus, WorkflowExpression<bool> archived = null, WorkflowExpression<string> contactId = null, WorkflowExpression<string> voucherDateFrom = null, WorkflowExpression<string> voucherDateTo = null, WorkflowExpression<string> createdDateFrom = null, WorkflowExpression<string> createdDateTo = null, WorkflowExpression<string> updatedDateFrom = null, WorkflowExpression<string> updatedDateTo = null, WorkflowExpression<string> voucherNumber = null, WorkflowExpression<int> page = null, WorkflowExpression<int> size = null, WorkflowExpression<string> sort = null)
+        {
+            WorkflowExpression.Validate(voucherType, nameof(voucherType), required: true);
+            WorkflowExpression.Validate(voucherStatus, nameof(voucherStatus), required: true);
+            WorkflowExpression.Validate(archived, nameof(archived), required: false);
+            WorkflowExpression.Validate(contactId, nameof(contactId), required: false);
+            WorkflowExpression.Validate(voucherDateFrom, nameof(voucherDateFrom), required: false);
+            WorkflowExpression.Validate(voucherDateTo, nameof(voucherDateTo), required: false);
+            WorkflowExpression.Validate(createdDateFrom, nameof(createdDateFrom), required: false);
+            WorkflowExpression.Validate(createdDateTo, nameof(createdDateTo), required: false);
+            WorkflowExpression.Validate(updatedDateFrom, nameof(updatedDateFrom), required: false);
+            WorkflowExpression.Validate(updatedDateTo, nameof(updatedDateTo), required: false);
+            WorkflowExpression.Validate(voucherNumber, nameof(voucherNumber), required: false);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(size, nameof(size), required: false);
+            WorkflowExpression.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<ResponseVoucherlistGet>(() =>
+            {
+                var apiCallPath = "/voucherlist";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["voucherType"] = ExpressionConverter.Convert(voucherType);
+                callPayload.Queries["voucherStatus"] = ExpressionConverter.Convert(voucherStatus);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (contactId != null)
+                    callPayload.Queries["contactId"] = ExpressionConverter.Convert(contactId);
+                if (voucherDateFrom != null)
+                    callPayload.Queries["voucherDateFrom"] = ExpressionConverter.Convert(voucherDateFrom);
+                if (voucherDateTo != null)
+                    callPayload.Queries["voucherDateTo"] = ExpressionConverter.Convert(voucherDateTo);
+                if (createdDateFrom != null)
+                    callPayload.Queries["createdDateFrom"] = ExpressionConverter.Convert(createdDateFrom);
+                if (createdDateTo != null)
+                    callPayload.Queries["createdDateTo"] = ExpressionConverter.Convert(createdDateTo);
+                if (updatedDateFrom != null)
+                    callPayload.Queries["updatedDateFrom"] = ExpressionConverter.Convert(updatedDateFrom);
+                if (updatedDateTo != null)
+                    callPayload.Queries["updatedDateTo"] = ExpressionConverter.Convert(updatedDateTo);
+                if (voucherNumber != null)
+                    callPayload.Queries["voucherNumber"] = ExpressionConverter.Convert(voucherNumber);
+                callPayload.Queries["page"] = Convert.ToString(0);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["size"] = Convert.ToString(250);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                callPayload.Queries["sort"] = Convert.ToString("voucherNumber,DESC");
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<ResponseVoucherlistGet>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateVoucher))]
+        public IBodyWorkflowAction<ResponseVouchersPost> CreateVoucher([WorkflowExpression] Func<bodytaxTypeInput> bodytaxType, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<bodyvoucherItemsInputItem[]> bodyvoucherItems, [WorkflowExpression] Func<string> bodycontactId = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyshippingDate = null, [WorkflowExpression] Func<double> bodytotalGrossAmount = null, [WorkflowExpression] Func<double> bodytotalTaxAmount = null, [WorkflowExpression] Func<bool> bodyuseCollectiveContact = null, [WorkflowExpression] Func<string> bodyvoucherDate = null, [WorkflowExpression] Func<string> bodyvoucherNumber = null, [WorkflowExpression] Func<bodyvoucherStatusInput> bodyvoucherStatus = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseVouchersPost> __BuildCreateVoucher(WorkflowExpression<bodytaxTypeInput> bodytaxType, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<bodyvoucherItemsInputItem[]> bodyvoucherItems, WorkflowExpression<string> bodycontactId = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodyshippingDate = null, WorkflowExpression<double> bodytotalGrossAmount = null, WorkflowExpression<double> bodytotalTaxAmount = null, WorkflowExpression<bool> bodyuseCollectiveContact = null, WorkflowExpression<string> bodyvoucherDate = null, WorkflowExpression<string> bodyvoucherNumber = null, WorkflowExpression<bodyvoucherStatusInput> bodyvoucherStatus = null)
+        {
+            WorkflowExpression.Validate(bodytaxType, nameof(bodytaxType), required: true);
+            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: true);
+            WorkflowExpression.Validate(bodyvoucherItems, nameof(bodyvoucherItems), required: true);
+            WorkflowExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
+            WorkflowExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            WorkflowExpression.Validate(bodyshippingDate, nameof(bodyshippingDate), required: false);
+            WorkflowExpression.Validate(bodytotalGrossAmount, nameof(bodytotalGrossAmount), required: false);
+            WorkflowExpression.Validate(bodytotalTaxAmount, nameof(bodytotalTaxAmount), required: false);
+            WorkflowExpression.Validate(bodyuseCollectiveContact, nameof(bodyuseCollectiveContact), required: false);
+            WorkflowExpression.Validate(bodyvoucherDate, nameof(bodyvoucherDate), required: false);
+            WorkflowExpression.Validate(bodyvoucherNumber, nameof(bodyvoucherNumber), required: false);
+            WorkflowExpression.Validate(bodyvoucherStatus, nameof(bodyvoucherStatus), required: false);
+            return new DeferredBodyAction<ResponseVouchersPost>(() =>
+            {
+                var apiCallPath = "/vouchers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontactId != null)
+                {
+                    body["contactId"] = ExpressionConverter.ConvertO(bodycontactId);
+                    bodypropCount++;
+                }
+
+                if (bodydueDate != null)
+                {
+                    body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingDate != null)
+                {
+                    body["shippingDate"] = ExpressionConverter.ConvertO(bodyshippingDate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["taxType"] = ExpressionConverter.ConvertO(bodytaxType);
+                if (bodytotalGrossAmount != null)
+                {
+                    body["totalGrossAmount"] = ExpressionConverter.ConvertO(bodytotalGrossAmount);
+                    bodypropCount++;
+                }
+
+                if (bodytotalTaxAmount != null)
+                {
+                    body["totalTaxAmount"] = ExpressionConverter.ConvertO(bodytotalTaxAmount);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                if (bodyuseCollectiveContact != null)
+                {
+                    body["useCollectiveContact"] = ExpressionConverter.ConvertO(bodyuseCollectiveContact);
+                    bodypropCount++;
+                }
+
+                if (bodyvoucherDate != null)
+                {
+                    body["voucherDate"] = ExpressionConverter.ConvertO(bodyvoucherDate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["voucherItems"] = ExpressionConverter.ConvertO(bodyvoucherItems);
+                if (bodyvoucherNumber != null)
+                {
+                    body["voucherNumber"] = ExpressionConverter.ConvertO(bodyvoucherNumber);
+                    bodypropCount++;
+                }
+
+                if (bodyvoucherStatus != null)
+                {
+                    body["voucherStatus"] = ExpressionConverter.ConvertO(bodyvoucherStatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResponseVouchersPost>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveVoucher))]
+        public IBodyWorkflowAction<RetrieveVoucherResponse> RetrieveVoucher([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RetrieveVoucherResponse> __BuildRetrieveVoucher(WorkflowExpression<string> id)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<RetrieveVoucherResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/vouchers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<RetrieveVoucherResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateVoucher))]
+        public IBodyWorkflowAction<ResponseVouchersIdPut> UpdateVoucher([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodytaxTypeInput> bodytaxType, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<bodyvoucherItemsInputItem[]> bodyvoucherItems, [WorkflowExpression] Func<string> bodycontactId = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string[]> bodyfiles = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyshippingDate = null, [WorkflowExpression] Func<double> bodytotalGrossAmount = null, [WorkflowExpression] Func<double> bodytotalTaxAmount = null, [WorkflowExpression] Func<bool> bodyuseCollectiveContact = null, [WorkflowExpression] Func<int> bodyversion = null, [WorkflowExpression] Func<string> bodyvoucherDate = null, [WorkflowExpression] Func<string> bodyvoucherNumber = null, [WorkflowExpression] Func<bodyvoucherStatusInput> bodyvoucherStatus = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ResponseVouchersIdPut> __BuildUpdateVoucher(WorkflowExpression<string> id, WorkflowExpression<bodytaxTypeInput> bodytaxType, WorkflowExpression<bodytypeInput> bodytype, WorkflowExpression<bodyvoucherItemsInputItem[]> bodyvoucherItems, WorkflowExpression<string> bodycontactId = null, WorkflowExpression<string> bodydueDate = null, WorkflowExpression<string[]> bodyfiles = null, WorkflowExpression<string> bodyremark = null, WorkflowExpression<string> bodyshippingDate = null, WorkflowExpression<double> bodytotalGrossAmount = null, WorkflowExpression<double> bodytotalTaxAmount = null, WorkflowExpression<bool> bodyuseCollectiveContact = null, WorkflowExpression<int> bodyversion = null, WorkflowExpression<string> bodyvoucherDate = null, WorkflowExpression<string> bodyvoucherNumber = null, WorkflowExpression<bodyvoucherStatusInput> bodyvoucherStatus = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(bodytaxType, nameof(bodytaxType), required: true);
+            WorkflowExpression.Validate(bodytype, nameof(bodytype), required: true);
+            WorkflowExpression.Validate(bodyvoucherItems, nameof(bodyvoucherItems), required: true);
+            WorkflowExpression.Validate(bodycontactId, nameof(bodycontactId), required: false);
+            WorkflowExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
+            WorkflowExpression.Validate(bodyfiles, nameof(bodyfiles), required: false);
+            WorkflowExpression.Validate(bodyremark, nameof(bodyremark), required: false);
+            WorkflowExpression.Validate(bodyshippingDate, nameof(bodyshippingDate), required: false);
+            WorkflowExpression.Validate(bodytotalGrossAmount, nameof(bodytotalGrossAmount), required: false);
+            WorkflowExpression.Validate(bodytotalTaxAmount, nameof(bodytotalTaxAmount), required: false);
+            WorkflowExpression.Validate(bodyuseCollectiveContact, nameof(bodyuseCollectiveContact), required: false);
+            WorkflowExpression.Validate(bodyversion, nameof(bodyversion), required: false);
+            WorkflowExpression.Validate(bodyvoucherDate, nameof(bodyvoucherDate), required: false);
+            WorkflowExpression.Validate(bodyvoucherNumber, nameof(bodyvoucherNumber), required: false);
+            WorkflowExpression.Validate(bodyvoucherStatus, nameof(bodyvoucherStatus), required: false);
+            return new DeferredBodyAction<ResponseVouchersIdPut>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/vouchers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontactId != null)
+                {
+                    body["contactId"] = ExpressionConverter.ConvertO(bodycontactId);
+                    bodypropCount++;
+                }
+
+                if (bodydueDate != null)
+                {
+                    body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                    bodypropCount++;
+                }
+
+                if (bodyfiles != null)
+                {
+                    body["files"] = ExpressionConverter.ConvertO(bodyfiles);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingDate != null)
+                {
+                    body["shippingDate"] = ExpressionConverter.ConvertO(bodyshippingDate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["taxType"] = ExpressionConverter.ConvertO(bodytaxType);
+                if (bodytotalGrossAmount != null)
+                {
+                    body["totalGrossAmount"] = ExpressionConverter.ConvertO(bodytotalGrossAmount);
+                    bodypropCount++;
+                }
+
+                if (bodytotalTaxAmount != null)
+                {
+                    body["totalTaxAmount"] = ExpressionConverter.ConvertO(bodytotalTaxAmount);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                if (bodyuseCollectiveContact != null)
+                {
+                    body["useCollectiveContact"] = ExpressionConverter.ConvertO(bodyuseCollectiveContact);
+                    bodypropCount++;
+                }
+
+                if (bodyversion != null)
+                {
+                    body["version"] = ExpressionConverter.ConvertO(bodyversion);
+                    bodypropCount++;
+                }
+
+                if (bodyvoucherDate != null)
+                {
+                    body["voucherDate"] = ExpressionConverter.ConvertO(bodyvoucherDate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["voucherItems"] = ExpressionConverter.ConvertO(bodyvoucherItems);
+                if (bodyvoucherNumber != null)
+                {
+                    body["voucherNumber"] = ExpressionConverter.ConvertO(bodyvoucherNumber);
+                    bodypropCount++;
+                }
+
+                if (bodyvoucherStatus != null)
+                {
+                    body["voucherStatus"] = ExpressionConverter.ConvertO(bodyvoucherStatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ResponseVouchersIdPut>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [WorkflowExpressionFactory(nameof(__BuildUploadFileVoucherLexoffice))]
+        public IWorkflowAction UploadFileVoucherLexoffice([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> file)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUploadFileVoucherLexoffice(WorkflowExpression<string> id, WorkflowExpression<object> file)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(file, nameof(file), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/vouchers/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
     public class LexofficeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost> EventSubscriptionLexoffice(Expression<Func<bodyeventTypeInput>> bodyeventType, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/event-subscriptions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionTrigger<ResponseEventSubscriptionsPost>(callPayload, triggerName, recurrence);
+        [WorkflowExpressionFactory(nameof(__BuildEventSubscriptionLexoffice))]
+        public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost> EventSubscriptionLexoffice([WorkflowExpression] Func<bodyeventTypeInput> bodyeventType, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost> __BuildEventSubscriptionLexoffice(WorkflowExpression<bodyeventTypeInput> bodyeventType, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodyeventType, nameof(bodyeventType), required: true);
+            return new DeferredBodyTrigger<ResponseEventSubscriptionsPost>(() =>
+            {
+                var apiCallPath = "/event-subscriptions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<ResponseEventSubscriptionsPost>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

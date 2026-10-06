@@ -4,21 +4,33 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Regexflowexecutepyth
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class RegexflowexecutepythActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "regexflowexecutepyth")]
-        public IBodyWorkflowAction<ExecutePythonResponse> ExecutePython(Expression<Func<string>> pythonCode = null)
+        [WorkflowExpressionFactory(nameof(__BuildExecutePython))]
+        public IBodyWorkflowAction<ExecutePythonResponse> ExecutePython([WorkflowExpression] Func<string> pythonCode = null)
         {
-            var apiCallPath = "/ExecutePython";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(pythonCode);
-            return new ApiConnectionAction<ExecutePythonResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "regexflowexecutepyth")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExecutePythonResponse> __BuildExecutePython(WorkflowExpression<string> pythonCode = null)
+        {
+            WorkflowExpression.Validate(pythonCode, nameof(pythonCode), required: false);
+            return new DeferredBodyAction<ExecutePythonResponse>(() =>
+            {
+                var apiCallPath = "/ExecutePython";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(pythonCode);
+                return new ApiConnectionAction<ExecutePythonResponse>(callPayload);
+            });
         }
     }
 

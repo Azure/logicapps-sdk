@@ -4,21 +4,33 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openelevation
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class OpenelevationActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openelevation")]
-        public IBodyWorkflowAction<LookupResponse> Lookup(Expression<Func<string>> locations)
+        [WorkflowExpressionFactory(nameof(__BuildLookup))]
+        public IBodyWorkflowAction<LookupResponse> Lookup([WorkflowExpression] Func<string> locations)
         {
-            var apiCallPath = "/api/v1/lookup";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["locations"] = ExpressionConverter.Convert(locations);
-            return new ApiConnectionAction<LookupResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openelevation")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LookupResponse> __BuildLookup(WorkflowExpression<string> locations)
+        {
+            WorkflowExpression.Validate(locations, nameof(locations), required: true);
+            return new DeferredBodyAction<LookupResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/lookup";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["locations"] = ExpressionConverter.Convert(locations);
+                return new ApiConnectionAction<LookupResponse>(callPayload);
+            });
         }
     }
 

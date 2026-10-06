@@ -4,7 +4,6 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -28,13 +27,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
-        public IBodyWorkflowAction<DeleteCompanySubscriptionResponse> DeleteCompanySubscription(Expression<Func<string>> subscriptionId)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteCompanySubscription))]
+        public IBodyWorkflowAction<DeleteCompanySubscriptionResponse> DeleteCompanySubscription([WorkflowExpression] Func<string> subscriptionId)
         {
-            var apiCallPath = "/webhook/v1/subscription";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["subscriptionId"] = ExpressionConverter.Convert(subscriptionId);
-            return new ApiConnectionAction<DeleteCompanySubscriptionResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteCompanySubscriptionResponse> __BuildDeleteCompanySubscription(WorkflowExpression<string> subscriptionId)
+        {
+            WorkflowExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            return new DeferredBodyAction<DeleteCompanySubscriptionResponse>(() =>
+            {
+                var apiCallPath = "/webhook/v1/subscription";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["subscriptionId"] = ExpressionConverter.Convert(subscriptionId);
+                return new ApiConnectionAction<DeleteCompanySubscriptionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
@@ -47,33 +58,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
-        public IBodyWorkflowAction<PostCompanySubscriptionResponse> PostCompanySubscription(Expression<Func<string>> bodyEvent, Expression<Func<string>> bodyregistrationId, Expression<Func<string>> bodykey, Expression<Func<string[]>> bodyvalues, Expression<Func<string>> bodycallbackUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostCompanySubscription))]
+        public IBodyWorkflowAction<PostCompanySubscriptionResponse> PostCompanySubscription([WorkflowExpression] Func<string> bodyEvent, [WorkflowExpression] Func<string> bodyregistrationId, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<string[]> bodyvalues, [WorkflowExpression] Func<string> bodycallbackUrl = null)
         {
-            var apiCallPath = "/webhook/v1/subscription";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["event"] = ExpressionConverter.ConvertO(bodyEvent);
-            bodypropCount++;
-            body["registrationId"] = ExpressionConverter.ConvertO(bodyregistrationId);
-            if (bodycallbackUrl != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostCompanySubscriptionResponse> __BuildPostCompanySubscription(WorkflowExpression<string> bodyEvent, WorkflowExpression<string> bodyregistrationId, WorkflowExpression<string> bodykey, WorkflowExpression<string[]> bodyvalues, WorkflowExpression<string> bodycallbackUrl = null)
+        {
+            WorkflowExpression.Validate(bodyEvent, nameof(bodyEvent), required: true);
+            WorkflowExpression.Validate(bodyregistrationId, nameof(bodyregistrationId), required: true);
+            WorkflowExpression.Validate(bodykey, nameof(bodykey), required: true);
+            WorkflowExpression.Validate(bodyvalues, nameof(bodyvalues), required: true);
+            WorkflowExpression.Validate(bodycallbackUrl, nameof(bodycallbackUrl), required: false);
+            return new DeferredBodyAction<PostCompanySubscriptionResponse>(() =>
             {
-                body["callbackUrl"] = ExpressionConverter.ConvertO(bodycallbackUrl);
+                var apiCallPath = "/webhook/v1/subscription";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["event"] = ExpressionConverter.ConvertO(bodyEvent);
+                bodypropCount++;
+                body["registrationId"] = ExpressionConverter.ConvertO(bodyregistrationId);
+                if (bodycallbackUrl != null)
+                {
+                    body["callbackUrl"] = ExpressionConverter.ConvertO(bodycallbackUrl);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
-            bodypropCount++;
-            body["values"] = ExpressionConverter.ConvertO(bodyvalues);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                bodypropCount++;
+                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                bodypropCount++;
+                body["values"] = ExpressionConverter.ConvertO(bodyvalues);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCompanySubscriptionResponse>(callPayload);
+                return new ApiConnectionAction<PostCompanySubscriptionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
@@ -86,32 +113,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
-        public IBodyWorkflowAction<ValidateWebhookNotificationSignatureResponse> ValidateWebhookNotificationSignature(Expression<Func<string>> messageSignature, Expression<Func<string>> secretKey)
+        [WorkflowExpressionFactory(nameof(__BuildValidateWebhookNotificationSignature))]
+        public IBodyWorkflowAction<ValidateWebhookNotificationSignatureResponse> ValidateWebhookNotificationSignature([WorkflowExpression] Func<string> messageSignature, [WorkflowExpression] Func<string> secretKey)
         {
-            var apiCallPath = "/validatesignature";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["MessageSignature"] = ExpressionConverter.Convert(messageSignature);
-            callPayload.Headers["SecretKey"] = ExpressionConverter.Convert(secretKey);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ValidateWebhookNotificationSignatureResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
-        public IBodyWorkflowAction<DeleteCompanyRegistrationResponse> DeleteCompanyRegistration(Expression<Func<string>> registrationId = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateWebhookNotificationSignatureResponse> __BuildValidateWebhookNotificationSignature(WorkflowExpression<string> messageSignature, WorkflowExpression<string> secretKey)
         {
-            var apiCallPath = "/webhook/v1/deleteregistration";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (registrationId != null)
-                callPayload.Queries["registrationId"] = ExpressionConverter.Convert(registrationId);
-            return new ApiConnectionAction<DeleteCompanyRegistrationResponse>(callPayload);
+            WorkflowExpression.Validate(messageSignature, nameof(messageSignature), required: true);
+            WorkflowExpression.Validate(secretKey, nameof(secretKey), required: true);
+            return new DeferredBodyAction<ValidateWebhookNotificationSignatureResponse>(() =>
+            {
+                var apiCallPath = "/validatesignature";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["MessageSignature"] = ExpressionConverter.Convert(messageSignature);
+                callPayload.Headers["SecretKey"] = ExpressionConverter.Convert(secretKey);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ValidateWebhookNotificationSignatureResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteCompanyRegistration))]
+        public IBodyWorkflowAction<DeleteCompanyRegistrationResponse> DeleteCompanyRegistration([WorkflowExpression] Func<string> registrationId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteCompanyRegistrationResponse> __BuildDeleteCompanyRegistration(WorkflowExpression<string> registrationId = null)
+        {
+            WorkflowExpression.Validate(registrationId, nameof(registrationId), required: false);
+            return new DeferredBodyAction<DeleteCompanyRegistrationResponse>(() =>
+            {
+                var apiCallPath = "/webhook/v1/deleteregistration";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (registrationId != null)
+                    callPayload.Queries["registrationId"] = ExpressionConverter.Convert(registrationId);
+                return new ApiConnectionAction<DeleteCompanyRegistrationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
@@ -133,45 +185,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
 
     public class FedexdataworksTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PostCompanyRegistrationResponse> PostCompanyRegistration(Expression<Func<string>> bodyEvent, Expression<Func<string>> bodycallbackSignatureSecretKey, Expression<Func<string>> bodycallbackSignatureAlgorithm, Expression<Func<string>> bodycallbackAuthUrl = null, Expression<Func<string>> bodycallbackClientId = null, Expression<Func<string>> bodycallbackClientSecret = null, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildPostCompanyRegistration))]
+        public IBodyWorkflowTrigger<PostCompanyRegistrationResponse> PostCompanyRegistration([WorkflowExpression] Func<string> bodyEvent, [WorkflowExpression] Func<string> bodycallbackSignatureSecretKey, [WorkflowExpression] Func<string> bodycallbackSignatureAlgorithm, [WorkflowExpression] Func<string> bodycallbackAuthUrl = null, [WorkflowExpression] Func<string> bodycallbackClientId = null, [WorkflowExpression] Func<string> bodycallbackClientSecret = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/v1/register";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["event"] = ExpressionConverter.ConvertO(bodyEvent);
-            bodypropCount++;
-            body["callbackSignatureSecretKey"] = ExpressionConverter.ConvertO(bodycallbackSignatureSecretKey);
-            if (bodycallbackAuthUrl != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PostCompanyRegistrationResponse> __BuildPostCompanyRegistration(WorkflowExpression<string> bodyEvent, WorkflowExpression<string> bodycallbackSignatureSecretKey, WorkflowExpression<string> bodycallbackSignatureAlgorithm, WorkflowExpression<string> bodycallbackAuthUrl = null, WorkflowExpression<string> bodycallbackClientId = null, WorkflowExpression<string> bodycallbackClientSecret = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(bodyEvent, nameof(bodyEvent), required: true);
+            WorkflowExpression.Validate(bodycallbackSignatureSecretKey, nameof(bodycallbackSignatureSecretKey), required: true);
+            WorkflowExpression.Validate(bodycallbackSignatureAlgorithm, nameof(bodycallbackSignatureAlgorithm), required: true);
+            WorkflowExpression.Validate(bodycallbackAuthUrl, nameof(bodycallbackAuthUrl), required: false);
+            WorkflowExpression.Validate(bodycallbackClientId, nameof(bodycallbackClientId), required: false);
+            WorkflowExpression.Validate(bodycallbackClientSecret, nameof(bodycallbackClientSecret), required: false);
+            return new DeferredBodyTrigger<PostCompanyRegistrationResponse>(() =>
             {
-                body["callbackAuthUrl"] = ExpressionConverter.ConvertO(bodycallbackAuthUrl);
+                var apiCallPath = "/webhook/v1/register";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodycallbackClientId != null)
-            {
-                body["callbackClientId"] = ExpressionConverter.ConvertO(bodycallbackClientId);
+                body["event"] = ExpressionConverter.ConvertO(bodyEvent);
                 bodypropCount++;
-            }
+                body["callbackSignatureSecretKey"] = ExpressionConverter.ConvertO(bodycallbackSignatureSecretKey);
+                if (bodycallbackAuthUrl != null)
+                {
+                    body["callbackAuthUrl"] = ExpressionConverter.ConvertO(bodycallbackAuthUrl);
+                    bodypropCount++;
+                }
 
-            if (bodycallbackClientSecret != null)
-            {
-                body["callbackClientSecret"] = ExpressionConverter.ConvertO(bodycallbackClientSecret);
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodycallbackClientId != null)
+                {
+                    body["callbackClientId"] = ExpressionConverter.ConvertO(bodycallbackClientId);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["callbackSignatureAlgorithm"] = ExpressionConverter.ConvertO(bodycallbackSignatureAlgorithm);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodycallbackClientSecret != null)
+                {
+                    body["callbackClientSecret"] = ExpressionConverter.ConvertO(bodycallbackClientSecret);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionTrigger<PostCompanyRegistrationResponse>(callPayload, triggerName, recurrence);
+                bodypropCount++;
+                body["callbackSignatureAlgorithm"] = ExpressionConverter.ConvertO(bodycallbackSignatureAlgorithm);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<PostCompanyRegistrationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

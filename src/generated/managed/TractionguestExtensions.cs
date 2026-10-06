@@ -4,20 +4,32 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TractionguestActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tractionguest")]
-        public IWorkflowAction DeleteWebhook(Expression<Func<string>> hookId)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteWebhook))]
+        public IWorkflowAction DeleteWebhook([WorkflowExpression] Func<string> hookId)
         {
-            var apiCallPath = String.Format("/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tractionguest")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteWebhook(WorkflowExpression<string> hookId)
+        {
+            WorkflowExpression.Validate(hookId, nameof(hookId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
@@ -32,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
             var bodypropCount = 0;
             body["event"] = "invite";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -51,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
             var bodypropCount = 0;
             body["event"] = "signin";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -70,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
             var bodypropCount = 0;
             body["event"] = "signout";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -89,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
             var bodypropCount = 0;
             body["event"] = "watchlist";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

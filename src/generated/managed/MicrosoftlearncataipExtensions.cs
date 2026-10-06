@@ -4,38 +4,58 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftlearncataip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MicrosoftlearncataipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftlearncataip")]
-        public IBodyWorkflowAction<GetLearningContentResponse> GetLearningContent(Expression<Func<string>> locale = null, Expression<Func<string>> type = null, Expression<Func<string>> uid = null, Expression<Func<string>> lastModified = null, Expression<Func<string>> popularity = null, Expression<Func<string>> level = null, Expression<Func<string>> role = null, Expression<Func<string>> product = null, Expression<Func<string>> subject = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetLearningContent))]
+        public IBodyWorkflowAction<GetLearningContentResponse> GetLearningContent([WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> uid = null, [WorkflowExpression] Func<string> lastModified = null, [WorkflowExpression] Func<string> popularity = null, [WorkflowExpression] Func<string> level = null, [WorkflowExpression] Func<string> role = null, [WorkflowExpression] Func<string> product = null, [WorkflowExpression] Func<string> subject = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (uid != null)
-                callPayload.Queries["uid"] = ExpressionConverter.Convert(uid);
-            if (lastModified != null)
-                callPayload.Queries["last_modified"] = ExpressionConverter.Convert(lastModified);
-            if (popularity != null)
-                callPayload.Queries["popularity"] = ExpressionConverter.Convert(popularity);
-            if (level != null)
-                callPayload.Queries["level"] = ExpressionConverter.Convert(level);
-            if (role != null)
-                callPayload.Queries["role"] = ExpressionConverter.Convert(role);
-            if (product != null)
-                callPayload.Queries["product"] = ExpressionConverter.Convert(product);
-            if (subject != null)
-                callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
-            return new ApiConnectionAction<GetLearningContentResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftlearncataip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetLearningContentResponse> __BuildGetLearningContent(WorkflowExpression<string> locale = null, WorkflowExpression<string> type = null, WorkflowExpression<string> uid = null, WorkflowExpression<string> lastModified = null, WorkflowExpression<string> popularity = null, WorkflowExpression<string> level = null, WorkflowExpression<string> role = null, WorkflowExpression<string> product = null, WorkflowExpression<string> subject = null)
+        {
+            WorkflowExpression.Validate(locale, nameof(locale), required: false);
+            WorkflowExpression.Validate(type, nameof(type), required: false);
+            WorkflowExpression.Validate(uid, nameof(uid), required: false);
+            WorkflowExpression.Validate(lastModified, nameof(lastModified), required: false);
+            WorkflowExpression.Validate(popularity, nameof(popularity), required: false);
+            WorkflowExpression.Validate(level, nameof(level), required: false);
+            WorkflowExpression.Validate(role, nameof(role), required: false);
+            WorkflowExpression.Validate(product, nameof(product), required: false);
+            WorkflowExpression.Validate(subject, nameof(subject), required: false);
+            return new DeferredBodyAction<GetLearningContentResponse>(() =>
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (locale != null)
+                    callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+                if (type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                if (uid != null)
+                    callPayload.Queries["uid"] = ExpressionConverter.Convert(uid);
+                if (lastModified != null)
+                    callPayload.Queries["last_modified"] = ExpressionConverter.Convert(lastModified);
+                if (popularity != null)
+                    callPayload.Queries["popularity"] = ExpressionConverter.Convert(popularity);
+                if (level != null)
+                    callPayload.Queries["level"] = ExpressionConverter.Convert(level);
+                if (role != null)
+                    callPayload.Queries["role"] = ExpressionConverter.Convert(role);
+                if (product != null)
+                    callPayload.Queries["product"] = ExpressionConverter.Convert(product);
+                if (subject != null)
+                    callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
+                return new ApiConnectionAction<GetLearningContentResponse>(callPayload);
+            });
         }
     }
 

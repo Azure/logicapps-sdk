@@ -4,1605 +4,1964 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecwa
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TyntecwaActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<TestPhoneNumberResponse> TestPhoneNumber(Expression<Func<string>> whatsAppBusinessNumber)
+        [WorkflowExpressionFactory(nameof(__BuildTestPhoneNumber))]
+        public IBodyWorkflowAction<TestPhoneNumberResponse> TestPhoneNumber([WorkflowExpression] Func<string> whatsAppBusinessNumber)
         {
-            var apiCallPath = String.Format("/conversations/v3/channels/whatsapp/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(whatsAppBusinessNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TestPhoneNumberResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTextResponse> SendWhatsAppText(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodycontenttext = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TestPhoneNumberResponse> __BuildTestPhoneNumber(WorkflowExpression<string> whatsAppBusinessNumber)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-            bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "text";
-            contentObjectpropCount++;
-            if (bodycontenttext != null)
+            WorkflowExpression.Validate(whatsAppBusinessNumber, nameof(whatsAppBusinessNumber), required: true);
+            return new DeferredBodyAction<TestPhoneNumberResponse>(() =>
             {
-                contentObject["text"] = ExpressionConverter.ConvertO(bodycontenttext);
-                contentObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/channels/whatsapp/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(whatsAppBusinessNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TestPhoneNumberResponse>(callPayload);
+            });
+        }
 
-            if (contentObjectpropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppText))]
+        public IBodyWorkflowAction<SendWhatsAppTextResponse> SendWhatsAppText([WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodycontenttext = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppTextResponse> __BuildSendWhatsAppText(WorkflowExpression<string> bodyfrom, WorkflowExpression<string> bodyto, WorkflowExpression<string> bodycontenttext = null)
+        {
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowExpression.Validate(bodycontenttext, nameof(bodycontenttext), required: false);
+            return new DeferredBodyAction<SendWhatsAppTextResponse>(() =>
             {
-                body["content"] = contentObject;
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendWhatsAppTextResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppContactResponse> SendWhatsAppContact(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<bodycontentcontactsInputItem[]>> bodycontentcontacts = null)
-        {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/contact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
-            {
                 body["from"] = ExpressionConverter.ConvertO(bodyfrom);
                 bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
                 body["to"] = ExpressionConverter.ConvertO(bodyto);
+                body["channel"] = "whatsapp";
                 bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            if (bodycontentcontacts != null)
-            {
-                contentObject["contacts"] = ExpressionConverter.ConvertO(bodycontentcontacts);
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "text";
                 contentObjectpropCount++;
-            }
+                if (bodycontenttext != null)
+                {
+                    contentObject["text"] = ExpressionConverter.ConvertO(bodycontenttext);
+                    contentObjectpropCount++;
+                }
 
-            contentObject["contentType"] = "contacts";
-            contentObjectpropCount++;
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendWhatsAppContactResponse>(callPayload);
+                return new ApiConnectionAction<SendWhatsAppTextResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppLocationResponse> SendWhatsAppLocation(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<double>> bodycontentlocationlongitude = null, Expression<Func<double>> bodycontentlocationlatitude = null, Expression<Func<string>> bodycontentlocationname = null, Expression<Func<string>> bodycontentlocationaddress = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppContact))]
+        public IBodyWorkflowAction<SendWhatsAppContactResponse> SendWhatsAppContact([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<bodycontentcontactsInputItem[]> bodycontentcontacts = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/location";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
-            {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-                bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            if (bodycontentlocationlongitude != null)
-            {
-                locationObject["longitude"] = ExpressionConverter.ConvertO(bodycontentlocationlongitude);
-                locationObjectpropCount++;
-            }
-
-            if (bodycontentlocationlatitude != null)
-            {
-                locationObject["latitude"] = ExpressionConverter.ConvertO(bodycontentlocationlatitude);
-                locationObjectpropCount++;
-            }
-
-            if (bodycontentlocationname != null)
-            {
-                locationObject["name"] = ExpressionConverter.ConvertO(bodycontentlocationname);
-                locationObjectpropCount++;
-            }
-
-            if (bodycontentlocationaddress != null)
-            {
-                locationObject["address"] = ExpressionConverter.ConvertO(bodycontentlocationaddress);
-                locationObjectpropCount++;
-            }
-
-            if (locationObjectpropCount > 0)
-            {
-                contentObject["location"] = locationObject;
-                contentObjectpropCount++;
-            }
-
-            contentObject["contentType"] = "location";
-            contentObjectpropCount++;
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendWhatsAppLocationResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppQuickReplyResponse> SendWhatsAppQuickReply(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertype = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertext = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytype = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytext = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertype = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertext = null, Expression<Func<bodycontentinteractivecomponentsbuttonsInputItem[]>> bodycontentinteractivecomponentsbuttons = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppContactResponse> __BuildSendWhatsAppContact(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<bodycontentcontactsInputItem[]> bodycontentcontacts = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/quick-reply";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontentcontacts, nameof(bodycontentcontacts), required: false);
+            return new DeferredBodyAction<SendWhatsAppContactResponse>(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/contact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                body["channel"] = "whatsapp";
                 bodypropCount++;
-            }
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                if (bodycontentcontacts != null)
+                {
+                    contentObject["contacts"] = ExpressionConverter.ConvertO(bodycontentcontacts);
+                    contentObjectpropCount++;
+                }
 
-            if (bodyto != null)
+                contentObject["contentType"] = "contacts";
+                contentObjectpropCount++;
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendWhatsAppContactResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppLocation))]
+        public IBodyWorkflowAction<SendWhatsAppLocationResponse> SendWhatsAppLocation([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<double> bodycontentlocationlongitude = null, [WorkflowExpression] Func<double> bodycontentlocationlatitude = null, [WorkflowExpression] Func<string> bodycontentlocationname = null, [WorkflowExpression] Func<string> bodycontentlocationaddress = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppLocationResponse> __BuildSendWhatsAppLocation(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<double> bodycontentlocationlongitude = null, WorkflowExpression<double> bodycontentlocationlatitude = null, WorkflowExpression<string> bodycontentlocationname = null, WorkflowExpression<string> bodycontentlocationaddress = null)
+        {
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontentlocationlongitude, nameof(bodycontentlocationlongitude), required: false);
+            WorkflowExpression.Validate(bodycontentlocationlatitude, nameof(bodycontentlocationlatitude), required: false);
+            WorkflowExpression.Validate(bodycontentlocationname, nameof(bodycontentlocationname), required: false);
+            WorkflowExpression.Validate(bodycontentlocationaddress, nameof(bodycontentlocationaddress), required: false);
+            return new DeferredBodyAction<SendWhatsAppLocationResponse>(() =>
             {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/location";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                body["channel"] = "whatsapp";
                 bodypropCount++;
-            }
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                var locationObject = new JObject();
+                var locationObjectpropCount = 0;
+                if (bodycontentlocationlongitude != null)
+                {
+                    locationObject["longitude"] = ExpressionConverter.ConvertO(bodycontentlocationlongitude);
+                    locationObjectpropCount++;
+                }
 
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "interactive";
-            contentObjectpropCount++;
-            var interactiveObject = new JObject();
-            var interactiveObjectpropCount = 0;
-            interactiveObject["subType"] = "buttons";
-            interactiveObjectpropCount++;
-            var componentsObject = new JObject();
-            var componentsObjectpropCount = 0;
-            var headerObject = new JObject();
-            var headerObjectpropCount = 0;
-            if (bodycontentinteractivecomponentsheadertype != null)
-            {
-                headerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertype);
-                headerObjectpropCount++;
-            }
+                if (bodycontentlocationlatitude != null)
+                {
+                    locationObject["latitude"] = ExpressionConverter.ConvertO(bodycontentlocationlatitude);
+                    locationObjectpropCount++;
+                }
 
-            if (bodycontentinteractivecomponentsheadertext != null)
-            {
-                headerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertext);
-                headerObjectpropCount++;
-            }
+                if (bodycontentlocationname != null)
+                {
+                    locationObject["name"] = ExpressionConverter.ConvertO(bodycontentlocationname);
+                    locationObjectpropCount++;
+                }
 
-            if (headerObjectpropCount > 0)
-            {
-                componentsObject["header"] = headerObject;
-                componentsObjectpropCount++;
-            }
+                if (bodycontentlocationaddress != null)
+                {
+                    locationObject["address"] = ExpressionConverter.ConvertO(bodycontentlocationaddress);
+                    locationObjectpropCount++;
+                }
 
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            if (bodycontentinteractivecomponentsbodytype != null)
-            {
-                bodyObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytype);
-                bodyObjectpropCount++;
-            }
+                if (locationObjectpropCount > 0)
+                {
+                    contentObject["location"] = locationObject;
+                    contentObjectpropCount++;
+                }
 
-            if (bodycontentinteractivecomponentsbodytext != null)
-            {
-                bodyObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytext);
-                bodyObjectpropCount++;
-            }
+                contentObject["contentType"] = "location";
+                contentObjectpropCount++;
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
 
-            if (bodyObjectpropCount > 0)
-            {
-                componentsObject["body"] = bodyObject;
-                componentsObjectpropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            var footerObject = new JObject();
-            var footerObjectpropCount = 0;
-            if (bodycontentinteractivecomponentsfootertype != null)
-            {
-                footerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertype);
-                footerObjectpropCount++;
-            }
+                return new ApiConnectionAction<SendWhatsAppLocationResponse>(callPayload);
+            });
+        }
 
-            if (bodycontentinteractivecomponentsfootertext != null)
-            {
-                footerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertext);
-                footerObjectpropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppQuickReply))]
+        public IBodyWorkflowAction<SendWhatsAppQuickReplyResponse> SendWhatsAppQuickReply([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertext = null, [WorkflowExpression] Func<bodycontentinteractivecomponentsbuttonsInputItem[]> bodycontentinteractivecomponentsbuttons = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (footerObjectpropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppQuickReplyResponse> __BuildSendWhatsAppQuickReply(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytype = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytext = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertext = null, WorkflowExpression<bodycontentinteractivecomponentsbuttonsInputItem[]> bodycontentinteractivecomponentsbuttons = null)
+        {
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertype, nameof(bodycontentinteractivecomponentsheadertype), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertext, nameof(bodycontentinteractivecomponentsheadertext), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytype, nameof(bodycontentinteractivecomponentsbodytype), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytext, nameof(bodycontentinteractivecomponentsbodytext), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertype, nameof(bodycontentinteractivecomponentsfootertype), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertext, nameof(bodycontentinteractivecomponentsfootertext), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsbuttons, nameof(bodycontentinteractivecomponentsbuttons), required: false);
+            return new DeferredBodyAction<SendWhatsAppQuickReplyResponse>(() =>
             {
-                componentsObject["footer"] = footerObject;
-                componentsObjectpropCount++;
-            }
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/quick-reply";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
 
-            if (bodycontentinteractivecomponentsbuttons != null)
-            {
-                componentsObject["buttons"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbuttons);
-                componentsObjectpropCount++;
-            }
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
 
-            if (componentsObjectpropCount > 0)
-            {
-                interactiveObject["components"] = componentsObject;
+                body["channel"] = "whatsapp";
+                bodypropCount++;
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "interactive";
+                contentObjectpropCount++;
+                var interactiveObject = new JObject();
+                var interactiveObjectpropCount = 0;
+                interactiveObject["subType"] = "buttons";
                 interactiveObjectpropCount++;
-            }
+                var componentsObject = new JObject();
+                var componentsObjectpropCount = 0;
+                var headerObject = new JObject();
+                var headerObjectpropCount = 0;
+                if (bodycontentinteractivecomponentsheadertype != null)
+                {
+                    headerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertype);
+                    headerObjectpropCount++;
+                }
 
-            if (interactiveObjectpropCount > 0)
-            {
-                contentObject["interactive"] = interactiveObject;
-                contentObjectpropCount++;
-            }
+                if (bodycontentinteractivecomponentsheadertext != null)
+                {
+                    headerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertext);
+                    headerObjectpropCount++;
+                }
 
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
+                if (headerObjectpropCount > 0)
+                {
+                    componentsObject["header"] = headerObject;
+                    componentsObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                if (bodycontentinteractivecomponentsbodytype != null)
+                {
+                    bodyObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytype);
+                    bodyObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<SendWhatsAppQuickReplyResponse>(callPayload);
+                if (bodycontentinteractivecomponentsbodytext != null)
+                {
+                    bodyObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytext);
+                    bodyObjectpropCount++;
+                }
+
+                if (bodyObjectpropCount > 0)
+                {
+                    componentsObject["body"] = bodyObject;
+                    componentsObjectpropCount++;
+                }
+
+                var footerObject = new JObject();
+                var footerObjectpropCount = 0;
+                if (bodycontentinteractivecomponentsfootertype != null)
+                {
+                    footerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertype);
+                    footerObjectpropCount++;
+                }
+
+                if (bodycontentinteractivecomponentsfootertext != null)
+                {
+                    footerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertext);
+                    footerObjectpropCount++;
+                }
+
+                if (footerObjectpropCount > 0)
+                {
+                    componentsObject["footer"] = footerObject;
+                    componentsObjectpropCount++;
+                }
+
+                if (bodycontentinteractivecomponentsbuttons != null)
+                {
+                    componentsObject["buttons"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbuttons);
+                    componentsObjectpropCount++;
+                }
+
+                if (componentsObjectpropCount > 0)
+                {
+                    interactiveObject["components"] = componentsObject;
+                    interactiveObjectpropCount++;
+                }
+
+                if (interactiveObjectpropCount > 0)
+                {
+                    contentObject["interactive"] = interactiveObject;
+                    contentObjectpropCount++;
+                }
+
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendWhatsAppQuickReplyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppProductListResponse> SendWhatsAppProductList(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertype = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertext = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytype = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytext = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertype = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertext = null, Expression<Func<string>> bodycontentinteractivecomponentsproductListcatalogId = null, Expression<Func<bodycontentinteractivecomponentsproductListsectionsInputItem[]>> bodycontentinteractivecomponentsproductListsections = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppProductList))]
+        public IBodyWorkflowAction<SendWhatsAppProductListResponse> SendWhatsAppProductList([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsproductListcatalogId = null, [WorkflowExpression] Func<bodycontentinteractivecomponentsproductListsectionsInputItem[]> bodycontentinteractivecomponentsproductListsections = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/product-list";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppProductListResponse> __BuildSendWhatsAppProductList(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytype = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytext = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsproductListcatalogId = null, WorkflowExpression<bodycontentinteractivecomponentsproductListsectionsInputItem[]> bodycontentinteractivecomponentsproductListsections = null)
+        {
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertype, nameof(bodycontentinteractivecomponentsheadertype), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertext, nameof(bodycontentinteractivecomponentsheadertext), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytype, nameof(bodycontentinteractivecomponentsbodytype), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytext, nameof(bodycontentinteractivecomponentsbodytext), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertype, nameof(bodycontentinteractivecomponentsfootertype), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertext, nameof(bodycontentinteractivecomponentsfootertext), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsproductListcatalogId, nameof(bodycontentinteractivecomponentsproductListcatalogId), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsproductListsections, nameof(bodycontentinteractivecomponentsproductListsections), required: false);
+            return new DeferredBodyAction<SendWhatsAppProductListResponse>(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/product-list";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                body["channel"] = "whatsapp";
                 bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "interactive";
-            contentObjectpropCount++;
-            var interactiveObject = new JObject();
-            var interactiveObjectpropCount = 0;
-            interactiveObject["subType"] = "productList";
-            interactiveObjectpropCount++;
-            var componentsObject = new JObject();
-            var componentsObjectpropCount = 0;
-            var headerObject = new JObject();
-            var headerObjectpropCount = 0;
-            if (bodycontentinteractivecomponentsheadertype != null)
-            {
-                headerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertype);
-                headerObjectpropCount++;
-            }
-
-            if (bodycontentinteractivecomponentsheadertext != null)
-            {
-                headerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertext);
-                headerObjectpropCount++;
-            }
-
-            if (headerObjectpropCount > 0)
-            {
-                componentsObject["header"] = headerObject;
-                componentsObjectpropCount++;
-            }
-
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            if (bodycontentinteractivecomponentsbodytype != null)
-            {
-                bodyObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytype);
-                bodyObjectpropCount++;
-            }
-
-            if (bodycontentinteractivecomponentsbodytext != null)
-            {
-                bodyObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytext);
-                bodyObjectpropCount++;
-            }
-
-            if (bodyObjectpropCount > 0)
-            {
-                componentsObject["body"] = bodyObject;
-                componentsObjectpropCount++;
-            }
-
-            var footerObject = new JObject();
-            var footerObjectpropCount = 0;
-            if (bodycontentinteractivecomponentsfootertype != null)
-            {
-                footerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertype);
-                footerObjectpropCount++;
-            }
-
-            if (bodycontentinteractivecomponentsfootertext != null)
-            {
-                footerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertext);
-                footerObjectpropCount++;
-            }
-
-            if (footerObjectpropCount > 0)
-            {
-                componentsObject["footer"] = footerObject;
-                componentsObjectpropCount++;
-            }
-
-            var productListObject = new JObject();
-            var productListObjectpropCount = 0;
-            if (bodycontentinteractivecomponentsproductListcatalogId != null)
-            {
-                productListObject["catalogId"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsproductListcatalogId);
-                productListObjectpropCount++;
-            }
-
-            if (bodycontentinteractivecomponentsproductListsections != null)
-            {
-                productListObject["sections"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsproductListsections);
-                productListObjectpropCount++;
-            }
-
-            if (productListObjectpropCount > 0)
-            {
-                componentsObject["productList"] = productListObject;
-                componentsObjectpropCount++;
-            }
-
-            if (componentsObjectpropCount > 0)
-            {
-                interactiveObject["components"] = componentsObject;
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "interactive";
+                contentObjectpropCount++;
+                var interactiveObject = new JObject();
+                var interactiveObjectpropCount = 0;
+                interactiveObject["subType"] = "productList";
                 interactiveObjectpropCount++;
-            }
+                var componentsObject = new JObject();
+                var componentsObjectpropCount = 0;
+                var headerObject = new JObject();
+                var headerObjectpropCount = 0;
+                if (bodycontentinteractivecomponentsheadertype != null)
+                {
+                    headerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertype);
+                    headerObjectpropCount++;
+                }
 
-            if (interactiveObjectpropCount > 0)
-            {
-                contentObject["interactive"] = interactiveObject;
-                contentObjectpropCount++;
-            }
+                if (bodycontentinteractivecomponentsheadertext != null)
+                {
+                    headerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertext);
+                    headerObjectpropCount++;
+                }
 
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
+                if (headerObjectpropCount > 0)
+                {
+                    componentsObject["header"] = headerObject;
+                    componentsObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                if (bodycontentinteractivecomponentsbodytype != null)
+                {
+                    bodyObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytype);
+                    bodyObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<SendWhatsAppProductListResponse>(callPayload);
+                if (bodycontentinteractivecomponentsbodytext != null)
+                {
+                    bodyObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytext);
+                    bodyObjectpropCount++;
+                }
+
+                if (bodyObjectpropCount > 0)
+                {
+                    componentsObject["body"] = bodyObject;
+                    componentsObjectpropCount++;
+                }
+
+                var footerObject = new JObject();
+                var footerObjectpropCount = 0;
+                if (bodycontentinteractivecomponentsfootertype != null)
+                {
+                    footerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertype);
+                    footerObjectpropCount++;
+                }
+
+                if (bodycontentinteractivecomponentsfootertext != null)
+                {
+                    footerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertext);
+                    footerObjectpropCount++;
+                }
+
+                if (footerObjectpropCount > 0)
+                {
+                    componentsObject["footer"] = footerObject;
+                    componentsObjectpropCount++;
+                }
+
+                var productListObject = new JObject();
+                var productListObjectpropCount = 0;
+                if (bodycontentinteractivecomponentsproductListcatalogId != null)
+                {
+                    productListObject["catalogId"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsproductListcatalogId);
+                    productListObjectpropCount++;
+                }
+
+                if (bodycontentinteractivecomponentsproductListsections != null)
+                {
+                    productListObject["sections"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsproductListsections);
+                    productListObjectpropCount++;
+                }
+
+                if (productListObjectpropCount > 0)
+                {
+                    componentsObject["productList"] = productListObject;
+                    componentsObjectpropCount++;
+                }
+
+                if (componentsObjectpropCount > 0)
+                {
+                    interactiveObject["components"] = componentsObject;
+                    interactiveObjectpropCount++;
+                }
+
+                if (interactiveObjectpropCount > 0)
+                {
+                    contentObject["interactive"] = interactiveObject;
+                    contentObjectpropCount++;
+                }
+
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendWhatsAppProductListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppProductResponse> SendWhatsAppProduct(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertype = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertext = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytype = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytext = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertype = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertext = null, Expression<Func<string>> bodycontentinteractivecomponentsproductcatalogId = null, Expression<Func<string>> bodycontentinteractivecomponentsproductproductId = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppProduct))]
+        public IBodyWorkflowAction<SendWhatsAppProductResponse> SendWhatsAppProduct([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsproductcatalogId = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsproductproductId = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/product";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppProductResponse> __BuildSendWhatsAppProduct(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytype = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytext = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsproductcatalogId = null, WorkflowExpression<string> bodycontentinteractivecomponentsproductproductId = null)
+        {
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertype, nameof(bodycontentinteractivecomponentsheadertype), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertext, nameof(bodycontentinteractivecomponentsheadertext), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytype, nameof(bodycontentinteractivecomponentsbodytype), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytext, nameof(bodycontentinteractivecomponentsbodytext), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertype, nameof(bodycontentinteractivecomponentsfootertype), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertext, nameof(bodycontentinteractivecomponentsfootertext), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsproductcatalogId, nameof(bodycontentinteractivecomponentsproductcatalogId), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsproductproductId, nameof(bodycontentinteractivecomponentsproductproductId), required: false);
+            return new DeferredBodyAction<SendWhatsAppProductResponse>(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/product";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                body["channel"] = "whatsapp";
                 bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "interactive";
-            contentObjectpropCount++;
-            var interactiveObject = new JObject();
-            var interactiveObjectpropCount = 0;
-            interactiveObject["subType"] = "product";
-            interactiveObjectpropCount++;
-            var componentsObject = new JObject();
-            var componentsObjectpropCount = 0;
-            var headerObject = new JObject();
-            var headerObjectpropCount = 0;
-            if (bodycontentinteractivecomponentsheadertype != null)
-            {
-                headerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertype);
-                headerObjectpropCount++;
-            }
-
-            if (bodycontentinteractivecomponentsheadertext != null)
-            {
-                headerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertext);
-                headerObjectpropCount++;
-            }
-
-            if (headerObjectpropCount > 0)
-            {
-                componentsObject["header"] = headerObject;
-                componentsObjectpropCount++;
-            }
-
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            if (bodycontentinteractivecomponentsbodytype != null)
-            {
-                bodyObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytype);
-                bodyObjectpropCount++;
-            }
-
-            if (bodycontentinteractivecomponentsbodytext != null)
-            {
-                bodyObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytext);
-                bodyObjectpropCount++;
-            }
-
-            if (bodyObjectpropCount > 0)
-            {
-                componentsObject["body"] = bodyObject;
-                componentsObjectpropCount++;
-            }
-
-            var footerObject = new JObject();
-            var footerObjectpropCount = 0;
-            if (bodycontentinteractivecomponentsfootertype != null)
-            {
-                footerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertype);
-                footerObjectpropCount++;
-            }
-
-            if (bodycontentinteractivecomponentsfootertext != null)
-            {
-                footerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertext);
-                footerObjectpropCount++;
-            }
-
-            if (footerObjectpropCount > 0)
-            {
-                componentsObject["footer"] = footerObject;
-                componentsObjectpropCount++;
-            }
-
-            var productObject = new JObject();
-            var productObjectpropCount = 0;
-            if (bodycontentinteractivecomponentsproductcatalogId != null)
-            {
-                productObject["catalogId"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsproductcatalogId);
-                productObjectpropCount++;
-            }
-
-            if (bodycontentinteractivecomponentsproductproductId != null)
-            {
-                productObject["productId"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsproductproductId);
-                productObjectpropCount++;
-            }
-
-            if (productObjectpropCount > 0)
-            {
-                componentsObject["product"] = productObject;
-                componentsObjectpropCount++;
-            }
-
-            if (componentsObjectpropCount > 0)
-            {
-                interactiveObject["components"] = componentsObject;
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "interactive";
+                contentObjectpropCount++;
+                var interactiveObject = new JObject();
+                var interactiveObjectpropCount = 0;
+                interactiveObject["subType"] = "product";
                 interactiveObjectpropCount++;
-            }
+                var componentsObject = new JObject();
+                var componentsObjectpropCount = 0;
+                var headerObject = new JObject();
+                var headerObjectpropCount = 0;
+                if (bodycontentinteractivecomponentsheadertype != null)
+                {
+                    headerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertype);
+                    headerObjectpropCount++;
+                }
 
-            if (interactiveObjectpropCount > 0)
-            {
-                contentObject["interactive"] = interactiveObject;
-                contentObjectpropCount++;
-            }
+                if (bodycontentinteractivecomponentsheadertext != null)
+                {
+                    headerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertext);
+                    headerObjectpropCount++;
+                }
 
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
+                if (headerObjectpropCount > 0)
+                {
+                    componentsObject["header"] = headerObject;
+                    componentsObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                if (bodycontentinteractivecomponentsbodytype != null)
+                {
+                    bodyObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytype);
+                    bodyObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<SendWhatsAppProductResponse>(callPayload);
+                if (bodycontentinteractivecomponentsbodytext != null)
+                {
+                    bodyObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytext);
+                    bodyObjectpropCount++;
+                }
+
+                if (bodyObjectpropCount > 0)
+                {
+                    componentsObject["body"] = bodyObject;
+                    componentsObjectpropCount++;
+                }
+
+                var footerObject = new JObject();
+                var footerObjectpropCount = 0;
+                if (bodycontentinteractivecomponentsfootertype != null)
+                {
+                    footerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertype);
+                    footerObjectpropCount++;
+                }
+
+                if (bodycontentinteractivecomponentsfootertext != null)
+                {
+                    footerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertext);
+                    footerObjectpropCount++;
+                }
+
+                if (footerObjectpropCount > 0)
+                {
+                    componentsObject["footer"] = footerObject;
+                    componentsObjectpropCount++;
+                }
+
+                var productObject = new JObject();
+                var productObjectpropCount = 0;
+                if (bodycontentinteractivecomponentsproductcatalogId != null)
+                {
+                    productObject["catalogId"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsproductcatalogId);
+                    productObjectpropCount++;
+                }
+
+                if (bodycontentinteractivecomponentsproductproductId != null)
+                {
+                    productObject["productId"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsproductproductId);
+                    productObjectpropCount++;
+                }
+
+                if (productObjectpropCount > 0)
+                {
+                    componentsObject["product"] = productObject;
+                    componentsObjectpropCount++;
+                }
+
+                if (componentsObjectpropCount > 0)
+                {
+                    interactiveObject["components"] = componentsObject;
+                    interactiveObjectpropCount++;
+                }
+
+                if (interactiveObjectpropCount > 0)
+                {
+                    contentObject["interactive"] = interactiveObject;
+                    contentObjectpropCount++;
+                }
+
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendWhatsAppProductResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppListResponse> SendWhatsAppList(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertype = null, Expression<Func<string>> bodycontentinteractivecomponentsheadertext = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytype = null, Expression<Func<string>> bodycontentinteractivecomponentsbodytext = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertype = null, Expression<Func<string>> bodycontentinteractivecomponentsfootertext = null, Expression<Func<string>> bodycontentinteractivecomponentslisttitle = null, Expression<Func<bodycontentinteractivecomponentslistsectionsInputItem[]>> bodycontentinteractivecomponentslistsections = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppList))]
+        public IBodyWorkflowAction<SendWhatsAppListResponse> SendWhatsAppList([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsheadertext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsbodytext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertype = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentsfootertext = null, [WorkflowExpression] Func<string> bodycontentinteractivecomponentslisttitle = null, [WorkflowExpression] Func<bodycontentinteractivecomponentslistsectionsInputItem[]> bodycontentinteractivecomponentslistsections = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/list";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppListResponse> __BuildSendWhatsAppList(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsheadertext = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytype = null, WorkflowExpression<string> bodycontentinteractivecomponentsbodytext = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertype = null, WorkflowExpression<string> bodycontentinteractivecomponentsfootertext = null, WorkflowExpression<string> bodycontentinteractivecomponentslisttitle = null, WorkflowExpression<bodycontentinteractivecomponentslistsectionsInputItem[]> bodycontentinteractivecomponentslistsections = null)
+        {
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertype, nameof(bodycontentinteractivecomponentsheadertype), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsheadertext, nameof(bodycontentinteractivecomponentsheadertext), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytype, nameof(bodycontentinteractivecomponentsbodytype), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsbodytext, nameof(bodycontentinteractivecomponentsbodytext), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertype, nameof(bodycontentinteractivecomponentsfootertype), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentsfootertext, nameof(bodycontentinteractivecomponentsfootertext), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentslisttitle, nameof(bodycontentinteractivecomponentslisttitle), required: false);
+            WorkflowExpression.Validate(bodycontentinteractivecomponentslistsections, nameof(bodycontentinteractivecomponentslistsections), required: false);
+            return new DeferredBodyAction<SendWhatsAppListResponse>(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/list";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                body["channel"] = "whatsapp";
                 bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "interactive";
-            contentObjectpropCount++;
-            var interactiveObject = new JObject();
-            var interactiveObjectpropCount = 0;
-            interactiveObject["subType"] = "list";
-            interactiveObjectpropCount++;
-            var componentsObject = new JObject();
-            var componentsObjectpropCount = 0;
-            var headerObject = new JObject();
-            var headerObjectpropCount = 0;
-            if (bodycontentinteractivecomponentsheadertype != null)
-            {
-                headerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertype);
-                headerObjectpropCount++;
-            }
-
-            if (bodycontentinteractivecomponentsheadertext != null)
-            {
-                headerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertext);
-                headerObjectpropCount++;
-            }
-
-            if (headerObjectpropCount > 0)
-            {
-                componentsObject["header"] = headerObject;
-                componentsObjectpropCount++;
-            }
-
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            if (bodycontentinteractivecomponentsbodytype != null)
-            {
-                bodyObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytype);
-                bodyObjectpropCount++;
-            }
-
-            if (bodycontentinteractivecomponentsbodytext != null)
-            {
-                bodyObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytext);
-                bodyObjectpropCount++;
-            }
-
-            if (bodyObjectpropCount > 0)
-            {
-                componentsObject["body"] = bodyObject;
-                componentsObjectpropCount++;
-            }
-
-            var footerObject = new JObject();
-            var footerObjectpropCount = 0;
-            if (bodycontentinteractivecomponentsfootertype != null)
-            {
-                footerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertype);
-                footerObjectpropCount++;
-            }
-
-            if (bodycontentinteractivecomponentsfootertext != null)
-            {
-                footerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertext);
-                footerObjectpropCount++;
-            }
-
-            if (footerObjectpropCount > 0)
-            {
-                componentsObject["footer"] = footerObject;
-                componentsObjectpropCount++;
-            }
-
-            var listObject = new JObject();
-            var listObjectpropCount = 0;
-            if (bodycontentinteractivecomponentslisttitle != null)
-            {
-                listObject["title"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentslisttitle);
-                listObjectpropCount++;
-            }
-
-            if (bodycontentinteractivecomponentslistsections != null)
-            {
-                listObject["sections"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentslistsections);
-                listObjectpropCount++;
-            }
-
-            if (listObjectpropCount > 0)
-            {
-                componentsObject["list"] = listObject;
-                componentsObjectpropCount++;
-            }
-
-            if (componentsObjectpropCount > 0)
-            {
-                interactiveObject["components"] = componentsObject;
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "interactive";
+                contentObjectpropCount++;
+                var interactiveObject = new JObject();
+                var interactiveObjectpropCount = 0;
+                interactiveObject["subType"] = "list";
                 interactiveObjectpropCount++;
-            }
+                var componentsObject = new JObject();
+                var componentsObjectpropCount = 0;
+                var headerObject = new JObject();
+                var headerObjectpropCount = 0;
+                if (bodycontentinteractivecomponentsheadertype != null)
+                {
+                    headerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertype);
+                    headerObjectpropCount++;
+                }
 
-            if (interactiveObjectpropCount > 0)
-            {
-                contentObject["interactive"] = interactiveObject;
-                contentObjectpropCount++;
-            }
+                if (bodycontentinteractivecomponentsheadertext != null)
+                {
+                    headerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsheadertext);
+                    headerObjectpropCount++;
+                }
 
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
+                if (headerObjectpropCount > 0)
+                {
+                    componentsObject["header"] = headerObject;
+                    componentsObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                if (bodycontentinteractivecomponentsbodytype != null)
+                {
+                    bodyObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytype);
+                    bodyObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<SendWhatsAppListResponse>(callPayload);
+                if (bodycontentinteractivecomponentsbodytext != null)
+                {
+                    bodyObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsbodytext);
+                    bodyObjectpropCount++;
+                }
+
+                if (bodyObjectpropCount > 0)
+                {
+                    componentsObject["body"] = bodyObject;
+                    componentsObjectpropCount++;
+                }
+
+                var footerObject = new JObject();
+                var footerObjectpropCount = 0;
+                if (bodycontentinteractivecomponentsfootertype != null)
+                {
+                    footerObject["type"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertype);
+                    footerObjectpropCount++;
+                }
+
+                if (bodycontentinteractivecomponentsfootertext != null)
+                {
+                    footerObject["text"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentsfootertext);
+                    footerObjectpropCount++;
+                }
+
+                if (footerObjectpropCount > 0)
+                {
+                    componentsObject["footer"] = footerObject;
+                    componentsObjectpropCount++;
+                }
+
+                var listObject = new JObject();
+                var listObjectpropCount = 0;
+                if (bodycontentinteractivecomponentslisttitle != null)
+                {
+                    listObject["title"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentslisttitle);
+                    listObjectpropCount++;
+                }
+
+                if (bodycontentinteractivecomponentslistsections != null)
+                {
+                    listObject["sections"] = ExpressionConverter.ConvertO(bodycontentinteractivecomponentslistsections);
+                    listObjectpropCount++;
+                }
+
+                if (listObjectpropCount > 0)
+                {
+                    componentsObject["list"] = listObject;
+                    componentsObjectpropCount++;
+                }
+
+                if (componentsObjectpropCount > 0)
+                {
+                    interactiveObject["components"] = componentsObject;
+                    interactiveObjectpropCount++;
+                }
+
+                if (interactiveObjectpropCount > 0)
+                {
+                    contentObject["interactive"] = interactiveObject;
+                    contentObjectpropCount++;
+                }
+
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendWhatsAppListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendsWhatsAppImageResponse> SendsWhatsAppImage(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentimageurl = null, Expression<Func<string>> bodycontentimagecaption = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendsWhatsAppImage))]
+        public IBodyWorkflowAction<SendsWhatsAppImageResponse> SendsWhatsAppImage([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentimageurl = null, [WorkflowExpression] Func<string> bodycontentimagecaption = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/image";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
-            {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-                bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "image";
-            contentObjectpropCount++;
-            var imageObject = new JObject();
-            var imageObjectpropCount = 0;
-            if (bodycontentimageurl != null)
-            {
-                imageObject["url"] = ExpressionConverter.ConvertO(bodycontentimageurl);
-                imageObjectpropCount++;
-            }
-
-            if (bodycontentimagecaption != null)
-            {
-                imageObject["caption"] = ExpressionConverter.ConvertO(bodycontentimagecaption);
-                imageObjectpropCount++;
-            }
-
-            if (imageObjectpropCount > 0)
-            {
-                contentObject["image"] = imageObject;
-                contentObjectpropCount++;
-            }
-
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendsWhatsAppImageResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppVideoResponse> SendWhatsAppVideo(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentvideourl = null, Expression<Func<string>> bodycontentvideocaption = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendsWhatsAppImageResponse> __BuildSendsWhatsAppImage(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentimageurl = null, WorkflowExpression<string> bodycontentimagecaption = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/video";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontentimageurl, nameof(bodycontentimageurl), required: false);
+            WorkflowExpression.Validate(bodycontentimagecaption, nameof(bodycontentimagecaption), required: false);
+            return new DeferredBodyAction<SendsWhatsAppImageResponse>(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/image";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                body["channel"] = "whatsapp";
                 bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "video";
-            contentObjectpropCount++;
-            var videoObject = new JObject();
-            var videoObjectpropCount = 0;
-            if (bodycontentvideourl != null)
-            {
-                videoObject["url"] = ExpressionConverter.ConvertO(bodycontentvideourl);
-                videoObjectpropCount++;
-            }
-
-            if (bodycontentvideocaption != null)
-            {
-                videoObject["caption"] = ExpressionConverter.ConvertO(bodycontentvideocaption);
-                videoObjectpropCount++;
-            }
-
-            if (videoObjectpropCount > 0)
-            {
-                contentObject["video"] = videoObject;
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "image";
                 contentObjectpropCount++;
-            }
+                var imageObject = new JObject();
+                var imageObjectpropCount = 0;
+                if (bodycontentimageurl != null)
+                {
+                    imageObject["url"] = ExpressionConverter.ConvertO(bodycontentimageurl);
+                    imageObjectpropCount++;
+                }
 
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
+                if (bodycontentimagecaption != null)
+                {
+                    imageObject["caption"] = ExpressionConverter.ConvertO(bodycontentimagecaption);
+                    imageObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (imageObjectpropCount > 0)
+                {
+                    contentObject["image"] = imageObject;
+                    contentObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<SendWhatsAppVideoResponse>(callPayload);
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendsWhatsAppImageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppDocumentResponse> SendWhatsAppDocument(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentdocumenturl = null, Expression<Func<string>> bodycontentdocumentcaption = null, Expression<Func<string>> bodycontentdocumentfilename = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppVideo))]
+        public IBodyWorkflowAction<SendWhatsAppVideoResponse> SendWhatsAppVideo([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentvideourl = null, [WorkflowExpression] Func<string> bodycontentvideocaption = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/document";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
-            {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-                bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "document";
-            contentObjectpropCount++;
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (bodycontentdocumenturl != null)
-            {
-                documentObject["url"] = ExpressionConverter.ConvertO(bodycontentdocumenturl);
-                documentObjectpropCount++;
-            }
-
-            if (bodycontentdocumentcaption != null)
-            {
-                documentObject["caption"] = ExpressionConverter.ConvertO(bodycontentdocumentcaption);
-                documentObjectpropCount++;
-            }
-
-            if (bodycontentdocumentfilename != null)
-            {
-                documentObject["filename"] = ExpressionConverter.ConvertO(bodycontentdocumentfilename);
-                documentObjectpropCount++;
-            }
-
-            if (documentObjectpropCount > 0)
-            {
-                contentObject["document"] = documentObject;
-                contentObjectpropCount++;
-            }
-
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendWhatsAppDocumentResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppAudioResponse> SendWhatsAppAudio(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentaudiourl = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppVideoResponse> __BuildSendWhatsAppVideo(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentvideourl = null, WorkflowExpression<string> bodycontentvideocaption = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/audio";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontentvideourl, nameof(bodycontentvideourl), required: false);
+            WorkflowExpression.Validate(bodycontentvideocaption, nameof(bodycontentvideocaption), required: false);
+            return new DeferredBodyAction<SendWhatsAppVideoResponse>(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/video";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                body["channel"] = "whatsapp";
                 bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "audio";
-            contentObjectpropCount++;
-            var audioObject = new JObject();
-            var audioObjectpropCount = 0;
-            if (bodycontentaudiourl != null)
-            {
-                audioObject["url"] = ExpressionConverter.ConvertO(bodycontentaudiourl);
-                audioObjectpropCount++;
-            }
-
-            if (audioObjectpropCount > 0)
-            {
-                contentObject["audio"] = audioObject;
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "video";
                 contentObjectpropCount++;
-            }
+                var videoObject = new JObject();
+                var videoObjectpropCount = 0;
+                if (bodycontentvideourl != null)
+                {
+                    videoObject["url"] = ExpressionConverter.ConvertO(bodycontentvideourl);
+                    videoObjectpropCount++;
+                }
 
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
+                if (bodycontentvideocaption != null)
+                {
+                    videoObject["caption"] = ExpressionConverter.ConvertO(bodycontentvideocaption);
+                    videoObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (videoObjectpropCount > 0)
+                {
+                    contentObject["video"] = videoObject;
+                    contentObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<SendWhatsAppAudioResponse>(callPayload);
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendWhatsAppVideoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppStickerResponse> SendWhatsAppSticker(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontentstickerurl = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppDocument))]
+        public IBodyWorkflowAction<SendWhatsAppDocumentResponse> SendWhatsAppDocument([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentdocumenturl = null, [WorkflowExpression] Func<string> bodycontentdocumentcaption = null, [WorkflowExpression] Func<string> bodycontentdocumentfilename = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/sticker";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
-            {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-                bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "sticker";
-            contentObjectpropCount++;
-            var stickerObject = new JObject();
-            var stickerObjectpropCount = 0;
-            if (bodycontentstickerurl != null)
-            {
-                stickerObject["url"] = ExpressionConverter.ConvertO(bodycontentstickerurl);
-                stickerObjectpropCount++;
-            }
-
-            if (stickerObjectpropCount > 0)
-            {
-                contentObject["sticker"] = stickerObject;
-                contentObjectpropCount++;
-            }
-
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendWhatsAppStickerResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTemplateTextResponse> SendWhatsAppTemplateText(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontenttemplatetemplateId = null, Expression<Func<string>> bodycontenttemplatetemplateLanguage = null, Expression<Func<bodycontenttemplatecomponentsheaderInputItem[]>> bodycontenttemplatecomponentsheader = null, Expression<Func<bodycontenttemplatecomponentsbodyInputItem[]>> bodycontenttemplatecomponentsbody = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppDocumentResponse> __BuildSendWhatsAppDocument(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentdocumenturl = null, WorkflowExpression<string> bodycontentdocumentcaption = null, WorkflowExpression<string> bodycontentdocumentfilename = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontentdocumenturl, nameof(bodycontentdocumenturl), required: false);
+            WorkflowExpression.Validate(bodycontentdocumentcaption, nameof(bodycontentdocumentcaption), required: false);
+            WorkflowExpression.Validate(bodycontentdocumentfilename, nameof(bodycontentdocumentfilename), required: false);
+            return new DeferredBodyAction<SendWhatsAppDocumentResponse>(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/document";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                body["channel"] = "whatsapp";
                 bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "template";
-            contentObjectpropCount++;
-            var templateObject = new JObject();
-            var templateObjectpropCount = 0;
-            if (bodycontenttemplatetemplateId != null)
-            {
-                templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
-                templateObjectpropCount++;
-            }
-
-            if (bodycontenttemplatetemplateLanguage != null)
-            {
-                templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
-                templateObjectpropCount++;
-            }
-
-            var componentsObject = new JObject();
-            var componentsObjectpropCount = 0;
-            if (bodycontenttemplatecomponentsheader != null)
-            {
-                componentsObject["header"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsheader);
-                componentsObjectpropCount++;
-            }
-
-            if (bodycontenttemplatecomponentsbody != null)
-            {
-                componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
-                componentsObjectpropCount++;
-            }
-
-            if (componentsObjectpropCount > 0)
-            {
-                templateObject["components"] = componentsObject;
-                templateObjectpropCount++;
-            }
-
-            if (templateObjectpropCount > 0)
-            {
-                contentObject["template"] = templateObject;
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "document";
                 contentObjectpropCount++;
-            }
+                var documentObject = new JObject();
+                var documentObjectpropCount = 0;
+                if (bodycontentdocumenturl != null)
+                {
+                    documentObject["url"] = ExpressionConverter.ConvertO(bodycontentdocumenturl);
+                    documentObjectpropCount++;
+                }
 
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
+                if (bodycontentdocumentcaption != null)
+                {
+                    documentObject["caption"] = ExpressionConverter.ConvertO(bodycontentdocumentcaption);
+                    documentObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodycontentdocumentfilename != null)
+                {
+                    documentObject["filename"] = ExpressionConverter.ConvertO(bodycontentdocumentfilename);
+                    documentObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<SendWhatsAppTemplateTextResponse>(callPayload);
+                if (documentObjectpropCount > 0)
+                {
+                    contentObject["document"] = documentObject;
+                    contentObjectpropCount++;
+                }
+
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendWhatsAppDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTemplateLocationResponse> SendWhatsAppTemplateLocation(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontenttemplatetemplateId = null, Expression<Func<string>> bodycontenttemplatetemplateLanguage = null, Expression<Func<bodycontenttemplatecomponentsheaderInputItem2[]>> bodycontenttemplatecomponentsheader = null, Expression<Func<bodycontenttemplatecomponentsbodyInputItem[]>> bodycontenttemplatecomponentsbody = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppAudio))]
+        public IBodyWorkflowAction<SendWhatsAppAudioResponse> SendWhatsAppAudio([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentaudiourl = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-location";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
-            {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-                bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "template";
-            contentObjectpropCount++;
-            var templateObject = new JObject();
-            var templateObjectpropCount = 0;
-            if (bodycontenttemplatetemplateId != null)
-            {
-                templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
-                templateObjectpropCount++;
-            }
-
-            if (bodycontenttemplatetemplateLanguage != null)
-            {
-                templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
-                templateObjectpropCount++;
-            }
-
-            var componentsObject = new JObject();
-            var componentsObjectpropCount = 0;
-            if (bodycontenttemplatecomponentsheader != null)
-            {
-                componentsObject["header"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsheader);
-                componentsObjectpropCount++;
-            }
-
-            if (bodycontenttemplatecomponentsbody != null)
-            {
-                componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
-                componentsObjectpropCount++;
-            }
-
-            if (componentsObjectpropCount > 0)
-            {
-                templateObject["components"] = componentsObject;
-                templateObjectpropCount++;
-            }
-
-            if (templateObjectpropCount > 0)
-            {
-                contentObject["template"] = templateObject;
-                contentObjectpropCount++;
-            }
-
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendWhatsAppTemplateLocationResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTemplateImageResponse> SendWhatsAppTemplateImage(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontenttemplatetemplateId = null, Expression<Func<string>> bodycontenttemplatetemplateLanguage = null, Expression<Func<bodycontenttemplatecomponentsheaderInputItem22[]>> bodycontenttemplatecomponentsheader = null, Expression<Func<bodycontenttemplatecomponentsbodyInputItem[]>> bodycontenttemplatecomponentsbody = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppAudioResponse> __BuildSendWhatsAppAudio(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentaudiourl = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-image";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontentaudiourl, nameof(bodycontentaudiourl), required: false);
+            return new DeferredBodyAction<SendWhatsAppAudioResponse>(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/audio";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                body["channel"] = "whatsapp";
                 bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "template";
-            contentObjectpropCount++;
-            var templateObject = new JObject();
-            var templateObjectpropCount = 0;
-            if (bodycontenttemplatetemplateId != null)
-            {
-                templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
-                templateObjectpropCount++;
-            }
-
-            if (bodycontenttemplatetemplateLanguage != null)
-            {
-                templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
-                templateObjectpropCount++;
-            }
-
-            var componentsObject = new JObject();
-            var componentsObjectpropCount = 0;
-            if (bodycontenttemplatecomponentsheader != null)
-            {
-                componentsObject["header"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsheader);
-                componentsObjectpropCount++;
-            }
-
-            if (bodycontenttemplatecomponentsbody != null)
-            {
-                componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
-                componentsObjectpropCount++;
-            }
-
-            if (componentsObjectpropCount > 0)
-            {
-                templateObject["components"] = componentsObject;
-                templateObjectpropCount++;
-            }
-
-            if (templateObjectpropCount > 0)
-            {
-                contentObject["template"] = templateObject;
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "audio";
                 contentObjectpropCount++;
-            }
+                var audioObject = new JObject();
+                var audioObjectpropCount = 0;
+                if (bodycontentaudiourl != null)
+                {
+                    audioObject["url"] = ExpressionConverter.ConvertO(bodycontentaudiourl);
+                    audioObjectpropCount++;
+                }
 
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
+                if (audioObjectpropCount > 0)
+                {
+                    contentObject["audio"] = audioObject;
+                    contentObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SendWhatsAppTemplateImageResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendWhatsAppAudioResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTemplateDocumentResponse> SendWhatsAppTemplateDocument(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontenttemplatetemplateId = null, Expression<Func<string>> bodycontenttemplatetemplateLanguage = null, Expression<Func<bodycontenttemplatecomponentsheaderInputItem222[]>> bodycontenttemplatecomponentsheader = null, Expression<Func<bodycontenttemplatecomponentsbodyInputItem[]>> bodycontenttemplatecomponentsbody = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppSticker))]
+        public IBodyWorkflowAction<SendWhatsAppStickerResponse> SendWhatsAppSticker([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontentstickerurl = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-document";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
-            {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-                bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "template";
-            contentObjectpropCount++;
-            var templateObject = new JObject();
-            var templateObjectpropCount = 0;
-            if (bodycontenttemplatetemplateId != null)
-            {
-                templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
-                templateObjectpropCount++;
-            }
-
-            if (bodycontenttemplatetemplateLanguage != null)
-            {
-                templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
-                templateObjectpropCount++;
-            }
-
-            var componentsObject = new JObject();
-            var componentsObjectpropCount = 0;
-            if (bodycontenttemplatecomponentsheader != null)
-            {
-                componentsObject["header"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsheader);
-                componentsObjectpropCount++;
-            }
-
-            if (bodycontenttemplatecomponentsbody != null)
-            {
-                componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
-                componentsObjectpropCount++;
-            }
-
-            if (componentsObjectpropCount > 0)
-            {
-                templateObject["components"] = componentsObject;
-                templateObjectpropCount++;
-            }
-
-            if (templateObjectpropCount > 0)
-            {
-                contentObject["template"] = templateObject;
-                contentObjectpropCount++;
-            }
-
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendWhatsAppTemplateDocumentResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTemplateVideoResponse> SendWhatsAppTemplateVideo(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodychannel = null, Expression<Func<string>> bodycontentcontentType = null, Expression<Func<string>> bodycontenttemplatetemplateId = null, Expression<Func<string>> bodycontenttemplatetemplateLanguage = null, Expression<Func<bodycontenttemplatecomponentsheaderInputItem2222[]>> bodycontenttemplatecomponentsheader = null, Expression<Func<bodycontenttemplatecomponentsbodyInputItem[]>> bodycontenttemplatecomponentsbody = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppStickerResponse> __BuildSendWhatsAppSticker(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontentstickerurl = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-video";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontentstickerurl, nameof(bodycontentstickerurl), required: false);
+            return new DeferredBodyAction<SendWhatsAppStickerResponse>(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-                bodypropCount++;
-            }
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/sticker";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
 
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
 
-            if (bodychannel != null)
-            {
-                body["channel"] = ExpressionConverter.ConvertO(bodychannel);
+                body["channel"] = "whatsapp";
                 bodypropCount++;
-            }
-
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            if (bodycontentcontentType != null)
-            {
-                contentObject["contentType"] = ExpressionConverter.ConvertO(bodycontentcontentType);
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "sticker";
                 contentObjectpropCount++;
-            }
+                var stickerObject = new JObject();
+                var stickerObjectpropCount = 0;
+                if (bodycontentstickerurl != null)
+                {
+                    stickerObject["url"] = ExpressionConverter.ConvertO(bodycontentstickerurl);
+                    stickerObjectpropCount++;
+                }
 
-            var templateObject = new JObject();
-            var templateObjectpropCount = 0;
-            if (bodycontenttemplatetemplateId != null)
-            {
-                templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
-                templateObjectpropCount++;
-            }
+                if (stickerObjectpropCount > 0)
+                {
+                    contentObject["sticker"] = stickerObject;
+                    contentObjectpropCount++;
+                }
 
-            if (bodycontenttemplatetemplateLanguage != null)
-            {
-                templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
-                templateObjectpropCount++;
-            }
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
 
-            var componentsObject = new JObject();
-            var componentsObjectpropCount = 0;
-            if (bodycontenttemplatecomponentsheader != null)
-            {
-                componentsObject["header"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsheader);
-                componentsObjectpropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodycontenttemplatecomponentsbody != null)
-            {
-                componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
-                componentsObjectpropCount++;
-            }
-
-            if (componentsObjectpropCount > 0)
-            {
-                templateObject["components"] = componentsObject;
-                templateObjectpropCount++;
-            }
-
-            if (templateObjectpropCount > 0)
-            {
-                contentObject["template"] = templateObject;
-                contentObjectpropCount++;
-            }
-
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendWhatsAppTemplateVideoResponse>(callPayload);
+                return new ApiConnectionAction<SendWhatsAppStickerResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTemplateDynamicButtonResponse> SendWhatsAppTemplateDynamicButton(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontenttemplatetemplateId = null, Expression<Func<string>> bodycontenttemplatetemplateLanguage = null, Expression<Func<bodycontenttemplatecomponentsbodyInputItem[]>> bodycontenttemplatecomponentsbody = null, Expression<Func<bodycontenttemplatecomponentsbuttonInputItem[]>> bodycontenttemplatecomponentsbutton = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppTemplateText))]
+        public IBodyWorkflowAction<SendWhatsAppTemplateTextResponse> SendWhatsAppTemplateText([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateId = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateLanguage = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsheaderInputItem[]> bodycontenttemplatecomponentsheader = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-dynamic-button";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
-            {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-                bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "template";
-            contentObjectpropCount++;
-            var templateObject = new JObject();
-            var templateObjectpropCount = 0;
-            if (bodycontenttemplatetemplateId != null)
-            {
-                templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
-                templateObjectpropCount++;
-            }
-
-            if (bodycontenttemplatetemplateLanguage != null)
-            {
-                templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
-                templateObjectpropCount++;
-            }
-
-            var componentsObject = new JObject();
-            var componentsObjectpropCount = 0;
-            if (bodycontenttemplatecomponentsbody != null)
-            {
-                componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
-                componentsObjectpropCount++;
-            }
-
-            if (bodycontenttemplatecomponentsbutton != null)
-            {
-                componentsObject["button"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbutton);
-                componentsObjectpropCount++;
-            }
-
-            if (componentsObjectpropCount > 0)
-            {
-                templateObject["components"] = componentsObject;
-                templateObjectpropCount++;
-            }
-
-            if (templateObjectpropCount > 0)
-            {
-                contentObject["template"] = templateObject;
-                contentObjectpropCount++;
-            }
-
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendWhatsAppTemplateDynamicButtonResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<SendWhatsAppTemplateQuickReplyResponse> SendWhatsAppTemplateQuickReply(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontenttemplatetemplateId = null, Expression<Func<string>> bodycontenttemplatetemplateLanguage = null, Expression<Func<bodycontenttemplatecomponentsbodyInputItem[]>> bodycontenttemplatecomponentsbody = null, Expression<Func<bodycontenttemplatecomponentsbuttonInputItem2[]>> bodycontenttemplatecomponentsbutton = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppTemplateTextResponse> __BuildSendWhatsAppTemplateText(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsheaderInputItem[]> bodycontenttemplatecomponentsheader = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-quick-reply";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatecomponentsheader, nameof(bodycontenttemplatecomponentsheader), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
+            return new DeferredBodyAction<SendWhatsAppTemplateTextResponse>(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                body["channel"] = "whatsapp";
                 bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            body["channel"] = "whatsapp";
-            bodypropCount++;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "template";
-            contentObjectpropCount++;
-            var templateObject = new JObject();
-            var templateObjectpropCount = 0;
-            if (bodycontenttemplatetemplateId != null)
-            {
-                templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
-                templateObjectpropCount++;
-            }
-
-            if (bodycontenttemplatetemplateLanguage != null)
-            {
-                templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
-                templateObjectpropCount++;
-            }
-
-            var componentsObject = new JObject();
-            var componentsObjectpropCount = 0;
-            if (bodycontenttemplatecomponentsbody != null)
-            {
-                componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
-                componentsObjectpropCount++;
-            }
-
-            if (bodycontenttemplatecomponentsbutton != null)
-            {
-                componentsObject["button"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbutton);
-                componentsObjectpropCount++;
-            }
-
-            if (componentsObjectpropCount > 0)
-            {
-                templateObject["components"] = componentsObject;
-                templateObjectpropCount++;
-            }
-
-            if (templateObjectpropCount > 0)
-            {
-                contentObject["template"] = templateObject;
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "template";
                 contentObjectpropCount++;
-            }
+                var templateObject = new JObject();
+                var templateObjectpropCount = 0;
+                if (bodycontenttemplatetemplateId != null)
+                {
+                    templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
+                    templateObjectpropCount++;
+                }
 
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
-                bodypropCount++;
-            }
+                if (bodycontenttemplatetemplateLanguage != null)
+                {
+                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
+                    templateObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var componentsObject = new JObject();
+                var componentsObjectpropCount = 0;
+                if (bodycontenttemplatecomponentsheader != null)
+                {
+                    componentsObject["header"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsheader);
+                    componentsObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<SendWhatsAppTemplateQuickReplyResponse>(callPayload);
+                if (bodycontenttemplatecomponentsbody != null)
+                {
+                    componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
+                    componentsObjectpropCount++;
+                }
+
+                if (componentsObjectpropCount > 0)
+                {
+                    templateObject["components"] = componentsObject;
+                    templateObjectpropCount++;
+                }
+
+                if (templateObjectpropCount > 0)
+                {
+                    contentObject["template"] = templateObject;
+                    contentObjectpropCount++;
+                }
+
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendWhatsAppTemplateTextResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
-        public IBodyWorkflowAction<StatusCheckV3Response> StatusCheck(Expression<Func<string>> messageId)
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppTemplateLocation))]
+        public IBodyWorkflowAction<SendWhatsAppTemplateLocationResponse> SendWhatsAppTemplateLocation([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateId = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateLanguage = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsheaderInputItem2[]> bodycontenttemplatecomponentsheader = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/messages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StatusCheckV3Response>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppTemplateLocationResponse> __BuildSendWhatsAppTemplateLocation(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsheaderInputItem2[]> bodycontenttemplatecomponentsheader = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
+        {
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatecomponentsheader, nameof(bodycontenttemplatecomponentsheader), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
+            return new DeferredBodyAction<SendWhatsAppTemplateLocationResponse>(() =>
+            {
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-location";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                body["channel"] = "whatsapp";
+                bodypropCount++;
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "template";
+                contentObjectpropCount++;
+                var templateObject = new JObject();
+                var templateObjectpropCount = 0;
+                if (bodycontenttemplatetemplateId != null)
+                {
+                    templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
+                    templateObjectpropCount++;
+                }
+
+                if (bodycontenttemplatetemplateLanguage != null)
+                {
+                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
+                    templateObjectpropCount++;
+                }
+
+                var componentsObject = new JObject();
+                var componentsObjectpropCount = 0;
+                if (bodycontenttemplatecomponentsheader != null)
+                {
+                    componentsObject["header"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsheader);
+                    componentsObjectpropCount++;
+                }
+
+                if (bodycontenttemplatecomponentsbody != null)
+                {
+                    componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
+                    componentsObjectpropCount++;
+                }
+
+                if (componentsObjectpropCount > 0)
+                {
+                    templateObject["components"] = componentsObject;
+                    templateObjectpropCount++;
+                }
+
+                if (templateObjectpropCount > 0)
+                {
+                    contentObject["template"] = templateObject;
+                    contentObjectpropCount++;
+                }
+
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendWhatsAppTemplateLocationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppTemplateImage))]
+        public IBodyWorkflowAction<SendWhatsAppTemplateImageResponse> SendWhatsAppTemplateImage([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateId = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateLanguage = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsheaderInputItem22[]> bodycontenttemplatecomponentsheader = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppTemplateImageResponse> __BuildSendWhatsAppTemplateImage(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsheaderInputItem22[]> bodycontenttemplatecomponentsheader = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
+        {
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatecomponentsheader, nameof(bodycontenttemplatecomponentsheader), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
+            return new DeferredBodyAction<SendWhatsAppTemplateImageResponse>(() =>
+            {
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-image";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                body["channel"] = "whatsapp";
+                bodypropCount++;
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "template";
+                contentObjectpropCount++;
+                var templateObject = new JObject();
+                var templateObjectpropCount = 0;
+                if (bodycontenttemplatetemplateId != null)
+                {
+                    templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
+                    templateObjectpropCount++;
+                }
+
+                if (bodycontenttemplatetemplateLanguage != null)
+                {
+                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
+                    templateObjectpropCount++;
+                }
+
+                var componentsObject = new JObject();
+                var componentsObjectpropCount = 0;
+                if (bodycontenttemplatecomponentsheader != null)
+                {
+                    componentsObject["header"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsheader);
+                    componentsObjectpropCount++;
+                }
+
+                if (bodycontenttemplatecomponentsbody != null)
+                {
+                    componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
+                    componentsObjectpropCount++;
+                }
+
+                if (componentsObjectpropCount > 0)
+                {
+                    templateObject["components"] = componentsObject;
+                    templateObjectpropCount++;
+                }
+
+                if (templateObjectpropCount > 0)
+                {
+                    contentObject["template"] = templateObject;
+                    contentObjectpropCount++;
+                }
+
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendWhatsAppTemplateImageResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppTemplateDocument))]
+        public IBodyWorkflowAction<SendWhatsAppTemplateDocumentResponse> SendWhatsAppTemplateDocument([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateId = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateLanguage = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsheaderInputItem222[]> bodycontenttemplatecomponentsheader = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppTemplateDocumentResponse> __BuildSendWhatsAppTemplateDocument(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsheaderInputItem222[]> bodycontenttemplatecomponentsheader = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
+        {
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatecomponentsheader, nameof(bodycontenttemplatecomponentsheader), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
+            return new DeferredBodyAction<SendWhatsAppTemplateDocumentResponse>(() =>
+            {
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-document";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                body["channel"] = "whatsapp";
+                bodypropCount++;
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "template";
+                contentObjectpropCount++;
+                var templateObject = new JObject();
+                var templateObjectpropCount = 0;
+                if (bodycontenttemplatetemplateId != null)
+                {
+                    templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
+                    templateObjectpropCount++;
+                }
+
+                if (bodycontenttemplatetemplateLanguage != null)
+                {
+                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
+                    templateObjectpropCount++;
+                }
+
+                var componentsObject = new JObject();
+                var componentsObjectpropCount = 0;
+                if (bodycontenttemplatecomponentsheader != null)
+                {
+                    componentsObject["header"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsheader);
+                    componentsObjectpropCount++;
+                }
+
+                if (bodycontenttemplatecomponentsbody != null)
+                {
+                    componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
+                    componentsObjectpropCount++;
+                }
+
+                if (componentsObjectpropCount > 0)
+                {
+                    templateObject["components"] = componentsObject;
+                    templateObjectpropCount++;
+                }
+
+                if (templateObjectpropCount > 0)
+                {
+                    contentObject["template"] = templateObject;
+                    contentObjectpropCount++;
+                }
+
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendWhatsAppTemplateDocumentResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppTemplateVideo))]
+        public IBodyWorkflowAction<SendWhatsAppTemplateVideoResponse> SendWhatsAppTemplateVideo([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodychannel = null, [WorkflowExpression] Func<string> bodycontentcontentType = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateId = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateLanguage = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsheaderInputItem2222[]> bodycontenttemplatecomponentsheader = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppTemplateVideoResponse> __BuildSendWhatsAppTemplateVideo(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodychannel = null, WorkflowExpression<string> bodycontentcontentType = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsheaderInputItem2222[]> bodycontenttemplatecomponentsheader = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null)
+        {
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodychannel, nameof(bodychannel), required: false);
+            WorkflowExpression.Validate(bodycontentcontentType, nameof(bodycontentcontentType), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatecomponentsheader, nameof(bodycontenttemplatecomponentsheader), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
+            return new DeferredBodyAction<SendWhatsAppTemplateVideoResponse>(() =>
+            {
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-video";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                if (bodychannel != null)
+                {
+                    body["channel"] = ExpressionConverter.ConvertO(bodychannel);
+                    bodypropCount++;
+                }
+
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                if (bodycontentcontentType != null)
+                {
+                    contentObject["contentType"] = ExpressionConverter.ConvertO(bodycontentcontentType);
+                    contentObjectpropCount++;
+                }
+
+                var templateObject = new JObject();
+                var templateObjectpropCount = 0;
+                if (bodycontenttemplatetemplateId != null)
+                {
+                    templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
+                    templateObjectpropCount++;
+                }
+
+                if (bodycontenttemplatetemplateLanguage != null)
+                {
+                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
+                    templateObjectpropCount++;
+                }
+
+                var componentsObject = new JObject();
+                var componentsObjectpropCount = 0;
+                if (bodycontenttemplatecomponentsheader != null)
+                {
+                    componentsObject["header"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsheader);
+                    componentsObjectpropCount++;
+                }
+
+                if (bodycontenttemplatecomponentsbody != null)
+                {
+                    componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
+                    componentsObjectpropCount++;
+                }
+
+                if (componentsObjectpropCount > 0)
+                {
+                    templateObject["components"] = componentsObject;
+                    templateObjectpropCount++;
+                }
+
+                if (templateObjectpropCount > 0)
+                {
+                    contentObject["template"] = templateObject;
+                    contentObjectpropCount++;
+                }
+
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendWhatsAppTemplateVideoResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppTemplateDynamicButton))]
+        public IBodyWorkflowAction<SendWhatsAppTemplateDynamicButtonResponse> SendWhatsAppTemplateDynamicButton([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateId = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateLanguage = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbuttonInputItem[]> bodycontenttemplatecomponentsbutton = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppTemplateDynamicButtonResponse> __BuildSendWhatsAppTemplateDynamicButton(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null, WorkflowExpression<bodycontenttemplatecomponentsbuttonInputItem[]> bodycontenttemplatecomponentsbutton = null)
+        {
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatecomponentsbutton, nameof(bodycontenttemplatecomponentsbutton), required: false);
+            return new DeferredBodyAction<SendWhatsAppTemplateDynamicButtonResponse>(() =>
+            {
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-dynamic-button";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                body["channel"] = "whatsapp";
+                bodypropCount++;
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "template";
+                contentObjectpropCount++;
+                var templateObject = new JObject();
+                var templateObjectpropCount = 0;
+                if (bodycontenttemplatetemplateId != null)
+                {
+                    templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
+                    templateObjectpropCount++;
+                }
+
+                if (bodycontenttemplatetemplateLanguage != null)
+                {
+                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
+                    templateObjectpropCount++;
+                }
+
+                var componentsObject = new JObject();
+                var componentsObjectpropCount = 0;
+                if (bodycontenttemplatecomponentsbody != null)
+                {
+                    componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
+                    componentsObjectpropCount++;
+                }
+
+                if (bodycontenttemplatecomponentsbutton != null)
+                {
+                    componentsObject["button"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbutton);
+                    componentsObjectpropCount++;
+                }
+
+                if (componentsObjectpropCount > 0)
+                {
+                    templateObject["components"] = componentsObject;
+                    templateObjectpropCount++;
+                }
+
+                if (templateObjectpropCount > 0)
+                {
+                    contentObject["template"] = templateObject;
+                    contentObjectpropCount++;
+                }
+
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendWhatsAppTemplateDynamicButtonResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsAppTemplateQuickReply))]
+        public IBodyWorkflowAction<SendWhatsAppTemplateQuickReplyResponse> SendWhatsAppTemplateQuickReply([WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateId = null, [WorkflowExpression] Func<string> bodycontenttemplatetemplateLanguage = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null, [WorkflowExpression] Func<bodycontenttemplatecomponentsbuttonInputItem2[]> bodycontenttemplatecomponentsbutton = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsAppTemplateQuickReplyResponse> __BuildSendWhatsAppTemplateQuickReply(WorkflowExpression<string> bodyfrom = null, WorkflowExpression<string> bodyto = null, WorkflowExpression<string> bodycontenttemplatetemplateId = null, WorkflowExpression<string> bodycontenttemplatetemplateLanguage = null, WorkflowExpression<bodycontenttemplatecomponentsbodyInputItem[]> bodycontenttemplatecomponentsbody = null, WorkflowExpression<bodycontenttemplatecomponentsbuttonInputItem2[]> bodycontenttemplatecomponentsbutton = null)
+        {
+            WorkflowExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowExpression.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatetemplateId, nameof(bodycontenttemplatetemplateId), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatetemplateLanguage, nameof(bodycontenttemplatetemplateLanguage), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatecomponentsbody, nameof(bodycontenttemplatecomponentsbody), required: false);
+            WorkflowExpression.Validate(bodycontenttemplatecomponentsbutton, nameof(bodycontenttemplatecomponentsbutton), required: false);
+            return new DeferredBodyAction<SendWhatsAppTemplateQuickReplyResponse>(() =>
+            {
+                var apiCallPath = "/conversations/v3/power-automate/messages/whatsapp/template-quick-reply";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
+
+                body["channel"] = "whatsapp";
+                bodypropCount++;
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "template";
+                contentObjectpropCount++;
+                var templateObject = new JObject();
+                var templateObjectpropCount = 0;
+                if (bodycontenttemplatetemplateId != null)
+                {
+                    templateObject["templateId"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateId);
+                    templateObjectpropCount++;
+                }
+
+                if (bodycontenttemplatetemplateLanguage != null)
+                {
+                    templateObject["templateLanguage"] = ExpressionConverter.ConvertO(bodycontenttemplatetemplateLanguage);
+                    templateObjectpropCount++;
+                }
+
+                var componentsObject = new JObject();
+                var componentsObjectpropCount = 0;
+                if (bodycontenttemplatecomponentsbody != null)
+                {
+                    componentsObject["body"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbody);
+                    componentsObjectpropCount++;
+                }
+
+                if (bodycontenttemplatecomponentsbutton != null)
+                {
+                    componentsObject["button"] = ExpressionConverter.ConvertO(bodycontenttemplatecomponentsbutton);
+                    componentsObjectpropCount++;
+                }
+
+                if (componentsObjectpropCount > 0)
+                {
+                    templateObject["components"] = componentsObject;
+                    templateObjectpropCount++;
+                }
+
+                if (templateObjectpropCount > 0)
+                {
+                    contentObject["template"] = templateObject;
+                    contentObjectpropCount++;
+                }
+
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendWhatsAppTemplateQuickReplyResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [WorkflowExpressionFactory(nameof(__BuildStatusCheck))]
+        public IBodyWorkflowAction<StatusCheckV3Response> StatusCheck([WorkflowExpression] Func<string> messageId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecwa")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StatusCheckV3Response> __BuildStatusCheck(WorkflowExpression<string> messageId)
+        {
+            WorkflowExpression.Validate(messageId, nameof(messageId), required: true);
+            return new DeferredBodyAction<StatusCheckV3Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/messages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<StatusCheckV3Response>(callPayload);
+            });
         }
     }
 
     public class TyntecwaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger Incoming(Expression<Func<string>> wABA, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = String.Format("/conversations/v3/power-automate/webhooks/channels/whatsapp/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(wABA, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["inboundMessageUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [WorkflowExpressionFactory(nameof(__BuildIncoming))]
+        public IWorkflowTrigger Incoming([WorkflowExpression] Func<string> wABA, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildIncoming(WorkflowExpression<string> wABA, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(wABA, nameof(wABA), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/power-automate/webhooks/channels/whatsapp/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(wABA, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["inboundMessageUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

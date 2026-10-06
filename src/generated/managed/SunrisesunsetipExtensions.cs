@@ -4,27 +4,42 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SunrisesunsetipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sunrisesunsetip")]
-        public IBodyWorkflowAction<GetDataResponse> GetData(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> date = null, Expression<Func<formattedInput>> formatted = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetData))]
+        public IBodyWorkflowAction<GetDataResponse> GetData([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<formattedInput> formatted = null)
         {
-            var apiCallPath = "/json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
-            callPayload.Queries["date"] = Convert.ToString("");
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            if (formatted != null)
-                callPayload.Queries["formatted"] = ExpressionConverter.Convert(formatted);
-            return new ApiConnectionAction<GetDataResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sunrisesunsetip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDataResponse> __BuildGetData(WorkflowExpression<double> lat, WorkflowExpression<double> lng, WorkflowExpression<string> date = null, WorkflowExpression<formattedInput> formatted = null)
+        {
+            WorkflowExpression.Validate(lat, nameof(lat), required: true);
+            WorkflowExpression.Validate(lng, nameof(lng), required: true);
+            WorkflowExpression.Validate(date, nameof(date), required: false);
+            WorkflowExpression.Validate(formatted, nameof(formatted), required: false);
+            return new DeferredBodyAction<GetDataResponse>(() =>
+            {
+                var apiCallPath = "/json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                callPayload.Queries["date"] = Convert.ToString("");
+                if (date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                if (formatted != null)
+                    callPayload.Queries["formatted"] = ExpressionConverter.Convert(formatted);
+                return new ApiConnectionAction<GetDataResponse>(callPayload);
+            });
         }
     }
 

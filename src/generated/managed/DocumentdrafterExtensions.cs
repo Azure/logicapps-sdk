@@ -4,241 +4,510 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DocumentdrafterActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<GetCreateWorkspaceResponse> GetCreateWorkspace(Expression<Func<string>> siteUrl, Expression<Func<string>> workspaceNameRoute, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> masterWorkSpace = null, Expression<Func<bool>> copyStyling = null, Expression<Func<bool>> copyFolders = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetCreateWorkspace))]
+        public IBodyWorkflowAction<GetCreateWorkspaceResponse> GetCreateWorkspace([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> workspaceNameRoute, [WorkflowExpression] Func<bool> createIfNotFound, [WorkflowExpression] Func<string> masterWorkSpace = null, [WorkflowExpression] Func<bool> copyStyling = null, [WorkflowExpression] Func<bool> copyFolders = null)
         {
-            var apiCallPath = String.Format("/PowerAutomateGetCreateWorkspace/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceNameRoute, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(createIfNotFound);
-            if (masterWorkSpace != null)
-                callPayload.Queries["MasterWorkSpace"] = ExpressionConverter.Convert(masterWorkSpace);
-            if (copyStyling != null)
-                callPayload.Queries["CopyStyling"] = ExpressionConverter.Convert(copyStyling);
-            if (copyFolders != null)
-                callPayload.Queries["CopyFolders"] = ExpressionConverter.Convert(copyFolders);
-            return new ApiConnectionAction<GetCreateWorkspaceResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<GetCreateFolderResponse> GetCreateFolder(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> folderName, Expression<Func<string>> parentId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCreateWorkspaceResponse> __BuildGetCreateWorkspace(WorkflowExpression<string> siteUrl, WorkflowExpression<string> workspaceNameRoute, WorkflowExpression<bool> createIfNotFound, WorkflowExpression<string> masterWorkSpace = null, WorkflowExpression<bool> copyStyling = null, WorkflowExpression<bool> copyFolders = null)
         {
-            var apiCallPath = String.Format("/PowerAutomateGetCreateFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(createIfNotFound);
-            callPayload.Queries["ParentId"] = ExpressionConverter.Convert(parentId);
-            return new ApiConnectionAction<GetCreateFolderResponse>(callPayload);
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(workspaceNameRoute, nameof(workspaceNameRoute), required: true);
+            WorkflowExpression.Validate(createIfNotFound, nameof(createIfNotFound), required: true);
+            WorkflowExpression.Validate(masterWorkSpace, nameof(masterWorkSpace), required: false);
+            WorkflowExpression.Validate(copyStyling, nameof(copyStyling), required: false);
+            WorkflowExpression.Validate(copyFolders, nameof(copyFolders), required: false);
+            return new DeferredBodyAction<GetCreateWorkspaceResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateWorkspace/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceNameRoute, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(createIfNotFound);
+                if (masterWorkSpace != null)
+                    callPayload.Queries["MasterWorkSpace"] = ExpressionConverter.Convert(masterWorkSpace);
+                if (copyStyling != null)
+                    callPayload.Queries["CopyStyling"] = ExpressionConverter.Convert(copyStyling);
+                if (copyFolders != null)
+                    callPayload.Queries["CopyFolders"] = ExpressionConverter.Convert(copyFolders);
+                return new ApiConnectionAction<GetCreateWorkspaceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<GetCreateGroupResponse> GetCreateGroup(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> groupNamePath, Expression<Func<string>> role = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetCreateFolder))]
+        public IBodyWorkflowAction<GetCreateFolderResponse> GetCreateFolder([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<bool> createIfNotFound, [WorkflowExpression] Func<string> folderName, [WorkflowExpression] Func<string> parentId)
         {
-            var apiCallPath = String.Format("/PowerAutomateGetCreateGroup/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupNamePath, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(createIfNotFound);
-            if (role != null)
-                callPayload.Queries["Role"] = ExpressionConverter.Convert(role);
-            return new ApiConnectionAction<GetCreateGroupResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<GetCreateAccessFolderResponse> GetCreateAccessFolder(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> groupNamePath, Expression<Func<string>> folderId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCreateFolderResponse> __BuildGetCreateFolder(WorkflowExpression<string> siteUrl, WorkflowExpression<bool> createIfNotFound, WorkflowExpression<string> folderName, WorkflowExpression<string> parentId)
         {
-            var apiCallPath = String.Format("/PowerAutomateGetCreateAccessFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupNamePath, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(createIfNotFound);
-            callPayload.Queries["FolderId"] = ExpressionConverter.Convert(folderId);
-            return new ApiConnectionAction<GetCreateAccessFolderResponse>(callPayload);
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(createIfNotFound, nameof(createIfNotFound), required: true);
+            WorkflowExpression.Validate(folderName, nameof(folderName), required: true);
+            WorkflowExpression.Validate(parentId, nameof(parentId), required: true);
+            return new DeferredBodyAction<GetCreateFolderResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(createIfNotFound);
+                callPayload.Queries["ParentId"] = ExpressionConverter.Convert(parentId);
+                return new ApiConnectionAction<GetCreateFolderResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<GetCreateUserResponse> GetCreateUser(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> groupName, Expression<Func<string>> email, Expression<Func<bool>> sendInvite)
+        [WorkflowExpressionFactory(nameof(__BuildGetCreateGroup))]
+        public IBodyWorkflowAction<GetCreateGroupResponse> GetCreateGroup([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<bool> createIfNotFound, [WorkflowExpression] Func<string> groupNamePath, [WorkflowExpression] Func<string> role = null)
         {
-            var apiCallPath = String.Format("/PowerAutomateGetCreateUser/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(createIfNotFound);
-            callPayload.Queries["GroupName"] = ExpressionConverter.Convert(groupName);
-            callPayload.Queries["sendInvite"] = ExpressionConverter.Convert(sendInvite);
-            return new ApiConnectionAction<GetCreateUserResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<SaveStaticFileToFolderResponse> SaveStaticFileToFolder(Expression<Func<string>> siteUrl, Expression<Func<string>> folderId, Expression<Func<string>> fileName, Expression<Func<string>> fileBase64)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCreateGroupResponse> __BuildGetCreateGroup(WorkflowExpression<string> siteUrl, WorkflowExpression<bool> createIfNotFound, WorkflowExpression<string> groupNamePath, WorkflowExpression<string> role = null)
         {
-            var apiCallPath = String.Format("/PowerAutomateSaveStaticFileToFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            return new ApiConnectionAction<SaveStaticFileToFolderResponse>(callPayload);
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(createIfNotFound, nameof(createIfNotFound), required: true);
+            WorkflowExpression.Validate(groupNamePath, nameof(groupNamePath), required: true);
+            WorkflowExpression.Validate(role, nameof(role), required: false);
+            return new DeferredBodyAction<GetCreateGroupResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateGroup/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupNamePath, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(createIfNotFound);
+                if (role != null)
+                    callPayload.Queries["Role"] = ExpressionConverter.Convert(role);
+                return new ApiConnectionAction<GetCreateGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<string> GetExternalShareLink(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> scope, Expression<Func<int>> expireDays, Expression<Func<string>> createUser)
+        [WorkflowExpressionFactory(nameof(__BuildGetCreateAccessFolder))]
+        public IBodyWorkflowAction<GetCreateAccessFolderResponse> GetCreateAccessFolder([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<bool> createIfNotFound, [WorkflowExpression] Func<string> groupNamePath, [WorkflowExpression] Func<string> folderId)
         {
-            var apiCallPath = "/PowerAutomateCreateMagicLink";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
-            callPayload.Queries["Scope"] = ExpressionConverter.Convert(scope);
-            callPayload.Queries["ExpireDays"] = ExpressionConverter.Convert(expireDays);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<CreateQuestionnaireResponse> CreateQuestionnaire(Expression<Func<string>> siteUrl, Expression<Func<string>> workSpace, Expression<Func<string>> templateId, Expression<Func<string>> createUser)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCreateAccessFolderResponse> __BuildGetCreateAccessFolder(WorkflowExpression<string> siteUrl, WorkflowExpression<bool> createIfNotFound, WorkflowExpression<string> groupNamePath, WorkflowExpression<string> folderId)
         {
-            var apiCallPath = String.Format("/PowerAutomateCreateQuestionnaire/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["WorkSpace"] = ExpressionConverter.Convert(workSpace);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
-            return new ApiConnectionAction<CreateQuestionnaireResponse>(callPayload);
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(createIfNotFound, nameof(createIfNotFound), required: true);
+            WorkflowExpression.Validate(groupNamePath, nameof(groupNamePath), required: true);
+            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
+            return new DeferredBodyAction<GetCreateAccessFolderResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateAccessFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupNamePath, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(createIfNotFound);
+                callPayload.Queries["FolderId"] = ExpressionConverter.Convert(folderId);
+                return new ApiConnectionAction<GetCreateAccessFolderResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<JToken> DeleteAllShareLinksOnDocument(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> createUser)
+        [WorkflowExpressionFactory(nameof(__BuildGetCreateUser))]
+        public IBodyWorkflowAction<GetCreateUserResponse> GetCreateUser([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<bool> createIfNotFound, [WorkflowExpression] Func<string> groupName, [WorkflowExpression] Func<string> email, [WorkflowExpression] Func<bool> sendInvite)
         {
-            var apiCallPath = "/DeleteAllShareLinksOnDocument";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<JToken> FlowAddShare(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> createUser, Expression<Func<string>> groupOrMail, Expression<Func<bool>> selectedQuestions = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCreateUserResponse> __BuildGetCreateUser(WorkflowExpression<string> siteUrl, WorkflowExpression<bool> createIfNotFound, WorkflowExpression<string> groupName, WorkflowExpression<string> email, WorkflowExpression<bool> sendInvite)
         {
-            var apiCallPath = "/AddShare";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
-            callPayload.Queries["GroupOrMail"] = ExpressionConverter.Convert(groupOrMail);
-            callPayload.Queries["SelectedQuestions"] = Convert.ToString(false);
-            if (selectedQuestions != null)
-                callPayload.Queries["SelectedQuestions"] = ExpressionConverter.Convert(selectedQuestions);
-            return new ApiConnectionAction<JToken>(callPayload);
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(createIfNotFound, nameof(createIfNotFound), required: true);
+            WorkflowExpression.Validate(groupName, nameof(groupName), required: true);
+            WorkflowExpression.Validate(email, nameof(email), required: true);
+            WorkflowExpression.Validate(sendInvite, nameof(sendInvite), required: true);
+            return new DeferredBodyAction<GetCreateUserResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateUser/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["CreateIfNotFound"] = ExpressionConverter.Convert(createIfNotFound);
+                callPayload.Queries["GroupName"] = ExpressionConverter.Convert(groupName);
+                callPayload.Queries["sendInvite"] = ExpressionConverter.Convert(sendInvite);
+                return new ApiConnectionAction<GetCreateUserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<JToken> FlowSetState(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> flowKey, Expression<Func<string>> state, Expression<Func<string>> createUser)
+        [WorkflowExpressionFactory(nameof(__BuildSaveStaticFileToFolder))]
+        public IBodyWorkflowAction<SaveStaticFileToFolderResponse> SaveStaticFileToFolder([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> fileBase64)
         {
-            var apiCallPath = "/FlowSetState";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
-            callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(flowKey);
-            callPayload.Queries["State"] = ExpressionConverter.Convert(state);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<JToken> GetVariablesForTemplate(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> workSpace, Expression<Func<string>> templateId, Expression<Func<string>> createUser)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SaveStaticFileToFolderResponse> __BuildSaveStaticFileToFolder(WorkflowExpression<string> siteUrl, WorkflowExpression<string> folderId, WorkflowExpression<string> fileName, WorkflowExpression<string> fileBase64)
         {
-            var apiCallPath = String.Format("/PowerAutomateGetTagsForDocument/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
-            callPayload.Queries["WorkSpace"] = ExpressionConverter.Convert(workSpace);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
-            return new ApiConnectionAction<JToken>(callPayload);
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
+            WorkflowExpression.Validate(fileName, nameof(fileName), required: true);
+            WorkflowExpression.Validate(fileBase64, nameof(fileBase64), required: true);
+            return new DeferredBodyAction<SaveStaticFileToFolderResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateSaveStaticFileToFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                return new ApiConnectionAction<SaveStaticFileToFolderResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<GetTagsForQuestionnaireResponse> GetTagsForQuestionnaire(Expression<Func<string>> siteUrl, Expression<Func<string>> createUser, Expression<Func<string>> documentId = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetExternalShareLink))]
+        public IBodyWorkflowAction<string> GetExternalShareLink([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> scope, [WorkflowExpression] Func<int> expireDays, [WorkflowExpression] Func<string> createUser)
         {
-            var apiCallPath = "/PowerAutomateQuestionsWithTags";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            if (documentId != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetExternalShareLink(WorkflowExpression<string> siteUrl, WorkflowExpression<string> documentId, WorkflowExpression<string> scope, WorkflowExpression<int> expireDays, WorkflowExpression<string> createUser)
+        {
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
+            WorkflowExpression.Validate(scope, nameof(scope), required: true);
+            WorkflowExpression.Validate(expireDays, nameof(expireDays), required: true);
+            WorkflowExpression.Validate(createUser, nameof(createUser), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/PowerAutomateCreateMagicLink";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
                 callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
-            return new ApiConnectionAction<GetTagsForQuestionnaireResponse>(callPayload);
+                callPayload.Queries["Scope"] = ExpressionConverter.Convert(scope);
+                callPayload.Queries["ExpireDays"] = ExpressionConverter.Convert(expireDays);
+                callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<ProcessJsonResponse> ProcessJson(Expression<Func<string>> siteUrl, Expression<Func<string>> workSpace, Expression<Func<string>> templateId, Expression<Func<string>> createUser, Expression<Func<string>> jsonData)
+        [WorkflowExpressionFactory(nameof(__BuildCreateQuestionnaire))]
+        public IBodyWorkflowAction<CreateQuestionnaireResponse> CreateQuestionnaire([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> workSpace, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> createUser)
         {
-            var apiCallPath = String.Format("/PowerAutomateDataModelCreateDoc/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["WorkSpace"] = ExpressionConverter.Convert(workSpace);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
-            return new ApiConnectionAction<ProcessJsonResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<JToken> GetFlowInformation(Expression<Func<string>> flowKey, Expression<Func<string>> siteUrl)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateQuestionnaireResponse> __BuildCreateQuestionnaire(WorkflowExpression<string> siteUrl, WorkflowExpression<string> workSpace, WorkflowExpression<string> templateId, WorkflowExpression<string> createUser)
         {
-            var apiCallPath = "/PowerAutomateGetFlowInformation";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(flowKey);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            return new ApiConnectionAction<JToken>(callPayload);
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(workSpace, nameof(workSpace), required: true);
+            WorkflowExpression.Validate(templateId, nameof(templateId), required: true);
+            WorkflowExpression.Validate(createUser, nameof(createUser), required: true);
+            return new DeferredBodyAction<CreateQuestionnaireResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateCreateQuestionnaire/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["WorkSpace"] = ExpressionConverter.Convert(workSpace);
+                callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+                return new ApiConnectionAction<CreateQuestionnaireResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<GetDocumentsResponse> GetDocuments(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> createUser, Expression<Func<outputFormatInput>> outputFormat)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteAllShareLinksOnDocument))]
+        public IBodyWorkflowAction<JToken> DeleteAllShareLinksOnDocument([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> createUser)
         {
-            var apiCallPath = "/PowerAutomateGetDocument";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
-            callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
-            callPayload.Queries["OutputFormat"] = ExpressionConverter.Convert(outputFormat);
-            return new ApiConnectionAction<GetDocumentsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildDeleteAllShareLinksOnDocument(WorkflowExpression<string> siteUrl, WorkflowExpression<string> documentId, WorkflowExpression<string> createUser)
+        {
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
+            WorkflowExpression.Validate(createUser, nameof(createUser), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/DeleteAllShareLinksOnDocument";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
+                callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [WorkflowExpressionFactory(nameof(__BuildFlowAddShare))]
+        public IBodyWorkflowAction<JToken> FlowAddShare([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> createUser, [WorkflowExpression] Func<string> groupOrMail, [WorkflowExpression] Func<bool> selectedQuestions = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildFlowAddShare(WorkflowExpression<string> siteUrl, WorkflowExpression<string> documentId, WorkflowExpression<string> createUser, WorkflowExpression<string> groupOrMail, WorkflowExpression<bool> selectedQuestions = null)
+        {
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
+            WorkflowExpression.Validate(createUser, nameof(createUser), required: true);
+            WorkflowExpression.Validate(groupOrMail, nameof(groupOrMail), required: true);
+            WorkflowExpression.Validate(selectedQuestions, nameof(selectedQuestions), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/AddShare";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
+                callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+                callPayload.Queries["GroupOrMail"] = ExpressionConverter.Convert(groupOrMail);
+                callPayload.Queries["SelectedQuestions"] = Convert.ToString(false);
+                if (selectedQuestions != null)
+                    callPayload.Queries["SelectedQuestions"] = ExpressionConverter.Convert(selectedQuestions);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [WorkflowExpressionFactory(nameof(__BuildFlowSetState))]
+        public IBodyWorkflowAction<JToken> FlowSetState([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> flowKey, [WorkflowExpression] Func<string> state, [WorkflowExpression] Func<string> createUser)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildFlowSetState(WorkflowExpression<string> siteUrl, WorkflowExpression<string> documentId, WorkflowExpression<string> flowKey, WorkflowExpression<string> state, WorkflowExpression<string> createUser)
+        {
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
+            WorkflowExpression.Validate(flowKey, nameof(flowKey), required: true);
+            WorkflowExpression.Validate(state, nameof(state), required: true);
+            WorkflowExpression.Validate(createUser, nameof(createUser), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/FlowSetState";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
+                callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(flowKey);
+                callPayload.Queries["State"] = ExpressionConverter.Convert(state);
+                callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [WorkflowExpressionFactory(nameof(__BuildGetVariablesForTemplate))]
+        public IBodyWorkflowAction<JToken> GetVariablesForTemplate([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> workSpace, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> createUser)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildGetVariablesForTemplate(WorkflowExpression<string> siteUrl, WorkflowExpression<string> documentId, WorkflowExpression<string> workSpace, WorkflowExpression<string> templateId, WorkflowExpression<string> createUser)
+        {
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
+            WorkflowExpression.Validate(workSpace, nameof(workSpace), required: true);
+            WorkflowExpression.Validate(templateId, nameof(templateId), required: true);
+            WorkflowExpression.Validate(createUser, nameof(createUser), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetTagsForDocument/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
+                callPayload.Queries["WorkSpace"] = ExpressionConverter.Convert(workSpace);
+                callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [WorkflowExpressionFactory(nameof(__BuildGetTagsForQuestionnaire))]
+        public IBodyWorkflowAction<GetTagsForQuestionnaireResponse> GetTagsForQuestionnaire([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> createUser, [WorkflowExpression] Func<string> documentId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetTagsForQuestionnaireResponse> __BuildGetTagsForQuestionnaire(WorkflowExpression<string> siteUrl, WorkflowExpression<string> createUser, WorkflowExpression<string> documentId = null)
+        {
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(createUser, nameof(createUser), required: true);
+            WorkflowExpression.Validate(documentId, nameof(documentId), required: false);
+            return new DeferredBodyAction<GetTagsForQuestionnaireResponse>(() =>
+            {
+                var apiCallPath = "/PowerAutomateQuestionsWithTags";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                if (documentId != null)
+                    callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
+                callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+                return new ApiConnectionAction<GetTagsForQuestionnaireResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [WorkflowExpressionFactory(nameof(__BuildProcessJson))]
+        public IBodyWorkflowAction<ProcessJsonResponse> ProcessJson([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> workSpace, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> createUser, [WorkflowExpression] Func<string> jsonData)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProcessJsonResponse> __BuildProcessJson(WorkflowExpression<string> siteUrl, WorkflowExpression<string> workSpace, WorkflowExpression<string> templateId, WorkflowExpression<string> createUser, WorkflowExpression<string> jsonData)
+        {
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(workSpace, nameof(workSpace), required: true);
+            WorkflowExpression.Validate(templateId, nameof(templateId), required: true);
+            WorkflowExpression.Validate(createUser, nameof(createUser), required: true);
+            WorkflowExpression.Validate(jsonData, nameof(jsonData), required: true);
+            return new DeferredBodyAction<ProcessJsonResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateDataModelCreateDoc/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["WorkSpace"] = ExpressionConverter.Convert(workSpace);
+                callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+                return new ApiConnectionAction<ProcessJsonResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [WorkflowExpressionFactory(nameof(__BuildGetFlowInformation))]
+        public IBodyWorkflowAction<JToken> GetFlowInformation([WorkflowExpression] Func<string> flowKey, [WorkflowExpression] Func<string> siteUrl)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildGetFlowInformation(WorkflowExpression<string> flowKey, WorkflowExpression<string> siteUrl)
+        {
+            WorkflowExpression.Validate(flowKey, nameof(flowKey), required: true);
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/PowerAutomateGetFlowInformation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(flowKey);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDocuments))]
+        public IBodyWorkflowAction<GetDocumentsResponse> GetDocuments([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> createUser, [WorkflowExpression] Func<outputFormatInput> outputFormat)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDocumentsResponse> __BuildGetDocuments(WorkflowExpression<string> siteUrl, WorkflowExpression<string> documentId, WorkflowExpression<string> createUser, WorkflowExpression<outputFormatInput> outputFormat)
+        {
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(documentId, nameof(documentId), required: true);
+            WorkflowExpression.Validate(createUser, nameof(createUser), required: true);
+            WorkflowExpression.Validate(outputFormat, nameof(outputFormat), required: true);
+            return new DeferredBodyAction<GetDocumentsResponse>(() =>
+            {
+                var apiCallPath = "/PowerAutomateGetDocument";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["DocumentId"] = ExpressionConverter.Convert(documentId);
+                callPayload.Queries["CreateUser"] = ExpressionConverter.Convert(createUser);
+                callPayload.Queries["OutputFormat"] = ExpressionConverter.Convert(outputFormat);
+                return new ApiConnectionAction<GetDocumentsResponse>(callPayload);
+            });
         }
     }
 
     public class DocumentdrafterTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerSubmitPollingResponse> TriggerSubmitPolling(Expression<Func<string>> siteUrl, Expression<Func<string>> scope, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildTriggerSubmitPolling))]
+        public IBodyWorkflowTrigger<TriggerSubmitPollingResponse> TriggerSubmitPolling([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> scope, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/FlowWaitForSubmitPolling";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["Scope"] = ExpressionConverter.Convert(scope);
-            return new ApiConnectionTrigger<TriggerSubmitPollingResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<FlowTriggerPollingResponse> FlowTriggerPolling(Expression<Func<string>> flowKey, Expression<Func<string>> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<TriggerSubmitPollingResponse> __BuildTriggerSubmitPolling(WorkflowExpression<string> siteUrl, WorkflowExpression<string> scope, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/FlowTriggerPolling";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(flowKey);
-            callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-            return new ApiConnectionTrigger<FlowTriggerPollingResponse>(callPayload, triggerName, recurrence);
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowExpression.Validate(scope, nameof(scope), required: true);
+            return new DeferredBodyTrigger<TriggerSubmitPollingResponse>(() =>
+            {
+                var apiCallPath = "/FlowWaitForSubmitPolling";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["Scope"] = ExpressionConverter.Convert(scope);
+                return new ApiConnectionTrigger<TriggerSubmitPollingResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildFlowTriggerPolling))]
+        public IBodyWorkflowTrigger<FlowTriggerPollingResponse> FlowTriggerPolling([WorkflowExpression] Func<string> flowKey, [WorkflowExpression] Func<string> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<FlowTriggerPollingResponse> __BuildFlowTriggerPolling(WorkflowExpression<string> flowKey, WorkflowExpression<string> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(flowKey, nameof(flowKey), required: true);
+            WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            return new DeferredBodyTrigger<FlowTriggerPollingResponse>(() =>
+            {
+                var apiCallPath = "/FlowTriggerPolling";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(flowKey);
+                callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
+                return new ApiConnectionTrigger<FlowTriggerPollingResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

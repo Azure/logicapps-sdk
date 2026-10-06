@@ -4,47 +4,86 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class VoceanActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
-        public IBodyWorkflowAction<GetIdeasResponseItem[]> GetIdeas(Expression<Func<string>> activityId, Expression<Func<string>> networkId = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetIdeas))]
+        public IBodyWorkflowAction<GetIdeasResponseItem[]> GetIdeas([WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<string> networkId = null)
         {
-            var apiCallPath = "/api/data/connector/innovate/activity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (networkId != null)
-                callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
-            callPayload.Queries["activityId"] = ExpressionConverter.Convert(activityId);
-            return new ApiConnectionAction<GetIdeasResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
-        public IBodyWorkflowAction<GetVotesResponseItem[]> GetVotes(Expression<Func<string>> activityId, Expression<Func<string>> networkId = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetIdeasResponseItem[]> __BuildGetIdeas(WorkflowExpression<string> activityId, WorkflowExpression<string> networkId = null)
         {
-            var apiCallPath = "/api/data/connector/vote/activity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (networkId != null)
-                callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
-            callPayload.Queries["activityId"] = ExpressionConverter.Convert(activityId);
-            return new ApiConnectionAction<GetVotesResponseItem[]>(callPayload);
+            WorkflowExpression.Validate(activityId, nameof(activityId), required: true);
+            WorkflowExpression.Validate(networkId, nameof(networkId), required: false);
+            return new DeferredBodyAction<GetIdeasResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/data/connector/innovate/activity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (networkId != null)
+                    callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
+                callPayload.Queries["activityId"] = ExpressionConverter.Convert(activityId);
+                return new ApiConnectionAction<GetIdeasResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
-        public IBodyWorkflowAction<GetExploreResponsesResponseItem[]> GetExploreResponses(Expression<Func<string>> activityId, Expression<Func<string>> networkId = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetVotes))]
+        public IBodyWorkflowAction<GetVotesResponseItem[]> GetVotes([WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<string> networkId = null)
         {
-            var apiCallPath = "/api/data/connector/explore/activity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (networkId != null)
-                callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
-            callPayload.Queries["activityId"] = ExpressionConverter.Convert(activityId);
-            return new ApiConnectionAction<GetExploreResponsesResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetVotesResponseItem[]> __BuildGetVotes(WorkflowExpression<string> activityId, WorkflowExpression<string> networkId = null)
+        {
+            WorkflowExpression.Validate(activityId, nameof(activityId), required: true);
+            WorkflowExpression.Validate(networkId, nameof(networkId), required: false);
+            return new DeferredBodyAction<GetVotesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/data/connector/vote/activity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (networkId != null)
+                    callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
+                callPayload.Queries["activityId"] = ExpressionConverter.Convert(activityId);
+                return new ApiConnectionAction<GetVotesResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
+        [WorkflowExpressionFactory(nameof(__BuildGetExploreResponses))]
+        public IBodyWorkflowAction<GetExploreResponsesResponseItem[]> GetExploreResponses([WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<string> networkId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetExploreResponsesResponseItem[]> __BuildGetExploreResponses(WorkflowExpression<string> activityId, WorkflowExpression<string> networkId = null)
+        {
+            WorkflowExpression.Validate(activityId, nameof(activityId), required: true);
+            WorkflowExpression.Validate(networkId, nameof(networkId), required: false);
+            return new DeferredBodyAction<GetExploreResponsesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/data/connector/explore/activity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (networkId != null)
+                    callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
+                callPayload.Queries["activityId"] = ExpressionConverter.Convert(activityId);
+                return new ApiConnectionAction<GetExploreResponsesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
@@ -57,92 +96,159 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
-        public IBodyWorkflowAction<GetActivitiesResponseItem[]> GetActivities(Expression<Func<string>> networkId, Expression<Func<activityTypeInput>> activityType)
+        [WorkflowExpressionFactory(nameof(__BuildGetActivities))]
+        public IBodyWorkflowAction<GetActivitiesResponseItem[]> GetActivities([WorkflowExpression] Func<string> networkId, [WorkflowExpression] Func<activityTypeInput> activityType)
         {
-            var apiCallPath = String.Format("/api/connector/v2/networks/{0}/activities", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["activityType"] = ExpressionConverter.Convert(activityType);
-            return new ApiConnectionAction<GetActivitiesResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
-        public IBodyWorkflowAction<AddIdeaResponse> AddIdea(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<string>> bodytext)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetActivitiesResponseItem[]> __BuildGetActivities(WorkflowExpression<string> networkId, WorkflowExpression<activityTypeInput> activityType)
         {
-            var apiCallPath = String.Format("/api/connector/v2/networks/{0}/activities/{1}/ideas", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(activityId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(networkId, nameof(networkId), required: true);
+            WorkflowExpression.Validate(activityType, nameof(activityType), required: true);
+            return new DeferredBodyAction<GetActivitiesResponseItem[]>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddIdeaResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["activityType"] = ExpressionConverter.Convert(activityType);
+                return new ApiConnectionAction<GetActivitiesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
-        public IBodyWorkflowAction<AddIdeasResponseItem[]> AddIdeas(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<bodyInputItem[]>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddIdea))]
+        public IBodyWorkflowAction<AddIdeaResponse> AddIdea([WorkflowExpression] Func<string> networkId, [WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<string> bodytext)
         {
-            var apiCallPath = String.Format("/api/connector/v2/networks/{0}/activities/{1}/ideas/many", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(activityId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AddIdeasResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddIdeaResponse> __BuildAddIdea(WorkflowExpression<string> networkId, WorkflowExpression<string> activityId, WorkflowExpression<string> bodytext)
+        {
+            WorkflowExpression.Validate(networkId, nameof(networkId), required: true);
+            WorkflowExpression.Validate(activityId, nameof(activityId), required: true);
+            WorkflowExpression.Validate(bodytext, nameof(bodytext), required: true);
+            return new DeferredBodyAction<AddIdeaResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(activityId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AddIdeaResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
+        [WorkflowExpressionFactory(nameof(__BuildAddIdeas))]
+        public IBodyWorkflowAction<AddIdeasResponseItem[]> AddIdeas([WorkflowExpression] Func<string> networkId, [WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<bodyInputItem[]> body = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddIdeasResponseItem[]> __BuildAddIdeas(WorkflowExpression<string> networkId, WorkflowExpression<string> activityId, WorkflowExpression<bodyInputItem[]> body = null)
+        {
+            WorkflowExpression.Validate(networkId, nameof(networkId), required: true);
+            WorkflowExpression.Validate(activityId, nameof(activityId), required: true);
+            WorkflowExpression.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<AddIdeasResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/many", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(activityId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<AddIdeasResponseItem[]>(callPayload);
+            });
         }
     }
 
     public class VoceanTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger IdeaTrigger(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<bodyeventTypesInputItem[]>> bodyeventTypes = null, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildIdeaTrigger))]
+        public IWorkflowTrigger IdeaTrigger([WorkflowExpression] Func<string> networkId, [WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<bodyeventTypesInputItem[]> bodyeventTypes = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/connector/v2/networks/{0}/activities/{1}/ideas/webhooks", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(activityId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyeventTypes != null)
-            {
-                body["eventTypes"] = ExpressionConverter.ConvertO(bodyeventTypes);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IWorkflowTrigger UserActivityTrigger(Expression<Func<string>> networkId = null, Expression<Func<bodyeventTypesInputItem[]>> bodyeventTypes = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildIdeaTrigger(WorkflowExpression<string> networkId, WorkflowExpression<string> activityId, WorkflowExpression<bodyeventTypesInputItem[]> bodyeventTypes = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/connector/v2/current-user/activities/webhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (networkId != null)
-                callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["targetUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyeventTypes != null)
+            WorkflowExpression.Validate(networkId, nameof(networkId), required: true);
+            WorkflowExpression.Validate(activityId, nameof(activityId), required: true);
+            WorkflowExpression.Validate(bodyeventTypes, nameof(bodyeventTypes), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["eventTypes"] = ExpressionConverter.ConvertO(bodyeventTypes);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/webhooks", ExpressionConverter.ConvertWithUrlEncoding(networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(activityId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodyeventTypes != null)
+                {
+                    body["eventTypes"] = ExpressionConverter.ConvertO(bodyeventTypes);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildUserActivityTrigger))]
+        public IWorkflowTrigger UserActivityTrigger([WorkflowExpression] Func<string> networkId = null, [WorkflowExpression] Func<bodyeventTypesInputItem[]> bodyeventTypes = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildUserActivityTrigger(WorkflowExpression<string> networkId = null, WorkflowExpression<bodyeventTypesInputItem[]> bodyeventTypes = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(networkId, nameof(networkId), required: false);
+            WorkflowExpression.Validate(bodyeventTypes, nameof(bodyeventTypes), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/connector/v2/current-user/activities/webhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (networkId != null)
+                    callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["targetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodyeventTypes != null)
+                {
+                    body["eventTypes"] = ExpressionConverter.ConvertO(bodyeventTypes);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

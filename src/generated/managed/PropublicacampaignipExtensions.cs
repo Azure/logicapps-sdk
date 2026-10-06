@@ -4,294 +4,695 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class PropublicacampaignipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateSearchResponse> CandidateSearch(Expression<Func<string>> cycle, Expression<Func<string>> query = null)
+        [WorkflowExpressionFactory(nameof(__BuildCandidateSearch))]
+        public IBodyWorkflowAction<CandidateSearchResponse> CandidateSearch([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> query = null)
         {
-            var apiCallPath = String.Format("/{0}/candidates/search.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            return new ApiConnectionAction<CandidateSearchResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateGetResponse> CandidateGet(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CandidateSearchResponse> __BuildCandidateSearch(WorkflowExpression<string> cycle, WorkflowExpression<string> query = null)
         {
-            var apiCallPath = String.Format("/{0}/candidates/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CandidateGetResponse>(callPayload);
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(query, nameof(query), required: false);
+            return new DeferredBodyAction<CandidateSearchResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/search.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (query != null)
+                    callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                return new ApiConnectionAction<CandidateSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateTopFinancialResponse> CandidateTopFinancial(Expression<Func<string>> cycle, Expression<Func<categoryInput>> category)
+        [WorkflowExpressionFactory(nameof(__BuildCandidateGet))]
+        public IBodyWorkflowAction<CandidateGetResponse> CandidateGet([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> fecId)
         {
-            var apiCallPath = String.Format("/{0}/candidates/leaders/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(category, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CandidateTopFinancialResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateStateResponse> CandidateState(Expression<Func<string>> cycle, Expression<Func<string>> state)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CandidateGetResponse> __BuildCandidateGet(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
         {
-            var apiCallPath = String.Format("/{0}/races/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(state, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CandidateStateResponse>(callPayload);
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(fecId, nameof(fecId), required: true);
+            return new DeferredBodyAction<CandidateGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CandidateGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateRecentResponse> CandidateRecent(Expression<Func<string>> cycle)
+        [WorkflowExpressionFactory(nameof(__BuildCandidateTopFinancial))]
+        public IBodyWorkflowAction<CandidateTopFinancialResponse> CandidateTopFinancial([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<categoryInput> category)
         {
-            var apiCallPath = String.Format("/{0}/candidates/new.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CandidateRecentResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ContributionLateRecentResponse> ContributionLateRecent(Expression<Func<string>> cycle)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CandidateTopFinancialResponse> __BuildCandidateTopFinancial(WorkflowExpression<string> cycle, WorkflowExpression<categoryInput> category)
         {
-            var apiCallPath = String.Format("/{0}/contributions/48hour.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ContributionLateRecentResponse>(callPayload);
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(category, nameof(category), required: true);
+            return new DeferredBodyAction<CandidateTopFinancialResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/leaders/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(category, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CandidateTopFinancialResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ContributionLateCandidateResponse> ContributionLateCandidate(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        [WorkflowExpressionFactory(nameof(__BuildCandidateState))]
+        public IBodyWorkflowAction<CandidateStateResponse> CandidateState([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> state)
         {
-            var apiCallPath = String.Format("/{0}/candidates/{1}/48hour.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ContributionLateCandidateResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ContributionLateCommitteeResponse> ContributionLateCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CandidateStateResponse> __BuildCandidateState(WorkflowExpression<string> cycle, WorkflowExpression<string> state)
         {
-            var apiCallPath = String.Format("/{0}/committees/{1}/48hour.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ContributionLateCommitteeResponse>(callPayload);
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(state, nameof(state), required: true);
+            return new DeferredBodyAction<CandidateStateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/races/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(state, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CandidateStateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ContributionLateDateResponse> ContributionLateDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
+        [WorkflowExpressionFactory(nameof(__BuildCandidateRecent))]
+        public IBodyWorkflowAction<CandidateRecentResponse> CandidateRecent([WorkflowExpression] Func<string> cycle)
         {
-            var apiCallPath = String.Format("/{0}/contributions/48hour/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ContributionLateDateResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeSearchResponse> CommitteeSearch(Expression<Func<string>> cycle, Expression<Func<string>> query = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CandidateRecentResponse> __BuildCandidateRecent(WorkflowExpression<string> cycle)
         {
-            var apiCallPath = String.Format("/{0}/committees/search.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            return new ApiConnectionAction<CommitteeSearchResponse>(callPayload);
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            return new DeferredBodyAction<CandidateRecentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/new.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CandidateRecentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeGetResponse> CommitteeGet(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        [WorkflowExpressionFactory(nameof(__BuildContributionLateRecent))]
+        public IBodyWorkflowAction<ContributionLateRecentResponse> ContributionLateRecent([WorkflowExpression] Func<string> cycle)
         {
-            var apiCallPath = String.Format("/{0}/committees/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CommitteeGetResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeRecentResponse> CommitteeRecent(Expression<Func<string>> cycle)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ContributionLateRecentResponse> __BuildContributionLateRecent(WorkflowExpression<string> cycle)
         {
-            var apiCallPath = String.Format("/{0}/committees/new.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CommitteeRecentResponse>(callPayload);
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            return new DeferredBodyAction<ContributionLateRecentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/contributions/48hour.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ContributionLateRecentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeRecentPACsResponse> CommitteeRecentPACs(Expression<Func<string>> cycle)
+        [WorkflowExpressionFactory(nameof(__BuildContributionLateCandidate))]
+        public IBodyWorkflowAction<ContributionLateCandidateResponse> ContributionLateCandidate([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> fecId)
         {
-            var apiCallPath = String.Format("/{0}/committees/superpacs.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CommitteeRecentPACsResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeFilingResponse> CommitteeFiling(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ContributionLateCandidateResponse> __BuildContributionLateCandidate(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
         {
-            var apiCallPath = String.Format("/{0}/committees/{1}/filings.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CommitteeFilingResponse>(callPayload);
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(fecId, nameof(fecId), required: true);
+            return new DeferredBodyAction<ContributionLateCandidateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/{1}/48hour.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ContributionLateCandidateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeLeadershipResponse> CommitteeLeadership(Expression<Func<string>> cycle)
+        [WorkflowExpressionFactory(nameof(__BuildContributionLateCommittee))]
+        public IBodyWorkflowAction<ContributionLateCommitteeResponse> ContributionLateCommittee([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> fecId)
         {
-            var apiCallPath = String.Format("/{0}/committees/leadership.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CommitteeLeadershipResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<FilingSearchResponse> FilingSearch(Expression<Func<string>> cycle)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ContributionLateCommitteeResponse> __BuildContributionLateCommittee(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
         {
-            var apiCallPath = String.Format("/{0}/filings/search.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FilingSearchResponse>(callPayload);
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(fecId, nameof(fecId), required: true);
+            return new DeferredBodyAction<ContributionLateCommitteeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/48hour.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ContributionLateCommitteeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<FilingDateResponse> FilingDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
+        [WorkflowExpressionFactory(nameof(__BuildContributionLateDate))]
+        public IBodyWorkflowAction<ContributionLateDateResponse> ContributionLateDate([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> year, [WorkflowExpression] Func<string> month, [WorkflowExpression] Func<string> day)
         {
-            var apiCallPath = String.Format("/{0}/filings/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FilingDateResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<FilingFormTypeResponse> FilingFormType(Expression<Func<string>> cycle)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ContributionLateDateResponse> __BuildContributionLateDate(WorkflowExpression<string> cycle, WorkflowExpression<string> year, WorkflowExpression<string> month, WorkflowExpression<string> day)
         {
-            var apiCallPath = String.Format("/{0}/filings/types.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FilingFormTypeResponse>(callPayload);
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(year, nameof(year), required: true);
+            WorkflowExpression.Validate(month, nameof(month), required: true);
+            WorkflowExpression.Validate(day, nameof(day), required: true);
+            return new DeferredBodyAction<ContributionLateDateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/contributions/48hour/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ContributionLateDateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<FilingTypeResponse> FilingType(Expression<Func<string>> cycle, Expression<Func<string>> formTypeId)
+        [WorkflowExpressionFactory(nameof(__BuildCommitteeSearch))]
+        public IBodyWorkflowAction<CommitteeSearchResponse> CommitteeSearch([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> query = null)
         {
-            var apiCallPath = String.Format("/{0}/filings/types/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(formTypeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FilingTypeResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<FilingSummaryResponse> FilingSummary(Expression<Func<string>> cycle, Expression<Func<string>> filingId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CommitteeSearchResponse> __BuildCommitteeSearch(WorkflowExpression<string> cycle, WorkflowExpression<string> query = null)
         {
-            var apiCallPath = String.Format("/{0}/filings/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(filingId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FilingSummaryResponse>(callPayload);
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(query, nameof(query), required: false);
+            return new DeferredBodyAction<CommitteeSearchResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/search.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (query != null)
+                    callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                return new ApiConnectionAction<CommitteeSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureRecentResponse> ExpenditureRecent(Expression<Func<string>> cycle)
+        [WorkflowExpressionFactory(nameof(__BuildCommitteeGet))]
+        public IBodyWorkflowAction<CommitteeGetResponse> CommitteeGet([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> fecId)
         {
-            var apiCallPath = String.Format("/{0}/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ExpenditureRecentResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureDateResponse> ExpenditureDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CommitteeGetResponse> __BuildCommitteeGet(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
         {
-            var apiCallPath = String.Format("/{0}/independent_expenditures/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ExpenditureDateResponse>(callPayload);
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(fecId, nameof(fecId), required: true);
+            return new DeferredBodyAction<CommitteeGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CommitteeGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureCommitteeResponse> ExpenditureCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        [WorkflowExpressionFactory(nameof(__BuildCommitteeRecent))]
+        public IBodyWorkflowAction<CommitteeRecentResponse> CommitteeRecent([WorkflowExpression] Func<string> cycle)
         {
-            var apiCallPath = String.Format("/{0}/committees/{1}/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ExpenditureCommitteeResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureCandidateResponse> ExpenditureCandidate(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CommitteeRecentResponse> __BuildCommitteeRecent(WorkflowExpression<string> cycle)
         {
-            var apiCallPath = String.Format("/{0}/candidates/{1}/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ExpenditureCandidateResponse>(callPayload);
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            return new DeferredBodyAction<CommitteeRecentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/new.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CommitteeRecentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditurePresResponse> ExpenditurePres(Expression<Func<string>> cycle)
+        [WorkflowExpressionFactory(nameof(__BuildCommitteeRecentPACs))]
+        public IBodyWorkflowAction<CommitteeRecentPACsResponse> CommitteeRecentPACs([WorkflowExpression] Func<string> cycle)
         {
-            var apiCallPath = String.Format("/{0}/president/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ExpenditurePresResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureOfficeResponse> ExpenditureOffice(Expression<Func<string>> cycle, Expression<Func<string>> office)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CommitteeRecentPACsResponse> __BuildCommitteeRecentPACs(WorkflowExpression<string> cycle)
         {
-            var apiCallPath = String.Format("/{0}/independent_expenditures/race_totals/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(office, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ExpenditureOfficeResponse>(callPayload);
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            return new DeferredBodyAction<CommitteeRecentPACsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/superpacs.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CommitteeRecentPACsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureRaceCommitteeResponse> ExpenditureRaceCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        [WorkflowExpressionFactory(nameof(__BuildCommitteeFiling))]
+        public IBodyWorkflowAction<CommitteeFilingResponse> CommitteeFiling([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> fecId)
         {
-            var apiCallPath = String.Format("/{0}/committees/{1}/independent_expenditures/races.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ExpenditureRaceCommitteeResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommunicationRecentResponse> CommunicationRecent(Expression<Func<string>> cycle)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CommitteeFilingResponse> __BuildCommitteeFiling(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
         {
-            var apiCallPath = String.Format("/{0}/electioneering_communications.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CommunicationRecentResponse>(callPayload);
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(fecId, nameof(fecId), required: true);
+            return new DeferredBodyAction<CommitteeFilingResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/filings.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CommitteeFilingResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommunicationCommitteeResponse> CommunicationCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        [WorkflowExpressionFactory(nameof(__BuildCommitteeLeadership))]
+        public IBodyWorkflowAction<CommitteeLeadershipResponse> CommitteeLeadership([WorkflowExpression] Func<string> cycle)
         {
-            var apiCallPath = String.Format("/{0}/committees/{1}/electioneering_communications.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CommunicationCommitteeResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommunicationDateResponse> CommunicationDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CommitteeLeadershipResponse> __BuildCommitteeLeadership(WorkflowExpression<string> cycle)
         {
-            var apiCallPath = String.Format("/{0}/electioneering_communications/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CommunicationDateResponse>(callPayload);
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            return new DeferredBodyAction<CommitteeLeadershipResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/leadership.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CommitteeLeadershipResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<BundlerCommitteeResponse> BundlerCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        [WorkflowExpressionFactory(nameof(__BuildFilingSearch))]
+        public IBodyWorkflowAction<FilingSearchResponse> FilingSearch([WorkflowExpression] Func<string> cycle)
         {
-            var apiCallPath = String.Format("/{0}/committees/{1}/lobbyist_bundlers.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BundlerCommitteeResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FilingSearchResponse> __BuildFilingSearch(WorkflowExpression<string> cycle)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            return new DeferredBodyAction<FilingSearchResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/filings/search.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FilingSearchResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [WorkflowExpressionFactory(nameof(__BuildFilingDate))]
+        public IBodyWorkflowAction<FilingDateResponse> FilingDate([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> year, [WorkflowExpression] Func<string> month, [WorkflowExpression] Func<string> day)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FilingDateResponse> __BuildFilingDate(WorkflowExpression<string> cycle, WorkflowExpression<string> year, WorkflowExpression<string> month, WorkflowExpression<string> day)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(year, nameof(year), required: true);
+            WorkflowExpression.Validate(month, nameof(month), required: true);
+            WorkflowExpression.Validate(day, nameof(day), required: true);
+            return new DeferredBodyAction<FilingDateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/filings/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FilingDateResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [WorkflowExpressionFactory(nameof(__BuildFilingFormType))]
+        public IBodyWorkflowAction<FilingFormTypeResponse> FilingFormType([WorkflowExpression] Func<string> cycle)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FilingFormTypeResponse> __BuildFilingFormType(WorkflowExpression<string> cycle)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            return new DeferredBodyAction<FilingFormTypeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/filings/types.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FilingFormTypeResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [WorkflowExpressionFactory(nameof(__BuildFilingType))]
+        public IBodyWorkflowAction<FilingTypeResponse> FilingType([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> formTypeId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FilingTypeResponse> __BuildFilingType(WorkflowExpression<string> cycle, WorkflowExpression<string> formTypeId)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(formTypeId, nameof(formTypeId), required: true);
+            return new DeferredBodyAction<FilingTypeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/filings/types/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(formTypeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FilingTypeResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [WorkflowExpressionFactory(nameof(__BuildFilingSummary))]
+        public IBodyWorkflowAction<FilingSummaryResponse> FilingSummary([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> filingId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FilingSummaryResponse> __BuildFilingSummary(WorkflowExpression<string> cycle, WorkflowExpression<string> filingId)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(filingId, nameof(filingId), required: true);
+            return new DeferredBodyAction<FilingSummaryResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/filings/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(filingId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FilingSummaryResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [WorkflowExpressionFactory(nameof(__BuildExpenditureRecent))]
+        public IBodyWorkflowAction<ExpenditureRecentResponse> ExpenditureRecent([WorkflowExpression] Func<string> cycle)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExpenditureRecentResponse> __BuildExpenditureRecent(WorkflowExpression<string> cycle)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            return new DeferredBodyAction<ExpenditureRecentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ExpenditureRecentResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [WorkflowExpressionFactory(nameof(__BuildExpenditureDate))]
+        public IBodyWorkflowAction<ExpenditureDateResponse> ExpenditureDate([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> year, [WorkflowExpression] Func<string> month, [WorkflowExpression] Func<string> day)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExpenditureDateResponse> __BuildExpenditureDate(WorkflowExpression<string> cycle, WorkflowExpression<string> year, WorkflowExpression<string> month, WorkflowExpression<string> day)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(year, nameof(year), required: true);
+            WorkflowExpression.Validate(month, nameof(month), required: true);
+            WorkflowExpression.Validate(day, nameof(day), required: true);
+            return new DeferredBodyAction<ExpenditureDateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/independent_expenditures/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ExpenditureDateResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [WorkflowExpressionFactory(nameof(__BuildExpenditureCommittee))]
+        public IBodyWorkflowAction<ExpenditureCommitteeResponse> ExpenditureCommittee([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> fecId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExpenditureCommitteeResponse> __BuildExpenditureCommittee(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(fecId, nameof(fecId), required: true);
+            return new DeferredBodyAction<ExpenditureCommitteeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ExpenditureCommitteeResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [WorkflowExpressionFactory(nameof(__BuildExpenditureCandidate))]
+        public IBodyWorkflowAction<ExpenditureCandidateResponse> ExpenditureCandidate([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> fecId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExpenditureCandidateResponse> __BuildExpenditureCandidate(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(fecId, nameof(fecId), required: true);
+            return new DeferredBodyAction<ExpenditureCandidateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/{1}/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ExpenditureCandidateResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [WorkflowExpressionFactory(nameof(__BuildExpenditurePres))]
+        public IBodyWorkflowAction<ExpenditurePresResponse> ExpenditurePres([WorkflowExpression] Func<string> cycle)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExpenditurePresResponse> __BuildExpenditurePres(WorkflowExpression<string> cycle)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            return new DeferredBodyAction<ExpenditurePresResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/president/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ExpenditurePresResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [WorkflowExpressionFactory(nameof(__BuildExpenditureOffice))]
+        public IBodyWorkflowAction<ExpenditureOfficeResponse> ExpenditureOffice([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> office)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExpenditureOfficeResponse> __BuildExpenditureOffice(WorkflowExpression<string> cycle, WorkflowExpression<string> office)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(office, nameof(office), required: true);
+            return new DeferredBodyAction<ExpenditureOfficeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/independent_expenditures/race_totals/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(office, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ExpenditureOfficeResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [WorkflowExpressionFactory(nameof(__BuildExpenditureRaceCommittee))]
+        public IBodyWorkflowAction<ExpenditureRaceCommitteeResponse> ExpenditureRaceCommittee([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> fecId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExpenditureRaceCommitteeResponse> __BuildExpenditureRaceCommittee(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(fecId, nameof(fecId), required: true);
+            return new DeferredBodyAction<ExpenditureRaceCommitteeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/independent_expenditures/races.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ExpenditureRaceCommitteeResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [WorkflowExpressionFactory(nameof(__BuildCommunicationRecent))]
+        public IBodyWorkflowAction<CommunicationRecentResponse> CommunicationRecent([WorkflowExpression] Func<string> cycle)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CommunicationRecentResponse> __BuildCommunicationRecent(WorkflowExpression<string> cycle)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            return new DeferredBodyAction<CommunicationRecentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/electioneering_communications.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CommunicationRecentResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [WorkflowExpressionFactory(nameof(__BuildCommunicationCommittee))]
+        public IBodyWorkflowAction<CommunicationCommitteeResponse> CommunicationCommittee([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> fecId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CommunicationCommitteeResponse> __BuildCommunicationCommittee(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(fecId, nameof(fecId), required: true);
+            return new DeferredBodyAction<CommunicationCommitteeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/electioneering_communications.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CommunicationCommitteeResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [WorkflowExpressionFactory(nameof(__BuildCommunicationDate))]
+        public IBodyWorkflowAction<CommunicationDateResponse> CommunicationDate([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> year, [WorkflowExpression] Func<string> month, [WorkflowExpression] Func<string> day)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CommunicationDateResponse> __BuildCommunicationDate(WorkflowExpression<string> cycle, WorkflowExpression<string> year, WorkflowExpression<string> month, WorkflowExpression<string> day)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(year, nameof(year), required: true);
+            WorkflowExpression.Validate(month, nameof(month), required: true);
+            WorkflowExpression.Validate(day, nameof(day), required: true);
+            return new DeferredBodyAction<CommunicationDateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/electioneering_communications/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CommunicationDateResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [WorkflowExpressionFactory(nameof(__BuildBundlerCommittee))]
+        public IBodyWorkflowAction<BundlerCommitteeResponse> BundlerCommittee([WorkflowExpression] Func<string> cycle, [WorkflowExpression] Func<string> fecId)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BundlerCommitteeResponse> __BuildBundlerCommittee(WorkflowExpression<string> cycle, WorkflowExpression<string> fecId)
+        {
+            WorkflowExpression.Validate(cycle, nameof(cycle), required: true);
+            WorkflowExpression.Validate(fecId, nameof(fecId), required: true);
+            return new DeferredBodyAction<BundlerCommitteeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/lobbyist_bundlers.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BundlerCommitteeResponse>(callPayload);
+            });
         }
     }
 

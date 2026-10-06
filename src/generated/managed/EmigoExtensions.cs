@@ -4,145 +4,273 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class EmigoActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<TablesList> GetTables(Expression<Func<string>> type)
+        [WorkflowExpressionFactory(nameof(__BuildGetTables))]
+        public IBodyWorkflowAction<TablesList> GetTables([WorkflowExpression] Func<string> type)
         {
-            var apiCallPath = String.Format("/datasets/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(type, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TablesList>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<FeedList> GetFeeds(Expression<Func<string>> endpoint)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TablesList> __BuildGetTables(WorkflowExpression<string> type)
         {
-            var apiCallPath = String.Format("/datasets/{0}/feeds", ExpressionConverter.ConvertWithUrlEncoding(endpoint, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FeedList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<ItemsList> GetItems(Expression<Func<string>> type, Expression<Func<string>> table)
-        {
-            var apiCallPath = String.Format("/datasets/{0}/tables/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(type, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ItemsList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<FeedList> GetODataItems(Expression<Func<string>> endpoint, Expression<Func<string>> feed)
-        {
-            var apiCallPath = String.Format("/datasets/{0}/feeds/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(endpoint, 2), ExpressionConverter.ConvertWithUrlEncoding(feed, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FeedList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<GetProductList> GetProductList(Expression<Func<string>> idList = null, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/Product/GetList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idList != null)
-                callPayload.Queries["IdList"] = ExpressionConverter.Convert(idList);
-            if (select != null)
-                callPayload.Queries["Select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GetProductList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<GetProduct> GetProductItem(Expression<Func<string>> id, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/Product/GetItem";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (select != null)
-                callPayload.Queries["Select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GetProduct>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<GetOperationalUnitList> GetOperationalUnitList(Expression<Func<string>> idList = null, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/OperationalUnit/GetList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idList != null)
-                callPayload.Queries["IdList"] = ExpressionConverter.Convert(idList);
-            if (select != null)
-                callPayload.Queries["Select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GetOperationalUnitList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<GetOperationalUnit> GetOperationalUnitItem(Expression<Func<string>> id, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/OperationalUnit/GetItem";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (select != null)
-                callPayload.Queries["Select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GetOperationalUnit>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<JToken> SendMessageOperationalUnit(Expression<Func<int>> sendMessageidOperationalUnit, Expression<Func<string>> sendMessagemessage)
-        {
-            var apiCallPath = "/OperationalUnit/SendMessage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var sendMessage = new JObject();
-            var sendMessagepropCount = 0;
-            sendMessagepropCount++;
-            sendMessage["IdOperationalUnit"] = ExpressionConverter.ConvertO(sendMessageidOperationalUnit);
-            sendMessagepropCount++;
-            sendMessage["Message"] = ExpressionConverter.ConvertO(sendMessagemessage);
-            if (sendMessagepropCount > 0)
+            WorkflowExpression.Validate(type, nameof(type), required: true);
+            return new DeferredBodyAction<TablesList>(() =>
             {
-                callPayload.Body = sendMessage;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(type, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TablesList>(callPayload);
+            });
+        }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [WorkflowExpressionFactory(nameof(__BuildGetFeeds))]
+        public IBodyWorkflowAction<FeedList> GetFeeds([WorkflowExpression] Func<string> endpoint)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FeedList> __BuildGetFeeds(WorkflowExpression<string> endpoint)
+        {
+            WorkflowExpression.Validate(endpoint, nameof(endpoint), required: true);
+            return new DeferredBodyAction<FeedList>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/feeds", ExpressionConverter.ConvertWithUrlEncoding(endpoint, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FeedList>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [WorkflowExpressionFactory(nameof(__BuildGetItems))]
+        public IBodyWorkflowAction<ItemsList> GetItems([WorkflowExpression] Func<string> type, [WorkflowExpression] Func<string> table)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ItemsList> __BuildGetItems(WorkflowExpression<string> type, WorkflowExpression<string> table)
+        {
+            WorkflowExpression.Validate(type, nameof(type), required: true);
+            WorkflowExpression.Validate(table, nameof(table), required: true);
+            return new DeferredBodyAction<ItemsList>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(type, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ItemsList>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [WorkflowExpressionFactory(nameof(__BuildGetODataItems))]
+        public IBodyWorkflowAction<FeedList> GetODataItems([WorkflowExpression] Func<string> endpoint, [WorkflowExpression] Func<string> feed)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FeedList> __BuildGetODataItems(WorkflowExpression<string> endpoint, WorkflowExpression<string> feed)
+        {
+            WorkflowExpression.Validate(endpoint, nameof(endpoint), required: true);
+            WorkflowExpression.Validate(feed, nameof(feed), required: true);
+            return new DeferredBodyAction<FeedList>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/feeds/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(endpoint, 2), ExpressionConverter.ConvertWithUrlEncoding(feed, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FeedList>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [WorkflowExpressionFactory(nameof(__BuildGetProductList))]
+        public IBodyWorkflowAction<GetProductList> GetProductList([WorkflowExpression] Func<string> idList = null, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetProductList> __BuildGetProductList(WorkflowExpression<string> idList = null, WorkflowExpression<string> select = null)
+        {
+            WorkflowExpression.Validate(idList, nameof(idList), required: false);
+            WorkflowExpression.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<GetProductList>(() =>
+            {
+                var apiCallPath = "/Product/GetList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idList != null)
+                    callPayload.Queries["IdList"] = ExpressionConverter.Convert(idList);
+                if (select != null)
+                    callPayload.Queries["Select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<GetProductList>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [WorkflowExpressionFactory(nameof(__BuildGetProductItem))]
+        public IBodyWorkflowAction<GetProduct> GetProductItem([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetProduct> __BuildGetProductItem(WorkflowExpression<string> id, WorkflowExpression<string> select = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<GetProduct>(() =>
+            {
+                var apiCallPath = "/Product/GetItem";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                if (select != null)
+                    callPayload.Queries["Select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<GetProduct>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [WorkflowExpressionFactory(nameof(__BuildGetOperationalUnitList))]
+        public IBodyWorkflowAction<GetOperationalUnitList> GetOperationalUnitList([WorkflowExpression] Func<string> idList = null, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetOperationalUnitList> __BuildGetOperationalUnitList(WorkflowExpression<string> idList = null, WorkflowExpression<string> select = null)
+        {
+            WorkflowExpression.Validate(idList, nameof(idList), required: false);
+            WorkflowExpression.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<GetOperationalUnitList>(() =>
+            {
+                var apiCallPath = "/OperationalUnit/GetList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idList != null)
+                    callPayload.Queries["IdList"] = ExpressionConverter.Convert(idList);
+                if (select != null)
+                    callPayload.Queries["Select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<GetOperationalUnitList>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [WorkflowExpressionFactory(nameof(__BuildGetOperationalUnitItem))]
+        public IBodyWorkflowAction<GetOperationalUnit> GetOperationalUnitItem([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetOperationalUnit> __BuildGetOperationalUnitItem(WorkflowExpression<string> id, WorkflowExpression<string> select = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<GetOperationalUnit>(() =>
+            {
+                var apiCallPath = "/OperationalUnit/GetItem";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                if (select != null)
+                    callPayload.Queries["Select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<GetOperationalUnit>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [WorkflowExpressionFactory(nameof(__BuildSendMessageOperationalUnit))]
+        public IBodyWorkflowAction<JToken> SendMessageOperationalUnit([WorkflowExpression] Func<int> sendMessageidOperationalUnit, [WorkflowExpression] Func<string> sendMessagemessage)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildSendMessageOperationalUnit(WorkflowExpression<int> sendMessageidOperationalUnit, WorkflowExpression<string> sendMessagemessage)
+        {
+            WorkflowExpression.Validate(sendMessageidOperationalUnit, nameof(sendMessageidOperationalUnit), required: true);
+            WorkflowExpression.Validate(sendMessagemessage, nameof(sendMessagemessage), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/OperationalUnit/SendMessage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var sendMessage = new JObject();
+                var sendMessagepropCount = 0;
+                sendMessagepropCount++;
+                sendMessage["IdOperationalUnit"] = ExpressionConverter.ConvertO(sendMessageidOperationalUnit);
+                sendMessagepropCount++;
+                sendMessage["Message"] = ExpressionConverter.ConvertO(sendMessagemessage);
+                if (sendMessagepropCount > 0)
+                {
+                    callPayload.Body = sendMessage;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 
     public class EmigoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse> NewODataItem(Expression<Func<string>> endpoint, Expression<Func<string>> feed, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildNewODataItem))]
+        public IBodyWorkflowTrigger<WebhookCreationResponse> NewODataItem([WorkflowExpression] Func<string> endpoint, [WorkflowExpression] Func<string> feed, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/{0}/feeds/{1}/newItem", ExpressionConverter.ConvertWithUrlEncoding(endpoint, 2), ExpressionConverter.ConvertWithUrlEncoding(feed, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBodyOfWebhook = new JObject();
-            var requestBodyOfWebhookpropCount = 0;
-            var configObject = new JObject();
-            var configObjectpropCount = 0;
-            configObject["url"] = "@listCallbackUrl()";
-            configObjectpropCount++;
-            if (configObjectpropCount > 0)
-            {
-                requestBodyOfWebhook["config"] = configObject;
-                requestBodyOfWebhookpropCount++;
-            }
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
 
-            if (requestBodyOfWebhookpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<WebhookCreationResponse> __BuildNewODataItem(WorkflowExpression<string> endpoint, WorkflowExpression<string> feed, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(endpoint, nameof(endpoint), required: true);
+            WorkflowExpression.Validate(feed, nameof(feed), required: true);
+            return new DeferredBodyTrigger<WebhookCreationResponse>(() =>
             {
-                callPayload.Body = requestBodyOfWebhook;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/{0}/feeds/{1}/newItem", ExpressionConverter.ConvertWithUrlEncoding(endpoint, 2), ExpressionConverter.ConvertWithUrlEncoding(feed, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBodyOfWebhook = new JObject();
+                var requestBodyOfWebhookpropCount = 0;
+                var configObject = new JObject();
+                var configObjectpropCount = 0;
+                configObject["url"] = "#{listCallbackUrl()}";
+                configObjectpropCount++;
+                if (configObjectpropCount > 0)
+                {
+                    requestBodyOfWebhook["config"] = configObject;
+                    requestBodyOfWebhookpropCount++;
+                }
 
-            return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, triggerName, recurrence);
+                if (requestBodyOfWebhookpropCount > 0)
+                {
+                    callPayload.Body = requestBodyOfWebhook;
+                }
+
+                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

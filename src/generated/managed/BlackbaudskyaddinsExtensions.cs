@@ -4,73 +4,100 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class BlackbaudskyaddinsActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
-        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse> ValidateUserIdentityToken(Expression<Func<string>> bodyuserIdentityToken, Expression<Func<string>> bodyapplicationID)
-        {
-            var apiCallPath = "/powerautomateui/v1/useridentitytoken/validate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["uit"] = ExpressionConverter.ConvertO(bodyuserIdentityToken);
-            bodypropCount++;
-            body["application_id"] = ExpressionConverter.ConvertO(bodyapplicationID);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<PowerAutomateUIApiValidateUserIdentityTokenResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
+        [WorkflowExpressionFactory(nameof(__BuildValidateUserIdentityToken))]
+        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse> ValidateUserIdentityToken([WorkflowExpression] Func<string> bodyuserIdentityToken, [WorkflowExpression] Func<string> bodyapplicationID)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
-        public IWorkflowAction SendHttpRequest(Expression<Func<bodymethodInput>> bodymethod, Expression<Func<string>> bodyrelativePath, Expression<Func<string>> bodybody = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse> __BuildValidateUserIdentityToken(WorkflowExpression<string> bodyuserIdentityToken, WorkflowExpression<string> bodyapplicationID)
         {
-            var apiCallPath = "/virtual/httprequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["method"] = ExpressionConverter.ConvertO(bodymethod);
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodyrelativePath);
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (queryObjectpropCount > 0)
+            WorkflowExpression.Validate(bodyuserIdentityToken, nameof(bodyuserIdentityToken), required: true);
+            WorkflowExpression.Validate(bodyapplicationID, nameof(bodyapplicationID), required: true);
+            return new DeferredBodyAction<PowerAutomateUIApiValidateUserIdentityTokenResponse>(() =>
             {
-                body["query"] = queryObject;
+                var apiCallPath = "/powerautomateui/v1/useridentitytoken/validate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
-            {
-                body["headers"] = headersObject;
+                body["uit"] = ExpressionConverter.ConvertO(bodyuserIdentityToken);
                 bodypropCount++;
-            }
+                body["application_id"] = ExpressionConverter.ConvertO(bodyapplicationID);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodybody != null)
+                return new ApiConnectionAction<PowerAutomateUIApiValidateUserIdentityTokenResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
+        [WorkflowExpressionFactory(nameof(__BuildSendHttpRequest))]
+        public IWorkflowAction SendHttpRequest([WorkflowExpression] Func<bodymethodInput> bodymethod, [WorkflowExpression] Func<string> bodyrelativePath, [WorkflowExpression] Func<string> bodybody = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSendHttpRequest(WorkflowExpression<bodymethodInput> bodymethod, WorkflowExpression<string> bodyrelativePath, WorkflowExpression<string> bodybody = null)
+        {
+            WorkflowExpression.Validate(bodymethod, nameof(bodymethod), required: true);
+            WorkflowExpression.Validate(bodyrelativePath, nameof(bodyrelativePath), required: true);
+            WorkflowExpression.Validate(bodybody, nameof(bodybody), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["body"] = ExpressionConverter.ConvertO(bodybody);
+                var apiCallPath = "/virtual/httprequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["method"] = ExpressionConverter.ConvertO(bodymethod);
+                bodypropCount++;
+                body["path"] = ExpressionConverter.ConvertO(bodyrelativePath);
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (queryObjectpropCount > 0)
+                {
+                    body["query"] = queryObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    body["headers"] = headersObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodybody != null)
+                {
+                    body["body"] = ExpressionConverter.ConvertO(bodybody);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

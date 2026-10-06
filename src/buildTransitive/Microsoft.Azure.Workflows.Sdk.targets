@@ -1,0 +1,38 @@
+<Project>
+  <UsingTask TaskName="WriteWorkflowManifest" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <Sources ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+      <References ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+      <Defines ParameterType="System.String" />
+      <CheckOverflow ParameterType="System.Boolean" />
+      <Path ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System" /><Using Namespace="System.Linq" /><Using Namespace="System.IO" /><Using Namespace="System.Text" />
+      <Code Type="Fragment" Language="cs"><![CDATA[
+        Func<string,string> quote = text => "\"" + text.Replace("\\","\\\\").Replace("\"","\\\"").Replace("\r","\\r").Replace("\n","\\n") + "\"";
+        File.WriteAllText(Path, "{\"sources\":[" + string.Join(",",Sources.Select(x=>quote(x.GetMetadata("FullPath")))) +
+          "],\"references\":[" + string.Join(",",References.Select(x=>quote(x.GetMetadata("FullPath")))) +
+          "],\"defines\":" + quote(Defines ?? "") + ",\"checkOverflow\":" + (CheckOverflow ? "true" : "false") + "}");
+      ]]></Code>
+    </Task>
+  </UsingTask>
+  <Target Name="CompileWorkflowExpressions" BeforeTargets="CoreCompile" DependsOnTargets="ResolveReferences"
+          Condition="'$(DesignTimeBuild)' != 'true' and '$(DisableWorkflowExpressionCompiler)' != 'true'">
+    <PropertyGroup>
+      <_WorkflowSourceDirectory>$(IntermediateOutputPath)workflow-source\</_WorkflowSourceDirectory>
+      <DotNetHostPath Condition="'$(DotNetHostPath)' == ''">dotnet</DotNetHostPath>
+      <WorkflowCompilerPath Condition="'$(WorkflowCompilerPath)' == ''">$(MSBuildThisFileDirectory)..\tools\workflow-build\Microsoft.Azure.Workflows.Sdk.Build.dll</WorkflowCompilerPath>
+    </PropertyGroup>
+    <MakeDir Directories="$(_WorkflowSourceDirectory)" />
+    <ItemGroup><_WorkflowOriginalCompile Include="@(Compile)" /></ItemGroup>
+    <WriteWorkflowManifest Sources="@(Compile)" References="@(ReferencePath)" Defines="$(DefineConstants)"
+                           CheckOverflow="$(CheckForOverflowUnderflow)" Path="$(_WorkflowSourceDirectory)manifest.json" />
+    <Exec Command="&quot;$(DotNetHostPath)&quot; &quot;$(WorkflowCompilerPath)&quot; &quot;$(_WorkflowSourceDirectory)manifest.json&quot; &quot;$(_WorkflowSourceDirectory).&quot;" />
+    <ReadLinesFromFile File="$(_WorkflowSourceDirectory)compiled-files.txt"><Output TaskParameter="Lines" ItemName="_WorkflowCompiledSources" /></ReadLinesFromFile>
+    <ItemGroup><Compile Remove="@(Compile)" /><Compile Include="@(_WorkflowCompiledSources)" /></ItemGroup>
+  </Target>
+  <Target Name="RestoreWorkflowSources" AfterTargets="CoreCompile" Condition="'@(_WorkflowOriginalCompile)' != ''">
+    <ItemGroup><Compile Remove="@(Compile)" /><Compile Include="@(_WorkflowOriginalCompile)" /></ItemGroup>
+  </Target>
+</Project>

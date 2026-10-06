@@ -4,85 +4,138 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AmazonsqsActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazonsqs")]
-        public IBodyWorkflowAction<QueueMessageMetadata> SendMessageToQueue(Expression<Func<int>> sendMessageOperationInputmessageVisibilityDelayInSeconds = null, Expression<Func<string>> sendMessageOperationInputmessageContent = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendMessageToQueue))]
+        public IBodyWorkflowAction<QueueMessageMetadata> SendMessageToQueue([WorkflowExpression] Func<int> sendMessageOperationInputmessageVisibilityDelayInSeconds = null, [WorkflowExpression] Func<string> sendMessageOperationInputmessageContent = null)
         {
-            var apiCallPath = "/message";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var sendMessageOperationInput = new JObject();
-            var sendMessageOperationInputpropCount = 0;
-            if (sendMessageOperationInputmessageVisibilityDelayInSeconds != null)
-            {
-                sendMessageOperationInput["messageVisibilityDelaySeconds"] = ExpressionConverter.ConvertO(sendMessageOperationInputmessageVisibilityDelayInSeconds);
-                sendMessageOperationInputpropCount++;
-            }
-
-            if (sendMessageOperationInputmessageContent != null)
-            {
-                sendMessageOperationInput["messageContent"] = ExpressionConverter.ConvertO(sendMessageOperationInputmessageContent);
-                sendMessageOperationInputpropCount++;
-            }
-
-            if (sendMessageOperationInputpropCount > 0)
-            {
-                callPayload.Body = sendMessageOperationInput;
-            }
-
-            return new ApiConnectionAction<QueueMessageMetadata>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazonsqs")]
-        public IWorkflowAction DeleteMessageFromQueue(Expression<Func<string>> messageReceiptHandle)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<QueueMessageMetadata> __BuildSendMessageToQueue(WorkflowExpression<int> sendMessageOperationInputmessageVisibilityDelayInSeconds = null, WorkflowExpression<string> sendMessageOperationInputmessageContent = null)
         {
-            var apiCallPath = "/message";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["messageReceiptHandle"] = ExpressionConverter.Convert(messageReceiptHandle);
-            return new ApiConnectionAction(callPayload);
+            WorkflowExpression.Validate(sendMessageOperationInputmessageVisibilityDelayInSeconds, nameof(sendMessageOperationInputmessageVisibilityDelayInSeconds), required: false);
+            WorkflowExpression.Validate(sendMessageOperationInputmessageContent, nameof(sendMessageOperationInputmessageContent), required: false);
+            return new DeferredBodyAction<QueueMessageMetadata>(() =>
+            {
+                var apiCallPath = "/message";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var sendMessageOperationInput = new JObject();
+                var sendMessageOperationInputpropCount = 0;
+                if (sendMessageOperationInputmessageVisibilityDelayInSeconds != null)
+                {
+                    sendMessageOperationInput["messageVisibilityDelaySeconds"] = ExpressionConverter.ConvertO(sendMessageOperationInputmessageVisibilityDelayInSeconds);
+                    sendMessageOperationInputpropCount++;
+                }
+
+                if (sendMessageOperationInputmessageContent != null)
+                {
+                    sendMessageOperationInput["messageContent"] = ExpressionConverter.ConvertO(sendMessageOperationInputmessageContent);
+                    sendMessageOperationInputpropCount++;
+                }
+
+                if (sendMessageOperationInputpropCount > 0)
+                {
+                    callPayload.Body = sendMessageOperationInput;
+                }
+
+                return new ApiConnectionAction<QueueMessageMetadata>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazonsqs")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteMessageFromQueue))]
+        public IWorkflowAction DeleteMessageFromQueue([WorkflowExpression] Func<string> messageReceiptHandle)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazonsqs")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteMessageFromQueue(WorkflowExpression<string> messageReceiptHandle)
+        {
+            WorkflowExpression.Validate(messageReceiptHandle, nameof(messageReceiptHandle), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/message";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["messageReceiptHandle"] = ExpressionConverter.Convert(messageReceiptHandle);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
     public class AmazonsqsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<QueueMessage> GetMessageFromQueue(Expression<Func<int>> messageVisibilityTimeoutSeconds = null, Expression<Func<int>> requestWaitTimeoutSeconds = null, Expression<Func<string>> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
+
+        [WorkflowExpressionFactory(nameof(__BuildGetMessageFromQueue))]
+        public IBodyWorkflowTrigger<QueueMessage> GetMessageFromQueue([WorkflowExpression] Func<int> messageVisibilityTimeoutSeconds = null, [WorkflowExpression] Func<int> requestWaitTimeoutSeconds = null, [WorkflowExpression] Func<string> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/message";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (messageVisibilityTimeoutSeconds != null)
-                callPayload.Queries["messageVisibilityTimeoutSeconds"] = ExpressionConverter.Convert(messageVisibilityTimeoutSeconds);
-            callPayload.Queries["requestWaitTimeoutSeconds"] = Convert.ToString(0);
-            if (requestWaitTimeoutSeconds != null)
-                callPayload.Queries["requestWaitTimeoutSeconds"] = ExpressionConverter.Convert(requestWaitTimeoutSeconds);
-            if (messageAttributeNames != null)
-                callPayload.Queries["messageAttributeNames"] = ExpressionConverter.Convert(messageAttributeNames);
-            return new ApiConnectionTrigger<QueueMessage>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
-        public IBodyWorkflowTrigger<QueueMessage[]> GetMessagesFromQueue(Expression<Func<int>> maximumNumberOfMessages = null, Expression<Func<int>> messageVisibilityTimeoutSeconds = null, Expression<Func<int>> requestWaitTimeoutSeconds = null, Expression<Func<string>> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<QueueMessage> __BuildGetMessageFromQueue(WorkflowExpression<int> messageVisibilityTimeoutSeconds = null, WorkflowExpression<int> requestWaitTimeoutSeconds = null, WorkflowExpression<string> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/messages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["maximumNumberOfMessages"] = Convert.ToString(10);
-            if (maximumNumberOfMessages != null)
-                callPayload.Queries["maximumNumberOfMessages"] = ExpressionConverter.Convert(maximumNumberOfMessages);
-            if (messageVisibilityTimeoutSeconds != null)
-                callPayload.Queries["messageVisibilityTimeoutSeconds"] = ExpressionConverter.Convert(messageVisibilityTimeoutSeconds);
-            callPayload.Queries["requestWaitTimeoutSeconds"] = Convert.ToString(0);
-            if (requestWaitTimeoutSeconds != null)
-                callPayload.Queries["requestWaitTimeoutSeconds"] = ExpressionConverter.Convert(requestWaitTimeoutSeconds);
-            if (messageAttributeNames != null)
-                callPayload.Queries["messageAttributeNames"] = ExpressionConverter.Convert(messageAttributeNames);
-            return new ApiConnectionTrigger<QueueMessage[]>(callPayload, triggerName, recurrence);
+            WorkflowExpression.Validate(messageVisibilityTimeoutSeconds, nameof(messageVisibilityTimeoutSeconds), required: false);
+            WorkflowExpression.Validate(requestWaitTimeoutSeconds, nameof(requestWaitTimeoutSeconds), required: false);
+            WorkflowExpression.Validate(messageAttributeNames, nameof(messageAttributeNames), required: false);
+            return new DeferredBodyTrigger<QueueMessage>(() =>
+            {
+                var apiCallPath = "/message";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (messageVisibilityTimeoutSeconds != null)
+                    callPayload.Queries["messageVisibilityTimeoutSeconds"] = ExpressionConverter.Convert(messageVisibilityTimeoutSeconds);
+                callPayload.Queries["requestWaitTimeoutSeconds"] = Convert.ToString(0);
+                if (requestWaitTimeoutSeconds != null)
+                    callPayload.Queries["requestWaitTimeoutSeconds"] = ExpressionConverter.Convert(requestWaitTimeoutSeconds);
+                if (messageAttributeNames != null)
+                    callPayload.Queries["messageAttributeNames"] = ExpressionConverter.Convert(messageAttributeNames);
+                return new ApiConnectionTrigger<QueueMessage>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromQueue))]
+        public IBodyWorkflowTrigger<QueueMessage[]> GetMessagesFromQueue([WorkflowExpression] Func<int> maximumNumberOfMessages = null, [WorkflowExpression] Func<int> messageVisibilityTimeoutSeconds = null, [WorkflowExpression] Func<int> requestWaitTimeoutSeconds = null, [WorkflowExpression] Func<string> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<QueueMessage[]> __BuildGetMessagesFromQueue(WorkflowExpression<int> maximumNumberOfMessages = null, WorkflowExpression<int> messageVisibilityTimeoutSeconds = null, WorkflowExpression<int> requestWaitTimeoutSeconds = null, WorkflowExpression<string> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowExpression.Validate(maximumNumberOfMessages, nameof(maximumNumberOfMessages), required: false);
+            WorkflowExpression.Validate(messageVisibilityTimeoutSeconds, nameof(messageVisibilityTimeoutSeconds), required: false);
+            WorkflowExpression.Validate(requestWaitTimeoutSeconds, nameof(requestWaitTimeoutSeconds), required: false);
+            WorkflowExpression.Validate(messageAttributeNames, nameof(messageAttributeNames), required: false);
+            return new DeferredBodyTrigger<QueueMessage[]>(() =>
+            {
+                var apiCallPath = "/messages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["maximumNumberOfMessages"] = Convert.ToString(10);
+                if (maximumNumberOfMessages != null)
+                    callPayload.Queries["maximumNumberOfMessages"] = ExpressionConverter.Convert(maximumNumberOfMessages);
+                if (messageVisibilityTimeoutSeconds != null)
+                    callPayload.Queries["messageVisibilityTimeoutSeconds"] = ExpressionConverter.Convert(messageVisibilityTimeoutSeconds);
+                callPayload.Queries["requestWaitTimeoutSeconds"] = Convert.ToString(0);
+                if (requestWaitTimeoutSeconds != null)
+                    callPayload.Queries["requestWaitTimeoutSeconds"] = ExpressionConverter.Convert(requestWaitTimeoutSeconds);
+                if (messageAttributeNames != null)
+                    callPayload.Queries["messageAttributeNames"] = ExpressionConverter.Convert(messageAttributeNames);
+                return new ApiConnectionTrigger<QueueMessage[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

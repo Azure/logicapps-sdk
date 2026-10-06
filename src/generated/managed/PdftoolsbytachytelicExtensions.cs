@@ -4,93 +4,109 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class PdftoolsbytachytelicActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdftoolsbytachytelic")]
-        public IBodyWorkflowAction<OptimizePdfResponse> OptimizePdf(Expression<Func<string>> bodypDFFileContent, Expression<Func<bodymodeInput>> bodymode = null, Expression<Func<int>> bodygarbageLevel = null, Expression<Func<bool>> bodydeflate = null, Expression<Func<bool>> bodyclean = null)
+        [WorkflowExpressionFactory(nameof(__BuildOptimizePdf))]
+        public IBodyWorkflowAction<OptimizePdfResponse> OptimizePdf([WorkflowExpression] Func<string> bodypDFFileContent, [WorkflowExpression] Func<bodymodeInput> bodymode = null, [WorkflowExpression] Func<int> bodygarbageLevel = null, [WorkflowExpression] Func<bool> bodydeflate = null, [WorkflowExpression] Func<bool> bodyclean = null)
         {
-            var apiCallPath = "/optimize";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["PdfFileContent"] = ExpressionConverter.ConvertO(bodypDFFileContent);
-            if (bodymode != null)
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdftoolsbytachytelic")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OptimizePdfResponse> __BuildOptimizePdf(WorkflowExpression<string> bodypDFFileContent, WorkflowExpression<bodymodeInput> bodymode = null, WorkflowExpression<int> bodygarbageLevel = null, WorkflowExpression<bool> bodydeflate = null, WorkflowExpression<bool> bodyclean = null)
+        {
+            WorkflowExpression.Validate(bodypDFFileContent, nameof(bodypDFFileContent), required: true);
+            WorkflowExpression.Validate(bodymode, nameof(bodymode), required: false);
+            WorkflowExpression.Validate(bodygarbageLevel, nameof(bodygarbageLevel), required: false);
+            WorkflowExpression.Validate(bodydeflate, nameof(bodydeflate), required: false);
+            WorkflowExpression.Validate(bodyclean, nameof(bodyclean), required: false);
+            return new DeferredBodyAction<OptimizePdfResponse>(() =>
             {
+                var apiCallPath = "/optimize";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["PdfFileContent"] = ExpressionConverter.ConvertO(bodypDFFileContent);
                 if (bodymode != null)
                 {
-                    body["Mode"] = ExpressionConverter.ConvertO(bodymode);
+                    if (bodymode != null)
+                    {
+                        body["Mode"] = ExpressionConverter.ConvertO(bodymode);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Mode"] = "aggressive";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Mode"] = "aggressive";
-                bodypropCount++;
-            }
-
-            if (bodygarbageLevel != null)
-            {
                 if (bodygarbageLevel != null)
                 {
-                    body["Garbage"] = ExpressionConverter.ConvertO(bodygarbageLevel);
+                    if (bodygarbageLevel != null)
+                    {
+                        body["Garbage"] = ExpressionConverter.ConvertO(bodygarbageLevel);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Garbage"] = 4;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Garbage"] = 4;
-                bodypropCount++;
-            }
-
-            if (bodydeflate != null)
-            {
                 if (bodydeflate != null)
                 {
-                    body["Deflate"] = ExpressionConverter.ConvertO(bodydeflate);
+                    if (bodydeflate != null)
+                    {
+                        body["Deflate"] = ExpressionConverter.ConvertO(bodydeflate);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Deflate"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Deflate"] = true;
-                bodypropCount++;
-            }
-
-            if (bodyclean != null)
-            {
                 if (bodyclean != null)
                 {
-                    body["Clean"] = ExpressionConverter.ConvertO(bodyclean);
+                    if (bodyclean != null)
+                    {
+                        body["Clean"] = ExpressionConverter.ConvertO(bodyclean);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Clean"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Clean"] = true;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<OptimizePdfResponse>(callPayload);
+                return new ApiConnectionAction<OptimizePdfResponse>(callPayload);
+            });
         }
     }
 

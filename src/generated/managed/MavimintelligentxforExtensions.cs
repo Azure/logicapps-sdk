@@ -4,29 +4,45 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MavimintelligentxforActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimintelligentxfor")]
-        public IBodyWorkflowAction<AuditLog[]> GetTopicAuditTrailLogs(Expression<Func<string>> repositoryId, Expression<Func<string>> topicId, Expression<Func<int>> logId = null, Expression<Func<int>> range = null, Expression<Func<dataLanguageInput>> dataLanguage = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetTopicAuditTrailLogs))]
+        public IBodyWorkflowAction<AuditLog[]> GetTopicAuditTrailLogs([WorkflowExpression] Func<string> repositoryId, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<int> logId = null, [WorkflowExpression] Func<int> range = null, [WorkflowExpression] Func<dataLanguageInput> dataLanguage = null)
         {
-            var apiCallPath = String.Format("/insights/v2/activities/repositories/{0}/system-logs/topics/{1}", ExpressionConverter.ConvertWithUrlEncoding(repositoryId, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["logId"] = Convert.ToString(0);
-            if (logId != null)
-                callPayload.Queries["logId"] = ExpressionConverter.Convert(logId);
-            callPayload.Queries["range"] = Convert.ToString(0);
-            if (range != null)
-                callPayload.Queries["range"] = ExpressionConverter.Convert(range);
-            callPayload.Queries["dataLanguage"] = Convert.ToString("en");
-            if (dataLanguage != null)
-                callPayload.Queries["dataLanguage"] = ExpressionConverter.Convert(dataLanguage);
-            return new ApiConnectionAction<AuditLog[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimintelligentxfor")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AuditLog[]> __BuildGetTopicAuditTrailLogs(WorkflowExpression<string> repositoryId, WorkflowExpression<string> topicId, WorkflowExpression<int> logId = null, WorkflowExpression<int> range = null, WorkflowExpression<dataLanguageInput> dataLanguage = null)
+        {
+            WorkflowExpression.Validate(repositoryId, nameof(repositoryId), required: true);
+            WorkflowExpression.Validate(topicId, nameof(topicId), required: true);
+            WorkflowExpression.Validate(logId, nameof(logId), required: false);
+            WorkflowExpression.Validate(range, nameof(range), required: false);
+            WorkflowExpression.Validate(dataLanguage, nameof(dataLanguage), required: false);
+            return new DeferredBodyAction<AuditLog[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/insights/v2/activities/repositories/{0}/system-logs/topics/{1}", ExpressionConverter.ConvertWithUrlEncoding(repositoryId, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["logId"] = Convert.ToString(0);
+                if (logId != null)
+                    callPayload.Queries["logId"] = ExpressionConverter.Convert(logId);
+                callPayload.Queries["range"] = Convert.ToString(0);
+                if (range != null)
+                    callPayload.Queries["range"] = ExpressionConverter.Convert(range);
+                callPayload.Queries["dataLanguage"] = Convert.ToString("en");
+                if (dataLanguage != null)
+                    callPayload.Queries["dataLanguage"] = ExpressionConverter.Convert(dataLanguage);
+                return new ApiConnectionAction<AuditLog[]>(callPayload);
+            });
         }
     }
 

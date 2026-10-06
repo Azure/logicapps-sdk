@@ -4,21 +4,34 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class NitroActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nitro")]
-        public IBodyWorkflowAction<Error> TemplateSignatureRequest(Expression<Func<string>> id, Expression<Func<object>> dynamicSchema = null)
+        [WorkflowExpressionFactory(nameof(__BuildTemplateSignatureRequest))]
+        public IBodyWorkflowAction<Error> TemplateSignatureRequest([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> dynamicSchema = null)
         {
-            var apiCallPath = String.Format("/templates/{0}/signature-requests", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicSchema);
-            return new ApiConnectionAction<Error>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nitro")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Error> __BuildTemplateSignatureRequest(WorkflowExpression<string> id, WorkflowExpression<object> dynamicSchema = null)
+        {
+            WorkflowExpression.Validate(id, nameof(id), required: true);
+            WorkflowExpression.Validate(dynamicSchema, nameof(dynamicSchema), required: false);
+            return new DeferredBodyAction<Error>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templates/{0}/signature-requests", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(dynamicSchema);
+                return new ApiConnectionAction<Error>(callPayload);
+            });
         }
     }
 
@@ -31,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["endpoint"] = "@listCallbackUrl()";
+            request["endpoint"] = "#{listCallbackUrl()}";
             requestpropCount++;
             request["event"] = "esign.request.completed";
             requestpropCount++;

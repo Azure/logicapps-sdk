@@ -4,43 +4,80 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class BeauhurstActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
-        public IBodyWorkflowAction<GetCompanyFidResponse> GetCompanyFid(Expression<Func<string>> names)
+        [WorkflowExpressionFactory(nameof(__BuildGetCompanyFid))]
+        public IBodyWorkflowAction<GetCompanyFidResponse> GetCompanyFid([WorkflowExpression] Func<string> names)
         {
-            var apiCallPath = "/_api/v1/companies/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["names"] = ExpressionConverter.Convert(names);
-            return new ApiConnectionAction<GetCompanyFidResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
-        public IBodyWorkflowAction<CompanyInfoByFIDResponse> CompanyInfoByFID(Expression<Func<string>> fID)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCompanyFidResponse> __BuildGetCompanyFid(WorkflowExpression<string> names)
         {
-            var apiCallPath = String.Format("/_api/v1/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(fID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includes"] = Convert.ToString("registered_name&includes=registration_date&includes=other_trading_names&includes=companies_house_id&includes=employee_count_range&includes=last_modified_date&includes=website&includes=tracked_status&includes=company_status&includes=is_sme&includes=sectors&includes=top_level_sector_groups&includes=latest_stage_of_evolution&includes=description&includes=tracking_reasons&includes=target_markets&includes=founder_female_percentage&includes=sic_codes&includes=actively_hiring&includes=n_fundraisings&includes=total_amount_fundraisings&includes=n_grants&includes=total_amount_grants&includes=latest_valuation&includes=country&includes=lep&includes=region&includes=postcode&includes=address&includes=emails&includes=telephone&includes=key_contacts&includes=year_end_date&includes=turnover&includes=ebitda&includes=total_assets&includes=number_of_employees&includes=cash&includes=total_liabilities&includes=net_assets");
-            return new ApiConnectionAction<CompanyInfoByFIDResponse>(callPayload);
+            WorkflowExpression.Validate(names, nameof(names), required: true);
+            return new DeferredBodyAction<GetCompanyFidResponse>(() =>
+            {
+                var apiCallPath = "/_api/v1/companies/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["names"] = ExpressionConverter.Convert(names);
+                return new ApiConnectionAction<GetCompanyFidResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
-        public IBodyWorkflowAction<FundsByFIDResponse> FundsByFID(Expression<Func<string>> companyIds, Expression<Func<includesInput>> includes)
+        [WorkflowExpressionFactory(nameof(__BuildCompanyInfoByFID))]
+        public IBodyWorkflowAction<CompanyInfoByFIDResponse> CompanyInfoByFID([WorkflowExpression] Func<string> fID)
         {
-            var apiCallPath = "/_api/v1/transactions/company";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company_ids"] = ExpressionConverter.Convert(companyIds);
-            callPayload.Queries["includes"] = ExpressionConverter.Convert(includes);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<FundsByFIDResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CompanyInfoByFIDResponse> __BuildCompanyInfoByFID(WorkflowExpression<string> fID)
+        {
+            WorkflowExpression.Validate(fID, nameof(fID), required: true);
+            return new DeferredBodyAction<CompanyInfoByFIDResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_api/v1/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(fID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includes"] = Convert.ToString("registered_name&includes=registration_date&includes=other_trading_names&includes=companies_house_id&includes=employee_count_range&includes=last_modified_date&includes=website&includes=tracked_status&includes=company_status&includes=is_sme&includes=sectors&includes=top_level_sector_groups&includes=latest_stage_of_evolution&includes=description&includes=tracking_reasons&includes=target_markets&includes=founder_female_percentage&includes=sic_codes&includes=actively_hiring&includes=n_fundraisings&includes=total_amount_fundraisings&includes=n_grants&includes=total_amount_grants&includes=latest_valuation&includes=country&includes=lep&includes=region&includes=postcode&includes=address&includes=emails&includes=telephone&includes=key_contacts&includes=year_end_date&includes=turnover&includes=ebitda&includes=total_assets&includes=number_of_employees&includes=cash&includes=total_liabilities&includes=net_assets");
+                return new ApiConnectionAction<CompanyInfoByFIDResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
+        [WorkflowExpressionFactory(nameof(__BuildFundsByFID))]
+        public IBodyWorkflowAction<FundsByFIDResponse> FundsByFID([WorkflowExpression] Func<string> companyIds, [WorkflowExpression] Func<includesInput> includes)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FundsByFIDResponse> __BuildFundsByFID(WorkflowExpression<string> companyIds, WorkflowExpression<includesInput> includes)
+        {
+            WorkflowExpression.Validate(companyIds, nameof(companyIds), required: true);
+            WorkflowExpression.Validate(includes, nameof(includes), required: true);
+            return new DeferredBodyAction<FundsByFIDResponse>(() =>
+            {
+                var apiCallPath = "/_api/v1/transactions/company";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company_ids"] = ExpressionConverter.Convert(companyIds);
+                callPayload.Queries["includes"] = ExpressionConverter.Convert(includes);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<FundsByFIDResponse>(callPayload);
+            });
         }
     }
 

@@ -4,29 +4,53 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SessionizeipActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
-        public IBodyWorkflowAction<GetSessionsResponseItem[]> GetSessions(Expression<Func<string>> iD)
+        [WorkflowExpressionFactory(nameof(__BuildGetSessions))]
+        public IBodyWorkflowAction<GetSessionsResponseItem[]> GetSessions([WorkflowExpression] Func<string> iD)
         {
-            var apiCallPath = String.Format("/{0}/view/Sessions", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSessionsResponseItem[]>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
-        public IBodyWorkflowAction<GetSpeakersResponseItem[]> GetSpeakers(Expression<Func<string>> iD)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSessionsResponseItem[]> __BuildGetSessions(WorkflowExpression<string> iD)
         {
-            var apiCallPath = String.Format("/{0}/view/Speakers", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSpeakersResponseItem[]>(callPayload);
+            WorkflowExpression.Validate(iD, nameof(iD), required: true);
+            return new DeferredBodyAction<GetSessionsResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/view/Sessions", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSessionsResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetSpeakers))]
+        public IBodyWorkflowAction<GetSpeakersResponseItem[]> GetSpeakers([WorkflowExpression] Func<string> iD)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSpeakersResponseItem[]> __BuildGetSpeakers(WorkflowExpression<string> iD)
+        {
+            WorkflowExpression.Validate(iD, nameof(iD), required: true);
+            return new DeferredBodyAction<GetSpeakersResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/view/Speakers", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSpeakersResponseItem[]>(callPayload);
+            });
         }
     }
 

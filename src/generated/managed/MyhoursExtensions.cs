@@ -4,240 +4,376 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MyhoursActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Client> CreateClient(Expression<Func<string>> bodyname)
-        {
-            var apiCallPath = "/api/clients/zapier";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
 
-            return new ApiConnectionAction<Client>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateClient))]
+        public IBodyWorkflowAction<Client> CreateClient([WorkflowExpression] Func<string> bodyname)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Client[]> FindClient(Expression<Func<string>> clientName)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Client> __BuildCreateClient(WorkflowExpression<string> bodyname)
         {
-            var apiCallPath = "/api/clients/getByName";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["clientName"] = ExpressionConverter.Convert(clientName);
-            return new ApiConnectionAction<Client[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Project> CreateProject(Expression<Func<string>> bodyname, Expression<Func<int>> bodyclientId = null, Expression<Func<string>> bodynotes = null, Expression<Func<int>> bodyautoAssignUserId = null)
-        {
-            var apiCallPath = "/api/Projects";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodyclientId != null)
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyAction<Client>(() =>
             {
-                body["clientId"] = ExpressionConverter.ConvertO(bodyclientId);
+                var apiCallPath = "/api/clients/zapier";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["Name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            body["invoiceMethod"] = 3;
-            bodypropCount++;
-            if (bodynotes != null)
-            {
-                body["notes"] = ExpressionConverter.ConvertO(bodynotes);
-                bodypropCount++;
-            }
-
-            if (bodyautoAssignUserId != null)
-            {
-                body["autoAssignUserId"] = ExpressionConverter.ConvertO(bodyautoAssignUserId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Project>(callPayload);
+                return new ApiConnectionAction<Client>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Project> FindProject(Expression<Func<string>> projectName)
+        [WorkflowExpressionFactory(nameof(__BuildFindClient))]
+        public IBodyWorkflowAction<Client[]> FindClient([WorkflowExpression] Func<string> clientName)
         {
-            var apiCallPath = "/api/Projects/getByNameForPA";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectName"] = ExpressionConverter.Convert(projectName);
-            return new ApiConnectionAction<Project>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<ProjectTask> CreateProjectTask(Expression<Func<int>> projectId, Expression<Func<string>> bodyname, Expression<Func<string>> bodylistName = null, Expression<Func<string>> bodydescription = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Client[]> __BuildFindClient(WorkflowExpression<string> clientName)
         {
-            var apiCallPath = "/api/Projects/taskForPA";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodylistName != null)
+            WorkflowExpression.Validate(clientName, nameof(clientName), required: true);
+            return new DeferredBodyAction<Client[]>(() =>
             {
+                var apiCallPath = "/api/clients/getByName";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["clientName"] = ExpressionConverter.Convert(clientName);
+                return new ApiConnectionAction<Client[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateProject))]
+        public IBodyWorkflowAction<Project> CreateProject([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<int> bodyclientId = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<int> bodyautoAssignUserId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Project> __BuildCreateProject(WorkflowExpression<string> bodyname, WorkflowExpression<int> bodyclientId = null, WorkflowExpression<string> bodynotes = null, WorkflowExpression<int> bodyautoAssignUserId = null)
+        {
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodyclientId, nameof(bodyclientId), required: false);
+            WorkflowExpression.Validate(bodynotes, nameof(bodynotes), required: false);
+            WorkflowExpression.Validate(bodyautoAssignUserId, nameof(bodyautoAssignUserId), required: false);
+            return new DeferredBodyAction<Project>(() =>
+            {
+                var apiCallPath = "/api/Projects";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodyclientId != null)
+                {
+                    body["clientId"] = ExpressionConverter.ConvertO(bodyclientId);
+                    bodypropCount++;
+                }
+
+                body["invoiceMethod"] = 3;
+                bodypropCount++;
+                if (bodynotes != null)
+                {
+                    body["notes"] = ExpressionConverter.ConvertO(bodynotes);
+                    bodypropCount++;
+                }
+
+                if (bodyautoAssignUserId != null)
+                {
+                    body["autoAssignUserId"] = ExpressionConverter.ConvertO(bodyautoAssignUserId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Project>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
+        [WorkflowExpressionFactory(nameof(__BuildFindProject))]
+        public IBodyWorkflowAction<Project> FindProject([WorkflowExpression] Func<string> projectName)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Project> __BuildFindProject(WorkflowExpression<string> projectName)
+        {
+            WorkflowExpression.Validate(projectName, nameof(projectName), required: true);
+            return new DeferredBodyAction<Project>(() =>
+            {
+                var apiCallPath = "/api/Projects/getByNameForPA";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["projectName"] = ExpressionConverter.Convert(projectName);
+                return new ApiConnectionAction<Project>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateProjectTask))]
+        public IBodyWorkflowAction<ProjectTask> CreateProjectTask([WorkflowExpression] Func<int> projectId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodylistName = null, [WorkflowExpression] Func<string> bodydescription = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProjectTask> __BuildCreateProjectTask(WorkflowExpression<int> projectId, WorkflowExpression<string> bodyname, WorkflowExpression<string> bodylistName = null, WorkflowExpression<string> bodydescription = null)
+        {
+            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodylistName, nameof(bodylistName), required: false);
+            WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            return new DeferredBodyAction<ProjectTask>(() =>
+            {
+                var apiCallPath = "/api/Projects/taskForPA";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodylistName != null)
                 {
-                    body["listName"] = ExpressionConverter.ConvertO(bodylistName);
+                    if (bodylistName != null)
+                    {
+                        body["listName"] = ExpressionConverter.ConvertO(bodylistName);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["listName"] = "Task list";
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["listName"] = "Task list";
-                bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ProjectTask>(callPayload);
+                return new ApiConnectionAction<ProjectTask>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<ProjectTask> FindTask(Expression<Func<string>> projectTaskName, Expression<Func<int>> projectId)
+        [WorkflowExpressionFactory(nameof(__BuildFindTask))]
+        public IBodyWorkflowAction<ProjectTask> FindTask([WorkflowExpression] Func<string> projectTaskName, [WorkflowExpression] Func<int> projectId)
         {
-            var apiCallPath = "/api/Projects/getProjectTaskByNamePowerAutomate";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectTaskName"] = ExpressionConverter.Convert(projectTaskName);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            return new ApiConnectionAction<ProjectTask>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Tag> CreateTag(Expression<Func<string>> bodyname, Expression<Func<string>> bodyhexColor)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProjectTask> __BuildFindTask(WorkflowExpression<string> projectTaskName, WorkflowExpression<int> projectId)
         {
-            var apiCallPath = "/api/tags";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["hexColor"] = ExpressionConverter.ConvertO(bodyhexColor);
-            if (bodypropCount > 0)
+            WorkflowExpression.Validate(projectTaskName, nameof(projectTaskName), required: true);
+            WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
+            return new DeferredBodyAction<ProjectTask>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Tag>(callPayload);
+                var apiCallPath = "/api/Projects/getProjectTaskByNamePowerAutomate";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["projectTaskName"] = ExpressionConverter.Convert(projectTaskName);
+                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
+                return new ApiConnectionAction<ProjectTask>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<Tag> FindTag(Expression<Func<string>> tagName)
+        [WorkflowExpressionFactory(nameof(__BuildCreateTag))]
+        public IBodyWorkflowAction<Tag> CreateTag([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyhexColor)
         {
-            var apiCallPath = "/api/tags/getByNamePowerAutomate";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tagName"] = ExpressionConverter.Convert(tagName);
-            return new ApiConnectionAction<Tag>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<TimeLog> CreateLog(Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodyduration = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodyprojectId = null, Expression<Func<int>> bodytaskId = null, Expression<Func<int>> bodytagId = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Tag> __BuildCreateTag(WorkflowExpression<string> bodyname, WorkflowExpression<string> bodyhexColor)
         {
-            var apiCallPath = "/api/logs/powerautomate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["date"] = ExpressionConverter.ConvertO(bodydate);
-            if (bodystartTime != null)
+            WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowExpression.Validate(bodyhexColor, nameof(bodyhexColor), required: true);
+            return new DeferredBodyAction<Tag>(() =>
             {
-                body["start"] = ExpressionConverter.ConvertO(bodystartTime);
+                var apiCallPath = "/api/tags";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyendTime != null)
-            {
-                body["end"] = ExpressionConverter.ConvertO(bodyendTime);
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
-            }
+                body["hexColor"] = ExpressionConverter.ConvertO(bodyhexColor);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyduration != null)
-            {
-                body["duration"] = ExpressionConverter.ConvertO(bodyduration);
-                bodypropCount++;
-            }
-
-            if (bodynote != null)
-            {
-                body["Note"] = ExpressionConverter.ConvertO(bodynote);
-                bodypropCount++;
-            }
-
-            if (bodyprojectId != null)
-            {
-                body["ProjectId"] = ExpressionConverter.ConvertO(bodyprojectId);
-                bodypropCount++;
-            }
-
-            if (bodytaskId != null)
-            {
-                body["TaskId"] = ExpressionConverter.ConvertO(bodytaskId);
-                bodypropCount++;
-            }
-
-            if (bodytagId != null)
-            {
-                body["TagId"] = ExpressionConverter.ConvertO(bodytagId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TimeLog>(callPayload);
+                return new ApiConnectionAction<Tag>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
-        public IBodyWorkflowAction<ActivityReportResponse> GetTimeLogs(Expression<Func<string>> dateFrom, Expression<Func<string>> dateTo)
+        [WorkflowExpressionFactory(nameof(__BuildFindTag))]
+        public IBodyWorkflowAction<Tag> FindTag([WorkflowExpression] Func<string> tagName)
         {
-            var apiCallPath = "/api/reports/activityPowerAutomate";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["dateFrom"] = ExpressionConverter.Convert(dateFrom);
-            callPayload.Queries["dateTo"] = ExpressionConverter.Convert(dateTo);
-            return new ApiConnectionAction<ActivityReportResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Tag> __BuildFindTag(WorkflowExpression<string> tagName)
+        {
+            WorkflowExpression.Validate(tagName, nameof(tagName), required: true);
+            return new DeferredBodyAction<Tag>(() =>
+            {
+                var apiCallPath = "/api/tags/getByNamePowerAutomate";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["tagName"] = ExpressionConverter.Convert(tagName);
+                return new ApiConnectionAction<Tag>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateLog))]
+        public IBodyWorkflowAction<TimeLog> CreateLog([WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<int> bodyduration = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<int> bodyprojectId = null, [WorkflowExpression] Func<int> bodytaskId = null, [WorkflowExpression] Func<int> bodytagId = null)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TimeLog> __BuildCreateLog(WorkflowExpression<string> bodydate, WorkflowExpression<string> bodystartTime = null, WorkflowExpression<string> bodyendTime = null, WorkflowExpression<int> bodyduration = null, WorkflowExpression<string> bodynote = null, WorkflowExpression<int> bodyprojectId = null, WorkflowExpression<int> bodytaskId = null, WorkflowExpression<int> bodytagId = null)
+        {
+            WorkflowExpression.Validate(bodydate, nameof(bodydate), required: true);
+            WorkflowExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
+            WorkflowExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
+            WorkflowExpression.Validate(bodyduration, nameof(bodyduration), required: false);
+            WorkflowExpression.Validate(bodynote, nameof(bodynote), required: false);
+            WorkflowExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
+            WorkflowExpression.Validate(bodytaskId, nameof(bodytaskId), required: false);
+            WorkflowExpression.Validate(bodytagId, nameof(bodytagId), required: false);
+            return new DeferredBodyAction<TimeLog>(() =>
+            {
+                var apiCallPath = "/api/logs/powerautomate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["date"] = ExpressionConverter.ConvertO(bodydate);
+                if (bodystartTime != null)
+                {
+                    body["start"] = ExpressionConverter.ConvertO(bodystartTime);
+                    bodypropCount++;
+                }
+
+                if (bodyendTime != null)
+                {
+                    body["end"] = ExpressionConverter.ConvertO(bodyendTime);
+                    bodypropCount++;
+                }
+
+                if (bodyduration != null)
+                {
+                    body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                    bodypropCount++;
+                }
+
+                if (bodynote != null)
+                {
+                    body["Note"] = ExpressionConverter.ConvertO(bodynote);
+                    bodypropCount++;
+                }
+
+                if (bodyprojectId != null)
+                {
+                    body["ProjectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+                    bodypropCount++;
+                }
+
+                if (bodytaskId != null)
+                {
+                    body["TaskId"] = ExpressionConverter.ConvertO(bodytaskId);
+                    bodypropCount++;
+                }
+
+                if (bodytagId != null)
+                {
+                    body["TagId"] = ExpressionConverter.ConvertO(bodytagId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TimeLog>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
+        [WorkflowExpressionFactory(nameof(__BuildGetTimeLogs))]
+        public IBodyWorkflowAction<ActivityReportResponse> GetTimeLogs([WorkflowExpression] Func<string> dateFrom, [WorkflowExpression] Func<string> dateTo)
+        {
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ActivityReportResponse> __BuildGetTimeLogs(WorkflowExpression<string> dateFrom, WorkflowExpression<string> dateTo)
+        {
+            WorkflowExpression.Validate(dateFrom, nameof(dateFrom), required: true);
+            WorkflowExpression.Validate(dateTo, nameof(dateTo), required: true);
+            return new DeferredBodyAction<ActivityReportResponse>(() =>
+            {
+                var apiCallPath = "/api/reports/activityPowerAutomate";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["dateFrom"] = ExpressionConverter.Convert(dateFrom);
+                callPayload.Queries["dateTo"] = ExpressionConverter.Convert(dateTo);
+                return new ApiConnectionAction<ActivityReportResponse>(callPayload);
+            });
         }
     }
 

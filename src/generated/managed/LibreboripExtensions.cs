@@ -4,25 +4,39 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libreborip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class LibreboripActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libreborip")]
-        public IBodyWorkflowAction<LibrebormeSearchCompanyResponse> LibrebormeSearchCompany(Expression<Func<string>> query, Expression<Func<string>> page = null, Expression<Func<string>> province = null)
+        [WorkflowExpressionFactory(nameof(__BuildLibrebormeSearchCompany))]
+        public IBodyWorkflowAction<LibrebormeSearchCompanyResponse> LibrebormeSearchCompany([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> province = null)
         {
-            var apiCallPath = "/company/search/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (province != null)
-                callPayload.Queries["province"] = ExpressionConverter.Convert(province);
-            return new ApiConnectionAction<LibrebormeSearchCompanyResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libreborip")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LibrebormeSearchCompanyResponse> __BuildLibrebormeSearchCompany(WorkflowExpression<string> query, WorkflowExpression<string> page = null, WorkflowExpression<string> province = null)
+        {
+            WorkflowExpression.Validate(query, nameof(query), required: true);
+            WorkflowExpression.Validate(page, nameof(page), required: false);
+            WorkflowExpression.Validate(province, nameof(province), required: false);
+            return new DeferredBodyAction<LibrebormeSearchCompanyResponse>(() =>
+            {
+                var apiCallPath = "/company/search/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (province != null)
+                    callPayload.Queries["province"] = ExpressionConverter.Convert(province);
+                return new ApiConnectionAction<LibrebormeSearchCompanyResponse>(callPayload);
+            });
         }
     }
 

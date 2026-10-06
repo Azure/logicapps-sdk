@@ -4,23 +4,36 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tuxmailer
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TuxmailerActions([ConnectionName] string connectionId)
     {
+
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tuxmailer")]
-        public IBodyWorkflowAction<ValidateEmailResponse> ValidateEmail(Expression<Func<string>> email, Expression<Func<string>> teamName = null)
+        [WorkflowExpressionFactory(nameof(__BuildValidateEmail))]
+        public IBodyWorkflowAction<ValidateEmailResponse> ValidateEmail([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<string> teamName = null)
         {
-            var apiCallPath = "/common/v1/user/validate/email";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            if (teamName != null)
-                callPayload.Queries["team_name"] = ExpressionConverter.Convert(teamName);
-            return new ApiConnectionAction<ValidateEmailResponse>(callPayload);
+            throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tuxmailer")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateEmailResponse> __BuildValidateEmail(WorkflowExpression<string> email, WorkflowExpression<string> teamName = null)
+        {
+            WorkflowExpression.Validate(email, nameof(email), required: true);
+            WorkflowExpression.Validate(teamName, nameof(teamName), required: false);
+            return new DeferredBodyAction<ValidateEmailResponse>(() =>
+            {
+                var apiCallPath = "/common/v1/user/validate/email";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                if (teamName != null)
+                    callPayload.Queries["team_name"] = ExpressionConverter.Convert(teamName);
+                return new ApiConnectionAction<ValidateEmailResponse>(callPayload);
+            });
         }
     }
 
