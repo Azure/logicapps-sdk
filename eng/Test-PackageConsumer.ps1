@@ -1,6 +1,6 @@
 param(
     [Parameter(Mandatory = $true)][string] $PackageDirectory,
-    [string] $Version = '1.0.0-preview.3-native-csharp.1',
+    [string] $Version,
     [string] $ExpressionOutputPath,
     [string] $DependencySource = 'https://packagefeedproxy.microsoft.io/nuget/v3/index.json'
 )
@@ -8,6 +8,14 @@ $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
 $consumer = Join-Path $root 'tests\PackageConsumer\PackageConsumer.csproj'
 $cache = Join-Path $root ('out\package-consumer-' + [Guid]::NewGuid().ToString('N'))
+if (-not $Version) {
+    $versionPropsPath = Join-Path $root 'src\Directory.Version.props'
+    $versionProps = [xml](Get-Content -LiteralPath $versionPropsPath -Raw)
+    $prefix = [string]$versionProps.Project.PropertyGroup.VersionPrefix
+    $suffix = [string]$versionProps.Project.PropertyGroup.VersionSuffix
+    if (-not $prefix) { throw "VersionPrefix is missing from '$versionPropsPath'." }
+    $Version = if ($suffix) { "$prefix-$suffix" } else { $prefix }
+}
 try {
     New-Item -ItemType Directory -Path $cache -Force | Out-Null
     $config = [xml]'<configuration><packageSources><clear/><add key="sdk" value=""/><add key="dependencies" value=""/></packageSources><disabledPackageSources><clear/></disabledPackageSources><packageSourceMapping><clear/><packageSource key="sdk"><package pattern="Microsoft.Azure.Workflows.Sdk"/></packageSource><packageSource key="dependencies"><package pattern="*"/></packageSource></packageSourceMapping></configuration>'
