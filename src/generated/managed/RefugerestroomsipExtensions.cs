@@ -12,87 +12,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
     public class RefugerestroomsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
-        public IBodyWorkflowAction<RestroomsByDateResponseItem[]> RestroomsByDate(Expression<Func<int>> day, Expression<Func<int>> month, Expression<Func<int>> year, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null, Expression<Func<bool>> updated = null)
+        public IBodyWorkflowAction<RestroomsByDateResponseItem[]> RestroomsByDate([WorkflowExpression] Func<int> day, [WorkflowExpression] Func<int> month, [WorkflowExpression] Func<int> year, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> ada = null, [WorkflowExpression] Func<bool> unisex = null, [WorkflowExpression] Func<bool> updated = null)
         {
-            var apiCallPath = "/v1/restrooms/by_date";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (ada != null)
-                callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
-            if (unisex != null)
-                callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
-            if (updated != null)
-                callPayload.Queries["updated"] = ExpressionConverter.Convert(updated);
-            callPayload.Queries["day"] = ExpressionConverter.Convert(day);
-            callPayload.Queries["month"] = ExpressionConverter.Convert(month);
-            callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            return new ApiConnectionAction<RestroomsByDateResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/restrooms/by_date";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (ada != null)
+                    callPayload.Queries["ada"] = SourceExpressionConverter.ConvertO(ada);
+                if (unisex != null)
+                    callPayload.Queries["unisex"] = SourceExpressionConverter.ConvertO(unisex);
+                if (updated != null)
+                    callPayload.Queries["updated"] = SourceExpressionConverter.ConvertO(updated);
+                callPayload.Queries["day"] = SourceExpressionConverter.ConvertO(day);
+                callPayload.Queries["month"] = SourceExpressionConverter.ConvertO(month);
+                callPayload.Queries["year"] = SourceExpressionConverter.ConvertO(year);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RestroomsByDateResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
-        public IBodyWorkflowAction<RestroomsByLocationResponseItem[]> RestroomsByLocation(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null)
+        public IBodyWorkflowAction<RestroomsByLocationResponseItem[]> RestroomsByLocation([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> ada = null, [WorkflowExpression] Func<bool> unisex = null)
         {
-            var apiCallPath = "/v1/restrooms/by_location";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (ada != null)
-                callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
-            if (unisex != null)
-                callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
-            return new ApiConnectionAction<RestroomsByLocationResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/restrooms/by_location";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (ada != null)
+                    callPayload.Queries["ada"] = SourceExpressionConverter.ConvertO(ada);
+                if (unisex != null)
+                    callPayload.Queries["unisex"] = SourceExpressionConverter.ConvertO(unisex);
+                callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RestroomsByLocationResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
-        public IBodyWorkflowAction<RestroomsSearchResponseItem[]> RestroomsSearch(Expression<Func<string>> query, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null)
+        public IBodyWorkflowAction<RestroomsSearchResponseItem[]> RestroomsSearch([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> ada = null, [WorkflowExpression] Func<bool> unisex = null)
         {
-            var apiCallPath = "/v1/restrooms/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (ada != null)
-                callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
-            if (unisex != null)
-                callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            return new ApiConnectionAction<RestroomsSearchResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/restrooms/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (ada != null)
+                    callPayload.Queries["ada"] = SourceExpressionConverter.ConvertO(ada);
+                if (unisex != null)
+                    callPayload.Queries["unisex"] = SourceExpressionConverter.ConvertO(unisex);
+                callPayload.Queries["query"] = SourceExpressionConverter.ConvertO(query);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RestroomsSearchResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
-        public IBodyWorkflowAction<RestroomsResponseItem[]> Restrooms(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null)
+        public IBodyWorkflowAction<RestroomsResponseItem[]> Restrooms([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> ada = null, [WorkflowExpression] Func<bool> unisex = null)
         {
-            var apiCallPath = "/v1/restrooms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (ada != null)
-                callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
-            if (unisex != null)
-                callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
-            return new ApiConnectionAction<RestroomsResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/restrooms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (ada != null)
+                    callPayload.Queries["ada"] = SourceExpressionConverter.ConvertO(ada);
+                if (unisex != null)
+                    callPayload.Queries["unisex"] = SourceExpressionConverter.ConvertO(unisex);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RestroomsResponseItem[]>(BuildSourceInput);
         }
     }
 

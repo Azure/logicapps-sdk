@@ -12,16 +12,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enlyftforcopilot
     public class EnlyftforcopilotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enlyftforcopilot")]
-        public IBodyWorkflowAction<ExportContactFromEnlyftResponse> ExportContactFromEnlyft(Expression<Func<string>> personId = null, Expression<Func<string>> userEmail = null)
+        public IBodyWorkflowAction<ExportContactFromEnlyftResponse> ExportContactFromEnlyft([WorkflowExpression] Func<string> personId = null, [WorkflowExpression] Func<string> userEmail = null)
         {
-            var apiCallPath = "/export-contact";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (personId != null)
-                callPayload.Queries["person_id"] = ExpressionConverter.Convert(personId);
-            if (userEmail != null)
-                callPayload.Queries["userEmail"] = ExpressionConverter.Convert(userEmail);
-            return new ApiConnectionAction<ExportContactFromEnlyftResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/export-contact";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (personId != null)
+                    callPayload.Queries["person_id"] = SourceExpressionConverter.ConvertO(personId);
+                if (userEmail != null)
+                    callPayload.Queries["userEmail"] = SourceExpressionConverter.ConvertO(userEmail);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExportContactFromEnlyftResponse>(BuildSourceInput);
         }
     }
 

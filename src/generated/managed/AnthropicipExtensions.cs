@@ -12,90 +12,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
     public class AnthropicipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "anthropicip")]
-        public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens, Expression<Func<bool>> bodythinkingtype = null, Expression<Func<int>> bodythinkingbudgetTokens = null, Expression<Func<string[]>> bodystopSequences = null, Expression<Func<string>> bodysystem = null, Expression<Func<double>> bodytemperature = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null, Expression<Func<int>> bodytopK = null, Expression<Func<double>> bodytopP = null)
+        public IBodyWorkflowAction<MessagePostResponse> Message([WorkflowExpression] Func<bodymodelInput> bodymodel, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages, [WorkflowExpression] Func<int> bodymaxTokens, [WorkflowExpression] Func<bool> bodythinkingtype = null, [WorkflowExpression] Func<int> bodythinkingbudgetTokens = null, [WorkflowExpression] Func<string[]> bodystopSequences = null, [WorkflowExpression] Func<string> bodysystem = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<bodytoolsInputItem[]> bodytools = null, [WorkflowExpression] Func<int> bodytopK = null, [WorkflowExpression] Func<double> bodytopP = null)
         {
-            var apiCallPath = "/v1/messages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["anthropic-version"] = Convert.ToString("2023-06-01");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
-            bodypropCount++;
-            body["messages"] = ExpressionConverter.ConvertO(bodymessages);
-            bodypropCount++;
-            body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
-            var thinkingObject = new JObject();
-            var thinkingObjectpropCount = 0;
-            if (bodythinkingtype != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                thinkingObject["type"] = ExpressionConverter.ConvertO(bodythinkingtype);
-                thinkingObjectpropCount++;
-            }
-
-            if (bodythinkingbudgetTokens != null)
-            {
-                thinkingObject["budget_tokens"] = ExpressionConverter.ConvertO(bodythinkingbudgetTokens);
-                thinkingObjectpropCount++;
-            }
-
-            if (thinkingObjectpropCount > 0)
-            {
-                body["thinking"] = thinkingObject;
+                var apiCallPath = "/v1/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["anthropic-version"] = Convert.ToString("2023-06-01");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
-            {
-                body["metadata"] = metadataObject;
+                body["model"] = SourceExpressionConverter.Convert(bodymodel);
                 bodypropCount++;
-            }
-
-            if (bodystopSequences != null)
-            {
-                body["stop_sequences"] = ExpressionConverter.ConvertO(bodystopSequences);
+                body["messages"] = SourceExpressionConverter.ConvertToken(bodymessages);
                 bodypropCount++;
+                body["max_tokens"] = SourceExpressionConverter.ConvertToken(bodymaxTokens);
+                var thinkingObject = new JObject();
+                var thinkingObjectpropCount = 0;
+                if (bodythinkingtype != null)
+                {
+                    thinkingObject["type"] = SourceExpressionConverter.ConvertToken(bodythinkingtype);
+                    thinkingObjectpropCount++;
+                }
+
+                if (bodythinkingbudgetTokens != null)
+                {
+                    thinkingObject["budget_tokens"] = SourceExpressionConverter.ConvertToken(bodythinkingbudgetTokens);
+                    thinkingObjectpropCount++;
+                }
+
+                if (thinkingObjectpropCount > 0)
+                {
+                    body["thinking"] = thinkingObject;
+                    bodypropCount++;
+                }
+
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
+
+                if (bodystopSequences != null)
+                {
+                    body["stop_sequences"] = SourceExpressionConverter.ConvertToken(bodystopSequences);
+                    bodypropCount++;
+                }
+
+                if (bodysystem != null)
+                {
+                    body["system"] = SourceExpressionConverter.ConvertToken(bodysystem);
+                    bodypropCount++;
+                }
+
+                if (bodytemperature != null)
+                {
+                    body["temperature"] = SourceExpressionConverter.ConvertToken(bodytemperature);
+                    bodypropCount++;
+                }
+
+                if (bodytools != null)
+                {
+                    body["tools"] = SourceExpressionConverter.ConvertToken(bodytools);
+                    bodypropCount++;
+                }
+
+                if (bodytopK != null)
+                {
+                    body["top_k"] = SourceExpressionConverter.ConvertToken(bodytopK);
+                    bodypropCount++;
+                }
+
+                if (bodytopP != null)
+                {
+                    body["top_p"] = SourceExpressionConverter.ConvertToken(bodytopP);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysystem != null)
-            {
-                body["system"] = ExpressionConverter.ConvertO(bodysystem);
-                bodypropCount++;
-            }
-
-            if (bodytemperature != null)
-            {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
-                bodypropCount++;
-            }
-
-            if (bodytools != null)
-            {
-                body["tools"] = ExpressionConverter.ConvertO(bodytools);
-                bodypropCount++;
-            }
-
-            if (bodytopK != null)
-            {
-                body["top_k"] = ExpressionConverter.ConvertO(bodytopK);
-                bodypropCount++;
-            }
-
-            if (bodytopP != null)
-            {
-                body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MessagePostResponse>(callPayload);
+            return new ApiConnectionAction<MessagePostResponse>(BuildSourceInput);
         }
     }
 

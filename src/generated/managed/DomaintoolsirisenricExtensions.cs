@@ -12,23 +12,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisenric
     public class DomaintoolsirisenricActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisenric")]
-        public IBodyWorkflowAction<EnrichResponse> EnrichDomain(Expression<Func<string>> domain)
+        public IBodyWorkflowAction<EnrichResponse> EnrichDomain([WorkflowExpression] Func<string> domain)
         {
-            var apiCallPath = "/iris-enrich/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
-            return new ApiConnectionAction<EnrichResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/iris-enrich/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["domain"] = SourceExpressionConverter.ConvertO(domain);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EnrichResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisenric")]
         public IBodyWorkflowAction<AccountResponse> AccountInformation()
         {
-            var apiCallPath = "/account/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<AccountResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/account/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AccountResponse>(BuildSourceInput);
         }
     }
 

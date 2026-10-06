@@ -12,60 +12,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
     public class RobotsforpowerbiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
-        public IBodyWorkflowAction<PlaylistEnableResponse> PlaylistEnable(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
+        public IBodyWorkflowAction<PlaylistEnableResponse> PlaylistEnable([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyid)
         {
-            var apiCallPath = "/api/v1/playlist.enable";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Account Id"] = ExpressionConverter.Convert(accountId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/v1/playlist.enable";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Account Id"] = SourceExpressionConverter.ConvertO(accountId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<PlaylistEnableResponse>(callPayload);
+            return new ApiConnectionAction<PlaylistEnableResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
-        public IBodyWorkflowAction<PlaylistDisableResponse> PlaylistDisable(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
+        public IBodyWorkflowAction<PlaylistDisableResponse> PlaylistDisable([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyid)
         {
-            var apiCallPath = "/api/v1/playlist.disable";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Account Id"] = ExpressionConverter.Convert(accountId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/v1/playlist.disable";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Account Id"] = SourceExpressionConverter.ConvertO(accountId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<PlaylistDisableResponse>(callPayload);
+            return new ApiConnectionAction<PlaylistDisableResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
-        public IBodyWorkflowAction<PlaylistExecuteResponse> PlaylistExecute(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
+        public IBodyWorkflowAction<PlaylistExecuteResponse> PlaylistExecute([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyid)
         {
-            var apiCallPath = "/api/v1/playlist.execute";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Account Id"] = ExpressionConverter.Convert(accountId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/v1/playlist.execute";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Account Id"] = SourceExpressionConverter.ConvertO(accountId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<PlaylistExecuteResponse>(callPayload);
+            return new ApiConnectionAction<PlaylistExecuteResponse>(BuildSourceInput);
         }
     }
 

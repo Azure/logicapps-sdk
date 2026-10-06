@@ -12,591 +12,684 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1docstop
     public class _1docstopActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Library> PalibrariesAdd(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<int>> librarylibraryId = null, Expression<Func<int>> libraryrepositoryId = null, Expression<Func<int>> libraryrepositoryrepositoryId = null, Expression<Func<string>> libraryrepositoryname = null, Expression<Func<string>> libraryrepositorydescription = null, Expression<Func<int>> libraryrepositoryrepositoryTypeId = null, Expression<Func<int>> libraryrepositoryrepositoryTyperepositoryTypeId = null, Expression<Func<string>> libraryrepositoryrepositoryTypename = null, Expression<Func<string>> libraryrepositoryrepositoryURI = null, Expression<Func<int>> librarydocumentTypeId = null, Expression<Func<int>> librarydocumentTypedocumentTypeId = null, Expression<Func<string>> librarydocumentTypename = null, Expression<Func<string>> librarydocumentTypedescription = null, Expression<Func<string>> libraryname = null, Expression<Func<string>> librarydescription = null, Expression<Func<bool>> libraryocr = null)
+        public IBodyWorkflowAction<Library> PalibrariesAdd([WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null, [WorkflowExpression] Func<int> librarylibraryId = null, [WorkflowExpression] Func<int> libraryrepositoryId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryId = null, [WorkflowExpression] Func<string> libraryrepositoryname = null, [WorkflowExpression] Func<string> libraryrepositorydescription = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTypeId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTyperepositoryTypeId = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryTypename = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryURI = null, [WorkflowExpression] Func<int> librarydocumentTypeId = null, [WorkflowExpression] Func<int> librarydocumentTypedocumentTypeId = null, [WorkflowExpression] Func<string> librarydocumentTypename = null, [WorkflowExpression] Func<string> librarydocumentTypedescription = null, [WorkflowExpression] Func<string> libraryname = null, [WorkflowExpression] Func<string> librarydescription = null, [WorkflowExpression] Func<bool> libraryocr = null)
         {
-            var apiCallPath = "/palibraries/add";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            var library = new JObject();
-            var librarypropCount = 0;
-            if (librarylibraryId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                library["libraryId"] = ExpressionConverter.ConvertO(librarylibraryId);
-                librarypropCount++;
+                var apiCallPath = "/palibraries/add";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                if (solutionkey != null)
+                    callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                var library = new JObject();
+                var librarypropCount = 0;
+                if (librarylibraryId != null)
+                {
+                    library["libraryId"] = SourceExpressionConverter.ConvertToken(librarylibraryId);
+                    librarypropCount++;
+                }
+
+                if (libraryrepositoryId != null)
+                {
+                    library["repositoryId"] = SourceExpressionConverter.ConvertToken(libraryrepositoryId);
+                    librarypropCount++;
+                }
+
+                if (librarydocumentTypeId != null)
+                {
+                    library["documentTypeId"] = SourceExpressionConverter.ConvertToken(librarydocumentTypeId);
+                    librarypropCount++;
+                }
+
+                var documentTypeObject = new JObject();
+                var documentTypeObjectpropCount = 0;
+                if (librarydocumentTypedocumentTypeId != null)
+                {
+                    documentTypeObject["documentTypeId"] = SourceExpressionConverter.ConvertToken(librarydocumentTypedocumentTypeId);
+                    documentTypeObjectpropCount++;
+                }
+
+                if (librarydocumentTypename != null)
+                {
+                    documentTypeObject["name"] = SourceExpressionConverter.ConvertToken(librarydocumentTypename);
+                    documentTypeObjectpropCount++;
+                }
+
+                if (librarydocumentTypedescription != null)
+                {
+                    documentTypeObject["description"] = SourceExpressionConverter.ConvertToken(librarydocumentTypedescription);
+                    documentTypeObjectpropCount++;
+                }
+
+                if (documentTypeObjectpropCount > 0)
+                {
+                    library["documentType"] = documentTypeObject;
+                    librarypropCount++;
+                }
+
+                if (libraryname != null)
+                {
+                    library["name"] = SourceExpressionConverter.ConvertToken(libraryname);
+                    librarypropCount++;
+                }
+
+                if (librarydescription != null)
+                {
+                    library["description"] = SourceExpressionConverter.ConvertToken(librarydescription);
+                    librarypropCount++;
+                }
+
+                if (libraryocr != null)
+                {
+                    library["ocr"] = SourceExpressionConverter.ConvertToken(libraryocr);
+                    librarypropCount++;
+                }
+
+                if (librarypropCount > 0)
+                {
+                    callPayload.Body = library;
+                }
+                return callPayload;
             }
 
-            if (libraryrepositoryId != null)
-            {
-                library["repositoryId"] = ExpressionConverter.ConvertO(libraryrepositoryId);
-                librarypropCount++;
-            }
-
-            if (librarydocumentTypeId != null)
-            {
-                library["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypeId);
-                librarypropCount++;
-            }
-
-            var documentTypeObject = new JObject();
-            var documentTypeObjectpropCount = 0;
-            if (librarydocumentTypedocumentTypeId != null)
-            {
-                documentTypeObject["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypedocumentTypeId);
-                documentTypeObjectpropCount++;
-            }
-
-            if (librarydocumentTypename != null)
-            {
-                documentTypeObject["name"] = ExpressionConverter.ConvertO(librarydocumentTypename);
-                documentTypeObjectpropCount++;
-            }
-
-            if (librarydocumentTypedescription != null)
-            {
-                documentTypeObject["description"] = ExpressionConverter.ConvertO(librarydocumentTypedescription);
-                documentTypeObjectpropCount++;
-            }
-
-            if (documentTypeObjectpropCount > 0)
-            {
-                library["documentType"] = documentTypeObject;
-                librarypropCount++;
-            }
-
-            if (libraryname != null)
-            {
-                library["name"] = ExpressionConverter.ConvertO(libraryname);
-                librarypropCount++;
-            }
-
-            if (librarydescription != null)
-            {
-                library["description"] = ExpressionConverter.ConvertO(librarydescription);
-                librarypropCount++;
-            }
-
-            if (libraryocr != null)
-            {
-                library["ocr"] = ExpressionConverter.ConvertO(libraryocr);
-                librarypropCount++;
-            }
-
-            if (librarypropCount > 0)
-            {
-                callPayload.Body = library;
-            }
-
-            return new ApiConnectionAction<Library>(callPayload);
+            return new ApiConnectionAction<Library>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Solution> PasolutionsGet(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null)
+        public IBodyWorkflowAction<Solution> PasolutionsGet([WorkflowExpression] Func<string> solutionkey, [WorkflowExpression] Func<int> solutionid = null)
         {
-            var apiCallPath = "/pasolutions/get";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            return new ApiConnectionAction<Solution>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/pasolutions/get";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Solution>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Solution[]> PasolutionsList(Expression<Func<int>> solutionid = null)
+        public IBodyWorkflowAction<Solution[]> PasolutionsList([WorkflowExpression] Func<int> solutionid = null)
         {
-            var apiCallPath = "/pasolutions/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            return new ApiConnectionAction<Solution[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/pasolutions/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Solution[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Solution[]> PasolutionsDepartmentList(Expression<Func<string>> departmentkey, Expression<Func<int>> solutionid = null)
+        public IBodyWorkflowAction<Solution[]> PasolutionsDepartmentList([WorkflowExpression] Func<string> departmentkey, [WorkflowExpression] Func<int> solutionid = null)
         {
-            var apiCallPath = "/pasolutions/department/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["departmentkey"] = ExpressionConverter.Convert(departmentkey);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            return new ApiConnectionAction<Solution[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/pasolutions/department/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["departmentkey"] = SourceExpressionConverter.ConvertO(departmentkey);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Solution[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Solution> PasolutionsAdd(Expression<Func<int>> solutionid = null, Expression<Func<int>> solutionsolutionId = null, Expression<Func<string>> solutionsolutionKey = null, Expression<Func<int>> solutiondepartmentdepartmentId = null, Expression<Func<string>> solutiondepartmentdepartmentKey = null, Expression<Func<int>> solutiondepartmentcustomerId = null, Expression<Func<int>> solutiondepartmentcustomercustomerId = null, Expression<Func<string>> solutiondepartmentcustomercustomerKey = null, Expression<Func<string>> solutiondepartmentcustomername = null, Expression<Func<string>> solutiondepartmentname = null, Expression<Func<string>> solutionname = null)
+        public IBodyWorkflowAction<Solution> PasolutionsAdd([WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<int> solutionsolutionId = null, [WorkflowExpression] Func<string> solutionsolutionKey = null, [WorkflowExpression] Func<int> solutiondepartmentdepartmentId = null, [WorkflowExpression] Func<string> solutiondepartmentdepartmentKey = null, [WorkflowExpression] Func<int> solutiondepartmentcustomerId = null, [WorkflowExpression] Func<int> solutiondepartmentcustomercustomerId = null, [WorkflowExpression] Func<string> solutiondepartmentcustomercustomerKey = null, [WorkflowExpression] Func<string> solutiondepartmentcustomername = null, [WorkflowExpression] Func<string> solutiondepartmentname = null, [WorkflowExpression] Func<string> solutionname = null)
         {
-            var apiCallPath = "/pasolutions/add";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            var solution = new JObject();
-            var solutionpropCount = 0;
-            if (solutionsolutionId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                solution["solutionId"] = ExpressionConverter.ConvertO(solutionsolutionId);
-                solutionpropCount++;
+                var apiCallPath = "/pasolutions/add";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                var solution = new JObject();
+                var solutionpropCount = 0;
+                if (solutionsolutionId != null)
+                {
+                    solution["solutionId"] = SourceExpressionConverter.ConvertToken(solutionsolutionId);
+                    solutionpropCount++;
+                }
+
+                if (solutionsolutionKey != null)
+                {
+                    solution["solutionKey"] = SourceExpressionConverter.ConvertToken(solutionsolutionKey);
+                    solutionpropCount++;
+                }
+
+                if (solutionname != null)
+                {
+                    solution["name"] = SourceExpressionConverter.ConvertToken(solutionname);
+                    solutionpropCount++;
+                }
+
+                if (solutionpropCount > 0)
+                {
+                    callPayload.Body = solution;
+                }
+                return callPayload;
             }
 
-            if (solutionsolutionKey != null)
-            {
-                solution["solutionKey"] = ExpressionConverter.ConvertO(solutionsolutionKey);
-                solutionpropCount++;
-            }
-
-            if (solutionname != null)
-            {
-                solution["name"] = ExpressionConverter.ConvertO(solutionname);
-                solutionpropCount++;
-            }
-
-            if (solutionpropCount > 0)
-            {
-                callPayload.Body = solution;
-            }
-
-            return new ApiConnectionAction<Solution>(callPayload);
+            return new ApiConnectionAction<Solution>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Solution> PasolutionsUpdate(Expression<Func<int>> solutionid = null, Expression<Func<int>> functionsolutionid = null, Expression<Func<int>> solutionsolutionId = null, Expression<Func<string>> solutionsolutionKey = null, Expression<Func<int>> solutiondepartmentdepartmentId = null, Expression<Func<string>> solutiondepartmentdepartmentKey = null, Expression<Func<int>> solutiondepartmentcustomerId = null, Expression<Func<int>> solutiondepartmentcustomercustomerId = null, Expression<Func<string>> solutiondepartmentcustomercustomerKey = null, Expression<Func<string>> solutiondepartmentcustomername = null, Expression<Func<string>> solutiondepartmentname = null, Expression<Func<string>> solutionname = null)
+        public IBodyWorkflowAction<Solution> PasolutionsUpdate([WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<int> functionsolutionid = null, [WorkflowExpression] Func<int> solutionsolutionId = null, [WorkflowExpression] Func<string> solutionsolutionKey = null, [WorkflowExpression] Func<int> solutiondepartmentdepartmentId = null, [WorkflowExpression] Func<string> solutiondepartmentdepartmentKey = null, [WorkflowExpression] Func<int> solutiondepartmentcustomerId = null, [WorkflowExpression] Func<int> solutiondepartmentcustomercustomerId = null, [WorkflowExpression] Func<string> solutiondepartmentcustomercustomerKey = null, [WorkflowExpression] Func<string> solutiondepartmentcustomername = null, [WorkflowExpression] Func<string> solutiondepartmentname = null, [WorkflowExpression] Func<string> solutionname = null)
         {
-            var apiCallPath = "/pasolutions/update";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            if (functionsolutionid != null)
-                callPayload.Queries["functionsolutionid"] = ExpressionConverter.Convert(functionsolutionid);
-            var solution = new JObject();
-            var solutionpropCount = 0;
-            if (solutionsolutionId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                solution["solutionId"] = ExpressionConverter.ConvertO(solutionsolutionId);
-                solutionpropCount++;
+                var apiCallPath = "/pasolutions/update";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                if (functionsolutionid != null)
+                    callPayload.Queries["functionsolutionid"] = SourceExpressionConverter.ConvertO(functionsolutionid);
+                var solution = new JObject();
+                var solutionpropCount = 0;
+                if (solutionsolutionId != null)
+                {
+                    solution["solutionId"] = SourceExpressionConverter.ConvertToken(solutionsolutionId);
+                    solutionpropCount++;
+                }
+
+                if (solutionsolutionKey != null)
+                {
+                    solution["solutionKey"] = SourceExpressionConverter.ConvertToken(solutionsolutionKey);
+                    solutionpropCount++;
+                }
+
+                if (solutionname != null)
+                {
+                    solution["name"] = SourceExpressionConverter.ConvertToken(solutionname);
+                    solutionpropCount++;
+                }
+
+                if (solutionpropCount > 0)
+                {
+                    callPayload.Body = solution;
+                }
+                return callPayload;
             }
 
-            if (solutionsolutionKey != null)
-            {
-                solution["solutionKey"] = ExpressionConverter.ConvertO(solutionsolutionKey);
-                solutionpropCount++;
-            }
-
-            if (solutionname != null)
-            {
-                solution["name"] = ExpressionConverter.ConvertO(solutionname);
-                solutionpropCount++;
-            }
-
-            if (solutionpropCount > 0)
-            {
-                callPayload.Body = solution;
-            }
-
-            return new ApiConnectionAction<Solution>(callPayload);
+            return new ApiConnectionAction<Solution>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Document> PadocumentsAdd(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<string>> documentdocumentKey = null, Expression<Func<string>> documentname = null, Expression<Func<int>> documentfileSizeBytes = null, Expression<Func<int>> documentstatus = null, Expression<Func<PropertyValue[]>> documentpropertyValues = null, Expression<Func<string>> documenturl = null)
+        public IBodyWorkflowAction<Document> PadocumentsAdd([WorkflowExpression] Func<int> libraryid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null, [WorkflowExpression] Func<string> documentdocumentKey = null, [WorkflowExpression] Func<string> documentname = null, [WorkflowExpression] Func<int> documentfileSizeBytes = null, [WorkflowExpression] Func<int> documentstatus = null, [WorkflowExpression] Func<PropertyValue[]> documentpropertyValues = null, [WorkflowExpression] Func<string> documenturl = null)
         {
-            var apiCallPath = "/padocuments/add";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryid"] = ExpressionConverter.Convert(libraryid);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            var document = new JObject();
-            var documentpropCount = 0;
-            if (documentdocumentKey != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                document["documentKey"] = ExpressionConverter.ConvertO(documentdocumentKey);
-                documentpropCount++;
+                var apiCallPath = "/padocuments/add";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["libraryid"] = SourceExpressionConverter.ConvertO(libraryid);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                if (solutionkey != null)
+                    callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                var document = new JObject();
+                var documentpropCount = 0;
+                if (documentdocumentKey != null)
+                {
+                    document["documentKey"] = SourceExpressionConverter.ConvertToken(documentdocumentKey);
+                    documentpropCount++;
+                }
+
+                if (documentname != null)
+                {
+                    document["name"] = SourceExpressionConverter.ConvertToken(documentname);
+                    documentpropCount++;
+                }
+
+                if (documentfileSizeBytes != null)
+                {
+                    document["fileSizeBytes"] = SourceExpressionConverter.ConvertToken(documentfileSizeBytes);
+                    documentpropCount++;
+                }
+
+                if (documentstatus != null)
+                {
+                    document["status"] = SourceExpressionConverter.ConvertToken(documentstatus);
+                    documentpropCount++;
+                }
+
+                if (documentpropertyValues != null)
+                {
+                    document["propertyValues"] = SourceExpressionConverter.ConvertToken(documentpropertyValues);
+                    documentpropCount++;
+                }
+
+                if (documenturl != null)
+                {
+                    document["url"] = SourceExpressionConverter.ConvertToken(documenturl);
+                    documentpropCount++;
+                }
+
+                if (documentpropCount > 0)
+                {
+                    callPayload.Body = document;
+                }
+                return callPayload;
             }
 
-            if (documentname != null)
-            {
-                document["name"] = ExpressionConverter.ConvertO(documentname);
-                documentpropCount++;
-            }
-
-            if (documentfileSizeBytes != null)
-            {
-                document["fileSizeBytes"] = ExpressionConverter.ConvertO(documentfileSizeBytes);
-                documentpropCount++;
-            }
-
-            if (documentstatus != null)
-            {
-                document["status"] = ExpressionConverter.ConvertO(documentstatus);
-                documentpropCount++;
-            }
-
-            if (documentpropertyValues != null)
-            {
-                document["propertyValues"] = ExpressionConverter.ConvertO(documentpropertyValues);
-                documentpropCount++;
-            }
-
-            if (documenturl != null)
-            {
-                document["url"] = ExpressionConverter.ConvertO(documenturl);
-                documentpropCount++;
-            }
-
-            if (documentpropCount > 0)
-            {
-                callPayload.Body = document;
-            }
-
-            return new ApiConnectionAction<Document>(callPayload);
+            return new ApiConnectionAction<Document>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<DocumentType> PadocumenttypesGet(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<DocumentType> PadocumenttypesGet([WorkflowExpression] Func<int> documenttypeid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            var apiCallPath = "/padocumenttypes/get";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(documenttypeid);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            return new ApiConnectionAction<DocumentType>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/padocumenttypes/get";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["documenttypeid"] = SourceExpressionConverter.ConvertO(documenttypeid);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                if (solutionkey != null)
+                    callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DocumentType>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<DocumentType[]> PadocumenttypesList(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null)
+        public IBodyWorkflowAction<DocumentType[]> PadocumenttypesList([WorkflowExpression] Func<string> solutionkey, [WorkflowExpression] Func<int> solutionid = null)
         {
-            var apiCallPath = "/padocumenttypes/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            return new ApiConnectionAction<DocumentType[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/padocumenttypes/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DocumentType[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Library> PadocumenttypesAdd(Expression<Func<string>> solutionkey, Expression<Func<int>> solutionid = null, Expression<Func<int>> librarylibraryId = null, Expression<Func<int>> libraryrepositoryId = null, Expression<Func<int>> libraryrepositoryrepositoryId = null, Expression<Func<string>> libraryrepositoryname = null, Expression<Func<string>> libraryrepositorydescription = null, Expression<Func<int>> libraryrepositoryrepositoryTypeId = null, Expression<Func<int>> libraryrepositoryrepositoryTyperepositoryTypeId = null, Expression<Func<string>> libraryrepositoryrepositoryTypename = null, Expression<Func<string>> libraryrepositoryrepositoryURI = null, Expression<Func<int>> librarydocumentTypeId = null, Expression<Func<int>> librarydocumentTypedocumentTypeId = null, Expression<Func<string>> librarydocumentTypename = null, Expression<Func<string>> librarydocumentTypedescription = null, Expression<Func<string>> libraryname = null, Expression<Func<string>> librarydescription = null, Expression<Func<bool>> libraryocr = null)
+        public IBodyWorkflowAction<Library> PadocumenttypesAdd([WorkflowExpression] Func<string> solutionkey, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<int> librarylibraryId = null, [WorkflowExpression] Func<int> libraryrepositoryId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryId = null, [WorkflowExpression] Func<string> libraryrepositoryname = null, [WorkflowExpression] Func<string> libraryrepositorydescription = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTypeId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTyperepositoryTypeId = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryTypename = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryURI = null, [WorkflowExpression] Func<int> librarydocumentTypeId = null, [WorkflowExpression] Func<int> librarydocumentTypedocumentTypeId = null, [WorkflowExpression] Func<string> librarydocumentTypename = null, [WorkflowExpression] Func<string> librarydocumentTypedescription = null, [WorkflowExpression] Func<string> libraryname = null, [WorkflowExpression] Func<string> librarydescription = null, [WorkflowExpression] Func<bool> libraryocr = null)
         {
-            var apiCallPath = "/padocumenttypes/add";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            var library = new JObject();
-            var librarypropCount = 0;
-            if (librarylibraryId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                library["libraryId"] = ExpressionConverter.ConvertO(librarylibraryId);
-                librarypropCount++;
+                var apiCallPath = "/padocumenttypes/add";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                var library = new JObject();
+                var librarypropCount = 0;
+                if (librarylibraryId != null)
+                {
+                    library["libraryId"] = SourceExpressionConverter.ConvertToken(librarylibraryId);
+                    librarypropCount++;
+                }
+
+                if (libraryrepositoryId != null)
+                {
+                    library["repositoryId"] = SourceExpressionConverter.ConvertToken(libraryrepositoryId);
+                    librarypropCount++;
+                }
+
+                if (librarydocumentTypeId != null)
+                {
+                    library["documentTypeId"] = SourceExpressionConverter.ConvertToken(librarydocumentTypeId);
+                    librarypropCount++;
+                }
+
+                var documentTypeObject = new JObject();
+                var documentTypeObjectpropCount = 0;
+                if (librarydocumentTypedocumentTypeId != null)
+                {
+                    documentTypeObject["documentTypeId"] = SourceExpressionConverter.ConvertToken(librarydocumentTypedocumentTypeId);
+                    documentTypeObjectpropCount++;
+                }
+
+                if (librarydocumentTypename != null)
+                {
+                    documentTypeObject["name"] = SourceExpressionConverter.ConvertToken(librarydocumentTypename);
+                    documentTypeObjectpropCount++;
+                }
+
+                if (librarydocumentTypedescription != null)
+                {
+                    documentTypeObject["description"] = SourceExpressionConverter.ConvertToken(librarydocumentTypedescription);
+                    documentTypeObjectpropCount++;
+                }
+
+                if (documentTypeObjectpropCount > 0)
+                {
+                    library["documentType"] = documentTypeObject;
+                    librarypropCount++;
+                }
+
+                if (libraryname != null)
+                {
+                    library["name"] = SourceExpressionConverter.ConvertToken(libraryname);
+                    librarypropCount++;
+                }
+
+                if (librarydescription != null)
+                {
+                    library["description"] = SourceExpressionConverter.ConvertToken(librarydescription);
+                    librarypropCount++;
+                }
+
+                if (libraryocr != null)
+                {
+                    library["ocr"] = SourceExpressionConverter.ConvertToken(libraryocr);
+                    librarypropCount++;
+                }
+
+                if (librarypropCount > 0)
+                {
+                    callPayload.Body = library;
+                }
+                return callPayload;
             }
 
-            if (libraryrepositoryId != null)
-            {
-                library["repositoryId"] = ExpressionConverter.ConvertO(libraryrepositoryId);
-                librarypropCount++;
-            }
-
-            if (librarydocumentTypeId != null)
-            {
-                library["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypeId);
-                librarypropCount++;
-            }
-
-            var documentTypeObject = new JObject();
-            var documentTypeObjectpropCount = 0;
-            if (librarydocumentTypedocumentTypeId != null)
-            {
-                documentTypeObject["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypedocumentTypeId);
-                documentTypeObjectpropCount++;
-            }
-
-            if (librarydocumentTypename != null)
-            {
-                documentTypeObject["name"] = ExpressionConverter.ConvertO(librarydocumentTypename);
-                documentTypeObjectpropCount++;
-            }
-
-            if (librarydocumentTypedescription != null)
-            {
-                documentTypeObject["description"] = ExpressionConverter.ConvertO(librarydocumentTypedescription);
-                documentTypeObjectpropCount++;
-            }
-
-            if (documentTypeObjectpropCount > 0)
-            {
-                library["documentType"] = documentTypeObject;
-                librarypropCount++;
-            }
-
-            if (libraryname != null)
-            {
-                library["name"] = ExpressionConverter.ConvertO(libraryname);
-                librarypropCount++;
-            }
-
-            if (librarydescription != null)
-            {
-                library["description"] = ExpressionConverter.ConvertO(librarydescription);
-                librarypropCount++;
-            }
-
-            if (libraryocr != null)
-            {
-                library["ocr"] = ExpressionConverter.ConvertO(libraryocr);
-                librarypropCount++;
-            }
-
-            if (librarypropCount > 0)
-            {
-                callPayload.Body = library;
-            }
-
-            return new ApiConnectionAction<Library>(callPayload);
+            return new ApiConnectionAction<Library>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<DocumentType> PadocumenttypesUpdate(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<int>> documentTypedocumentTypeId = null, Expression<Func<string>> documentTypename = null, Expression<Func<string>> documentTypedescription = null)
+        public IBodyWorkflowAction<DocumentType> PadocumenttypesUpdate([WorkflowExpression] Func<int> documenttypeid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null, [WorkflowExpression] Func<int> documentTypedocumentTypeId = null, [WorkflowExpression] Func<string> documentTypename = null, [WorkflowExpression] Func<string> documentTypedescription = null)
         {
-            var apiCallPath = "/padocumenttypes/update";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(documenttypeid);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            var documentType = new JObject();
-            var documentTypepropCount = 0;
-            if (documentTypedocumentTypeId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                documentType["documentTypeId"] = ExpressionConverter.ConvertO(documentTypedocumentTypeId);
-                documentTypepropCount++;
+                var apiCallPath = "/padocumenttypes/update";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["documenttypeid"] = SourceExpressionConverter.ConvertO(documenttypeid);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                if (solutionkey != null)
+                    callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                var documentType = new JObject();
+                var documentTypepropCount = 0;
+                if (documentTypedocumentTypeId != null)
+                {
+                    documentType["documentTypeId"] = SourceExpressionConverter.ConvertToken(documentTypedocumentTypeId);
+                    documentTypepropCount++;
+                }
+
+                if (documentTypename != null)
+                {
+                    documentType["name"] = SourceExpressionConverter.ConvertToken(documentTypename);
+                    documentTypepropCount++;
+                }
+
+                if (documentTypedescription != null)
+                {
+                    documentType["description"] = SourceExpressionConverter.ConvertToken(documentTypedescription);
+                    documentTypepropCount++;
+                }
+
+                if (documentTypepropCount > 0)
+                {
+                    callPayload.Body = documentType;
+                }
+                return callPayload;
             }
 
-            if (documentTypename != null)
-            {
-                documentType["name"] = ExpressionConverter.ConvertO(documentTypename);
-                documentTypepropCount++;
-            }
-
-            if (documentTypedescription != null)
-            {
-                documentType["description"] = ExpressionConverter.ConvertO(documentTypedescription);
-                documentTypepropCount++;
-            }
-
-            if (documentTypepropCount > 0)
-            {
-                callPayload.Body = documentType;
-            }
-
-            return new ApiConnectionAction<DocumentType>(callPayload);
+            return new ApiConnectionAction<DocumentType>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Library> PalibrariesGet(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<Library> PalibrariesGet([WorkflowExpression] Func<int> libraryid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            var apiCallPath = "/palibraries/get";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryid"] = ExpressionConverter.Convert(libraryid);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            return new ApiConnectionAction<Library>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/palibraries/get";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["libraryid"] = SourceExpressionConverter.ConvertO(libraryid);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                if (solutionkey != null)
+                    callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Library>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Library[]> PalibrariesList(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<Library[]> PalibrariesList([WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            var apiCallPath = "/palibraries/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            return new ApiConnectionAction<Library[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/palibraries/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                if (solutionkey != null)
+                    callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Library[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Library[]> PalibrariesDocumenttypeList(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<Library[]> PalibrariesDocumenttypeList([WorkflowExpression] Func<int> documenttypeid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            var apiCallPath = "/palibraries/documenttype/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(documenttypeid);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            return new ApiConnectionAction<Library[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/palibraries/documenttype/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["documenttypeid"] = SourceExpressionConverter.ConvertO(documenttypeid);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                if (solutionkey != null)
+                    callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Library[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<Library> PalibrariesUpdate(Expression<Func<int>> libraryid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<int>> librarylibraryId = null, Expression<Func<int>> libraryrepositoryId = null, Expression<Func<int>> libraryrepositoryrepositoryId = null, Expression<Func<string>> libraryrepositoryname = null, Expression<Func<string>> libraryrepositorydescription = null, Expression<Func<int>> libraryrepositoryrepositoryTypeId = null, Expression<Func<int>> libraryrepositoryrepositoryTyperepositoryTypeId = null, Expression<Func<string>> libraryrepositoryrepositoryTypename = null, Expression<Func<string>> libraryrepositoryrepositoryURI = null, Expression<Func<int>> librarydocumentTypeId = null, Expression<Func<int>> librarydocumentTypedocumentTypeId = null, Expression<Func<string>> librarydocumentTypename = null, Expression<Func<string>> librarydocumentTypedescription = null, Expression<Func<string>> libraryname = null, Expression<Func<string>> librarydescription = null, Expression<Func<bool>> libraryocr = null)
+        public IBodyWorkflowAction<Library> PalibrariesUpdate([WorkflowExpression] Func<int> libraryid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null, [WorkflowExpression] Func<int> librarylibraryId = null, [WorkflowExpression] Func<int> libraryrepositoryId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryId = null, [WorkflowExpression] Func<string> libraryrepositoryname = null, [WorkflowExpression] Func<string> libraryrepositorydescription = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTypeId = null, [WorkflowExpression] Func<int> libraryrepositoryrepositoryTyperepositoryTypeId = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryTypename = null, [WorkflowExpression] Func<string> libraryrepositoryrepositoryURI = null, [WorkflowExpression] Func<int> librarydocumentTypeId = null, [WorkflowExpression] Func<int> librarydocumentTypedocumentTypeId = null, [WorkflowExpression] Func<string> librarydocumentTypename = null, [WorkflowExpression] Func<string> librarydocumentTypedescription = null, [WorkflowExpression] Func<string> libraryname = null, [WorkflowExpression] Func<string> librarydescription = null, [WorkflowExpression] Func<bool> libraryocr = null)
         {
-            var apiCallPath = "/palibraries/update";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryid"] = ExpressionConverter.Convert(libraryid);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            var library = new JObject();
-            var librarypropCount = 0;
-            if (librarylibraryId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                library["libraryId"] = ExpressionConverter.ConvertO(librarylibraryId);
-                librarypropCount++;
+                var apiCallPath = "/palibraries/update";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["libraryid"] = SourceExpressionConverter.ConvertO(libraryid);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                if (solutionkey != null)
+                    callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                var library = new JObject();
+                var librarypropCount = 0;
+                if (librarylibraryId != null)
+                {
+                    library["libraryId"] = SourceExpressionConverter.ConvertToken(librarylibraryId);
+                    librarypropCount++;
+                }
+
+                if (libraryrepositoryId != null)
+                {
+                    library["repositoryId"] = SourceExpressionConverter.ConvertToken(libraryrepositoryId);
+                    librarypropCount++;
+                }
+
+                if (librarydocumentTypeId != null)
+                {
+                    library["documentTypeId"] = SourceExpressionConverter.ConvertToken(librarydocumentTypeId);
+                    librarypropCount++;
+                }
+
+                var documentTypeObject = new JObject();
+                var documentTypeObjectpropCount = 0;
+                if (librarydocumentTypedocumentTypeId != null)
+                {
+                    documentTypeObject["documentTypeId"] = SourceExpressionConverter.ConvertToken(librarydocumentTypedocumentTypeId);
+                    documentTypeObjectpropCount++;
+                }
+
+                if (librarydocumentTypename != null)
+                {
+                    documentTypeObject["name"] = SourceExpressionConverter.ConvertToken(librarydocumentTypename);
+                    documentTypeObjectpropCount++;
+                }
+
+                if (librarydocumentTypedescription != null)
+                {
+                    documentTypeObject["description"] = SourceExpressionConverter.ConvertToken(librarydocumentTypedescription);
+                    documentTypeObjectpropCount++;
+                }
+
+                if (documentTypeObjectpropCount > 0)
+                {
+                    library["documentType"] = documentTypeObject;
+                    librarypropCount++;
+                }
+
+                if (libraryname != null)
+                {
+                    library["name"] = SourceExpressionConverter.ConvertToken(libraryname);
+                    librarypropCount++;
+                }
+
+                if (librarydescription != null)
+                {
+                    library["description"] = SourceExpressionConverter.ConvertToken(librarydescription);
+                    librarypropCount++;
+                }
+
+                if (libraryocr != null)
+                {
+                    library["ocr"] = SourceExpressionConverter.ConvertToken(libraryocr);
+                    librarypropCount++;
+                }
+
+                if (librarypropCount > 0)
+                {
+                    callPayload.Body = library;
+                }
+                return callPayload;
             }
 
-            if (libraryrepositoryId != null)
-            {
-                library["repositoryId"] = ExpressionConverter.ConvertO(libraryrepositoryId);
-                librarypropCount++;
-            }
-
-            if (librarydocumentTypeId != null)
-            {
-                library["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypeId);
-                librarypropCount++;
-            }
-
-            var documentTypeObject = new JObject();
-            var documentTypeObjectpropCount = 0;
-            if (librarydocumentTypedocumentTypeId != null)
-            {
-                documentTypeObject["documentTypeId"] = ExpressionConverter.ConvertO(librarydocumentTypedocumentTypeId);
-                documentTypeObjectpropCount++;
-            }
-
-            if (librarydocumentTypename != null)
-            {
-                documentTypeObject["name"] = ExpressionConverter.ConvertO(librarydocumentTypename);
-                documentTypeObjectpropCount++;
-            }
-
-            if (librarydocumentTypedescription != null)
-            {
-                documentTypeObject["description"] = ExpressionConverter.ConvertO(librarydocumentTypedescription);
-                documentTypeObjectpropCount++;
-            }
-
-            if (documentTypeObjectpropCount > 0)
-            {
-                library["documentType"] = documentTypeObject;
-                librarypropCount++;
-            }
-
-            if (libraryname != null)
-            {
-                library["name"] = ExpressionConverter.ConvertO(libraryname);
-                librarypropCount++;
-            }
-
-            if (librarydescription != null)
-            {
-                library["description"] = ExpressionConverter.ConvertO(librarydescription);
-                librarypropCount++;
-            }
-
-            if (libraryocr != null)
-            {
-                library["ocr"] = ExpressionConverter.ConvertO(libraryocr);
-                librarypropCount++;
-            }
-
-            if (librarypropCount > 0)
-            {
-                callPayload.Body = library;
-            }
-
-            return new ApiConnectionAction<Library>(callPayload);
+            return new ApiConnectionAction<Library>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<DataType[]> PadatatypesList(Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<DataType[]> PadatatypesList([WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            var apiCallPath = "/padatatypes/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            return new ApiConnectionAction<DataType[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/padatatypes/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                if (solutionkey != null)
+                    callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DataType[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<string> PadocumentsLoadfile(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<string> PadocumentsLoadfile([WorkflowExpression] Func<string> documentkey, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            var apiCallPath = "/padocuments/loadfile";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documentkey"] = ExpressionConverter.Convert(documentkey);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/padocuments/loadfile";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["documentkey"] = SourceExpressionConverter.ConvertO(documentkey);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                if (solutionkey != null)
+                    callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<PropertyValue[]> PapropertyvaluesGet(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<PropertyValue[]> PapropertyvaluesGet([WorkflowExpression] Func<string> documentkey, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            var apiCallPath = "/papropertyvalues/get";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documentkey"] = ExpressionConverter.Convert(documentkey);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            return new ApiConnectionAction<PropertyValue[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/papropertyvalues/get";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["documentkey"] = SourceExpressionConverter.ConvertO(documentkey);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                if (solutionkey != null)
+                    callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PropertyValue[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<PropertyValue[]> PapropertyvaluesUpdate(Expression<Func<string>> documentkey, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null, Expression<Func<PropertyValue[]>> propertyValueArray = null)
+        public IBodyWorkflowAction<PropertyValue[]> PapropertyvaluesUpdate([WorkflowExpression] Func<string> documentkey, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null, [WorkflowExpression] Func<PropertyValue[]> propertyValueArray = null)
         {
-            var apiCallPath = "/papropertyvalues/update";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documentkey"] = ExpressionConverter.Convert(documentkey);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            callPayload.Body = ExpressionConverter.ConvertO(propertyValueArray);
-            return new ApiConnectionAction<PropertyValue[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/papropertyvalues/update";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["documentkey"] = SourceExpressionConverter.ConvertO(documentkey);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                if (solutionkey != null)
+                    callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(propertyValueArray);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PropertyValue[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1docstop")]
-        public IBodyWorkflowAction<DocumentProperty[]> PadocumentpropertiesList(Expression<Func<int>> documenttypeid, Expression<Func<int>> solutionid = null, Expression<Func<string>> solutionkey = null)
+        public IBodyWorkflowAction<DocumentProperty[]> PadocumentpropertiesList([WorkflowExpression] Func<int> documenttypeid, [WorkflowExpression] Func<int> solutionid = null, [WorkflowExpression] Func<string> solutionkey = null)
         {
-            var apiCallPath = "/padocumentproperties-list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documenttypeid"] = ExpressionConverter.Convert(documenttypeid);
-            if (solutionid != null)
-                callPayload.Queries["solutionid"] = ExpressionConverter.Convert(solutionid);
-            if (solutionkey != null)
-                callPayload.Queries["solutionkey"] = ExpressionConverter.Convert(solutionkey);
-            return new ApiConnectionAction<DocumentProperty[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/padocumentproperties-list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["documenttypeid"] = SourceExpressionConverter.ConvertO(documenttypeid);
+                if (solutionid != null)
+                    callPayload.Queries["solutionid"] = SourceExpressionConverter.ConvertO(solutionid);
+                if (solutionkey != null)
+                    callPayload.Queries["solutionkey"] = SourceExpressionConverter.ConvertO(solutionkey);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DocumentProperty[]>(BuildSourceInput);
         }
     }
 

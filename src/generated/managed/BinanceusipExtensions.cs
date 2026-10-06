@@ -12,37 +12,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
     public class BinanceusipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
-        public IBodyWorkflowAction<GetLiveTickerPriceResponse> GetLiveTickerPrice(Expression<Func<string>> symbol = null)
+        public IBodyWorkflowAction<GetLiveTickerPriceResponse> GetLiveTickerPrice([WorkflowExpression] Func<string> symbol = null)
         {
-            var apiCallPath = "/ticker/price";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (symbol != null)
-                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            return new ApiConnectionAction<GetLiveTickerPriceResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/ticker/price";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (symbol != null)
+                    callPayload.Queries["symbol"] = SourceExpressionConverter.ConvertO(symbol);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetLiveTickerPriceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
-        public IBodyWorkflowAction<GetExchangeInfoResponse> GetExchangeInformation(Expression<Func<string>> symbol = null)
+        public IBodyWorkflowAction<GetExchangeInfoResponse> GetExchangeInformation([WorkflowExpression] Func<string> symbol = null)
         {
-            var apiCallPath = "/exchangeInfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (symbol != null)
-                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            return new ApiConnectionAction<GetExchangeInfoResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/exchangeInfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (symbol != null)
+                    callPayload.Queries["symbol"] = SourceExpressionConverter.ConvertO(symbol);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetExchangeInfoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
-        public IBodyWorkflowAction<GetRecentTradesResponse> GetRecentTrades(Expression<Func<string>> symbol, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<GetRecentTradesResponse> GetRecentTrades([WorkflowExpression] Func<string> symbol, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/trades";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<GetRecentTradesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trades";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["symbol"] = SourceExpressionConverter.ConvertO(symbol);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRecentTradesResponse>(BuildSourceInput);
         }
     }
 

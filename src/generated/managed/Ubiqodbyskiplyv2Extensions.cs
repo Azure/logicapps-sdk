@@ -15,35 +15,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
 
     public class Ubiqodbyskiplyv2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> ReceiveDataFromTrackers(Expression<Func<string>> bodyhookName = null, Expression<Func<string>> bodydispatchId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> ReceiveDataFromTrackers([WorkflowExpression] Func<string> bodyhookName = null, [WorkflowExpression] Func<string> bodydispatchId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/hooks/zapier/subscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["hookUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["dispatchType"] = "POWERAUTOMATE";
-            bodypropCount++;
-            if (bodyhookName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["hookName"] = ExpressionConverter.ConvertO(bodyhookName);
+                var apiCallPath = "/hooks/zapier/subscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["hookUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
-
-            if (bodydispatchId != null)
-            {
-                body["dispatchId"] = ExpressionConverter.ConvertO(bodydispatchId);
+                body["dispatchType"] = "POWERAUTOMATE";
                 bodypropCount++;
+                if (bodyhookName != null)
+                {
+                    body["hookName"] = SourceExpressionConverter.ConvertToken(bodyhookName);
+                    bodypropCount++;
+                }
+
+                if (bodydispatchId != null)
+                {
+                    body["dispatchId"] = SourceExpressionConverter.ConvertToken(bodydispatchId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<ReceiveDataFromTrackersResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ReceiveDataFromTrackersResponseItem[]>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

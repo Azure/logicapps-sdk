@@ -1,0 +1,107 @@
+<Project>
+  <Import Project="$(MSBuildThisFileDirectory)..\buildTransitive\Microsoft.Azure.Workflows.Sdk.BuildTasks.targets" />
+
+  <Target Name="ResolveConnectorValidationPaths">
+    <PropertyGroup>
+      <_ConnectorValidationRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', '$(IntermediateOutputPath)', 'connector-validation'))</_ConnectorValidationRoot>
+      <_ConnectorManagedRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', 'generated', 'managed'))</_ConnectorManagedRoot>
+      <_ConnectorProviderRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', 'generated', 'serviceProviders'))</_ConnectorProviderRoot>
+      <_ConnectorDotNet Condition="'$(DotNetHostPath)' != ''">$(DotNetHostPath)</_ConnectorDotNet>
+      <_ConnectorDotNet Condition="'$(_ConnectorDotNet)' == ''">dotnet</_ConnectorDotNet>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="ConnectorValidationDesignTimeNotice" BeforeTargets="CoreCompile" Condition="'$(DesignTimeBuild)' == 'true'">
+    <Message Importance="high" Text="WFSDK1104: SDK connector validation is injected during normal builds only. Design-time sources are not validated package output." />
+  </Target>
+
+  <Target Name="InjectConnectorValidation" AfterTargets="BeforeCompile"
+          BeforeTargets="_GenerateCompileDependencyCache;CoreCompile"
+          DependsOnTargets="ResolveConnectorValidationPaths;ResolveReferences;GenerateGlobalUsings;GenerateAssemblyInfo;Protobuf_Compile"
+          Condition="'$(DesignTimeBuild)' != 'true' and '$(IsCrossTargetingBuild)' != 'true'">
+    <Error Condition="'$(MSBuildRuntimeType)' != 'Core'" Code="WFSDK1101"
+           Text="SDK connector validation requires dotnet build with the .NET 9 runtime." />
+    <MSBuild Projects="$(MSBuildThisFileDirectory)Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj"
+             Targets="GetTargetPath" Properties="Configuration=$(Configuration)"
+             RemoveProperties="TargetFramework;RuntimeIdentifier;SelfContained">
+      <Output TaskParameter="TargetOutputs" ItemName="_ConnectorBuildTool" />
+    </MSBuild>
+    <Error Condition="!Exists('@(_ConnectorBuildTool)')" Code="WFSDK1101"
+           Text="Build the SDK's workflow build-tool project before compiling connectors; validation cannot be skipped." />
+    <PropertyGroup>
+      <_ConnectorAllowUnsafe>false</_ConnectorAllowUnsafe>
+      <_ConnectorAllowUnsafe Condition="'$(AllowUnsafeBlocks)' == 'true'">true</_ConnectorAllowUnsafe>
+      <_ConnectorCheckOverflow>false</_ConnectorCheckOverflow>
+      <_ConnectorCheckOverflow Condition="'$(CheckForOverflowUnderflow)' == 'true'">true</_ConnectorCheckOverflow>
+      <_ConnectorSign>false</_ConnectorSign>
+      <_ConnectorSign Condition="'$(SignAssembly)' == 'true'">true</_ConnectorSign>
+      <_ConnectorDelaySign>false</_ConnectorDelaySign>
+      <_ConnectorDelaySign Condition="'$(DelaySign)' == 'true'">true</_ConnectorDelaySign>
+      <_ConnectorPublicSign>false</_ConnectorPublicSign>
+      <_ConnectorPublicSign Condition="'$(PublicSign)' == 'true'">true</_ConnectorPublicSign>
+    </PropertyGroup>
+    <ItemGroup>
+      <_ConnectorOriginalCompile Include="@(Compile)" />
+      <_ConnectorSources Include="@(Compile)"
+          Condition="'%(Compile.GeneratedFamily)' == 'managed' or '%(Compile.GeneratedFamily)' == 'serviceProviders' or
+                     $([System.String]::Copy('%(Compile.FullPath)').StartsWith('$(_ConnectorManagedRoot)')) or
+                     $([System.String]::Copy('%(Compile.FullPath)').StartsWith('$(_ConnectorProviderRoot)'))" />
+      <_ConnectorReferences Include="@(ReferencePathWithRefAssemblies)" />
+      <_ConnectorReferences Include="@(ReferencePath)" Condition="'@(_ConnectorReferences)' == ''" />
+    </ItemGroup>
+    <Error Condition="'@(_ConnectorSources)' == ''" Code="WFSDK1101" Text="No generated connector compiler inputs were selected; refusing to build an unvalidated SDK." />
+    <MakeDir Directories="$(_ConnectorValidationRoot)" />
+    <Delete Files="$(_ConnectorValidationRoot)compiled-files.txt;$(_ConnectorValidationRoot)assembly.sha256" />
+    <WriteWorkflowBuildManifest Sources="@(_ConnectorOriginalCompile)" References="@(_ConnectorReferences)"
+        Defines="$(DefineConstants)" LanguageVersion="$(LangVersion)" Nullable="$(Nullable)"
+        AllowUnsafe="$(_ConnectorAllowUnsafe)" CheckOverflow="$(_ConnectorCheckOverflow)"
+        OutputKind="$(OutputType)" Platform="$(PlatformTarget)" AssemblyName="$(AssemblyName)"
+        SignAssembly="$(_ConnectorSign)" DelaySign="$(_ConnectorDelaySign)" PublicSign="$(_ConnectorPublicSign)"
+        KeyFile="$(KeyOriginatorFile)" KeyContainer="$(KeyContainerName)"
+        ManifestPath="$(_ConnectorValidationRoot)build-manifest.json" />
+    <WriteLinesToFile File="$(_ConnectorValidationRoot)connector-sources.txt" Lines="@(_ConnectorSources->'%(FullPath)')" Overwrite="true" WriteOnlyWhenDifferent="true" />
+    <Exec Command="&quot;$(_ConnectorDotNet)&quot; &quot;@(_ConnectorBuildTool)&quot; inject-connector-validation &quot;$(_ConnectorValidationRoot)build-manifest.json&quot; &quot;$(_ConnectorValidationRoot)connector-sources.txt&quot; &quot;$(_ConnectorValidationRoot).&quot;" />
+    <ReadWorkflowCompiledFiles Sources="@(_ConnectorOriginalCompile)" ListPath="$(_ConnectorValidationRoot)compiled-files.txt">
+      <Output TaskParameter="CompiledFiles" ItemName="_ConnectorTransformedCompile" />
+    </ReadWorkflowCompiledFiles>
+    <ItemGroup>
+      <Compile Remove="@(_ConnectorOriginalCompile)" />
+      <Compile Include="@(_ConnectorTransformedCompile)" />
+      <FileWrites Include="$(_ConnectorValidationRoot)**\*" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="RestoreConnectorCompileItems" AfterTargets="CoreCompile" Condition="'@(_ConnectorOriginalCompile)' != ''">
+    <ItemGroup>
+      <Compile Remove="@(_ConnectorTransformedCompile)" />
+      <Compile Include="@(_ConnectorOriginalCompile)" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="RecordConnectorValidationAssembly" AfterTargets="Build"
+          DependsOnTargets="ResolveConnectorValidationPaths"
+          Condition="'$(DesignTimeBuild)' != 'true' and '$(IsCrossTargetingBuild)' != 'true'">
+    <Error Condition="!Exists('$(_ConnectorValidationRoot)compiled-files.txt')" Code="WFSDK1102"
+           Text="SDK compilation did not produce a connector validation manifest." />
+    <GetFileHash Files="$(TargetPath)">
+      <Output TaskParameter="Hash" PropertyName="_ConnectorAssemblyHash" />
+    </GetFileHash>
+    <WriteLinesToFile File="$(_ConnectorValidationRoot)assembly.sha256" Lines="$(_ConnectorAssemblyHash)" Overwrite="true" WriteOnlyWhenDifferent="true" />
+    <ItemGroup>
+      <FileWrites Include="$(_ConnectorValidationRoot)assembly.sha256" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="VerifyConnectorValidationAssembly" DependsOnTargets="ResolveConnectorValidationPaths">
+    <Error Condition="'$(DesignTimeBuild)' == 'true' or !Exists('$(_ConnectorValidationRoot)assembly.sha256') or !Exists('$(TargetPath)')"
+           Code="WFSDK1102" Text="Build the SDK with connector validation before packing, including pack --no-build." />
+    <ReadLinesFromFile File="$(_ConnectorValidationRoot)assembly.sha256">
+      <Output TaskParameter="Lines" ItemName="_ConnectorRecordedHash" />
+    </ReadLinesFromFile>
+    <GetFileHash Files="$(TargetPath)">
+      <Output TaskParameter="Hash" PropertyName="_ConnectorPackageHash" />
+    </GetFileHash>
+    <Error Condition="'@(_ConnectorRecordedHash)' != '$(_ConnectorPackageHash)'" Code="WFSDK1102"
+           Text="The SDK assembly does not match its successful connector-validation build. Rebuild before packing." />
+  </Target>
+</Project>

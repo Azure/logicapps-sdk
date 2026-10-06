@@ -12,65 +12,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
     public class MuralActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
-        public IBodyWorkflowAction<CreateNewMuralResponse> CreateNewMural(Expression<Func<string>> bodyworkspaceId, Expression<Func<int>> bodyroomId, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<CreateNewMuralResponse> CreateNewMural([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<int> bodyroomId, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            var apiCallPath = "/api/public/v1/murals";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
-            bodypropCount++;
-            body["roomId"] = ExpressionConverter.ConvertO(bodyroomId);
-            if (bodytitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                var apiCallPath = "/api/public/v1/murals";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                bodypropCount++;
+                body["roomId"] = SourceExpressionConverter.ConvertToken(bodyroomId);
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateNewMuralResponse>(callPayload);
+            return new ApiConnectionAction<CreateNewMuralResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
-        public IBodyWorkflowAction<CreateNewStickyNoteResponse> CreateNewStickyNote(Expression<Func<string>> workspaceId, Expression<Func<string>> roomId, Expression<Func<string>> muralId, Expression<Func<bodyshapeInput>> bodyshape, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<CreateNewStickyNoteResponse> CreateNewStickyNote([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> roomId, [WorkflowExpression] Func<string> muralId, [WorkflowExpression] Func<bodyshapeInput> bodyshape, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            var apiCallPath = String.Format("/api/public/v1/murals/{0}/widgets/sticky-note", ExpressionConverter.ConvertWithUrlEncoding(muralId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            callPayload.Queries["roomId"] = ExpressionConverter.Convert(roomId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytext != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/public/v1/murals/{0}/widgets/sticky-note", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(muralId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = SourceExpressionConverter.ConvertO(workspaceId);
+                callPayload.Queries["roomId"] = SourceExpressionConverter.ConvertO(roomId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytext != null)
+                {
+                    body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                body["shape"] = SourceExpressionConverter.Convert(bodyshape);
+                body["x"] = 150;
                 bodypropCount++;
+                body["y"] = 250;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["shape"] = ExpressionConverter.ConvertO(bodyshape);
-            body["x"] = 150;
-            bodypropCount++;
-            body["y"] = 250;
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateNewStickyNoteResponse>(callPayload);
+            return new ApiConnectionAction<CreateNewStickyNoteResponse>(BuildSourceInput);
         }
     }
 

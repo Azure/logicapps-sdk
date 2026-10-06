@@ -12,143 +12,166 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
     public class ZellisActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
-        public IWorkflowAction ValidateNotification(Expression<Func<string>> xZipSignature, Expression<Func<string>> bodypayload)
+        public IWorkflowAction ValidateNotification([WorkflowExpression] Func<string> xZipSignature, [WorkflowExpression] Func<string> bodypayload)
         {
-            var apiCallPath = "/ValidateNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-Zip-Signature"] = ExpressionConverter.Convert(xZipSignature);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["payload"] = ExpressionConverter.ConvertO(bodypayload);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/ValidateNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-Zip-Signature"] = SourceExpressionConverter.ConvertO(xZipSignature);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["payload"] = SourceExpressionConverter.ConvertToken(bodypayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
-        public IBodyWorkflowAction<StaticResponseWriteSchema> AmendObject(Expression<Func<entityInput>> entity, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<StaticResponseWriteSchema> AmendObject([WorkflowExpression] Func<entityInput> entity, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(entity, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<StaticResponseWriteSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StaticResponseWriteSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
-        public IBodyWorkflowAction<JToken> GetZellisObjects(Expression<Func<string>> entity, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> top = null, Expression<Func<string>> skiptoken = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<JToken> GetZellisObjects([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(entity, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(skiptoken);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (expand != null)
+                    callPayload.Queries["$expand"] = SourceExpressionConverter.ConvertO(expand);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
-        public IBodyWorkflowAction<StaticResponseWriteSchema> UpdateObject(Expression<Func<entityInput>> entity, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<StaticResponseWriteSchema> UpdateObject([WorkflowExpression] Func<entityInput> entity, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(entity, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<StaticResponseWriteSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StaticResponseWriteSchema>(BuildSourceInput);
         }
     }
 
     public class ZellisTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> CRUDEntitiy(Expression<Func<string>> bodyevent, Expression<Func<bool>> bodyisEnabled, Expression<Func<bool>> bodyeventTypecreate = null, Expression<Func<bool>> bodyeventTypedelete = null, Expression<Func<bool>> bodyeventTypeupdate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CRUDEntitiy([WorkflowExpression] Func<string> bodyEvent, [WorkflowExpression] Func<bool> bodyisEnabled, [WorkflowExpression] Func<bool> bodyeventTypecreate = null, [WorkflowExpression] Func<bool> bodyeventTypedelete = null, [WorkflowExpression] Func<bool> bodyeventTypeupdate = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/subscription";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Event"] = ExpressionConverter.ConvertO(bodyevent);
-            var eventTypeObject = new JObject();
-            var eventTypeObjectpropCount = 0;
-            if (bodyeventTypecreate != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/v1/subscription";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Event"] = SourceExpressionConverter.ConvertToken(bodyEvent);
+                var eventTypeObject = new JObject();
+                var eventTypeObjectpropCount = 0;
                 if (bodyeventTypecreate != null)
                 {
-                    eventTypeObject["Create"] = ExpressionConverter.ConvertO(bodyeventTypecreate);
+                    if (bodyeventTypecreate != null)
+                    {
+                        eventTypeObject["Create"] = SourceExpressionConverter.ConvertToken(bodyeventTypecreate);
+                        eventTypeObjectpropCount++;
+                    }
+
+                    eventTypeObjectpropCount++;
+                }
+                else
+                {
+                    eventTypeObject["Create"] = true;
                     eventTypeObjectpropCount++;
                 }
 
-                eventTypeObjectpropCount++;
-            }
-            else
-            {
-                eventTypeObject["Create"] = true;
-                eventTypeObjectpropCount++;
-            }
-
-            if (bodyeventTypedelete != null)
-            {
                 if (bodyeventTypedelete != null)
                 {
-                    eventTypeObject["Delete"] = ExpressionConverter.ConvertO(bodyeventTypedelete);
+                    if (bodyeventTypedelete != null)
+                    {
+                        eventTypeObject["Delete"] = SourceExpressionConverter.ConvertToken(bodyeventTypedelete);
+                        eventTypeObjectpropCount++;
+                    }
+
+                    eventTypeObjectpropCount++;
+                }
+                else
+                {
+                    eventTypeObject["Delete"] = false;
                     eventTypeObjectpropCount++;
                 }
 
-                eventTypeObjectpropCount++;
-            }
-            else
-            {
-                eventTypeObject["Delete"] = false;
-                eventTypeObjectpropCount++;
-            }
-
-            if (bodyeventTypeupdate != null)
-            {
                 if (bodyeventTypeupdate != null)
                 {
-                    eventTypeObject["Update"] = ExpressionConverter.ConvertO(bodyeventTypeupdate);
+                    if (bodyeventTypeupdate != null)
+                    {
+                        eventTypeObject["Update"] = SourceExpressionConverter.ConvertToken(bodyeventTypeupdate);
+                        eventTypeObjectpropCount++;
+                    }
+
+                    eventTypeObjectpropCount++;
+                }
+                else
+                {
+                    eventTypeObject["Update"] = true;
                     eventTypeObjectpropCount++;
                 }
 
-                eventTypeObjectpropCount++;
-            }
-            else
-            {
-                eventTypeObject["Update"] = true;
-                eventTypeObjectpropCount++;
-            }
+                if (eventTypeObjectpropCount > 0)
+                {
+                    body["EventType"] = eventTypeObject;
+                    bodypropCount++;
+                }
 
-            if (eventTypeObjectpropCount > 0)
-            {
-                body["EventType"] = eventTypeObject;
                 bodypropCount++;
+                body["IsEnabled"] = SourceExpressionConverter.ConvertToken(bodyisEnabled);
+                body["URL"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["IsEnabled"] = ExpressionConverter.ConvertO(bodyisEnabled);
-            body["URL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -12,37 +12,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
     public class TaxidproActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taxidpro")]
-        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> country, Expression<Func<string>> tin, Expression<Func<typeInput>> type = null, Expression<Func<localeInput>> locale = null, Expression<Func<bool>> isIrs = null)
+        public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> tin, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<localeInput> locale = null, [WorkflowExpression] Func<bool> isIrs = null)
         {
-            var apiCallPath = "/validate";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["tin"] = ExpressionConverter.Convert(tin);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            if (isIrs != null)
-                callPayload.Queries["is_irs"] = ExpressionConverter.Convert(isIrs);
-            return new ApiConnectionAction<ValidateResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/validate";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country"] = SourceExpressionConverter.ConvertO(country);
+                callPayload.Queries["tin"] = SourceExpressionConverter.ConvertO(tin);
+                if (type != null)
+                    callPayload.Queries["type"] = SourceExpressionConverter.Convert(type);
+                if (locale != null)
+                    callPayload.Queries["locale"] = SourceExpressionConverter.Convert(locale);
+                if (isIrs != null)
+                    callPayload.Queries["is_irs"] = SourceExpressionConverter.ConvertO(isIrs);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ValidateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taxidpro")]
-        public IBodyWorkflowAction<LookupResponse> Lookup(Expression<Func<string>> country, Expression<Func<string>> tin, Expression<Func<typeInput>> type = null, Expression<Func<localeInput>> locale = null, Expression<Func<bool>> isIrs = null)
+        public IBodyWorkflowAction<LookupResponse> Lookup([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> tin, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<localeInput> locale = null, [WorkflowExpression] Func<bool> isIrs = null)
         {
-            var apiCallPath = "/lookup";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["tin"] = ExpressionConverter.Convert(tin);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            if (isIrs != null)
-                callPayload.Queries["is_irs"] = ExpressionConverter.Convert(isIrs);
-            return new ApiConnectionAction<LookupResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/lookup";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country"] = SourceExpressionConverter.ConvertO(country);
+                callPayload.Queries["tin"] = SourceExpressionConverter.ConvertO(tin);
+                if (type != null)
+                    callPayload.Queries["type"] = SourceExpressionConverter.Convert(type);
+                if (locale != null)
+                    callPayload.Queries["locale"] = SourceExpressionConverter.Convert(locale);
+                if (isIrs != null)
+                    callPayload.Queries["is_irs"] = SourceExpressionConverter.ConvertO(isIrs);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LookupResponse>(BuildSourceInput);
         }
     }
 

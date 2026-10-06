@@ -15,50 +15,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
 
     public class RamquesteventsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CCEEventTrigger(Expression<Func<bodyactionInput>> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CCEEventTrigger([WorkflowExpression] Func<bodyactionInput> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/register/cce";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webHook"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyaction != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["action"] = ExpressionConverter.ConvertO(bodyaction);
+                var apiCallPath = "/register/cce";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webHook"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodyaction != null)
+                {
+                    body["action"] = SourceExpressionConverter.Convert(bodyaction);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger HorizonEventTrigger(Expression<Func<string>> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger HorizonEventTrigger([WorkflowExpression] Func<string> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/register/horizon";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webHook"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyaction != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["action"] = ExpressionConverter.ConvertO(bodyaction);
+                var apiCallPath = "/register/horizon";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webHook"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodyaction != null)
+                {
+                    body["action"] = SourceExpressionConverter.ConvertToken(bodyaction);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

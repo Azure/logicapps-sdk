@@ -14,16 +14,21 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
     public class EventGridPublisherActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventGridPublisher")]
-        public IOutputWorkflowAction<JToken> PublishEvents(Expression<Func<PublishEventsInputEventsTypeItem[]>> events)
+        public IOutputWorkflowAction<JToken> PublishEvents([WorkflowExpression] Func<PublishEventsInputEventsTypeItem[]> events)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["events"] = ExpressionConverter.ConvertO(events);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventGridPublisher", operationId: "publishEvents", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["events"] = SourceExpressionConverter.ConvertToken(events);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventGridPublisher", operationId: "publishEvents", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
         }
     }
 

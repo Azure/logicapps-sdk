@@ -12,45 +12,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
     public class ThecoloripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
-        public IBodyWorkflowAction<ColorGetResponse> ColorGet(Expression<Func<string>> hex = null, Expression<Func<string>> rgb = null, Expression<Func<string>> hsl = null, Expression<Func<string>> cmyk = null)
+        public IBodyWorkflowAction<ColorGetResponse> ColorGet([WorkflowExpression] Func<string> hex = null, [WorkflowExpression] Func<string> rgb = null, [WorkflowExpression] Func<string> hsl = null, [WorkflowExpression] Func<string> cmyk = null)
         {
-            var apiCallPath = "/id";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (hex != null)
-                callPayload.Queries["hex"] = ExpressionConverter.Convert(hex);
-            if (rgb != null)
-                callPayload.Queries["rgb"] = ExpressionConverter.Convert(rgb);
-            if (hsl != null)
-                callPayload.Queries["hsl"] = ExpressionConverter.Convert(hsl);
-            if (cmyk != null)
-                callPayload.Queries["cmyk"] = ExpressionConverter.Convert(cmyk);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            return new ApiConnectionAction<ColorGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/id";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (hex != null)
+                    callPayload.Queries["hex"] = SourceExpressionConverter.ConvertO(hex);
+                if (rgb != null)
+                    callPayload.Queries["rgb"] = SourceExpressionConverter.ConvertO(rgb);
+                if (hsl != null)
+                    callPayload.Queries["hsl"] = SourceExpressionConverter.ConvertO(hsl);
+                if (cmyk != null)
+                    callPayload.Queries["cmyk"] = SourceExpressionConverter.ConvertO(cmyk);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ColorGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
-        public IBodyWorkflowAction<SchemeGetResponse> SchemeGet(Expression<Func<string>> hex = null, Expression<Func<string>> rgb = null, Expression<Func<string>> hsl = null, Expression<Func<string>> cmyk = null, Expression<Func<modeInput>> mode = null, Expression<Func<int>> count = null)
+        public IBodyWorkflowAction<SchemeGetResponse> SchemeGet([WorkflowExpression] Func<string> hex = null, [WorkflowExpression] Func<string> rgb = null, [WorkflowExpression] Func<string> hsl = null, [WorkflowExpression] Func<string> cmyk = null, [WorkflowExpression] Func<modeInput> mode = null, [WorkflowExpression] Func<int> count = null)
         {
-            var apiCallPath = "/scheme";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (hex != null)
-                callPayload.Queries["hex"] = ExpressionConverter.Convert(hex);
-            if (rgb != null)
-                callPayload.Queries["rgb"] = ExpressionConverter.Convert(rgb);
-            if (hsl != null)
-                callPayload.Queries["hsl"] = ExpressionConverter.Convert(hsl);
-            if (cmyk != null)
-                callPayload.Queries["cmyk"] = ExpressionConverter.Convert(cmyk);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            callPayload.Queries["mode"] = Convert.ToString("monochrome");
-            if (mode != null)
-                callPayload.Queries["mode"] = ExpressionConverter.Convert(mode);
-            callPayload.Queries["count"] = Convert.ToString(5);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            return new ApiConnectionAction<SchemeGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/scheme";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (hex != null)
+                    callPayload.Queries["hex"] = SourceExpressionConverter.ConvertO(hex);
+                if (rgb != null)
+                    callPayload.Queries["rgb"] = SourceExpressionConverter.ConvertO(rgb);
+                if (hsl != null)
+                    callPayload.Queries["hsl"] = SourceExpressionConverter.ConvertO(hsl);
+                if (cmyk != null)
+                    callPayload.Queries["cmyk"] = SourceExpressionConverter.ConvertO(cmyk);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                callPayload.Queries["mode"] = Convert.ToString("monochrome");
+                if (mode != null)
+                    callPayload.Queries["mode"] = SourceExpressionConverter.Convert(mode);
+                callPayload.Queries["count"] = Convert.ToString(5);
+                if (count != null)
+                    callPayload.Queries["count"] = SourceExpressionConverter.ConvertO(count);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SchemeGetResponse>(BuildSourceInput);
         }
     }
 

@@ -12,42 +12,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
     public class TheweatherchannelipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
-        public IBodyWorkflowAction<SuccessSchema> GetConditions(Expression<Func<string>> geocode, Expression<Func<unitsInput>> units, Expression<Func<string>> language, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<SuccessSchema> GetConditions([WorkflowExpression] Func<string> geocode, [WorkflowExpression] Func<unitsInput> units, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<formatInput> format)
         {
-            var apiCallPath = "/wx/observations/current";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["geocode"] = ExpressionConverter.Convert(geocode);
-            callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction<SuccessSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/wx/observations/current";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["geocode"] = SourceExpressionConverter.ConvertO(geocode);
+                callPayload.Queries["units"] = SourceExpressionConverter.Convert(units);
+                callPayload.Queries["language"] = SourceExpressionConverter.ConvertO(language);
+                callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SuccessSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
-        public IBodyWorkflowAction<SuccessSchema> GetHeadlines(Expression<Func<string>> geocode, Expression<Func<string>> acceptHeader, Expression<Func<string>> language, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<SuccessSchema> GetHeadlines([WorkflowExpression] Func<string> geocode, [WorkflowExpression] Func<string> acceptHeader, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<formatInput> format)
         {
-            var apiCallPath = "/alerts/headlines";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["geocode"] = ExpressionConverter.Convert(geocode);
-            callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Headers["acceptHeader"] = ExpressionConverter.Convert(acceptHeader);
-            return new ApiConnectionAction<SuccessSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/alerts/headlines";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["geocode"] = SourceExpressionConverter.ConvertO(geocode);
+                callPayload.Queries["language"] = SourceExpressionConverter.ConvertO(language);
+                callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                callPayload.Headers["acceptHeader"] = SourceExpressionConverter.ConvertO(acceptHeader);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SuccessSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
-        public IBodyWorkflowAction<SuccessSchema> GetHistory(Expression<Func<string>> geocode, Expression<Func<unitsInput>> units, Expression<Func<string>> language, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<SuccessSchema> GetHistory([WorkflowExpression] Func<string> geocode, [WorkflowExpression] Func<unitsInput> units, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<formatInput> format)
         {
-            var apiCallPath = "/wx/conditions/historical/dailysummary/30day";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["geocode"] = ExpressionConverter.Convert(geocode);
-            callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction<SuccessSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/wx/conditions/historical/dailysummary/30day";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["geocode"] = SourceExpressionConverter.ConvertO(geocode);
+                callPayload.Queries["units"] = SourceExpressionConverter.Convert(units);
+                callPayload.Queries["language"] = SourceExpressionConverter.ConvertO(language);
+                callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SuccessSchema>(BuildSourceInput);
         }
     }
 

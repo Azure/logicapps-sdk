@@ -12,77 +12,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
     public class AliruActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aliru")]
-        public IWorkflowAction SendNews(Expression<Func<string>> bodyheadline, Expression<Func<string>> bodytext, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodypictureURL = null, Expression<Func<string>> bodytags = null, Expression<Func<int>> bodytimeToLiveInDays = null, Expression<Func<string>> bodyuserId = null)
+        public IWorkflowAction SendNews([WorkflowExpression] Func<string> bodyheadline, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string> bodypictureURL = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<int> bodytimeToLiveInDays = null, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            var apiCallPath = "/api/SendNews";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Headline"] = ExpressionConverter.ConvertO(bodyheadline);
-            bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodyuRL != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["URL"] = ExpressionConverter.ConvertO(bodyuRL);
+                var apiCallPath = "/api/SendNews";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypictureURL != null)
-            {
-                body["PictureURL"] = ExpressionConverter.ConvertO(bodypictureURL);
+                body["Headline"] = SourceExpressionConverter.ConvertToken(bodyheadline);
                 bodypropCount++;
+                body["Text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                if (bodyuRL != null)
+                {
+                    body["URL"] = SourceExpressionConverter.ConvertToken(bodyuRL);
+                    bodypropCount++;
+                }
+
+                if (bodypictureURL != null)
+                {
+                    body["PictureURL"] = SourceExpressionConverter.ConvertToken(bodypictureURL);
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["Tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodytimeToLiveInDays != null)
+                {
+                    body["TimeToLiveInDays"] = SourceExpressionConverter.ConvertToken(bodytimeToLiveInDays);
+                    bodypropCount++;
+                }
+
+                if (bodyuserId != null)
+                {
+                    body["UserId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytags != null)
-            {
-                body["Tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodytimeToLiveInDays != null)
-            {
-                body["TimeToLiveInDays"] = ExpressionConverter.ConvertO(bodytimeToLiveInDays);
-                bodypropCount++;
-            }
-
-            if (bodyuserId != null)
-            {
-                body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aliru")]
-        public IWorkflowAction SendNotification(Expression<Func<string>> bodytext, Expression<Func<string>> bodyuserId = null)
+        public IWorkflowAction SendNotification([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            var apiCallPath = "/api/SendNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodyuserId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
+                var apiCallPath = "/api/SendNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["Text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                if (bodyuserId != null)
+                {
+                    body["UserId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

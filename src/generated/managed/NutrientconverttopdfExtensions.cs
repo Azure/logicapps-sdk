@@ -12,1239 +12,1279 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
     public class NutrientconverttopdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> Convert(Expression<Func<string>> inputDatasourceFileName, Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDataoutputFormatInput>> inputDataoutputFormat, Expression<Func<string>> inputDataoverrideSettings = null, Expression<Func<string>> inputDatatemplateFileContent = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> Convert([WorkflowExpression] Func<string> inputDatasourceFileName, [WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDataoutputFormatInput> inputDataoutputFormat, [WorkflowExpression] Func<string> inputDataoverrideSettings = null, [WorkflowExpression] Func<string> inputDatatemplateFileContent = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_file_name"] = ExpressionConverter.ConvertO(inputDatasourceFileName);
-            inputDatapropCount++;
-            inputData["source_file_content"] = ExpressionConverter.ConvertO(inputDatasourceFileContent);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                inputData["use_async_pattern"] = false;
                 inputDatapropCount++;
-            }
-
-            inputDatapropCount++;
-            inputData["output_format"] = ExpressionConverter.ConvertO(inputDataoutputFormat);
-            inputData["copy_metadata"] = false;
-            inputDatapropCount++;
-            if (inputDataoverrideSettings != null)
-            {
-                inputData["override_settings"] = ExpressionConverter.ConvertO(inputDataoverrideSettings);
                 inputDatapropCount++;
-            }
-
-            if (inputDatatemplateFileContent != null)
-            {
-                inputData["template_file_content"] = ExpressionConverter.ConvertO(inputDatatemplateFileContent);
+                inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
-                if (inputDatafailOnError != null)
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    inputData["sharepoint_file"] = sharepointFileObject;
                     inputDatapropCount++;
                 }
 
                 inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
+                inputData["output_format"] = SourceExpressionConverter.Convert(inputDataoutputFormat);
+                inputData["copy_metadata"] = false;
                 inputDatapropCount++;
+                if (inputDataoverrideSettings != null)
+                {
+                    inputData["override_settings"] = SourceExpressionConverter.ConvertToken(inputDataoverrideSettings);
+                    inputDatapropCount++;
+                }
+
+                if (inputDatatemplateFileContent != null)
+                {
+                    inputData["template_file_content"] = SourceExpressionConverter.ConvertToken(inputDatatemplateFileContent);
+                    inputDatapropCount++;
+                }
+
+                if (inputDatafailOnError != null)
+                {
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
+                    inputDatapropCount++;
+                }
+
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
-            }
-
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertCad(Expression<Func<string>> inputCadDatasourceFileName, Expression<Func<string>> inputCadDatasourceFileContent, Expression<Func<inputCadDatapaperSizeInput>> inputCadDatapaperSize = null, Expression<Func<string>> inputCadDatapaperSizeCustom = null, Expression<Func<string>> inputCadDatapageMargins = null, Expression<Func<string>> inputCadDatabackgroundColor = null, Expression<Func<inputCadDataforegroundColorInput>> inputCadDataforegroundColor = null, Expression<Func<string>> inputCadDataforegroundColorCustom = null, Expression<Func<inputCadDataemptyLayoutDetectionInput>> inputCadDataemptyLayoutDetection = null, Expression<Func<inputCadDatalayoutSortOrderInput>> inputCadDatalayoutSortOrder = null, Expression<Func<int>> inputCadDatastartPage = null, Expression<Func<int>> inputCadDataendPage = null, Expression<Func<string>> inputCadDataoverrideSettings = null, Expression<Func<bool>> inputCadDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertCad([WorkflowExpression] Func<string> inputCadDatasourceFileName, [WorkflowExpression] Func<string> inputCadDatasourceFileContent, [WorkflowExpression] Func<inputCadDatapaperSizeInput> inputCadDatapaperSize = null, [WorkflowExpression] Func<string> inputCadDatapaperSizeCustom = null, [WorkflowExpression] Func<string> inputCadDatapageMargins = null, [WorkflowExpression] Func<string> inputCadDatabackgroundColor = null, [WorkflowExpression] Func<inputCadDataforegroundColorInput> inputCadDataforegroundColor = null, [WorkflowExpression] Func<string> inputCadDataforegroundColorCustom = null, [WorkflowExpression] Func<inputCadDataemptyLayoutDetectionInput> inputCadDataemptyLayoutDetection = null, [WorkflowExpression] Func<inputCadDatalayoutSortOrderInput> inputCadDatalayoutSortOrder = null, [WorkflowExpression] Func<int> inputCadDatastartPage = null, [WorkflowExpression] Func<int> inputCadDataendPage = null, [WorkflowExpression] Func<string> inputCadDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputCadDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_cad";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputCadData = new JObject();
-            var inputCadDatapropCount = 0;
-            inputCadData["use_async_pattern"] = false;
-            inputCadDatapropCount++;
-            inputCadDatapropCount++;
-            inputCadData["source_file_name"] = ExpressionConverter.ConvertO(inputCadDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputCadData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_cad";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputCadData = new JObject();
+                var inputCadDatapropCount = 0;
+                inputCadData["use_async_pattern"] = false;
                 inputCadDatapropCount++;
-            }
+                inputCadDatapropCount++;
+                inputCadData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputCadDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputCadData["sharepoint_file"] = sharepointFileObject;
+                    inputCadDatapropCount++;
+                }
 
-            inputCadDatapropCount++;
-            inputCadData["source_file_content"] = ExpressionConverter.ConvertO(inputCadDatasourceFileContent);
-            inputCadData["copy_metadata"] = false;
-            inputCadDatapropCount++;
-            if (inputCadDatapaperSize != null)
-            {
+                inputCadDatapropCount++;
+                inputCadData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputCadDatasourceFileContent);
+                inputCadData["copy_metadata"] = false;
+                inputCadDatapropCount++;
                 if (inputCadDatapaperSize != null)
                 {
-                    inputCadData["paper_size"] = ExpressionConverter.ConvertO(inputCadDatapaperSize);
+                    if (inputCadDatapaperSize != null)
+                    {
+                        inputCadData["paper_size"] = SourceExpressionConverter.Convert(inputCadDatapaperSize);
+                        inputCadDatapropCount++;
+                    }
+
+                    inputCadDatapropCount++;
+                }
+                else
+                {
+                    inputCadData["paper_size"] = "Letter";
                     inputCadDatapropCount++;
                 }
 
-                inputCadDatapropCount++;
-            }
-            else
-            {
-                inputCadData["paper_size"] = "Letter";
-                inputCadDatapropCount++;
-            }
+                if (inputCadDatapaperSizeCustom != null)
+                {
+                    inputCadData["paper_size_custom"] = SourceExpressionConverter.ConvertToken(inputCadDatapaperSizeCustom);
+                    inputCadDatapropCount++;
+                }
 
-            if (inputCadDatapaperSizeCustom != null)
-            {
-                inputCadData["paper_size_custom"] = ExpressionConverter.ConvertO(inputCadDatapaperSizeCustom);
-                inputCadDatapropCount++;
-            }
-
-            if (inputCadDatapageMargins != null)
-            {
                 if (inputCadDatapageMargins != null)
                 {
-                    inputCadData["page_margins"] = ExpressionConverter.ConvertO(inputCadDatapageMargins);
+                    if (inputCadDatapageMargins != null)
+                    {
+                        inputCadData["page_margins"] = SourceExpressionConverter.ConvertToken(inputCadDatapageMargins);
+                        inputCadDatapropCount++;
+                    }
+
+                    inputCadDatapropCount++;
+                }
+                else
+                {
+                    inputCadData["page_margins"] = "0.25";
                     inputCadDatapropCount++;
                 }
 
-                inputCadDatapropCount++;
-            }
-            else
-            {
-                inputCadData["page_margins"] = "0.25";
-                inputCadDatapropCount++;
-            }
-
-            if (inputCadDatabackgroundColor != null)
-            {
                 if (inputCadDatabackgroundColor != null)
                 {
-                    inputCadData["background_color"] = ExpressionConverter.ConvertO(inputCadDatabackgroundColor);
+                    if (inputCadDatabackgroundColor != null)
+                    {
+                        inputCadData["background_color"] = SourceExpressionConverter.ConvertToken(inputCadDatabackgroundColor);
+                        inputCadDatapropCount++;
+                    }
+
+                    inputCadDatapropCount++;
+                }
+                else
+                {
+                    inputCadData["background_color"] = "White";
                     inputCadDatapropCount++;
                 }
 
-                inputCadDatapropCount++;
-            }
-            else
-            {
-                inputCadData["background_color"] = "White";
-                inputCadDatapropCount++;
-            }
-
-            if (inputCadDataforegroundColor != null)
-            {
                 if (inputCadDataforegroundColor != null)
                 {
-                    inputCadData["foreground_color"] = ExpressionConverter.ConvertO(inputCadDataforegroundColor);
+                    if (inputCadDataforegroundColor != null)
+                    {
+                        inputCadData["foreground_color"] = SourceExpressionConverter.Convert(inputCadDataforegroundColor);
+                        inputCadDatapropCount++;
+                    }
+
+                    inputCadDatapropCount++;
+                }
+                else
+                {
+                    inputCadData["foreground_color"] = "GreyscaleDarken";
                     inputCadDatapropCount++;
                 }
 
-                inputCadDatapropCount++;
-            }
-            else
-            {
-                inputCadData["foreground_color"] = "GreyscaleDarken";
-                inputCadDatapropCount++;
-            }
+                if (inputCadDataforegroundColorCustom != null)
+                {
+                    inputCadData["foreground_color_custom"] = SourceExpressionConverter.ConvertToken(inputCadDataforegroundColorCustom);
+                    inputCadDatapropCount++;
+                }
 
-            if (inputCadDataforegroundColorCustom != null)
-            {
-                inputCadData["foreground_color_custom"] = ExpressionConverter.ConvertO(inputCadDataforegroundColorCustom);
-                inputCadDatapropCount++;
-            }
-
-            if (inputCadDataemptyLayoutDetection != null)
-            {
                 if (inputCadDataemptyLayoutDetection != null)
                 {
-                    inputCadData["empty_layout_detection_mode"] = ExpressionConverter.ConvertO(inputCadDataemptyLayoutDetection);
+                    if (inputCadDataemptyLayoutDetection != null)
+                    {
+                        inputCadData["empty_layout_detection_mode"] = SourceExpressionConverter.Convert(inputCadDataemptyLayoutDetection);
+                        inputCadDatapropCount++;
+                    }
+
+                    inputCadDatapropCount++;
+                }
+                else
+                {
+                    inputCadData["empty_layout_detection_mode"] = "SkipEmptyLayouts";
                     inputCadDatapropCount++;
                 }
 
-                inputCadDatapropCount++;
-            }
-            else
-            {
-                inputCadData["empty_layout_detection_mode"] = "SkipEmptyLayouts";
-                inputCadDatapropCount++;
-            }
-
-            if (inputCadDatalayoutSortOrder != null)
-            {
                 if (inputCadDatalayoutSortOrder != null)
                 {
-                    inputCadData["layout_sort_order"] = ExpressionConverter.ConvertO(inputCadDatalayoutSortOrder);
+                    if (inputCadDatalayoutSortOrder != null)
+                    {
+                        inputCadData["layout_sort_order"] = SourceExpressionConverter.Convert(inputCadDatalayoutSortOrder);
+                        inputCadDatapropCount++;
+                    }
+
+                    inputCadDatapropCount++;
+                }
+                else
+                {
+                    inputCadData["layout_sort_order"] = "Ascending";
                     inputCadDatapropCount++;
                 }
 
-                inputCadDatapropCount++;
-            }
-            else
-            {
-                inputCadData["layout_sort_order"] = "Ascending";
-                inputCadDatapropCount++;
-            }
+                if (inputCadDatastartPage != null)
+                {
+                    inputCadData["start_page"] = SourceExpressionConverter.ConvertToken(inputCadDatastartPage);
+                    inputCadDatapropCount++;
+                }
 
-            if (inputCadDatastartPage != null)
-            {
-                inputCadData["start_page"] = ExpressionConverter.ConvertO(inputCadDatastartPage);
-                inputCadDatapropCount++;
-            }
+                if (inputCadDataendPage != null)
+                {
+                    inputCadData["end_page"] = SourceExpressionConverter.ConvertToken(inputCadDataendPage);
+                    inputCadDatapropCount++;
+                }
 
-            if (inputCadDataendPage != null)
-            {
-                inputCadData["end_page"] = ExpressionConverter.ConvertO(inputCadDataendPage);
-                inputCadDatapropCount++;
-            }
+                if (inputCadDataoverrideSettings != null)
+                {
+                    inputCadData["override_settings"] = SourceExpressionConverter.ConvertToken(inputCadDataoverrideSettings);
+                    inputCadDatapropCount++;
+                }
 
-            if (inputCadDataoverrideSettings != null)
-            {
-                inputCadData["override_settings"] = ExpressionConverter.ConvertO(inputCadDataoverrideSettings);
-                inputCadDatapropCount++;
-            }
-
-            if (inputCadDatafailOnError != null)
-            {
                 if (inputCadDatafailOnError != null)
                 {
-                    inputCadData["fail_on_error"] = ExpressionConverter.ConvertO(inputCadDatafailOnError);
+                    if (inputCadDatafailOnError != null)
+                    {
+                        inputCadData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputCadDatafailOnError);
+                        inputCadDatapropCount++;
+                    }
+
+                    inputCadDatapropCount++;
+                }
+                else
+                {
+                    inputCadData["fail_on_error"] = true;
                     inputCadDatapropCount++;
                 }
 
-                inputCadDatapropCount++;
-            }
-            else
-            {
-                inputCadData["fail_on_error"] = true;
-                inputCadDatapropCount++;
-            }
-
-            if (inputCadDatapropCount > 0)
-            {
-                callPayload.Body = inputCadData;
+                if (inputCadDatapropCount > 0)
+                {
+                    callPayload.Body = inputCadData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertEmail(Expression<Func<string>> inputEmailDatasourceFileName, Expression<Func<string>> inputEmailDatasourceFileContent, Expression<Func<bool>> inputEmailDataincludeAttachments = null, Expression<Func<inputEmailDataattachmentActionInput>> inputEmailDataattachmentAction = null, Expression<Func<bool>> inputEmailDataattachmentSummary = null, Expression<Func<inputEmailDataunsupportedAttachmentActionInput>> inputEmailDataunsupportedAttachmentAction = null, Expression<Func<string>> inputEmailDataincludeAttachmentFilter = null, Expression<Func<string>> inputEmailDataexcludeAttachmentFilter = null, Expression<Func<string>> inputEmailDataviewportSize = null, Expression<Func<inputEmailDatapaperSizeInput>> inputEmailDatapaperSize = null, Expression<Func<string>> inputEmailDatapaperSizeCustom = null, Expression<Func<string>> inputEmailDatapageMargins = null, Expression<Func<bool>> inputEmailDataattachmentErrors = null, Expression<Func<int>> inputEmailDataminImageSize = null, Expression<Func<bool>> inputEmailDataofflineMode = null, Expression<Func<int>> inputEmailDatastartPage = null, Expression<Func<int>> inputEmailDataendPage = null, Expression<Func<inputEmailDataconversionQualityInput>> inputEmailDataconversionQuality = null, Expression<Func<string>> inputEmailDataoverrideSettings = null, Expression<Func<bool>> inputEmailDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertEmail([WorkflowExpression] Func<string> inputEmailDatasourceFileName, [WorkflowExpression] Func<string> inputEmailDatasourceFileContent, [WorkflowExpression] Func<bool> inputEmailDataincludeAttachments = null, [WorkflowExpression] Func<inputEmailDataattachmentActionInput> inputEmailDataattachmentAction = null, [WorkflowExpression] Func<bool> inputEmailDataattachmentSummary = null, [WorkflowExpression] Func<inputEmailDataunsupportedAttachmentActionInput> inputEmailDataunsupportedAttachmentAction = null, [WorkflowExpression] Func<string> inputEmailDataincludeAttachmentFilter = null, [WorkflowExpression] Func<string> inputEmailDataexcludeAttachmentFilter = null, [WorkflowExpression] Func<string> inputEmailDataviewportSize = null, [WorkflowExpression] Func<inputEmailDatapaperSizeInput> inputEmailDatapaperSize = null, [WorkflowExpression] Func<string> inputEmailDatapaperSizeCustom = null, [WorkflowExpression] Func<string> inputEmailDatapageMargins = null, [WorkflowExpression] Func<bool> inputEmailDataattachmentErrors = null, [WorkflowExpression] Func<int> inputEmailDataminImageSize = null, [WorkflowExpression] Func<bool> inputEmailDataofflineMode = null, [WorkflowExpression] Func<int> inputEmailDatastartPage = null, [WorkflowExpression] Func<int> inputEmailDataendPage = null, [WorkflowExpression] Func<inputEmailDataconversionQualityInput> inputEmailDataconversionQuality = null, [WorkflowExpression] Func<string> inputEmailDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputEmailDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_email";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputEmailData = new JObject();
-            var inputEmailDatapropCount = 0;
-            inputEmailData["use_async_pattern"] = false;
-            inputEmailDatapropCount++;
-            inputEmailDatapropCount++;
-            inputEmailData["source_file_name"] = ExpressionConverter.ConvertO(inputEmailDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputEmailData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_email";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputEmailData = new JObject();
+                var inputEmailDatapropCount = 0;
+                inputEmailData["use_async_pattern"] = false;
                 inputEmailDatapropCount++;
-            }
+                inputEmailDatapropCount++;
+                inputEmailData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputEmailDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputEmailData["sharepoint_file"] = sharepointFileObject;
+                    inputEmailDatapropCount++;
+                }
 
-            inputEmailDatapropCount++;
-            inputEmailData["source_file_content"] = ExpressionConverter.ConvertO(inputEmailDatasourceFileContent);
-            inputEmailData["copy_metadata"] = false;
-            inputEmailDatapropCount++;
-            if (inputEmailDataincludeAttachments != null)
-            {
+                inputEmailDatapropCount++;
+                inputEmailData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputEmailDatasourceFileContent);
+                inputEmailData["copy_metadata"] = false;
+                inputEmailDatapropCount++;
                 if (inputEmailDataincludeAttachments != null)
                 {
-                    inputEmailData["convert_attachments"] = ExpressionConverter.ConvertO(inputEmailDataincludeAttachments);
+                    if (inputEmailDataincludeAttachments != null)
+                    {
+                        inputEmailData["convert_attachments"] = SourceExpressionConverter.ConvertToken(inputEmailDataincludeAttachments);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["convert_attachments"] = true;
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["convert_attachments"] = true;
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDataattachmentAction != null)
+                {
+                    inputEmailData["attachment_merge_mode"] = SourceExpressionConverter.Convert(inputEmailDataattachmentAction);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDataattachmentAction != null)
-            {
-                inputEmailData["attachment_merge_mode"] = ExpressionConverter.ConvertO(inputEmailDataattachmentAction);
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDataattachmentSummary != null)
-            {
                 if (inputEmailDataattachmentSummary != null)
                 {
-                    inputEmailData["display_attachment_summary"] = ExpressionConverter.ConvertO(inputEmailDataattachmentSummary);
+                    if (inputEmailDataattachmentSummary != null)
+                    {
+                        inputEmailData["display_attachment_summary"] = SourceExpressionConverter.ConvertToken(inputEmailDataattachmentSummary);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["display_attachment_summary"] = true;
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["display_attachment_summary"] = true;
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDataunsupportedAttachmentAction != null)
-            {
                 if (inputEmailDataunsupportedAttachmentAction != null)
                 {
-                    inputEmailData["unsupported_attachment_behaviour"] = ExpressionConverter.ConvertO(inputEmailDataunsupportedAttachmentAction);
+                    if (inputEmailDataunsupportedAttachmentAction != null)
+                    {
+                        inputEmailData["unsupported_attachment_behaviour"] = SourceExpressionConverter.Convert(inputEmailDataunsupportedAttachmentAction);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["unsupported_attachment_behaviour"] = "Error";
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["unsupported_attachment_behaviour"] = "Error";
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDataincludeAttachmentFilter != null)
+                {
+                    inputEmailData["include_attachment_types"] = SourceExpressionConverter.ConvertToken(inputEmailDataincludeAttachmentFilter);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDataincludeAttachmentFilter != null)
-            {
-                inputEmailData["include_attachment_types"] = ExpressionConverter.ConvertO(inputEmailDataincludeAttachmentFilter);
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDataexcludeAttachmentFilter != null)
+                {
+                    inputEmailData["exclude_attachment_types"] = SourceExpressionConverter.ConvertToken(inputEmailDataexcludeAttachmentFilter);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDataexcludeAttachmentFilter != null)
-            {
-                inputEmailData["exclude_attachment_types"] = ExpressionConverter.ConvertO(inputEmailDataexcludeAttachmentFilter);
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDataviewportSize != null)
-            {
                 if (inputEmailDataviewportSize != null)
                 {
-                    inputEmailData["viewport_Size"] = ExpressionConverter.ConvertO(inputEmailDataviewportSize);
+                    if (inputEmailDataviewportSize != null)
+                    {
+                        inputEmailData["viewport_Size"] = SourceExpressionConverter.ConvertToken(inputEmailDataviewportSize);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["viewport_Size"] = "Paper";
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["viewport_Size"] = "Paper";
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDatapaperSize != null)
-            {
                 if (inputEmailDatapaperSize != null)
                 {
-                    inputEmailData["paper_size"] = ExpressionConverter.ConvertO(inputEmailDatapaperSize);
+                    if (inputEmailDatapaperSize != null)
+                    {
+                        inputEmailData["paper_size"] = SourceExpressionConverter.Convert(inputEmailDatapaperSize);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["paper_size"] = "Letter";
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["paper_size"] = "Letter";
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDatapaperSizeCustom != null)
+                {
+                    inputEmailData["paper_size_custom"] = SourceExpressionConverter.ConvertToken(inputEmailDatapaperSizeCustom);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDatapaperSizeCustom != null)
-            {
-                inputEmailData["paper_size_custom"] = ExpressionConverter.ConvertO(inputEmailDatapaperSizeCustom);
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDatapageMargins != null)
-            {
                 if (inputEmailDatapageMargins != null)
                 {
-                    inputEmailData["page_margins"] = ExpressionConverter.ConvertO(inputEmailDatapageMargins);
+                    if (inputEmailDatapageMargins != null)
+                    {
+                        inputEmailData["page_margins"] = SourceExpressionConverter.ConvertToken(inputEmailDatapageMargins);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["page_margins"] = "0.5,0.5,0.5,0.5";
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["page_margins"] = "0.5,0.5,0.5,0.5";
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDataattachmentErrors != null)
+                {
+                    inputEmailData["break_merge_on_error"] = SourceExpressionConverter.ConvertToken(inputEmailDataattachmentErrors);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDataattachmentErrors != null)
-            {
-                inputEmailData["break_merge_on_error"] = ExpressionConverter.ConvertO(inputEmailDataattachmentErrors);
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDataminImageSize != null)
-            {
                 if (inputEmailDataminImageSize != null)
                 {
-                    inputEmailData["minimum_image_attachment_dimension"] = ExpressionConverter.ConvertO(inputEmailDataminImageSize);
+                    if (inputEmailDataminImageSize != null)
+                    {
+                        inputEmailData["minimum_image_attachment_dimension"] = SourceExpressionConverter.ConvertToken(inputEmailDataminImageSize);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["minimum_image_attachment_dimension"] = 150;
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["minimum_image_attachment_dimension"] = 150;
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDataofflineMode != null)
-            {
                 if (inputEmailDataofflineMode != null)
                 {
-                    inputEmailData["enable_offline_mode"] = ExpressionConverter.ConvertO(inputEmailDataofflineMode);
+                    if (inputEmailDataofflineMode != null)
+                    {
+                        inputEmailData["enable_offline_mode"] = SourceExpressionConverter.ConvertToken(inputEmailDataofflineMode);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["enable_offline_mode"] = false;
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["enable_offline_mode"] = false;
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDatastartPage != null)
+                {
+                    inputEmailData["start_page"] = SourceExpressionConverter.ConvertToken(inputEmailDatastartPage);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDatastartPage != null)
-            {
-                inputEmailData["start_page"] = ExpressionConverter.ConvertO(inputEmailDatastartPage);
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDataendPage != null)
+                {
+                    inputEmailData["end_page"] = SourceExpressionConverter.ConvertToken(inputEmailDataendPage);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDataendPage != null)
-            {
-                inputEmailData["end_page"] = ExpressionConverter.ConvertO(inputEmailDataendPage);
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDataconversionQuality != null)
+                {
+                    inputEmailData["quality"] = SourceExpressionConverter.Convert(inputEmailDataconversionQuality);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDataconversionQuality != null)
-            {
-                inputEmailData["quality"] = ExpressionConverter.ConvertO(inputEmailDataconversionQuality);
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDataoverrideSettings != null)
+                {
+                    inputEmailData["override_settings"] = SourceExpressionConverter.ConvertToken(inputEmailDataoverrideSettings);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDataoverrideSettings != null)
-            {
-                inputEmailData["override_settings"] = ExpressionConverter.ConvertO(inputEmailDataoverrideSettings);
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDatafailOnError != null)
-            {
                 if (inputEmailDatafailOnError != null)
                 {
-                    inputEmailData["fail_on_error"] = ExpressionConverter.ConvertO(inputEmailDatafailOnError);
+                    if (inputEmailDatafailOnError != null)
+                    {
+                        inputEmailData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputEmailDatafailOnError);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["fail_on_error"] = true;
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["fail_on_error"] = true;
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDatapropCount > 0)
-            {
-                callPayload.Body = inputEmailData;
+                if (inputEmailDatapropCount > 0)
+                {
+                    callPayload.Body = inputEmailData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertExcel(Expression<Func<string>> inputExcelDatasourceFileName, Expression<Func<string>> inputExcelDatasourceFileContent, Expression<Func<inputExcelDataoutputFormatInput>> inputExcelDataoutputFormat, Expression<Func<inputExcelDatarangeInput>> inputExcelDatarange = null, Expression<Func<bool>> inputExcelDatarevealHiddenRows = null, Expression<Func<bool>> inputExcelDatarevealHiddenColumns = null, Expression<Func<int>> inputExcelDatafitToPagesWide = null, Expression<Func<int>> inputExcelDatafitToPagesTall = null, Expression<Func<int>> inputExcelDatastartPage = null, Expression<Func<int>> inputExcelDataendPage = null, Expression<Func<inputExcelDataqualityInput>> inputExcelDataquality = null, Expression<Func<string>> inputExcelDataoverrideSettings = null, Expression<Func<bool>> inputExcelDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertExcel([WorkflowExpression] Func<string> inputExcelDatasourceFileName, [WorkflowExpression] Func<string> inputExcelDatasourceFileContent, [WorkflowExpression] Func<inputExcelDataoutputFormatInput> inputExcelDataoutputFormat, [WorkflowExpression] Func<inputExcelDatarangeInput> inputExcelDatarange = null, [WorkflowExpression] Func<bool> inputExcelDatarevealHiddenRows = null, [WorkflowExpression] Func<bool> inputExcelDatarevealHiddenColumns = null, [WorkflowExpression] Func<int> inputExcelDatafitToPagesWide = null, [WorkflowExpression] Func<int> inputExcelDatafitToPagesTall = null, [WorkflowExpression] Func<int> inputExcelDatastartPage = null, [WorkflowExpression] Func<int> inputExcelDataendPage = null, [WorkflowExpression] Func<inputExcelDataqualityInput> inputExcelDataquality = null, [WorkflowExpression] Func<string> inputExcelDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputExcelDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_excel";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputExcelData = new JObject();
-            var inputExcelDatapropCount = 0;
-            inputExcelData["use_async_pattern"] = false;
-            inputExcelDatapropCount++;
-            inputExcelDatapropCount++;
-            inputExcelData["source_file_name"] = ExpressionConverter.ConvertO(inputExcelDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputExcelData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_excel";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputExcelData = new JObject();
+                var inputExcelDatapropCount = 0;
+                inputExcelData["use_async_pattern"] = false;
                 inputExcelDatapropCount++;
-            }
-
-            inputExcelDatapropCount++;
-            inputExcelData["source_file_content"] = ExpressionConverter.ConvertO(inputExcelDatasourceFileContent);
-            inputExcelDatapropCount++;
-            inputExcelData["output_format"] = ExpressionConverter.ConvertO(inputExcelDataoutputFormat);
-            inputExcelData["copy_metadata"] = false;
-            inputExcelDatapropCount++;
-            if (inputExcelDatarange != null)
-            {
-                inputExcelData["range"] = ExpressionConverter.ConvertO(inputExcelDatarange);
                 inputExcelDatapropCount++;
-            }
+                inputExcelData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputExcelDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputExcelData["sharepoint_file"] = sharepointFileObject;
+                    inputExcelDatapropCount++;
+                }
 
-            if (inputExcelDatarevealHiddenRows != null)
-            {
+                inputExcelDatapropCount++;
+                inputExcelData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputExcelDatasourceFileContent);
+                inputExcelDatapropCount++;
+                inputExcelData["output_format"] = SourceExpressionConverter.Convert(inputExcelDataoutputFormat);
+                inputExcelData["copy_metadata"] = false;
+                inputExcelDatapropCount++;
+                if (inputExcelDatarange != null)
+                {
+                    inputExcelData["range"] = SourceExpressionConverter.Convert(inputExcelDatarange);
+                    inputExcelDatapropCount++;
+                }
+
                 if (inputExcelDatarevealHiddenRows != null)
                 {
-                    inputExcelData["unhide_all_rows"] = ExpressionConverter.ConvertO(inputExcelDatarevealHiddenRows);
+                    if (inputExcelDatarevealHiddenRows != null)
+                    {
+                        inputExcelData["unhide_all_rows"] = SourceExpressionConverter.ConvertToken(inputExcelDatarevealHiddenRows);
+                        inputExcelDatapropCount++;
+                    }
+
+                    inputExcelDatapropCount++;
+                }
+                else
+                {
+                    inputExcelData["unhide_all_rows"] = false;
                     inputExcelDatapropCount++;
                 }
 
-                inputExcelDatapropCount++;
-            }
-            else
-            {
-                inputExcelData["unhide_all_rows"] = false;
-                inputExcelDatapropCount++;
-            }
-
-            if (inputExcelDatarevealHiddenColumns != null)
-            {
                 if (inputExcelDatarevealHiddenColumns != null)
                 {
-                    inputExcelData["unhide_all_columns"] = ExpressionConverter.ConvertO(inputExcelDatarevealHiddenColumns);
+                    if (inputExcelDatarevealHiddenColumns != null)
+                    {
+                        inputExcelData["unhide_all_columns"] = SourceExpressionConverter.ConvertToken(inputExcelDatarevealHiddenColumns);
+                        inputExcelDatapropCount++;
+                    }
+
+                    inputExcelDatapropCount++;
+                }
+                else
+                {
+                    inputExcelData["unhide_all_columns"] = false;
                     inputExcelDatapropCount++;
                 }
 
-                inputExcelDatapropCount++;
-            }
-            else
-            {
-                inputExcelData["unhide_all_columns"] = false;
-                inputExcelDatapropCount++;
-            }
+                if (inputExcelDatafitToPagesWide != null)
+                {
+                    inputExcelData["fit_to_pages_wide"] = SourceExpressionConverter.ConvertToken(inputExcelDatafitToPagesWide);
+                    inputExcelDatapropCount++;
+                }
 
-            if (inputExcelDatafitToPagesWide != null)
-            {
-                inputExcelData["fit_to_pages_wide"] = ExpressionConverter.ConvertO(inputExcelDatafitToPagesWide);
-                inputExcelDatapropCount++;
-            }
+                if (inputExcelDatafitToPagesTall != null)
+                {
+                    inputExcelData["fit_to_pages_tall"] = SourceExpressionConverter.ConvertToken(inputExcelDatafitToPagesTall);
+                    inputExcelDatapropCount++;
+                }
 
-            if (inputExcelDatafitToPagesTall != null)
-            {
-                inputExcelData["fit_to_pages_tall"] = ExpressionConverter.ConvertO(inputExcelDatafitToPagesTall);
-                inputExcelDatapropCount++;
-            }
+                if (inputExcelDatastartPage != null)
+                {
+                    inputExcelData["start_page"] = SourceExpressionConverter.ConvertToken(inputExcelDatastartPage);
+                    inputExcelDatapropCount++;
+                }
 
-            if (inputExcelDatastartPage != null)
-            {
-                inputExcelData["start_page"] = ExpressionConverter.ConvertO(inputExcelDatastartPage);
-                inputExcelDatapropCount++;
-            }
+                if (inputExcelDataendPage != null)
+                {
+                    inputExcelData["end_page"] = SourceExpressionConverter.ConvertToken(inputExcelDataendPage);
+                    inputExcelDatapropCount++;
+                }
 
-            if (inputExcelDataendPage != null)
-            {
-                inputExcelData["end_page"] = ExpressionConverter.ConvertO(inputExcelDataendPage);
-                inputExcelDatapropCount++;
-            }
+                if (inputExcelDataquality != null)
+                {
+                    inputExcelData["quality"] = SourceExpressionConverter.Convert(inputExcelDataquality);
+                    inputExcelDatapropCount++;
+                }
 
-            if (inputExcelDataquality != null)
-            {
-                inputExcelData["quality"] = ExpressionConverter.ConvertO(inputExcelDataquality);
-                inputExcelDatapropCount++;
-            }
+                if (inputExcelDataoverrideSettings != null)
+                {
+                    inputExcelData["override_settings"] = SourceExpressionConverter.ConvertToken(inputExcelDataoverrideSettings);
+                    inputExcelDatapropCount++;
+                }
 
-            if (inputExcelDataoverrideSettings != null)
-            {
-                inputExcelData["override_settings"] = ExpressionConverter.ConvertO(inputExcelDataoverrideSettings);
-                inputExcelDatapropCount++;
-            }
-
-            if (inputExcelDatafailOnError != null)
-            {
                 if (inputExcelDatafailOnError != null)
                 {
-                    inputExcelData["fail_on_error"] = ExpressionConverter.ConvertO(inputExcelDatafailOnError);
+                    if (inputExcelDatafailOnError != null)
+                    {
+                        inputExcelData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputExcelDatafailOnError);
+                        inputExcelDatapropCount++;
+                    }
+
+                    inputExcelDatapropCount++;
+                }
+                else
+                {
+                    inputExcelData["fail_on_error"] = true;
                     inputExcelDatapropCount++;
                 }
 
-                inputExcelDatapropCount++;
-            }
-            else
-            {
-                inputExcelData["fail_on_error"] = true;
-                inputExcelDatapropCount++;
-            }
-
-            if (inputExcelDatapropCount > 0)
-            {
-                callPayload.Body = inputExcelData;
+                if (inputExcelDatapropCount > 0)
+                {
+                    callPayload.Body = inputExcelData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertHtml(Expression<Func<string>> inputDatasourceURLOrHTML, Expression<Func<inputDatapageOrientationInput>> inputDatapageOrientation = null, Expression<Func<inputDatamediaTypeInput>> inputDatamediaType = null, Expression<Func<inputDataauthenticationTypeInput>> inputDataauthenticationType = null, Expression<Func<string>> inputDatauserName = null, Expression<Func<string>> inputDatapassword = null, Expression<Func<string>> inputDataviewportSize = null, Expression<Func<int>> inputDataconversionDelay = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertHtml([WorkflowExpression] Func<string> inputDatasourceURLOrHTML, [WorkflowExpression] Func<inputDatapageOrientationInput> inputDatapageOrientation = null, [WorkflowExpression] Func<inputDatamediaTypeInput> inputDatamediaType = null, [WorkflowExpression] Func<inputDataauthenticationTypeInput> inputDataauthenticationType = null, [WorkflowExpression] Func<string> inputDatauserName = null, [WorkflowExpression] Func<string> inputDatapassword = null, [WorkflowExpression] Func<string> inputDataviewportSize = null, [WorkflowExpression] Func<int> inputDataconversionDelay = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_html";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_url_or_html"] = ExpressionConverter.ConvertO(inputDatasourceURLOrHTML);
-            if (inputDatapageOrientation != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/v1/operations/convert_html";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                inputData["use_async_pattern"] = false;
+                inputDatapropCount++;
+                inputDatapropCount++;
+                inputData["source_url_or_html"] = SourceExpressionConverter.ConvertToken(inputDatasourceURLOrHTML);
                 if (inputDatapageOrientation != null)
                 {
-                    inputData["page_orientation"] = ExpressionConverter.ConvertO(inputDatapageOrientation);
+                    if (inputDatapageOrientation != null)
+                    {
+                        inputData["page_orientation"] = SourceExpressionConverter.Convert(inputDatapageOrientation);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["page_orientation"] = "Portrait";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["page_orientation"] = "Portrait";
-                inputDatapropCount++;
-            }
-
-            if (inputDatamediaType != null)
-            {
                 if (inputDatamediaType != null)
                 {
-                    inputData["media_type"] = ExpressionConverter.ConvertO(inputDatamediaType);
+                    if (inputDatamediaType != null)
+                    {
+                        inputData["media_type"] = SourceExpressionConverter.Convert(inputDatamediaType);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["media_type"] = "Screen";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["media_type"] = "Screen";
-                inputDatapropCount++;
-            }
-
-            if (inputDataauthenticationType != null)
-            {
                 if (inputDataauthenticationType != null)
                 {
-                    inputData["authentication_type"] = ExpressionConverter.ConvertO(inputDataauthenticationType);
+                    if (inputDataauthenticationType != null)
+                    {
+                        inputData["authentication_type"] = SourceExpressionConverter.Convert(inputDataauthenticationType);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["authentication_type"] = "Anonymous";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["authentication_type"] = "Anonymous";
-                inputDatapropCount++;
-            }
+                if (inputDatauserName != null)
+                {
+                    inputData["username"] = SourceExpressionConverter.ConvertToken(inputDatauserName);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatauserName != null)
-            {
-                inputData["username"] = ExpressionConverter.ConvertO(inputDatauserName);
-                inputDatapropCount++;
-            }
+                if (inputDatapassword != null)
+                {
+                    inputData["password"] = SourceExpressionConverter.ConvertToken(inputDatapassword);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatapassword != null)
-            {
-                inputData["password"] = ExpressionConverter.ConvertO(inputDatapassword);
-                inputDatapropCount++;
-            }
+                if (inputDataviewportSize != null)
+                {
+                    inputData["viewport_size"] = SourceExpressionConverter.ConvertToken(inputDataviewportSize);
+                    inputDatapropCount++;
+                }
 
-            if (inputDataviewportSize != null)
-            {
-                inputData["viewport_size"] = ExpressionConverter.ConvertO(inputDataviewportSize);
-                inputDatapropCount++;
-            }
+                if (inputDataconversionDelay != null)
+                {
+                    inputData["conversion_delay"] = SourceExpressionConverter.ConvertToken(inputDataconversionDelay);
+                    inputDatapropCount++;
+                }
 
-            if (inputDataconversionDelay != null)
-            {
-                inputData["conversion_delay"] = ExpressionConverter.ConvertO(inputDataconversionDelay);
-                inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = ExpressionConverter.ConvertO(inputDatafailOnError);
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
-            }
-
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertInfopath(Expression<Func<string>> inputInfopathDatasourceFileName, Expression<Func<string>> inputInfopathDatasourceFileContent, Expression<Func<inputInfopathDataoutputFormatInput>> inputInfopathDataoutputFormat, Expression<Func<string>> inputInfopathDatatemplateFileContent = null, Expression<Func<string>> inputInfopathDataviewNames = null, Expression<Func<bool>> inputInfopathDataincludeAttachment = null, Expression<Func<inputInfopathDataattachmentActionInput>> inputInfopathDataattachmentAction = null, Expression<Func<inputInfopathDataunsupportedAttachmentActionInput>> inputInfopathDataunsupportedAttachmentAction = null, Expression<Func<bool>> inputInfopathDatabreakMergeOnError = null, Expression<Func<string>> inputInfopathDataincludeAttachmentFilter = null, Expression<Func<string>> inputInfopathDataexcludeAttachmentFilter = null, Expression<Func<inputInfopathDatadefaultPaperSizeInput>> inputInfopathDatadefaultPaperSize = null, Expression<Func<string>> inputInfopathDatadefaultPaperSizeCustom = null, Expression<Func<inputInfopathDataforcePaperSizeInput>> inputInfopathDataforcePaperSize = null, Expression<Func<string>> inputInfopathDataforcePaperSizeCustom = null, Expression<Func<inputInfopathDatadefaultPageOrientationInput>> inputInfopathDatadefaultPageOrientation = null, Expression<Func<inputInfopathDataforcePageOrientationInput>> inputInfopathDataforcePageOrientation = null, Expression<Func<int>> inputInfopathDatastartPage = null, Expression<Func<int>> inputInfopathDataendPage = null, Expression<Func<inputInfopathDataconversionQualityInput>> inputInfopathDataconversionQuality = null, Expression<Func<string>> inputInfopathDataoverrideSettings = null, Expression<Func<bool>> inputInfopathDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertInfopath([WorkflowExpression] Func<string> inputInfopathDatasourceFileName, [WorkflowExpression] Func<string> inputInfopathDatasourceFileContent, [WorkflowExpression] Func<inputInfopathDataoutputFormatInput> inputInfopathDataoutputFormat, [WorkflowExpression] Func<string> inputInfopathDatatemplateFileContent = null, [WorkflowExpression] Func<string> inputInfopathDataviewNames = null, [WorkflowExpression] Func<bool> inputInfopathDataincludeAttachment = null, [WorkflowExpression] Func<inputInfopathDataattachmentActionInput> inputInfopathDataattachmentAction = null, [WorkflowExpression] Func<inputInfopathDataunsupportedAttachmentActionInput> inputInfopathDataunsupportedAttachmentAction = null, [WorkflowExpression] Func<bool> inputInfopathDatabreakMergeOnError = null, [WorkflowExpression] Func<string> inputInfopathDataincludeAttachmentFilter = null, [WorkflowExpression] Func<string> inputInfopathDataexcludeAttachmentFilter = null, [WorkflowExpression] Func<inputInfopathDatadefaultPaperSizeInput> inputInfopathDatadefaultPaperSize = null, [WorkflowExpression] Func<string> inputInfopathDatadefaultPaperSizeCustom = null, [WorkflowExpression] Func<inputInfopathDataforcePaperSizeInput> inputInfopathDataforcePaperSize = null, [WorkflowExpression] Func<string> inputInfopathDataforcePaperSizeCustom = null, [WorkflowExpression] Func<inputInfopathDatadefaultPageOrientationInput> inputInfopathDatadefaultPageOrientation = null, [WorkflowExpression] Func<inputInfopathDataforcePageOrientationInput> inputInfopathDataforcePageOrientation = null, [WorkflowExpression] Func<int> inputInfopathDatastartPage = null, [WorkflowExpression] Func<int> inputInfopathDataendPage = null, [WorkflowExpression] Func<inputInfopathDataconversionQualityInput> inputInfopathDataconversionQuality = null, [WorkflowExpression] Func<string> inputInfopathDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputInfopathDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_infopath";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputInfopathData = new JObject();
-            var inputInfopathDatapropCount = 0;
-            inputInfopathData["use_async_pattern"] = false;
-            inputInfopathDatapropCount++;
-            inputInfopathDatapropCount++;
-            inputInfopathData["source_file_name"] = ExpressionConverter.ConvertO(inputInfopathDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputInfopathData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_infopath";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputInfopathData = new JObject();
+                var inputInfopathDatapropCount = 0;
+                inputInfopathData["use_async_pattern"] = false;
                 inputInfopathDatapropCount++;
-            }
-
-            inputInfopathDatapropCount++;
-            inputInfopathData["source_file_content"] = ExpressionConverter.ConvertO(inputInfopathDatasourceFileContent);
-            inputInfopathDatapropCount++;
-            inputInfopathData["output_format"] = ExpressionConverter.ConvertO(inputInfopathDataoutputFormat);
-            inputInfopathData["copy_metadata"] = false;
-            inputInfopathDatapropCount++;
-            if (inputInfopathDatatemplateFileContent != null)
-            {
-                inputInfopathData["template_file_content"] = ExpressionConverter.ConvertO(inputInfopathDatatemplateFileContent);
                 inputInfopathDatapropCount++;
-            }
+                inputInfopathData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputInfopathDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputInfopathData["sharepoint_file"] = sharepointFileObject;
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataviewNames != null)
-            {
-                inputInfopathData["views_to_convert"] = ExpressionConverter.ConvertO(inputInfopathDataviewNames);
                 inputInfopathDatapropCount++;
-            }
+                inputInfopathData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputInfopathDatasourceFileContent);
+                inputInfopathDatapropCount++;
+                inputInfopathData["output_format"] = SourceExpressionConverter.Convert(inputInfopathDataoutputFormat);
+                inputInfopathData["copy_metadata"] = false;
+                inputInfopathDatapropCount++;
+                if (inputInfopathDatatemplateFileContent != null)
+                {
+                    inputInfopathData["template_file_content"] = SourceExpressionConverter.ConvertToken(inputInfopathDatatemplateFileContent);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataincludeAttachment != null)
-            {
+                if (inputInfopathDataviewNames != null)
+                {
+                    inputInfopathData["views_to_convert"] = SourceExpressionConverter.ConvertToken(inputInfopathDataviewNames);
+                    inputInfopathDatapropCount++;
+                }
+
                 if (inputInfopathDataincludeAttachment != null)
                 {
-                    inputInfopathData["convert_attachments"] = ExpressionConverter.ConvertO(inputInfopathDataincludeAttachment);
+                    if (inputInfopathDataincludeAttachment != null)
+                    {
+                        inputInfopathData["convert_attachments"] = SourceExpressionConverter.ConvertToken(inputInfopathDataincludeAttachment);
+                        inputInfopathDatapropCount++;
+                    }
+
+                    inputInfopathDatapropCount++;
+                }
+                else
+                {
+                    inputInfopathData["convert_attachments"] = true;
                     inputInfopathDatapropCount++;
                 }
 
-                inputInfopathDatapropCount++;
-            }
-            else
-            {
-                inputInfopathData["convert_attachments"] = true;
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataattachmentAction != null)
+                {
+                    inputInfopathData["attachment_merge_mode"] = SourceExpressionConverter.Convert(inputInfopathDataattachmentAction);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataattachmentAction != null)
-            {
-                inputInfopathData["attachment_merge_mode"] = ExpressionConverter.ConvertO(inputInfopathDataattachmentAction);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataunsupportedAttachmentAction != null)
+                {
+                    inputInfopathData["unsupported_attachment_behaviour"] = SourceExpressionConverter.Convert(inputInfopathDataunsupportedAttachmentAction);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataunsupportedAttachmentAction != null)
-            {
-                inputInfopathData["unsupported_attachment_behaviour"] = ExpressionConverter.ConvertO(inputInfopathDataunsupportedAttachmentAction);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDatabreakMergeOnError != null)
+                {
+                    inputInfopathData["break_merge_on_error"] = SourceExpressionConverter.ConvertToken(inputInfopathDatabreakMergeOnError);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDatabreakMergeOnError != null)
-            {
-                inputInfopathData["break_merge_on_error"] = ExpressionConverter.ConvertO(inputInfopathDatabreakMergeOnError);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataincludeAttachmentFilter != null)
+                {
+                    inputInfopathData["include_attachment_types"] = SourceExpressionConverter.ConvertToken(inputInfopathDataincludeAttachmentFilter);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataincludeAttachmentFilter != null)
-            {
-                inputInfopathData["include_attachment_types"] = ExpressionConverter.ConvertO(inputInfopathDataincludeAttachmentFilter);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataexcludeAttachmentFilter != null)
+                {
+                    inputInfopathData["exclude_attachment_types"] = SourceExpressionConverter.ConvertToken(inputInfopathDataexcludeAttachmentFilter);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataexcludeAttachmentFilter != null)
-            {
-                inputInfopathData["exclude_attachment_types"] = ExpressionConverter.ConvertO(inputInfopathDataexcludeAttachmentFilter);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDatadefaultPaperSize != null)
+                {
+                    inputInfopathData["default_paper_size"] = SourceExpressionConverter.Convert(inputInfopathDatadefaultPaperSize);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDatadefaultPaperSize != null)
-            {
-                inputInfopathData["default_paper_size"] = ExpressionConverter.ConvertO(inputInfopathDatadefaultPaperSize);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDatadefaultPaperSizeCustom != null)
+                {
+                    inputInfopathData["default_paper_size_custom"] = SourceExpressionConverter.ConvertToken(inputInfopathDatadefaultPaperSizeCustom);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDatadefaultPaperSizeCustom != null)
-            {
-                inputInfopathData["default_paper_size_custom"] = ExpressionConverter.ConvertO(inputInfopathDatadefaultPaperSizeCustom);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataforcePaperSize != null)
+                {
+                    inputInfopathData["force_paper_size"] = SourceExpressionConverter.Convert(inputInfopathDataforcePaperSize);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataforcePaperSize != null)
-            {
-                inputInfopathData["force_paper_size"] = ExpressionConverter.ConvertO(inputInfopathDataforcePaperSize);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataforcePaperSizeCustom != null)
+                {
+                    inputInfopathData["force_paper_size_custom"] = SourceExpressionConverter.ConvertToken(inputInfopathDataforcePaperSizeCustom);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataforcePaperSizeCustom != null)
-            {
-                inputInfopathData["force_paper_size_custom"] = ExpressionConverter.ConvertO(inputInfopathDataforcePaperSizeCustom);
-                inputInfopathDatapropCount++;
-            }
-
-            if (inputInfopathDatadefaultPageOrientation != null)
-            {
                 if (inputInfopathDatadefaultPageOrientation != null)
                 {
-                    inputInfopathData["default_page_orientation"] = ExpressionConverter.ConvertO(inputInfopathDatadefaultPageOrientation);
+                    if (inputInfopathDatadefaultPageOrientation != null)
+                    {
+                        inputInfopathData["default_page_orientation"] = SourceExpressionConverter.Convert(inputInfopathDatadefaultPageOrientation);
+                        inputInfopathDatapropCount++;
+                    }
+
+                    inputInfopathDatapropCount++;
+                }
+                else
+                {
+                    inputInfopathData["default_page_orientation"] = "Default";
                     inputInfopathDatapropCount++;
                 }
 
-                inputInfopathDatapropCount++;
-            }
-            else
-            {
-                inputInfopathData["default_page_orientation"] = "Default";
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataforcePageOrientation != null)
+                {
+                    inputInfopathData["force_page_orientation"] = SourceExpressionConverter.Convert(inputInfopathDataforcePageOrientation);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataforcePageOrientation != null)
-            {
-                inputInfopathData["force_page_orientation"] = ExpressionConverter.ConvertO(inputInfopathDataforcePageOrientation);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDatastartPage != null)
+                {
+                    inputInfopathData["start_page"] = SourceExpressionConverter.ConvertToken(inputInfopathDatastartPage);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDatastartPage != null)
-            {
-                inputInfopathData["start_page"] = ExpressionConverter.ConvertO(inputInfopathDatastartPage);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataendPage != null)
+                {
+                    inputInfopathData["end_page"] = SourceExpressionConverter.ConvertToken(inputInfopathDataendPage);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataendPage != null)
-            {
-                inputInfopathData["end_page"] = ExpressionConverter.ConvertO(inputInfopathDataendPage);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataconversionQuality != null)
+                {
+                    inputInfopathData["quality"] = SourceExpressionConverter.Convert(inputInfopathDataconversionQuality);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataconversionQuality != null)
-            {
-                inputInfopathData["quality"] = ExpressionConverter.ConvertO(inputInfopathDataconversionQuality);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataoverrideSettings != null)
+                {
+                    inputInfopathData["override_settings"] = SourceExpressionConverter.ConvertToken(inputInfopathDataoverrideSettings);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataoverrideSettings != null)
-            {
-                inputInfopathData["override_settings"] = ExpressionConverter.ConvertO(inputInfopathDataoverrideSettings);
-                inputInfopathDatapropCount++;
-            }
-
-            if (inputInfopathDatafailOnError != null)
-            {
                 if (inputInfopathDatafailOnError != null)
                 {
-                    inputInfopathData["fail_on_error"] = ExpressionConverter.ConvertO(inputInfopathDatafailOnError);
+                    if (inputInfopathDatafailOnError != null)
+                    {
+                        inputInfopathData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputInfopathDatafailOnError);
+                        inputInfopathDatapropCount++;
+                    }
+
+                    inputInfopathDatapropCount++;
+                }
+                else
+                {
+                    inputInfopathData["fail_on_error"] = true;
                     inputInfopathDatapropCount++;
                 }
 
-                inputInfopathDatapropCount++;
-            }
-            else
-            {
-                inputInfopathData["fail_on_error"] = true;
-                inputInfopathDatapropCount++;
-            }
-
-            if (inputInfopathDatapropCount > 0)
-            {
-                callPayload.Body = inputInfopathData;
+                if (inputInfopathDatapropCount > 0)
+                {
+                    callPayload.Body = inputInfopathData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertPdfa(Expression<Func<string>> inputPdfDatasourceFileName, Expression<Func<string>> inputPdfDatasourceFileContent, Expression<Func<inputPdfDatapDFProfileInput>> inputPdfDatapDFProfile, Expression<Func<string>> inputPdfDataoverrideSettings = null, Expression<Func<bool>> inputPdfDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertPdfa([WorkflowExpression] Func<string> inputPdfDatasourceFileName, [WorkflowExpression] Func<string> inputPdfDatasourceFileContent, [WorkflowExpression] Func<inputPdfDatapDFProfileInput> inputPdfDatapDFProfile, [WorkflowExpression] Func<string> inputPdfDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputPdfDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_pdfa";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputPdfData = new JObject();
-            var inputPdfDatapropCount = 0;
-            inputPdfData["use_async_pattern"] = false;
-            inputPdfDatapropCount++;
-            inputPdfDatapropCount++;
-            inputPdfData["source_file_name"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputPdfData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_pdfa";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputPdfData = new JObject();
+                var inputPdfDatapropCount = 0;
+                inputPdfData["use_async_pattern"] = false;
                 inputPdfDatapropCount++;
-            }
-
-            inputPdfDatapropCount++;
-            inputPdfData["source_file_content"] = ExpressionConverter.ConvertO(inputPdfDatasourceFileContent);
-            inputPdfData["copy_metadata"] = false;
-            inputPdfDatapropCount++;
-            inputPdfDatapropCount++;
-            inputPdfData["pdf_profile"] = ExpressionConverter.ConvertO(inputPdfDatapDFProfile);
-            if (inputPdfDataoverrideSettings != null)
-            {
-                inputPdfData["override_settings"] = ExpressionConverter.ConvertO(inputPdfDataoverrideSettings);
                 inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatafailOnError != null)
-            {
-                if (inputPdfDatafailOnError != null)
+                inputPdfData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
                 {
-                    inputPdfData["fail_on_error"] = ExpressionConverter.ConvertO(inputPdfDatafailOnError);
+                    inputPdfData["sharepoint_file"] = sharepointFileObject;
                     inputPdfDatapropCount++;
                 }
 
                 inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["fail_on_error"] = true;
+                inputPdfData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
+                inputPdfData["copy_metadata"] = false;
                 inputPdfDatapropCount++;
+                inputPdfDatapropCount++;
+                inputPdfData["pdf_profile"] = SourceExpressionConverter.Convert(inputPdfDatapDFProfile);
+                if (inputPdfDataoverrideSettings != null)
+                {
+                    inputPdfData["override_settings"] = SourceExpressionConverter.ConvertToken(inputPdfDataoverrideSettings);
+                    inputPdfDatapropCount++;
+                }
+
+                if (inputPdfDatafailOnError != null)
+                {
+                    if (inputPdfDatafailOnError != null)
+                    {
+                        inputPdfData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputPdfDatafailOnError);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["fail_on_error"] = true;
+                    inputPdfDatapropCount++;
+                }
+
+                if (inputPdfDatapropCount > 0)
+                {
+                    callPayload.Body = inputPdfData;
+                }
+                return callPayload;
             }
 
-            if (inputPdfDatapropCount > 0)
-            {
-                callPayload.Body = inputPdfData;
-            }
-
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertPowerpoint(Expression<Func<string>> inputPowerpointDatasourceFileName, Expression<Func<string>> inputPowerpointDatasourceFileContent, Expression<Func<inputPowerpointDataoutputFormatInput>> inputPowerpointDataoutputFormat, Expression<Func<inputPowerpointDatarangeInput>> inputPowerpointDatarange = null, Expression<Func<inputPowerpointDataprintLayoutHandoutsInput>> inputPowerpointDataprintLayoutHandouts = null, Expression<Func<bool>> inputPowerpointDataframeSlides = null, Expression<Func<int>> inputPowerpointDatastartPage = null, Expression<Func<int>> inputPowerpointDataendPage = null, Expression<Func<inputPowerpointDataqualityInput>> inputPowerpointDataquality = null, Expression<Func<string>> inputPowerpointDataoverrideSettings = null, Expression<Func<bool>> inputPowerpointDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertPowerpoint([WorkflowExpression] Func<string> inputPowerpointDatasourceFileName, [WorkflowExpression] Func<string> inputPowerpointDatasourceFileContent, [WorkflowExpression] Func<inputPowerpointDataoutputFormatInput> inputPowerpointDataoutputFormat, [WorkflowExpression] Func<inputPowerpointDatarangeInput> inputPowerpointDatarange = null, [WorkflowExpression] Func<inputPowerpointDataprintLayoutHandoutsInput> inputPowerpointDataprintLayoutHandouts = null, [WorkflowExpression] Func<bool> inputPowerpointDataframeSlides = null, [WorkflowExpression] Func<int> inputPowerpointDatastartPage = null, [WorkflowExpression] Func<int> inputPowerpointDataendPage = null, [WorkflowExpression] Func<inputPowerpointDataqualityInput> inputPowerpointDataquality = null, [WorkflowExpression] Func<string> inputPowerpointDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputPowerpointDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_powerpoint";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputPowerpointData = new JObject();
-            var inputPowerpointDatapropCount = 0;
-            inputPowerpointData["use_async_pattern"] = false;
-            inputPowerpointDatapropCount++;
-            inputPowerpointDatapropCount++;
-            inputPowerpointData["source_file_name"] = ExpressionConverter.ConvertO(inputPowerpointDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputPowerpointData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_powerpoint";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputPowerpointData = new JObject();
+                var inputPowerpointDatapropCount = 0;
+                inputPowerpointData["use_async_pattern"] = false;
                 inputPowerpointDatapropCount++;
-            }
-
-            inputPowerpointDatapropCount++;
-            inputPowerpointData["source_file_content"] = ExpressionConverter.ConvertO(inputPowerpointDatasourceFileContent);
-            inputPowerpointDatapropCount++;
-            inputPowerpointData["output_format"] = ExpressionConverter.ConvertO(inputPowerpointDataoutputFormat);
-            inputPowerpointData["copy_metadata"] = false;
-            inputPowerpointDatapropCount++;
-            if (inputPowerpointDatarange != null)
-            {
-                inputPowerpointData["range"] = ExpressionConverter.ConvertO(inputPowerpointDatarange);
                 inputPowerpointDatapropCount++;
-            }
+                inputPowerpointData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputPowerpointDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputPowerpointData["sharepoint_file"] = sharepointFileObject;
+                    inputPowerpointDatapropCount++;
+                }
 
-            if (inputPowerpointDataprintLayoutHandouts != null)
-            {
+                inputPowerpointDatapropCount++;
+                inputPowerpointData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputPowerpointDatasourceFileContent);
+                inputPowerpointDatapropCount++;
+                inputPowerpointData["output_format"] = SourceExpressionConverter.Convert(inputPowerpointDataoutputFormat);
+                inputPowerpointData["copy_metadata"] = false;
+                inputPowerpointDatapropCount++;
+                if (inputPowerpointDatarange != null)
+                {
+                    inputPowerpointData["range"] = SourceExpressionConverter.Convert(inputPowerpointDatarange);
+                    inputPowerpointDatapropCount++;
+                }
+
                 if (inputPowerpointDataprintLayoutHandouts != null)
                 {
-                    inputPowerpointData["print_output_type"] = ExpressionConverter.ConvertO(inputPowerpointDataprintLayoutHandouts);
+                    if (inputPowerpointDataprintLayoutHandouts != null)
+                    {
+                        inputPowerpointData["print_output_type"] = SourceExpressionConverter.Convert(inputPowerpointDataprintLayoutHandouts);
+                        inputPowerpointDatapropCount++;
+                    }
+
+                    inputPowerpointDatapropCount++;
+                }
+                else
+                {
+                    inputPowerpointData["print_output_type"] = "Slides";
                     inputPowerpointDatapropCount++;
                 }
 
-                inputPowerpointDatapropCount++;
-            }
-            else
-            {
-                inputPowerpointData["print_output_type"] = "Slides";
-                inputPowerpointDatapropCount++;
-            }
-
-            if (inputPowerpointDataframeSlides != null)
-            {
                 if (inputPowerpointDataframeSlides != null)
                 {
-                    inputPowerpointData["frame_slides"] = ExpressionConverter.ConvertO(inputPowerpointDataframeSlides);
+                    if (inputPowerpointDataframeSlides != null)
+                    {
+                        inputPowerpointData["frame_slides"] = SourceExpressionConverter.ConvertToken(inputPowerpointDataframeSlides);
+                        inputPowerpointDatapropCount++;
+                    }
+
+                    inputPowerpointDatapropCount++;
+                }
+                else
+                {
+                    inputPowerpointData["frame_slides"] = true;
                     inputPowerpointDatapropCount++;
                 }
 
-                inputPowerpointDatapropCount++;
-            }
-            else
-            {
-                inputPowerpointData["frame_slides"] = true;
-                inputPowerpointDatapropCount++;
-            }
+                if (inputPowerpointDatastartPage != null)
+                {
+                    inputPowerpointData["start_page"] = SourceExpressionConverter.ConvertToken(inputPowerpointDatastartPage);
+                    inputPowerpointDatapropCount++;
+                }
 
-            if (inputPowerpointDatastartPage != null)
-            {
-                inputPowerpointData["start_page"] = ExpressionConverter.ConvertO(inputPowerpointDatastartPage);
-                inputPowerpointDatapropCount++;
-            }
+                if (inputPowerpointDataendPage != null)
+                {
+                    inputPowerpointData["end_page"] = SourceExpressionConverter.ConvertToken(inputPowerpointDataendPage);
+                    inputPowerpointDatapropCount++;
+                }
 
-            if (inputPowerpointDataendPage != null)
-            {
-                inputPowerpointData["end_page"] = ExpressionConverter.ConvertO(inputPowerpointDataendPage);
-                inputPowerpointDatapropCount++;
-            }
+                if (inputPowerpointDataquality != null)
+                {
+                    inputPowerpointData["quality"] = SourceExpressionConverter.Convert(inputPowerpointDataquality);
+                    inputPowerpointDatapropCount++;
+                }
 
-            if (inputPowerpointDataquality != null)
-            {
-                inputPowerpointData["quality"] = ExpressionConverter.ConvertO(inputPowerpointDataquality);
-                inputPowerpointDatapropCount++;
-            }
+                if (inputPowerpointDataoverrideSettings != null)
+                {
+                    inputPowerpointData["override_settings"] = SourceExpressionConverter.ConvertToken(inputPowerpointDataoverrideSettings);
+                    inputPowerpointDatapropCount++;
+                }
 
-            if (inputPowerpointDataoverrideSettings != null)
-            {
-                inputPowerpointData["override_settings"] = ExpressionConverter.ConvertO(inputPowerpointDataoverrideSettings);
-                inputPowerpointDatapropCount++;
-            }
-
-            if (inputPowerpointDatafailOnError != null)
-            {
                 if (inputPowerpointDatafailOnError != null)
                 {
-                    inputPowerpointData["fail_on_error"] = ExpressionConverter.ConvertO(inputPowerpointDatafailOnError);
+                    if (inputPowerpointDatafailOnError != null)
+                    {
+                        inputPowerpointData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputPowerpointDatafailOnError);
+                        inputPowerpointDatapropCount++;
+                    }
+
+                    inputPowerpointDatapropCount++;
+                }
+                else
+                {
+                    inputPowerpointData["fail_on_error"] = true;
                     inputPowerpointDatapropCount++;
                 }
 
-                inputPowerpointDatapropCount++;
-            }
-            else
-            {
-                inputPowerpointData["fail_on_error"] = true;
-                inputPowerpointDatapropCount++;
-            }
-
-            if (inputPowerpointDatapropCount > 0)
-            {
-                callPayload.Body = inputPowerpointData;
+                if (inputPowerpointDatapropCount > 0)
+                {
+                    callPayload.Body = inputPowerpointData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertVisio(Expression<Func<string>> inputVisioDatasourceFileName, Expression<Func<string>> inputVisioDatasourceFileContent, Expression<Func<inputVisioDataoutputFormatInput>> inputVisioDataoutputFormat, Expression<Func<inputVisioDatarangeInput>> inputVisioDatarange = null, Expression<Func<int>> inputVisioDatastartPage = null, Expression<Func<int>> inputVisioDataendPage = null, Expression<Func<inputVisioDataqualityInput>> inputVisioDataquality = null, Expression<Func<string>> inputVisioDataoverrideSettings = null, Expression<Func<bool>> inputVisioDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertVisio([WorkflowExpression] Func<string> inputVisioDatasourceFileName, [WorkflowExpression] Func<string> inputVisioDatasourceFileContent, [WorkflowExpression] Func<inputVisioDataoutputFormatInput> inputVisioDataoutputFormat, [WorkflowExpression] Func<inputVisioDatarangeInput> inputVisioDatarange = null, [WorkflowExpression] Func<int> inputVisioDatastartPage = null, [WorkflowExpression] Func<int> inputVisioDataendPage = null, [WorkflowExpression] Func<inputVisioDataqualityInput> inputVisioDataquality = null, [WorkflowExpression] Func<string> inputVisioDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputVisioDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_visio";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputVisioData = new JObject();
-            var inputVisioDatapropCount = 0;
-            inputVisioData["use_async_pattern"] = false;
-            inputVisioDatapropCount++;
-            inputVisioDatapropCount++;
-            inputVisioData["source_file_name"] = ExpressionConverter.ConvertO(inputVisioDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputVisioData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_visio";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputVisioData = new JObject();
+                var inputVisioDatapropCount = 0;
+                inputVisioData["use_async_pattern"] = false;
                 inputVisioDatapropCount++;
-            }
-
-            inputVisioDatapropCount++;
-            inputVisioData["source_file_content"] = ExpressionConverter.ConvertO(inputVisioDatasourceFileContent);
-            inputVisioDatapropCount++;
-            inputVisioData["output_format"] = ExpressionConverter.ConvertO(inputVisioDataoutputFormat);
-            inputVisioData["copy_metadata"] = false;
-            inputVisioDatapropCount++;
-            if (inputVisioDatarange != null)
-            {
-                inputVisioData["range"] = ExpressionConverter.ConvertO(inputVisioDatarange);
                 inputVisioDatapropCount++;
-            }
-
-            if (inputVisioDatastartPage != null)
-            {
-                inputVisioData["start_page"] = ExpressionConverter.ConvertO(inputVisioDatastartPage);
-                inputVisioDatapropCount++;
-            }
-
-            if (inputVisioDataendPage != null)
-            {
-                inputVisioData["end_page"] = ExpressionConverter.ConvertO(inputVisioDataendPage);
-                inputVisioDatapropCount++;
-            }
-
-            if (inputVisioDataquality != null)
-            {
-                inputVisioData["quality"] = ExpressionConverter.ConvertO(inputVisioDataquality);
-                inputVisioDatapropCount++;
-            }
-
-            if (inputVisioDataoverrideSettings != null)
-            {
-                inputVisioData["override_settings"] = ExpressionConverter.ConvertO(inputVisioDataoverrideSettings);
-                inputVisioDatapropCount++;
-            }
-
-            if (inputVisioDatafailOnError != null)
-            {
-                if (inputVisioDatafailOnError != null)
+                inputVisioData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputVisioDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
                 {
-                    inputVisioData["fail_on_error"] = ExpressionConverter.ConvertO(inputVisioDatafailOnError);
+                    inputVisioData["sharepoint_file"] = sharepointFileObject;
                     inputVisioDatapropCount++;
                 }
 
                 inputVisioDatapropCount++;
-            }
-            else
-            {
-                inputVisioData["fail_on_error"] = true;
+                inputVisioData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputVisioDatasourceFileContent);
                 inputVisioDatapropCount++;
+                inputVisioData["output_format"] = SourceExpressionConverter.Convert(inputVisioDataoutputFormat);
+                inputVisioData["copy_metadata"] = false;
+                inputVisioDatapropCount++;
+                if (inputVisioDatarange != null)
+                {
+                    inputVisioData["range"] = SourceExpressionConverter.Convert(inputVisioDatarange);
+                    inputVisioDatapropCount++;
+                }
+
+                if (inputVisioDatastartPage != null)
+                {
+                    inputVisioData["start_page"] = SourceExpressionConverter.ConvertToken(inputVisioDatastartPage);
+                    inputVisioDatapropCount++;
+                }
+
+                if (inputVisioDataendPage != null)
+                {
+                    inputVisioData["end_page"] = SourceExpressionConverter.ConvertToken(inputVisioDataendPage);
+                    inputVisioDatapropCount++;
+                }
+
+                if (inputVisioDataquality != null)
+                {
+                    inputVisioData["quality"] = SourceExpressionConverter.Convert(inputVisioDataquality);
+                    inputVisioDatapropCount++;
+                }
+
+                if (inputVisioDataoverrideSettings != null)
+                {
+                    inputVisioData["override_settings"] = SourceExpressionConverter.ConvertToken(inputVisioDataoverrideSettings);
+                    inputVisioDatapropCount++;
+                }
+
+                if (inputVisioDatafailOnError != null)
+                {
+                    if (inputVisioDatafailOnError != null)
+                    {
+                        inputVisioData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputVisioDatafailOnError);
+                        inputVisioDatapropCount++;
+                    }
+
+                    inputVisioDatapropCount++;
+                }
+                else
+                {
+                    inputVisioData["fail_on_error"] = true;
+                    inputVisioDatapropCount++;
+                }
+
+                if (inputVisioDatapropCount > 0)
+                {
+                    callPayload.Body = inputVisioData;
+                }
+                return callPayload;
             }
 
-            if (inputVisioDatapropCount > 0)
-            {
-                callPayload.Body = inputVisioData;
-            }
-
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientconverttopdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertWord(Expression<Func<string>> inputWordDatasourceFileName, Expression<Func<string>> inputWordDatasourceFileContent, Expression<Func<inputWordDataoutputFormatInput>> inputWordDataoutputFormat, Expression<Func<inputWordDatadisplayForReviewInput>> inputWordDatadisplayForReview = null, Expression<Func<inputWordDatareviewMarkupModeInput>> inputWordDatareviewMarkupMode = null, Expression<Func<inputWordDatagenerateBookmarksInput>> inputWordDatagenerateBookmarks = null, Expression<Func<int>> inputWordDatastartPage = null, Expression<Func<int>> inputWordDataendPage = null, Expression<Func<inputWordDataqualityInput>> inputWordDataquality = null, Expression<Func<string>> inputWordDataoverrideSettings = null, Expression<Func<bool>> inputWordDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertWord([WorkflowExpression] Func<string> inputWordDatasourceFileName, [WorkflowExpression] Func<string> inputWordDatasourceFileContent, [WorkflowExpression] Func<inputWordDataoutputFormatInput> inputWordDataoutputFormat, [WorkflowExpression] Func<inputWordDatadisplayForReviewInput> inputWordDatadisplayForReview = null, [WorkflowExpression] Func<inputWordDatareviewMarkupModeInput> inputWordDatareviewMarkupMode = null, [WorkflowExpression] Func<inputWordDatagenerateBookmarksInput> inputWordDatagenerateBookmarks = null, [WorkflowExpression] Func<int> inputWordDatastartPage = null, [WorkflowExpression] Func<int> inputWordDataendPage = null, [WorkflowExpression] Func<inputWordDataqualityInput> inputWordDataquality = null, [WorkflowExpression] Func<string> inputWordDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputWordDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_word";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputWordData = new JObject();
-            var inputWordDatapropCount = 0;
-            inputWordData["use_async_pattern"] = false;
-            inputWordDatapropCount++;
-            inputWordDatapropCount++;
-            inputWordData["source_file_name"] = ExpressionConverter.ConvertO(inputWordDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputWordData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_word";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputWordData = new JObject();
+                var inputWordDatapropCount = 0;
+                inputWordData["use_async_pattern"] = false;
                 inputWordDatapropCount++;
-            }
+                inputWordDatapropCount++;
+                inputWordData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputWordDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputWordData["sharepoint_file"] = sharepointFileObject;
+                    inputWordDatapropCount++;
+                }
 
-            inputWordDatapropCount++;
-            inputWordData["source_file_content"] = ExpressionConverter.ConvertO(inputWordDatasourceFileContent);
-            inputWordDatapropCount++;
-            inputWordData["output_format"] = ExpressionConverter.ConvertO(inputWordDataoutputFormat);
-            inputWordData["copy_metadata"] = false;
-            inputWordDatapropCount++;
-            if (inputWordDatadisplayForReview != null)
-            {
+                inputWordDatapropCount++;
+                inputWordData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputWordDatasourceFileContent);
+                inputWordDatapropCount++;
+                inputWordData["output_format"] = SourceExpressionConverter.Convert(inputWordDataoutputFormat);
+                inputWordData["copy_metadata"] = false;
+                inputWordDatapropCount++;
                 if (inputWordDatadisplayForReview != null)
                 {
-                    inputWordData["revisions_and_comments_display_mode"] = ExpressionConverter.ConvertO(inputWordDatadisplayForReview);
+                    if (inputWordDatadisplayForReview != null)
+                    {
+                        inputWordData["revisions_and_comments_display_mode"] = SourceExpressionConverter.Convert(inputWordDatadisplayForReview);
+                        inputWordDatapropCount++;
+                    }
+
+                    inputWordDatapropCount++;
+                }
+                else
+                {
+                    inputWordData["revisions_and_comments_display_mode"] = "Final";
                     inputWordDatapropCount++;
                 }
 
-                inputWordDatapropCount++;
-            }
-            else
-            {
-                inputWordData["revisions_and_comments_display_mode"] = "Final";
-                inputWordDatapropCount++;
-            }
-
-            if (inputWordDatareviewMarkupMode != null)
-            {
                 if (inputWordDatareviewMarkupMode != null)
                 {
-                    inputWordData["revisions_and_comments_markup_mode"] = ExpressionConverter.ConvertO(inputWordDatareviewMarkupMode);
+                    if (inputWordDatareviewMarkupMode != null)
+                    {
+                        inputWordData["revisions_and_comments_markup_mode"] = SourceExpressionConverter.Convert(inputWordDatareviewMarkupMode);
+                        inputWordDatapropCount++;
+                    }
+
+                    inputWordDatapropCount++;
+                }
+                else
+                {
+                    inputWordData["revisions_and_comments_markup_mode"] = "InLine";
                     inputWordDatapropCount++;
                 }
 
-                inputWordDatapropCount++;
-            }
-            else
-            {
-                inputWordData["revisions_and_comments_markup_mode"] = "InLine";
-                inputWordDatapropCount++;
-            }
+                if (inputWordDatagenerateBookmarks != null)
+                {
+                    inputWordData["generate_bookmarks"] = SourceExpressionConverter.Convert(inputWordDatagenerateBookmarks);
+                    inputWordDatapropCount++;
+                }
 
-            if (inputWordDatagenerateBookmarks != null)
-            {
-                inputWordData["generate_bookmarks"] = ExpressionConverter.ConvertO(inputWordDatagenerateBookmarks);
-                inputWordDatapropCount++;
-            }
+                if (inputWordDatastartPage != null)
+                {
+                    inputWordData["start_page"] = SourceExpressionConverter.ConvertToken(inputWordDatastartPage);
+                    inputWordDatapropCount++;
+                }
 
-            if (inputWordDatastartPage != null)
-            {
-                inputWordData["start_page"] = ExpressionConverter.ConvertO(inputWordDatastartPage);
-                inputWordDatapropCount++;
-            }
+                if (inputWordDataendPage != null)
+                {
+                    inputWordData["end_page"] = SourceExpressionConverter.ConvertToken(inputWordDataendPage);
+                    inputWordDatapropCount++;
+                }
 
-            if (inputWordDataendPage != null)
-            {
-                inputWordData["end_page"] = ExpressionConverter.ConvertO(inputWordDataendPage);
-                inputWordDatapropCount++;
-            }
+                if (inputWordDataquality != null)
+                {
+                    inputWordData["quality"] = SourceExpressionConverter.Convert(inputWordDataquality);
+                    inputWordDatapropCount++;
+                }
 
-            if (inputWordDataquality != null)
-            {
-                inputWordData["quality"] = ExpressionConverter.ConvertO(inputWordDataquality);
-                inputWordDatapropCount++;
-            }
+                if (inputWordDataoverrideSettings != null)
+                {
+                    inputWordData["override_settings"] = SourceExpressionConverter.ConvertToken(inputWordDataoverrideSettings);
+                    inputWordDatapropCount++;
+                }
 
-            if (inputWordDataoverrideSettings != null)
-            {
-                inputWordData["override_settings"] = ExpressionConverter.ConvertO(inputWordDataoverrideSettings);
-                inputWordDatapropCount++;
-            }
-
-            if (inputWordDatafailOnError != null)
-            {
                 if (inputWordDatafailOnError != null)
                 {
-                    inputWordData["fail_on_error"] = ExpressionConverter.ConvertO(inputWordDatafailOnError);
+                    if (inputWordDatafailOnError != null)
+                    {
+                        inputWordData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputWordDatafailOnError);
+                        inputWordDatapropCount++;
+                    }
+
+                    inputWordDatapropCount++;
+                }
+                else
+                {
+                    inputWordData["fail_on_error"] = true;
                     inputWordDatapropCount++;
                 }
 
-                inputWordDatapropCount++;
-            }
-            else
-            {
-                inputWordData["fail_on_error"] = true;
-                inputWordDatapropCount++;
-            }
-
-            if (inputWordDatapropCount > 0)
-            {
-                callPayload.Body = inputWordData;
+                if (inputWordDatapropCount > 0)
+                {
+                    callPayload.Body = inputWordData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
     }
 

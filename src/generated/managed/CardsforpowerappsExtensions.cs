@@ -12,86 +12,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
     public class CardsforpowerappsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
-        public IBodyWorkflowAction<CreateCardResult> CreateCardInstance(Expression<Func<string>> cardId, Expression<Func<object>> cardRequestinputs = null)
+        public IBodyWorkflowAction<CreateCardResult> CreateCardInstance([WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<object> cardRequestinputs = null)
         {
-            var apiCallPath = String.Format("/cards/cards/{0}/instances", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var cardRequest = new JObject();
-            var cardRequestpropCount = 0;
-            if (cardRequestinputs != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                cardRequest["inputs"] = ExpressionConverter.ConvertO(cardRequestinputs);
-                cardRequestpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/cards/{0}/instances", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var cardRequest = new JObject();
+                var cardRequestpropCount = 0;
+                if (cardRequestinputs != null)
+                {
+                    cardRequest["inputs"] = SourceExpressionConverter.ConvertToken(cardRequestinputs);
+                    cardRequestpropCount++;
+                }
+
+                if (cardRequestpropCount > 0)
+                {
+                    callPayload.Body = cardRequest;
+                }
+                return callPayload;
             }
 
-            if (cardRequestpropCount > 0)
-            {
-                callPayload.Body = cardRequest;
-            }
-
-            return new ApiConnectionAction<CreateCardResult>(callPayload);
+            return new ApiConnectionAction<CreateCardResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
-        public IBodyWorkflowAction<PowerCardDescription> GetCardDescription(Expression<Func<string>> cardId)
+        public IBodyWorkflowAction<PowerCardDescription> GetCardDescription([WorkflowExpression] Func<string> cardId)
         {
-            var apiCallPath = String.Format("/cards/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PowerCardDescription>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/cards/cards/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PowerCardDescription>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
         public IBodyWorkflowAction<JToken> ProcessActivity()
         {
-            var apiCallPath = "/cards/activities";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var activity = new JObject();
-            var activitypropCount = 0;
-            if (activitypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = activity;
+                var apiCallPath = "/cards/activities";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var activity = new JObject();
+                var activitypropCount = 0;
+                if (activitypropCount > 0)
+                {
+                    callPayload.Body = activity;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
-        public IBodyWorkflowAction<GenerateCardResponse> GenerateCard(Expression<Func<CardAction[]>> generateCardRequestactions = null, Expression<Func<string>> generateCardRequestdescription = null)
+        public IBodyWorkflowAction<GenerateCardResponse> GenerateCard([WorkflowExpression] Func<CardAction[]> generateCardRequestactions = null, [WorkflowExpression] Func<string> generateCardRequestdescription = null)
         {
-            var apiCallPath = "/cards/generate/card";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var generateCardRequest = new JObject();
-            var generateCardRequestpropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (dataObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                generateCardRequest["data"] = dataObject;
-                generateCardRequestpropCount++;
+                var apiCallPath = "/cards/generate/card";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var generateCardRequest = new JObject();
+                var generateCardRequestpropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (dataObjectpropCount > 0)
+                {
+                    generateCardRequest["data"] = dataObject;
+                    generateCardRequestpropCount++;
+                }
+
+                if (generateCardRequestactions != null)
+                {
+                    generateCardRequest["actions"] = SourceExpressionConverter.ConvertToken(generateCardRequestactions);
+                    generateCardRequestpropCount++;
+                }
+
+                if (generateCardRequestdescription != null)
+                {
+                    generateCardRequest["description"] = SourceExpressionConverter.ConvertToken(generateCardRequestdescription);
+                    generateCardRequestpropCount++;
+                }
+
+                if (generateCardRequestpropCount > 0)
+                {
+                    callPayload.Body = generateCardRequest;
+                }
+                return callPayload;
             }
 
-            if (generateCardRequestactions != null)
-            {
-                generateCardRequest["actions"] = ExpressionConverter.ConvertO(generateCardRequestactions);
-                generateCardRequestpropCount++;
-            }
-
-            if (generateCardRequestdescription != null)
-            {
-                generateCardRequest["description"] = ExpressionConverter.ConvertO(generateCardRequestdescription);
-                generateCardRequestpropCount++;
-            }
-
-            if (generateCardRequestpropCount > 0)
-            {
-                callPayload.Body = generateCardRequest;
-            }
-
-            return new ApiConnectionAction<GenerateCardResponse>(callPayload);
+            return new ApiConnectionAction<GenerateCardResponse>(BuildSourceInput);
         }
     }
 

@@ -12,956 +12,1155 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     public class ShopranosActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<AttributeSetDTO[]> AttributeSetsGETGetAll(Expression<Func<string>> title = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<AttributeSetDTO[]> AttributeSetsGETGetAll([WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = "/api/AttributeSets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<AttributeSetDTO[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/AttributeSets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (title != null)
+                    callPayload.Queries["Title"] = SourceExpressionConverter.ConvertO(title);
+                if (page != null)
+                    callPayload.Queries["Page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = SourceExpressionConverter.ConvertO(sort);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AttributeSetDTO[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<AttributeDTO> AttributesGETGetAll(Expression<Func<statusInput>> status = null, Expression<Func<string>> type = null, Expression<Func<bool>> isFilterable = null, Expression<Func<bool>> displayOnProduct = null, Expression<Func<bool>> displayInList = null, Expression<Func<string>> search = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<AttributeDTO> AttributesGETGetAll([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<bool> isFilterable = null, [WorkflowExpression] Func<bool> displayOnProduct = null, [WorkflowExpression] Func<bool> displayInList = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = "/api/Attributes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (type != null)
-                callPayload.Queries["Type"] = ExpressionConverter.Convert(type);
-            if (isFilterable != null)
-                callPayload.Queries["IsFilterable"] = ExpressionConverter.Convert(isFilterable);
-            if (displayOnProduct != null)
-                callPayload.Queries["DisplayOnProduct"] = ExpressionConverter.Convert(displayOnProduct);
-            if (displayInList != null)
-                callPayload.Queries["DisplayInList"] = ExpressionConverter.Convert(displayInList);
-            if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
-            if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<AttributeDTO>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Attributes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (status != null)
+                    callPayload.Queries["Status"] = SourceExpressionConverter.Convert(status);
+                if (type != null)
+                    callPayload.Queries["Type"] = SourceExpressionConverter.ConvertO(type);
+                if (isFilterable != null)
+                    callPayload.Queries["IsFilterable"] = SourceExpressionConverter.ConvertO(isFilterable);
+                if (displayOnProduct != null)
+                    callPayload.Queries["DisplayOnProduct"] = SourceExpressionConverter.ConvertO(displayOnProduct);
+                if (displayInList != null)
+                    callPayload.Queries["DisplayInList"] = SourceExpressionConverter.ConvertO(displayInList);
+                if (search != null)
+                    callPayload.Queries["Search"] = SourceExpressionConverter.ConvertO(search);
+                if (id != null)
+                    callPayload.Queries["Id"] = SourceExpressionConverter.ConvertO(id);
+                if (page != null)
+                    callPayload.Queries["Page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = SourceExpressionConverter.ConvertO(sort);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AttributeDTO>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<BrandDTO[]> BrandsGETGetAll(Expression<Func<statusInput>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<BrandDTO[]> BrandsGETGetAll([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = "/api/Brands";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
-            if (code != null)
-                callPayload.Queries["Code"] = ExpressionConverter.Convert(code);
-            if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<BrandDTO[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Brands";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (status != null)
+                    callPayload.Queries["Status"] = SourceExpressionConverter.Convert(status);
+                if (search != null)
+                    callPayload.Queries["Search"] = SourceExpressionConverter.ConvertO(search);
+                if (code != null)
+                    callPayload.Queries["Code"] = SourceExpressionConverter.ConvertO(code);
+                if (id != null)
+                    callPayload.Queries["Id"] = SourceExpressionConverter.ConvertO(id);
+                if (page != null)
+                    callPayload.Queries["Page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = SourceExpressionConverter.ConvertO(sort);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BrandDTO[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<CategoryDTO[]> CategoriesGETGetAll(Expression<Func<string>> title = null, Expression<Func<string>> id = null, Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> parentId = null, Expression<Func<string>> path = null, Expression<Func<string>> parentIds = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<CategoryDTO[]> CategoriesGETGetAll([WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> parentId = null, [WorkflowExpression] Func<string> path = null, [WorkflowExpression] Func<string> parentIds = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = "/api/Categories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
-            if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
-            if (code != null)
-                callPayload.Queries["Code"] = ExpressionConverter.Convert(code);
-            if (parentId != null)
-                callPayload.Queries["ParentId"] = ExpressionConverter.Convert(parentId);
-            if (path != null)
-                callPayload.Queries["Path"] = ExpressionConverter.Convert(path);
-            if (parentIds != null)
-                callPayload.Queries["ParentIds"] = ExpressionConverter.Convert(parentIds);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<CategoryDTO[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Categories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (title != null)
+                    callPayload.Queries["Title"] = SourceExpressionConverter.ConvertO(title);
+                if (id != null)
+                    callPayload.Queries["Id"] = SourceExpressionConverter.ConvertO(id);
+                if (search != null)
+                    callPayload.Queries["Search"] = SourceExpressionConverter.ConvertO(search);
+                if (code != null)
+                    callPayload.Queries["Code"] = SourceExpressionConverter.ConvertO(code);
+                if (parentId != null)
+                    callPayload.Queries["ParentId"] = SourceExpressionConverter.ConvertO(parentId);
+                if (path != null)
+                    callPayload.Queries["Path"] = SourceExpressionConverter.ConvertO(path);
+                if (parentIds != null)
+                    callPayload.Queries["ParentIds"] = SourceExpressionConverter.ConvertO(parentIds);
+                if (status != null)
+                    callPayload.Queries["Status"] = SourceExpressionConverter.Convert(status);
+                if (page != null)
+                    callPayload.Queries["Page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = SourceExpressionConverter.ConvertO(sort);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CategoryDTO[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<ProblemDetails> FiltersPOSTBuildFilters()
         {
-            var apiCallPath = "/api/Filters/clear";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProblemDetails>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Filters/clear";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProblemDetails>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<IcoTagDTO[]> IcoTagsGETGetAll(Expression<Func<string>> name = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<IcoTagDTO[]> IcoTagsGETGetAll([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = "/api/IcoTags";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<IcoTagDTO[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/IcoTags";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (name != null)
+                    callPayload.Queries["Name"] = SourceExpressionConverter.ConvertO(name);
+                if (status != null)
+                    callPayload.Queries["Status"] = SourceExpressionConverter.Convert(status);
+                if (page != null)
+                    callPayload.Queries["Page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = SourceExpressionConverter.ConvertO(sort);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IcoTagDTO[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<ProblemDetails> ProductVariantsGETGetAllFlat(Expression<Func<string>> price = null, Expression<Func<double>> maxPrice = null, Expression<Func<string>> size1 = null, Expression<Func<string>> size2 = null, Expression<Func<string>> size3 = null, Expression<Func<string>> insertDate = null, Expression<Func<string>> date1 = null, Expression<Func<string>> date2 = null, Expression<Func<string>> date3 = null, Expression<Func<string>> date1DateRange = null, Expression<Func<string>> date2DateRange = null, Expression<Func<string>> date3DateRange = null, Expression<Func<string>> insertDateRange = null, Expression<Func<string>> search = null, Expression<Func<double>> minPrice = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> availability = null, Expression<Func<string>> tag = null, Expression<Func<string>> sourceTag = null, Expression<Func<string>> privacyRule = null, Expression<Func<string>> rule = null, Expression<Func<string>> condition = null, Expression<Func<string>> ids = null, Expression<Func<string>> id = null, Expression<Func<string>> priceRange = null, Expression<Func<string>> brandCode = null, Expression<Func<string>> brandId = null, Expression<Func<string>> attribute = null, Expression<Func<string>> pathCategory = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> additionalCategoryId = null, Expression<Func<string>> stockAvailabilityId = null, Expression<Func<string>> attributeSetId = null, Expression<Func<string>> priceCategoryId = null, Expression<Func<bool>> hasMedia = null, Expression<Func<string>> masterId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<ProblemDetails> ProductVariantsGETGetAllFlat([WorkflowExpression] Func<string> price = null, [WorkflowExpression] Func<double> maxPrice = null, [WorkflowExpression] Func<string> size1 = null, [WorkflowExpression] Func<string> size2 = null, [WorkflowExpression] Func<string> size3 = null, [WorkflowExpression] Func<string> insertDate = null, [WorkflowExpression] Func<string> date1 = null, [WorkflowExpression] Func<string> date2 = null, [WorkflowExpression] Func<string> date3 = null, [WorkflowExpression] Func<string> date1DateRange = null, [WorkflowExpression] Func<string> date2DateRange = null, [WorkflowExpression] Func<string> date3DateRange = null, [WorkflowExpression] Func<string> insertDateRange = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<double> minPrice = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> availability = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<string> sourceTag = null, [WorkflowExpression] Func<string> privacyRule = null, [WorkflowExpression] Func<string> rule = null, [WorkflowExpression] Func<string> condition = null, [WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> priceRange = null, [WorkflowExpression] Func<string> brandCode = null, [WorkflowExpression] Func<string> brandId = null, [WorkflowExpression] Func<string> attribute = null, [WorkflowExpression] Func<string> pathCategory = null, [WorkflowExpression] Func<string> categoryId = null, [WorkflowExpression] Func<string> additionalCategoryId = null, [WorkflowExpression] Func<string> stockAvailabilityId = null, [WorkflowExpression] Func<string> attributeSetId = null, [WorkflowExpression] Func<string> priceCategoryId = null, [WorkflowExpression] Func<bool> hasMedia = null, [WorkflowExpression] Func<string> masterId = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = "/api/ProductVariants/flat";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (price != null)
-                callPayload.Queries["Price"] = ExpressionConverter.Convert(price);
-            if (maxPrice != null)
-                callPayload.Queries["MaxPrice"] = ExpressionConverter.Convert(maxPrice);
-            if (size1 != null)
-                callPayload.Queries["Size1"] = ExpressionConverter.Convert(size1);
-            if (size2 != null)
-                callPayload.Queries["Size2"] = ExpressionConverter.Convert(size2);
-            if (size3 != null)
-                callPayload.Queries["Size3"] = ExpressionConverter.Convert(size3);
-            if (insertDate != null)
-                callPayload.Queries["InsertDate"] = ExpressionConverter.Convert(insertDate);
-            if (date1 != null)
-                callPayload.Queries["Date1"] = ExpressionConverter.Convert(date1);
-            if (date2 != null)
-                callPayload.Queries["Date2"] = ExpressionConverter.Convert(date2);
-            if (date3 != null)
-                callPayload.Queries["Date3"] = ExpressionConverter.Convert(date3);
-            if (date1DateRange != null)
-                callPayload.Queries["Date1DateRange"] = ExpressionConverter.Convert(date1DateRange);
-            if (date2DateRange != null)
-                callPayload.Queries["Date2DateRange"] = ExpressionConverter.Convert(date2DateRange);
-            if (date3DateRange != null)
-                callPayload.Queries["Date3DateRange"] = ExpressionConverter.Convert(date3DateRange);
-            if (insertDateRange != null)
-                callPayload.Queries["InsertDateRange"] = ExpressionConverter.Convert(insertDateRange);
-            if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
-            if (minPrice != null)
-                callPayload.Queries["MinPrice"] = ExpressionConverter.Convert(minPrice);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (availability != null)
-                callPayload.Queries["Availability"] = ExpressionConverter.Convert(availability);
-            if (tag != null)
-                callPayload.Queries["Tag"] = ExpressionConverter.Convert(tag);
-            if (sourceTag != null)
-                callPayload.Queries["SourceTag"] = ExpressionConverter.Convert(sourceTag);
-            if (privacyRule != null)
-                callPayload.Queries["PrivacyRule"] = ExpressionConverter.Convert(privacyRule);
-            if (rule != null)
-                callPayload.Queries["Rule"] = ExpressionConverter.Convert(rule);
-            if (condition != null)
-                callPayload.Queries["Condition"] = ExpressionConverter.Convert(condition);
-            if (ids != null)
-                callPayload.Queries["Ids"] = ExpressionConverter.Convert(ids);
-            if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (priceRange != null)
-                callPayload.Queries["PriceRange"] = ExpressionConverter.Convert(priceRange);
-            if (brandCode != null)
-                callPayload.Queries["BrandCode"] = ExpressionConverter.Convert(brandCode);
-            if (brandId != null)
-                callPayload.Queries["BrandId"] = ExpressionConverter.Convert(brandId);
-            if (attribute != null)
-                callPayload.Queries["Attribute"] = ExpressionConverter.Convert(attribute);
-            if (pathCategory != null)
-                callPayload.Queries["PathCategory"] = ExpressionConverter.Convert(pathCategory);
-            if (categoryId != null)
-                callPayload.Queries["CategoryId"] = ExpressionConverter.Convert(categoryId);
-            if (additionalCategoryId != null)
-                callPayload.Queries["AdditionalCategoryId"] = ExpressionConverter.Convert(additionalCategoryId);
-            if (stockAvailabilityId != null)
-                callPayload.Queries["StockAvailabilityId"] = ExpressionConverter.Convert(stockAvailabilityId);
-            if (attributeSetId != null)
-                callPayload.Queries["AttributeSetId"] = ExpressionConverter.Convert(attributeSetId);
-            if (priceCategoryId != null)
-                callPayload.Queries["PriceCategoryId"] = ExpressionConverter.Convert(priceCategoryId);
-            if (hasMedia != null)
-                callPayload.Queries["HasMedia"] = ExpressionConverter.Convert(hasMedia);
-            if (masterId != null)
-                callPayload.Queries["MasterId"] = ExpressionConverter.Convert(masterId);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<ProblemDetails>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/ProductVariants/flat";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (price != null)
+                    callPayload.Queries["Price"] = SourceExpressionConverter.ConvertO(price);
+                if (maxPrice != null)
+                    callPayload.Queries["MaxPrice"] = SourceExpressionConverter.ConvertO(maxPrice);
+                if (size1 != null)
+                    callPayload.Queries["Size1"] = SourceExpressionConverter.ConvertO(size1);
+                if (size2 != null)
+                    callPayload.Queries["Size2"] = SourceExpressionConverter.ConvertO(size2);
+                if (size3 != null)
+                    callPayload.Queries["Size3"] = SourceExpressionConverter.ConvertO(size3);
+                if (insertDate != null)
+                    callPayload.Queries["InsertDate"] = SourceExpressionConverter.ConvertO(insertDate);
+                if (date1 != null)
+                    callPayload.Queries["Date1"] = SourceExpressionConverter.ConvertO(date1);
+                if (date2 != null)
+                    callPayload.Queries["Date2"] = SourceExpressionConverter.ConvertO(date2);
+                if (date3 != null)
+                    callPayload.Queries["Date3"] = SourceExpressionConverter.ConvertO(date3);
+                if (date1DateRange != null)
+                    callPayload.Queries["Date1DateRange"] = SourceExpressionConverter.ConvertO(date1DateRange);
+                if (date2DateRange != null)
+                    callPayload.Queries["Date2DateRange"] = SourceExpressionConverter.ConvertO(date2DateRange);
+                if (date3DateRange != null)
+                    callPayload.Queries["Date3DateRange"] = SourceExpressionConverter.ConvertO(date3DateRange);
+                if (insertDateRange != null)
+                    callPayload.Queries["InsertDateRange"] = SourceExpressionConverter.ConvertO(insertDateRange);
+                if (search != null)
+                    callPayload.Queries["Search"] = SourceExpressionConverter.ConvertO(search);
+                if (minPrice != null)
+                    callPayload.Queries["MinPrice"] = SourceExpressionConverter.ConvertO(minPrice);
+                if (status != null)
+                    callPayload.Queries["Status"] = SourceExpressionConverter.Convert(status);
+                if (availability != null)
+                    callPayload.Queries["Availability"] = SourceExpressionConverter.ConvertO(availability);
+                if (tag != null)
+                    callPayload.Queries["Tag"] = SourceExpressionConverter.ConvertO(tag);
+                if (sourceTag != null)
+                    callPayload.Queries["SourceTag"] = SourceExpressionConverter.ConvertO(sourceTag);
+                if (privacyRule != null)
+                    callPayload.Queries["PrivacyRule"] = SourceExpressionConverter.ConvertO(privacyRule);
+                if (rule != null)
+                    callPayload.Queries["Rule"] = SourceExpressionConverter.ConvertO(rule);
+                if (condition != null)
+                    callPayload.Queries["Condition"] = SourceExpressionConverter.ConvertO(condition);
+                if (ids != null)
+                    callPayload.Queries["Ids"] = SourceExpressionConverter.ConvertO(ids);
+                if (id != null)
+                    callPayload.Queries["Id"] = SourceExpressionConverter.ConvertO(id);
+                if (priceRange != null)
+                    callPayload.Queries["PriceRange"] = SourceExpressionConverter.ConvertO(priceRange);
+                if (brandCode != null)
+                    callPayload.Queries["BrandCode"] = SourceExpressionConverter.ConvertO(brandCode);
+                if (brandId != null)
+                    callPayload.Queries["BrandId"] = SourceExpressionConverter.ConvertO(brandId);
+                if (attribute != null)
+                    callPayload.Queries["Attribute"] = SourceExpressionConverter.ConvertO(attribute);
+                if (pathCategory != null)
+                    callPayload.Queries["PathCategory"] = SourceExpressionConverter.ConvertO(pathCategory);
+                if (categoryId != null)
+                    callPayload.Queries["CategoryId"] = SourceExpressionConverter.ConvertO(categoryId);
+                if (additionalCategoryId != null)
+                    callPayload.Queries["AdditionalCategoryId"] = SourceExpressionConverter.ConvertO(additionalCategoryId);
+                if (stockAvailabilityId != null)
+                    callPayload.Queries["StockAvailabilityId"] = SourceExpressionConverter.ConvertO(stockAvailabilityId);
+                if (attributeSetId != null)
+                    callPayload.Queries["AttributeSetId"] = SourceExpressionConverter.ConvertO(attributeSetId);
+                if (priceCategoryId != null)
+                    callPayload.Queries["PriceCategoryId"] = SourceExpressionConverter.ConvertO(priceCategoryId);
+                if (hasMedia != null)
+                    callPayload.Queries["HasMedia"] = SourceExpressionConverter.ConvertO(hasMedia);
+                if (masterId != null)
+                    callPayload.Queries["MasterId"] = SourceExpressionConverter.ConvertO(masterId);
+                if (page != null)
+                    callPayload.Queries["Page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = SourceExpressionConverter.ConvertO(sort);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProblemDetails>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<RelatedProductVariantDTO> RelatedProductsGETGetRelated(Expression<Func<string>> productId, Expression<Func<string>> variantId)
+        public IBodyWorkflowAction<RelatedProductVariantDTO> RelatedProductsGETGetRelated([WorkflowExpression] Func<string> productId, [WorkflowExpression] Func<string> variantId)
         {
-            var apiCallPath = String.Format("/api/RelatedProducts/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1), ExpressionConverter.ConvertWithUrlEncoding(variantId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RelatedProductVariantDTO>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/RelatedProducts/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(productId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(variantId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RelatedProductVariantDTO>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<StockAvailabilityDTO[]> StockAvailabilityGETGetAll(Expression<Func<string>> title = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<StockAvailabilityDTO[]> StockAvailabilityGETGetAll([WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = "/api/StockAvailability";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<StockAvailabilityDTO[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/StockAvailability";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (title != null)
+                    callPayload.Queries["Title"] = SourceExpressionConverter.ConvertO(title);
+                if (page != null)
+                    callPayload.Queries["Page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = SourceExpressionConverter.ConvertO(sort);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StockAvailabilityDTO[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<UnitDTO[]> UnitsGETGetAll(Expression<Func<string>> name = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<UnitDTO[]> UnitsGETGetAll([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = "/api/Units";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<UnitDTO[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Units";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (name != null)
+                    callPayload.Queries["Name"] = SourceExpressionConverter.ConvertO(name);
+                if (page != null)
+                    callPayload.Queries["Page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = SourceExpressionConverter.ConvertO(sort);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UnitDTO[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<ProblemDetails> CartDELETERemoveFromCart(Expression<Func<string>> token, Expression<Func<string>> productVariantId)
+        public IBodyWorkflowAction<ProblemDetails> CartDELETERemoveFromCart([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> productVariantId)
         {
-            var apiCallPath = String.Format("/api/Cart/{0}/Items/{1}", ExpressionConverter.ConvertWithUrlEncoding(token, 1), ExpressionConverter.ConvertWithUrlEncoding(productVariantId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProblemDetails>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/Cart/{0}/Items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(token, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(productVariantId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProblemDetails>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<AssortmentValueDTO[]> AssortmentValueGETGetAll(Expression<Func<string>> customerid, Expression<Func<statusInput>> status = null, Expression<Func<sourceInput>> source = null, Expression<Func<string>> type = null, Expression<Func<string>> category = null, Expression<Func<string>> id = null, Expression<Func<string>> productId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<AssortmentValueDTO[]> AssortmentValueGETGetAll([WorkflowExpression] Func<string> customerid, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<sourceInput> source = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> productId = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = String.Format("/api/assortment/{0}/values", ExpressionConverter.ConvertWithUrlEncoding(customerid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (source != null)
-                callPayload.Queries["Source"] = ExpressionConverter.Convert(source);
-            if (type != null)
-                callPayload.Queries["Type"] = ExpressionConverter.Convert(type);
-            if (category != null)
-                callPayload.Queries["Category"] = ExpressionConverter.Convert(category);
-            if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (productId != null)
-                callPayload.Queries["ProductId"] = ExpressionConverter.Convert(productId);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<AssortmentValueDTO[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/assortment/{0}/values", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (status != null)
+                    callPayload.Queries["Status"] = SourceExpressionConverter.Convert(status);
+                if (source != null)
+                    callPayload.Queries["Source"] = SourceExpressionConverter.Convert(source);
+                if (type != null)
+                    callPayload.Queries["Type"] = SourceExpressionConverter.ConvertO(type);
+                if (category != null)
+                    callPayload.Queries["Category"] = SourceExpressionConverter.ConvertO(category);
+                if (id != null)
+                    callPayload.Queries["Id"] = SourceExpressionConverter.ConvertO(id);
+                if (productId != null)
+                    callPayload.Queries["ProductId"] = SourceExpressionConverter.ConvertO(productId);
+                if (page != null)
+                    callPayload.Queries["Page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = SourceExpressionConverter.ConvertO(sort);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AssortmentValueDTO[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<CustomerDTO[]> CustomersGETGetAll(Expression<Func<statusInput>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> name = null, Expression<Func<string>> salesmanId = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<CustomerDTO[]> CustomersGETGetAll([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> salesmanId = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = "/api/Customers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
-            if (name != null)
-                callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
-            if (salesmanId != null)
-                callPayload.Queries["SalesmanId"] = ExpressionConverter.Convert(salesmanId);
-            if (id != null)
-                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<CustomerDTO[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Customers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (status != null)
+                    callPayload.Queries["Status"] = SourceExpressionConverter.Convert(status);
+                if (search != null)
+                    callPayload.Queries["Search"] = SourceExpressionConverter.ConvertO(search);
+                if (name != null)
+                    callPayload.Queries["Name"] = SourceExpressionConverter.ConvertO(name);
+                if (salesmanId != null)
+                    callPayload.Queries["SalesmanId"] = SourceExpressionConverter.ConvertO(salesmanId);
+                if (id != null)
+                    callPayload.Queries["Id"] = SourceExpressionConverter.ConvertO(id);
+                if (page != null)
+                    callPayload.Queries["Page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = SourceExpressionConverter.ConvertO(sort);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CustomerDTO[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<InventoryLevelDTO[]> InventoryLevelsGETGetByVariantId(Expression<Func<string>> variantId)
+        public IBodyWorkflowAction<InventoryLevelDTO[]> InventoryLevelsGETGetByVariantId([WorkflowExpression] Func<string> variantId)
         {
-            var apiCallPath = String.Format("/api/InventoryLevels/variant/{0}", ExpressionConverter.ConvertWithUrlEncoding(variantId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<InventoryLevelDTO[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/InventoryLevels/variant/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(variantId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<InventoryLevelDTO[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
-        public IBodyWorkflowAction<OrderDTO[]> OrderGETGetAll(Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> customerId = null, Expression<Func<string>> orderStatus = null, Expression<Func<string>> status = null, Expression<Func<string>> tag = null, Expression<Func<string>> customerCode = null, Expression<Func<string>> customerTin = null, Expression<Func<string>> insertDate = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
+        public IBodyWorkflowAction<OrderDTO[]> OrderGETGetAll([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> customerId = null, [WorkflowExpression] Func<string> orderStatus = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<string> customerCode = null, [WorkflowExpression] Func<string> customerTin = null, [WorkflowExpression] Func<string> insertDate = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sort = null)
         {
-            var apiCallPath = "/api/Order";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["Search"] = ExpressionConverter.Convert(search);
-            if (code != null)
-                callPayload.Queries["Code"] = ExpressionConverter.Convert(code);
-            if (customerId != null)
-                callPayload.Queries["CustomerId"] = ExpressionConverter.Convert(customerId);
-            if (orderStatus != null)
-                callPayload.Queries["OrderStatus"] = ExpressionConverter.Convert(orderStatus);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            if (tag != null)
-                callPayload.Queries["Tag"] = ExpressionConverter.Convert(tag);
-            if (customerCode != null)
-                callPayload.Queries["CustomerCode"] = ExpressionConverter.Convert(customerCode);
-            if (customerTin != null)
-                callPayload.Queries["CustomerTin"] = ExpressionConverter.Convert(customerTin);
-            if (insertDate != null)
-                callPayload.Queries["InsertDate"] = ExpressionConverter.Convert(insertDate);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sort != null)
-                callPayload.Queries["Sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<OrderDTO[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Order";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["Search"] = SourceExpressionConverter.ConvertO(search);
+                if (code != null)
+                    callPayload.Queries["Code"] = SourceExpressionConverter.ConvertO(code);
+                if (customerId != null)
+                    callPayload.Queries["CustomerId"] = SourceExpressionConverter.ConvertO(customerId);
+                if (orderStatus != null)
+                    callPayload.Queries["OrderStatus"] = SourceExpressionConverter.ConvertO(orderStatus);
+                if (status != null)
+                    callPayload.Queries["Status"] = SourceExpressionConverter.ConvertO(status);
+                if (tag != null)
+                    callPayload.Queries["Tag"] = SourceExpressionConverter.ConvertO(tag);
+                if (customerCode != null)
+                    callPayload.Queries["CustomerCode"] = SourceExpressionConverter.ConvertO(customerCode);
+                if (customerTin != null)
+                    callPayload.Queries["CustomerTin"] = SourceExpressionConverter.ConvertO(customerTin);
+                if (insertDate != null)
+                    callPayload.Queries["InsertDate"] = SourceExpressionConverter.ConvertO(insertDate);
+                if (page != null)
+                    callPayload.Queries["Page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sort != null)
+                    callPayload.Queries["Sort"] = SourceExpressionConverter.ConvertO(sort);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OrderDTO[]>(BuildSourceInput);
         }
     }
 
     public class ShopranosTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ProductCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/product/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/product/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ProductUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/product/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/product/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ProductDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/product/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/product/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CategoryCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CategoryCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/category/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/category/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CategoryUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CategoryUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/category/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/category/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CategoryDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CategoryDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/category/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/category/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger BrandCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BrandCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/brand/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/brand/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger BrandUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BrandUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/brand/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/brand/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger BrandDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BrandDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/brand/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/brand/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger UnitCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UnitCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/unit/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/unit/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger UnitUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UnitUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/unit/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/unit/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger UnitDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UnitDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/unit/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/unit/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AttributeCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/attribute/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/attribute/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AttributeUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/attribute/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/attribute/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AttributeDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/attribute/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/attribute/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AttributeSetCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeSetCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/attributeset/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/attributeset/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AttributeSetUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeSetUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/attributeset/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/attributeset/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AttributeSetDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeSetDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/attributeset/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/attributeset/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CheckoutCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CheckoutCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/checkout/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/checkout/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CheckoutCompletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CheckoutCompletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/checkout/completed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/checkout/completed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CustomerCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CustomerCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/customer/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/customer/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CustomerUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CustomerUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/customer/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/customer/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger CustomerDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CustomerDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/customer/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/customer/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger OrderCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OrderCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/order/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/order/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger OrderUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OrderUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/order/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/order/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger OrderDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OrderDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/order/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/order/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger InventoryLevelCreatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InventoryLevelCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/inventorylevel/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/inventorylevel/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger InventoryLevelUpdatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InventoryLevelUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/inventorylevel/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/inventorylevel/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger InventoryLevelDeletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InventoryLevelDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/inventorylevel/deleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/inventorylevel/deleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger PaymentInitiatedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger PaymentInitiatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/payment/initiated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/payment/initiated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger PaymentCompletedTrigger(Expression<Func<string>> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger PaymentCompletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/register/payment/completed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/register/payment/completed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["Url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

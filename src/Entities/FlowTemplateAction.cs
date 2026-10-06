@@ -44,6 +44,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         public JToken TrackedProperties { get; set; }
 
         /// <summary>
+        /// Gets or sets the runtime configuration for the action.
+        /// </summary>
+        [JsonProperty(Required = Required.Default)]
+        public FlowTemplateRuntimeConfiguration RuntimeConfiguration { get; set; }
+
+        /// <summary>
         /// Gets or sets the until limit.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
@@ -53,6 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets or sets the operation run after.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
+        [JsonConverter(typeof(FlowStatusDictionaryJsonConverter))]
         public Dictionary<string, FlowStatus[]> RunAfter { get; set; }
 
         /// <summary>

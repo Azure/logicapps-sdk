@@ -12,32 +12,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
     public class BitlyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitly")]
-        public IBodyWorkflowAction<BitlinkV2> CreateBitlink(Expression<Func<string>> bodyuRL)
+        public IBodyWorkflowAction<BitlinkV2> CreateBitlink([WorkflowExpression] Func<string> bodyuRL)
         {
-            var apiCallPath = "/shorten";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["long_url"] = ExpressionConverter.ConvertO(bodyuRL);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/shorten";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["long_url"] = SourceExpressionConverter.ConvertToken(bodyuRL);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<BitlinkV2>(callPayload);
+            return new ApiConnectionAction<BitlinkV2>(BuildSourceInput);
         }
     }
 
     public class BitlyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse> OnBitlinkCreated(Expression<Func<string>> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse> OnBitlinkCreated([WorkflowExpression] Func<string> id, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/groups/{0}/bitlinks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<OnBitlinkCreatedResponse>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/bitlinks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<OnBitlinkCreatedResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

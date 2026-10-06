@@ -14,371 +14,435 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<GetUserActivatedCouriersResponse> GetUserActivatedCouriers()
         {
-            var apiCallPath = "/couriers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetUserActivatedCouriersResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/couriers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetUserActivatedCouriersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<DetectCourierResponse> DetectCourier(Expression<Func<string>> bodytrackingtrackingNumber = null)
+        public IBodyWorkflowAction<DetectCourierResponse> DetectCourier([WorkflowExpression] Func<string> bodytrackingtrackingNumber = null)
         {
-            var apiCallPath = "/couriers/detect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var trackingObject = new JObject();
-            var trackingObjectpropCount = 0;
-            if (bodytrackingtrackingNumber != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                trackingObject["tracking_number"] = ExpressionConverter.ConvertO(bodytrackingtrackingNumber);
-                trackingObjectpropCount++;
+                var apiCallPath = "/couriers/detect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var trackingObject = new JObject();
+                var trackingObjectpropCount = 0;
+                if (bodytrackingtrackingNumber != null)
+                {
+                    trackingObject["tracking_number"] = SourceExpressionConverter.ConvertToken(bodytrackingtrackingNumber);
+                    trackingObjectpropCount++;
+                }
+
+                if (trackingObjectpropCount > 0)
+                {
+                    body["tracking"] = trackingObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (trackingObjectpropCount > 0)
-            {
-                body["tracking"] = trackingObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DetectCourierResponse>(callPayload);
+            return new ApiConnectionAction<DetectCourierResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<GetAllCouriersResponse> GetAllCouriers()
         {
-            var apiCallPath = "/couriers/all";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetAllCouriersResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/couriers/all";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAllCouriersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<GetTrackingsResponse> GetTrackings()
         {
-            var apiCallPath = "/trackings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetTrackingsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trackings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTrackingsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<CreateTrackingResponse> CreateTracking(Expression<Func<string>> bodytrackingslug = null, Expression<Func<string>> bodytrackingtrackingNumber = null, Expression<Func<string>> bodytrackingtitle = null, Expression<Func<JToken[]>> bodytrackingsmses = null, Expression<Func<JToken[]>> bodytrackingemails = null, Expression<Func<string>> bodytrackingorderId = null, Expression<Func<string>> bodytrackingorderIdPath = null, Expression<Func<string>> bodytrackingcustomFieldsproductName = null, Expression<Func<string>> bodytrackingcustomFieldsproductPrice = null, Expression<Func<string>> bodytrackinglanguage = null, Expression<Func<string>> bodytrackingorderPromisedDeliveryDate = null, Expression<Func<string>> bodytrackingdeliveryType = null, Expression<Func<string>> bodytrackingpickupLocation = null, Expression<Func<string>> bodytrackingpickupNote = null)
+        public IBodyWorkflowAction<CreateTrackingResponse> CreateTracking([WorkflowExpression] Func<string> bodytrackingslug = null, [WorkflowExpression] Func<string> bodytrackingtrackingNumber = null, [WorkflowExpression] Func<string> bodytrackingtitle = null, [WorkflowExpression] Func<JToken[]> bodytrackingsmses = null, [WorkflowExpression] Func<JToken[]> bodytrackingemails = null, [WorkflowExpression] Func<string> bodytrackingorderId = null, [WorkflowExpression] Func<string> bodytrackingorderIdPath = null, [WorkflowExpression] Func<string> bodytrackingcustomFieldsproductName = null, [WorkflowExpression] Func<string> bodytrackingcustomFieldsproductPrice = null, [WorkflowExpression] Func<string> bodytrackinglanguage = null, [WorkflowExpression] Func<string> bodytrackingorderPromisedDeliveryDate = null, [WorkflowExpression] Func<string> bodytrackingdeliveryType = null, [WorkflowExpression] Func<string> bodytrackingpickupLocation = null, [WorkflowExpression] Func<string> bodytrackingpickupNote = null)
         {
-            var apiCallPath = "/trackings";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var trackingObject = new JObject();
-            var trackingObjectpropCount = 0;
-            if (bodytrackingslug != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                trackingObject["slug"] = ExpressionConverter.ConvertO(bodytrackingslug);
-                trackingObjectpropCount++;
+                var apiCallPath = "/trackings";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var trackingObject = new JObject();
+                var trackingObjectpropCount = 0;
+                if (bodytrackingslug != null)
+                {
+                    trackingObject["slug"] = SourceExpressionConverter.ConvertToken(bodytrackingslug);
+                    trackingObjectpropCount++;
+                }
+
+                if (bodytrackingtrackingNumber != null)
+                {
+                    trackingObject["tracking_number"] = SourceExpressionConverter.ConvertToken(bodytrackingtrackingNumber);
+                    trackingObjectpropCount++;
+                }
+
+                if (bodytrackingtitle != null)
+                {
+                    trackingObject["title"] = SourceExpressionConverter.ConvertToken(bodytrackingtitle);
+                    trackingObjectpropCount++;
+                }
+
+                if (bodytrackingsmses != null)
+                {
+                    trackingObject["smses"] = SourceExpressionConverter.ConvertToken(bodytrackingsmses);
+                    trackingObjectpropCount++;
+                }
+
+                if (bodytrackingemails != null)
+                {
+                    trackingObject["emails"] = SourceExpressionConverter.ConvertToken(bodytrackingemails);
+                    trackingObjectpropCount++;
+                }
+
+                if (bodytrackingorderId != null)
+                {
+                    trackingObject["order_id"] = SourceExpressionConverter.ConvertToken(bodytrackingorderId);
+                    trackingObjectpropCount++;
+                }
+
+                if (bodytrackingorderIdPath != null)
+                {
+                    trackingObject["order_id_path"] = SourceExpressionConverter.ConvertToken(bodytrackingorderIdPath);
+                    trackingObjectpropCount++;
+                }
+
+                var customFieldsObject = new JObject();
+                var customFieldsObjectpropCount = 0;
+                if (bodytrackingcustomFieldsproductName != null)
+                {
+                    customFieldsObject["product_name"] = SourceExpressionConverter.ConvertToken(bodytrackingcustomFieldsproductName);
+                    customFieldsObjectpropCount++;
+                }
+
+                if (bodytrackingcustomFieldsproductPrice != null)
+                {
+                    customFieldsObject["product_price"] = SourceExpressionConverter.ConvertToken(bodytrackingcustomFieldsproductPrice);
+                    customFieldsObjectpropCount++;
+                }
+
+                if (customFieldsObjectpropCount > 0)
+                {
+                    trackingObject["custom_fields"] = customFieldsObject;
+                    trackingObjectpropCount++;
+                }
+
+                if (bodytrackinglanguage != null)
+                {
+                    trackingObject["language"] = SourceExpressionConverter.ConvertToken(bodytrackinglanguage);
+                    trackingObjectpropCount++;
+                }
+
+                if (bodytrackingorderPromisedDeliveryDate != null)
+                {
+                    trackingObject["order_promised_delivery_date"] = SourceExpressionConverter.ConvertToken(bodytrackingorderPromisedDeliveryDate);
+                    trackingObjectpropCount++;
+                }
+
+                if (bodytrackingdeliveryType != null)
+                {
+                    trackingObject["delivery_type"] = SourceExpressionConverter.ConvertToken(bodytrackingdeliveryType);
+                    trackingObjectpropCount++;
+                }
+
+                if (bodytrackingpickupLocation != null)
+                {
+                    trackingObject["pickup_location"] = SourceExpressionConverter.ConvertToken(bodytrackingpickupLocation);
+                    trackingObjectpropCount++;
+                }
+
+                if (bodytrackingpickupNote != null)
+                {
+                    trackingObject["pickup_note"] = SourceExpressionConverter.ConvertToken(bodytrackingpickupNote);
+                    trackingObjectpropCount++;
+                }
+
+                if (trackingObjectpropCount > 0)
+                {
+                    body["tracking"] = trackingObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytrackingtrackingNumber != null)
-            {
-                trackingObject["tracking_number"] = ExpressionConverter.ConvertO(bodytrackingtrackingNumber);
-                trackingObjectpropCount++;
-            }
-
-            if (bodytrackingtitle != null)
-            {
-                trackingObject["title"] = ExpressionConverter.ConvertO(bodytrackingtitle);
-                trackingObjectpropCount++;
-            }
-
-            if (bodytrackingsmses != null)
-            {
-                trackingObject["smses"] = ExpressionConverter.ConvertO(bodytrackingsmses);
-                trackingObjectpropCount++;
-            }
-
-            if (bodytrackingemails != null)
-            {
-                trackingObject["emails"] = ExpressionConverter.ConvertO(bodytrackingemails);
-                trackingObjectpropCount++;
-            }
-
-            if (bodytrackingorderId != null)
-            {
-                trackingObject["order_id"] = ExpressionConverter.ConvertO(bodytrackingorderId);
-                trackingObjectpropCount++;
-            }
-
-            if (bodytrackingorderIdPath != null)
-            {
-                trackingObject["order_id_path"] = ExpressionConverter.ConvertO(bodytrackingorderIdPath);
-                trackingObjectpropCount++;
-            }
-
-            var customFieldsObject = new JObject();
-            var customFieldsObjectpropCount = 0;
-            if (bodytrackingcustomFieldsproductName != null)
-            {
-                customFieldsObject["product_name"] = ExpressionConverter.ConvertO(bodytrackingcustomFieldsproductName);
-                customFieldsObjectpropCount++;
-            }
-
-            if (bodytrackingcustomFieldsproductPrice != null)
-            {
-                customFieldsObject["product_price"] = ExpressionConverter.ConvertO(bodytrackingcustomFieldsproductPrice);
-                customFieldsObjectpropCount++;
-            }
-
-            if (customFieldsObjectpropCount > 0)
-            {
-                trackingObject["custom_fields"] = customFieldsObject;
-                trackingObjectpropCount++;
-            }
-
-            if (bodytrackinglanguage != null)
-            {
-                trackingObject["language"] = ExpressionConverter.ConvertO(bodytrackinglanguage);
-                trackingObjectpropCount++;
-            }
-
-            if (bodytrackingorderPromisedDeliveryDate != null)
-            {
-                trackingObject["order_promised_delivery_date"] = ExpressionConverter.ConvertO(bodytrackingorderPromisedDeliveryDate);
-                trackingObjectpropCount++;
-            }
-
-            if (bodytrackingdeliveryType != null)
-            {
-                trackingObject["delivery_type"] = ExpressionConverter.ConvertO(bodytrackingdeliveryType);
-                trackingObjectpropCount++;
-            }
-
-            if (bodytrackingpickupLocation != null)
-            {
-                trackingObject["pickup_location"] = ExpressionConverter.ConvertO(bodytrackingpickupLocation);
-                trackingObjectpropCount++;
-            }
-
-            if (bodytrackingpickupNote != null)
-            {
-                trackingObject["pickup_note"] = ExpressionConverter.ConvertO(bodytrackingpickupNote);
-                trackingObjectpropCount++;
-            }
-
-            if (trackingObjectpropCount > 0)
-            {
-                body["tracking"] = trackingObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTrackingResponse>(callPayload);
+            return new ApiConnectionAction<CreateTrackingResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<GetATrackingResponse> GetATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
+        public IBodyWorkflowAction<GetATrackingResponse> GetATracking([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber)
         {
-            var apiCallPath = String.Format("/trackings/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetATrackingResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetATrackingResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<DeleteATrackingResponse> DeleteATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
+        public IBodyWorkflowAction<DeleteATrackingResponse> DeleteATracking([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber)
         {
-            var apiCallPath = String.Format("/trackings/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<DeleteATrackingResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeleteATrackingResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<UpdateATrackingResponse> UpdateATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<string>> bodytrackingtitle = null, Expression<Func<string>> bodytrackingnote = null)
+        public IBodyWorkflowAction<UpdateATrackingResponse> UpdateATracking([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber, [WorkflowExpression] Func<string> bodytrackingtitle = null, [WorkflowExpression] Func<string> bodytrackingnote = null)
         {
-            var apiCallPath = String.Format("/trackings/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var trackingObject = new JObject();
-            var trackingObjectpropCount = 0;
-            if (bodytrackingtitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                trackingObject["title"] = ExpressionConverter.ConvertO(bodytrackingtitle);
-                trackingObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var trackingObject = new JObject();
+                var trackingObjectpropCount = 0;
+                if (bodytrackingtitle != null)
+                {
+                    trackingObject["title"] = SourceExpressionConverter.ConvertToken(bodytrackingtitle);
+                    trackingObjectpropCount++;
+                }
+
+                if (bodytrackingnote != null)
+                {
+                    trackingObject["note"] = SourceExpressionConverter.ConvertToken(bodytrackingnote);
+                    trackingObjectpropCount++;
+                }
+
+                if (trackingObjectpropCount > 0)
+                {
+                    body["tracking"] = trackingObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytrackingnote != null)
-            {
-                trackingObject["note"] = ExpressionConverter.ConvertO(bodytrackingnote);
-                trackingObjectpropCount++;
-            }
-
-            if (trackingObjectpropCount > 0)
-            {
-                body["tracking"] = trackingObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateATrackingResponse>(callPayload);
+            return new ApiConnectionAction<UpdateATrackingResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<RetrackAnExpiredTrackingResponse> RetrackAnExpiredTracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
+        public IBodyWorkflowAction<RetrackAnExpiredTrackingResponse> RetrackAnExpiredTracking([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber)
         {
-            var apiCallPath = String.Format("/trackings/{0}/{1}/retrack", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<RetrackAnExpiredTrackingResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}/retrack", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RetrackAnExpiredTrackingResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<MarkTrackingAsCompletedResponse> MarkTrackingAsCompleted(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<bodyreasonInput>> bodyreason = null)
+        public IBodyWorkflowAction<MarkTrackingAsCompletedResponse> MarkTrackingAsCompleted([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber, [WorkflowExpression] Func<bodyreasonInput> bodyreason = null)
         {
-            var apiCallPath = String.Format("/trackings/{0}/{1}/mark-as-completed", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyreason != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["reason"] = ExpressionConverter.ConvertO(bodyreason);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}/mark-as-completed", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyreason != null)
+                {
+                    body["reason"] = SourceExpressionConverter.Convert(bodyreason);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MarkTrackingAsCompletedResponse>(callPayload);
+            return new ApiConnectionAction<MarkTrackingAsCompletedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<GetTrackingNotificationResponse> GetTrackingNotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
+        public IBodyWorkflowAction<GetTrackingNotificationResponse> GetTrackingNotification([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber)
         {
-            var apiCallPath = String.Format("/notifications/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetTrackingNotificationResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/notifications/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTrackingNotificationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<AddANotificationResponse> AddANotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
+        public IBodyWorkflowAction<AddANotificationResponse> AddANotification([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber)
         {
-            var apiCallPath = String.Format("/notifications/{0}/{1}/add", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var notificationObject = new JObject();
-            var notificationObjectpropCount = 0;
-            var emailsObject = new JObject();
-            var emailsObjectpropCount = 0;
-            if (emailsObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                notificationObject["emails"] = emailsObject;
-                notificationObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/notifications/{0}/{1}/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var notificationObject = new JObject();
+                var notificationObjectpropCount = 0;
+                var emailsObject = new JObject();
+                var emailsObjectpropCount = 0;
+                if (emailsObjectpropCount > 0)
+                {
+                    notificationObject["emails"] = emailsObject;
+                    notificationObjectpropCount++;
+                }
+
+                var smsesObject = new JObject();
+                var smsesObjectpropCount = 0;
+                if (smsesObjectpropCount > 0)
+                {
+                    notificationObject["smses"] = smsesObject;
+                    notificationObjectpropCount++;
+                }
+
+                if (notificationObjectpropCount > 0)
+                {
+                    body["notification"] = notificationObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var smsesObject = new JObject();
-            var smsesObjectpropCount = 0;
-            if (smsesObjectpropCount > 0)
-            {
-                notificationObject["smses"] = smsesObject;
-                notificationObjectpropCount++;
-            }
-
-            if (notificationObjectpropCount > 0)
-            {
-                body["notification"] = notificationObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddANotificationResponse>(callPayload);
+            return new ApiConnectionAction<AddANotificationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<RemoveANotificationResponse> RemoveANotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
+        public IBodyWorkflowAction<RemoveANotificationResponse> RemoveANotification([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber)
         {
-            var apiCallPath = String.Format("/notifications/{0}/{1}/remove", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var notificationObject = new JObject();
-            var notificationObjectpropCount = 0;
-            var emailsObject = new JObject();
-            var emailsObjectpropCount = 0;
-            if (emailsObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                notificationObject["emails"] = emailsObject;
-                notificationObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/notifications/{0}/{1}/remove", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var notificationObject = new JObject();
+                var notificationObjectpropCount = 0;
+                var emailsObject = new JObject();
+                var emailsObjectpropCount = 0;
+                if (emailsObjectpropCount > 0)
+                {
+                    notificationObject["emails"] = emailsObject;
+                    notificationObjectpropCount++;
+                }
+
+                var smsesObject = new JObject();
+                var smsesObjectpropCount = 0;
+                if (smsesObjectpropCount > 0)
+                {
+                    notificationObject["smses"] = smsesObject;
+                    notificationObjectpropCount++;
+                }
+
+                if (notificationObjectpropCount > 0)
+                {
+                    body["notification"] = notificationObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var smsesObject = new JObject();
-            var smsesObjectpropCount = 0;
-            if (smsesObjectpropCount > 0)
-            {
-                notificationObject["smses"] = smsesObject;
-                notificationObjectpropCount++;
-            }
-
-            if (notificationObjectpropCount > 0)
-            {
-                body["notification"] = notificationObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<RemoveANotificationResponse>(callPayload);
+            return new ApiConnectionAction<RemoveANotificationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
-        public IBodyWorkflowAction<GetLastCheckpointResponse> GetLastCheckpoint(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
+        public IBodyWorkflowAction<GetLastCheckpointResponse> GetLastCheckpoint([WorkflowExpression] Func<string> slug, [WorkflowExpression] Func<string> trackingNumber)
         {
-            var apiCallPath = String.Format("/last_checkpoint/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(slug, 1), ExpressionConverter.ConvertWithUrlEncoding(trackingNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetLastCheckpointResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/last_checkpoint/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackingNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetLastCheckpointResponse>(BuildSourceInput);
         }
     }
 

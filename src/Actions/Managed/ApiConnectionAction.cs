@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// API connection action input.
         /// </summary>
-        private readonly ApiConnectionActionInput apiConnectionActionInput;
+        private readonly Func<ApiConnectionActionInput> apiConnectionActionInput;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiConnectionAction"/> class.
         /// </summary>
         /// <param name="apiConnectionActionInput">The API connection action input.</param>
-        internal ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput)
+        internal ApiConnectionAction(Func<ApiConnectionActionInput> apiConnectionActionInput)
         {
             this.apiConnectionActionInput = apiConnectionActionInput;
         }
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new FlowTemplateAction
             {
                 Type = FlowTemplateOperationType.ApiConnection,
-                Inputs = this.apiConnectionActionInput,
+                Inputs = this.apiConnectionActionInput(),
             };
         }
     }
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <typeparam name="T">The type of the output body returned by the action.</typeparam>
     public class ApiConnectionAction<T> : ApiConnectionAction, IBodyWorkflowAction<T>
     {
-        internal ApiConnectionAction(ApiConnectionActionInput apiConnectionActionInput)
+        internal ApiConnectionAction(Func<ApiConnectionActionInput> apiConnectionActionInput)
             : base(apiConnectionActionInput)
         {
         }

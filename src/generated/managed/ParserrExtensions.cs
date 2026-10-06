@@ -14,32 +14,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parserr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parserr")]
         public IBodyWorkflowAction<ListInboxesResponseItem[]> ListInboxes()
         {
-            var apiCallPath = "/api/microsoft/user/emaillist";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListInboxesResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/microsoft/user/emaillist";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListInboxesResponseItem[]>(BuildSourceInput);
         }
     }
 
     public class ParserrTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookEmailReceived(Expression<Func<string>> bodyemail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookEmailReceived([WorkflowExpression] Func<string> bodyemail, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/microsoft/subscription/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["TriggerUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/microsoft/subscription/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["TriggerUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

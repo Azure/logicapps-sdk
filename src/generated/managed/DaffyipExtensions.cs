@@ -14,72 +14,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<ProfileGetResponse> ProfileGet()
         {
-            var apiCallPath = "/users/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProfileGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/users/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProfileGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<BalanceGetResponse> BalanceGet()
         {
-            var apiCallPath = "/users/me/balance";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BalanceGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/users/me/balance";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BalanceGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
-        public IBodyWorkflowAction<CausesGetResponseItem[]> CausesGet(Expression<Func<string>> userId, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<CausesGetResponseItem[]> CausesGet([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = String.Format("/users/{0}/causes", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<CausesGetResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/causes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CausesGetResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
-        public IBodyWorkflowAction<ContributionsGetResponse> ContributionsGet(Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<ContributionsGetResponse> ContributionsGet([WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/contributions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<ContributionsGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/contributions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ContributionsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
-        public IBodyWorkflowAction<DonationsGetResponse> DonationsGet(Expression<Func<string>> userId, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<DonationsGetResponse> DonationsGet([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = String.Format("/users/{0}/donations", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<DonationsGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/donations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DonationsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
-        public IBodyWorkflowAction<GiftsGetResponse> GiftsGet(Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<GiftsGetResponse> GiftsGet([WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/gifts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<GiftsGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/gifts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GiftsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
-        public IBodyWorkflowAction<NonProfitGetResponse> NonProfitGet(Expression<Func<string>> ein)
+        public IBodyWorkflowAction<NonProfitGetResponse> NonProfitGet([WorkflowExpression] Func<string> ein)
         {
-            var apiCallPath = String.Format("/non_profits/{0}", ExpressionConverter.ConvertWithUrlEncoding(ein, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<NonProfitGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/non_profits/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ein, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NonProfitGetResponse>(BuildSourceInput);
         }
     }
 

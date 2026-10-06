@@ -12,13 +12,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Regexflowexecutepyth
     public class RegexflowexecutepythActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "regexflowexecutepyth")]
-        public IBodyWorkflowAction<ExecutePythonResponse> ExecutePython(Expression<Func<string>> pythonCode = null)
+        public IBodyWorkflowAction<ExecutePythonResponse> ExecutePython([WorkflowExpression] Func<string> pythonCode = null)
         {
-            var apiCallPath = "/ExecutePython";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(pythonCode);
-            return new ApiConnectionAction<ExecutePythonResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/ExecutePython";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(pythonCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExecutePythonResponse>(BuildSourceInput);
         }
     }
 

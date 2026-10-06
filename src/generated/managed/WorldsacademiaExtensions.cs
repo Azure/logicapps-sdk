@@ -14,100 +14,155 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         public IBodyWorkflowAction<GetAllContinentsAndTheirMetadataResponseItem[]> GetAllContinentsAndTheirMetadata()
         {
-            var apiCallPath = "/api/v1/continentsdata";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllContinentsAndTheirMetadataResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/continentsdata";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAllContinentsAndTheirMetadataResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         public IBodyWorkflowAction<string[]> GetAListContinents()
         {
-            var apiCallPath = "/api/v1/continents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/continents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
-        public IBodyWorkflowAction<string[]> GetAListCountriesInAContinent(Expression<Func<string>> continentName)
+        public IBodyWorkflowAction<string[]> GetAListCountriesInAContinent([WorkflowExpression] Func<string> continentName)
         {
-            var apiCallPath = String.Format("/api/v1/continent/{0}", ExpressionConverter.ConvertWithUrlEncoding(continentName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/continent/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(continentName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         public IBodyWorkflowAction<int> GetTheNumberOfUniversitiesAvailable()
         {
-            var apiCallPath = "/api/v1/sch/count";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<int>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/sch/count";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<int>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         public IBodyWorkflowAction<string[]> GetAListOfCountriesWithUniversities()
         {
-            var apiCallPath = "/api/v1/sch/countries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/sch/countries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         public IBodyWorkflowAction<string[]> GetAListOfCountriesCodesWithUniversities()
         {
-            var apiCallPath = "/api/v1/sch/countriescodes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/sch/countriescodes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
-        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]> GetAllUniversitiesInACountryViaCountryName(Expression<Func<string>> countryName)
+        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]> GetAllUniversitiesInACountryViaCountryName([WorkflowExpression] Func<string> countryName)
         {
-            var apiCallPath = String.Format("/api/v1/sch/country/{0}", ExpressionConverter.ConvertWithUrlEncoding(countryName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/sch/country/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(countryName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
-        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]> GetAllUniversitiesInACountryViaCountryCode(Expression<Func<string>> countryCode)
+        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]> GetAllUniversitiesInACountryViaCountryCode([WorkflowExpression] Func<string> countryCode)
         {
-            var apiCallPath = String.Format("/api/v1/sch/countrycode/{0}", ExpressionConverter.ConvertWithUrlEncoding(countryCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/sch/countrycode/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(countryCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
-        public IBodyWorkflowAction<GetAllUniversityDetailsResponse> GetAllUniversityDetails(Expression<Func<string>> universityName)
+        public IBodyWorkflowAction<GetAllUniversityDetailsResponse> GetAllUniversityDetails([WorkflowExpression] Func<string> universityName)
         {
-            var apiCallPath = String.Format("/api/v1/sch/university/{0}", ExpressionConverter.ConvertWithUrlEncoding(universityName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllUniversityDetailsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/sch/university/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(universityName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAllUniversityDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         public IBodyWorkflowAction<GetAllUniversitiesAndTheirMetadataResponseItem[]> GetAllUniversitiesAndTheirMetadata()
         {
-            var apiCallPath = "/api/v1/sch";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllUniversitiesAndTheirMetadataResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/sch";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAllUniversitiesAndTheirMetadataResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
         public IBodyWorkflowAction<string[]> GetAListOfAllUniversities()
         {
-            var apiCallPath = "/api/v1/schlist";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/schlist";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string[]>(BuildSourceInput);
         }
     }
 

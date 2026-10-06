@@ -12,48 +12,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
     public class DonotcallreportcallsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "donotcallreportcallsip")]
-        public IBodyWorkflowAction<ComplaintsAllResponse> ComplaintsAll(Expression<Func<string>> createdDate = null, Expression<Func<string>> createdDateFrom = null, Expression<Func<string>> createdDateTo = null, Expression<Func<string>> violationDate = null, Expression<Func<string>> violationDateFrom = null, Expression<Func<string>> violationDateTo = null, Expression<Func<string>> state = null, Expression<Func<string>> city = null, Expression<Func<int>> areaCode = null, Expression<Func<bool>> isRobocall = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<int>> itemsPerPage = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ComplaintsAllResponse> ComplaintsAll([WorkflowExpression] Func<string> createdDate = null, [WorkflowExpression] Func<string> createdDateFrom = null, [WorkflowExpression] Func<string> createdDateTo = null, [WorkflowExpression] Func<string> violationDate = null, [WorkflowExpression] Func<string> violationDateFrom = null, [WorkflowExpression] Func<string> violationDateTo = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<int> areaCode = null, [WorkflowExpression] Func<bool> isRobocall = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<int> itemsPerPage = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = "/dnc-complaints";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (createdDate != null)
-                callPayload.Queries["created_date"] = ExpressionConverter.Convert(createdDate);
-            if (createdDateFrom != null)
-                callPayload.Queries["created_date_from"] = ExpressionConverter.Convert(createdDateFrom);
-            if (createdDateTo != null)
-                callPayload.Queries["created_date_to"] = ExpressionConverter.Convert(createdDateTo);
-            if (violationDate != null)
-                callPayload.Queries["violation_date"] = ExpressionConverter.Convert(violationDate);
-            if (violationDateFrom != null)
-                callPayload.Queries["violation_date_from"] = ExpressionConverter.Convert(violationDateFrom);
-            if (violationDateTo != null)
-                callPayload.Queries["violation_date_to"] = ExpressionConverter.Convert(violationDateTo);
-            if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
-            if (city != null)
-                callPayload.Queries["city"] = ExpressionConverter.Convert(city);
-            if (areaCode != null)
-                callPayload.Queries["area_code"] = ExpressionConverter.Convert(areaCode);
-            if (isRobocall != null)
-                callPayload.Queries["is_robocall"] = ExpressionConverter.Convert(isRobocall);
-            callPayload.Queries["sort_order"] = Convert.ToString("DESC");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            if (itemsPerPage != null)
-                callPayload.Queries["items_per_page"] = ExpressionConverter.Convert(itemsPerPage);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<ComplaintsAllResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/dnc-complaints";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (createdDate != null)
+                    callPayload.Queries["created_date"] = SourceExpressionConverter.ConvertO(createdDate);
+                if (createdDateFrom != null)
+                    callPayload.Queries["created_date_from"] = SourceExpressionConverter.ConvertO(createdDateFrom);
+                if (createdDateTo != null)
+                    callPayload.Queries["created_date_to"] = SourceExpressionConverter.ConvertO(createdDateTo);
+                if (violationDate != null)
+                    callPayload.Queries["violation_date"] = SourceExpressionConverter.ConvertO(violationDate);
+                if (violationDateFrom != null)
+                    callPayload.Queries["violation_date_from"] = SourceExpressionConverter.ConvertO(violationDateFrom);
+                if (violationDateTo != null)
+                    callPayload.Queries["violation_date_to"] = SourceExpressionConverter.ConvertO(violationDateTo);
+                if (state != null)
+                    callPayload.Queries["state"] = SourceExpressionConverter.ConvertO(state);
+                if (city != null)
+                    callPayload.Queries["city"] = SourceExpressionConverter.ConvertO(city);
+                if (areaCode != null)
+                    callPayload.Queries["area_code"] = SourceExpressionConverter.ConvertO(areaCode);
+                if (isRobocall != null)
+                    callPayload.Queries["is_robocall"] = SourceExpressionConverter.ConvertO(isRobocall);
+                callPayload.Queries["sort_order"] = Convert.ToString("DESC");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = SourceExpressionConverter.Convert(sortOrder);
+                if (itemsPerPage != null)
+                    callPayload.Queries["items_per_page"] = SourceExpressionConverter.ConvertO(itemsPerPage);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ComplaintsAllResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "donotcallreportcallsip")]
-        public IBodyWorkflowAction<ComplaintIDResponse> ComplaintID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ComplaintIdResponse> ComplaintId([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/dnc-complaints/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ComplaintIDResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/dnc-complaints/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ComplaintIdResponse>(BuildSourceInput);
         }
     }
 
@@ -142,19 +152,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
         ASC
     }
 
-    public class ComplaintIDResponse
+    public class ComplaintIdResponse
     {
         [JsonProperty("data")]
-        public ComplaintIDResponseDataTypeItem[] Data { get; set; }
+        public ComplaintIdResponseDataTypeItem[] Data { get; set; }
 
         [JsonProperty("meta")]
-        public ComplaintIDResponseMetaType Meta { get; set; }
+        public ComplaintIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("links")]
-        public ComplaintIDResponseLinksType Links { get; set; }
+        public ComplaintIdResponseLinksType Links { get; set; }
     }
 
-    public class ComplaintIDResponseDataTypeItem
+    public class ComplaintIdResponseDataTypeItem
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -163,13 +173,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
         public string Id { get; set; }
 
         [JsonProperty("attributes")]
-        public ComplaintIDResponseDataTypeItemAttributesType Attributes { get; set; }
+        public ComplaintIdResponseDataTypeItemAttributesType Attributes { get; set; }
 
         [JsonProperty("links")]
-        public ComplaintIDResponseDataTypeItemLinksType Links { get; set; }
+        public ComplaintIdResponseDataTypeItemLinksType Links { get; set; }
     }
 
-    public class ComplaintIDResponseDataTypeItemAttributesType
+    public class ComplaintIdResponseDataTypeItemAttributesType
     {
         [JsonProperty("company-phone-number")]
         public string CompanyPhoneNumber { get; set; }
@@ -196,13 +206,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
         public string RecordedMessageOrRobocall { get; set; }
     }
 
-    public class ComplaintIDResponseDataTypeItemLinksType
+    public class ComplaintIdResponseDataTypeItemLinksType
     {
         [JsonProperty("self")]
         public string Self { get; set; }
     }
 
-    public class ComplaintIDResponseMetaType
+    public class ComplaintIdResponseMetaType
     {
         [JsonProperty("records-this-page")]
         public int RecordsThisPage { get; set; }
@@ -211,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
         public int RecordTotal { get; set; }
     }
 
-    public class ComplaintIDResponseLinksType
+    public class ComplaintIdResponseLinksType
     {
         [JsonProperty("self")]
         public string Self { get; set; }

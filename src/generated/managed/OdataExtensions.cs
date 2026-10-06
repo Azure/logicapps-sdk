@@ -12,96 +12,131 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odata
     public class OdataActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken[]> GetEntityData(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<double>> top = null, Expression<Func<double>> skip = null, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null)
+        public IBodyWorkflowAction<JToken[]> GetEntityData([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<double> top = null, [WorkflowExpression] Func<double> skip = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> expand = null)
         {
-            var apiCallPath = "/getentitydata";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (expand != null)
-                callPayload.Queries["expand"] = ExpressionConverter.Convert(expand);
-            return new ApiConnectionAction<JToken[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/getentitydata";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["odataUri"] = SourceExpressionConverter.ConvertO(odataUri);
+                callPayload.Queries["entity"] = SourceExpressionConverter.ConvertO(entity);
+                if (top != null)
+                    callPayload.Queries["top"] = SourceExpressionConverter.ConvertO(top);
+                if (skip != null)
+                    callPayload.Queries["skip"] = SourceExpressionConverter.ConvertO(skip);
+                if (select != null)
+                    callPayload.Queries["select"] = SourceExpressionConverter.ConvertO(select);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (expand != null)
+                    callPayload.Queries["expand"] = SourceExpressionConverter.ConvertO(expand);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken> GetSchema(Expression<Func<string>> odataUri, Expression<Func<string>> entity)
+        public IBodyWorkflowAction<JToken> GetSchema([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity)
         {
-            var apiCallPath = "/getschema";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/getschema";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["odataUri"] = SourceExpressionConverter.ConvertO(odataUri);
+                callPayload.Queries["entity"] = SourceExpressionConverter.ConvertO(entity);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken> GetSingleSchema(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<int>> option = null)
+        public IBodyWorkflowAction<JToken> GetSingleSchema([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<int> option = null)
         {
-            var apiCallPath = "/getsingleschema";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            if (option != null)
-                callPayload.Queries["option"] = ExpressionConverter.Convert(option);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/getsingleschema";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["odataUri"] = SourceExpressionConverter.ConvertO(odataUri);
+                callPayload.Queries["entity"] = SourceExpressionConverter.ConvertO(entity);
+                if (option != null)
+                    callPayload.Queries["option"] = SourceExpressionConverter.ConvertO(option);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken> GetEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
+        public IBodyWorkflowAction<JToken> GetEntry([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null)
         {
-            var apiCallPath = "/getentry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/getentry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["odataUri"] = SourceExpressionConverter.ConvertO(odataUri);
+                callPayload.Queries["entity"] = SourceExpressionConverter.ConvertO(entity);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(entryInput);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken> CreateEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
+        public IBodyWorkflowAction<JToken> CreateEntry([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null)
         {
-            var apiCallPath = "/createentry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/createentry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["odataUri"] = SourceExpressionConverter.ConvertO(odataUri);
+                callPayload.Queries["entity"] = SourceExpressionConverter.ConvertO(entity);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(entryInput);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken> UpdateEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
+        public IBodyWorkflowAction<JToken> UpdateEntry([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null)
         {
-            var apiCallPath = "/updateentry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/updateentry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["odataUri"] = SourceExpressionConverter.ConvertO(odataUri);
+                callPayload.Queries["entity"] = SourceExpressionConverter.ConvertO(entity);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(entryInput);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odata")]
-        public IBodyWorkflowAction<JToken> DeleteEntry(Expression<Func<string>> odataUri, Expression<Func<string>> entity, Expression<Func<object>> entryInput = null)
+        public IBodyWorkflowAction<JToken> DeleteEntry([WorkflowExpression] Func<string> odataUri, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<object> entryInput = null)
         {
-            var apiCallPath = "/deleteentry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["odataUri"] = ExpressionConverter.Convert(odataUri);
-            callPayload.Queries["entity"] = ExpressionConverter.Convert(entity);
-            callPayload.Body = ExpressionConverter.ConvertO(entryInput);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/deleteentry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["odataUri"] = SourceExpressionConverter.ConvertO(odataUri);
+                callPayload.Queries["entity"] = SourceExpressionConverter.ConvertO(entity);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(entryInput);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 

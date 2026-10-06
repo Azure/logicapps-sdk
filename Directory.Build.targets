@@ -1,0 +1,20 @@
+<Project>
+  <PropertyGroup>
+    <WorkflowRepositoryConsumer Condition="'$(WorkflowRepositoryConsumer)' == '' and ('$(MSBuildProjectName)' == 'Microsoft.Azure.Workflows.Sdk.Tests' or '$(MSBuildProjectName)' == 'Microsoft.Azure.Workflows.Sdk.Tests.Worker' or '$(MSBuildProjectName)' == 'Microsoft.Azure.Workflows.Sdk.UnitTests' or '$(MSBuildProjectName)' == 'Microsoft.Azure.Workflows.Sdk.ExpressionTests' or '$(MSBuildProjectName)' == 'Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests')">true</WorkflowRepositoryConsumer>
+  </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)src\buildTransitive\Microsoft.Azure.Workflows.Sdk.props"
+          Condition="'$(WorkflowRepositoryConsumer)' == 'true'" />
+  <Import Project="$(MSBuildThisFileDirectory)src\buildTransitive\Microsoft.Azure.Workflows.Sdk.targets"
+          Condition="'$(WorkflowRepositoryConsumer)' == 'true'" />
+  <Target Name="ResolveRepositoryWorkflowBuildTool" BeforeTargets="TransformWorkflowSources;ValidateWorkflowExpressionDeployment"
+          Condition="'$(WorkflowRepositoryConsumer)' == 'true' and '$(DesignTimeBuild)' != 'true'">
+    <MSBuild Projects="$(MSBuildThisFileDirectory)src\Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj"
+             Targets="GetTargetPath" Properties="Configuration=$(Configuration)"
+             RemoveProperties="TargetFramework;RuntimeIdentifier;SelfContained">
+      <Output TaskParameter="TargetOutputs" ItemName="_RepositoryWorkflowBuildTool" />
+    </MSBuild>
+    <PropertyGroup>
+      <WorkflowBuildToolPath>@(_RepositoryWorkflowBuildTool)</WorkflowBuildToolPath>
+    </PropertyGroup>
+  </Target>
+</Project>

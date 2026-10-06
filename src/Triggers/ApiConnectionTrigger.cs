@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// The inputs for the trigger.
         /// </summary>
-        private object _inputs;
+        private Func<object> _inputs;
 
         /// <summary>
         /// Gets the recurrence of the trigger.
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="input">The API connection notification action input.</param>
         /// <param name="triggerName">The trigger name.</param>
         internal ApiConnectionTrigger(
-            ApiConnectionNotificationActionInput input,
+            Func<ApiConnectionNotificationActionInput> input,
             string triggerName = null)
         {
             this._type = FlowTemplateOperationType.ApiConnectionNotification;
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="recurrence">The recurrence configuration for the trigger.</param>
         /// <param name="enableSplitOn">Enable spliton trigger</param>
         internal ApiConnectionTrigger(
-            ApiConnectionActionInput input,
+            Func<ApiConnectionActionInput> input,
             string triggerName = null,
             FlowRecurrence recurrence = null,
             bool enableSplitOn = false)
@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     Frequency = FlowRecurrenceFrequency.Minute,
                     Interval = 1,
                 };
-            this.SplitOn = enableSplitOn ? "@triggerOutputs()?['body']" : null;
+            this.SplitOn = enableSplitOn ? "#{triggerOutputs()?[\"body\"]}" : null;
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new FlowTemplateTrigger
             {
                 Type = this._type,
-                Inputs = this._inputs,
+                Inputs = this._inputs(),
                 Recurrence = this.Recurrence,
                 SplitOn = this.SplitOn,
             };
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="input">The API connection notification action input.</param>
         /// <param name="triggerName">The trigger name.</param>
-        internal ApiConnectionTrigger(ApiConnectionNotificationActionInput input, string triggerName = null)
+        internal ApiConnectionTrigger(Func<ApiConnectionNotificationActionInput> input, string triggerName = null)
             : base(input, triggerName)
         { }
 
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="triggerName">The trigger name.</param>
         /// <param name="recurrence">The recurrence configuration for the trigger.</param>
         /// <param name="enableSplitOn">Enable spliton trigger</param>
-        internal ApiConnectionTrigger(ApiConnectionActionInput input, string triggerName = null, FlowRecurrence recurrence = null, bool enableSplitOn = false)
+        internal ApiConnectionTrigger(Func<ApiConnectionActionInput> input, string triggerName = null, FlowRecurrence recurrence = null, bool enableSplitOn = false)
             : base(input, triggerName, recurrence, enableSplitOn)
         { 
         }

@@ -12,780 +12,900 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
     public class SeismiclibraryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> CreateLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<bool>> resolveNameCollision = null, Expression<Func<string>> metadata = null, Expression<Func<object>> content = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> GetLibraryFileDetails([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["resolveNameCollision"] = Convert.ToString(false);
-            if (resolveNameCollision != null)
-                callPayload.Queries["resolveNameCollision"] = ExpressionConverter.Convert(resolveNameCollision);
-            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> GetLibraryFileDetails(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> UpdateLibraryFile([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<bool> includeResponse = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyexpiresAt = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalConnectionId = null, [WorkflowExpression] Func<SeismicLibraryContentManagementContentExperts[]> bodyexperts = null, [WorkflowExpression] Func<SeismicLibraryContentManagementCustomProperties[]> bodycontentProperties = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includeResponse"] = Convert.ToString(true);
+                if (includeResponse != null)
+                    callPayload.Queries["includeResponse"] = SourceExpressionConverter.ConvertO(includeResponse);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyownerId != null)
+                {
+                    body["ownerId"] = SourceExpressionConverter.ConvertToken(bodyownerId);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyexpiresAt != null)
+                {
+                    body["expiresAt"] = SourceExpressionConverter.ConvertToken(bodyexpiresAt);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyparentFolderId != null)
+                {
+                    body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalId != null)
+                {
+                    body["externalId"] = SourceExpressionConverter.ConvertToken(bodyexternalId);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalConnectionId != null)
+                {
+                    body["externalConnectionId"] = SourceExpressionConverter.ConvertToken(bodyexternalConnectionId);
+                    bodypropCount++;
+                }
+
+                if (bodyexperts != null)
+                {
+                    body["experts"] = SourceExpressionConverter.ConvertToken(bodyexperts);
+                    bodypropCount++;
+                }
+
+                if (bodycontentProperties != null)
+                {
+                    body["properties"] = SourceExpressionConverter.ConvertToken(bodycontentProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> UpdateLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<bool>> includeResponse = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyexpiresAt = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodyexternalConnectionId = null, Expression<Func<SeismicLibraryContentManagementContentExperts[]>> bodyexperts = null, Expression<Func<SeismicLibraryContentManagementCustomProperties[]>> bodycontentProperties = null)
+        public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> DownloadLibraryFile([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<bool> redirect = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includeResponse"] = Convert.ToString(true);
-            if (includeResponse != null)
-                callPayload.Queries["includeResponse"] = ExpressionConverter.Convert(includeResponse);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyownerId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["redirect"] = Convert.ToString(true);
+                if (redirect != null)
+                    callPayload.Queries["redirect"] = SourceExpressionConverter.ConvertO(redirect);
+                return callPayload;
             }
 
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodyexpiresAt != null)
-            {
-                body["expiresAt"] = ExpressionConverter.ConvertO(bodyexpiresAt);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodyparentFolderId != null)
-            {
-                body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
-                bodypropCount++;
-            }
-
-            if (bodyexternalId != null)
-            {
-                body["externalId"] = ExpressionConverter.ConvertO(bodyexternalId);
-                bodypropCount++;
-            }
-
-            if (bodyexternalConnectionId != null)
-            {
-                body["externalConnectionId"] = ExpressionConverter.ConvertO(bodyexternalConnectionId);
-                bodypropCount++;
-            }
-
-            if (bodyexperts != null)
-            {
-                body["experts"] = ExpressionConverter.ConvertO(bodyexperts);
-                bodypropCount++;
-            }
-
-            if (bodycontentProperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodycontentProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(callPayload);
+            return new ApiConnectionAction<SeismicCommonDownloadLocationResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> DownloadLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<bool>> redirect = null)
+        public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> DownloadLibraryFileVersion([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> libraryVersionId, [WorkflowExpression] Func<bool> redirect = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/files/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["redirect"] = Convert.ToString(true);
-            if (redirect != null)
-                callPayload.Queries["redirect"] = ExpressionConverter.Convert(redirect);
-            return new ApiConnectionAction<SeismicCommonDownloadLocationResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/versions/{2}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryVersionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["redirect"] = Convert.ToString(true);
+                if (redirect != null)
+                    callPayload.Queries["redirect"] = SourceExpressionConverter.ConvertO(redirect);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicCommonDownloadLocationResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> CreateLibraryFileVersion(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<object>> content = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> CopyLibraryFile([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodyparentFolderId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/files/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files/{1}/copy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> DownloadLibraryFileVersion(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> libraryVersionId, Expression<Func<bool>> redirect = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> CreateLibraryFolder([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalConnectionId = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/files/{1}/versions/{2}/content", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryVersionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["redirect"] = Convert.ToString(true);
-            if (redirect != null)
-                callPayload.Queries["redirect"] = ExpressionConverter.Convert(redirect);
-            return new ApiConnectionAction<SeismicCommonDownloadLocationResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodyparentFolderId != null)
+                {
+                    body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalId != null)
+                {
+                    body["externalId"] = SourceExpressionConverter.ConvertToken(bodyexternalId);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalConnectionId != null)
+                {
+                    body["externalConnectionId"] = SourceExpressionConverter.ConvertToken(bodyexternalConnectionId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFolderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFileDetailsResponse> CopyLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> bodyparentFolderId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> GetLibraryFolderDetails([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/files/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFileDetailsResponse>(callPayload);
+            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFolderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> CreateLibraryFolder(Expression<Func<string>> teamsiteId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentFolderId = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodyexternalConnectionId = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> UpdateLibraryFolder([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalConnectionId = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodyparentFolderId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodyparentFolderId != null)
+                {
+                    body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalId != null)
+                {
+                    body["externalId"] = SourceExpressionConverter.ConvertToken(bodyexternalId);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalConnectionId != null)
+                {
+                    body["externalConnectionId"] = SourceExpressionConverter.ConvertToken(bodyexternalConnectionId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyexternalId != null)
-            {
-                body["externalId"] = ExpressionConverter.ConvertO(bodyexternalId);
-                bodypropCount++;
-            }
-
-            if (bodyexternalConnectionId != null)
-            {
-                body["externalConnectionId"] = ExpressionConverter.ConvertO(bodyexternalConnectionId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFolderResponse>(callPayload);
+            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFolderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> GetLibraryFolderDetails(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementNestedLibraryFoldersResponse> CreateNestedLibraryFolders([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> folderPath = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/folders/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFolderResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/createPath", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (folderPath != null)
+                    callPayload.Queries["folderPath"] = SourceExpressionConverter.ConvertO(folderPath);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicLibraryContentManagementNestedLibraryFoldersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> UpdateLibraryFolder(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentFolderId = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodyexternalConnectionId = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> CopyLibraryFolder([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodyparentFolderId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/folders/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodyparentFolderId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}/copy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyexternalId != null)
-            {
-                body["externalId"] = ExpressionConverter.ConvertO(bodyexternalId);
-                bodypropCount++;
-            }
-
-            if (bodyexternalConnectionId != null)
-            {
-                body["externalConnectionId"] = ExpressionConverter.ConvertO(bodyexternalConnectionId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFolderResponse>(callPayload);
+            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFolderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementNestedLibraryFoldersResponse> CreateNestedLibraryFolders(Expression<Func<string>> teamsiteId, Expression<Func<string>> folderPath = null)
+        public IBodyWorkflowAction<SeismicPagingLibraryContentManagementLibraryGenericItemDetailsResponse> GetLibraryFolderItems([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> includeExpiration = null, [WorkflowExpression] Func<bool> includeProperties = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/folders/createPath", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (folderPath != null)
-                callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-            return new ApiConnectionAction<SeismicLibraryContentManagementNestedLibraryFoldersResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/folders/{1}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Queries["includeExpiration"] = Convert.ToString(false);
+                if (includeExpiration != null)
+                    callPayload.Queries["includeExpiration"] = SourceExpressionConverter.ConvertO(includeExpiration);
+                callPayload.Queries["includeProperties"] = Convert.ToString(false);
+                if (includeProperties != null)
+                    callPayload.Queries["includeProperties"] = SourceExpressionConverter.ConvertO(includeProperties);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicPagingLibraryContentManagementLibraryGenericItemDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryFolderResponse> CopyLibraryFolder(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> bodyparentFolderId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse> GetLibraryItemDetails([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/folders/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryFolderResponse>(callPayload);
+            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicPagingLibraryContentManagementLibraryGenericItemDetailsResponse> GetLibraryFolderItems(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeExpiration = null, Expression<Func<bool>> includeProperties = null)
+        public IWorkflowAction DeleteLibraryItem([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/folders/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["includeExpiration"] = Convert.ToString(false);
-            if (includeExpiration != null)
-                callPayload.Queries["includeExpiration"] = ExpressionConverter.Convert(includeExpiration);
-            callPayload.Queries["includeProperties"] = Convert.ToString(false);
-            if (includeProperties != null)
-                callPayload.Queries["includeProperties"] = ExpressionConverter.Convert(includeProperties);
-            return new ApiConnectionAction<SeismicPagingLibraryContentManagementLibraryGenericItemDetailsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse> GetLibraryItemDetails(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse> CopyLibraryItem([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodyparentFolderId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/copy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IWorkflowAction DeleteLibraryItem(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementSimpleItemVersion[]> GetLibraryItemVersion([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/versions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicLibraryContentManagementSimpleItemVersion[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse> CopyLibraryItem(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> bodyparentFolderId)
+        public IBodyWorkflowAction<SeismicCommonItemsOfSeismicLibraryContentManagementLibraryGenericItemDetailsResponse> GetLibraryItemsByQuery([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> externalId = null, [WorkflowExpression] Func<string> externalConnectionId = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/items/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (externalId != null)
+                    callPayload.Queries["externalId"] = SourceExpressionConverter.ConvertO(externalId);
+                if (externalConnectionId != null)
+                    callPayload.Queries["externalConnectionId"] = SourceExpressionConverter.ConvertO(externalConnectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryGenericItemDetailsResponse>(callPayload);
+            return new ApiConnectionAction<SeismicCommonItemsOfSeismicLibraryContentManagementLibraryGenericItemDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementSimpleItemVersion[]> GetLibraryItemVersion(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
+        public IBodyWorkflowAction<string> UpdateThumbnailItem([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/items/{1}/versions", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicLibraryContentManagementSimpleItemVersion[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/thumbnail", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicCommonItemsOfSeismicLibraryContentManagementLibraryGenericItemDetailsResponse> GetLibraryItemsByQuery(Expression<Func<string>> teamsiteId, Expression<Func<string>> externalId = null, Expression<Func<string>> externalConnectionId = null)
+        public IBodyWorkflowAction<SeismicPagingLibraryInstructionsInstructionInfoResponse> GetLibraryInstructions([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (externalId != null)
-                callPayload.Queries["externalId"] = ExpressionConverter.Convert(externalId);
-            if (externalConnectionId != null)
-                callPayload.Queries["externalConnectionId"] = ExpressionConverter.Convert(externalConnectionId);
-            return new ApiConnectionAction<SeismicCommonItemsOfSeismicLibraryContentManagementLibraryGenericItemDetailsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/instructions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicPagingLibraryInstructionsInstructionInfoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<string> UpdateThumbnailItem(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<SeismicLibraryInstructionsInstructionInfoResponse> AddLibraryInstruction([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytext = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/items/{1}/thumbnail", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/instructions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.Convert(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodytext != null)
+                {
+                    body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicLibraryInstructionsInstructionInfoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicPagingLibraryInstructionsInstructionInfoResponse> GetLibraryInstructions(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
+        public IWorkflowAction DeleteLibraryInstruction([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> instructionId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/items/{1}/instructions", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<SeismicPagingLibraryInstructionsInstructionInfoResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/instructions/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instructionId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryInstructionsInstructionInfoResponse> AddLibraryInstruction(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<string[]> SubmitLibraryItemToWorkflow([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/items/{1}/instructions", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytype != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/submit", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycomments != null)
+                {
+                    body["comments"] = SourceExpressionConverter.ConvertToken(bodycomments);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicLibraryInstructionsInstructionInfoResponse>(callPayload);
+            return new ApiConnectionAction<string[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IWorkflowAction DeleteLibraryInstruction(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> instructionId)
+        public IWorkflowAction RecallItemFromWorkflow([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/items/{1}/instructions/{2}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(instructionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/recall", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycomments != null)
+                {
+                    body["comments"] = SourceExpressionConverter.ConvertToken(bodycomments);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<string[]> SubmitLibraryItemToWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<SeismicLibraryPublishingPublishResponse> PublishLibraryItems([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodypublishAt = null, [WorkflowExpression] Func<SeismicContentManagerPublishContentItem[]> bodycontent = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/items/{1}/submit", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycomments != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["comments"] = ExpressionConverter.ConvertO(bodycomments);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/publish", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycomment != null)
+                {
+                    body["comment"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodypublishAt != null)
+                {
+                    body["publishAt"] = SourceExpressionConverter.ConvertToken(bodypublishAt);
+                    bodypropCount++;
+                }
+
+                if (bodycontent != null)
+                {
+                    body["content"] = SourceExpressionConverter.ConvertToken(bodycontent);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new ApiConnectionAction<SeismicLibraryPublishingPublishResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IWorkflowAction RecallItemFromWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> bodycomments = null)
+        public IWorkflowAction UnpublishLibraryItem([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/items/{1}/recall", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycomments != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["comments"] = ExpressionConverter.ConvertO(bodycomments);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/unpublish", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryPublishingPublishResponse> PublishLibraryItems(Expression<Func<string>> teamsiteId, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodypublishAt = null, Expression<Func<SeismicContentManagerPublishContentItem[]>> bodycontent = null)
+        public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse> UpdateLibraryWorkflowStep([WorkflowExpression] Func<string> approvalWorkflowId, [WorkflowExpression] Func<string> stepId, [WorkflowExpression] Func<bodyactionInput> bodyaction = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodynextApprovernextApproverUsedId = null, [WorkflowExpression] Func<string> bodynextApprovernextApproverUserType = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/publish", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycomment != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["comment"] = ExpressionConverter.ConvertO(bodycomment);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/approvalWorkflows/{0}/steps/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(approvalWorkflowId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stepId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaction != null)
+                {
+                    body["action"] = SourceExpressionConverter.Convert(bodyaction);
+                    bodypropCount++;
+                }
+
+                if (bodycomment != null)
+                {
+                    body["comment"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                    bodypropCount++;
+                }
+
+                var nextApproverObject = new JObject();
+                var nextApproverObjectpropCount = 0;
+                if (bodynextApprovernextApproverUsedId != null)
+                {
+                    nextApproverObject["id"] = SourceExpressionConverter.ConvertToken(bodynextApprovernextApproverUsedId);
+                    nextApproverObjectpropCount++;
+                }
+
+                if (bodynextApprovernextApproverUserType != null)
+                {
+                    nextApproverObject["type"] = SourceExpressionConverter.ConvertToken(bodynextApprovernextApproverUserType);
+                    nextApproverObjectpropCount++;
+                }
+
+                if (nextApproverObjectpropCount > 0)
+                {
+                    body["nextApprover"] = nextApproverObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypublishAt != null)
-            {
-                body["publishAt"] = ExpressionConverter.ConvertO(bodypublishAt);
-                bodypropCount++;
-            }
-
-            if (bodycontent != null)
-            {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicLibraryPublishingPublishResponse>(callPayload);
+            return new ApiConnectionAction<SeismicLibraryWorkflowWorkflowResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IWorkflowAction UnpublishLibraryItem(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
+        public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse> GetLibraryWorkflow([WorkflowExpression] Func<string> approvalWorkflowId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/items/{1}/unpublish", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/approvalWorkflows/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(approvalWorkflowId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicLibraryWorkflowWorkflowResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse> UpdateLibraryWorkflowStep(Expression<Func<string>> approvalWorkflowId, Expression<Func<string>> stepId, Expression<Func<bodyactionInput>> bodyaction = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodynextApprovernextApproverUsedId = null, Expression<Func<string>> bodynextApprovernextApproverUserType = null)
+        public IBodyWorkflowAction<SeismicPagingLibraryWorkflowWorkflowResponse> GetWorkflows([WorkflowExpression] Func<string> teamsiteId = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> currentStepAssignedTo = null, [WorkflowExpression] Func<string> status = null)
         {
-            var apiCallPath = String.Format("/approvalWorkflows/{0}/steps/{1}", ExpressionConverter.ConvertWithUrlEncoding(approvalWorkflowId, 1), ExpressionConverter.ConvertWithUrlEncoding(stepId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaction != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["action"] = ExpressionConverter.ConvertO(bodyaction);
-                bodypropCount++;
+                var apiCallPath = "/approvalWorkflows";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (teamsiteId != null)
+                    callPayload.Queries["teamsiteId"] = SourceExpressionConverter.ConvertO(teamsiteId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (currentStepAssignedTo != null)
+                    callPayload.Queries["currentStepAssignedTo"] = SourceExpressionConverter.ConvertO(currentStepAssignedTo);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                return callPayload;
             }
 
-            if (bodycomment != null)
-            {
-                body["comment"] = ExpressionConverter.ConvertO(bodycomment);
-                bodypropCount++;
-            }
-
-            var nextApproverObject = new JObject();
-            var nextApproverObjectpropCount = 0;
-            if (bodynextApprovernextApproverUsedId != null)
-            {
-                nextApproverObject["id"] = ExpressionConverter.ConvertO(bodynextApprovernextApproverUsedId);
-                nextApproverObjectpropCount++;
-            }
-
-            if (bodynextApprovernextApproverUserType != null)
-            {
-                nextApproverObject["type"] = ExpressionConverter.ConvertO(bodynextApprovernextApproverUserType);
-                nextApproverObjectpropCount++;
-            }
-
-            if (nextApproverObjectpropCount > 0)
-            {
-                body["nextApprover"] = nextApproverObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicLibraryWorkflowWorkflowResponse>(callPayload);
+            return new ApiConnectionAction<SeismicPagingLibraryWorkflowWorkflowResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryWorkflowWorkflowResponse> GetLibraryWorkflow(Expression<Func<string>> approvalWorkflowId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> CreateLibraryUrl([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> bodyformat = null, [WorkflowExpression] Func<string> bodyurlurl = null, [WorkflowExpression] Func<bool> bodyurlopenInNewWindow = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyexpiresAt = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalConnectionId = null, [WorkflowExpression] Func<SeismicLibraryContentManagementContentExperts[]> bodyexperts = null, [WorkflowExpression] Func<SeismicLibraryContentManagementCustomProperties[]> bodycontentProperties = null)
         {
-            var apiCallPath = String.Format("/approvalWorkflows/{0}", ExpressionConverter.ConvertWithUrlEncoding(approvalWorkflowId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicLibraryWorkflowWorkflowResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyformat != null)
+                {
+                    body["format"] = SourceExpressionConverter.ConvertToken(bodyformat);
+                    bodypropCount++;
+                }
+
+                var urlObject = new JObject();
+                var urlObjectpropCount = 0;
+                if (bodyurlurl != null)
+                {
+                    urlObject["url"] = SourceExpressionConverter.ConvertToken(bodyurlurl);
+                    urlObjectpropCount++;
+                }
+
+                if (bodyurlopenInNewWindow != null)
+                {
+                    urlObject["openInNewWindow"] = SourceExpressionConverter.ConvertToken(bodyurlopenInNewWindow);
+                    urlObjectpropCount++;
+                }
+
+                if (urlObjectpropCount > 0)
+                {
+                    body["url"] = urlObject;
+                    bodypropCount++;
+                }
+
+                if (bodyownerId != null)
+                {
+                    body["ownerId"] = SourceExpressionConverter.ConvertToken(bodyownerId);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyparentFolderId != null)
+                {
+                    body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyexpiresAt != null)
+                {
+                    body["expiresAt"] = SourceExpressionConverter.ConvertToken(bodyexpiresAt);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalId != null)
+                {
+                    body["externalId"] = SourceExpressionConverter.ConvertToken(bodyexternalId);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalConnectionId != null)
+                {
+                    body["externalConnectionId"] = SourceExpressionConverter.ConvertToken(bodyexternalConnectionId);
+                    bodypropCount++;
+                }
+
+                if (bodyexperts != null)
+                {
+                    body["experts"] = SourceExpressionConverter.ConvertToken(bodyexperts);
+                    bodypropCount++;
+                }
+
+                if (bodycontentProperties != null)
+                {
+                    body["properties"] = SourceExpressionConverter.ConvertToken(bodycontentProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicPagingLibraryWorkflowWorkflowResponse> GetWorkflows(Expression<Func<string>> teamsiteId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> currentStepAssignedTo = null, Expression<Func<string>> status = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> GetLibraryUrlDetails([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
-            var apiCallPath = "/approvalWorkflows";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (teamsiteId != null)
-                callPayload.Queries["teamsiteId"] = ExpressionConverter.Convert(teamsiteId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (currentStepAssignedTo != null)
-                callPayload.Queries["currentStepAssignedTo"] = ExpressionConverter.Convert(currentStepAssignedTo);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<SeismicPagingLibraryWorkflowWorkflowResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> CreateLibraryUrl(Expression<Func<string>> teamsiteId, Expression<Func<string>> bodyformat = null, Expression<Func<string>> bodyurlurl = null, Expression<Func<bool>> bodyurlopenInNewWindow = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyexpiresAt = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodyexternalConnectionId = null, Expression<Func<SeismicLibraryContentManagementContentExperts[]>> bodyexperts = null, Expression<Func<SeismicLibraryContentManagementCustomProperties[]>> bodycontentProperties = null)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> UpdateLibraryUrl([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<bool> includeResponse = null, [WorkflowExpression] Func<string> bodyurlurl = null, [WorkflowExpression] Func<bool> bodyurlopenInNewWindow = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<SeismicLibraryContentManagementContentExperts[]> bodyexperts = null, [WorkflowExpression] Func<SeismicLibraryContentManagementCustomProperties[]> bodycontentProperties = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyexpiresAt = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodyexternalConnectionId = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/urls", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyformat != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includeResponse"] = Convert.ToString(true);
+                if (includeResponse != null)
+                    callPayload.Queries["includeResponse"] = SourceExpressionConverter.ConvertO(includeResponse);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var urlObject = new JObject();
+                var urlObjectpropCount = 0;
+                if (bodyurlurl != null)
+                {
+                    urlObject["url"] = SourceExpressionConverter.ConvertToken(bodyurlurl);
+                    urlObjectpropCount++;
+                }
+
+                if (bodyurlopenInNewWindow != null)
+                {
+                    urlObject["openInNewWindow"] = SourceExpressionConverter.ConvertToken(bodyurlopenInNewWindow);
+                    urlObjectpropCount++;
+                }
+
+                if (urlObjectpropCount > 0)
+                {
+                    body["url"] = urlObject;
+                    bodypropCount++;
+                }
+
+                if (bodyownerId != null)
+                {
+                    body["ownerId"] = SourceExpressionConverter.ConvertToken(bodyownerId);
+                    bodypropCount++;
+                }
+
+                if (bodyexperts != null)
+                {
+                    body["experts"] = SourceExpressionConverter.ConvertToken(bodyexperts);
+                    bodypropCount++;
+                }
+
+                if (bodycontentProperties != null)
+                {
+                    body["properties"] = SourceExpressionConverter.ConvertToken(bodycontentProperties);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyexpiresAt != null)
+                {
+                    body["expiresAt"] = SourceExpressionConverter.ConvertToken(bodyexpiresAt);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyparentFolderId != null)
+                {
+                    body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalId != null)
+                {
+                    body["externalId"] = SourceExpressionConverter.ConvertToken(bodyexternalId);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalConnectionId != null)
+                {
+                    body["externalConnectionId"] = SourceExpressionConverter.ConvertToken(bodyexternalConnectionId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var urlObject = new JObject();
-            var urlObjectpropCount = 0;
-            if (bodyurlurl != null)
-            {
-                urlObject["url"] = ExpressionConverter.ConvertO(bodyurlurl);
-                urlObjectpropCount++;
-            }
-
-            if (bodyurlopenInNewWindow != null)
-            {
-                urlObject["openInNewWindow"] = ExpressionConverter.ConvertO(bodyurlopenInNewWindow);
-                urlObjectpropCount++;
-            }
-
-            if (urlObjectpropCount > 0)
-            {
-                body["url"] = urlObject;
-                bodypropCount++;
-            }
-
-            if (bodyownerId != null)
-            {
-                body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodyparentFolderId != null)
-            {
-                body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodyexpiresAt != null)
-            {
-                body["expiresAt"] = ExpressionConverter.ConvertO(bodyexpiresAt);
-                bodypropCount++;
-            }
-
-            if (bodyexternalId != null)
-            {
-                body["externalId"] = ExpressionConverter.ConvertO(bodyexternalId);
-                bodypropCount++;
-            }
-
-            if (bodyexternalConnectionId != null)
-            {
-                body["externalConnectionId"] = ExpressionConverter.ConvertO(bodyexternalConnectionId);
-                bodypropCount++;
-            }
-
-            if (bodyexperts != null)
-            {
-                body["experts"] = ExpressionConverter.ConvertO(bodyexperts);
-                bodypropCount++;
-            }
-
-            if (bodycontentProperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodycontentProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(callPayload);
+            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> GetLibraryUrlDetails(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
+        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> CopyLibraryUrl([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> bodyparentFolderId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/urls/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> UpdateLibraryUrl(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<bool>> includeResponse = null, Expression<Func<string>> bodyurlurl = null, Expression<Func<bool>> bodyurlopenInNewWindow = null, Expression<Func<string>> bodyownerId = null, Expression<Func<SeismicLibraryContentManagementContentExperts[]>> bodyexperts = null, Expression<Func<SeismicLibraryContentManagementCustomProperties[]>> bodycontentProperties = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyexpiresAt = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodyexternalConnectionId = null)
-        {
-            var apiCallPath = String.Format("/teamsites/{0}/urls/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includeResponse"] = Convert.ToString(true);
-            if (includeResponse != null)
-                callPayload.Queries["includeResponse"] = ExpressionConverter.Convert(includeResponse);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var urlObject = new JObject();
-            var urlObjectpropCount = 0;
-            if (bodyurlurl != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                urlObject["url"] = ExpressionConverter.ConvertO(bodyurlurl);
-                urlObjectpropCount++;
-            }
-
-            if (bodyurlopenInNewWindow != null)
-            {
-                urlObject["openInNewWindow"] = ExpressionConverter.ConvertO(bodyurlopenInNewWindow);
-                urlObjectpropCount++;
-            }
-
-            if (urlObjectpropCount > 0)
-            {
-                body["url"] = urlObject;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/urls/{1}/copy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyownerId != null)
-            {
-                body["ownerId"] = ExpressionConverter.ConvertO(bodyownerId);
-                bodypropCount++;
-            }
-
-            if (bodyexperts != null)
-            {
-                body["experts"] = ExpressionConverter.ConvertO(bodyexperts);
-                bodypropCount++;
-            }
-
-            if (bodycontentProperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodycontentProperties);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodyexpiresAt != null)
-            {
-                body["expiresAt"] = ExpressionConverter.ConvertO(bodyexpiresAt);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodyparentFolderId != null)
-            {
-                body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
-                bodypropCount++;
-            }
-
-            if (bodyexternalId != null)
-            {
-                body["externalId"] = ExpressionConverter.ConvertO(bodyexternalId);
-                bodypropCount++;
-            }
-
-            if (bodyexternalConnectionId != null)
-            {
-                body["externalConnectionId"] = ExpressionConverter.ConvertO(bodyexternalConnectionId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclibrary")]
-        public IBodyWorkflowAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse> CopyLibraryUrl(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> bodyparentFolderId)
-        {
-            var apiCallPath = String.Format("/teamsites/{0}/urls/{1}/copy", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(callPayload);
+            return new ApiConnectionAction<SeismicLibraryContentManagementLibraryUrlDetailsResponse>(BuildSourceInput);
         }
     }
 

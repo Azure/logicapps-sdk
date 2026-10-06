@@ -12,81 +12,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
     public class AppsforopsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appsforops")]
-        public IBodyWorkflowAction<NPSCreateResponse> ApiExtNPS(Expression<Func<string>> modelemail, Expression<Func<int>> modelscore, Expression<Func<string>> modelratingDate, Expression<Func<string>> modelname = null, Expression<Func<string>> modelcomments = null, Expression<Func<string>> modeladditionalData = null)
+        public IBodyWorkflowAction<NPSCreateResponse> ApiExtNPS([WorkflowExpression] Func<string> modelemail, [WorkflowExpression] Func<int> modelscore, [WorkflowExpression] Func<string> modelratingDate, [WorkflowExpression] Func<string> modelname = null, [WorkflowExpression] Func<string> modelcomments = null, [WorkflowExpression] Func<string> modeladditionalData = null)
         {
-            var apiCallPath = "/api/ext/NPS";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var model = new JObject();
-            var modelpropCount = 0;
-            modelpropCount++;
-            model["email"] = ExpressionConverter.ConvertO(modelemail);
-            if (modelname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                model["name"] = ExpressionConverter.ConvertO(modelname);
+                var apiCallPath = "/api/ext/NPS";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var model = new JObject();
+                var modelpropCount = 0;
                 modelpropCount++;
-            }
+                model["email"] = SourceExpressionConverter.ConvertToken(modelemail);
+                if (modelname != null)
+                {
+                    model["name"] = SourceExpressionConverter.ConvertToken(modelname);
+                    modelpropCount++;
+                }
 
-            modelpropCount++;
-            model["score"] = ExpressionConverter.ConvertO(modelscore);
-            modelpropCount++;
-            model["ratingDate"] = ExpressionConverter.ConvertO(modelratingDate);
-            if (modelcomments != null)
-            {
-                model["comments"] = ExpressionConverter.ConvertO(modelcomments);
                 modelpropCount++;
-            }
-
-            if (modeladditionalData != null)
-            {
-                model["additionalData"] = ExpressionConverter.ConvertO(modeladditionalData);
+                model["score"] = SourceExpressionConverter.ConvertToken(modelscore);
                 modelpropCount++;
+                model["ratingDate"] = SourceExpressionConverter.ConvertToken(modelratingDate);
+                if (modelcomments != null)
+                {
+                    model["comments"] = SourceExpressionConverter.ConvertToken(modelcomments);
+                    modelpropCount++;
+                }
+
+                if (modeladditionalData != null)
+                {
+                    model["additionalData"] = SourceExpressionConverter.ConvertToken(modeladditionalData);
+                    modelpropCount++;
+                }
+
+                if (modelpropCount > 0)
+                {
+                    callPayload.Body = model;
+                }
+                return callPayload;
             }
 
-            if (modelpropCount > 0)
-            {
-                callPayload.Body = model;
-            }
-
-            return new ApiConnectionAction<NPSCreateResponse>(callPayload);
+            return new ApiConnectionAction<NPSCreateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appsforops")]
-        public IBodyWorkflowAction<TimelineCreateResponse> ApiExtTimeline(Expression<Func<string>> modelsource, Expression<Func<string>> modeltitle, Expression<Func<string>> modeldescription, Expression<Func<string>> modeltoDisplayName, Expression<Func<string>> modeltoEmail, Expression<Func<string>> modelfromDisplayName, Expression<Func<string>> modelfromEmail, Expression<Func<string>> modelcreatedByDateTime, Expression<Func<string>> modelculture = null)
+        public IBodyWorkflowAction<TimelineCreateResponse> ApiExtTimeline([WorkflowExpression] Func<string> modelsource, [WorkflowExpression] Func<string> modeltitle, [WorkflowExpression] Func<string> modeldescription, [WorkflowExpression] Func<string> modeltoDisplayName, [WorkflowExpression] Func<string> modeltoEmail, [WorkflowExpression] Func<string> modelfromDisplayName, [WorkflowExpression] Func<string> modelfromEmail, [WorkflowExpression] Func<string> modelcreatedByDateTime, [WorkflowExpression] Func<string> modelculture = null)
         {
-            var apiCallPath = "/api/ext/Timeline";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var model = new JObject();
-            var modelpropCount = 0;
-            modelpropCount++;
-            model["source"] = ExpressionConverter.ConvertO(modelsource);
-            modelpropCount++;
-            model["title"] = ExpressionConverter.ConvertO(modeltitle);
-            modelpropCount++;
-            model["description"] = ExpressionConverter.ConvertO(modeldescription);
-            modelpropCount++;
-            model["toDisplayName"] = ExpressionConverter.ConvertO(modeltoDisplayName);
-            modelpropCount++;
-            model["toEmail"] = ExpressionConverter.ConvertO(modeltoEmail);
-            modelpropCount++;
-            model["fromDisplayName"] = ExpressionConverter.ConvertO(modelfromDisplayName);
-            modelpropCount++;
-            model["fromEmail"] = ExpressionConverter.ConvertO(modelfromEmail);
-            modelpropCount++;
-            model["createdByDateTime"] = ExpressionConverter.ConvertO(modelcreatedByDateTime);
-            if (modelculture != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                model["culture"] = ExpressionConverter.ConvertO(modelculture);
+                var apiCallPath = "/api/ext/Timeline";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var model = new JObject();
+                var modelpropCount = 0;
                 modelpropCount++;
+                model["source"] = SourceExpressionConverter.ConvertToken(modelsource);
+                modelpropCount++;
+                model["title"] = SourceExpressionConverter.ConvertToken(modeltitle);
+                modelpropCount++;
+                model["description"] = SourceExpressionConverter.ConvertToken(modeldescription);
+                modelpropCount++;
+                model["toDisplayName"] = SourceExpressionConverter.ConvertToken(modeltoDisplayName);
+                modelpropCount++;
+                model["toEmail"] = SourceExpressionConverter.ConvertToken(modeltoEmail);
+                modelpropCount++;
+                model["fromDisplayName"] = SourceExpressionConverter.ConvertToken(modelfromDisplayName);
+                modelpropCount++;
+                model["fromEmail"] = SourceExpressionConverter.ConvertToken(modelfromEmail);
+                modelpropCount++;
+                model["createdByDateTime"] = SourceExpressionConverter.ConvertToken(modelcreatedByDateTime);
+                if (modelculture != null)
+                {
+                    model["culture"] = SourceExpressionConverter.ConvertToken(modelculture);
+                    modelpropCount++;
+                }
+
+                if (modelpropCount > 0)
+                {
+                    callPayload.Body = model;
+                }
+                return callPayload;
             }
 
-            if (modelpropCount > 0)
-            {
-                callPayload.Body = model;
-            }
-
-            return new ApiConnectionAction<TimelineCreateResponse>(callPayload);
+            return new ApiConnectionAction<TimelineCreateResponse>(BuildSourceInput);
         }
     }
 

@@ -12,527 +12,737 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
     public class UsajobsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<SearchJobsResponse> SearchJobs(Expression<Func<string>> keyword = null, Expression<Func<string>> positionTitle = null, Expression<Func<int>> remunerationMinimumAmount = null, Expression<Func<int>> remunerationMaximumAmount = null, Expression<Func<string>> payGradeHigh = null, Expression<Func<string>> payGradeLow = null, Expression<Func<string>> jobCategoryCode = null, Expression<Func<bool>> remoteIndicator = null, Expression<Func<string>> locationName = null, Expression<Func<int>> radius = null, Expression<Func<bool>> relocationIndicator = null, Expression<Func<string>> travelPercentage = null, Expression<Func<string>> organization = null, Expression<Func<string>> positionOfferingTypeCode = null, Expression<Func<string>> positionScheduleTypeCode = null, Expression<Func<string>> securityClearanceRequired = null, Expression<Func<positionSensitivityInput>> positionSensitivity = null, Expression<Func<bool>> supervisoryStatus = null, Expression<Func<int>> datePosted = null, Expression<Func<string>> jobGradeCode = null, Expression<Func<string>> whoMayApply = null, Expression<Func<string>> salaryBucket = null, Expression<Func<string>> gradeBucket = null, Expression<Func<string>> hiringPath = null, Expression<Func<string>> missionCriticalTags = null, Expression<Func<string>> postingChannel = null, Expression<Func<fieldsInput>> fields = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortDirectionInput>> sortDirection = null, Expression<Func<int>> page = null, Expression<Func<int>> resultsPerPage = null)
+        public IBodyWorkflowAction<SearchJobsResponse> SearchJobs([WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> positionTitle = null, [WorkflowExpression] Func<int> remunerationMinimumAmount = null, [WorkflowExpression] Func<int> remunerationMaximumAmount = null, [WorkflowExpression] Func<string> payGradeHigh = null, [WorkflowExpression] Func<string> payGradeLow = null, [WorkflowExpression] Func<string> jobCategoryCode = null, [WorkflowExpression] Func<bool> remoteIndicator = null, [WorkflowExpression] Func<string> locationName = null, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<bool> relocationIndicator = null, [WorkflowExpression] Func<string> travelPercentage = null, [WorkflowExpression] Func<string> organization = null, [WorkflowExpression] Func<string> positionOfferingTypeCode = null, [WorkflowExpression] Func<string> positionScheduleTypeCode = null, [WorkflowExpression] Func<string> securityClearanceRequired = null, [WorkflowExpression] Func<positionSensitivityInput> positionSensitivity = null, [WorkflowExpression] Func<bool> supervisoryStatus = null, [WorkflowExpression] Func<int> datePosted = null, [WorkflowExpression] Func<string> jobGradeCode = null, [WorkflowExpression] Func<string> whoMayApply = null, [WorkflowExpression] Func<string> salaryBucket = null, [WorkflowExpression] Func<string> gradeBucket = null, [WorkflowExpression] Func<string> hiringPath = null, [WorkflowExpression] Func<string> missionCriticalTags = null, [WorkflowExpression] Func<string> postingChannel = null, [WorkflowExpression] Func<fieldsInput> fields = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<sortDirectionInput> sortDirection = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> resultsPerPage = null)
         {
-            var apiCallPath = "/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (keyword != null)
-                callPayload.Queries["Keyword"] = ExpressionConverter.Convert(keyword);
-            if (positionTitle != null)
-                callPayload.Queries["PositionTitle"] = ExpressionConverter.Convert(positionTitle);
-            if (remunerationMinimumAmount != null)
-                callPayload.Queries["RemunerationMinimumAmount"] = ExpressionConverter.Convert(remunerationMinimumAmount);
-            if (remunerationMaximumAmount != null)
-                callPayload.Queries["RemunerationMaximumAmount"] = ExpressionConverter.Convert(remunerationMaximumAmount);
-            if (payGradeHigh != null)
-                callPayload.Queries["PayGradeHigh"] = ExpressionConverter.Convert(payGradeHigh);
-            if (payGradeLow != null)
-                callPayload.Queries["PayGradeLow"] = ExpressionConverter.Convert(payGradeLow);
-            if (jobCategoryCode != null)
-                callPayload.Queries["JobCategoryCode"] = ExpressionConverter.Convert(jobCategoryCode);
-            if (remoteIndicator != null)
-                callPayload.Queries["RemoteIndicator"] = ExpressionConverter.Convert(remoteIndicator);
-            if (locationName != null)
-                callPayload.Queries["LocationName"] = ExpressionConverter.Convert(locationName);
-            if (radius != null)
-                callPayload.Queries["Radius"] = ExpressionConverter.Convert(radius);
-            if (relocationIndicator != null)
-                callPayload.Queries["RelocationIndicator"] = ExpressionConverter.Convert(relocationIndicator);
-            if (travelPercentage != null)
-                callPayload.Queries["TravelPercentage"] = ExpressionConverter.Convert(travelPercentage);
-            if (organization != null)
-                callPayload.Queries["Organization"] = ExpressionConverter.Convert(organization);
-            if (positionOfferingTypeCode != null)
-                callPayload.Queries["PositionOfferingTypeCode"] = ExpressionConverter.Convert(positionOfferingTypeCode);
-            if (positionScheduleTypeCode != null)
-                callPayload.Queries["PositionScheduleTypeCode"] = ExpressionConverter.Convert(positionScheduleTypeCode);
-            if (securityClearanceRequired != null)
-                callPayload.Queries["SecurityClearanceRequired"] = ExpressionConverter.Convert(securityClearanceRequired);
-            if (positionSensitivity != null)
-                callPayload.Queries["PositionSensitivity"] = ExpressionConverter.Convert(positionSensitivity);
-            if (supervisoryStatus != null)
-                callPayload.Queries["SupervisoryStatus"] = ExpressionConverter.Convert(supervisoryStatus);
-            if (datePosted != null)
-                callPayload.Queries["DatePosted"] = ExpressionConverter.Convert(datePosted);
-            if (jobGradeCode != null)
-                callPayload.Queries["JobGradeCode"] = ExpressionConverter.Convert(jobGradeCode);
-            if (whoMayApply != null)
-                callPayload.Queries["WhoMayApply"] = ExpressionConverter.Convert(whoMayApply);
-            if (salaryBucket != null)
-                callPayload.Queries["SalaryBucket"] = ExpressionConverter.Convert(salaryBucket);
-            if (gradeBucket != null)
-                callPayload.Queries["GradeBucket"] = ExpressionConverter.Convert(gradeBucket);
-            if (hiringPath != null)
-                callPayload.Queries["HiringPath"] = ExpressionConverter.Convert(hiringPath);
-            if (missionCriticalTags != null)
-                callPayload.Queries["MissionCriticalTags"] = ExpressionConverter.Convert(missionCriticalTags);
-            if (postingChannel != null)
-                callPayload.Queries["PostingChannel"] = ExpressionConverter.Convert(postingChannel);
-            if (fields != null)
-                callPayload.Queries["Fields"] = ExpressionConverter.Convert(fields);
-            if (sortField != null)
-                callPayload.Queries["SortField"] = ExpressionConverter.Convert(sortField);
-            if (sortDirection != null)
-                callPayload.Queries["SortDirection"] = ExpressionConverter.Convert(sortDirection);
-            if (page != null)
-                callPayload.Queries["Page"] = ExpressionConverter.Convert(page);
-            if (resultsPerPage != null)
-                callPayload.Queries["ResultsPerPage"] = ExpressionConverter.Convert(resultsPerPage);
-            return new ApiConnectionAction<SearchJobsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (keyword != null)
+                    callPayload.Queries["Keyword"] = SourceExpressionConverter.ConvertO(keyword);
+                if (positionTitle != null)
+                    callPayload.Queries["PositionTitle"] = SourceExpressionConverter.ConvertO(positionTitle);
+                if (remunerationMinimumAmount != null)
+                    callPayload.Queries["RemunerationMinimumAmount"] = SourceExpressionConverter.ConvertO(remunerationMinimumAmount);
+                if (remunerationMaximumAmount != null)
+                    callPayload.Queries["RemunerationMaximumAmount"] = SourceExpressionConverter.ConvertO(remunerationMaximumAmount);
+                if (payGradeHigh != null)
+                    callPayload.Queries["PayGradeHigh"] = SourceExpressionConverter.ConvertO(payGradeHigh);
+                if (payGradeLow != null)
+                    callPayload.Queries["PayGradeLow"] = SourceExpressionConverter.ConvertO(payGradeLow);
+                if (jobCategoryCode != null)
+                    callPayload.Queries["JobCategoryCode"] = SourceExpressionConverter.ConvertO(jobCategoryCode);
+                if (remoteIndicator != null)
+                    callPayload.Queries["RemoteIndicator"] = SourceExpressionConverter.ConvertO(remoteIndicator);
+                if (locationName != null)
+                    callPayload.Queries["LocationName"] = SourceExpressionConverter.ConvertO(locationName);
+                if (radius != null)
+                    callPayload.Queries["Radius"] = SourceExpressionConverter.ConvertO(radius);
+                if (relocationIndicator != null)
+                    callPayload.Queries["RelocationIndicator"] = SourceExpressionConverter.ConvertO(relocationIndicator);
+                if (travelPercentage != null)
+                    callPayload.Queries["TravelPercentage"] = SourceExpressionConverter.ConvertO(travelPercentage);
+                if (organization != null)
+                    callPayload.Queries["Organization"] = SourceExpressionConverter.ConvertO(organization);
+                if (positionOfferingTypeCode != null)
+                    callPayload.Queries["PositionOfferingTypeCode"] = SourceExpressionConverter.ConvertO(positionOfferingTypeCode);
+                if (positionScheduleTypeCode != null)
+                    callPayload.Queries["PositionScheduleTypeCode"] = SourceExpressionConverter.ConvertO(positionScheduleTypeCode);
+                if (securityClearanceRequired != null)
+                    callPayload.Queries["SecurityClearanceRequired"] = SourceExpressionConverter.ConvertO(securityClearanceRequired);
+                if (positionSensitivity != null)
+                    callPayload.Queries["PositionSensitivity"] = SourceExpressionConverter.Convert(positionSensitivity);
+                if (supervisoryStatus != null)
+                    callPayload.Queries["SupervisoryStatus"] = SourceExpressionConverter.ConvertO(supervisoryStatus);
+                if (datePosted != null)
+                    callPayload.Queries["DatePosted"] = SourceExpressionConverter.ConvertO(datePosted);
+                if (jobGradeCode != null)
+                    callPayload.Queries["JobGradeCode"] = SourceExpressionConverter.ConvertO(jobGradeCode);
+                if (whoMayApply != null)
+                    callPayload.Queries["WhoMayApply"] = SourceExpressionConverter.ConvertO(whoMayApply);
+                if (salaryBucket != null)
+                    callPayload.Queries["SalaryBucket"] = SourceExpressionConverter.ConvertO(salaryBucket);
+                if (gradeBucket != null)
+                    callPayload.Queries["GradeBucket"] = SourceExpressionConverter.ConvertO(gradeBucket);
+                if (hiringPath != null)
+                    callPayload.Queries["HiringPath"] = SourceExpressionConverter.ConvertO(hiringPath);
+                if (missionCriticalTags != null)
+                    callPayload.Queries["MissionCriticalTags"] = SourceExpressionConverter.ConvertO(missionCriticalTags);
+                if (postingChannel != null)
+                    callPayload.Queries["PostingChannel"] = SourceExpressionConverter.ConvertO(postingChannel);
+                if (fields != null)
+                    callPayload.Queries["Fields"] = SourceExpressionConverter.Convert(fields);
+                if (sortField != null)
+                    callPayload.Queries["SortField"] = SourceExpressionConverter.Convert(sortField);
+                if (sortDirection != null)
+                    callPayload.Queries["SortDirection"] = SourceExpressionConverter.Convert(sortDirection);
+                if (page != null)
+                    callPayload.Queries["Page"] = SourceExpressionConverter.ConvertO(page);
+                if (resultsPerPage != null)
+                    callPayload.Queries["ResultsPerPage"] = SourceExpressionConverter.ConvertO(resultsPerPage);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchJobsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListAcademicHonorsResponse> ListAcademicHonors(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListAcademicHonorsResponse> ListAcademicHonors([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/academichonors";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListAcademicHonorsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/academichonors";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAcademicHonorsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListAcademicLevelsResponse> ListAcademicLevels(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListAcademicLevelsResponse> ListAcademicLevels([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/academiclevels";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListAcademicLevelsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/academiclevels";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAcademicLevelsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListActionCodesResponse> ListActionCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListActionCodesResponse> ListActionCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/actioncodes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListActionCodesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/actioncodes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListActionCodesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListAgencySubelementsResponse> ListAgencySubelements(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListAgencySubelementsResponse> ListAgencySubelements([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/agencysubelements";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListAgencySubelementsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/agencysubelements";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAgencySubelementsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListAnnouncementClosingTypesResponse> ListAnnouncementClosingTypes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListAnnouncementClosingTypesResponse> ListAnnouncementClosingTypes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/announcementclosingtypes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListAnnouncementClosingTypesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/announcementclosingtypes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAnnouncementClosingTypesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListApplicantSuppliersResponse> ListApplicantSuppliers(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListApplicantSuppliersResponse> ListApplicantSuppliers([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/applicantsuppliers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListApplicantSuppliersResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/applicantsuppliers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListApplicantSuppliersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListApplicationStatusesResponse> ListApplicationStatuses(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListApplicationStatusesResponse> ListApplicationStatuses([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/applicationstatuses";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListApplicationStatusesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/applicationstatuses";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListApplicationStatusesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListCountriesResponse> ListCountries(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListCountriesResponse> ListCountries([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/countries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListCountriesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/countries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListCountriesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListCountrySubdivisionsResponse> ListCountrySubdivisions(Expression<Func<string>> country = null, Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListCountrySubdivisionsResponse> ListCountrySubdivisions([WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/countrysubdivisions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListCountrySubdivisionsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/countrysubdivisions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (country != null)
+                    callPayload.Queries["country"] = SourceExpressionConverter.ConvertO(country);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListCountrySubdivisionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListCyberWorkGroupingsResponse> ListCyberWorkGroupings(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListCyberWorkGroupingsResponse> ListCyberWorkGroupings([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/cyberworkgroupings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListCyberWorkGroupingsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/cyberworkgroupings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListCyberWorkGroupingsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListCyberWorkRolesResponse> ListCyberWorkRoles(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListCyberWorkRolesResponse> ListCyberWorkRoles([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/cyberworkroles";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListCyberWorkRolesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/cyberworkroles";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListCyberWorkRolesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListDegreeTypeCodesResponse> ListDegreeTypeCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListDegreeTypeCodesResponse> ListDegreeTypeCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/degreetypecodes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListDegreeTypeCodesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/degreetypecodes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListDegreeTypeCodesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListDisabilitiesResponse> ListDisabilities(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListDisabilitiesResponse> ListDisabilities([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/disabilities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListDisabilitiesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/disabilities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListDisabilitiesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListDocumentationsResponse> ListDocumentations(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListDocumentationsResponse> ListDocumentations([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/documentations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListDocumentationsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/documentations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListDocumentationsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListDocumentFormatsResponse> ListDocumentFormats(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListDocumentFormatsResponse> ListDocumentFormats([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/documentformats";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListDocumentFormatsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/documentformats";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListDocumentFormatsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListEthnicitiesResponse> ListEthnicities(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListEthnicitiesResponse> ListEthnicities([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/ethnicities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListEthnicitiesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/ethnicities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListEthnicitiesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListFederalEmploymentStatusesResponse> ListFederalEmploymentStatuses(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListFederalEmploymentStatusesResponse> ListFederalEmploymentStatuses([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/federalemploymentstatuses";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListFederalEmploymentStatusesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/federalemploymentstatuses";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListFederalEmploymentStatusesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListGeolocCodesResponse> ListGeolocCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListGeolocCodesResponse> ListGeolocCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/geoloccodes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListGeolocCodesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/geoloccodes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListGeolocCodesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListGsaGeolocCodesResponse> ListGsaGeolocCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListGsaGeolocCodesResponse> ListGsaGeolocCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/gsageoloccodes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListGsaGeolocCodesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/gsageoloccodes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListGsaGeolocCodesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListHiringPathsResponse> ListHiringPaths(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListHiringPathsResponse> ListHiringPaths([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/hiringpaths";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListHiringPathsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/hiringpaths";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListHiringPathsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListKeyStandardRequirementsResponse> ListKeyStandardRequirements(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListKeyStandardRequirementsResponse> ListKeyStandardRequirements([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/keystandardrequirements";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListKeyStandardRequirementsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/keystandardrequirements";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListKeyStandardRequirementsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListLanguageCodesResponse> ListLanguageCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListLanguageCodesResponse> ListLanguageCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/languagecodes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListLanguageCodesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/languagecodes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListLanguageCodesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListLanguageProficienciesResponse> ListLanguageProficiencies(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListLanguageProficienciesResponse> ListLanguageProficiencies([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/languageproficiencies";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListLanguageProficienciesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/languageproficiencies";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListLanguageProficienciesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListLocationExpansionsResponse> ListLocationExpansions(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListLocationExpansionsResponse> ListLocationExpansions([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/locationexpansions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListLocationExpansionsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/locationexpansions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListLocationExpansionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListMilitaryStatusCodesResponse> ListMilitaryStatusCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListMilitaryStatusCodesResponse> ListMilitaryStatusCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/militarystatuscodes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListMilitaryStatusCodesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/militarystatuscodes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListMilitaryStatusCodesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListMissionCriticalCodesResponse> ListMissionCriticalCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListMissionCriticalCodesResponse> ListMissionCriticalCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/missioncriticalcodes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListMissionCriticalCodesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/missioncriticalcodes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListMissionCriticalCodesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListOccupationalSeriesResponse> ListOccupationalSeries(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListOccupationalSeriesResponse> ListOccupationalSeries([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/occupationalseries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListOccupationalSeriesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/occupationalseries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListOccupationalSeriesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListPayPlansResponse> ListPayPlans(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListPayPlansResponse> ListPayPlans([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/payplans";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListPayPlansResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/payplans";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListPayPlansResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListPositionOfferingTypesResponse> ListPositionOfferingTypes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListPositionOfferingTypesResponse> ListPositionOfferingTypes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/positionofferingtypes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListPositionOfferingTypesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/positionofferingtypes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListPositionOfferingTypesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListPositionOpeningStatusesResponse> ListPositionOpeningStatuses(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListPositionOpeningStatusesResponse> ListPositionOpeningStatuses([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/positionopeningstatuses";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListPositionOpeningStatusesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/positionopeningstatuses";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListPositionOpeningStatusesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListPositionScheduleTypesResponse> ListPositionScheduleTypes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListPositionScheduleTypesResponse> ListPositionScheduleTypes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/positionscheduletypes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListPositionScheduleTypesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/positionscheduletypes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListPositionScheduleTypesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListPostalCodesResponse> ListPostalCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListPostalCodesResponse> ListPostalCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/postalcodes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListPostalCodesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/postalcodes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListPostalCodesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListRaceCodesResponse> ListRaceCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListRaceCodesResponse> ListRaceCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/racecodes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListRaceCodesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/racecodes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListRaceCodesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListRefereeTypeCodesResponse> ListRefereeTypeCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListRefereeTypeCodesResponse> ListRefereeTypeCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/refereetypecodes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListRefereeTypeCodesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/refereetypecodes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListRefereeTypeCodesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListRemunerationRateIntervalCodesResponse> ListRemunerationRateIntervalCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListRemunerationRateIntervalCodesResponse> ListRemunerationRateIntervalCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/remunerationrateintervalcodes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListRemunerationRateIntervalCodesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/remunerationrateintervalcodes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListRemunerationRateIntervalCodesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListRequiredStandardDocumentsResponse> ListRequiredStandardDocuments(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListRequiredStandardDocumentsResponse> ListRequiredStandardDocuments([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/requiredstandarddocuments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListRequiredStandardDocumentsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/requiredstandarddocuments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListRequiredStandardDocumentsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListSecurityClearancesResponse> ListSecurityClearances(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListSecurityClearancesResponse> ListSecurityClearances([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/securityclearances";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListSecurityClearancesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/securityclearances";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListSecurityClearancesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListServiceTypesResponse> ListServiceTypes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListServiceTypesResponse> ListServiceTypes([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/servicetypes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListServiceTypesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/servicetypes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListServiceTypesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListSpecialHiringsResponse> ListSpecialHirings(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListSpecialHiringsResponse> ListSpecialHirings([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/specialhirings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListSpecialHiringsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/specialhirings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListSpecialHiringsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListTravelPercentagesResponse> ListTravelPercentages(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListTravelPercentagesResponse> ListTravelPercentages([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/travelpercentages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListTravelPercentagesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/travelpercentages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListTravelPercentagesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListWhoMayApplyResponse> ListWhoMayApply(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListWhoMayApplyResponse> ListWhoMayApply([WorkflowExpression] Func<string> lastmodified = null)
         {
-            var apiCallPath = "/codelist/whomayapply";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lastmodified != null)
-                callPayload.Queries["lastmodified"] = ExpressionConverter.Convert(lastmodified);
-            return new ApiConnectionAction<ListWhoMayApplyResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/codelist/whomayapply";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lastmodified != null)
+                    callPayload.Queries["lastmodified"] = SourceExpressionConverter.ConvertO(lastmodified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListWhoMayApplyResponse>(BuildSourceInput);
         }
     }
 

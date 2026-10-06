@@ -14,80 +14,108 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
     public class ConfluentKafkaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "confluentKafka")]
-        public IBodyWorkflowAction<SendMessageOutput> SendMessage(Expression<Func<string>> topicName, Expression<Func<object>> message, Expression<Func<string>> messageKey = null, Expression<Func<object>> headers = null, Expression<Func<string>> schemaSubjectName = null)
+        public IBodyWorkflowAction<SendMessageOutput> SendMessage([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<object> message, [WorkflowExpression] Func<string> messageKey = null, [WorkflowExpression] Func<object> headers = null, [WorkflowExpression] Func<string> schemaSubjectName = null, [WorkflowExpression] Func<bool> rawStringContent = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["TopicName"] = ExpressionConverter.ConvertO(topicName);
-            serviceProviderParameters["Message"] = ExpressionConverter.ConvertO(message);
-            if (messageKey != null)
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["messageKey"] = ExpressionConverter.ConvertO(messageKey);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["TopicName"] = SourceExpressionConverter.ConvertToken(topicName);
+                serviceProviderParameters["Message"] = SourceExpressionConverter.ConvertToken(message);
+                if (messageKey != null)
+                {
+                    serviceProviderParameters["messageKey"] = SourceExpressionConverter.ConvertToken(messageKey);
+                }
+
+                if (headers != null)
+                {
+                    serviceProviderParameters["Headers"] = SourceExpressionConverter.ConvertToken(headers);
+                }
+
+                if (schemaSubjectName != null)
+                {
+                    serviceProviderParameters["SchemaSubjectName"] = SourceExpressionConverter.ConvertToken(schemaSubjectName);
+                }
+
+                if (rawStringContent != null)
+                {
+                    serviceProviderParameters["rawStringContent"] = SourceExpressionConverter.ConvertToken(rawStringContent);
+                }
+                else
+                {
+                    serviceProviderParameters["rawStringContent"] = false;
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/confluentKafka", operationId: "SendMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            if (headers != null)
-            {
-                serviceProviderParameters["Headers"] = ExpressionConverter.ConvertO(headers);
-            }
-
-            if (schemaSubjectName != null)
-            {
-                serviceProviderParameters["SchemaSubjectName"] = ExpressionConverter.ConvertO(schemaSubjectName);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/confluentKafka", operationId: "SendMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<SendMessageOutput>(serviceProviderInput);
+            return new ServiceProviderAction<SendMessageOutput>(BuildSourceInput);
         }
     }
 
     public class ConfluentKafkaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReceiveMessageOutput> ReceiveMessage(Expression<Func<string>> topic, Expression<Func<string>> consumerGroup = null, Expression<Func<ReceiveMessageInputAuthenticationModeType>> authenticationMode = null, Expression<Func<ReceiveMessageInputProtocolType>> protocol = null, Expression<Func<string>> avroSchema = null)
+        public IBodyWorkflowTrigger<ReceiveMessageOutput> ReceiveMessage([WorkflowExpression] Func<string> topic, [WorkflowExpression] Func<string> consumerGroup = null, [WorkflowExpression] Func<ReceiveMessageInputAuthenticationModeType> authenticationMode = null, [WorkflowExpression] Func<ReceiveMessageInputProtocolType> protocol = null, [WorkflowExpression] Func<string> avroSchema = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["Topic"] = ExpressionConverter.ConvertO(topic);
-            if (consumerGroup != null)
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["ConsumerGroup"] = ExpressionConverter.ConvertO(consumerGroup);
-            }
-            else
-            {
-                serviceProviderParameters["ConsumerGroup"] = "$Default";
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["Topic"] = SourceExpressionConverter.ConvertToken(topic);
+                if (consumerGroup != null)
+                {
+                    serviceProviderParameters["ConsumerGroup"] = SourceExpressionConverter.ConvertToken(consumerGroup);
+                }
+                else
+                {
+                    serviceProviderParameters["ConsumerGroup"] = "$Default";
+                }
+
+                if (authenticationMode != null)
+                {
+                    serviceProviderParameters["AuthenticationMode"] = SourceExpressionConverter.ConvertToken(authenticationMode);
+                }
+                else
+                {
+                    serviceProviderParameters["AuthenticationMode"] = "Plain";
+                }
+
+                if (protocol != null)
+                {
+                    serviceProviderParameters["Protocol"] = SourceExpressionConverter.ConvertToken(protocol);
+                }
+                else
+                {
+                    serviceProviderParameters["Protocol"] = "SaslSsl";
+                }
+
+                if (avroSchema != null)
+                {
+                    serviceProviderParameters["AvroSchema"] = SourceExpressionConverter.ConvertToken(avroSchema);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/confluentKafka", operationId: "ReceiveMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            if (authenticationMode != null)
-            {
-                serviceProviderParameters["AuthenticationMode"] = ExpressionConverter.ConvertO(authenticationMode);
-            }
-            else
-            {
-                serviceProviderParameters["AuthenticationMode"] = "Plain";
-            }
-
-            if (protocol != null)
-            {
-                serviceProviderParameters["Protocol"] = ExpressionConverter.ConvertO(protocol);
-            }
-            else
-            {
-                serviceProviderParameters["Protocol"] = "SaslSsl";
-            }
-
-            if (avroSchema != null)
-            {
-                serviceProviderParameters["AvroSchema"] = ExpressionConverter.ConvertO(avroSchema);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/confluentKafka", operationId: "ReceiveMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<ReceiveMessageOutput>(serviceProviderInput);
+            return new ServiceProviderTrigger<ReceiveMessageOutput>(BuildSourceInput);
         }
+    }
+
+    public class SendMessageOutput
+    {
+        public string TopicName { get; set; }
+        public int Partition { get; set; }
+        public int Offset { get; set; }
+        public string Timestamp { get; set; }
+        public string Status { get; set; }
     }
 
     public class ReceiveMessageOutput
@@ -124,15 +152,6 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
         Ssl,
         SaslPlaintext,
         SaslSsl
-    }
-
-    public class SendMessageOutput
-    {
-        public string TopicName { get; set; }
-        public int Partition { get; set; }
-        public int Offset { get; set; }
-        public string Timestamp { get; set; }
-        public string Status { get; set; }
     }
 }
 

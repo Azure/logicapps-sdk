@@ -14,51 +14,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
         public IBodyWorkflowAction<MonsterResponse> GetRandomMonsterJson()
         {
-            var apiCallPath = "/basic/monsters/random/json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MonsterResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/basic/monsters/random/json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MonsterResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
-        public IBodyWorkflowAction<MonsterResponse> GetMonsterJson(Expression<Func<string>> id)
+        public IBodyWorkflowAction<MonsterResponse> GetMonsterJson([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/basic/monsters/{0}/json", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MonsterResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/basic/monsters/{0}/json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MonsterResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
-        public IBodyWorkflowAction<ListMonstersResponse> ListMonsters(Expression<Func<int>> page = null, Expression<Func<int>> startRange = null, Expression<Func<int>> endRange = null)
+        public IBodyWorkflowAction<ListMonstersResponse> ListMonsters([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> startRange = null, [WorkflowExpression] Func<int> endRange = null)
         {
-            var apiCallPath = "/basic/monsters";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (startRange != null)
-                callPayload.Queries["startRange"] = ExpressionConverter.Convert(startRange);
-            if (endRange != null)
-                callPayload.Queries["endRange"] = ExpressionConverter.Convert(endRange);
-            return new ApiConnectionAction<ListMonstersResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/basic/monsters";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (startRange != null)
+                    callPayload.Queries["startRange"] = SourceExpressionConverter.ConvertO(startRange);
+                if (endRange != null)
+                    callPayload.Queries["endRange"] = SourceExpressionConverter.ConvertO(endRange);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListMonstersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
-        public IBodyWorkflowAction<MonsterResponse> GetRandomSvgMonster(Expression<Func<string>> primaryColor = null, Expression<Func<fillTypeInput>> fillType = null, Expression<Func<string>> backgroundColor = null, Expression<Func<string>> secondaryColor = null)
+        public IBodyWorkflowAction<MonsterResponse> GetRandomSvgMonster([WorkflowExpression] Func<string> primaryColor = null, [WorkflowExpression] Func<fillTypeInput> fillType = null, [WorkflowExpression] Func<string> backgroundColor = null, [WorkflowExpression] Func<string> secondaryColor = null)
         {
-            var apiCallPath = "/basic/svgmonsters/json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (primaryColor != null)
-                callPayload.Queries["primaryColor"] = ExpressionConverter.Convert(primaryColor);
-            if (fillType != null)
-                callPayload.Queries["fillType"] = ExpressionConverter.Convert(fillType);
-            if (backgroundColor != null)
-                callPayload.Queries["backgroundColor"] = ExpressionConverter.Convert(backgroundColor);
-            if (secondaryColor != null)
-                callPayload.Queries["secondaryColor"] = ExpressionConverter.Convert(secondaryColor);
-            return new ApiConnectionAction<MonsterResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/basic/svgmonsters/json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (primaryColor != null)
+                    callPayload.Queries["primaryColor"] = SourceExpressionConverter.ConvertO(primaryColor);
+                if (fillType != null)
+                    callPayload.Queries["fillType"] = SourceExpressionConverter.Convert(fillType);
+                if (backgroundColor != null)
+                    callPayload.Queries["backgroundColor"] = SourceExpressionConverter.ConvertO(backgroundColor);
+                if (secondaryColor != null)
+                    callPayload.Queries["secondaryColor"] = SourceExpressionConverter.ConvertO(secondaryColor);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MonsterResponse>(BuildSourceInput);
         }
     }
 
@@ -122,18 +142,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
 
     public enum fillTypeInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5
     }
 }
 

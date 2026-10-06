@@ -12,4119 +12,4179 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commercientcpq
     public class CommercientcpqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE100CreateNewCustomerResponse> SAGE100CreateNewCustomer(Expression<Func<string>> bodyaRDivisionNo = null, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodyaddressLine3 = null, Expression<Func<bool>> bodybatchFax = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodycontactCode = null, Expression<Func<string>> bodycountryCode = null, Expression<Func<bool>> bodycreditHold = null, Expression<Func<int>> bodycreditLimit = null, Expression<Func<int>> bodycustomerDiscountRate = null, Expression<Func<string>> bodycustomerName = null, Expression<Func<string>> bodycustomerNo = null, Expression<Func<string>> bodycustomerType = null, Expression<Func<string>> bodydefaultCreditCardPmtType = null, Expression<Func<string>> bodydefaultItemCode = null, Expression<Func<string>> bodydefaultPaymentType = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyfaxNo = null, Expression<Func<bool>> bodyopenItemCustomer = null, Expression<Func<string>> bodypriceLevel = null, Expression<Func<string>> bodyprimaryShipToCode = null, Expression<Func<bool>> bodyprintDunningMessage = null, Expression<Func<bool>> bodyresidentialAddress = null, Expression<Func<string>> bodysalespersonNo = null, Expression<Func<string>> bodyshipMethod = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodystatementCycle = null, Expression<Func<string>> bodytaxExemptNo = null, Expression<Func<string>> bodytaxSchedule = null, Expression<Func<string>> bodytelephoneExt = null, Expression<Func<string>> bodytelephoneNo = null, Expression<Func<string>> bodytermsCode = null, Expression<Func<string>> bodyuRLAddress = null, Expression<Func<string>> bodyzipCode = null)
+        public IBodyWorkflowAction<SAGE100CreateNewCustomerResponse> SAGE100CreateNewCustomer([WorkflowExpression] Func<string> bodyaRDivisionNo = null, [WorkflowExpression] Func<string> bodyaddressLine1 = null, [WorkflowExpression] Func<string> bodyaddressLine2 = null, [WorkflowExpression] Func<string> bodyaddressLine3 = null, [WorkflowExpression] Func<bool> bodybatchFax = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodycontactCode = null, [WorkflowExpression] Func<string> bodycountryCode = null, [WorkflowExpression] Func<bool> bodycreditHold = null, [WorkflowExpression] Func<int> bodycreditLimit = null, [WorkflowExpression] Func<int> bodycustomerDiscountRate = null, [WorkflowExpression] Func<string> bodycustomerName = null, [WorkflowExpression] Func<string> bodycustomerNo = null, [WorkflowExpression] Func<string> bodycustomerType = null, [WorkflowExpression] Func<string> bodydefaultCreditCardPmtType = null, [WorkflowExpression] Func<string> bodydefaultItemCode = null, [WorkflowExpression] Func<string> bodydefaultPaymentType = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyfaxNo = null, [WorkflowExpression] Func<bool> bodyopenItemCustomer = null, [WorkflowExpression] Func<string> bodypriceLevel = null, [WorkflowExpression] Func<string> bodyprimaryShipToCode = null, [WorkflowExpression] Func<bool> bodyprintDunningMessage = null, [WorkflowExpression] Func<bool> bodyresidentialAddress = null, [WorkflowExpression] Func<string> bodysalespersonNo = null, [WorkflowExpression] Func<string> bodyshipMethod = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodystatementCycle = null, [WorkflowExpression] Func<string> bodytaxExemptNo = null, [WorkflowExpression] Func<string> bodytaxSchedule = null, [WorkflowExpression] Func<string> bodytelephoneExt = null, [WorkflowExpression] Func<string> bodytelephoneNo = null, [WorkflowExpression] Func<string> bodytermsCode = null, [WorkflowExpression] Func<string> bodyuRLAddress = null, [WorkflowExpression] Func<string> bodyzipCode = null)
         {
-            var apiCallPath = "/api/v1/SAGE100/customer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaRDivisionNo != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ARDivisionNo"] = ExpressionConverter.ConvertO(bodyaRDivisionNo);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/SAGE100/customer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaRDivisionNo != null)
+                {
+                    body["ARDivisionNo"] = SourceExpressionConverter.ConvertToken(bodyaRDivisionNo);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressLine1 != null)
+                {
+                    body["AddressLine1"] = SourceExpressionConverter.ConvertToken(bodyaddressLine1);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressLine2 != null)
+                {
+                    body["AddressLine2"] = SourceExpressionConverter.ConvertToken(bodyaddressLine2);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressLine3 != null)
+                {
+                    body["AddressLine3"] = SourceExpressionConverter.ConvertToken(bodyaddressLine3);
+                    bodypropCount++;
+                }
+
+                if (bodybatchFax != null)
+                {
+                    body["BatchFax"] = SourceExpressionConverter.ConvertToken(bodybatchFax);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["City"] = SourceExpressionConverter.ConvertToken(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodycomment != null)
+                {
+                    body["Comment"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodycontactCode != null)
+                {
+                    body["ContactCode"] = SourceExpressionConverter.ConvertToken(bodycontactCode);
+                    bodypropCount++;
+                }
+
+                if (bodycountryCode != null)
+                {
+                    body["CountryCode"] = SourceExpressionConverter.ConvertToken(bodycountryCode);
+                    bodypropCount++;
+                }
+
+                if (bodycreditHold != null)
+                {
+                    body["CreditHold"] = SourceExpressionConverter.ConvertToken(bodycreditHold);
+                    bodypropCount++;
+                }
+
+                if (bodycreditLimit != null)
+                {
+                    body["CreditLimit"] = SourceExpressionConverter.ConvertToken(bodycreditLimit);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerDiscountRate != null)
+                {
+                    body["CustomerDiscountRate"] = SourceExpressionConverter.ConvertToken(bodycustomerDiscountRate);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerName != null)
+                {
+                    body["CustomerName"] = SourceExpressionConverter.ConvertToken(bodycustomerName);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerNo != null)
+                {
+                    body["CustomerNo"] = SourceExpressionConverter.ConvertToken(bodycustomerNo);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerType != null)
+                {
+                    body["CustomerType"] = SourceExpressionConverter.ConvertToken(bodycustomerType);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultCreditCardPmtType != null)
+                {
+                    body["DefaultCreditCardPmtType"] = SourceExpressionConverter.ConvertToken(bodydefaultCreditCardPmtType);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultItemCode != null)
+                {
+                    body["DefaultItemCode"] = SourceExpressionConverter.ConvertToken(bodydefaultItemCode);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultPaymentType != null)
+                {
+                    body["DefaultPaymentType"] = SourceExpressionConverter.ConvertToken(bodydefaultPaymentType);
+                    bodypropCount++;
+                }
+
+                if (bodyemailAddress != null)
+                {
+                    body["EmailAddress"] = SourceExpressionConverter.ConvertToken(bodyemailAddress);
+                    bodypropCount++;
+                }
+
+                if (bodyfaxNo != null)
+                {
+                    body["FaxNo"] = SourceExpressionConverter.ConvertToken(bodyfaxNo);
+                    bodypropCount++;
+                }
+
+                if (bodyopenItemCustomer != null)
+                {
+                    body["OpenItemCustomer"] = SourceExpressionConverter.ConvertToken(bodyopenItemCustomer);
+                    bodypropCount++;
+                }
+
+                if (bodypriceLevel != null)
+                {
+                    body["PriceLevel"] = SourceExpressionConverter.ConvertToken(bodypriceLevel);
+                    bodypropCount++;
+                }
+
+                if (bodyprimaryShipToCode != null)
+                {
+                    body["PrimaryShipToCode"] = SourceExpressionConverter.ConvertToken(bodyprimaryShipToCode);
+                    bodypropCount++;
+                }
+
+                if (bodyprintDunningMessage != null)
+                {
+                    body["PrintDunningMessage"] = SourceExpressionConverter.ConvertToken(bodyprintDunningMessage);
+                    bodypropCount++;
+                }
+
+                if (bodyresidentialAddress != null)
+                {
+                    body["ResidentialAddress"] = SourceExpressionConverter.ConvertToken(bodyresidentialAddress);
+                    bodypropCount++;
+                }
+
+                if (bodysalespersonNo != null)
+                {
+                    body["SalespersonNo"] = SourceExpressionConverter.ConvertToken(bodysalespersonNo);
+                    bodypropCount++;
+                }
+
+                if (bodyshipMethod != null)
+                {
+                    body["ShipMethod"] = SourceExpressionConverter.ConvertToken(bodyshipMethod);
+                    bodypropCount++;
+                }
+
+                if (bodystate != null)
+                {
+                    body["State"] = SourceExpressionConverter.ConvertToken(bodystate);
+                    bodypropCount++;
+                }
+
+                if (bodystatementCycle != null)
+                {
+                    body["StatementCycle"] = SourceExpressionConverter.ConvertToken(bodystatementCycle);
+                    bodypropCount++;
+                }
+
+                if (bodytaxExemptNo != null)
+                {
+                    body["TaxExemptNo"] = SourceExpressionConverter.ConvertToken(bodytaxExemptNo);
+                    bodypropCount++;
+                }
+
+                if (bodytaxSchedule != null)
+                {
+                    body["TaxSchedule"] = SourceExpressionConverter.ConvertToken(bodytaxSchedule);
+                    bodypropCount++;
+                }
+
+                if (bodytelephoneExt != null)
+                {
+                    body["TelephoneExt"] = SourceExpressionConverter.ConvertToken(bodytelephoneExt);
+                    bodypropCount++;
+                }
+
+                if (bodytelephoneNo != null)
+                {
+                    body["TelephoneNo"] = SourceExpressionConverter.ConvertToken(bodytelephoneNo);
+                    bodypropCount++;
+                }
+
+                if (bodytermsCode != null)
+                {
+                    body["TermsCode"] = SourceExpressionConverter.ConvertToken(bodytermsCode);
+                    bodypropCount++;
+                }
+
+                if (bodyuRLAddress != null)
+                {
+                    body["URLAddress"] = SourceExpressionConverter.ConvertToken(bodyuRLAddress);
+                    bodypropCount++;
+                }
+
+                if (bodyzipCode != null)
+                {
+                    body["ZipCode"] = SourceExpressionConverter.ConvertToken(bodyzipCode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyaddressLine1 != null)
-            {
-                body["AddressLine1"] = ExpressionConverter.ConvertO(bodyaddressLine1);
-                bodypropCount++;
-            }
-
-            if (bodyaddressLine2 != null)
-            {
-                body["AddressLine2"] = ExpressionConverter.ConvertO(bodyaddressLine2);
-                bodypropCount++;
-            }
-
-            if (bodyaddressLine3 != null)
-            {
-                body["AddressLine3"] = ExpressionConverter.ConvertO(bodyaddressLine3);
-                bodypropCount++;
-            }
-
-            if (bodybatchFax != null)
-            {
-                body["BatchFax"] = ExpressionConverter.ConvertO(bodybatchFax);
-                bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["City"] = ExpressionConverter.ConvertO(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodycomment != null)
-            {
-                body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
-                bodypropCount++;
-            }
-
-            if (bodycontactCode != null)
-            {
-                body["ContactCode"] = ExpressionConverter.ConvertO(bodycontactCode);
-                bodypropCount++;
-            }
-
-            if (bodycountryCode != null)
-            {
-                body["CountryCode"] = ExpressionConverter.ConvertO(bodycountryCode);
-                bodypropCount++;
-            }
-
-            if (bodycreditHold != null)
-            {
-                body["CreditHold"] = ExpressionConverter.ConvertO(bodycreditHold);
-                bodypropCount++;
-            }
-
-            if (bodycreditLimit != null)
-            {
-                body["CreditLimit"] = ExpressionConverter.ConvertO(bodycreditLimit);
-                bodypropCount++;
-            }
-
-            if (bodycustomerDiscountRate != null)
-            {
-                body["CustomerDiscountRate"] = ExpressionConverter.ConvertO(bodycustomerDiscountRate);
-                bodypropCount++;
-            }
-
-            if (bodycustomerName != null)
-            {
-                body["CustomerName"] = ExpressionConverter.ConvertO(bodycustomerName);
-                bodypropCount++;
-            }
-
-            if (bodycustomerNo != null)
-            {
-                body["CustomerNo"] = ExpressionConverter.ConvertO(bodycustomerNo);
-                bodypropCount++;
-            }
-
-            if (bodycustomerType != null)
-            {
-                body["CustomerType"] = ExpressionConverter.ConvertO(bodycustomerType);
-                bodypropCount++;
-            }
-
-            if (bodydefaultCreditCardPmtType != null)
-            {
-                body["DefaultCreditCardPmtType"] = ExpressionConverter.ConvertO(bodydefaultCreditCardPmtType);
-                bodypropCount++;
-            }
-
-            if (bodydefaultItemCode != null)
-            {
-                body["DefaultItemCode"] = ExpressionConverter.ConvertO(bodydefaultItemCode);
-                bodypropCount++;
-            }
-
-            if (bodydefaultPaymentType != null)
-            {
-                body["DefaultPaymentType"] = ExpressionConverter.ConvertO(bodydefaultPaymentType);
-                bodypropCount++;
-            }
-
-            if (bodyemailAddress != null)
-            {
-                body["EmailAddress"] = ExpressionConverter.ConvertO(bodyemailAddress);
-                bodypropCount++;
-            }
-
-            if (bodyfaxNo != null)
-            {
-                body["FaxNo"] = ExpressionConverter.ConvertO(bodyfaxNo);
-                bodypropCount++;
-            }
-
-            if (bodyopenItemCustomer != null)
-            {
-                body["OpenItemCustomer"] = ExpressionConverter.ConvertO(bodyopenItemCustomer);
-                bodypropCount++;
-            }
-
-            if (bodypriceLevel != null)
-            {
-                body["PriceLevel"] = ExpressionConverter.ConvertO(bodypriceLevel);
-                bodypropCount++;
-            }
-
-            if (bodyprimaryShipToCode != null)
-            {
-                body["PrimaryShipToCode"] = ExpressionConverter.ConvertO(bodyprimaryShipToCode);
-                bodypropCount++;
-            }
-
-            if (bodyprintDunningMessage != null)
-            {
-                body["PrintDunningMessage"] = ExpressionConverter.ConvertO(bodyprintDunningMessage);
-                bodypropCount++;
-            }
-
-            if (bodyresidentialAddress != null)
-            {
-                body["ResidentialAddress"] = ExpressionConverter.ConvertO(bodyresidentialAddress);
-                bodypropCount++;
-            }
-
-            if (bodysalespersonNo != null)
-            {
-                body["SalespersonNo"] = ExpressionConverter.ConvertO(bodysalespersonNo);
-                bodypropCount++;
-            }
-
-            if (bodyshipMethod != null)
-            {
-                body["ShipMethod"] = ExpressionConverter.ConvertO(bodyshipMethod);
-                bodypropCount++;
-            }
-
-            if (bodystate != null)
-            {
-                body["State"] = ExpressionConverter.ConvertO(bodystate);
-                bodypropCount++;
-            }
-
-            if (bodystatementCycle != null)
-            {
-                body["StatementCycle"] = ExpressionConverter.ConvertO(bodystatementCycle);
-                bodypropCount++;
-            }
-
-            if (bodytaxExemptNo != null)
-            {
-                body["TaxExemptNo"] = ExpressionConverter.ConvertO(bodytaxExemptNo);
-                bodypropCount++;
-            }
-
-            if (bodytaxSchedule != null)
-            {
-                body["TaxSchedule"] = ExpressionConverter.ConvertO(bodytaxSchedule);
-                bodypropCount++;
-            }
-
-            if (bodytelephoneExt != null)
-            {
-                body["TelephoneExt"] = ExpressionConverter.ConvertO(bodytelephoneExt);
-                bodypropCount++;
-            }
-
-            if (bodytelephoneNo != null)
-            {
-                body["TelephoneNo"] = ExpressionConverter.ConvertO(bodytelephoneNo);
-                bodypropCount++;
-            }
-
-            if (bodytermsCode != null)
-            {
-                body["TermsCode"] = ExpressionConverter.ConvertO(bodytermsCode);
-                bodypropCount++;
-            }
-
-            if (bodyuRLAddress != null)
-            {
-                body["URLAddress"] = ExpressionConverter.ConvertO(bodyuRLAddress);
-                bodypropCount++;
-            }
-
-            if (bodyzipCode != null)
-            {
-                body["ZipCode"] = ExpressionConverter.ConvertO(bodyzipCode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SAGE100CreateNewCustomerResponse>(callPayload);
+            return new ApiConnectionAction<SAGE100CreateNewCustomerResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE100CreateNewSalesOrderResponse> SAGE100CreateNewSalesOrder(Expression<Func<string>> bodyaRDivisionNo = null, Expression<Func<bool>> bodybatchFax = null, Expression<Func<string>> bodybillToAddress1 = null, Expression<Func<string>> bodybillToAddress2 = null, Expression<Func<string>> bodybillToAddress3 = null, Expression<Func<string>> bodybillToCity = null, Expression<Func<string>> bodybillToCountryCode = null, Expression<Func<string>> bodybillToName = null, Expression<Func<string>> bodybillToState = null, Expression<Func<string>> bodybillToZipCode = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyconfirmTo = null, Expression<Func<string>> bodycustomerNo = null, Expression<Func<string>> bodycustomerPONo = null, Expression<Func<string>> bodycycleCode = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyfOB = null, Expression<Func<string>> bodyfaxNo = null, Expression<Func<string>> bodymasterRepeatingOrderNo = null, Expression<Func<int>> bodynumberOfShippingLabels = null, Expression<Func<string>> bodyorderDate = null, Expression<Func<string>> bodyorderStatus = null, Expression<Func<string>> bodyorderType = null, Expression<Func<bool>> bodyprintPickingSheets = null, Expression<Func<bool>> bodyprintSalesOrders = null, Expression<Func<bodysalesOrderLineItemInputItem[]>> bodysalesOrderLineItem = null, Expression<Func<string>> bodysalesOrderNo = null, Expression<Func<string>> bodysalespersonNo = null, Expression<Func<string>> bodyshipExpireDate = null, Expression<Func<string>> bodyshipToAddress1 = null, Expression<Func<string>> bodyshipToAddress2 = null, Expression<Func<string>> bodyshipToAddress3 = null, Expression<Func<string>> bodyshipToCity = null, Expression<Func<string>> bodyshipToCode = null, Expression<Func<string>> bodyshipToCountryCode = null, Expression<Func<string>> bodyshipToName = null, Expression<Func<string>> bodyshipToState = null, Expression<Func<string>> bodyshipToZipCode = null, Expression<Func<string>> bodyshipVia = null, Expression<Func<int>> bodyshipWeight = null, Expression<Func<string>> bodyshipZoneActual = null, Expression<Func<string>> bodysplitCommissions = null, Expression<Func<string>> bodytaxExemptNo = null, Expression<Func<string>> bodytaxSchedule = null, Expression<Func<string>> bodytermsCode = null, Expression<Func<string>> bodywarehouseCode = null)
+        public IBodyWorkflowAction<SAGE100CreateNewSalesOrderResponse> SAGE100CreateNewSalesOrder([WorkflowExpression] Func<string> bodyaRDivisionNo = null, [WorkflowExpression] Func<bool> bodybatchFax = null, [WorkflowExpression] Func<string> bodybillToAddress1 = null, [WorkflowExpression] Func<string> bodybillToAddress2 = null, [WorkflowExpression] Func<string> bodybillToAddress3 = null, [WorkflowExpression] Func<string> bodybillToCity = null, [WorkflowExpression] Func<string> bodybillToCountryCode = null, [WorkflowExpression] Func<string> bodybillToName = null, [WorkflowExpression] Func<string> bodybillToState = null, [WorkflowExpression] Func<string> bodybillToZipCode = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodyconfirmTo = null, [WorkflowExpression] Func<string> bodycustomerNo = null, [WorkflowExpression] Func<string> bodycustomerPONo = null, [WorkflowExpression] Func<string> bodycycleCode = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyfOB = null, [WorkflowExpression] Func<string> bodyfaxNo = null, [WorkflowExpression] Func<string> bodymasterRepeatingOrderNo = null, [WorkflowExpression] Func<int> bodynumberOfShippingLabels = null, [WorkflowExpression] Func<string> bodyorderDate = null, [WorkflowExpression] Func<string> bodyorderStatus = null, [WorkflowExpression] Func<string> bodyorderType = null, [WorkflowExpression] Func<bool> bodyprintPickingSheets = null, [WorkflowExpression] Func<bool> bodyprintSalesOrders = null, [WorkflowExpression] Func<bodysalesOrderLineItemInputItem[]> bodysalesOrderLineItem = null, [WorkflowExpression] Func<string> bodysalesOrderNo = null, [WorkflowExpression] Func<string> bodysalespersonNo = null, [WorkflowExpression] Func<string> bodyshipExpireDate = null, [WorkflowExpression] Func<string> bodyshipToAddress1 = null, [WorkflowExpression] Func<string> bodyshipToAddress2 = null, [WorkflowExpression] Func<string> bodyshipToAddress3 = null, [WorkflowExpression] Func<string> bodyshipToCity = null, [WorkflowExpression] Func<string> bodyshipToCode = null, [WorkflowExpression] Func<string> bodyshipToCountryCode = null, [WorkflowExpression] Func<string> bodyshipToName = null, [WorkflowExpression] Func<string> bodyshipToState = null, [WorkflowExpression] Func<string> bodyshipToZipCode = null, [WorkflowExpression] Func<string> bodyshipVia = null, [WorkflowExpression] Func<int> bodyshipWeight = null, [WorkflowExpression] Func<string> bodyshipZoneActual = null, [WorkflowExpression] Func<string> bodysplitCommissions = null, [WorkflowExpression] Func<string> bodytaxExemptNo = null, [WorkflowExpression] Func<string> bodytaxSchedule = null, [WorkflowExpression] Func<string> bodytermsCode = null, [WorkflowExpression] Func<string> bodywarehouseCode = null)
         {
-            var apiCallPath = "/api/v1/SAGE100/salesorder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaRDivisionNo != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ARDivisionNo"] = ExpressionConverter.ConvertO(bodyaRDivisionNo);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/SAGE100/salesorder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaRDivisionNo != null)
+                {
+                    body["ARDivisionNo"] = SourceExpressionConverter.ConvertToken(bodyaRDivisionNo);
+                    bodypropCount++;
+                }
+
+                if (bodybatchFax != null)
+                {
+                    body["BatchFax"] = SourceExpressionConverter.ConvertToken(bodybatchFax);
+                    bodypropCount++;
+                }
+
+                if (bodybillToAddress1 != null)
+                {
+                    body["BillToAddress1"] = SourceExpressionConverter.ConvertToken(bodybillToAddress1);
+                    bodypropCount++;
+                }
+
+                if (bodybillToAddress2 != null)
+                {
+                    body["BillToAddress2"] = SourceExpressionConverter.ConvertToken(bodybillToAddress2);
+                    bodypropCount++;
+                }
+
+                if (bodybillToAddress3 != null)
+                {
+                    body["BillToAddress3"] = SourceExpressionConverter.ConvertToken(bodybillToAddress3);
+                    bodypropCount++;
+                }
+
+                if (bodybillToCity != null)
+                {
+                    body["BillToCity"] = SourceExpressionConverter.ConvertToken(bodybillToCity);
+                    bodypropCount++;
+                }
+
+                if (bodybillToCountryCode != null)
+                {
+                    body["BillToCountryCode"] = SourceExpressionConverter.ConvertToken(bodybillToCountryCode);
+                    bodypropCount++;
+                }
+
+                if (bodybillToName != null)
+                {
+                    body["BillToName"] = SourceExpressionConverter.ConvertToken(bodybillToName);
+                    bodypropCount++;
+                }
+
+                if (bodybillToState != null)
+                {
+                    body["BillToState"] = SourceExpressionConverter.ConvertToken(bodybillToState);
+                    bodypropCount++;
+                }
+
+                if (bodybillToZipCode != null)
+                {
+                    body["BillToZipCode"] = SourceExpressionConverter.ConvertToken(bodybillToZipCode);
+                    bodypropCount++;
+                }
+
+                if (bodycomment != null)
+                {
+                    body["Comment"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodyconfirmTo != null)
+                {
+                    body["ConfirmTo"] = SourceExpressionConverter.ConvertToken(bodyconfirmTo);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerNo != null)
+                {
+                    body["CustomerNo"] = SourceExpressionConverter.ConvertToken(bodycustomerNo);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerPONo != null)
+                {
+                    body["CustomerPONo"] = SourceExpressionConverter.ConvertToken(bodycustomerPONo);
+                    bodypropCount++;
+                }
+
+                if (bodycycleCode != null)
+                {
+                    body["CycleCode"] = SourceExpressionConverter.ConvertToken(bodycycleCode);
+                    bodypropCount++;
+                }
+
+                if (bodyemailAddress != null)
+                {
+                    body["EmailAddress"] = SourceExpressionConverter.ConvertToken(bodyemailAddress);
+                    bodypropCount++;
+                }
+
+                if (bodyfOB != null)
+                {
+                    body["FOB"] = SourceExpressionConverter.ConvertToken(bodyfOB);
+                    bodypropCount++;
+                }
+
+                if (bodyfaxNo != null)
+                {
+                    body["FaxNo"] = SourceExpressionConverter.ConvertToken(bodyfaxNo);
+                    bodypropCount++;
+                }
+
+                if (bodymasterRepeatingOrderNo != null)
+                {
+                    body["MasterRepeatingOrderNo"] = SourceExpressionConverter.ConvertToken(bodymasterRepeatingOrderNo);
+                    bodypropCount++;
+                }
+
+                if (bodynumberOfShippingLabels != null)
+                {
+                    body["NumberOfShippingLabels"] = SourceExpressionConverter.ConvertToken(bodynumberOfShippingLabels);
+                    bodypropCount++;
+                }
+
+                if (bodyorderDate != null)
+                {
+                    body["OrderDate"] = SourceExpressionConverter.ConvertToken(bodyorderDate);
+                    bodypropCount++;
+                }
+
+                if (bodyorderStatus != null)
+                {
+                    body["OrderStatus"] = SourceExpressionConverter.ConvertToken(bodyorderStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyorderType != null)
+                {
+                    body["OrderType"] = SourceExpressionConverter.ConvertToken(bodyorderType);
+                    bodypropCount++;
+                }
+
+                if (bodyprintPickingSheets != null)
+                {
+                    body["PrintPickingSheets"] = SourceExpressionConverter.ConvertToken(bodyprintPickingSheets);
+                    bodypropCount++;
+                }
+
+                if (bodyprintSalesOrders != null)
+                {
+                    body["PrintSalesOrders"] = SourceExpressionConverter.ConvertToken(bodyprintSalesOrders);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrderLineItem != null)
+                {
+                    body["SalesOrderLineItem"] = SourceExpressionConverter.ConvertToken(bodysalesOrderLineItem);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrderNo != null)
+                {
+                    body["SalesOrderNo"] = SourceExpressionConverter.ConvertToken(bodysalesOrderNo);
+                    bodypropCount++;
+                }
+
+                if (bodysalespersonNo != null)
+                {
+                    body["SalespersonNo"] = SourceExpressionConverter.ConvertToken(bodysalespersonNo);
+                    bodypropCount++;
+                }
+
+                if (bodyshipExpireDate != null)
+                {
+                    body["ShipExpireDate"] = SourceExpressionConverter.ConvertToken(bodyshipExpireDate);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToAddress1 != null)
+                {
+                    body["ShipToAddress1"] = SourceExpressionConverter.ConvertToken(bodyshipToAddress1);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToAddress2 != null)
+                {
+                    body["ShipToAddress2"] = SourceExpressionConverter.ConvertToken(bodyshipToAddress2);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToAddress3 != null)
+                {
+                    body["ShipToAddress3"] = SourceExpressionConverter.ConvertToken(bodyshipToAddress3);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToCity != null)
+                {
+                    body["ShipToCity"] = SourceExpressionConverter.ConvertToken(bodyshipToCity);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToCode != null)
+                {
+                    body["ShipToCode"] = SourceExpressionConverter.ConvertToken(bodyshipToCode);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToCountryCode != null)
+                {
+                    body["ShipToCountryCode"] = SourceExpressionConverter.ConvertToken(bodyshipToCountryCode);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToName != null)
+                {
+                    body["ShipToName"] = SourceExpressionConverter.ConvertToken(bodyshipToName);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToState != null)
+                {
+                    body["ShipToState"] = SourceExpressionConverter.ConvertToken(bodyshipToState);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToZipCode != null)
+                {
+                    body["ShipToZipCode"] = SourceExpressionConverter.ConvertToken(bodyshipToZipCode);
+                    bodypropCount++;
+                }
+
+                if (bodyshipVia != null)
+                {
+                    body["ShipVia"] = SourceExpressionConverter.ConvertToken(bodyshipVia);
+                    bodypropCount++;
+                }
+
+                if (bodyshipWeight != null)
+                {
+                    body["ShipWeight"] = SourceExpressionConverter.ConvertToken(bodyshipWeight);
+                    bodypropCount++;
+                }
+
+                if (bodyshipZoneActual != null)
+                {
+                    body["ShipZoneActual"] = SourceExpressionConverter.ConvertToken(bodyshipZoneActual);
+                    bodypropCount++;
+                }
+
+                if (bodysplitCommissions != null)
+                {
+                    body["SplitCommissions"] = SourceExpressionConverter.ConvertToken(bodysplitCommissions);
+                    bodypropCount++;
+                }
+
+                if (bodytaxExemptNo != null)
+                {
+                    body["TaxExemptNo"] = SourceExpressionConverter.ConvertToken(bodytaxExemptNo);
+                    bodypropCount++;
+                }
+
+                if (bodytaxSchedule != null)
+                {
+                    body["TaxSchedule"] = SourceExpressionConverter.ConvertToken(bodytaxSchedule);
+                    bodypropCount++;
+                }
+
+                if (bodytermsCode != null)
+                {
+                    body["TermsCode"] = SourceExpressionConverter.ConvertToken(bodytermsCode);
+                    bodypropCount++;
+                }
+
+                if (bodywarehouseCode != null)
+                {
+                    body["WarehouseCode"] = SourceExpressionConverter.ConvertToken(bodywarehouseCode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodybatchFax != null)
-            {
-                body["BatchFax"] = ExpressionConverter.ConvertO(bodybatchFax);
-                bodypropCount++;
-            }
-
-            if (bodybillToAddress1 != null)
-            {
-                body["BillToAddress1"] = ExpressionConverter.ConvertO(bodybillToAddress1);
-                bodypropCount++;
-            }
-
-            if (bodybillToAddress2 != null)
-            {
-                body["BillToAddress2"] = ExpressionConverter.ConvertO(bodybillToAddress2);
-                bodypropCount++;
-            }
-
-            if (bodybillToAddress3 != null)
-            {
-                body["BillToAddress3"] = ExpressionConverter.ConvertO(bodybillToAddress3);
-                bodypropCount++;
-            }
-
-            if (bodybillToCity != null)
-            {
-                body["BillToCity"] = ExpressionConverter.ConvertO(bodybillToCity);
-                bodypropCount++;
-            }
-
-            if (bodybillToCountryCode != null)
-            {
-                body["BillToCountryCode"] = ExpressionConverter.ConvertO(bodybillToCountryCode);
-                bodypropCount++;
-            }
-
-            if (bodybillToName != null)
-            {
-                body["BillToName"] = ExpressionConverter.ConvertO(bodybillToName);
-                bodypropCount++;
-            }
-
-            if (bodybillToState != null)
-            {
-                body["BillToState"] = ExpressionConverter.ConvertO(bodybillToState);
-                bodypropCount++;
-            }
-
-            if (bodybillToZipCode != null)
-            {
-                body["BillToZipCode"] = ExpressionConverter.ConvertO(bodybillToZipCode);
-                bodypropCount++;
-            }
-
-            if (bodycomment != null)
-            {
-                body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
-                bodypropCount++;
-            }
-
-            if (bodyconfirmTo != null)
-            {
-                body["ConfirmTo"] = ExpressionConverter.ConvertO(bodyconfirmTo);
-                bodypropCount++;
-            }
-
-            if (bodycustomerNo != null)
-            {
-                body["CustomerNo"] = ExpressionConverter.ConvertO(bodycustomerNo);
-                bodypropCount++;
-            }
-
-            if (bodycustomerPONo != null)
-            {
-                body["CustomerPONo"] = ExpressionConverter.ConvertO(bodycustomerPONo);
-                bodypropCount++;
-            }
-
-            if (bodycycleCode != null)
-            {
-                body["CycleCode"] = ExpressionConverter.ConvertO(bodycycleCode);
-                bodypropCount++;
-            }
-
-            if (bodyemailAddress != null)
-            {
-                body["EmailAddress"] = ExpressionConverter.ConvertO(bodyemailAddress);
-                bodypropCount++;
-            }
-
-            if (bodyfOB != null)
-            {
-                body["FOB"] = ExpressionConverter.ConvertO(bodyfOB);
-                bodypropCount++;
-            }
-
-            if (bodyfaxNo != null)
-            {
-                body["FaxNo"] = ExpressionConverter.ConvertO(bodyfaxNo);
-                bodypropCount++;
-            }
-
-            if (bodymasterRepeatingOrderNo != null)
-            {
-                body["MasterRepeatingOrderNo"] = ExpressionConverter.ConvertO(bodymasterRepeatingOrderNo);
-                bodypropCount++;
-            }
-
-            if (bodynumberOfShippingLabels != null)
-            {
-                body["NumberOfShippingLabels"] = ExpressionConverter.ConvertO(bodynumberOfShippingLabels);
-                bodypropCount++;
-            }
-
-            if (bodyorderDate != null)
-            {
-                body["OrderDate"] = ExpressionConverter.ConvertO(bodyorderDate);
-                bodypropCount++;
-            }
-
-            if (bodyorderStatus != null)
-            {
-                body["OrderStatus"] = ExpressionConverter.ConvertO(bodyorderStatus);
-                bodypropCount++;
-            }
-
-            if (bodyorderType != null)
-            {
-                body["OrderType"] = ExpressionConverter.ConvertO(bodyorderType);
-                bodypropCount++;
-            }
-
-            if (bodyprintPickingSheets != null)
-            {
-                body["PrintPickingSheets"] = ExpressionConverter.ConvertO(bodyprintPickingSheets);
-                bodypropCount++;
-            }
-
-            if (bodyprintSalesOrders != null)
-            {
-                body["PrintSalesOrders"] = ExpressionConverter.ConvertO(bodyprintSalesOrders);
-                bodypropCount++;
-            }
-
-            if (bodysalesOrderLineItem != null)
-            {
-                body["SalesOrderLineItem"] = ExpressionConverter.ConvertO(bodysalesOrderLineItem);
-                bodypropCount++;
-            }
-
-            if (bodysalesOrderNo != null)
-            {
-                body["SalesOrderNo"] = ExpressionConverter.ConvertO(bodysalesOrderNo);
-                bodypropCount++;
-            }
-
-            if (bodysalespersonNo != null)
-            {
-                body["SalespersonNo"] = ExpressionConverter.ConvertO(bodysalespersonNo);
-                bodypropCount++;
-            }
-
-            if (bodyshipExpireDate != null)
-            {
-                body["ShipExpireDate"] = ExpressionConverter.ConvertO(bodyshipExpireDate);
-                bodypropCount++;
-            }
-
-            if (bodyshipToAddress1 != null)
-            {
-                body["ShipToAddress1"] = ExpressionConverter.ConvertO(bodyshipToAddress1);
-                bodypropCount++;
-            }
-
-            if (bodyshipToAddress2 != null)
-            {
-                body["ShipToAddress2"] = ExpressionConverter.ConvertO(bodyshipToAddress2);
-                bodypropCount++;
-            }
-
-            if (bodyshipToAddress3 != null)
-            {
-                body["ShipToAddress3"] = ExpressionConverter.ConvertO(bodyshipToAddress3);
-                bodypropCount++;
-            }
-
-            if (bodyshipToCity != null)
-            {
-                body["ShipToCity"] = ExpressionConverter.ConvertO(bodyshipToCity);
-                bodypropCount++;
-            }
-
-            if (bodyshipToCode != null)
-            {
-                body["ShipToCode"] = ExpressionConverter.ConvertO(bodyshipToCode);
-                bodypropCount++;
-            }
-
-            if (bodyshipToCountryCode != null)
-            {
-                body["ShipToCountryCode"] = ExpressionConverter.ConvertO(bodyshipToCountryCode);
-                bodypropCount++;
-            }
-
-            if (bodyshipToName != null)
-            {
-                body["ShipToName"] = ExpressionConverter.ConvertO(bodyshipToName);
-                bodypropCount++;
-            }
-
-            if (bodyshipToState != null)
-            {
-                body["ShipToState"] = ExpressionConverter.ConvertO(bodyshipToState);
-                bodypropCount++;
-            }
-
-            if (bodyshipToZipCode != null)
-            {
-                body["ShipToZipCode"] = ExpressionConverter.ConvertO(bodyshipToZipCode);
-                bodypropCount++;
-            }
-
-            if (bodyshipVia != null)
-            {
-                body["ShipVia"] = ExpressionConverter.ConvertO(bodyshipVia);
-                bodypropCount++;
-            }
-
-            if (bodyshipWeight != null)
-            {
-                body["ShipWeight"] = ExpressionConverter.ConvertO(bodyshipWeight);
-                bodypropCount++;
-            }
-
-            if (bodyshipZoneActual != null)
-            {
-                body["ShipZoneActual"] = ExpressionConverter.ConvertO(bodyshipZoneActual);
-                bodypropCount++;
-            }
-
-            if (bodysplitCommissions != null)
-            {
-                body["SplitCommissions"] = ExpressionConverter.ConvertO(bodysplitCommissions);
-                bodypropCount++;
-            }
-
-            if (bodytaxExemptNo != null)
-            {
-                body["TaxExemptNo"] = ExpressionConverter.ConvertO(bodytaxExemptNo);
-                bodypropCount++;
-            }
-
-            if (bodytaxSchedule != null)
-            {
-                body["TaxSchedule"] = ExpressionConverter.ConvertO(bodytaxSchedule);
-                bodypropCount++;
-            }
-
-            if (bodytermsCode != null)
-            {
-                body["TermsCode"] = ExpressionConverter.ConvertO(bodytermsCode);
-                bodypropCount++;
-            }
-
-            if (bodywarehouseCode != null)
-            {
-                body["WarehouseCode"] = ExpressionConverter.ConvertO(bodywarehouseCode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SAGE100CreateNewSalesOrderResponse>(callPayload);
+            return new ApiConnectionAction<SAGE100CreateNewSalesOrderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<CommercientCPQCreateNewCustomerResponse> CommercientCPQCreateNewCustomer(Expression<Func<string>> bodybillingCity = null, Expression<Func<string>> bodybillingCounty = null, Expression<Func<string>> bodybillingPostalCode = null, Expression<Func<string>> bodybillingState = null, Expression<Func<string>> bodybillingStreet = null, Expression<Func<string>> bodygUID = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyshippingCity = null, Expression<Func<string>> bodyshippingCountry = null, Expression<Func<string>> bodyshippingPostalCode = null, Expression<Func<string>> bodyshippingState = null, Expression<Func<string>> bodyshippingStreet = null, Expression<Func<string>> bodyacnm = null)
+        public IBodyWorkflowAction<CommercientCPQCreateNewCustomerResponse> CommercientCPQCreateNewCustomer([WorkflowExpression] Func<string> bodybillingCity = null, [WorkflowExpression] Func<string> bodybillingCounty = null, [WorkflowExpression] Func<string> bodybillingPostalCode = null, [WorkflowExpression] Func<string> bodybillingState = null, [WorkflowExpression] Func<string> bodybillingStreet = null, [WorkflowExpression] Func<string> bodygUId = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyshippingCity = null, [WorkflowExpression] Func<string> bodyshippingCountry = null, [WorkflowExpression] Func<string> bodyshippingPostalCode = null, [WorkflowExpression] Func<string> bodyshippingState = null, [WorkflowExpression] Func<string> bodyshippingStreet = null, [WorkflowExpression] Func<string> bodyacnm = null)
         {
-            var apiCallPath = "/api/v1/commercientcpq/customer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodybillingCity != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["BillingCity"] = ExpressionConverter.ConvertO(bodybillingCity);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/commercientcpq/customer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodybillingCity != null)
+                {
+                    body["BillingCity"] = SourceExpressionConverter.ConvertToken(bodybillingCity);
+                    bodypropCount++;
+                }
+
+                if (bodybillingCounty != null)
+                {
+                    body["BillingCounty"] = SourceExpressionConverter.ConvertToken(bodybillingCounty);
+                    bodypropCount++;
+                }
+
+                if (bodybillingPostalCode != null)
+                {
+                    body["BillingPostalCode"] = SourceExpressionConverter.ConvertToken(bodybillingPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodybillingState != null)
+                {
+                    body["BillingState"] = SourceExpressionConverter.ConvertToken(bodybillingState);
+                    bodypropCount++;
+                }
+
+                if (bodybillingStreet != null)
+                {
+                    body["BillingStreet"] = SourceExpressionConverter.ConvertToken(bodybillingStreet);
+                    bodypropCount++;
+                }
+
+                if (bodygUId != null)
+                {
+                    body["GUID"] = SourceExpressionConverter.ConvertToken(bodygUId);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["Name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingCity != null)
+                {
+                    body["ShippingCity"] = SourceExpressionConverter.ConvertToken(bodyshippingCity);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingCountry != null)
+                {
+                    body["ShippingCountry"] = SourceExpressionConverter.ConvertToken(bodyshippingCountry);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingPostalCode != null)
+                {
+                    body["ShippingPostalCode"] = SourceExpressionConverter.ConvertToken(bodyshippingPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingState != null)
+                {
+                    body["ShippingState"] = SourceExpressionConverter.ConvertToken(bodyshippingState);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingStreet != null)
+                {
+                    body["ShippingStreet"] = SourceExpressionConverter.ConvertToken(bodyshippingStreet);
+                    bodypropCount++;
+                }
+
+                if (bodyacnm != null)
+                {
+                    body["acnm"] = SourceExpressionConverter.ConvertToken(bodyacnm);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodybillingCounty != null)
-            {
-                body["BillingCounty"] = ExpressionConverter.ConvertO(bodybillingCounty);
-                bodypropCount++;
-            }
-
-            if (bodybillingPostalCode != null)
-            {
-                body["BillingPostalCode"] = ExpressionConverter.ConvertO(bodybillingPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodybillingState != null)
-            {
-                body["BillingState"] = ExpressionConverter.ConvertO(bodybillingState);
-                bodypropCount++;
-            }
-
-            if (bodybillingStreet != null)
-            {
-                body["BillingStreet"] = ExpressionConverter.ConvertO(bodybillingStreet);
-                bodypropCount++;
-            }
-
-            if (bodygUID != null)
-            {
-                body["GUID"] = ExpressionConverter.ConvertO(bodygUID);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["Name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodyshippingCity != null)
-            {
-                body["ShippingCity"] = ExpressionConverter.ConvertO(bodyshippingCity);
-                bodypropCount++;
-            }
-
-            if (bodyshippingCountry != null)
-            {
-                body["ShippingCountry"] = ExpressionConverter.ConvertO(bodyshippingCountry);
-                bodypropCount++;
-            }
-
-            if (bodyshippingPostalCode != null)
-            {
-                body["ShippingPostalCode"] = ExpressionConverter.ConvertO(bodyshippingPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodyshippingState != null)
-            {
-                body["ShippingState"] = ExpressionConverter.ConvertO(bodyshippingState);
-                bodypropCount++;
-            }
-
-            if (bodyshippingStreet != null)
-            {
-                body["ShippingStreet"] = ExpressionConverter.ConvertO(bodyshippingStreet);
-                bodypropCount++;
-            }
-
-            if (bodyacnm != null)
-            {
-                body["acnm"] = ExpressionConverter.ConvertO(bodyacnm);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CommercientCPQCreateNewCustomerResponse>(callPayload);
+            return new ApiConnectionAction<CommercientCPQCreateNewCustomerResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<CommercientCPQCreateNewProductResponse> CommercientCPQCreateNewProduct(Expression<Func<string>> bodystockCode = null)
+        public IBodyWorkflowAction<CommercientCPQCreateNewProductResponse> CommercientCPQCreateNewProduct([WorkflowExpression] Func<string> bodystockCode = null)
         {
-            var apiCallPath = "/api/v1/commercientcpq/product";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystockCode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["StockCode"] = ExpressionConverter.ConvertO(bodystockCode);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/commercientcpq/product";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodystockCode != null)
+                {
+                    body["StockCode"] = SourceExpressionConverter.ConvertToken(bodystockCode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CommercientCPQCreateNewProductResponse>(callPayload);
+            return new ApiConnectionAction<CommercientCPQCreateNewProductResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<CommercientCPQCreateNewSalesOrderResponse> CommercientCPQCreateNewSalesOrder(Expression<Func<string>> bodyorderHeaderGUID = null, Expression<Func<bodysalesOrderLineItemInputItem2[]>> bodysalesOrderLineItem = null)
+        public IBodyWorkflowAction<CommercientCPQCreateNewSalesOrderResponse> CommercientCPQCreateNewSalesOrder([WorkflowExpression] Func<string> bodyorderHeaderGUID = null, [WorkflowExpression] Func<bodysalesOrderLineItemInputItem2[]> bodysalesOrderLineItem = null)
         {
-            var apiCallPath = "/api/v1/commercientcpq/salesorder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyorderHeaderGUID != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["OrderHeaderGUID"] = ExpressionConverter.ConvertO(bodyorderHeaderGUID);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/commercientcpq/salesorder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyorderHeaderGUID != null)
+                {
+                    body["OrderHeaderGUID"] = SourceExpressionConverter.ConvertToken(bodyorderHeaderGUID);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrderLineItem != null)
+                {
+                    body["SalesOrderLineItem"] = SourceExpressionConverter.ConvertToken(bodysalesOrderLineItem);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysalesOrderLineItem != null)
-            {
-                body["SalesOrderLineItem"] = ExpressionConverter.ConvertO(bodysalesOrderLineItem);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CommercientCPQCreateNewSalesOrderResponse>(callPayload);
+            return new ApiConnectionAction<CommercientCPQCreateNewSalesOrderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<QuickBookCreateNewCustomerResponse> QuickBookCreateNewCustomer(Expression<Func<string>> bodyaccountNumber = null, Expression<Func<string>> bodyaltContact = null, Expression<Func<string>> bodyaltPhone = null, Expression<Func<string>> bodybillAddressAddr1 = null, Expression<Func<string>> bodybillAddressAddr2 = null, Expression<Func<string>> bodybillAddressAddr3 = null, Expression<Func<string>> bodybillAddressAddr4 = null, Expression<Func<string>> bodybillAddressAddr5 = null, Expression<Func<string>> bodybillAddressCity = null, Expression<Func<string>> bodybillAddressCountry = null, Expression<Func<string>> bodybillAddressNote = null, Expression<Func<string>> bodybillAddressPostalCode = null, Expression<Func<string>> bodybillAddressState = null, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodyclassRef = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodycontact = null, Expression<Func<int>> bodycreditLimit = null, Expression<Func<string>> bodycustomerTypeRef = null, Expression<Func<string>> bodyeditSequence = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyextraField = null, Expression<Func<string>> bodyfax = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<bool>> bodyisActive = null, Expression<Func<string>> bodyitemSalesTaxRef = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodylistID = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodynotes = null, Expression<Func<int>> bodyopenBalance = null, Expression<Func<string>> bodyopenBalanceDate = null, Expression<Func<string>> bodyparentRef = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodypreferredPaymentMethodRef = null, Expression<Func<string>> bodypriceLevelRef = null, Expression<Func<string>> bodyresaleNumber = null, Expression<Func<string>> bodysalesRepRef = null, Expression<Func<string>> bodysalesTaxCodeRef = null, Expression<Func<string>> bodysalutation = null, Expression<Func<string>> bodyshipAddressAddr1 = null, Expression<Func<string>> bodyshipAddressAddr2 = null, Expression<Func<string>> bodyshipAddressAddr3 = null, Expression<Func<string>> bodyshipAddressAddr4 = null, Expression<Func<string>> bodyshipAddressAddr5 = null, Expression<Func<string>> bodyshipAddressCity = null, Expression<Func<string>> bodyshipAddressCountry = null, Expression<Func<string>> bodyshipAddressNote = null, Expression<Func<string>> bodyshipAddressPostalCode = null, Expression<Func<string>> bodyshipAddressState = null, Expression<Func<string>> bodytermsRef = null)
+        public IBodyWorkflowAction<QuickBookCreateNewCustomerResponse> QuickBookCreateNewCustomer([WorkflowExpression] Func<string> bodyaccountNumber = null, [WorkflowExpression] Func<string> bodyaltContact = null, [WorkflowExpression] Func<string> bodyaltPhone = null, [WorkflowExpression] Func<string> bodybillAddressAddr1 = null, [WorkflowExpression] Func<string> bodybillAddressAddr2 = null, [WorkflowExpression] Func<string> bodybillAddressAddr3 = null, [WorkflowExpression] Func<string> bodybillAddressAddr4 = null, [WorkflowExpression] Func<string> bodybillAddressAddr5 = null, [WorkflowExpression] Func<string> bodybillAddressCity = null, [WorkflowExpression] Func<string> bodybillAddressCountry = null, [WorkflowExpression] Func<string> bodybillAddressNote = null, [WorkflowExpression] Func<string> bodybillAddressPostalCode = null, [WorkflowExpression] Func<string> bodybillAddressState = null, [WorkflowExpression] Func<string> bodycc = null, [WorkflowExpression] Func<string> bodyclassRef = null, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<string> bodycontact = null, [WorkflowExpression] Func<int> bodycreditLimit = null, [WorkflowExpression] Func<string> bodycustomerTypeRef = null, [WorkflowExpression] Func<string> bodyeditSequence = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyextraField = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<bool> bodyisActive = null, [WorkflowExpression] Func<string> bodyitemSalesTaxRef = null, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodylistId = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<int> bodyopenBalance = null, [WorkflowExpression] Func<string> bodyopenBalanceDate = null, [WorkflowExpression] Func<string> bodyparentRef = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodypreferredPaymentMethodRef = null, [WorkflowExpression] Func<string> bodypriceLevelRef = null, [WorkflowExpression] Func<string> bodyresaleNumber = null, [WorkflowExpression] Func<string> bodysalesRepRef = null, [WorkflowExpression] Func<string> bodysalesTaxCodeRef = null, [WorkflowExpression] Func<string> bodysalutation = null, [WorkflowExpression] Func<string> bodyshipAddressAddr1 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr2 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr3 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr4 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr5 = null, [WorkflowExpression] Func<string> bodyshipAddressCity = null, [WorkflowExpression] Func<string> bodyshipAddressCountry = null, [WorkflowExpression] Func<string> bodyshipAddressNote = null, [WorkflowExpression] Func<string> bodyshipAddressPostalCode = null, [WorkflowExpression] Func<string> bodyshipAddressState = null, [WorkflowExpression] Func<string> bodytermsRef = null)
         {
-            var apiCallPath = "/api/v1/quickbook/customer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaccountNumber != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["AccountNumber"] = ExpressionConverter.ConvertO(bodyaccountNumber);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/quickbook/customer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaccountNumber != null)
+                {
+                    body["AccountNumber"] = SourceExpressionConverter.ConvertToken(bodyaccountNumber);
+                    bodypropCount++;
+                }
+
+                if (bodyaltContact != null)
+                {
+                    body["AltContact"] = SourceExpressionConverter.ConvertToken(bodyaltContact);
+                    bodypropCount++;
+                }
+
+                if (bodyaltPhone != null)
+                {
+                    body["AltPhone"] = SourceExpressionConverter.ConvertToken(bodyaltPhone);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressAddr1 != null)
+                {
+                    body["BillAddressAddr1"] = SourceExpressionConverter.ConvertToken(bodybillAddressAddr1);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressAddr2 != null)
+                {
+                    body["BillAddressAddr2"] = SourceExpressionConverter.ConvertToken(bodybillAddressAddr2);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressAddr3 != null)
+                {
+                    body["BillAddressAddr3"] = SourceExpressionConverter.ConvertToken(bodybillAddressAddr3);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressAddr4 != null)
+                {
+                    body["BillAddressAddr4"] = SourceExpressionConverter.ConvertToken(bodybillAddressAddr4);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressAddr5 != null)
+                {
+                    body["BillAddressAddr5"] = SourceExpressionConverter.ConvertToken(bodybillAddressAddr5);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressCity != null)
+                {
+                    body["BillAddressCity"] = SourceExpressionConverter.ConvertToken(bodybillAddressCity);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressCountry != null)
+                {
+                    body["BillAddressCountry"] = SourceExpressionConverter.ConvertToken(bodybillAddressCountry);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressNote != null)
+                {
+                    body["BillAddressNote"] = SourceExpressionConverter.ConvertToken(bodybillAddressNote);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressPostalCode != null)
+                {
+                    body["BillAddressPostalCode"] = SourceExpressionConverter.ConvertToken(bodybillAddressPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressState != null)
+                {
+                    body["BillAddressState"] = SourceExpressionConverter.ConvertToken(bodybillAddressState);
+                    bodypropCount++;
+                }
+
+                if (bodycc != null)
+                {
+                    body["Cc"] = SourceExpressionConverter.ConvertToken(bodycc);
+                    bodypropCount++;
+                }
+
+                if (bodyclassRef != null)
+                {
+                    body["ClassRef"] = SourceExpressionConverter.ConvertToken(bodyclassRef);
+                    bodypropCount++;
+                }
+
+                if (bodycompanyName != null)
+                {
+                    body["CompanyName"] = SourceExpressionConverter.ConvertToken(bodycompanyName);
+                    bodypropCount++;
+                }
+
+                if (bodycontact != null)
+                {
+                    body["Contact"] = SourceExpressionConverter.ConvertToken(bodycontact);
+                    bodypropCount++;
+                }
+
+                if (bodycreditLimit != null)
+                {
+                    body["CreditLimit"] = SourceExpressionConverter.ConvertToken(bodycreditLimit);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerTypeRef != null)
+                {
+                    body["CustomerTypeRef"] = SourceExpressionConverter.ConvertToken(bodycustomerTypeRef);
+                    bodypropCount++;
+                }
+
+                if (bodyeditSequence != null)
+                {
+                    body["EditSequence"] = SourceExpressionConverter.ConvertToken(bodyeditSequence);
+                    bodypropCount++;
+                }
+
+                if (bodyemail != null)
+                {
+                    body["Email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodyextraField != null)
+                {
+                    body["ExtraField"] = SourceExpressionConverter.ConvertToken(bodyextraField);
+                    bodypropCount++;
+                }
+
+                if (bodyfax != null)
+                {
+                    body["Fax"] = SourceExpressionConverter.ConvertToken(bodyfax);
+                    bodypropCount++;
+                }
+
+                if (bodyfirstName != null)
+                {
+                    body["FirstName"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodyisActive != null)
+                {
+                    body["IsActive"] = SourceExpressionConverter.ConvertToken(bodyisActive);
+                    bodypropCount++;
+                }
+
+                if (bodyitemSalesTaxRef != null)
+                {
+                    body["ItemSalesTaxRef"] = SourceExpressionConverter.ConvertToken(bodyitemSalesTaxRef);
+                    bodypropCount++;
+                }
+
+                if (bodyjobTitle != null)
+                {
+                    body["JobTitle"] = SourceExpressionConverter.ConvertToken(bodyjobTitle);
+                    bodypropCount++;
+                }
+
+                if (bodylastName != null)
+                {
+                    body["LastName"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodylistId != null)
+                {
+                    body["ListID"] = SourceExpressionConverter.ConvertToken(bodylistId);
+                    bodypropCount++;
+                }
+
+                if (bodymiddleName != null)
+                {
+                    body["MiddleName"] = SourceExpressionConverter.ConvertToken(bodymiddleName);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["Name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodynotes != null)
+                {
+                    body["Notes"] = SourceExpressionConverter.ConvertToken(bodynotes);
+                    bodypropCount++;
+                }
+
+                if (bodyopenBalance != null)
+                {
+                    body["OpenBalance"] = SourceExpressionConverter.ConvertToken(bodyopenBalance);
+                    bodypropCount++;
+                }
+
+                if (bodyopenBalanceDate != null)
+                {
+                    body["OpenBalanceDate"] = SourceExpressionConverter.ConvertToken(bodyopenBalanceDate);
+                    bodypropCount++;
+                }
+
+                if (bodyparentRef != null)
+                {
+                    body["ParentRef"] = SourceExpressionConverter.ConvertToken(bodyparentRef);
+                    bodypropCount++;
+                }
+
+                if (bodyphone != null)
+                {
+                    body["Phone"] = SourceExpressionConverter.ConvertToken(bodyphone);
+                    bodypropCount++;
+                }
+
+                if (bodypreferredPaymentMethodRef != null)
+                {
+                    body["PreferredPaymentMethodRef"] = SourceExpressionConverter.ConvertToken(bodypreferredPaymentMethodRef);
+                    bodypropCount++;
+                }
+
+                if (bodypriceLevelRef != null)
+                {
+                    body["PriceLevelRef"] = SourceExpressionConverter.ConvertToken(bodypriceLevelRef);
+                    bodypropCount++;
+                }
+
+                if (bodyresaleNumber != null)
+                {
+                    body["ResaleNumber"] = SourceExpressionConverter.ConvertToken(bodyresaleNumber);
+                    bodypropCount++;
+                }
+
+                if (bodysalesRepRef != null)
+                {
+                    body["SalesRepRef"] = SourceExpressionConverter.ConvertToken(bodysalesRepRef);
+                    bodypropCount++;
+                }
+
+                if (bodysalesTaxCodeRef != null)
+                {
+                    body["SalesTaxCodeRef"] = SourceExpressionConverter.ConvertToken(bodysalesTaxCodeRef);
+                    bodypropCount++;
+                }
+
+                if (bodysalutation != null)
+                {
+                    body["Salutation"] = SourceExpressionConverter.ConvertToken(bodysalutation);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressAddr1 != null)
+                {
+                    body["ShipAddressAddr1"] = SourceExpressionConverter.ConvertToken(bodyshipAddressAddr1);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressAddr2 != null)
+                {
+                    body["ShipAddressAddr2"] = SourceExpressionConverter.ConvertToken(bodyshipAddressAddr2);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressAddr3 != null)
+                {
+                    body["ShipAddressAddr3"] = SourceExpressionConverter.ConvertToken(bodyshipAddressAddr3);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressAddr4 != null)
+                {
+                    body["ShipAddressAddr4"] = SourceExpressionConverter.ConvertToken(bodyshipAddressAddr4);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressAddr5 != null)
+                {
+                    body["ShipAddressAddr5"] = SourceExpressionConverter.ConvertToken(bodyshipAddressAddr5);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressCity != null)
+                {
+                    body["ShipAddressCity"] = SourceExpressionConverter.ConvertToken(bodyshipAddressCity);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressCountry != null)
+                {
+                    body["ShipAddressCountry"] = SourceExpressionConverter.ConvertToken(bodyshipAddressCountry);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressNote != null)
+                {
+                    body["ShipAddressNote"] = SourceExpressionConverter.ConvertToken(bodyshipAddressNote);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressPostalCode != null)
+                {
+                    body["ShipAddressPostalCode"] = SourceExpressionConverter.ConvertToken(bodyshipAddressPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressState != null)
+                {
+                    body["ShipAddressState"] = SourceExpressionConverter.ConvertToken(bodyshipAddressState);
+                    bodypropCount++;
+                }
+
+                if (bodytermsRef != null)
+                {
+                    body["TermsRef"] = SourceExpressionConverter.ConvertToken(bodytermsRef);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyaltContact != null)
-            {
-                body["AltContact"] = ExpressionConverter.ConvertO(bodyaltContact);
-                bodypropCount++;
-            }
-
-            if (bodyaltPhone != null)
-            {
-                body["AltPhone"] = ExpressionConverter.ConvertO(bodyaltPhone);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressAddr1 != null)
-            {
-                body["BillAddressAddr1"] = ExpressionConverter.ConvertO(bodybillAddressAddr1);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressAddr2 != null)
-            {
-                body["BillAddressAddr2"] = ExpressionConverter.ConvertO(bodybillAddressAddr2);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressAddr3 != null)
-            {
-                body["BillAddressAddr3"] = ExpressionConverter.ConvertO(bodybillAddressAddr3);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressAddr4 != null)
-            {
-                body["BillAddressAddr4"] = ExpressionConverter.ConvertO(bodybillAddressAddr4);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressAddr5 != null)
-            {
-                body["BillAddressAddr5"] = ExpressionConverter.ConvertO(bodybillAddressAddr5);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressCity != null)
-            {
-                body["BillAddressCity"] = ExpressionConverter.ConvertO(bodybillAddressCity);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressCountry != null)
-            {
-                body["BillAddressCountry"] = ExpressionConverter.ConvertO(bodybillAddressCountry);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressNote != null)
-            {
-                body["BillAddressNote"] = ExpressionConverter.ConvertO(bodybillAddressNote);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressPostalCode != null)
-            {
-                body["BillAddressPostalCode"] = ExpressionConverter.ConvertO(bodybillAddressPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressState != null)
-            {
-                body["BillAddressState"] = ExpressionConverter.ConvertO(bodybillAddressState);
-                bodypropCount++;
-            }
-
-            if (bodycc != null)
-            {
-                body["Cc"] = ExpressionConverter.ConvertO(bodycc);
-                bodypropCount++;
-            }
-
-            if (bodyclassRef != null)
-            {
-                body["ClassRef"] = ExpressionConverter.ConvertO(bodyclassRef);
-                bodypropCount++;
-            }
-
-            if (bodycompanyName != null)
-            {
-                body["CompanyName"] = ExpressionConverter.ConvertO(bodycompanyName);
-                bodypropCount++;
-            }
-
-            if (bodycontact != null)
-            {
-                body["Contact"] = ExpressionConverter.ConvertO(bodycontact);
-                bodypropCount++;
-            }
-
-            if (bodycreditLimit != null)
-            {
-                body["CreditLimit"] = ExpressionConverter.ConvertO(bodycreditLimit);
-                bodypropCount++;
-            }
-
-            if (bodycustomerTypeRef != null)
-            {
-                body["CustomerTypeRef"] = ExpressionConverter.ConvertO(bodycustomerTypeRef);
-                bodypropCount++;
-            }
-
-            if (bodyeditSequence != null)
-            {
-                body["EditSequence"] = ExpressionConverter.ConvertO(bodyeditSequence);
-                bodypropCount++;
-            }
-
-            if (bodyemail != null)
-            {
-                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
-
-            if (bodyextraField != null)
-            {
-                body["ExtraField"] = ExpressionConverter.ConvertO(bodyextraField);
-                bodypropCount++;
-            }
-
-            if (bodyfax != null)
-            {
-                body["Fax"] = ExpressionConverter.ConvertO(bodyfax);
-                bodypropCount++;
-            }
-
-            if (bodyfirstName != null)
-            {
-                body["FirstName"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
-
-            if (bodyisActive != null)
-            {
-                body["IsActive"] = ExpressionConverter.ConvertO(bodyisActive);
-                bodypropCount++;
-            }
-
-            if (bodyitemSalesTaxRef != null)
-            {
-                body["ItemSalesTaxRef"] = ExpressionConverter.ConvertO(bodyitemSalesTaxRef);
-                bodypropCount++;
-            }
-
-            if (bodyjobTitle != null)
-            {
-                body["JobTitle"] = ExpressionConverter.ConvertO(bodyjobTitle);
-                bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
-                bodypropCount++;
-            }
-
-            if (bodylistID != null)
-            {
-                body["ListID"] = ExpressionConverter.ConvertO(bodylistID);
-                bodypropCount++;
-            }
-
-            if (bodymiddleName != null)
-            {
-                body["MiddleName"] = ExpressionConverter.ConvertO(bodymiddleName);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["Name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodynotes != null)
-            {
-                body["Notes"] = ExpressionConverter.ConvertO(bodynotes);
-                bodypropCount++;
-            }
-
-            if (bodyopenBalance != null)
-            {
-                body["OpenBalance"] = ExpressionConverter.ConvertO(bodyopenBalance);
-                bodypropCount++;
-            }
-
-            if (bodyopenBalanceDate != null)
-            {
-                body["OpenBalanceDate"] = ExpressionConverter.ConvertO(bodyopenBalanceDate);
-                bodypropCount++;
-            }
-
-            if (bodyparentRef != null)
-            {
-                body["ParentRef"] = ExpressionConverter.ConvertO(bodyparentRef);
-                bodypropCount++;
-            }
-
-            if (bodyphone != null)
-            {
-                body["Phone"] = ExpressionConverter.ConvertO(bodyphone);
-                bodypropCount++;
-            }
-
-            if (bodypreferredPaymentMethodRef != null)
-            {
-                body["PreferredPaymentMethodRef"] = ExpressionConverter.ConvertO(bodypreferredPaymentMethodRef);
-                bodypropCount++;
-            }
-
-            if (bodypriceLevelRef != null)
-            {
-                body["PriceLevelRef"] = ExpressionConverter.ConvertO(bodypriceLevelRef);
-                bodypropCount++;
-            }
-
-            if (bodyresaleNumber != null)
-            {
-                body["ResaleNumber"] = ExpressionConverter.ConvertO(bodyresaleNumber);
-                bodypropCount++;
-            }
-
-            if (bodysalesRepRef != null)
-            {
-                body["SalesRepRef"] = ExpressionConverter.ConvertO(bodysalesRepRef);
-                bodypropCount++;
-            }
-
-            if (bodysalesTaxCodeRef != null)
-            {
-                body["SalesTaxCodeRef"] = ExpressionConverter.ConvertO(bodysalesTaxCodeRef);
-                bodypropCount++;
-            }
-
-            if (bodysalutation != null)
-            {
-                body["Salutation"] = ExpressionConverter.ConvertO(bodysalutation);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressAddr1 != null)
-            {
-                body["ShipAddressAddr1"] = ExpressionConverter.ConvertO(bodyshipAddressAddr1);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressAddr2 != null)
-            {
-                body["ShipAddressAddr2"] = ExpressionConverter.ConvertO(bodyshipAddressAddr2);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressAddr3 != null)
-            {
-                body["ShipAddressAddr3"] = ExpressionConverter.ConvertO(bodyshipAddressAddr3);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressAddr4 != null)
-            {
-                body["ShipAddressAddr4"] = ExpressionConverter.ConvertO(bodyshipAddressAddr4);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressAddr5 != null)
-            {
-                body["ShipAddressAddr5"] = ExpressionConverter.ConvertO(bodyshipAddressAddr5);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressCity != null)
-            {
-                body["ShipAddressCity"] = ExpressionConverter.ConvertO(bodyshipAddressCity);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressCountry != null)
-            {
-                body["ShipAddressCountry"] = ExpressionConverter.ConvertO(bodyshipAddressCountry);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressNote != null)
-            {
-                body["ShipAddressNote"] = ExpressionConverter.ConvertO(bodyshipAddressNote);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressPostalCode != null)
-            {
-                body["ShipAddressPostalCode"] = ExpressionConverter.ConvertO(bodyshipAddressPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressState != null)
-            {
-                body["ShipAddressState"] = ExpressionConverter.ConvertO(bodyshipAddressState);
-                bodypropCount++;
-            }
-
-            if (bodytermsRef != null)
-            {
-                body["TermsRef"] = ExpressionConverter.ConvertO(bodytermsRef);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<QuickBookCreateNewCustomerResponse>(callPayload);
+            return new ApiConnectionAction<QuickBookCreateNewCustomerResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<QuickBookCreateNewSalesOrderResponse> QuickBookCreateNewSalesOrder(Expression<Func<string>> bodybillAddressAddr1 = null, Expression<Func<string>> bodybillAddressAddr2 = null, Expression<Func<string>> bodybillAddressAddr3 = null, Expression<Func<string>> bodybillAddressAddr4 = null, Expression<Func<string>> bodybillAddressAddr5 = null, Expression<Func<string>> bodybillAddressCity = null, Expression<Func<string>> bodybillAddressCountry = null, Expression<Func<string>> bodybillAddressNote = null, Expression<Func<string>> bodybillAddressPostalCode = null, Expression<Func<string>> bodybillAddressState = null, Expression<Func<string>> bodyclassRef = null, Expression<Func<string>> bodycustomerRefListID = null, Expression<Func<string>> bodycustomerRefName = null, Expression<Func<string>> bodycustomerSalesTaxCodeRef = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyeditSequence = null, Expression<Func<string>> bodyextraField = null, Expression<Func<string>> bodyitemSalesTaxRef = null, Expression<Func<string>> bodylistID = null, Expression<Func<string>> bodymemo = null, Expression<Func<string>> bodypONumber = null, Expression<Func<string>> bodyrefNumber = null, Expression<Func<bodysalesOrderLineItemInputItem22[]>> bodysalesOrderLineItem = null, Expression<Func<string>> bodysalesRepRef = null, Expression<Func<string>> bodyshipAddressAddr1 = null, Expression<Func<string>> bodyshipAddressAddr2 = null, Expression<Func<string>> bodyshipAddressAddr3 = null, Expression<Func<string>> bodyshipAddressAddr4 = null, Expression<Func<string>> bodyshipAddressAddr5 = null, Expression<Func<string>> bodyshipAddressCity = null, Expression<Func<string>> bodyshipAddressCountry = null, Expression<Func<string>> bodyshipAddressNote = null, Expression<Func<string>> bodyshipAddressPostalCode = null, Expression<Func<string>> bodyshipAddressState = null, Expression<Func<string>> bodytemplateRef = null, Expression<Func<string>> bodytermsRef = null, Expression<Func<string>> bodytxnDate = null)
+        public IBodyWorkflowAction<QuickBookCreateNewSalesOrderResponse> QuickBookCreateNewSalesOrder([WorkflowExpression] Func<string> bodybillAddressAddr1 = null, [WorkflowExpression] Func<string> bodybillAddressAddr2 = null, [WorkflowExpression] Func<string> bodybillAddressAddr3 = null, [WorkflowExpression] Func<string> bodybillAddressAddr4 = null, [WorkflowExpression] Func<string> bodybillAddressAddr5 = null, [WorkflowExpression] Func<string> bodybillAddressCity = null, [WorkflowExpression] Func<string> bodybillAddressCountry = null, [WorkflowExpression] Func<string> bodybillAddressNote = null, [WorkflowExpression] Func<string> bodybillAddressPostalCode = null, [WorkflowExpression] Func<string> bodybillAddressState = null, [WorkflowExpression] Func<string> bodyclassRef = null, [WorkflowExpression] Func<string> bodycustomerRefListId = null, [WorkflowExpression] Func<string> bodycustomerRefName = null, [WorkflowExpression] Func<string> bodycustomerSalesTaxCodeRef = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyeditSequence = null, [WorkflowExpression] Func<string> bodyextraField = null, [WorkflowExpression] Func<string> bodyitemSalesTaxRef = null, [WorkflowExpression] Func<string> bodylistId = null, [WorkflowExpression] Func<string> bodymemo = null, [WorkflowExpression] Func<string> bodypONumber = null, [WorkflowExpression] Func<string> bodyrefNumber = null, [WorkflowExpression] Func<bodysalesOrderLineItemInputItem22[]> bodysalesOrderLineItem = null, [WorkflowExpression] Func<string> bodysalesRepRef = null, [WorkflowExpression] Func<string> bodyshipAddressAddr1 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr2 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr3 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr4 = null, [WorkflowExpression] Func<string> bodyshipAddressAddr5 = null, [WorkflowExpression] Func<string> bodyshipAddressCity = null, [WorkflowExpression] Func<string> bodyshipAddressCountry = null, [WorkflowExpression] Func<string> bodyshipAddressNote = null, [WorkflowExpression] Func<string> bodyshipAddressPostalCode = null, [WorkflowExpression] Func<string> bodyshipAddressState = null, [WorkflowExpression] Func<string> bodytemplateRef = null, [WorkflowExpression] Func<string> bodytermsRef = null, [WorkflowExpression] Func<string> bodytxnDate = null)
         {
-            var apiCallPath = "/api/v1/quickbook/salesorder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodybillAddressAddr1 != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["BillAddressAddr1"] = ExpressionConverter.ConvertO(bodybillAddressAddr1);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/quickbook/salesorder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodybillAddressAddr1 != null)
+                {
+                    body["BillAddressAddr1"] = SourceExpressionConverter.ConvertToken(bodybillAddressAddr1);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressAddr2 != null)
+                {
+                    body["BillAddressAddr2"] = SourceExpressionConverter.ConvertToken(bodybillAddressAddr2);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressAddr3 != null)
+                {
+                    body["BillAddressAddr3"] = SourceExpressionConverter.ConvertToken(bodybillAddressAddr3);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressAddr4 != null)
+                {
+                    body["BillAddressAddr4"] = SourceExpressionConverter.ConvertToken(bodybillAddressAddr4);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressAddr5 != null)
+                {
+                    body["BillAddressAddr5"] = SourceExpressionConverter.ConvertToken(bodybillAddressAddr5);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressCity != null)
+                {
+                    body["BillAddressCity"] = SourceExpressionConverter.ConvertToken(bodybillAddressCity);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressCountry != null)
+                {
+                    body["BillAddressCountry"] = SourceExpressionConverter.ConvertToken(bodybillAddressCountry);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressNote != null)
+                {
+                    body["BillAddressNote"] = SourceExpressionConverter.ConvertToken(bodybillAddressNote);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressPostalCode != null)
+                {
+                    body["BillAddressPostalCode"] = SourceExpressionConverter.ConvertToken(bodybillAddressPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddressState != null)
+                {
+                    body["BillAddressState"] = SourceExpressionConverter.ConvertToken(bodybillAddressState);
+                    bodypropCount++;
+                }
+
+                if (bodyclassRef != null)
+                {
+                    body["ClassRef"] = SourceExpressionConverter.ConvertToken(bodyclassRef);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerRefListId != null)
+                {
+                    body["CustomerRefListID"] = SourceExpressionConverter.ConvertToken(bodycustomerRefListId);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerRefName != null)
+                {
+                    body["CustomerRefName"] = SourceExpressionConverter.ConvertToken(bodycustomerRefName);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerSalesTaxCodeRef != null)
+                {
+                    body["CustomerSalesTaxCodeRef"] = SourceExpressionConverter.ConvertToken(bodycustomerSalesTaxCodeRef);
+                    bodypropCount++;
+                }
+
+                if (bodydueDate != null)
+                {
+                    body["DueDate"] = SourceExpressionConverter.ConvertToken(bodydueDate);
+                    bodypropCount++;
+                }
+
+                if (bodyeditSequence != null)
+                {
+                    body["EditSequence"] = SourceExpressionConverter.ConvertToken(bodyeditSequence);
+                    bodypropCount++;
+                }
+
+                if (bodyextraField != null)
+                {
+                    body["ExtraField"] = SourceExpressionConverter.ConvertToken(bodyextraField);
+                    bodypropCount++;
+                }
+
+                if (bodyitemSalesTaxRef != null)
+                {
+                    body["ItemSalesTaxRef"] = SourceExpressionConverter.ConvertToken(bodyitemSalesTaxRef);
+                    bodypropCount++;
+                }
+
+                if (bodylistId != null)
+                {
+                    body["ListID"] = SourceExpressionConverter.ConvertToken(bodylistId);
+                    bodypropCount++;
+                }
+
+                if (bodymemo != null)
+                {
+                    body["Memo"] = SourceExpressionConverter.ConvertToken(bodymemo);
+                    bodypropCount++;
+                }
+
+                if (bodypONumber != null)
+                {
+                    body["PONumber"] = SourceExpressionConverter.ConvertToken(bodypONumber);
+                    bodypropCount++;
+                }
+
+                if (bodyrefNumber != null)
+                {
+                    body["RefNumber"] = SourceExpressionConverter.ConvertToken(bodyrefNumber);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrderLineItem != null)
+                {
+                    body["SalesOrderLineItem"] = SourceExpressionConverter.ConvertToken(bodysalesOrderLineItem);
+                    bodypropCount++;
+                }
+
+                if (bodysalesRepRef != null)
+                {
+                    body["SalesRepRef"] = SourceExpressionConverter.ConvertToken(bodysalesRepRef);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressAddr1 != null)
+                {
+                    body["ShipAddressAddr1"] = SourceExpressionConverter.ConvertToken(bodyshipAddressAddr1);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressAddr2 != null)
+                {
+                    body["ShipAddressAddr2"] = SourceExpressionConverter.ConvertToken(bodyshipAddressAddr2);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressAddr3 != null)
+                {
+                    body["ShipAddressAddr3"] = SourceExpressionConverter.ConvertToken(bodyshipAddressAddr3);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressAddr4 != null)
+                {
+                    body["ShipAddressAddr4"] = SourceExpressionConverter.ConvertToken(bodyshipAddressAddr4);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressAddr5 != null)
+                {
+                    body["ShipAddressAddr5"] = SourceExpressionConverter.ConvertToken(bodyshipAddressAddr5);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressCity != null)
+                {
+                    body["ShipAddressCity"] = SourceExpressionConverter.ConvertToken(bodyshipAddressCity);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressCountry != null)
+                {
+                    body["ShipAddressCountry"] = SourceExpressionConverter.ConvertToken(bodyshipAddressCountry);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressNote != null)
+                {
+                    body["ShipAddressNote"] = SourceExpressionConverter.ConvertToken(bodyshipAddressNote);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressPostalCode != null)
+                {
+                    body["ShipAddressPostalCode"] = SourceExpressionConverter.ConvertToken(bodyshipAddressPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressState != null)
+                {
+                    body["ShipAddressState"] = SourceExpressionConverter.ConvertToken(bodyshipAddressState);
+                    bodypropCount++;
+                }
+
+                if (bodytemplateRef != null)
+                {
+                    body["TemplateRef"] = SourceExpressionConverter.ConvertToken(bodytemplateRef);
+                    bodypropCount++;
+                }
+
+                if (bodytermsRef != null)
+                {
+                    body["TermsRef"] = SourceExpressionConverter.ConvertToken(bodytermsRef);
+                    bodypropCount++;
+                }
+
+                if (bodytxnDate != null)
+                {
+                    body["TxnDate"] = SourceExpressionConverter.ConvertToken(bodytxnDate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodybillAddressAddr2 != null)
-            {
-                body["BillAddressAddr2"] = ExpressionConverter.ConvertO(bodybillAddressAddr2);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressAddr3 != null)
-            {
-                body["BillAddressAddr3"] = ExpressionConverter.ConvertO(bodybillAddressAddr3);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressAddr4 != null)
-            {
-                body["BillAddressAddr4"] = ExpressionConverter.ConvertO(bodybillAddressAddr4);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressAddr5 != null)
-            {
-                body["BillAddressAddr5"] = ExpressionConverter.ConvertO(bodybillAddressAddr5);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressCity != null)
-            {
-                body["BillAddressCity"] = ExpressionConverter.ConvertO(bodybillAddressCity);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressCountry != null)
-            {
-                body["BillAddressCountry"] = ExpressionConverter.ConvertO(bodybillAddressCountry);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressNote != null)
-            {
-                body["BillAddressNote"] = ExpressionConverter.ConvertO(bodybillAddressNote);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressPostalCode != null)
-            {
-                body["BillAddressPostalCode"] = ExpressionConverter.ConvertO(bodybillAddressPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodybillAddressState != null)
-            {
-                body["BillAddressState"] = ExpressionConverter.ConvertO(bodybillAddressState);
-                bodypropCount++;
-            }
-
-            if (bodyclassRef != null)
-            {
-                body["ClassRef"] = ExpressionConverter.ConvertO(bodyclassRef);
-                bodypropCount++;
-            }
-
-            if (bodycustomerRefListID != null)
-            {
-                body["CustomerRefListID"] = ExpressionConverter.ConvertO(bodycustomerRefListID);
-                bodypropCount++;
-            }
-
-            if (bodycustomerRefName != null)
-            {
-                body["CustomerRefName"] = ExpressionConverter.ConvertO(bodycustomerRefName);
-                bodypropCount++;
-            }
-
-            if (bodycustomerSalesTaxCodeRef != null)
-            {
-                body["CustomerSalesTaxCodeRef"] = ExpressionConverter.ConvertO(bodycustomerSalesTaxCodeRef);
-                bodypropCount++;
-            }
-
-            if (bodydueDate != null)
-            {
-                body["DueDate"] = ExpressionConverter.ConvertO(bodydueDate);
-                bodypropCount++;
-            }
-
-            if (bodyeditSequence != null)
-            {
-                body["EditSequence"] = ExpressionConverter.ConvertO(bodyeditSequence);
-                bodypropCount++;
-            }
-
-            if (bodyextraField != null)
-            {
-                body["ExtraField"] = ExpressionConverter.ConvertO(bodyextraField);
-                bodypropCount++;
-            }
-
-            if (bodyitemSalesTaxRef != null)
-            {
-                body["ItemSalesTaxRef"] = ExpressionConverter.ConvertO(bodyitemSalesTaxRef);
-                bodypropCount++;
-            }
-
-            if (bodylistID != null)
-            {
-                body["ListID"] = ExpressionConverter.ConvertO(bodylistID);
-                bodypropCount++;
-            }
-
-            if (bodymemo != null)
-            {
-                body["Memo"] = ExpressionConverter.ConvertO(bodymemo);
-                bodypropCount++;
-            }
-
-            if (bodypONumber != null)
-            {
-                body["PONumber"] = ExpressionConverter.ConvertO(bodypONumber);
-                bodypropCount++;
-            }
-
-            if (bodyrefNumber != null)
-            {
-                body["RefNumber"] = ExpressionConverter.ConvertO(bodyrefNumber);
-                bodypropCount++;
-            }
-
-            if (bodysalesOrderLineItem != null)
-            {
-                body["SalesOrderLineItem"] = ExpressionConverter.ConvertO(bodysalesOrderLineItem);
-                bodypropCount++;
-            }
-
-            if (bodysalesRepRef != null)
-            {
-                body["SalesRepRef"] = ExpressionConverter.ConvertO(bodysalesRepRef);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressAddr1 != null)
-            {
-                body["ShipAddressAddr1"] = ExpressionConverter.ConvertO(bodyshipAddressAddr1);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressAddr2 != null)
-            {
-                body["ShipAddressAddr2"] = ExpressionConverter.ConvertO(bodyshipAddressAddr2);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressAddr3 != null)
-            {
-                body["ShipAddressAddr3"] = ExpressionConverter.ConvertO(bodyshipAddressAddr3);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressAddr4 != null)
-            {
-                body["ShipAddressAddr4"] = ExpressionConverter.ConvertO(bodyshipAddressAddr4);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressAddr5 != null)
-            {
-                body["ShipAddressAddr5"] = ExpressionConverter.ConvertO(bodyshipAddressAddr5);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressCity != null)
-            {
-                body["ShipAddressCity"] = ExpressionConverter.ConvertO(bodyshipAddressCity);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressCountry != null)
-            {
-                body["ShipAddressCountry"] = ExpressionConverter.ConvertO(bodyshipAddressCountry);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressNote != null)
-            {
-                body["ShipAddressNote"] = ExpressionConverter.ConvertO(bodyshipAddressNote);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressPostalCode != null)
-            {
-                body["ShipAddressPostalCode"] = ExpressionConverter.ConvertO(bodyshipAddressPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressState != null)
-            {
-                body["ShipAddressState"] = ExpressionConverter.ConvertO(bodyshipAddressState);
-                bodypropCount++;
-            }
-
-            if (bodytemplateRef != null)
-            {
-                body["TemplateRef"] = ExpressionConverter.ConvertO(bodytemplateRef);
-                bodypropCount++;
-            }
-
-            if (bodytermsRef != null)
-            {
-                body["TermsRef"] = ExpressionConverter.ConvertO(bodytermsRef);
-                bodypropCount++;
-            }
-
-            if (bodytxnDate != null)
-            {
-                body["TxnDate"] = ExpressionConverter.ConvertO(bodytxnDate);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<QuickBookCreateNewSalesOrderResponse>(callPayload);
+            return new ApiConnectionAction<QuickBookCreateNewSalesOrderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50UKCreateNewCustomerResponse> SAGE50UKCreateNewCustomer(Expression<Func<string>> bodyaCCOUNTOPENED = null, Expression<Func<string>> bodyaCCOUNTREF = null, Expression<Func<int>> bodyaCCOUNTSTATUS = null, Expression<Func<string>> bodyaDDRESS1 = null, Expression<Func<string>> bodyaDDRESS2 = null, Expression<Func<string>> bodyaDDRESS3 = null, Expression<Func<string>> bodyaDDRESS4 = null, Expression<Func<string>> bodyaDDRESS5 = null, Expression<Func<string>> bodyaNALYSIS1 = null, Expression<Func<string>> bodyaNALYSIS2 = null, Expression<Func<string>> bodyaNALYSIS3 = null, Expression<Func<int>> bodyaVERAGEPAYDAYS = null, Expression<Func<int>> bodybALANCE = null, Expression<Func<bool>> bodycANAPPLYCHARGES = null, Expression<Func<string>> bodycONTACTNAME = null, Expression<Func<string>> bodycOUNTRYCODE = null, Expression<Func<string>> bodycREDITAPPLIEDFOR = null, Expression<Func<int>> bodycREDITBUREAU = null, Expression<Func<int>> bodycREDITLIMIT = null, Expression<Func<int>> bodycREDITPOSITION = null, Expression<Func<string>> bodycREDITREFERENCE = null, Expression<Func<int>> bodycURRENCY = null, Expression<Func<string>> bodydATECREDITAPPRECEIVED = null, Expression<Func<string>> bodydEFNOMCODE = null, Expression<Func<int>> bodydEFTAXCODE = null, Expression<Func<int>> bodydEPTNUMBER = null, Expression<Func<int>> bodydISCOUNTRATE = null, Expression<Func<int>> bodydISCOUNTTYPE = null, Expression<Func<string>> bodydUNSNUMBER = null, Expression<Func<string>> bodyeMAIL = null, Expression<Func<string>> bodyeMAIL2 = null, Expression<Func<string>> bodyeMAIL3 = null, Expression<Func<string>> bodyextraField = null, Expression<Func<string>> bodyfAX = null, Expression<Func<bool>> bodyhOLDMAIL = null, Expression<Func<bool>> bodyiNACTIVEFLAG = null, Expression<Func<bool>> bodyisACCOUNTREFAutogenerate = null, Expression<Func<string>> bodylASTCREDITREV = null, Expression<Func<string>> bodynAME = null, Expression<Func<string>> bodynEXTCREDITREV = null, Expression<Func<bool>> bodyoVERRIDEPRODUCTNOMINAL = null, Expression<Func<bool>> bodyoVERRIDEPRODUCTTAX = null, Expression<Func<int>> bodypAYMENTDUEDAYS = null, Expression<Func<string>> bodypRICELISTREF = null, Expression<Func<bool>> bodypRIORITYTRADER = null, Expression<Func<bool>> bodysENDINVOICESELECTRONICALLY = null, Expression<Func<bool>> bodysENDLETTERSELECTRONICALLY = null, Expression<Func<int>> bodysETTLEMENTDISCRATE = null, Expression<Func<int>> bodysETTLEMENTDUEDAYS = null, Expression<Func<string>> bodytELEPHONE = null, Expression<Func<string>> bodytELEPHONE2 = null, Expression<Func<string>> bodytERMS = null, Expression<Func<bool>> bodytERMSAGREEDFLAG = null, Expression<Func<string>> bodytRADECONTACT = null, Expression<Func<string>> bodyvATREGNUMBER = null)
+        public IBodyWorkflowAction<SAGE50UKCreateNewCustomerResponse> SAGE50UKCreateNewCustomer([WorkflowExpression] Func<string> bodyaCCOUNTOPENED = null, [WorkflowExpression] Func<string> bodyaCCOUNTREF = null, [WorkflowExpression] Func<int> bodyaCCOUNTSTATUS = null, [WorkflowExpression] Func<string> bodyaDDRESS1 = null, [WorkflowExpression] Func<string> bodyaDDRESS2 = null, [WorkflowExpression] Func<string> bodyaDDRESS3 = null, [WorkflowExpression] Func<string> bodyaDDRESS4 = null, [WorkflowExpression] Func<string> bodyaDDRESS5 = null, [WorkflowExpression] Func<string> bodyaNALYSIS1 = null, [WorkflowExpression] Func<string> bodyaNALYSIS2 = null, [WorkflowExpression] Func<string> bodyaNALYSIS3 = null, [WorkflowExpression] Func<int> bodyaVERAGEPAYDAYS = null, [WorkflowExpression] Func<int> bodybALANCE = null, [WorkflowExpression] Func<bool> bodycANAPPLYCHARGES = null, [WorkflowExpression] Func<string> bodycONTACTNAME = null, [WorkflowExpression] Func<string> bodycOUNTRYCODE = null, [WorkflowExpression] Func<string> bodycREDITAPPLIEDFOR = null, [WorkflowExpression] Func<int> bodycREDITBUREAU = null, [WorkflowExpression] Func<int> bodycREDITLIMIT = null, [WorkflowExpression] Func<int> bodycREDITPOSITION = null, [WorkflowExpression] Func<string> bodycREDITREFERENCE = null, [WorkflowExpression] Func<int> bodycURRENCY = null, [WorkflowExpression] Func<string> bodydATECREDITAPPRECEIVED = null, [WorkflowExpression] Func<string> bodydEFNOMCODE = null, [WorkflowExpression] Func<int> bodydEFTAXCODE = null, [WorkflowExpression] Func<int> bodydEPTNUMBER = null, [WorkflowExpression] Func<int> bodydISCOUNTRATE = null, [WorkflowExpression] Func<int> bodydISCOUNTTYPE = null, [WorkflowExpression] Func<string> bodydUNSNUMBER = null, [WorkflowExpression] Func<string> bodyeMAIL = null, [WorkflowExpression] Func<string> bodyeMAIL2 = null, [WorkflowExpression] Func<string> bodyeMAIL3 = null, [WorkflowExpression] Func<string> bodyextraField = null, [WorkflowExpression] Func<string> bodyfAX = null, [WorkflowExpression] Func<bool> bodyhOLDMAIL = null, [WorkflowExpression] Func<bool> bodyiNACTIVEFLAG = null, [WorkflowExpression] Func<bool> bodyisACCOUNTREFAutogenerate = null, [WorkflowExpression] Func<string> bodylASTCREDITREV = null, [WorkflowExpression] Func<string> bodynAME = null, [WorkflowExpression] Func<string> bodynEXTCREDITREV = null, [WorkflowExpression] Func<bool> bodyoVERRIdEPRODUCTNOMINAL = null, [WorkflowExpression] Func<bool> bodyoVERRIdEPRODUCTTAX = null, [WorkflowExpression] Func<int> bodypAYMENTDUEDAYS = null, [WorkflowExpression] Func<string> bodypRICELISTREF = null, [WorkflowExpression] Func<bool> bodypRIORITYTRADER = null, [WorkflowExpression] Func<bool> bodysENDINVOICESELECTRONICALLY = null, [WorkflowExpression] Func<bool> bodysENDLETTERSELECTRONICALLY = null, [WorkflowExpression] Func<int> bodysETTLEMENTDISCRATE = null, [WorkflowExpression] Func<int> bodysETTLEMENTDUEDAYS = null, [WorkflowExpression] Func<string> bodytELEPHONE = null, [WorkflowExpression] Func<string> bodytELEPHONE2 = null, [WorkflowExpression] Func<string> bodytERMS = null, [WorkflowExpression] Func<bool> bodytERMSAGREEDFLAG = null, [WorkflowExpression] Func<string> bodytRADECONTACT = null, [WorkflowExpression] Func<string> bodyvATREGNUMBER = null)
         {
-            var apiCallPath = "/api/v1/sage50uk/customer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaCCOUNTOPENED != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ACCOUNT_OPENED"] = ExpressionConverter.ConvertO(bodyaCCOUNTOPENED);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/sage50uk/customer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaCCOUNTOPENED != null)
+                {
+                    body["ACCOUNT_OPENED"] = SourceExpressionConverter.ConvertToken(bodyaCCOUNTOPENED);
+                    bodypropCount++;
+                }
+
+                if (bodyaCCOUNTREF != null)
+                {
+                    body["ACCOUNT_REF"] = SourceExpressionConverter.ConvertToken(bodyaCCOUNTREF);
+                    bodypropCount++;
+                }
+
+                if (bodyaCCOUNTSTATUS != null)
+                {
+                    body["ACCOUNT_STATUS"] = SourceExpressionConverter.ConvertToken(bodyaCCOUNTSTATUS);
+                    bodypropCount++;
+                }
+
+                if (bodyaDDRESS1 != null)
+                {
+                    body["ADDRESS_1"] = SourceExpressionConverter.ConvertToken(bodyaDDRESS1);
+                    bodypropCount++;
+                }
+
+                if (bodyaDDRESS2 != null)
+                {
+                    body["ADDRESS_2"] = SourceExpressionConverter.ConvertToken(bodyaDDRESS2);
+                    bodypropCount++;
+                }
+
+                if (bodyaDDRESS3 != null)
+                {
+                    body["ADDRESS_3"] = SourceExpressionConverter.ConvertToken(bodyaDDRESS3);
+                    bodypropCount++;
+                }
+
+                if (bodyaDDRESS4 != null)
+                {
+                    body["ADDRESS_4"] = SourceExpressionConverter.ConvertToken(bodyaDDRESS4);
+                    bodypropCount++;
+                }
+
+                if (bodyaDDRESS5 != null)
+                {
+                    body["ADDRESS_5"] = SourceExpressionConverter.ConvertToken(bodyaDDRESS5);
+                    bodypropCount++;
+                }
+
+                if (bodyaNALYSIS1 != null)
+                {
+                    body["ANALYSIS_1"] = SourceExpressionConverter.ConvertToken(bodyaNALYSIS1);
+                    bodypropCount++;
+                }
+
+                if (bodyaNALYSIS2 != null)
+                {
+                    body["ANALYSIS_2"] = SourceExpressionConverter.ConvertToken(bodyaNALYSIS2);
+                    bodypropCount++;
+                }
+
+                if (bodyaNALYSIS3 != null)
+                {
+                    body["ANALYSIS_3"] = SourceExpressionConverter.ConvertToken(bodyaNALYSIS3);
+                    bodypropCount++;
+                }
+
+                if (bodyaVERAGEPAYDAYS != null)
+                {
+                    body["AVERAGE_PAY_DAYS"] = SourceExpressionConverter.ConvertToken(bodyaVERAGEPAYDAYS);
+                    bodypropCount++;
+                }
+
+                if (bodybALANCE != null)
+                {
+                    body["BALANCE"] = SourceExpressionConverter.ConvertToken(bodybALANCE);
+                    bodypropCount++;
+                }
+
+                if (bodycANAPPLYCHARGES != null)
+                {
+                    body["CAN_APPLY_CHARGES"] = SourceExpressionConverter.ConvertToken(bodycANAPPLYCHARGES);
+                    bodypropCount++;
+                }
+
+                if (bodycONTACTNAME != null)
+                {
+                    body["CONTACT_NAME"] = SourceExpressionConverter.ConvertToken(bodycONTACTNAME);
+                    bodypropCount++;
+                }
+
+                if (bodycOUNTRYCODE != null)
+                {
+                    body["COUNTRY_CODE"] = SourceExpressionConverter.ConvertToken(bodycOUNTRYCODE);
+                    bodypropCount++;
+                }
+
+                if (bodycREDITAPPLIEDFOR != null)
+                {
+                    body["CREDIT_APPLIED_FOR"] = SourceExpressionConverter.ConvertToken(bodycREDITAPPLIEDFOR);
+                    bodypropCount++;
+                }
+
+                if (bodycREDITBUREAU != null)
+                {
+                    body["CREDIT_BUREAU"] = SourceExpressionConverter.ConvertToken(bodycREDITBUREAU);
+                    bodypropCount++;
+                }
+
+                if (bodycREDITLIMIT != null)
+                {
+                    body["CREDIT_LIMIT"] = SourceExpressionConverter.ConvertToken(bodycREDITLIMIT);
+                    bodypropCount++;
+                }
+
+                if (bodycREDITPOSITION != null)
+                {
+                    body["CREDIT_POSITION"] = SourceExpressionConverter.ConvertToken(bodycREDITPOSITION);
+                    bodypropCount++;
+                }
+
+                if (bodycREDITREFERENCE != null)
+                {
+                    body["CREDIT_REFERENCE"] = SourceExpressionConverter.ConvertToken(bodycREDITREFERENCE);
+                    bodypropCount++;
+                }
+
+                if (bodycURRENCY != null)
+                {
+                    body["CURRENCY"] = SourceExpressionConverter.ConvertToken(bodycURRENCY);
+                    bodypropCount++;
+                }
+
+                if (bodydATECREDITAPPRECEIVED != null)
+                {
+                    body["DATE_CREDIT_APP_RECEIVED"] = SourceExpressionConverter.ConvertToken(bodydATECREDITAPPRECEIVED);
+                    bodypropCount++;
+                }
+
+                if (bodydEFNOMCODE != null)
+                {
+                    body["DEF_NOM_CODE"] = SourceExpressionConverter.ConvertToken(bodydEFNOMCODE);
+                    bodypropCount++;
+                }
+
+                if (bodydEFTAXCODE != null)
+                {
+                    body["DEF_TAX_CODE"] = SourceExpressionConverter.ConvertToken(bodydEFTAXCODE);
+                    bodypropCount++;
+                }
+
+                if (bodydEPTNUMBER != null)
+                {
+                    body["DEPT_NUMBER"] = SourceExpressionConverter.ConvertToken(bodydEPTNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodydISCOUNTRATE != null)
+                {
+                    body["DISCOUNT_RATE"] = SourceExpressionConverter.ConvertToken(bodydISCOUNTRATE);
+                    bodypropCount++;
+                }
+
+                if (bodydISCOUNTTYPE != null)
+                {
+                    body["DISCOUNT_TYPE"] = SourceExpressionConverter.ConvertToken(bodydISCOUNTTYPE);
+                    bodypropCount++;
+                }
+
+                if (bodydUNSNUMBER != null)
+                {
+                    body["DUNS_NUMBER"] = SourceExpressionConverter.ConvertToken(bodydUNSNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodyeMAIL != null)
+                {
+                    body["E_MAIL"] = SourceExpressionConverter.ConvertToken(bodyeMAIL);
+                    bodypropCount++;
+                }
+
+                if (bodyeMAIL2 != null)
+                {
+                    body["E_MAIL2"] = SourceExpressionConverter.ConvertToken(bodyeMAIL2);
+                    bodypropCount++;
+                }
+
+                if (bodyeMAIL3 != null)
+                {
+                    body["E_MAIL3"] = SourceExpressionConverter.ConvertToken(bodyeMAIL3);
+                    bodypropCount++;
+                }
+
+                if (bodyextraField != null)
+                {
+                    body["ExtraField"] = SourceExpressionConverter.ConvertToken(bodyextraField);
+                    bodypropCount++;
+                }
+
+                if (bodyfAX != null)
+                {
+                    body["FAX"] = SourceExpressionConverter.ConvertToken(bodyfAX);
+                    bodypropCount++;
+                }
+
+                if (bodyhOLDMAIL != null)
+                {
+                    body["HOLD_MAIL"] = SourceExpressionConverter.ConvertToken(bodyhOLDMAIL);
+                    bodypropCount++;
+                }
+
+                if (bodyiNACTIVEFLAG != null)
+                {
+                    body["INACTIVE_FLAG"] = SourceExpressionConverter.ConvertToken(bodyiNACTIVEFLAG);
+                    bodypropCount++;
+                }
+
+                if (bodyisACCOUNTREFAutogenerate != null)
+                {
+                    body["IsACCOUNT_REF_autogenerate"] = SourceExpressionConverter.ConvertToken(bodyisACCOUNTREFAutogenerate);
+                    bodypropCount++;
+                }
+
+                if (bodylASTCREDITREV != null)
+                {
+                    body["LAST_CREDIT_REV"] = SourceExpressionConverter.ConvertToken(bodylASTCREDITREV);
+                    bodypropCount++;
+                }
+
+                if (bodynAME != null)
+                {
+                    body["NAME"] = SourceExpressionConverter.ConvertToken(bodynAME);
+                    bodypropCount++;
+                }
+
+                if (bodynEXTCREDITREV != null)
+                {
+                    body["NEXT_CREDIT_REV"] = SourceExpressionConverter.ConvertToken(bodynEXTCREDITREV);
+                    bodypropCount++;
+                }
+
+                if (bodyoVERRIdEPRODUCTNOMINAL != null)
+                {
+                    body["OVERRIDE_PRODUCT_NOMINAL"] = SourceExpressionConverter.ConvertToken(bodyoVERRIdEPRODUCTNOMINAL);
+                    bodypropCount++;
+                }
+
+                if (bodyoVERRIdEPRODUCTTAX != null)
+                {
+                    body["OVERRIDE_PRODUCT_TAX"] = SourceExpressionConverter.ConvertToken(bodyoVERRIdEPRODUCTTAX);
+                    bodypropCount++;
+                }
+
+                if (bodypAYMENTDUEDAYS != null)
+                {
+                    body["PAYMENT_DUE_DAYS"] = SourceExpressionConverter.ConvertToken(bodypAYMENTDUEDAYS);
+                    bodypropCount++;
+                }
+
+                if (bodypRICELISTREF != null)
+                {
+                    body["PRICE_LIST_REF"] = SourceExpressionConverter.ConvertToken(bodypRICELISTREF);
+                    bodypropCount++;
+                }
+
+                if (bodypRIORITYTRADER != null)
+                {
+                    body["PRIORITY_TRADER"] = SourceExpressionConverter.ConvertToken(bodypRIORITYTRADER);
+                    bodypropCount++;
+                }
+
+                if (bodysENDINVOICESELECTRONICALLY != null)
+                {
+                    body["SEND_INVOICES_ELECTRONICALLY"] = SourceExpressionConverter.ConvertToken(bodysENDINVOICESELECTRONICALLY);
+                    bodypropCount++;
+                }
+
+                if (bodysENDLETTERSELECTRONICALLY != null)
+                {
+                    body["SEND_LETTERS_ELECTRONICALLY"] = SourceExpressionConverter.ConvertToken(bodysENDLETTERSELECTRONICALLY);
+                    bodypropCount++;
+                }
+
+                if (bodysETTLEMENTDISCRATE != null)
+                {
+                    body["SETTLEMENT_DISC_RATE"] = SourceExpressionConverter.ConvertToken(bodysETTLEMENTDISCRATE);
+                    bodypropCount++;
+                }
+
+                if (bodysETTLEMENTDUEDAYS != null)
+                {
+                    body["SETTLEMENT_DUE_DAYS"] = SourceExpressionConverter.ConvertToken(bodysETTLEMENTDUEDAYS);
+                    bodypropCount++;
+                }
+
+                if (bodytELEPHONE != null)
+                {
+                    body["TELEPHONE"] = SourceExpressionConverter.ConvertToken(bodytELEPHONE);
+                    bodypropCount++;
+                }
+
+                if (bodytELEPHONE2 != null)
+                {
+                    body["TELEPHONE_2"] = SourceExpressionConverter.ConvertToken(bodytELEPHONE2);
+                    bodypropCount++;
+                }
+
+                if (bodytERMS != null)
+                {
+                    body["TERMS"] = SourceExpressionConverter.ConvertToken(bodytERMS);
+                    bodypropCount++;
+                }
+
+                if (bodytERMSAGREEDFLAG != null)
+                {
+                    body["TERMS_AGREED_FLAG"] = SourceExpressionConverter.ConvertToken(bodytERMSAGREEDFLAG);
+                    bodypropCount++;
+                }
+
+                if (bodytRADECONTACT != null)
+                {
+                    body["TRADE_CONTACT"] = SourceExpressionConverter.ConvertToken(bodytRADECONTACT);
+                    bodypropCount++;
+                }
+
+                if (bodyvATREGNUMBER != null)
+                {
+                    body["VAT_REG_NUMBER"] = SourceExpressionConverter.ConvertToken(bodyvATREGNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyaCCOUNTREF != null)
-            {
-                body["ACCOUNT_REF"] = ExpressionConverter.ConvertO(bodyaCCOUNTREF);
-                bodypropCount++;
-            }
-
-            if (bodyaCCOUNTSTATUS != null)
-            {
-                body["ACCOUNT_STATUS"] = ExpressionConverter.ConvertO(bodyaCCOUNTSTATUS);
-                bodypropCount++;
-            }
-
-            if (bodyaDDRESS1 != null)
-            {
-                body["ADDRESS_1"] = ExpressionConverter.ConvertO(bodyaDDRESS1);
-                bodypropCount++;
-            }
-
-            if (bodyaDDRESS2 != null)
-            {
-                body["ADDRESS_2"] = ExpressionConverter.ConvertO(bodyaDDRESS2);
-                bodypropCount++;
-            }
-
-            if (bodyaDDRESS3 != null)
-            {
-                body["ADDRESS_3"] = ExpressionConverter.ConvertO(bodyaDDRESS3);
-                bodypropCount++;
-            }
-
-            if (bodyaDDRESS4 != null)
-            {
-                body["ADDRESS_4"] = ExpressionConverter.ConvertO(bodyaDDRESS4);
-                bodypropCount++;
-            }
-
-            if (bodyaDDRESS5 != null)
-            {
-                body["ADDRESS_5"] = ExpressionConverter.ConvertO(bodyaDDRESS5);
-                bodypropCount++;
-            }
-
-            if (bodyaNALYSIS1 != null)
-            {
-                body["ANALYSIS_1"] = ExpressionConverter.ConvertO(bodyaNALYSIS1);
-                bodypropCount++;
-            }
-
-            if (bodyaNALYSIS2 != null)
-            {
-                body["ANALYSIS_2"] = ExpressionConverter.ConvertO(bodyaNALYSIS2);
-                bodypropCount++;
-            }
-
-            if (bodyaNALYSIS3 != null)
-            {
-                body["ANALYSIS_3"] = ExpressionConverter.ConvertO(bodyaNALYSIS3);
-                bodypropCount++;
-            }
-
-            if (bodyaVERAGEPAYDAYS != null)
-            {
-                body["AVERAGE_PAY_DAYS"] = ExpressionConverter.ConvertO(bodyaVERAGEPAYDAYS);
-                bodypropCount++;
-            }
-
-            if (bodybALANCE != null)
-            {
-                body["BALANCE"] = ExpressionConverter.ConvertO(bodybALANCE);
-                bodypropCount++;
-            }
-
-            if (bodycANAPPLYCHARGES != null)
-            {
-                body["CAN_APPLY_CHARGES"] = ExpressionConverter.ConvertO(bodycANAPPLYCHARGES);
-                bodypropCount++;
-            }
-
-            if (bodycONTACTNAME != null)
-            {
-                body["CONTACT_NAME"] = ExpressionConverter.ConvertO(bodycONTACTNAME);
-                bodypropCount++;
-            }
-
-            if (bodycOUNTRYCODE != null)
-            {
-                body["COUNTRY_CODE"] = ExpressionConverter.ConvertO(bodycOUNTRYCODE);
-                bodypropCount++;
-            }
-
-            if (bodycREDITAPPLIEDFOR != null)
-            {
-                body["CREDIT_APPLIED_FOR"] = ExpressionConverter.ConvertO(bodycREDITAPPLIEDFOR);
-                bodypropCount++;
-            }
-
-            if (bodycREDITBUREAU != null)
-            {
-                body["CREDIT_BUREAU"] = ExpressionConverter.ConvertO(bodycREDITBUREAU);
-                bodypropCount++;
-            }
-
-            if (bodycREDITLIMIT != null)
-            {
-                body["CREDIT_LIMIT"] = ExpressionConverter.ConvertO(bodycREDITLIMIT);
-                bodypropCount++;
-            }
-
-            if (bodycREDITPOSITION != null)
-            {
-                body["CREDIT_POSITION"] = ExpressionConverter.ConvertO(bodycREDITPOSITION);
-                bodypropCount++;
-            }
-
-            if (bodycREDITREFERENCE != null)
-            {
-                body["CREDIT_REFERENCE"] = ExpressionConverter.ConvertO(bodycREDITREFERENCE);
-                bodypropCount++;
-            }
-
-            if (bodycURRENCY != null)
-            {
-                body["CURRENCY"] = ExpressionConverter.ConvertO(bodycURRENCY);
-                bodypropCount++;
-            }
-
-            if (bodydATECREDITAPPRECEIVED != null)
-            {
-                body["DATE_CREDIT_APP_RECEIVED"] = ExpressionConverter.ConvertO(bodydATECREDITAPPRECEIVED);
-                bodypropCount++;
-            }
-
-            if (bodydEFNOMCODE != null)
-            {
-                body["DEF_NOM_CODE"] = ExpressionConverter.ConvertO(bodydEFNOMCODE);
-                bodypropCount++;
-            }
-
-            if (bodydEFTAXCODE != null)
-            {
-                body["DEF_TAX_CODE"] = ExpressionConverter.ConvertO(bodydEFTAXCODE);
-                bodypropCount++;
-            }
-
-            if (bodydEPTNUMBER != null)
-            {
-                body["DEPT_NUMBER"] = ExpressionConverter.ConvertO(bodydEPTNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodydISCOUNTRATE != null)
-            {
-                body["DISCOUNT_RATE"] = ExpressionConverter.ConvertO(bodydISCOUNTRATE);
-                bodypropCount++;
-            }
-
-            if (bodydISCOUNTTYPE != null)
-            {
-                body["DISCOUNT_TYPE"] = ExpressionConverter.ConvertO(bodydISCOUNTTYPE);
-                bodypropCount++;
-            }
-
-            if (bodydUNSNUMBER != null)
-            {
-                body["DUNS_NUMBER"] = ExpressionConverter.ConvertO(bodydUNSNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodyeMAIL != null)
-            {
-                body["E_MAIL"] = ExpressionConverter.ConvertO(bodyeMAIL);
-                bodypropCount++;
-            }
-
-            if (bodyeMAIL2 != null)
-            {
-                body["E_MAIL2"] = ExpressionConverter.ConvertO(bodyeMAIL2);
-                bodypropCount++;
-            }
-
-            if (bodyeMAIL3 != null)
-            {
-                body["E_MAIL3"] = ExpressionConverter.ConvertO(bodyeMAIL3);
-                bodypropCount++;
-            }
-
-            if (bodyextraField != null)
-            {
-                body["ExtraField"] = ExpressionConverter.ConvertO(bodyextraField);
-                bodypropCount++;
-            }
-
-            if (bodyfAX != null)
-            {
-                body["FAX"] = ExpressionConverter.ConvertO(bodyfAX);
-                bodypropCount++;
-            }
-
-            if (bodyhOLDMAIL != null)
-            {
-                body["HOLD_MAIL"] = ExpressionConverter.ConvertO(bodyhOLDMAIL);
-                bodypropCount++;
-            }
-
-            if (bodyiNACTIVEFLAG != null)
-            {
-                body["INACTIVE_FLAG"] = ExpressionConverter.ConvertO(bodyiNACTIVEFLAG);
-                bodypropCount++;
-            }
-
-            if (bodyisACCOUNTREFAutogenerate != null)
-            {
-                body["IsACCOUNT_REF_autogenerate"] = ExpressionConverter.ConvertO(bodyisACCOUNTREFAutogenerate);
-                bodypropCount++;
-            }
-
-            if (bodylASTCREDITREV != null)
-            {
-                body["LAST_CREDIT_REV"] = ExpressionConverter.ConvertO(bodylASTCREDITREV);
-                bodypropCount++;
-            }
-
-            if (bodynAME != null)
-            {
-                body["NAME"] = ExpressionConverter.ConvertO(bodynAME);
-                bodypropCount++;
-            }
-
-            if (bodynEXTCREDITREV != null)
-            {
-                body["NEXT_CREDIT_REV"] = ExpressionConverter.ConvertO(bodynEXTCREDITREV);
-                bodypropCount++;
-            }
-
-            if (bodyoVERRIDEPRODUCTNOMINAL != null)
-            {
-                body["OVERRIDE_PRODUCT_NOMINAL"] = ExpressionConverter.ConvertO(bodyoVERRIDEPRODUCTNOMINAL);
-                bodypropCount++;
-            }
-
-            if (bodyoVERRIDEPRODUCTTAX != null)
-            {
-                body["OVERRIDE_PRODUCT_TAX"] = ExpressionConverter.ConvertO(bodyoVERRIDEPRODUCTTAX);
-                bodypropCount++;
-            }
-
-            if (bodypAYMENTDUEDAYS != null)
-            {
-                body["PAYMENT_DUE_DAYS"] = ExpressionConverter.ConvertO(bodypAYMENTDUEDAYS);
-                bodypropCount++;
-            }
-
-            if (bodypRICELISTREF != null)
-            {
-                body["PRICE_LIST_REF"] = ExpressionConverter.ConvertO(bodypRICELISTREF);
-                bodypropCount++;
-            }
-
-            if (bodypRIORITYTRADER != null)
-            {
-                body["PRIORITY_TRADER"] = ExpressionConverter.ConvertO(bodypRIORITYTRADER);
-                bodypropCount++;
-            }
-
-            if (bodysENDINVOICESELECTRONICALLY != null)
-            {
-                body["SEND_INVOICES_ELECTRONICALLY"] = ExpressionConverter.ConvertO(bodysENDINVOICESELECTRONICALLY);
-                bodypropCount++;
-            }
-
-            if (bodysENDLETTERSELECTRONICALLY != null)
-            {
-                body["SEND_LETTERS_ELECTRONICALLY"] = ExpressionConverter.ConvertO(bodysENDLETTERSELECTRONICALLY);
-                bodypropCount++;
-            }
-
-            if (bodysETTLEMENTDISCRATE != null)
-            {
-                body["SETTLEMENT_DISC_RATE"] = ExpressionConverter.ConvertO(bodysETTLEMENTDISCRATE);
-                bodypropCount++;
-            }
-
-            if (bodysETTLEMENTDUEDAYS != null)
-            {
-                body["SETTLEMENT_DUE_DAYS"] = ExpressionConverter.ConvertO(bodysETTLEMENTDUEDAYS);
-                bodypropCount++;
-            }
-
-            if (bodytELEPHONE != null)
-            {
-                body["TELEPHONE"] = ExpressionConverter.ConvertO(bodytELEPHONE);
-                bodypropCount++;
-            }
-
-            if (bodytELEPHONE2 != null)
-            {
-                body["TELEPHONE_2"] = ExpressionConverter.ConvertO(bodytELEPHONE2);
-                bodypropCount++;
-            }
-
-            if (bodytERMS != null)
-            {
-                body["TERMS"] = ExpressionConverter.ConvertO(bodytERMS);
-                bodypropCount++;
-            }
-
-            if (bodytERMSAGREEDFLAG != null)
-            {
-                body["TERMS_AGREED_FLAG"] = ExpressionConverter.ConvertO(bodytERMSAGREEDFLAG);
-                bodypropCount++;
-            }
-
-            if (bodytRADECONTACT != null)
-            {
-                body["TRADE_CONTACT"] = ExpressionConverter.ConvertO(bodytRADECONTACT);
-                bodypropCount++;
-            }
-
-            if (bodyvATREGNUMBER != null)
-            {
-                body["VAT_REG_NUMBER"] = ExpressionConverter.ConvertO(bodyvATREGNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SAGE50UKCreateNewCustomerResponse>(callPayload);
+            return new ApiConnectionAction<SAGE50UKCreateNewCustomerResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50UKCreateNewSalesOrderResponse> SAGE50UKCreateNewSalesOrder(Expression<Func<string>> bodyaCCOUNTREF = null, Expression<Func<string>> bodyaDDRESS1 = null, Expression<Func<string>> bodyaDDRESS2 = null, Expression<Func<string>> bodyaDDRESS3 = null, Expression<Func<string>> bodyaDDRESS4 = null, Expression<Func<string>> bodyaDDRESS5 = null, Expression<Func<int>> bodyaMOUNTPREPAID = null, Expression<Func<string>> bodyaNALYSIS1 = null, Expression<Func<string>> bodyaNALYSIS2 = null, Expression<Func<string>> bodyaNALYSIS3 = null, Expression<Func<int>> bodycARRDEPTNUMBER = null, Expression<Func<int>> bodycARRNET = null, Expression<Func<string>> bodycARRNOMCODE = null, Expression<Func<int>> bodycARRTAX = null, Expression<Func<int>> bodycARRTAXCODE = null, Expression<Func<string>> bodycONSIGNMENTREF = null, Expression<Func<string>> bodycONTACTNAME = null, Expression<Func<int>> bodycOURIER = null, Expression<Func<int>> bodycURRENCY = null, Expression<Func<int>> bodycUSTDISCRATE = null, Expression<Func<string>> bodycUSTORDERNUMBER = null, Expression<Func<string>> bodycUSTTELNUMBER = null, Expression<Func<int>> bodydEFTAXCODE = null, Expression<Func<bool>> bodydELETEDFLAG = null, Expression<Func<string>> bodydELIVERYNAME = null, Expression<Func<string>> bodydELADDRESS1 = null, Expression<Func<string>> bodydELADDRESS2 = null, Expression<Func<string>> bodydELADDRESS3 = null, Expression<Func<string>> bodydELADDRESS4 = null, Expression<Func<string>> bodydELADDRESS5 = null, Expression<Func<string>> bodydESPATCHDATE = null, Expression<Func<string>> bodydUNSNUMBER = null, Expression<Func<int>> bodygLOBALDEPTNUMBER = null, Expression<Func<string>> bodygLOBALDETAILS = null, Expression<Func<string>> bodygLOBALNOMCODE = null, Expression<Func<int>> bodygLOBALTAXCODE = null, Expression<Func<string>> bodyiNVOICENUMBER = null, Expression<Func<string>> bodynAME = null, Expression<Func<string>> bodyoRDERDATE = null, Expression<Func<int>> bodyoRDERNUMBER = null, Expression<Func<int>> bodyoRDERTYPE = null, Expression<Func<int>> bodysETTLEMENTDISCRATE = null, Expression<Func<int>> bodysETTLEMENTDUEDAYS = null, Expression<Func<bodysalesOrderLineItemInputItem222[]>> bodysalesOrderLineItem = null)
+        public IBodyWorkflowAction<SAGE50UKCreateNewSalesOrderResponse> SAGE50UKCreateNewSalesOrder([WorkflowExpression] Func<string> bodyaCCOUNTREF = null, [WorkflowExpression] Func<string> bodyaDDRESS1 = null, [WorkflowExpression] Func<string> bodyaDDRESS2 = null, [WorkflowExpression] Func<string> bodyaDDRESS3 = null, [WorkflowExpression] Func<string> bodyaDDRESS4 = null, [WorkflowExpression] Func<string> bodyaDDRESS5 = null, [WorkflowExpression] Func<int> bodyaMOUNTPREPAId = null, [WorkflowExpression] Func<string> bodyaNALYSIS1 = null, [WorkflowExpression] Func<string> bodyaNALYSIS2 = null, [WorkflowExpression] Func<string> bodyaNALYSIS3 = null, [WorkflowExpression] Func<int> bodycARRDEPTNUMBER = null, [WorkflowExpression] Func<int> bodycARRNET = null, [WorkflowExpression] Func<string> bodycARRNOMCODE = null, [WorkflowExpression] Func<int> bodycARRTAX = null, [WorkflowExpression] Func<int> bodycARRTAXCODE = null, [WorkflowExpression] Func<string> bodycONSIGNMENTREF = null, [WorkflowExpression] Func<string> bodycONTACTNAME = null, [WorkflowExpression] Func<int> bodycOURIER = null, [WorkflowExpression] Func<int> bodycURRENCY = null, [WorkflowExpression] Func<int> bodycUSTDISCRATE = null, [WorkflowExpression] Func<string> bodycUSTORDERNUMBER = null, [WorkflowExpression] Func<string> bodycUSTTELNUMBER = null, [WorkflowExpression] Func<int> bodydEFTAXCODE = null, [WorkflowExpression] Func<bool> bodydELETEDFLAG = null, [WorkflowExpression] Func<string> bodydELIVERYNAME = null, [WorkflowExpression] Func<string> bodydELADDRESS1 = null, [WorkflowExpression] Func<string> bodydELADDRESS2 = null, [WorkflowExpression] Func<string> bodydELADDRESS3 = null, [WorkflowExpression] Func<string> bodydELADDRESS4 = null, [WorkflowExpression] Func<string> bodydELADDRESS5 = null, [WorkflowExpression] Func<string> bodydESPATCHDATE = null, [WorkflowExpression] Func<string> bodydUNSNUMBER = null, [WorkflowExpression] Func<int> bodygLOBALDEPTNUMBER = null, [WorkflowExpression] Func<string> bodygLOBALDETAILS = null, [WorkflowExpression] Func<string> bodygLOBALNOMCODE = null, [WorkflowExpression] Func<int> bodygLOBALTAXCODE = null, [WorkflowExpression] Func<string> bodyiNVOICENUMBER = null, [WorkflowExpression] Func<string> bodynAME = null, [WorkflowExpression] Func<string> bodyoRDERDATE = null, [WorkflowExpression] Func<int> bodyoRDERNUMBER = null, [WorkflowExpression] Func<int> bodyoRDERTYPE = null, [WorkflowExpression] Func<int> bodysETTLEMENTDISCRATE = null, [WorkflowExpression] Func<int> bodysETTLEMENTDUEDAYS = null, [WorkflowExpression] Func<bodysalesOrderLineItemInputItem222[]> bodysalesOrderLineItem = null)
         {
-            var apiCallPath = "/api/v1/sage50uk/salesorder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaCCOUNTREF != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ACCOUNT_REF"] = ExpressionConverter.ConvertO(bodyaCCOUNTREF);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/sage50uk/salesorder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaCCOUNTREF != null)
+                {
+                    body["ACCOUNT_REF"] = SourceExpressionConverter.ConvertToken(bodyaCCOUNTREF);
+                    bodypropCount++;
+                }
+
+                if (bodyaDDRESS1 != null)
+                {
+                    body["ADDRESS_1"] = SourceExpressionConverter.ConvertToken(bodyaDDRESS1);
+                    bodypropCount++;
+                }
+
+                if (bodyaDDRESS2 != null)
+                {
+                    body["ADDRESS_2"] = SourceExpressionConverter.ConvertToken(bodyaDDRESS2);
+                    bodypropCount++;
+                }
+
+                if (bodyaDDRESS3 != null)
+                {
+                    body["ADDRESS_3"] = SourceExpressionConverter.ConvertToken(bodyaDDRESS3);
+                    bodypropCount++;
+                }
+
+                if (bodyaDDRESS4 != null)
+                {
+                    body["ADDRESS_4"] = SourceExpressionConverter.ConvertToken(bodyaDDRESS4);
+                    bodypropCount++;
+                }
+
+                if (bodyaDDRESS5 != null)
+                {
+                    body["ADDRESS_5"] = SourceExpressionConverter.ConvertToken(bodyaDDRESS5);
+                    bodypropCount++;
+                }
+
+                if (bodyaMOUNTPREPAId != null)
+                {
+                    body["AMOUNT_PREPAID"] = SourceExpressionConverter.ConvertToken(bodyaMOUNTPREPAId);
+                    bodypropCount++;
+                }
+
+                if (bodyaNALYSIS1 != null)
+                {
+                    body["ANALYSIS_1"] = SourceExpressionConverter.ConvertToken(bodyaNALYSIS1);
+                    bodypropCount++;
+                }
+
+                if (bodyaNALYSIS2 != null)
+                {
+                    body["ANALYSIS_2"] = SourceExpressionConverter.ConvertToken(bodyaNALYSIS2);
+                    bodypropCount++;
+                }
+
+                if (bodyaNALYSIS3 != null)
+                {
+                    body["ANALYSIS_3"] = SourceExpressionConverter.ConvertToken(bodyaNALYSIS3);
+                    bodypropCount++;
+                }
+
+                if (bodycARRDEPTNUMBER != null)
+                {
+                    body["CARR_DEPT_NUMBER"] = SourceExpressionConverter.ConvertToken(bodycARRDEPTNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodycARRNET != null)
+                {
+                    body["CARR_NET"] = SourceExpressionConverter.ConvertToken(bodycARRNET);
+                    bodypropCount++;
+                }
+
+                if (bodycARRNOMCODE != null)
+                {
+                    body["CARR_NOM_CODE"] = SourceExpressionConverter.ConvertToken(bodycARRNOMCODE);
+                    bodypropCount++;
+                }
+
+                if (bodycARRTAX != null)
+                {
+                    body["CARR_TAX"] = SourceExpressionConverter.ConvertToken(bodycARRTAX);
+                    bodypropCount++;
+                }
+
+                if (bodycARRTAXCODE != null)
+                {
+                    body["CARR_TAX_CODE"] = SourceExpressionConverter.ConvertToken(bodycARRTAXCODE);
+                    bodypropCount++;
+                }
+
+                if (bodycONSIGNMENTREF != null)
+                {
+                    body["CONSIGNMENT_REF"] = SourceExpressionConverter.ConvertToken(bodycONSIGNMENTREF);
+                    bodypropCount++;
+                }
+
+                if (bodycONTACTNAME != null)
+                {
+                    body["CONTACT_NAME"] = SourceExpressionConverter.ConvertToken(bodycONTACTNAME);
+                    bodypropCount++;
+                }
+
+                if (bodycOURIER != null)
+                {
+                    body["COURIER"] = SourceExpressionConverter.ConvertToken(bodycOURIER);
+                    bodypropCount++;
+                }
+
+                if (bodycURRENCY != null)
+                {
+                    body["CURRENCY"] = SourceExpressionConverter.ConvertToken(bodycURRENCY);
+                    bodypropCount++;
+                }
+
+                if (bodycUSTDISCRATE != null)
+                {
+                    body["CUST_DISC_RATE"] = SourceExpressionConverter.ConvertToken(bodycUSTDISCRATE);
+                    bodypropCount++;
+                }
+
+                if (bodycUSTORDERNUMBER != null)
+                {
+                    body["CUST_ORDER_NUMBER"] = SourceExpressionConverter.ConvertToken(bodycUSTORDERNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodycUSTTELNUMBER != null)
+                {
+                    body["CUST_TEL_NUMBER"] = SourceExpressionConverter.ConvertToken(bodycUSTTELNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodydEFTAXCODE != null)
+                {
+                    body["DEF_TAX_CODE"] = SourceExpressionConverter.ConvertToken(bodydEFTAXCODE);
+                    bodypropCount++;
+                }
+
+                if (bodydELETEDFLAG != null)
+                {
+                    body["DELETED_FLAG"] = SourceExpressionConverter.ConvertToken(bodydELETEDFLAG);
+                    bodypropCount++;
+                }
+
+                if (bodydELIVERYNAME != null)
+                {
+                    body["DELIVERY_NAME"] = SourceExpressionConverter.ConvertToken(bodydELIVERYNAME);
+                    bodypropCount++;
+                }
+
+                if (bodydELADDRESS1 != null)
+                {
+                    body["DEL_ADDRESS_1"] = SourceExpressionConverter.ConvertToken(bodydELADDRESS1);
+                    bodypropCount++;
+                }
+
+                if (bodydELADDRESS2 != null)
+                {
+                    body["DEL_ADDRESS_2"] = SourceExpressionConverter.ConvertToken(bodydELADDRESS2);
+                    bodypropCount++;
+                }
+
+                if (bodydELADDRESS3 != null)
+                {
+                    body["DEL_ADDRESS_3"] = SourceExpressionConverter.ConvertToken(bodydELADDRESS3);
+                    bodypropCount++;
+                }
+
+                if (bodydELADDRESS4 != null)
+                {
+                    body["DEL_ADDRESS_4"] = SourceExpressionConverter.ConvertToken(bodydELADDRESS4);
+                    bodypropCount++;
+                }
+
+                if (bodydELADDRESS5 != null)
+                {
+                    body["DEL_ADDRESS_5"] = SourceExpressionConverter.ConvertToken(bodydELADDRESS5);
+                    bodypropCount++;
+                }
+
+                if (bodydESPATCHDATE != null)
+                {
+                    body["DESPATCH_DATE"] = SourceExpressionConverter.ConvertToken(bodydESPATCHDATE);
+                    bodypropCount++;
+                }
+
+                if (bodydUNSNUMBER != null)
+                {
+                    body["DUNS_NUMBER"] = SourceExpressionConverter.ConvertToken(bodydUNSNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodygLOBALDEPTNUMBER != null)
+                {
+                    body["GLOBAL_DEPT_NUMBER"] = SourceExpressionConverter.ConvertToken(bodygLOBALDEPTNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodygLOBALDETAILS != null)
+                {
+                    body["GLOBAL_DETAILS"] = SourceExpressionConverter.ConvertToken(bodygLOBALDETAILS);
+                    bodypropCount++;
+                }
+
+                if (bodygLOBALNOMCODE != null)
+                {
+                    body["GLOBAL_NOM_CODE"] = SourceExpressionConverter.ConvertToken(bodygLOBALNOMCODE);
+                    bodypropCount++;
+                }
+
+                if (bodygLOBALTAXCODE != null)
+                {
+                    body["GLOBAL_TAX_CODE"] = SourceExpressionConverter.ConvertToken(bodygLOBALTAXCODE);
+                    bodypropCount++;
+                }
+
+                if (bodyiNVOICENUMBER != null)
+                {
+                    body["INVOICE_NUMBER"] = SourceExpressionConverter.ConvertToken(bodyiNVOICENUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodynAME != null)
+                {
+                    body["NAME"] = SourceExpressionConverter.ConvertToken(bodynAME);
+                    bodypropCount++;
+                }
+
+                if (bodyoRDERDATE != null)
+                {
+                    body["ORDER_DATE"] = SourceExpressionConverter.ConvertToken(bodyoRDERDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyoRDERNUMBER != null)
+                {
+                    body["ORDER_NUMBER"] = SourceExpressionConverter.ConvertToken(bodyoRDERNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodyoRDERTYPE != null)
+                {
+                    body["ORDER_TYPE"] = SourceExpressionConverter.ConvertToken(bodyoRDERTYPE);
+                    bodypropCount++;
+                }
+
+                if (bodysETTLEMENTDISCRATE != null)
+                {
+                    body["SETTLEMENT_DISC_RATE"] = SourceExpressionConverter.ConvertToken(bodysETTLEMENTDISCRATE);
+                    bodypropCount++;
+                }
+
+                if (bodysETTLEMENTDUEDAYS != null)
+                {
+                    body["SETTLEMENT_DUE_DAYS"] = SourceExpressionConverter.ConvertToken(bodysETTLEMENTDUEDAYS);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrderLineItem != null)
+                {
+                    body["SalesOrderLineItem"] = SourceExpressionConverter.ConvertToken(bodysalesOrderLineItem);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyaDDRESS1 != null)
-            {
-                body["ADDRESS_1"] = ExpressionConverter.ConvertO(bodyaDDRESS1);
-                bodypropCount++;
-            }
-
-            if (bodyaDDRESS2 != null)
-            {
-                body["ADDRESS_2"] = ExpressionConverter.ConvertO(bodyaDDRESS2);
-                bodypropCount++;
-            }
-
-            if (bodyaDDRESS3 != null)
-            {
-                body["ADDRESS_3"] = ExpressionConverter.ConvertO(bodyaDDRESS3);
-                bodypropCount++;
-            }
-
-            if (bodyaDDRESS4 != null)
-            {
-                body["ADDRESS_4"] = ExpressionConverter.ConvertO(bodyaDDRESS4);
-                bodypropCount++;
-            }
-
-            if (bodyaDDRESS5 != null)
-            {
-                body["ADDRESS_5"] = ExpressionConverter.ConvertO(bodyaDDRESS5);
-                bodypropCount++;
-            }
-
-            if (bodyaMOUNTPREPAID != null)
-            {
-                body["AMOUNT_PREPAID"] = ExpressionConverter.ConvertO(bodyaMOUNTPREPAID);
-                bodypropCount++;
-            }
-
-            if (bodyaNALYSIS1 != null)
-            {
-                body["ANALYSIS_1"] = ExpressionConverter.ConvertO(bodyaNALYSIS1);
-                bodypropCount++;
-            }
-
-            if (bodyaNALYSIS2 != null)
-            {
-                body["ANALYSIS_2"] = ExpressionConverter.ConvertO(bodyaNALYSIS2);
-                bodypropCount++;
-            }
-
-            if (bodyaNALYSIS3 != null)
-            {
-                body["ANALYSIS_3"] = ExpressionConverter.ConvertO(bodyaNALYSIS3);
-                bodypropCount++;
-            }
-
-            if (bodycARRDEPTNUMBER != null)
-            {
-                body["CARR_DEPT_NUMBER"] = ExpressionConverter.ConvertO(bodycARRDEPTNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodycARRNET != null)
-            {
-                body["CARR_NET"] = ExpressionConverter.ConvertO(bodycARRNET);
-                bodypropCount++;
-            }
-
-            if (bodycARRNOMCODE != null)
-            {
-                body["CARR_NOM_CODE"] = ExpressionConverter.ConvertO(bodycARRNOMCODE);
-                bodypropCount++;
-            }
-
-            if (bodycARRTAX != null)
-            {
-                body["CARR_TAX"] = ExpressionConverter.ConvertO(bodycARRTAX);
-                bodypropCount++;
-            }
-
-            if (bodycARRTAXCODE != null)
-            {
-                body["CARR_TAX_CODE"] = ExpressionConverter.ConvertO(bodycARRTAXCODE);
-                bodypropCount++;
-            }
-
-            if (bodycONSIGNMENTREF != null)
-            {
-                body["CONSIGNMENT_REF"] = ExpressionConverter.ConvertO(bodycONSIGNMENTREF);
-                bodypropCount++;
-            }
-
-            if (bodycONTACTNAME != null)
-            {
-                body["CONTACT_NAME"] = ExpressionConverter.ConvertO(bodycONTACTNAME);
-                bodypropCount++;
-            }
-
-            if (bodycOURIER != null)
-            {
-                body["COURIER"] = ExpressionConverter.ConvertO(bodycOURIER);
-                bodypropCount++;
-            }
-
-            if (bodycURRENCY != null)
-            {
-                body["CURRENCY"] = ExpressionConverter.ConvertO(bodycURRENCY);
-                bodypropCount++;
-            }
-
-            if (bodycUSTDISCRATE != null)
-            {
-                body["CUST_DISC_RATE"] = ExpressionConverter.ConvertO(bodycUSTDISCRATE);
-                bodypropCount++;
-            }
-
-            if (bodycUSTORDERNUMBER != null)
-            {
-                body["CUST_ORDER_NUMBER"] = ExpressionConverter.ConvertO(bodycUSTORDERNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodycUSTTELNUMBER != null)
-            {
-                body["CUST_TEL_NUMBER"] = ExpressionConverter.ConvertO(bodycUSTTELNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodydEFTAXCODE != null)
-            {
-                body["DEF_TAX_CODE"] = ExpressionConverter.ConvertO(bodydEFTAXCODE);
-                bodypropCount++;
-            }
-
-            if (bodydELETEDFLAG != null)
-            {
-                body["DELETED_FLAG"] = ExpressionConverter.ConvertO(bodydELETEDFLAG);
-                bodypropCount++;
-            }
-
-            if (bodydELIVERYNAME != null)
-            {
-                body["DELIVERY_NAME"] = ExpressionConverter.ConvertO(bodydELIVERYNAME);
-                bodypropCount++;
-            }
-
-            if (bodydELADDRESS1 != null)
-            {
-                body["DEL_ADDRESS_1"] = ExpressionConverter.ConvertO(bodydELADDRESS1);
-                bodypropCount++;
-            }
-
-            if (bodydELADDRESS2 != null)
-            {
-                body["DEL_ADDRESS_2"] = ExpressionConverter.ConvertO(bodydELADDRESS2);
-                bodypropCount++;
-            }
-
-            if (bodydELADDRESS3 != null)
-            {
-                body["DEL_ADDRESS_3"] = ExpressionConverter.ConvertO(bodydELADDRESS3);
-                bodypropCount++;
-            }
-
-            if (bodydELADDRESS4 != null)
-            {
-                body["DEL_ADDRESS_4"] = ExpressionConverter.ConvertO(bodydELADDRESS4);
-                bodypropCount++;
-            }
-
-            if (bodydELADDRESS5 != null)
-            {
-                body["DEL_ADDRESS_5"] = ExpressionConverter.ConvertO(bodydELADDRESS5);
-                bodypropCount++;
-            }
-
-            if (bodydESPATCHDATE != null)
-            {
-                body["DESPATCH_DATE"] = ExpressionConverter.ConvertO(bodydESPATCHDATE);
-                bodypropCount++;
-            }
-
-            if (bodydUNSNUMBER != null)
-            {
-                body["DUNS_NUMBER"] = ExpressionConverter.ConvertO(bodydUNSNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodygLOBALDEPTNUMBER != null)
-            {
-                body["GLOBAL_DEPT_NUMBER"] = ExpressionConverter.ConvertO(bodygLOBALDEPTNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodygLOBALDETAILS != null)
-            {
-                body["GLOBAL_DETAILS"] = ExpressionConverter.ConvertO(bodygLOBALDETAILS);
-                bodypropCount++;
-            }
-
-            if (bodygLOBALNOMCODE != null)
-            {
-                body["GLOBAL_NOM_CODE"] = ExpressionConverter.ConvertO(bodygLOBALNOMCODE);
-                bodypropCount++;
-            }
-
-            if (bodygLOBALTAXCODE != null)
-            {
-                body["GLOBAL_TAX_CODE"] = ExpressionConverter.ConvertO(bodygLOBALTAXCODE);
-                bodypropCount++;
-            }
-
-            if (bodyiNVOICENUMBER != null)
-            {
-                body["INVOICE_NUMBER"] = ExpressionConverter.ConvertO(bodyiNVOICENUMBER);
-                bodypropCount++;
-            }
-
-            if (bodynAME != null)
-            {
-                body["NAME"] = ExpressionConverter.ConvertO(bodynAME);
-                bodypropCount++;
-            }
-
-            if (bodyoRDERDATE != null)
-            {
-                body["ORDER_DATE"] = ExpressionConverter.ConvertO(bodyoRDERDATE);
-                bodypropCount++;
-            }
-
-            if (bodyoRDERNUMBER != null)
-            {
-                body["ORDER_NUMBER"] = ExpressionConverter.ConvertO(bodyoRDERNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodyoRDERTYPE != null)
-            {
-                body["ORDER_TYPE"] = ExpressionConverter.ConvertO(bodyoRDERTYPE);
-                bodypropCount++;
-            }
-
-            if (bodysETTLEMENTDISCRATE != null)
-            {
-                body["SETTLEMENT_DISC_RATE"] = ExpressionConverter.ConvertO(bodysETTLEMENTDISCRATE);
-                bodypropCount++;
-            }
-
-            if (bodysETTLEMENTDUEDAYS != null)
-            {
-                body["SETTLEMENT_DUE_DAYS"] = ExpressionConverter.ConvertO(bodysETTLEMENTDUEDAYS);
-                bodypropCount++;
-            }
-
-            if (bodysalesOrderLineItem != null)
-            {
-                body["SalesOrderLineItem"] = ExpressionConverter.ConvertO(bodysalesOrderLineItem);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SAGE50UKCreateNewSalesOrderResponse>(callPayload);
+            return new ApiConnectionAction<SAGE50UKCreateNewSalesOrderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50USCreateNewCustomerResponse> SAGE50USCreateNewCustomer(Expression<Func<string>> bodyaccountNumber = null, Expression<Func<string>> bodybillingCity = null, Expression<Func<string>> bodybillingCountry = null, Expression<Func<string>> bodybillingLastName = null, Expression<Func<string>> bodybillingName = null, Expression<Func<string>> bodybillingPostalCode = null, Expression<Func<string>> bodybillingState = null, Expression<Func<string>> bodybillingStreet = null, Expression<Func<bool>> bodycCSalesRepresentative = null, Expression<Func<bool>> bodychargeFinanceCharges = null, Expression<Func<string>> bodycontactName = null, Expression<Func<int>> bodycreditLimit = null, Expression<Func<int>> bodycreditStatus = null, Expression<Func<string>> bodycustomFieldValue1 = null, Expression<Func<string>> bodycustomFieldValue2 = null, Expression<Func<string>> bodycustomFieldValue3 = null, Expression<Func<string>> bodycustomFieldValue4 = null, Expression<Func<string>> bodycustomFieldValue5 = null, Expression<Func<string>> bodycustomerGUID = null, Expression<Func<string>> bodycustomerID = null, Expression<Func<int>> bodycustomerBalance = null, Expression<Func<string>> bodycustomerSinceDate = null, Expression<Func<string>> bodycustomerType = null, Expression<Func<int>> bodydiscountDays = null, Expression<Func<int>> bodydiscountPercent = null, Expression<Func<int>> bodydueDays = null, Expression<Func<string>> bodyeMailAddress = null, Expression<Func<string>> bodyfaxNumber = null, Expression<Func<int>> bodyformDeliveryMethod = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphoneNo1 = null, Expression<Func<string>> bodyphoneNo2 = null, Expression<Func<int>> bodypricingLevel = null, Expression<Func<string>> bodysalesRepresentativeID = null, Expression<Func<string>> bodysalesTaxCode = null, Expression<Func<string>> bodyshippingCity = null, Expression<Func<string>> bodyshippingCountry = null, Expression<Func<string>> bodyshippingPostalCode = null, Expression<Func<string>> bodyshippingState = null, Expression<Func<string>> bodyshippingStreet = null, Expression<Func<bool>> bodytermsType = null, Expression<Func<bool>> bodyuseCODTerms = null, Expression<Func<bool>> bodyuseDueMonthEndTerms = null, Expression<Func<bool>> bodyusePrepaidTerms = null, Expression<Func<bool>> bodyuseStandardTerms = null, Expression<Func<bool>> bodyisInactive = null)
+        public IBodyWorkflowAction<SAGE50USCreateNewCustomerResponse> SAGE50USCreateNewCustomer([WorkflowExpression] Func<string> bodyaccountNumber = null, [WorkflowExpression] Func<string> bodybillingCity = null, [WorkflowExpression] Func<string> bodybillingCountry = null, [WorkflowExpression] Func<string> bodybillingLastName = null, [WorkflowExpression] Func<string> bodybillingName = null, [WorkflowExpression] Func<string> bodybillingPostalCode = null, [WorkflowExpression] Func<string> bodybillingState = null, [WorkflowExpression] Func<string> bodybillingStreet = null, [WorkflowExpression] Func<bool> bodycCSalesRepresentative = null, [WorkflowExpression] Func<bool> bodychargeFinanceCharges = null, [WorkflowExpression] Func<string> bodycontactName = null, [WorkflowExpression] Func<int> bodycreditLimit = null, [WorkflowExpression] Func<int> bodycreditStatus = null, [WorkflowExpression] Func<string> bodycustomFieldValue1 = null, [WorkflowExpression] Func<string> bodycustomFieldValue2 = null, [WorkflowExpression] Func<string> bodycustomFieldValue3 = null, [WorkflowExpression] Func<string> bodycustomFieldValue4 = null, [WorkflowExpression] Func<string> bodycustomFieldValue5 = null, [WorkflowExpression] Func<string> bodycustomerGUID = null, [WorkflowExpression] Func<string> bodycustomerId = null, [WorkflowExpression] Func<int> bodycustomerBalance = null, [WorkflowExpression] Func<string> bodycustomerSinceDate = null, [WorkflowExpression] Func<string> bodycustomerType = null, [WorkflowExpression] Func<int> bodydiscountDays = null, [WorkflowExpression] Func<int> bodydiscountPercent = null, [WorkflowExpression] Func<int> bodydueDays = null, [WorkflowExpression] Func<string> bodyeMailAddress = null, [WorkflowExpression] Func<string> bodyfaxNumber = null, [WorkflowExpression] Func<int> bodyformDeliveryMethod = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyphoneNo1 = null, [WorkflowExpression] Func<string> bodyphoneNo2 = null, [WorkflowExpression] Func<int> bodypricingLevel = null, [WorkflowExpression] Func<string> bodysalesRepresentativeId = null, [WorkflowExpression] Func<string> bodysalesTaxCode = null, [WorkflowExpression] Func<string> bodyshippingCity = null, [WorkflowExpression] Func<string> bodyshippingCountry = null, [WorkflowExpression] Func<string> bodyshippingPostalCode = null, [WorkflowExpression] Func<string> bodyshippingState = null, [WorkflowExpression] Func<string> bodyshippingStreet = null, [WorkflowExpression] Func<bool> bodytermsType = null, [WorkflowExpression] Func<bool> bodyuseCODTerms = null, [WorkflowExpression] Func<bool> bodyuseDueMonthEndTerms = null, [WorkflowExpression] Func<bool> bodyusePrepaidTerms = null, [WorkflowExpression] Func<bool> bodyuseStandardTerms = null, [WorkflowExpression] Func<bool> bodyisInactive = null)
         {
-            var apiCallPath = "/api/v1/sage50us/customer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaccountNumber != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Account_Number"] = ExpressionConverter.ConvertO(bodyaccountNumber);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/sage50us/customer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaccountNumber != null)
+                {
+                    body["Account_Number"] = SourceExpressionConverter.ConvertToken(bodyaccountNumber);
+                    bodypropCount++;
+                }
+
+                if (bodybillingCity != null)
+                {
+                    body["BillingCity"] = SourceExpressionConverter.ConvertToken(bodybillingCity);
+                    bodypropCount++;
+                }
+
+                if (bodybillingCountry != null)
+                {
+                    body["BillingCountry"] = SourceExpressionConverter.ConvertToken(bodybillingCountry);
+                    bodypropCount++;
+                }
+
+                if (bodybillingLastName != null)
+                {
+                    body["BillingLastName"] = SourceExpressionConverter.ConvertToken(bodybillingLastName);
+                    bodypropCount++;
+                }
+
+                if (bodybillingName != null)
+                {
+                    body["BillingName"] = SourceExpressionConverter.ConvertToken(bodybillingName);
+                    bodypropCount++;
+                }
+
+                if (bodybillingPostalCode != null)
+                {
+                    body["BillingPostalCode"] = SourceExpressionConverter.ConvertToken(bodybillingPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodybillingState != null)
+                {
+                    body["BillingState"] = SourceExpressionConverter.ConvertToken(bodybillingState);
+                    bodypropCount++;
+                }
+
+                if (bodybillingStreet != null)
+                {
+                    body["BillingStreet"] = SourceExpressionConverter.ConvertToken(bodybillingStreet);
+                    bodypropCount++;
+                }
+
+                if (bodycCSalesRepresentative != null)
+                {
+                    body["CC_Sales_Representative"] = SourceExpressionConverter.ConvertToken(bodycCSalesRepresentative);
+                    bodypropCount++;
+                }
+
+                if (bodychargeFinanceCharges != null)
+                {
+                    body["Charge_Finance_Charges"] = SourceExpressionConverter.ConvertToken(bodychargeFinanceCharges);
+                    bodypropCount++;
+                }
+
+                if (bodycontactName != null)
+                {
+                    body["ContactName"] = SourceExpressionConverter.ConvertToken(bodycontactName);
+                    bodypropCount++;
+                }
+
+                if (bodycreditLimit != null)
+                {
+                    body["Credit_Limit"] = SourceExpressionConverter.ConvertToken(bodycreditLimit);
+                    bodypropCount++;
+                }
+
+                if (bodycreditStatus != null)
+                {
+                    body["Credit_Status"] = SourceExpressionConverter.ConvertToken(bodycreditStatus);
+                    bodypropCount++;
+                }
+
+                if (bodycustomFieldValue1 != null)
+                {
+                    body["CustomFieldValue1"] = SourceExpressionConverter.ConvertToken(bodycustomFieldValue1);
+                    bodypropCount++;
+                }
+
+                if (bodycustomFieldValue2 != null)
+                {
+                    body["CustomFieldValue2"] = SourceExpressionConverter.ConvertToken(bodycustomFieldValue2);
+                    bodypropCount++;
+                }
+
+                if (bodycustomFieldValue3 != null)
+                {
+                    body["CustomFieldValue3"] = SourceExpressionConverter.ConvertToken(bodycustomFieldValue3);
+                    bodypropCount++;
+                }
+
+                if (bodycustomFieldValue4 != null)
+                {
+                    body["CustomFieldValue4"] = SourceExpressionConverter.ConvertToken(bodycustomFieldValue4);
+                    bodypropCount++;
+                }
+
+                if (bodycustomFieldValue5 != null)
+                {
+                    body["CustomFieldValue5"] = SourceExpressionConverter.ConvertToken(bodycustomFieldValue5);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerGUID != null)
+                {
+                    body["CustomerGUID"] = SourceExpressionConverter.ConvertToken(bodycustomerGUID);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerId != null)
+                {
+                    body["CustomerID"] = SourceExpressionConverter.ConvertToken(bodycustomerId);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerBalance != null)
+                {
+                    body["Customer_Balance"] = SourceExpressionConverter.ConvertToken(bodycustomerBalance);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerSinceDate != null)
+                {
+                    body["Customer_Since_Date"] = SourceExpressionConverter.ConvertToken(bodycustomerSinceDate);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerType != null)
+                {
+                    body["Customer_Type"] = SourceExpressionConverter.ConvertToken(bodycustomerType);
+                    bodypropCount++;
+                }
+
+                if (bodydiscountDays != null)
+                {
+                    body["Discount_Days"] = SourceExpressionConverter.ConvertToken(bodydiscountDays);
+                    bodypropCount++;
+                }
+
+                if (bodydiscountPercent != null)
+                {
+                    body["Discount_Percent"] = SourceExpressionConverter.ConvertToken(bodydiscountPercent);
+                    bodypropCount++;
+                }
+
+                if (bodydueDays != null)
+                {
+                    body["Due_Days"] = SourceExpressionConverter.ConvertToken(bodydueDays);
+                    bodypropCount++;
+                }
+
+                if (bodyeMailAddress != null)
+                {
+                    body["EMail_Address"] = SourceExpressionConverter.ConvertToken(bodyeMailAddress);
+                    bodypropCount++;
+                }
+
+                if (bodyfaxNumber != null)
+                {
+                    body["FaxNumber"] = SourceExpressionConverter.ConvertToken(bodyfaxNumber);
+                    bodypropCount++;
+                }
+
+                if (bodyformDeliveryMethod != null)
+                {
+                    body["Form_Delivery_Method"] = SourceExpressionConverter.ConvertToken(bodyformDeliveryMethod);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["Name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyphoneNo1 != null)
+                {
+                    body["PhoneNo1"] = SourceExpressionConverter.ConvertToken(bodyphoneNo1);
+                    bodypropCount++;
+                }
+
+                if (bodyphoneNo2 != null)
+                {
+                    body["PhoneNo2"] = SourceExpressionConverter.ConvertToken(bodyphoneNo2);
+                    bodypropCount++;
+                }
+
+                if (bodypricingLevel != null)
+                {
+                    body["Pricing_Level"] = SourceExpressionConverter.ConvertToken(bodypricingLevel);
+                    bodypropCount++;
+                }
+
+                if (bodysalesRepresentativeId != null)
+                {
+                    body["Sales_Representative_ID"] = SourceExpressionConverter.ConvertToken(bodysalesRepresentativeId);
+                    bodypropCount++;
+                }
+
+                if (bodysalesTaxCode != null)
+                {
+                    body["Sales_Tax_Code"] = SourceExpressionConverter.ConvertToken(bodysalesTaxCode);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingCity != null)
+                {
+                    body["ShippingCity"] = SourceExpressionConverter.ConvertToken(bodyshippingCity);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingCountry != null)
+                {
+                    body["ShippingCountry"] = SourceExpressionConverter.ConvertToken(bodyshippingCountry);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingPostalCode != null)
+                {
+                    body["ShippingPostalCode"] = SourceExpressionConverter.ConvertToken(bodyshippingPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingState != null)
+                {
+                    body["ShippingState"] = SourceExpressionConverter.ConvertToken(bodyshippingState);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingStreet != null)
+                {
+                    body["ShippingStreet"] = SourceExpressionConverter.ConvertToken(bodyshippingStreet);
+                    bodypropCount++;
+                }
+
+                if (bodytermsType != null)
+                {
+                    body["Terms_Type"] = SourceExpressionConverter.ConvertToken(bodytermsType);
+                    bodypropCount++;
+                }
+
+                if (bodyuseCODTerms != null)
+                {
+                    body["Use_COD_Terms"] = SourceExpressionConverter.ConvertToken(bodyuseCODTerms);
+                    bodypropCount++;
+                }
+
+                if (bodyuseDueMonthEndTerms != null)
+                {
+                    body["Use_Due_Month_End_Terms"] = SourceExpressionConverter.ConvertToken(bodyuseDueMonthEndTerms);
+                    bodypropCount++;
+                }
+
+                if (bodyusePrepaidTerms != null)
+                {
+                    body["Use_Prepaid_Terms"] = SourceExpressionConverter.ConvertToken(bodyusePrepaidTerms);
+                    bodypropCount++;
+                }
+
+                if (bodyuseStandardTerms != null)
+                {
+                    body["Use_Standard_Terms"] = SourceExpressionConverter.ConvertToken(bodyuseStandardTerms);
+                    bodypropCount++;
+                }
+
+                if (bodyisInactive != null)
+                {
+                    body["isInactive"] = SourceExpressionConverter.ConvertToken(bodyisInactive);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodybillingCity != null)
-            {
-                body["BillingCity"] = ExpressionConverter.ConvertO(bodybillingCity);
-                bodypropCount++;
-            }
-
-            if (bodybillingCountry != null)
-            {
-                body["BillingCountry"] = ExpressionConverter.ConvertO(bodybillingCountry);
-                bodypropCount++;
-            }
-
-            if (bodybillingLastName != null)
-            {
-                body["BillingLastName"] = ExpressionConverter.ConvertO(bodybillingLastName);
-                bodypropCount++;
-            }
-
-            if (bodybillingName != null)
-            {
-                body["BillingName"] = ExpressionConverter.ConvertO(bodybillingName);
-                bodypropCount++;
-            }
-
-            if (bodybillingPostalCode != null)
-            {
-                body["BillingPostalCode"] = ExpressionConverter.ConvertO(bodybillingPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodybillingState != null)
-            {
-                body["BillingState"] = ExpressionConverter.ConvertO(bodybillingState);
-                bodypropCount++;
-            }
-
-            if (bodybillingStreet != null)
-            {
-                body["BillingStreet"] = ExpressionConverter.ConvertO(bodybillingStreet);
-                bodypropCount++;
-            }
-
-            if (bodycCSalesRepresentative != null)
-            {
-                body["CC_Sales_Representative"] = ExpressionConverter.ConvertO(bodycCSalesRepresentative);
-                bodypropCount++;
-            }
-
-            if (bodychargeFinanceCharges != null)
-            {
-                body["Charge_Finance_Charges"] = ExpressionConverter.ConvertO(bodychargeFinanceCharges);
-                bodypropCount++;
-            }
-
-            if (bodycontactName != null)
-            {
-                body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
-                bodypropCount++;
-            }
-
-            if (bodycreditLimit != null)
-            {
-                body["Credit_Limit"] = ExpressionConverter.ConvertO(bodycreditLimit);
-                bodypropCount++;
-            }
-
-            if (bodycreditStatus != null)
-            {
-                body["Credit_Status"] = ExpressionConverter.ConvertO(bodycreditStatus);
-                bodypropCount++;
-            }
-
-            if (bodycustomFieldValue1 != null)
-            {
-                body["CustomFieldValue1"] = ExpressionConverter.ConvertO(bodycustomFieldValue1);
-                bodypropCount++;
-            }
-
-            if (bodycustomFieldValue2 != null)
-            {
-                body["CustomFieldValue2"] = ExpressionConverter.ConvertO(bodycustomFieldValue2);
-                bodypropCount++;
-            }
-
-            if (bodycustomFieldValue3 != null)
-            {
-                body["CustomFieldValue3"] = ExpressionConverter.ConvertO(bodycustomFieldValue3);
-                bodypropCount++;
-            }
-
-            if (bodycustomFieldValue4 != null)
-            {
-                body["CustomFieldValue4"] = ExpressionConverter.ConvertO(bodycustomFieldValue4);
-                bodypropCount++;
-            }
-
-            if (bodycustomFieldValue5 != null)
-            {
-                body["CustomFieldValue5"] = ExpressionConverter.ConvertO(bodycustomFieldValue5);
-                bodypropCount++;
-            }
-
-            if (bodycustomerGUID != null)
-            {
-                body["CustomerGUID"] = ExpressionConverter.ConvertO(bodycustomerGUID);
-                bodypropCount++;
-            }
-
-            if (bodycustomerID != null)
-            {
-                body["CustomerID"] = ExpressionConverter.ConvertO(bodycustomerID);
-                bodypropCount++;
-            }
-
-            if (bodycustomerBalance != null)
-            {
-                body["Customer_Balance"] = ExpressionConverter.ConvertO(bodycustomerBalance);
-                bodypropCount++;
-            }
-
-            if (bodycustomerSinceDate != null)
-            {
-                body["Customer_Since_Date"] = ExpressionConverter.ConvertO(bodycustomerSinceDate);
-                bodypropCount++;
-            }
-
-            if (bodycustomerType != null)
-            {
-                body["Customer_Type"] = ExpressionConverter.ConvertO(bodycustomerType);
-                bodypropCount++;
-            }
-
-            if (bodydiscountDays != null)
-            {
-                body["Discount_Days"] = ExpressionConverter.ConvertO(bodydiscountDays);
-                bodypropCount++;
-            }
-
-            if (bodydiscountPercent != null)
-            {
-                body["Discount_Percent"] = ExpressionConverter.ConvertO(bodydiscountPercent);
-                bodypropCount++;
-            }
-
-            if (bodydueDays != null)
-            {
-                body["Due_Days"] = ExpressionConverter.ConvertO(bodydueDays);
-                bodypropCount++;
-            }
-
-            if (bodyeMailAddress != null)
-            {
-                body["EMail_Address"] = ExpressionConverter.ConvertO(bodyeMailAddress);
-                bodypropCount++;
-            }
-
-            if (bodyfaxNumber != null)
-            {
-                body["FaxNumber"] = ExpressionConverter.ConvertO(bodyfaxNumber);
-                bodypropCount++;
-            }
-
-            if (bodyformDeliveryMethod != null)
-            {
-                body["Form_Delivery_Method"] = ExpressionConverter.ConvertO(bodyformDeliveryMethod);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["Name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodyphoneNo1 != null)
-            {
-                body["PhoneNo1"] = ExpressionConverter.ConvertO(bodyphoneNo1);
-                bodypropCount++;
-            }
-
-            if (bodyphoneNo2 != null)
-            {
-                body["PhoneNo2"] = ExpressionConverter.ConvertO(bodyphoneNo2);
-                bodypropCount++;
-            }
-
-            if (bodypricingLevel != null)
-            {
-                body["Pricing_Level"] = ExpressionConverter.ConvertO(bodypricingLevel);
-                bodypropCount++;
-            }
-
-            if (bodysalesRepresentativeID != null)
-            {
-                body["Sales_Representative_ID"] = ExpressionConverter.ConvertO(bodysalesRepresentativeID);
-                bodypropCount++;
-            }
-
-            if (bodysalesTaxCode != null)
-            {
-                body["Sales_Tax_Code"] = ExpressionConverter.ConvertO(bodysalesTaxCode);
-                bodypropCount++;
-            }
-
-            if (bodyshippingCity != null)
-            {
-                body["ShippingCity"] = ExpressionConverter.ConvertO(bodyshippingCity);
-                bodypropCount++;
-            }
-
-            if (bodyshippingCountry != null)
-            {
-                body["ShippingCountry"] = ExpressionConverter.ConvertO(bodyshippingCountry);
-                bodypropCount++;
-            }
-
-            if (bodyshippingPostalCode != null)
-            {
-                body["ShippingPostalCode"] = ExpressionConverter.ConvertO(bodyshippingPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodyshippingState != null)
-            {
-                body["ShippingState"] = ExpressionConverter.ConvertO(bodyshippingState);
-                bodypropCount++;
-            }
-
-            if (bodyshippingStreet != null)
-            {
-                body["ShippingStreet"] = ExpressionConverter.ConvertO(bodyshippingStreet);
-                bodypropCount++;
-            }
-
-            if (bodytermsType != null)
-            {
-                body["Terms_Type"] = ExpressionConverter.ConvertO(bodytermsType);
-                bodypropCount++;
-            }
-
-            if (bodyuseCODTerms != null)
-            {
-                body["Use_COD_Terms"] = ExpressionConverter.ConvertO(bodyuseCODTerms);
-                bodypropCount++;
-            }
-
-            if (bodyuseDueMonthEndTerms != null)
-            {
-                body["Use_Due_Month_End_Terms"] = ExpressionConverter.ConvertO(bodyuseDueMonthEndTerms);
-                bodypropCount++;
-            }
-
-            if (bodyusePrepaidTerms != null)
-            {
-                body["Use_Prepaid_Terms"] = ExpressionConverter.ConvertO(bodyusePrepaidTerms);
-                bodypropCount++;
-            }
-
-            if (bodyuseStandardTerms != null)
-            {
-                body["Use_Standard_Terms"] = ExpressionConverter.ConvertO(bodyuseStandardTerms);
-                bodypropCount++;
-            }
-
-            if (bodyisInactive != null)
-            {
-                body["isInactive"] = ExpressionConverter.ConvertO(bodyisInactive);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SAGE50USCreateNewCustomerResponse>(callPayload);
+            return new ApiConnectionAction<SAGE50USCreateNewCustomerResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAGE50USCreateNewSalesOrderResponse> SAGE50USCreateNewSalesOrder(Expression<Func<string>> bodyaccountsReceivableAccount = null, Expression<Func<string>> bodyaccountsReceivableAcctGUID = null, Expression<Func<int>> bodyaccountsReceivableAmount = null, Expression<Func<bool>> bodyclosed = null, Expression<Func<string>> bodycustomerID = null, Expression<Func<string>> bodycustomerPO = null, Expression<Func<string>> bodydate = null, Expression<Func<int>> bodydiscountAmount = null, Expression<Func<string>> bodydisplayedTerms = null, Expression<Func<bool>> bodydropShip = null, Expression<Func<string>> bodygUID = null, Expression<Func<bool>> bodynotePrintsAfterLineItems = null, Expression<Func<bool>> bodyproposal = null, Expression<Func<bool>> bodyproposalAccepted = null, Expression<Func<bodysalesOrderLineItemInputItem2222[]>> bodysalesOrderLineItem = null, Expression<Func<string>> bodysalesOrderNumber = null, Expression<Func<string>> bodysalesRepresentativeGUID = null, Expression<Func<string>> bodysalesRepresentativeID = null, Expression<Func<string>> bodyshipAddressCity = null, Expression<Func<string>> bodyshipAddressCountry = null, Expression<Func<string>> bodyshipAddressLine1 = null, Expression<Func<string>> bodyshipAddressLine2 = null, Expression<Func<string>> bodyshipAddressName = null, Expression<Func<string>> bodyshipAddressState = null, Expression<Func<string>> bodyshipAddressZipCode = null, Expression<Func<string>> bodyshipBy = null, Expression<Func<string>> bodyshipVIA = null, Expression<Func<bool>> bodystatementNotePrintsBeforeInvRef = null)
+        public IBodyWorkflowAction<SAGE50USCreateNewSalesOrderResponse> SAGE50USCreateNewSalesOrder([WorkflowExpression] Func<string> bodyaccountsReceivableAccount = null, [WorkflowExpression] Func<string> bodyaccountsReceivableAcctGUID = null, [WorkflowExpression] Func<int> bodyaccountsReceivableAmount = null, [WorkflowExpression] Func<bool> bodyclosed = null, [WorkflowExpression] Func<string> bodycustomerId = null, [WorkflowExpression] Func<string> bodycustomerPO = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<int> bodydiscountAmount = null, [WorkflowExpression] Func<string> bodydisplayedTerms = null, [WorkflowExpression] Func<bool> bodydropShip = null, [WorkflowExpression] Func<string> bodygUId = null, [WorkflowExpression] Func<bool> bodynotePrintsAfterLineItems = null, [WorkflowExpression] Func<bool> bodyproposal = null, [WorkflowExpression] Func<bool> bodyproposalAccepted = null, [WorkflowExpression] Func<bodysalesOrderLineItemInputItem2222[]> bodysalesOrderLineItem = null, [WorkflowExpression] Func<string> bodysalesOrderNumber = null, [WorkflowExpression] Func<string> bodysalesRepresentativeGUID = null, [WorkflowExpression] Func<string> bodysalesRepresentativeId = null, [WorkflowExpression] Func<string> bodyshipAddressCity = null, [WorkflowExpression] Func<string> bodyshipAddressCountry = null, [WorkflowExpression] Func<string> bodyshipAddressLine1 = null, [WorkflowExpression] Func<string> bodyshipAddressLine2 = null, [WorkflowExpression] Func<string> bodyshipAddressName = null, [WorkflowExpression] Func<string> bodyshipAddressState = null, [WorkflowExpression] Func<string> bodyshipAddressZipCode = null, [WorkflowExpression] Func<string> bodyshipBy = null, [WorkflowExpression] Func<string> bodyshipVIA = null, [WorkflowExpression] Func<bool> bodystatementNotePrintsBeforeInvRef = null)
         {
-            var apiCallPath = "/api/v1/sage50us/salesorder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaccountsReceivableAccount != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Accounts_Receivable_Account"] = ExpressionConverter.ConvertO(bodyaccountsReceivableAccount);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/sage50us/salesorder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaccountsReceivableAccount != null)
+                {
+                    body["Accounts_Receivable_Account"] = SourceExpressionConverter.ConvertToken(bodyaccountsReceivableAccount);
+                    bodypropCount++;
+                }
+
+                if (bodyaccountsReceivableAcctGUID != null)
+                {
+                    body["Accounts_Receivable_Acct_GUID"] = SourceExpressionConverter.ConvertToken(bodyaccountsReceivableAcctGUID);
+                    bodypropCount++;
+                }
+
+                if (bodyaccountsReceivableAmount != null)
+                {
+                    body["Accounts_Receivable_Amount"] = SourceExpressionConverter.ConvertToken(bodyaccountsReceivableAmount);
+                    bodypropCount++;
+                }
+
+                if (bodyclosed != null)
+                {
+                    body["Closed"] = SourceExpressionConverter.ConvertToken(bodyclosed);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerId != null)
+                {
+                    body["Customer_ID"] = SourceExpressionConverter.ConvertToken(bodycustomerId);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerPO != null)
+                {
+                    body["Customer_PO"] = SourceExpressionConverter.ConvertToken(bodycustomerPO);
+                    bodypropCount++;
+                }
+
+                if (bodydate != null)
+                {
+                    body["Date"] = SourceExpressionConverter.ConvertToken(bodydate);
+                    bodypropCount++;
+                }
+
+                if (bodydiscountAmount != null)
+                {
+                    body["Discount_Amount"] = SourceExpressionConverter.ConvertToken(bodydiscountAmount);
+                    bodypropCount++;
+                }
+
+                if (bodydisplayedTerms != null)
+                {
+                    body["Displayed_Terms"] = SourceExpressionConverter.ConvertToken(bodydisplayedTerms);
+                    bodypropCount++;
+                }
+
+                if (bodydropShip != null)
+                {
+                    body["Drop_Ship"] = SourceExpressionConverter.ConvertToken(bodydropShip);
+                    bodypropCount++;
+                }
+
+                if (bodygUId != null)
+                {
+                    body["GUID"] = SourceExpressionConverter.ConvertToken(bodygUId);
+                    bodypropCount++;
+                }
+
+                if (bodynotePrintsAfterLineItems != null)
+                {
+                    body["Note_Prints_After_Line_Items"] = SourceExpressionConverter.ConvertToken(bodynotePrintsAfterLineItems);
+                    bodypropCount++;
+                }
+
+                if (bodyproposal != null)
+                {
+                    body["Proposal"] = SourceExpressionConverter.ConvertToken(bodyproposal);
+                    bodypropCount++;
+                }
+
+                if (bodyproposalAccepted != null)
+                {
+                    body["ProposalAccepted"] = SourceExpressionConverter.ConvertToken(bodyproposalAccepted);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrderLineItem != null)
+                {
+                    body["SalesOrderLineItem"] = SourceExpressionConverter.ConvertToken(bodysalesOrderLineItem);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrderNumber != null)
+                {
+                    body["Sales_Order_Number"] = SourceExpressionConverter.ConvertToken(bodysalesOrderNumber);
+                    bodypropCount++;
+                }
+
+                if (bodysalesRepresentativeGUID != null)
+                {
+                    body["Sales_Representative_GUID"] = SourceExpressionConverter.ConvertToken(bodysalesRepresentativeGUID);
+                    bodypropCount++;
+                }
+
+                if (bodysalesRepresentativeId != null)
+                {
+                    body["Sales_Representative_ID"] = SourceExpressionConverter.ConvertToken(bodysalesRepresentativeId);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressCity != null)
+                {
+                    body["ShipAddressCity"] = SourceExpressionConverter.ConvertToken(bodyshipAddressCity);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressCountry != null)
+                {
+                    body["ShipAddressCountry"] = SourceExpressionConverter.ConvertToken(bodyshipAddressCountry);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressLine1 != null)
+                {
+                    body["ShipAddressLine1"] = SourceExpressionConverter.ConvertToken(bodyshipAddressLine1);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressLine2 != null)
+                {
+                    body["ShipAddressLine2"] = SourceExpressionConverter.ConvertToken(bodyshipAddressLine2);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressName != null)
+                {
+                    body["ShipAddressName"] = SourceExpressionConverter.ConvertToken(bodyshipAddressName);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressState != null)
+                {
+                    body["ShipAddressState"] = SourceExpressionConverter.ConvertToken(bodyshipAddressState);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressZipCode != null)
+                {
+                    body["ShipAddressZipCode"] = SourceExpressionConverter.ConvertToken(bodyshipAddressZipCode);
+                    bodypropCount++;
+                }
+
+                if (bodyshipBy != null)
+                {
+                    body["Ship_By"] = SourceExpressionConverter.ConvertToken(bodyshipBy);
+                    bodypropCount++;
+                }
+
+                if (bodyshipVIA != null)
+                {
+                    body["Ship_VIA"] = SourceExpressionConverter.ConvertToken(bodyshipVIA);
+                    bodypropCount++;
+                }
+
+                if (bodystatementNotePrintsBeforeInvRef != null)
+                {
+                    body["Statement_Note_Prints_Before_Inv_Ref"] = SourceExpressionConverter.ConvertToken(bodystatementNotePrintsBeforeInvRef);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyaccountsReceivableAcctGUID != null)
-            {
-                body["Accounts_Receivable_Acct_GUID"] = ExpressionConverter.ConvertO(bodyaccountsReceivableAcctGUID);
-                bodypropCount++;
-            }
-
-            if (bodyaccountsReceivableAmount != null)
-            {
-                body["Accounts_Receivable_Amount"] = ExpressionConverter.ConvertO(bodyaccountsReceivableAmount);
-                bodypropCount++;
-            }
-
-            if (bodyclosed != null)
-            {
-                body["Closed"] = ExpressionConverter.ConvertO(bodyclosed);
-                bodypropCount++;
-            }
-
-            if (bodycustomerID != null)
-            {
-                body["Customer_ID"] = ExpressionConverter.ConvertO(bodycustomerID);
-                bodypropCount++;
-            }
-
-            if (bodycustomerPO != null)
-            {
-                body["Customer_PO"] = ExpressionConverter.ConvertO(bodycustomerPO);
-                bodypropCount++;
-            }
-
-            if (bodydate != null)
-            {
-                body["Date"] = ExpressionConverter.ConvertO(bodydate);
-                bodypropCount++;
-            }
-
-            if (bodydiscountAmount != null)
-            {
-                body["Discount_Amount"] = ExpressionConverter.ConvertO(bodydiscountAmount);
-                bodypropCount++;
-            }
-
-            if (bodydisplayedTerms != null)
-            {
-                body["Displayed_Terms"] = ExpressionConverter.ConvertO(bodydisplayedTerms);
-                bodypropCount++;
-            }
-
-            if (bodydropShip != null)
-            {
-                body["Drop_Ship"] = ExpressionConverter.ConvertO(bodydropShip);
-                bodypropCount++;
-            }
-
-            if (bodygUID != null)
-            {
-                body["GUID"] = ExpressionConverter.ConvertO(bodygUID);
-                bodypropCount++;
-            }
-
-            if (bodynotePrintsAfterLineItems != null)
-            {
-                body["Note_Prints_After_Line_Items"] = ExpressionConverter.ConvertO(bodynotePrintsAfterLineItems);
-                bodypropCount++;
-            }
-
-            if (bodyproposal != null)
-            {
-                body["Proposal"] = ExpressionConverter.ConvertO(bodyproposal);
-                bodypropCount++;
-            }
-
-            if (bodyproposalAccepted != null)
-            {
-                body["ProposalAccepted"] = ExpressionConverter.ConvertO(bodyproposalAccepted);
-                bodypropCount++;
-            }
-
-            if (bodysalesOrderLineItem != null)
-            {
-                body["SalesOrderLineItem"] = ExpressionConverter.ConvertO(bodysalesOrderLineItem);
-                bodypropCount++;
-            }
-
-            if (bodysalesOrderNumber != null)
-            {
-                body["Sales_Order_Number"] = ExpressionConverter.ConvertO(bodysalesOrderNumber);
-                bodypropCount++;
-            }
-
-            if (bodysalesRepresentativeGUID != null)
-            {
-                body["Sales_Representative_GUID"] = ExpressionConverter.ConvertO(bodysalesRepresentativeGUID);
-                bodypropCount++;
-            }
-
-            if (bodysalesRepresentativeID != null)
-            {
-                body["Sales_Representative_ID"] = ExpressionConverter.ConvertO(bodysalesRepresentativeID);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressCity != null)
-            {
-                body["ShipAddressCity"] = ExpressionConverter.ConvertO(bodyshipAddressCity);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressCountry != null)
-            {
-                body["ShipAddressCountry"] = ExpressionConverter.ConvertO(bodyshipAddressCountry);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressLine1 != null)
-            {
-                body["ShipAddressLine1"] = ExpressionConverter.ConvertO(bodyshipAddressLine1);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressLine2 != null)
-            {
-                body["ShipAddressLine2"] = ExpressionConverter.ConvertO(bodyshipAddressLine2);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressName != null)
-            {
-                body["ShipAddressName"] = ExpressionConverter.ConvertO(bodyshipAddressName);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressState != null)
-            {
-                body["ShipAddressState"] = ExpressionConverter.ConvertO(bodyshipAddressState);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressZipCode != null)
-            {
-                body["ShipAddressZipCode"] = ExpressionConverter.ConvertO(bodyshipAddressZipCode);
-                bodypropCount++;
-            }
-
-            if (bodyshipBy != null)
-            {
-                body["Ship_By"] = ExpressionConverter.ConvertO(bodyshipBy);
-                bodypropCount++;
-            }
-
-            if (bodyshipVIA != null)
-            {
-                body["Ship_VIA"] = ExpressionConverter.ConvertO(bodyshipVIA);
-                bodypropCount++;
-            }
-
-            if (bodystatementNotePrintsBeforeInvRef != null)
-            {
-                body["Statement_Note_Prints_Before_Inv_Ref"] = ExpressionConverter.ConvertO(bodystatementNotePrintsBeforeInvRef);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SAGE50USCreateNewSalesOrderResponse>(callPayload);
+            return new ApiConnectionAction<SAGE50USCreateNewSalesOrderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAPB1CreateNewCustomerResponse> SAPB1CreateNewCustomer(Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodybillingAddressName = null, Expression<Func<string>> bodybillingBlock = null, Expression<Func<string>> bodybillingCity = null, Expression<Func<string>> bodybillingCountry = null, Expression<Func<string>> bodybillingState = null, Expression<Func<string>> bodybillingStreet = null, Expression<Func<string>> bodybillingZipCode = null, Expression<Func<string>> bodycardCode = null, Expression<Func<string>> bodycardName = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycontactPerson = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodycounty = null, Expression<Func<string>> bodycurrency = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyextraField = null, Expression<Func<string>> bodyfax = null, Expression<Func<string>> bodyfederalTaxID = null, Expression<Func<string>> bodyfreeText = null, Expression<Func<int>> bodygroupCode = null, Expression<Func<string>> bodymailAddress = null, Expression<Func<string>> bodymailCity = null, Expression<Func<string>> bodymailCountry = null, Expression<Func<string>> bodymailCounty = null, Expression<Func<string>> bodymailZipCode = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyphone2 = null, Expression<Func<int>> bodysalesPersonCode = null, Expression<Func<int>> bodyseries = null, Expression<Func<string>> bodyshippingAddressName = null, Expression<Func<string>> bodyshippingBlock = null, Expression<Func<string>> bodyshippingCity = null, Expression<Func<string>> bodyshippingCountry = null, Expression<Func<string>> bodyshippingState = null, Expression<Func<string>> bodyshippingStreet = null, Expression<Func<string>> bodyshippingZipCode = null, Expression<Func<string>> bodywebSite = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<bodylstContactEmployeesInputItem[]>> bodylstContactEmployees = null)
+        public IBodyWorkflowAction<SAPB1CreateNewCustomerResponse> SAPB1CreateNewCustomer([WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodybillingAddressName = null, [WorkflowExpression] Func<string> bodybillingBlock = null, [WorkflowExpression] Func<string> bodybillingCity = null, [WorkflowExpression] Func<string> bodybillingCountry = null, [WorkflowExpression] Func<string> bodybillingState = null, [WorkflowExpression] Func<string> bodybillingStreet = null, [WorkflowExpression] Func<string> bodybillingZipCode = null, [WorkflowExpression] Func<string> bodycardCode = null, [WorkflowExpression] Func<string> bodycardName = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycontactPerson = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodycounty = null, [WorkflowExpression] Func<string> bodycurrency = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyextraField = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<string> bodyfederalTaxId = null, [WorkflowExpression] Func<string> bodyfreeText = null, [WorkflowExpression] Func<int> bodygroupCode = null, [WorkflowExpression] Func<string> bodymailAddress = null, [WorkflowExpression] Func<string> bodymailCity = null, [WorkflowExpression] Func<string> bodymailCountry = null, [WorkflowExpression] Func<string> bodymailCounty = null, [WorkflowExpression] Func<string> bodymailZipCode = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyphone2 = null, [WorkflowExpression] Func<int> bodysalesPersonCode = null, [WorkflowExpression] Func<int> bodyseries = null, [WorkflowExpression] Func<string> bodyshippingAddressName = null, [WorkflowExpression] Func<string> bodyshippingBlock = null, [WorkflowExpression] Func<string> bodyshippingCity = null, [WorkflowExpression] Func<string> bodyshippingCountry = null, [WorkflowExpression] Func<string> bodyshippingState = null, [WorkflowExpression] Func<string> bodyshippingStreet = null, [WorkflowExpression] Func<string> bodyshippingZipCode = null, [WorkflowExpression] Func<string> bodywebSite = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<bodylstContactEmployeesInputItem[]> bodylstContactEmployees = null)
         {
-            var apiCallPath = "/api/v1/sapb1/customer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaddress != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/sapb1/customer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaddress != null)
+                {
+                    body["Address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodybillingAddressName != null)
+                {
+                    body["BillingAddressName"] = SourceExpressionConverter.ConvertToken(bodybillingAddressName);
+                    bodypropCount++;
+                }
+
+                if (bodybillingBlock != null)
+                {
+                    body["BillingBlock"] = SourceExpressionConverter.ConvertToken(bodybillingBlock);
+                    bodypropCount++;
+                }
+
+                if (bodybillingCity != null)
+                {
+                    body["BillingCity"] = SourceExpressionConverter.ConvertToken(bodybillingCity);
+                    bodypropCount++;
+                }
+
+                if (bodybillingCountry != null)
+                {
+                    body["BillingCountry"] = SourceExpressionConverter.ConvertToken(bodybillingCountry);
+                    bodypropCount++;
+                }
+
+                if (bodybillingState != null)
+                {
+                    body["BillingState"] = SourceExpressionConverter.ConvertToken(bodybillingState);
+                    bodypropCount++;
+                }
+
+                if (bodybillingStreet != null)
+                {
+                    body["BillingStreet"] = SourceExpressionConverter.ConvertToken(bodybillingStreet);
+                    bodypropCount++;
+                }
+
+                if (bodybillingZipCode != null)
+                {
+                    body["BillingZipCode"] = SourceExpressionConverter.ConvertToken(bodybillingZipCode);
+                    bodypropCount++;
+                }
+
+                if (bodycardCode != null)
+                {
+                    body["CardCode"] = SourceExpressionConverter.ConvertToken(bodycardCode);
+                    bodypropCount++;
+                }
+
+                if (bodycardName != null)
+                {
+                    body["CardName"] = SourceExpressionConverter.ConvertToken(bodycardName);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["City"] = SourceExpressionConverter.ConvertToken(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodycontactPerson != null)
+                {
+                    body["ContactPerson"] = SourceExpressionConverter.ConvertToken(bodycontactPerson);
+                    bodypropCount++;
+                }
+
+                if (bodycountry != null)
+                {
+                    body["Country"] = SourceExpressionConverter.ConvertToken(bodycountry);
+                    bodypropCount++;
+                }
+
+                if (bodycounty != null)
+                {
+                    body["County"] = SourceExpressionConverter.ConvertToken(bodycounty);
+                    bodypropCount++;
+                }
+
+                if (bodycurrency != null)
+                {
+                    body["Currency"] = SourceExpressionConverter.ConvertToken(bodycurrency);
+                    bodypropCount++;
+                }
+
+                if (bodyemailAddress != null)
+                {
+                    body["EmailAddress"] = SourceExpressionConverter.ConvertToken(bodyemailAddress);
+                    bodypropCount++;
+                }
+
+                if (bodyextraField != null)
+                {
+                    body["ExtraField"] = SourceExpressionConverter.ConvertToken(bodyextraField);
+                    bodypropCount++;
+                }
+
+                if (bodyfax != null)
+                {
+                    body["Fax"] = SourceExpressionConverter.ConvertToken(bodyfax);
+                    bodypropCount++;
+                }
+
+                if (bodyfederalTaxId != null)
+                {
+                    body["FederalTaxID"] = SourceExpressionConverter.ConvertToken(bodyfederalTaxId);
+                    bodypropCount++;
+                }
+
+                if (bodyfreeText != null)
+                {
+                    body["FreeText"] = SourceExpressionConverter.ConvertToken(bodyfreeText);
+                    bodypropCount++;
+                }
+
+                if (bodygroupCode != null)
+                {
+                    body["GroupCode"] = SourceExpressionConverter.ConvertToken(bodygroupCode);
+                    bodypropCount++;
+                }
+
+                if (bodymailAddress != null)
+                {
+                    body["MailAddress"] = SourceExpressionConverter.ConvertToken(bodymailAddress);
+                    bodypropCount++;
+                }
+
+                if (bodymailCity != null)
+                {
+                    body["MailCity"] = SourceExpressionConverter.ConvertToken(bodymailCity);
+                    bodypropCount++;
+                }
+
+                if (bodymailCountry != null)
+                {
+                    body["MailCountry"] = SourceExpressionConverter.ConvertToken(bodymailCountry);
+                    bodypropCount++;
+                }
+
+                if (bodymailCounty != null)
+                {
+                    body["MailCounty"] = SourceExpressionConverter.ConvertToken(bodymailCounty);
+                    bodypropCount++;
+                }
+
+                if (bodymailZipCode != null)
+                {
+                    body["MailZipCode"] = SourceExpressionConverter.ConvertToken(bodymailZipCode);
+                    bodypropCount++;
+                }
+
+                if (bodynotes != null)
+                {
+                    body["Notes"] = SourceExpressionConverter.ConvertToken(bodynotes);
+                    bodypropCount++;
+                }
+
+                if (bodyphone1 != null)
+                {
+                    body["Phone1"] = SourceExpressionConverter.ConvertToken(bodyphone1);
+                    bodypropCount++;
+                }
+
+                if (bodyphone2 != null)
+                {
+                    body["Phone2"] = SourceExpressionConverter.ConvertToken(bodyphone2);
+                    bodypropCount++;
+                }
+
+                if (bodysalesPersonCode != null)
+                {
+                    body["SalesPersonCode"] = SourceExpressionConverter.ConvertToken(bodysalesPersonCode);
+                    bodypropCount++;
+                }
+
+                if (bodyseries != null)
+                {
+                    body["Series"] = SourceExpressionConverter.ConvertToken(bodyseries);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingAddressName != null)
+                {
+                    body["ShippingAddressName"] = SourceExpressionConverter.ConvertToken(bodyshippingAddressName);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingBlock != null)
+                {
+                    body["ShippingBlock"] = SourceExpressionConverter.ConvertToken(bodyshippingBlock);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingCity != null)
+                {
+                    body["ShippingCity"] = SourceExpressionConverter.ConvertToken(bodyshippingCity);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingCountry != null)
+                {
+                    body["ShippingCountry"] = SourceExpressionConverter.ConvertToken(bodyshippingCountry);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingState != null)
+                {
+                    body["ShippingState"] = SourceExpressionConverter.ConvertToken(bodyshippingState);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingStreet != null)
+                {
+                    body["ShippingStreet"] = SourceExpressionConverter.ConvertToken(bodyshippingStreet);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingZipCode != null)
+                {
+                    body["ShippingZipCode"] = SourceExpressionConverter.ConvertToken(bodyshippingZipCode);
+                    bodypropCount++;
+                }
+
+                if (bodywebSite != null)
+                {
+                    body["WebSite"] = SourceExpressionConverter.ConvertToken(bodywebSite);
+                    bodypropCount++;
+                }
+
+                if (bodyzipCode != null)
+                {
+                    body["ZipCode"] = SourceExpressionConverter.ConvertToken(bodyzipCode);
+                    bodypropCount++;
+                }
+
+                if (bodylstContactEmployees != null)
+                {
+                    body["lstContactEmployees"] = SourceExpressionConverter.ConvertToken(bodylstContactEmployees);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodybillingAddressName != null)
-            {
-                body["BillingAddressName"] = ExpressionConverter.ConvertO(bodybillingAddressName);
-                bodypropCount++;
-            }
-
-            if (bodybillingBlock != null)
-            {
-                body["BillingBlock"] = ExpressionConverter.ConvertO(bodybillingBlock);
-                bodypropCount++;
-            }
-
-            if (bodybillingCity != null)
-            {
-                body["BillingCity"] = ExpressionConverter.ConvertO(bodybillingCity);
-                bodypropCount++;
-            }
-
-            if (bodybillingCountry != null)
-            {
-                body["BillingCountry"] = ExpressionConverter.ConvertO(bodybillingCountry);
-                bodypropCount++;
-            }
-
-            if (bodybillingState != null)
-            {
-                body["BillingState"] = ExpressionConverter.ConvertO(bodybillingState);
-                bodypropCount++;
-            }
-
-            if (bodybillingStreet != null)
-            {
-                body["BillingStreet"] = ExpressionConverter.ConvertO(bodybillingStreet);
-                bodypropCount++;
-            }
-
-            if (bodybillingZipCode != null)
-            {
-                body["BillingZipCode"] = ExpressionConverter.ConvertO(bodybillingZipCode);
-                bodypropCount++;
-            }
-
-            if (bodycardCode != null)
-            {
-                body["CardCode"] = ExpressionConverter.ConvertO(bodycardCode);
-                bodypropCount++;
-            }
-
-            if (bodycardName != null)
-            {
-                body["CardName"] = ExpressionConverter.ConvertO(bodycardName);
-                bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["City"] = ExpressionConverter.ConvertO(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodycontactPerson != null)
-            {
-                body["ContactPerson"] = ExpressionConverter.ConvertO(bodycontactPerson);
-                bodypropCount++;
-            }
-
-            if (bodycountry != null)
-            {
-                body["Country"] = ExpressionConverter.ConvertO(bodycountry);
-                bodypropCount++;
-            }
-
-            if (bodycounty != null)
-            {
-                body["County"] = ExpressionConverter.ConvertO(bodycounty);
-                bodypropCount++;
-            }
-
-            if (bodycurrency != null)
-            {
-                body["Currency"] = ExpressionConverter.ConvertO(bodycurrency);
-                bodypropCount++;
-            }
-
-            if (bodyemailAddress != null)
-            {
-                body["EmailAddress"] = ExpressionConverter.ConvertO(bodyemailAddress);
-                bodypropCount++;
-            }
-
-            if (bodyextraField != null)
-            {
-                body["ExtraField"] = ExpressionConverter.ConvertO(bodyextraField);
-                bodypropCount++;
-            }
-
-            if (bodyfax != null)
-            {
-                body["Fax"] = ExpressionConverter.ConvertO(bodyfax);
-                bodypropCount++;
-            }
-
-            if (bodyfederalTaxID != null)
-            {
-                body["FederalTaxID"] = ExpressionConverter.ConvertO(bodyfederalTaxID);
-                bodypropCount++;
-            }
-
-            if (bodyfreeText != null)
-            {
-                body["FreeText"] = ExpressionConverter.ConvertO(bodyfreeText);
-                bodypropCount++;
-            }
-
-            if (bodygroupCode != null)
-            {
-                body["GroupCode"] = ExpressionConverter.ConvertO(bodygroupCode);
-                bodypropCount++;
-            }
-
-            if (bodymailAddress != null)
-            {
-                body["MailAddress"] = ExpressionConverter.ConvertO(bodymailAddress);
-                bodypropCount++;
-            }
-
-            if (bodymailCity != null)
-            {
-                body["MailCity"] = ExpressionConverter.ConvertO(bodymailCity);
-                bodypropCount++;
-            }
-
-            if (bodymailCountry != null)
-            {
-                body["MailCountry"] = ExpressionConverter.ConvertO(bodymailCountry);
-                bodypropCount++;
-            }
-
-            if (bodymailCounty != null)
-            {
-                body["MailCounty"] = ExpressionConverter.ConvertO(bodymailCounty);
-                bodypropCount++;
-            }
-
-            if (bodymailZipCode != null)
-            {
-                body["MailZipCode"] = ExpressionConverter.ConvertO(bodymailZipCode);
-                bodypropCount++;
-            }
-
-            if (bodynotes != null)
-            {
-                body["Notes"] = ExpressionConverter.ConvertO(bodynotes);
-                bodypropCount++;
-            }
-
-            if (bodyphone1 != null)
-            {
-                body["Phone1"] = ExpressionConverter.ConvertO(bodyphone1);
-                bodypropCount++;
-            }
-
-            if (bodyphone2 != null)
-            {
-                body["Phone2"] = ExpressionConverter.ConvertO(bodyphone2);
-                bodypropCount++;
-            }
-
-            if (bodysalesPersonCode != null)
-            {
-                body["SalesPersonCode"] = ExpressionConverter.ConvertO(bodysalesPersonCode);
-                bodypropCount++;
-            }
-
-            if (bodyseries != null)
-            {
-                body["Series"] = ExpressionConverter.ConvertO(bodyseries);
-                bodypropCount++;
-            }
-
-            if (bodyshippingAddressName != null)
-            {
-                body["ShippingAddressName"] = ExpressionConverter.ConvertO(bodyshippingAddressName);
-                bodypropCount++;
-            }
-
-            if (bodyshippingBlock != null)
-            {
-                body["ShippingBlock"] = ExpressionConverter.ConvertO(bodyshippingBlock);
-                bodypropCount++;
-            }
-
-            if (bodyshippingCity != null)
-            {
-                body["ShippingCity"] = ExpressionConverter.ConvertO(bodyshippingCity);
-                bodypropCount++;
-            }
-
-            if (bodyshippingCountry != null)
-            {
-                body["ShippingCountry"] = ExpressionConverter.ConvertO(bodyshippingCountry);
-                bodypropCount++;
-            }
-
-            if (bodyshippingState != null)
-            {
-                body["ShippingState"] = ExpressionConverter.ConvertO(bodyshippingState);
-                bodypropCount++;
-            }
-
-            if (bodyshippingStreet != null)
-            {
-                body["ShippingStreet"] = ExpressionConverter.ConvertO(bodyshippingStreet);
-                bodypropCount++;
-            }
-
-            if (bodyshippingZipCode != null)
-            {
-                body["ShippingZipCode"] = ExpressionConverter.ConvertO(bodyshippingZipCode);
-                bodypropCount++;
-            }
-
-            if (bodywebSite != null)
-            {
-                body["WebSite"] = ExpressionConverter.ConvertO(bodywebSite);
-                bodypropCount++;
-            }
-
-            if (bodyzipCode != null)
-            {
-                body["ZipCode"] = ExpressionConverter.ConvertO(bodyzipCode);
-                bodypropCount++;
-            }
-
-            if (bodylstContactEmployees != null)
-            {
-                body["lstContactEmployees"] = ExpressionConverter.ConvertO(bodylstContactEmployees);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SAPB1CreateNewCustomerResponse>(callPayload);
+            return new ApiConnectionAction<SAPB1CreateNewCustomerResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SAPB1CreateNewSalesOrderResponse> SAPB1CreateNewSalesOrder(Expression<Func<string>> bodycardCode = null, Expression<Func<string>> bodydocDate = null, Expression<Func<string>> bodydocDueDate = null, Expression<Func<int>> bodydocNum = null, Expression<Func<bodysalesOrderLineItemInputItem22222[]>> bodysalesOrderLineItem = null, Expression<Func<int>> bodyseries = null, Expression<Func<string>> bodytaxDate = null)
+        public IBodyWorkflowAction<SAPB1CreateNewSalesOrderResponse> SAPB1CreateNewSalesOrder([WorkflowExpression] Func<string> bodycardCode = null, [WorkflowExpression] Func<string> bodydocDate = null, [WorkflowExpression] Func<string> bodydocDueDate = null, [WorkflowExpression] Func<int> bodydocNum = null, [WorkflowExpression] Func<bodysalesOrderLineItemInputItem22222[]> bodysalesOrderLineItem = null, [WorkflowExpression] Func<int> bodyseries = null, [WorkflowExpression] Func<string> bodytaxDate = null)
         {
-            var apiCallPath = "/api/v1/sapb1/salesorder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycardCode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["CardCode"] = ExpressionConverter.ConvertO(bodycardCode);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/sapb1/salesorder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycardCode != null)
+                {
+                    body["CardCode"] = SourceExpressionConverter.ConvertToken(bodycardCode);
+                    bodypropCount++;
+                }
+
+                if (bodydocDate != null)
+                {
+                    body["DocDate"] = SourceExpressionConverter.ConvertToken(bodydocDate);
+                    bodypropCount++;
+                }
+
+                if (bodydocDueDate != null)
+                {
+                    body["DocDueDate"] = SourceExpressionConverter.ConvertToken(bodydocDueDate);
+                    bodypropCount++;
+                }
+
+                if (bodydocNum != null)
+                {
+                    body["DocNum"] = SourceExpressionConverter.ConvertToken(bodydocNum);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrderLineItem != null)
+                {
+                    body["SalesOrderLineItem"] = SourceExpressionConverter.ConvertToken(bodysalesOrderLineItem);
+                    bodypropCount++;
+                }
+
+                if (bodyseries != null)
+                {
+                    body["Series"] = SourceExpressionConverter.ConvertToken(bodyseries);
+                    bodypropCount++;
+                }
+
+                if (bodytaxDate != null)
+                {
+                    body["TaxDate"] = SourceExpressionConverter.ConvertToken(bodytaxDate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydocDate != null)
-            {
-                body["DocDate"] = ExpressionConverter.ConvertO(bodydocDate);
-                bodypropCount++;
-            }
-
-            if (bodydocDueDate != null)
-            {
-                body["DocDueDate"] = ExpressionConverter.ConvertO(bodydocDueDate);
-                bodypropCount++;
-            }
-
-            if (bodydocNum != null)
-            {
-                body["DocNum"] = ExpressionConverter.ConvertO(bodydocNum);
-                bodypropCount++;
-            }
-
-            if (bodysalesOrderLineItem != null)
-            {
-                body["SalesOrderLineItem"] = ExpressionConverter.ConvertO(bodysalesOrderLineItem);
-                bodypropCount++;
-            }
-
-            if (bodyseries != null)
-            {
-                body["Series"] = ExpressionConverter.ConvertO(bodyseries);
-                bodypropCount++;
-            }
-
-            if (bodytaxDate != null)
-            {
-                body["TaxDate"] = ExpressionConverter.ConvertO(bodytaxDate);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SAPB1CreateNewSalesOrderResponse>(callPayload);
+            return new ApiConnectionAction<SAPB1CreateNewSalesOrderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SYSPROCreateNewCustomerResponse> SYSPROCreateNewCustomer(Expression<Func<string>> bodyaddTelephone = null, Expression<Func<string>> bodyaltMethodFlag = null, Expression<Func<string>> bodyapplyLineDisc = null, Expression<Func<string>> bodyapplyOrdDisc = null, Expression<Func<string>> bodyarStatementNo = null, Expression<Func<string>> bodyarea = null, Expression<Func<string>> bodybackOrdReqd = null, Expression<Func<string>> bodybalanceType = null, Expression<Func<string>> bodybranch = null, Expression<Func<string>> bodybuyingGroup1 = null, Expression<Func<string>> bodybuyingGroup2 = null, Expression<Func<string>> bodybuyingGroup3 = null, Expression<Func<string>> bodybuyingGroup4 = null, Expression<Func<string>> bodybuyingGroup5 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycity1 = null, Expression<Func<string>> bodycompanyTaxNumber = null, Expression<Func<string>> bodycontact = null, Expression<Func<string>> bodycontractPrcReqd = null, Expression<Func<string>> bodycounterSlsOnly = null, Expression<Func<string>> bodycountyZip = null, Expression<Func<string>> bodycountyZip1 = null, Expression<Func<string>> bodycreditCheckFlag = null, Expression<Func<string>> bodycreditLimit = null, Expression<Func<string>> bodycreditStatus = null, Expression<Func<string>> bodycurrency = null, Expression<Func<string>> bodycustomerClass = null, Expression<Func<string>> bodycustomerCode = null, Expression<Func<string>> bodycustomerOnHold = null, Expression<Func<string>> bodydateCustAdded = null, Expression<Func<string>> bodydefaultOrdType = null, Expression<Func<string>> bodydeliveryTerms = null, Expression<Func<string>> bodydeliveryTermsC = null, Expression<Func<string>> bodydetailMoveReqd = null, Expression<Func<string>> bodydocFax = null, Expression<Func<string>> bodydocFaxContact = null, Expression<Func<string>> bodyediFlag = null, Expression<Func<string>> bodyediSenderCode = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyexemptFinChg = null, Expression<Func<string>> bodyfax = null, Expression<Func<string>> bodyfaxInvoices = null, Expression<Func<string>> bodyfaxQuotes = null, Expression<Func<string>> bodyfaxStatements = null, Expression<Func<string>> bodygstExemptFlag = null, Expression<Func<string>> bodygstExemptNum = null, Expression<Func<string>> bodygstLevel = null, Expression<Func<string>> bodyhighInv = null, Expression<Func<string>> bodyhighInvDays = null, Expression<Func<string>> bodyhighestBalance = null, Expression<Func<string>> bodyibtCustomer = null, Expression<Func<string>> bodyinvCommentCode = null, Expression<Func<string>> bodyinvDiscCode = null, Expression<Func<string>> bodylanguageCode = null, Expression<Func<string>> bodylineDiscCode = null, Expression<Func<string>> bodymaintHistory = null, Expression<Func<string>> bodymaintLastPrcPaid = null, Expression<Func<string>> bodyminimumOrderChgCod = null, Expression<Func<string>> bodyminimumOrderValue = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodynationality = null, Expression<Func<string>> bodynewCustomerCode = null, Expression<Func<string>> bodypoNumberMandatory = null, Expression<Func<string>> bodypriceCategoryTable = null, Expression<Func<string>> bodypriceCode = null, Expression<Func<string>> bodyrouteCode = null, Expression<Func<string>> bodyrouteDistance = null, Expression<Func<string>> bodysalesWarehouse = null, Expression<Func<string>> bodysalesperson = null, Expression<Func<string>> bodysalesperson1 = null, Expression<Func<string>> bodysalesperson2 = null, Expression<Func<string>> bodysalesperson3 = null, Expression<Func<string>> bodyshipPostalCode = null, Expression<Func<string>> bodyshipToAddr1 = null, Expression<Func<string>> bodyshipToAddr2 = null, Expression<Func<string>> bodyshipToAddr3 = null, Expression<Func<string>> bodyshipToAddr3Loc = null, Expression<Func<string>> bodyshipToAddr4 = null, Expression<Func<string>> bodyshipToAddr5 = null, Expression<Func<string>> bodyshipToGpsLat = null, Expression<Func<string>> bodyshipToGpsLong = null, Expression<Func<string>> bodyshippingInstrs = null, Expression<Func<string>> bodyshippingInstrsCod = null, Expression<Func<string>> bodyshippingLocation = null, Expression<Func<string>> bodyshortName = null, Expression<Func<string>> bodysoDefaultDoc = null, Expression<Func<string>> bodysoDefaultType = null, Expression<Func<string>> bodysoldPostalCode = null, Expression<Func<string>> bodysoldToAddr1 = null, Expression<Func<string>> bodysoldToAddr2 = null, Expression<Func<string>> bodysoldToAddr3 = null, Expression<Func<string>> bodysoldToAddr3Loc = null, Expression<Func<string>> bodysoldToAddr4 = null, Expression<Func<string>> bodysoldToAddr5 = null, Expression<Func<string>> bodysoldToGpsLat = null, Expression<Func<string>> bodysoldToGpsLong = null, Expression<Func<string>> bodyspecialInstrs = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodystate1 = null, Expression<Func<string>> bodystateCode = null, Expression<Func<string>> bodystatementReqd = null, Expression<Func<string>> bodystockInterchange = null, Expression<Func<string>> bodytagsToDropFromXML = null, Expression<Func<string>> bodytaxExemptNumber = null, Expression<Func<string>> bodytaxStatus = null, Expression<Func<string>> bodytelephone = null, Expression<Func<string>> bodytelephoneExtn = null, Expression<Func<string>> bodytelex = null, Expression<Func<string>> bodytermsCode = null, Expression<Func<string>> bodytpmCreditCheck = null, Expression<Func<string>> bodytpmCustomerFlag = null, Expression<Func<string>> bodytpmPricingFlag = null, Expression<Func<string>> bodytransactionNature = null, Expression<Func<string>> bodytransactionNatureC = null, Expression<Func<string>> bodyukCurrency = null, Expression<Func<string>> bodyukVatFlag = null, Expression<Func<string>> bodyuserField1 = null, Expression<Func<string>> bodyuserField2 = null, Expression<Func<string>> bodywholeOrderShipFlag = null, Expression<Func<string>> bodyeSignature = null)
+        public IBodyWorkflowAction<SYSPROCreateNewCustomerResponse> SYSPROCreateNewCustomer([WorkflowExpression] Func<string> bodyaddTelephone = null, [WorkflowExpression] Func<string> bodyaltMethodFlag = null, [WorkflowExpression] Func<string> bodyapplyLineDisc = null, [WorkflowExpression] Func<string> bodyapplyOrdDisc = null, [WorkflowExpression] Func<string> bodyarStatementNo = null, [WorkflowExpression] Func<string> bodyarea = null, [WorkflowExpression] Func<string> bodybackOrdReqd = null, [WorkflowExpression] Func<string> bodybalanceType = null, [WorkflowExpression] Func<string> bodybranch = null, [WorkflowExpression] Func<string> bodybuyingGroup1 = null, [WorkflowExpression] Func<string> bodybuyingGroup2 = null, [WorkflowExpression] Func<string> bodybuyingGroup3 = null, [WorkflowExpression] Func<string> bodybuyingGroup4 = null, [WorkflowExpression] Func<string> bodybuyingGroup5 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycity1 = null, [WorkflowExpression] Func<string> bodycompanyTaxNumber = null, [WorkflowExpression] Func<string> bodycontact = null, [WorkflowExpression] Func<string> bodycontractPrcReqd = null, [WorkflowExpression] Func<string> bodycounterSlsOnly = null, [WorkflowExpression] Func<string> bodycountyZip = null, [WorkflowExpression] Func<string> bodycountyZip1 = null, [WorkflowExpression] Func<string> bodycreditCheckFlag = null, [WorkflowExpression] Func<string> bodycreditLimit = null, [WorkflowExpression] Func<string> bodycreditStatus = null, [WorkflowExpression] Func<string> bodycurrency = null, [WorkflowExpression] Func<string> bodycustomerClass = null, [WorkflowExpression] Func<string> bodycustomerCode = null, [WorkflowExpression] Func<string> bodycustomerOnHold = null, [WorkflowExpression] Func<string> bodydateCustAdded = null, [WorkflowExpression] Func<string> bodydefaultOrdType = null, [WorkflowExpression] Func<string> bodydeliveryTerms = null, [WorkflowExpression] Func<string> bodydeliveryTermsC = null, [WorkflowExpression] Func<string> bodydetailMoveReqd = null, [WorkflowExpression] Func<string> bodydocFax = null, [WorkflowExpression] Func<string> bodydocFaxContact = null, [WorkflowExpression] Func<string> bodyediFlag = null, [WorkflowExpression] Func<string> bodyediSenderCode = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyexemptFinChg = null, [WorkflowExpression] Func<string> bodyfax = null, [WorkflowExpression] Func<string> bodyfaxInvoices = null, [WorkflowExpression] Func<string> bodyfaxQuotes = null, [WorkflowExpression] Func<string> bodyfaxStatements = null, [WorkflowExpression] Func<string> bodygstExemptFlag = null, [WorkflowExpression] Func<string> bodygstExemptNum = null, [WorkflowExpression] Func<string> bodygstLevel = null, [WorkflowExpression] Func<string> bodyhighInv = null, [WorkflowExpression] Func<string> bodyhighInvDays = null, [WorkflowExpression] Func<string> bodyhighestBalance = null, [WorkflowExpression] Func<string> bodyibtCustomer = null, [WorkflowExpression] Func<string> bodyinvCommentCode = null, [WorkflowExpression] Func<string> bodyinvDiscCode = null, [WorkflowExpression] Func<string> bodylanguageCode = null, [WorkflowExpression] Func<string> bodylineDiscCode = null, [WorkflowExpression] Func<string> bodymaintHistory = null, [WorkflowExpression] Func<string> bodymaintLastPrcPaid = null, [WorkflowExpression] Func<string> bodyminimumOrderChgCod = null, [WorkflowExpression] Func<string> bodyminimumOrderValue = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodynationality = null, [WorkflowExpression] Func<string> bodynewCustomerCode = null, [WorkflowExpression] Func<string> bodypoNumberMandatory = null, [WorkflowExpression] Func<string> bodypriceCategoryTable = null, [WorkflowExpression] Func<string> bodypriceCode = null, [WorkflowExpression] Func<string> bodyrouteCode = null, [WorkflowExpression] Func<string> bodyrouteDistance = null, [WorkflowExpression] Func<string> bodysalesWarehouse = null, [WorkflowExpression] Func<string> bodysalesperson = null, [WorkflowExpression] Func<string> bodysalesperson1 = null, [WorkflowExpression] Func<string> bodysalesperson2 = null, [WorkflowExpression] Func<string> bodysalesperson3 = null, [WorkflowExpression] Func<string> bodyshipPostalCode = null, [WorkflowExpression] Func<string> bodyshipToAddr1 = null, [WorkflowExpression] Func<string> bodyshipToAddr2 = null, [WorkflowExpression] Func<string> bodyshipToAddr3 = null, [WorkflowExpression] Func<string> bodyshipToAddr3Loc = null, [WorkflowExpression] Func<string> bodyshipToAddr4 = null, [WorkflowExpression] Func<string> bodyshipToAddr5 = null, [WorkflowExpression] Func<string> bodyshipToGpsLat = null, [WorkflowExpression] Func<string> bodyshipToGpsLong = null, [WorkflowExpression] Func<string> bodyshippingInstrs = null, [WorkflowExpression] Func<string> bodyshippingInstrsCod = null, [WorkflowExpression] Func<string> bodyshippingLocation = null, [WorkflowExpression] Func<string> bodyshortName = null, [WorkflowExpression] Func<string> bodysoDefaultDoc = null, [WorkflowExpression] Func<string> bodysoDefaultType = null, [WorkflowExpression] Func<string> bodysoldPostalCode = null, [WorkflowExpression] Func<string> bodysoldToAddr1 = null, [WorkflowExpression] Func<string> bodysoldToAddr2 = null, [WorkflowExpression] Func<string> bodysoldToAddr3 = null, [WorkflowExpression] Func<string> bodysoldToAddr3Loc = null, [WorkflowExpression] Func<string> bodysoldToAddr4 = null, [WorkflowExpression] Func<string> bodysoldToAddr5 = null, [WorkflowExpression] Func<string> bodysoldToGpsLat = null, [WorkflowExpression] Func<string> bodysoldToGpsLong = null, [WorkflowExpression] Func<string> bodyspecialInstrs = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodystate1 = null, [WorkflowExpression] Func<string> bodystateCode = null, [WorkflowExpression] Func<string> bodystatementReqd = null, [WorkflowExpression] Func<string> bodystockInterchange = null, [WorkflowExpression] Func<string> bodytagsToDropFromXML = null, [WorkflowExpression] Func<string> bodytaxExemptNumber = null, [WorkflowExpression] Func<string> bodytaxStatus = null, [WorkflowExpression] Func<string> bodytelephone = null, [WorkflowExpression] Func<string> bodytelephoneExtn = null, [WorkflowExpression] Func<string> bodytelex = null, [WorkflowExpression] Func<string> bodytermsCode = null, [WorkflowExpression] Func<string> bodytpmCreditCheck = null, [WorkflowExpression] Func<string> bodytpmCustomerFlag = null, [WorkflowExpression] Func<string> bodytpmPricingFlag = null, [WorkflowExpression] Func<string> bodytransactionNature = null, [WorkflowExpression] Func<string> bodytransactionNatureC = null, [WorkflowExpression] Func<string> bodyukCurrency = null, [WorkflowExpression] Func<string> bodyukVatFlag = null, [WorkflowExpression] Func<string> bodyuserField1 = null, [WorkflowExpression] Func<string> bodyuserField2 = null, [WorkflowExpression] Func<string> bodywholeOrderShipFlag = null, [WorkflowExpression] Func<string> bodyeSignature = null)
         {
-            var apiCallPath = "/api/v1/syspro/customer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaddTelephone != null)
-            {
-                body["AddTelephone"] = ExpressionConverter.ConvertO(bodyaddTelephone);
-                bodypropCount++;
-            }
-
-            if (bodyaltMethodFlag != null)
-            {
-                body["AltMethodFlag"] = ExpressionConverter.ConvertO(bodyaltMethodFlag);
-                bodypropCount++;
-            }
-
-            if (bodyapplyLineDisc != null)
-            {
-                body["ApplyLineDisc"] = ExpressionConverter.ConvertO(bodyapplyLineDisc);
-                bodypropCount++;
-            }
-
-            if (bodyapplyOrdDisc != null)
-            {
-                body["ApplyOrdDisc"] = ExpressionConverter.ConvertO(bodyapplyOrdDisc);
-                bodypropCount++;
-            }
-
-            if (bodyarStatementNo != null)
-            {
-                body["ArStatementNo"] = ExpressionConverter.ConvertO(bodyarStatementNo);
-                bodypropCount++;
-            }
-
-            if (bodyarea != null)
-            {
-                body["Area"] = ExpressionConverter.ConvertO(bodyarea);
-                bodypropCount++;
-            }
-
-            if (bodybackOrdReqd != null)
-            {
-                body["BackOrdReqd"] = ExpressionConverter.ConvertO(bodybackOrdReqd);
-                bodypropCount++;
-            }
-
-            if (bodybalanceType != null)
-            {
-                body["BalanceType"] = ExpressionConverter.ConvertO(bodybalanceType);
-                bodypropCount++;
-            }
-
-            if (bodybranch != null)
-            {
-                body["Branch"] = ExpressionConverter.ConvertO(bodybranch);
-                bodypropCount++;
-            }
-
-            if (bodybuyingGroup1 != null)
-            {
-                body["BuyingGroup1"] = ExpressionConverter.ConvertO(bodybuyingGroup1);
-                bodypropCount++;
-            }
-
-            if (bodybuyingGroup2 != null)
-            {
-                body["BuyingGroup2"] = ExpressionConverter.ConvertO(bodybuyingGroup2);
-                bodypropCount++;
-            }
-
-            if (bodybuyingGroup3 != null)
-            {
-                body["BuyingGroup3"] = ExpressionConverter.ConvertO(bodybuyingGroup3);
-                bodypropCount++;
-            }
-
-            if (bodybuyingGroup4 != null)
-            {
-                body["BuyingGroup4"] = ExpressionConverter.ConvertO(bodybuyingGroup4);
-                bodypropCount++;
-            }
-
-            if (bodybuyingGroup5 != null)
-            {
-                body["BuyingGroup5"] = ExpressionConverter.ConvertO(bodybuyingGroup5);
-                bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["City"] = ExpressionConverter.ConvertO(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodycity1 != null)
-            {
-                body["City1"] = ExpressionConverter.ConvertO(bodycity1);
-                bodypropCount++;
-            }
-
-            if (bodycompanyTaxNumber != null)
-            {
-                body["CompanyTaxNumber"] = ExpressionConverter.ConvertO(bodycompanyTaxNumber);
-                bodypropCount++;
-            }
-
-            if (bodycontact != null)
-            {
-                body["Contact"] = ExpressionConverter.ConvertO(bodycontact);
-                bodypropCount++;
-            }
-
-            if (bodycontractPrcReqd != null)
-            {
-                body["ContractPrcReqd"] = ExpressionConverter.ConvertO(bodycontractPrcReqd);
-                bodypropCount++;
-            }
-
-            if (bodycounterSlsOnly != null)
-            {
-                body["CounterSlsOnly"] = ExpressionConverter.ConvertO(bodycounterSlsOnly);
-                bodypropCount++;
-            }
-
-            if (bodycountyZip != null)
-            {
-                body["CountyZip"] = ExpressionConverter.ConvertO(bodycountyZip);
-                bodypropCount++;
-            }
-
-            if (bodycountyZip1 != null)
-            {
-                body["CountyZip1"] = ExpressionConverter.ConvertO(bodycountyZip1);
-                bodypropCount++;
-            }
-
-            if (bodycreditCheckFlag != null)
-            {
-                body["CreditCheckFlag"] = ExpressionConverter.ConvertO(bodycreditCheckFlag);
-                bodypropCount++;
-            }
-
-            if (bodycreditLimit != null)
-            {
-                body["CreditLimit"] = ExpressionConverter.ConvertO(bodycreditLimit);
-                bodypropCount++;
-            }
-
-            if (bodycreditStatus != null)
-            {
-                body["CreditStatus"] = ExpressionConverter.ConvertO(bodycreditStatus);
-                bodypropCount++;
-            }
-
-            if (bodycurrency != null)
-            {
-                body["Currency"] = ExpressionConverter.ConvertO(bodycurrency);
-                bodypropCount++;
-            }
-
-            if (bodycustomerClass != null)
-            {
-                body["CustomerClass"] = ExpressionConverter.ConvertO(bodycustomerClass);
-                bodypropCount++;
-            }
-
-            if (bodycustomerCode != null)
-            {
-                body["CustomerCode"] = ExpressionConverter.ConvertO(bodycustomerCode);
-                bodypropCount++;
-            }
-
-            if (bodycustomerOnHold != null)
-            {
-                body["CustomerOnHold"] = ExpressionConverter.ConvertO(bodycustomerOnHold);
-                bodypropCount++;
-            }
-
-            if (bodydateCustAdded != null)
-            {
-                body["DateCustAdded"] = ExpressionConverter.ConvertO(bodydateCustAdded);
-                bodypropCount++;
-            }
-
-            if (bodydefaultOrdType != null)
-            {
-                body["DefaultOrdType"] = ExpressionConverter.ConvertO(bodydefaultOrdType);
-                bodypropCount++;
-            }
-
-            if (bodydeliveryTerms != null)
-            {
-                body["DeliveryTerms"] = ExpressionConverter.ConvertO(bodydeliveryTerms);
-                bodypropCount++;
-            }
-
-            if (bodydeliveryTermsC != null)
-            {
-                body["DeliveryTermsC"] = ExpressionConverter.ConvertO(bodydeliveryTermsC);
-                bodypropCount++;
-            }
-
-            if (bodydetailMoveReqd != null)
-            {
-                body["DetailMoveReqd"] = ExpressionConverter.ConvertO(bodydetailMoveReqd);
-                bodypropCount++;
-            }
-
-            if (bodydocFax != null)
-            {
-                body["DocFax"] = ExpressionConverter.ConvertO(bodydocFax);
-                bodypropCount++;
-            }
-
-            if (bodydocFaxContact != null)
-            {
-                body["DocFaxContact"] = ExpressionConverter.ConvertO(bodydocFaxContact);
-                bodypropCount++;
-            }
-
-            if (bodyediFlag != null)
-            {
-                body["EdiFlag"] = ExpressionConverter.ConvertO(bodyediFlag);
-                bodypropCount++;
-            }
-
-            if (bodyediSenderCode != null)
-            {
-                body["EdiSenderCode"] = ExpressionConverter.ConvertO(bodyediSenderCode);
-                bodypropCount++;
-            }
-
-            if (bodyemail != null)
-            {
-                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
-
-            if (bodyexemptFinChg != null)
-            {
-                body["ExemptFinChg"] = ExpressionConverter.ConvertO(bodyexemptFinChg);
-                bodypropCount++;
-            }
-
-            if (bodyfax != null)
-            {
-                body["Fax"] = ExpressionConverter.ConvertO(bodyfax);
-                bodypropCount++;
-            }
-
-            if (bodyfaxInvoices != null)
-            {
-                body["FaxInvoices"] = ExpressionConverter.ConvertO(bodyfaxInvoices);
-                bodypropCount++;
-            }
-
-            if (bodyfaxQuotes != null)
-            {
-                body["FaxQuotes"] = ExpressionConverter.ConvertO(bodyfaxQuotes);
-                bodypropCount++;
-            }
-
-            if (bodyfaxStatements != null)
-            {
-                body["FaxStatements"] = ExpressionConverter.ConvertO(bodyfaxStatements);
-                bodypropCount++;
-            }
-
-            if (bodygstExemptFlag != null)
-            {
-                body["GstExemptFlag"] = ExpressionConverter.ConvertO(bodygstExemptFlag);
-                bodypropCount++;
-            }
-
-            if (bodygstExemptNum != null)
-            {
-                body["GstExemptNum"] = ExpressionConverter.ConvertO(bodygstExemptNum);
-                bodypropCount++;
-            }
-
-            if (bodygstLevel != null)
-            {
-                body["GstLevel"] = ExpressionConverter.ConvertO(bodygstLevel);
-                bodypropCount++;
-            }
-
-            if (bodyhighInv != null)
-            {
-                body["HighInv"] = ExpressionConverter.ConvertO(bodyhighInv);
-                bodypropCount++;
-            }
-
-            if (bodyhighInvDays != null)
-            {
-                body["HighInvDays"] = ExpressionConverter.ConvertO(bodyhighInvDays);
-                bodypropCount++;
-            }
-
-            if (bodyhighestBalance != null)
-            {
-                body["HighestBalance"] = ExpressionConverter.ConvertO(bodyhighestBalance);
-                bodypropCount++;
-            }
-
-            if (bodyibtCustomer != null)
-            {
-                body["IbtCustomer"] = ExpressionConverter.ConvertO(bodyibtCustomer);
-                bodypropCount++;
-            }
-
-            if (bodyinvCommentCode != null)
-            {
-                body["InvCommentCode"] = ExpressionConverter.ConvertO(bodyinvCommentCode);
-                bodypropCount++;
-            }
-
-            if (bodyinvDiscCode != null)
-            {
-                body["InvDiscCode"] = ExpressionConverter.ConvertO(bodyinvDiscCode);
-                bodypropCount++;
-            }
-
-            if (bodylanguageCode != null)
-            {
-                body["LanguageCode"] = ExpressionConverter.ConvertO(bodylanguageCode);
-                bodypropCount++;
-            }
-
-            if (bodylineDiscCode != null)
-            {
-                body["LineDiscCode"] = ExpressionConverter.ConvertO(bodylineDiscCode);
-                bodypropCount++;
-            }
-
-            if (bodymaintHistory != null)
-            {
-                body["MaintHistory"] = ExpressionConverter.ConvertO(bodymaintHistory);
-                bodypropCount++;
-            }
-
-            if (bodymaintLastPrcPaid != null)
-            {
-                body["MaintLastPrcPaid"] = ExpressionConverter.ConvertO(bodymaintLastPrcPaid);
-                bodypropCount++;
-            }
-
-            if (bodyminimumOrderChgCod != null)
-            {
-                body["MinimumOrderChgCod"] = ExpressionConverter.ConvertO(bodyminimumOrderChgCod);
-                bodypropCount++;
-            }
-
-            if (bodyminimumOrderValue != null)
-            {
-                body["MinimumOrderValue"] = ExpressionConverter.ConvertO(bodyminimumOrderValue);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["Name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodynationality != null)
-            {
-                body["Nationality"] = ExpressionConverter.ConvertO(bodynationality);
-                bodypropCount++;
-            }
-
-            if (bodynewCustomerCode != null)
-            {
-                body["NewCustomerCode"] = ExpressionConverter.ConvertO(bodynewCustomerCode);
-                bodypropCount++;
-            }
-
-            if (bodypoNumberMandatory != null)
-            {
-                body["PoNumberMandatory"] = ExpressionConverter.ConvertO(bodypoNumberMandatory);
-                bodypropCount++;
-            }
-
-            if (bodypriceCategoryTable != null)
-            {
-                body["PriceCategoryTable"] = ExpressionConverter.ConvertO(bodypriceCategoryTable);
-                bodypropCount++;
-            }
-
-            if (bodypriceCode != null)
-            {
-                body["PriceCode"] = ExpressionConverter.ConvertO(bodypriceCode);
-                bodypropCount++;
-            }
-
-            if (bodyrouteCode != null)
-            {
-                body["RouteCode"] = ExpressionConverter.ConvertO(bodyrouteCode);
-                bodypropCount++;
-            }
-
-            if (bodyrouteDistance != null)
-            {
-                body["RouteDistance"] = ExpressionConverter.ConvertO(bodyrouteDistance);
-                bodypropCount++;
-            }
-
-            if (bodysalesWarehouse != null)
-            {
-                body["SalesWarehouse"] = ExpressionConverter.ConvertO(bodysalesWarehouse);
-                bodypropCount++;
-            }
-
-            if (bodysalesperson != null)
-            {
-                body["Salesperson"] = ExpressionConverter.ConvertO(bodysalesperson);
-                bodypropCount++;
-            }
-
-            if (bodysalesperson1 != null)
-            {
-                body["Salesperson1"] = ExpressionConverter.ConvertO(bodysalesperson1);
-                bodypropCount++;
-            }
-
-            if (bodysalesperson2 != null)
-            {
-                body["Salesperson2"] = ExpressionConverter.ConvertO(bodysalesperson2);
-                bodypropCount++;
-            }
-
-            if (bodysalesperson3 != null)
-            {
-                body["Salesperson3"] = ExpressionConverter.ConvertO(bodysalesperson3);
-                bodypropCount++;
-            }
-
-            if (bodyshipPostalCode != null)
-            {
-                body["ShipPostalCode"] = ExpressionConverter.ConvertO(bodyshipPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodyshipToAddr1 != null)
-            {
-                body["ShipToAddr1"] = ExpressionConverter.ConvertO(bodyshipToAddr1);
-                bodypropCount++;
-            }
-
-            if (bodyshipToAddr2 != null)
-            {
-                body["ShipToAddr2"] = ExpressionConverter.ConvertO(bodyshipToAddr2);
-                bodypropCount++;
-            }
-
-            if (bodyshipToAddr3 != null)
-            {
-                body["ShipToAddr3"] = ExpressionConverter.ConvertO(bodyshipToAddr3);
-                bodypropCount++;
-            }
-
-            if (bodyshipToAddr3Loc != null)
-            {
-                body["ShipToAddr3Loc"] = ExpressionConverter.ConvertO(bodyshipToAddr3Loc);
-                bodypropCount++;
-            }
-
-            if (bodyshipToAddr4 != null)
-            {
-                body["ShipToAddr4"] = ExpressionConverter.ConvertO(bodyshipToAddr4);
-                bodypropCount++;
-            }
-
-            if (bodyshipToAddr5 != null)
-            {
-                body["ShipToAddr5"] = ExpressionConverter.ConvertO(bodyshipToAddr5);
-                bodypropCount++;
-            }
-
-            if (bodyshipToGpsLat != null)
-            {
-                body["ShipToGpsLat"] = ExpressionConverter.ConvertO(bodyshipToGpsLat);
-                bodypropCount++;
-            }
-
-            if (bodyshipToGpsLong != null)
-            {
-                body["ShipToGpsLong"] = ExpressionConverter.ConvertO(bodyshipToGpsLong);
-                bodypropCount++;
-            }
-
-            if (bodyshippingInstrs != null)
-            {
-                body["ShippingInstrs"] = ExpressionConverter.ConvertO(bodyshippingInstrs);
-                bodypropCount++;
-            }
-
-            if (bodyshippingInstrsCod != null)
-            {
-                body["ShippingInstrsCod"] = ExpressionConverter.ConvertO(bodyshippingInstrsCod);
-                bodypropCount++;
-            }
-
-            if (bodyshippingLocation != null)
-            {
-                body["ShippingLocation"] = ExpressionConverter.ConvertO(bodyshippingLocation);
-                bodypropCount++;
-            }
-
-            if (bodyshortName != null)
-            {
-                body["ShortName"] = ExpressionConverter.ConvertO(bodyshortName);
-                bodypropCount++;
-            }
-
-            if (bodysoDefaultDoc != null)
-            {
-                body["SoDefaultDoc"] = ExpressionConverter.ConvertO(bodysoDefaultDoc);
-                bodypropCount++;
-            }
-
-            if (bodysoDefaultType != null)
-            {
-                body["SoDefaultType"] = ExpressionConverter.ConvertO(bodysoDefaultType);
-                bodypropCount++;
-            }
-
-            if (bodysoldPostalCode != null)
-            {
-                body["SoldPostalCode"] = ExpressionConverter.ConvertO(bodysoldPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodysoldToAddr1 != null)
-            {
-                body["SoldToAddr1"] = ExpressionConverter.ConvertO(bodysoldToAddr1);
-                bodypropCount++;
-            }
-
-            if (bodysoldToAddr2 != null)
-            {
-                body["SoldToAddr2"] = ExpressionConverter.ConvertO(bodysoldToAddr2);
-                bodypropCount++;
-            }
-
-            if (bodysoldToAddr3 != null)
-            {
-                body["SoldToAddr3"] = ExpressionConverter.ConvertO(bodysoldToAddr3);
-                bodypropCount++;
-            }
-
-            if (bodysoldToAddr3Loc != null)
-            {
-                body["SoldToAddr3Loc"] = ExpressionConverter.ConvertO(bodysoldToAddr3Loc);
-                bodypropCount++;
-            }
-
-            if (bodysoldToAddr4 != null)
-            {
-                body["SoldToAddr4"] = ExpressionConverter.ConvertO(bodysoldToAddr4);
-                bodypropCount++;
-            }
-
-            if (bodysoldToAddr5 != null)
-            {
-                body["SoldToAddr5"] = ExpressionConverter.ConvertO(bodysoldToAddr5);
-                bodypropCount++;
-            }
-
-            if (bodysoldToGpsLat != null)
-            {
-                body["SoldToGpsLat"] = ExpressionConverter.ConvertO(bodysoldToGpsLat);
-                bodypropCount++;
-            }
-
-            if (bodysoldToGpsLong != null)
-            {
-                body["SoldToGpsLong"] = ExpressionConverter.ConvertO(bodysoldToGpsLong);
-                bodypropCount++;
-            }
-
-            if (bodyspecialInstrs != null)
-            {
-                body["SpecialInstrs"] = ExpressionConverter.ConvertO(bodyspecialInstrs);
-                bodypropCount++;
-            }
-
-            if (bodystate != null)
-            {
-                body["State"] = ExpressionConverter.ConvertO(bodystate);
-                bodypropCount++;
-            }
-
-            if (bodystate1 != null)
-            {
-                body["State1"] = ExpressionConverter.ConvertO(bodystate1);
-                bodypropCount++;
-            }
-
-            if (bodystateCode != null)
-            {
-                body["StateCode"] = ExpressionConverter.ConvertO(bodystateCode);
-                bodypropCount++;
-            }
-
-            if (bodystatementReqd != null)
-            {
-                body["StatementReqd"] = ExpressionConverter.ConvertO(bodystatementReqd);
-                bodypropCount++;
-            }
-
-            if (bodystockInterchange != null)
-            {
-                body["StockInterchange"] = ExpressionConverter.ConvertO(bodystockInterchange);
-                bodypropCount++;
-            }
-
-            if (bodytagsToDropFromXML != null)
-            {
-                body["TagsToDropFromXML"] = ExpressionConverter.ConvertO(bodytagsToDropFromXML);
-                bodypropCount++;
-            }
-
-            if (bodytaxExemptNumber != null)
-            {
-                body["TaxExemptNumber"] = ExpressionConverter.ConvertO(bodytaxExemptNumber);
-                bodypropCount++;
-            }
-
-            if (bodytaxStatus != null)
-            {
-                body["TaxStatus"] = ExpressionConverter.ConvertO(bodytaxStatus);
-                bodypropCount++;
-            }
-
-            if (bodytelephone != null)
-            {
-                body["Telephone"] = ExpressionConverter.ConvertO(bodytelephone);
-                bodypropCount++;
-            }
-
-            if (bodytelephoneExtn != null)
-            {
-                body["TelephoneExtn"] = ExpressionConverter.ConvertO(bodytelephoneExtn);
-                bodypropCount++;
-            }
-
-            if (bodytelex != null)
-            {
-                body["Telex"] = ExpressionConverter.ConvertO(bodytelex);
-                bodypropCount++;
-            }
-
-            if (bodytermsCode != null)
-            {
-                body["TermsCode"] = ExpressionConverter.ConvertO(bodytermsCode);
-                bodypropCount++;
-            }
-
-            if (bodytpmCreditCheck != null)
-            {
-                body["TpmCreditCheck"] = ExpressionConverter.ConvertO(bodytpmCreditCheck);
-                bodypropCount++;
-            }
-
-            if (bodytpmCustomerFlag != null)
-            {
-                body["TpmCustomerFlag"] = ExpressionConverter.ConvertO(bodytpmCustomerFlag);
-                bodypropCount++;
-            }
-
-            if (bodytpmPricingFlag != null)
-            {
-                body["TpmPricingFlag"] = ExpressionConverter.ConvertO(bodytpmPricingFlag);
-                bodypropCount++;
-            }
-
-            if (bodytransactionNature != null)
-            {
-                body["TransactionNature"] = ExpressionConverter.ConvertO(bodytransactionNature);
-                bodypropCount++;
-            }
-
-            if (bodytransactionNatureC != null)
-            {
-                body["TransactionNatureC"] = ExpressionConverter.ConvertO(bodytransactionNatureC);
-                bodypropCount++;
-            }
-
-            if (bodyukCurrency != null)
-            {
-                body["UkCurrency"] = ExpressionConverter.ConvertO(bodyukCurrency);
-                bodypropCount++;
-            }
-
-            if (bodyukVatFlag != null)
-            {
-                body["UkVatFlag"] = ExpressionConverter.ConvertO(bodyukVatFlag);
-                bodypropCount++;
-            }
-
-            if (bodyuserField1 != null)
-            {
-                body["UserField1"] = ExpressionConverter.ConvertO(bodyuserField1);
-                bodypropCount++;
-            }
-
-            if (bodyuserField2 != null)
-            {
-                body["UserField2"] = ExpressionConverter.ConvertO(bodyuserField2);
-                bodypropCount++;
-            }
-
-            if (bodywholeOrderShipFlag != null)
-            {
-                body["WholeOrderShipFlag"] = ExpressionConverter.ConvertO(bodywholeOrderShipFlag);
-                bodypropCount++;
-            }
-
-            if (bodyeSignature != null)
-            {
-                body["eSignature"] = ExpressionConverter.ConvertO(bodyeSignature);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SYSPROCreateNewCustomerResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/syspro/customer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaddTelephone != null)
+                {
+                    body["AddTelephone"] = SourceExpressionConverter.ConvertToken(bodyaddTelephone);
+                    bodypropCount++;
+                }
+
+                if (bodyaltMethodFlag != null)
+                {
+                    body["AltMethodFlag"] = SourceExpressionConverter.ConvertToken(bodyaltMethodFlag);
+                    bodypropCount++;
+                }
+
+                if (bodyapplyLineDisc != null)
+                {
+                    body["ApplyLineDisc"] = SourceExpressionConverter.ConvertToken(bodyapplyLineDisc);
+                    bodypropCount++;
+                }
+
+                if (bodyapplyOrdDisc != null)
+                {
+                    body["ApplyOrdDisc"] = SourceExpressionConverter.ConvertToken(bodyapplyOrdDisc);
+                    bodypropCount++;
+                }
+
+                if (bodyarStatementNo != null)
+                {
+                    body["ArStatementNo"] = SourceExpressionConverter.ConvertToken(bodyarStatementNo);
+                    bodypropCount++;
+                }
+
+                if (bodyarea != null)
+                {
+                    body["Area"] = SourceExpressionConverter.ConvertToken(bodyarea);
+                    bodypropCount++;
+                }
+
+                if (bodybackOrdReqd != null)
+                {
+                    body["BackOrdReqd"] = SourceExpressionConverter.ConvertToken(bodybackOrdReqd);
+                    bodypropCount++;
+                }
+
+                if (bodybalanceType != null)
+                {
+                    body["BalanceType"] = SourceExpressionConverter.ConvertToken(bodybalanceType);
+                    bodypropCount++;
+                }
+
+                if (bodybranch != null)
+                {
+                    body["Branch"] = SourceExpressionConverter.ConvertToken(bodybranch);
+                    bodypropCount++;
+                }
+
+                if (bodybuyingGroup1 != null)
+                {
+                    body["BuyingGroup1"] = SourceExpressionConverter.ConvertToken(bodybuyingGroup1);
+                    bodypropCount++;
+                }
+
+                if (bodybuyingGroup2 != null)
+                {
+                    body["BuyingGroup2"] = SourceExpressionConverter.ConvertToken(bodybuyingGroup2);
+                    bodypropCount++;
+                }
+
+                if (bodybuyingGroup3 != null)
+                {
+                    body["BuyingGroup3"] = SourceExpressionConverter.ConvertToken(bodybuyingGroup3);
+                    bodypropCount++;
+                }
+
+                if (bodybuyingGroup4 != null)
+                {
+                    body["BuyingGroup4"] = SourceExpressionConverter.ConvertToken(bodybuyingGroup4);
+                    bodypropCount++;
+                }
+
+                if (bodybuyingGroup5 != null)
+                {
+                    body["BuyingGroup5"] = SourceExpressionConverter.ConvertToken(bodybuyingGroup5);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["City"] = SourceExpressionConverter.ConvertToken(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodycity1 != null)
+                {
+                    body["City1"] = SourceExpressionConverter.ConvertToken(bodycity1);
+                    bodypropCount++;
+                }
+
+                if (bodycompanyTaxNumber != null)
+                {
+                    body["CompanyTaxNumber"] = SourceExpressionConverter.ConvertToken(bodycompanyTaxNumber);
+                    bodypropCount++;
+                }
+
+                if (bodycontact != null)
+                {
+                    body["Contact"] = SourceExpressionConverter.ConvertToken(bodycontact);
+                    bodypropCount++;
+                }
+
+                if (bodycontractPrcReqd != null)
+                {
+                    body["ContractPrcReqd"] = SourceExpressionConverter.ConvertToken(bodycontractPrcReqd);
+                    bodypropCount++;
+                }
+
+                if (bodycounterSlsOnly != null)
+                {
+                    body["CounterSlsOnly"] = SourceExpressionConverter.ConvertToken(bodycounterSlsOnly);
+                    bodypropCount++;
+                }
+
+                if (bodycountyZip != null)
+                {
+                    body["CountyZip"] = SourceExpressionConverter.ConvertToken(bodycountyZip);
+                    bodypropCount++;
+                }
+
+                if (bodycountyZip1 != null)
+                {
+                    body["CountyZip1"] = SourceExpressionConverter.ConvertToken(bodycountyZip1);
+                    bodypropCount++;
+                }
+
+                if (bodycreditCheckFlag != null)
+                {
+                    body["CreditCheckFlag"] = SourceExpressionConverter.ConvertToken(bodycreditCheckFlag);
+                    bodypropCount++;
+                }
+
+                if (bodycreditLimit != null)
+                {
+                    body["CreditLimit"] = SourceExpressionConverter.ConvertToken(bodycreditLimit);
+                    bodypropCount++;
+                }
+
+                if (bodycreditStatus != null)
+                {
+                    body["CreditStatus"] = SourceExpressionConverter.ConvertToken(bodycreditStatus);
+                    bodypropCount++;
+                }
+
+                if (bodycurrency != null)
+                {
+                    body["Currency"] = SourceExpressionConverter.ConvertToken(bodycurrency);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerClass != null)
+                {
+                    body["CustomerClass"] = SourceExpressionConverter.ConvertToken(bodycustomerClass);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerCode != null)
+                {
+                    body["CustomerCode"] = SourceExpressionConverter.ConvertToken(bodycustomerCode);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerOnHold != null)
+                {
+                    body["CustomerOnHold"] = SourceExpressionConverter.ConvertToken(bodycustomerOnHold);
+                    bodypropCount++;
+                }
+
+                if (bodydateCustAdded != null)
+                {
+                    body["DateCustAdded"] = SourceExpressionConverter.ConvertToken(bodydateCustAdded);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultOrdType != null)
+                {
+                    body["DefaultOrdType"] = SourceExpressionConverter.ConvertToken(bodydefaultOrdType);
+                    bodypropCount++;
+                }
+
+                if (bodydeliveryTerms != null)
+                {
+                    body["DeliveryTerms"] = SourceExpressionConverter.ConvertToken(bodydeliveryTerms);
+                    bodypropCount++;
+                }
+
+                if (bodydeliveryTermsC != null)
+                {
+                    body["DeliveryTermsC"] = SourceExpressionConverter.ConvertToken(bodydeliveryTermsC);
+                    bodypropCount++;
+                }
+
+                if (bodydetailMoveReqd != null)
+                {
+                    body["DetailMoveReqd"] = SourceExpressionConverter.ConvertToken(bodydetailMoveReqd);
+                    bodypropCount++;
+                }
+
+                if (bodydocFax != null)
+                {
+                    body["DocFax"] = SourceExpressionConverter.ConvertToken(bodydocFax);
+                    bodypropCount++;
+                }
+
+                if (bodydocFaxContact != null)
+                {
+                    body["DocFaxContact"] = SourceExpressionConverter.ConvertToken(bodydocFaxContact);
+                    bodypropCount++;
+                }
+
+                if (bodyediFlag != null)
+                {
+                    body["EdiFlag"] = SourceExpressionConverter.ConvertToken(bodyediFlag);
+                    bodypropCount++;
+                }
+
+                if (bodyediSenderCode != null)
+                {
+                    body["EdiSenderCode"] = SourceExpressionConverter.ConvertToken(bodyediSenderCode);
+                    bodypropCount++;
+                }
+
+                if (bodyemail != null)
+                {
+                    body["Email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodyexemptFinChg != null)
+                {
+                    body["ExemptFinChg"] = SourceExpressionConverter.ConvertToken(bodyexemptFinChg);
+                    bodypropCount++;
+                }
+
+                if (bodyfax != null)
+                {
+                    body["Fax"] = SourceExpressionConverter.ConvertToken(bodyfax);
+                    bodypropCount++;
+                }
+
+                if (bodyfaxInvoices != null)
+                {
+                    body["FaxInvoices"] = SourceExpressionConverter.ConvertToken(bodyfaxInvoices);
+                    bodypropCount++;
+                }
+
+                if (bodyfaxQuotes != null)
+                {
+                    body["FaxQuotes"] = SourceExpressionConverter.ConvertToken(bodyfaxQuotes);
+                    bodypropCount++;
+                }
+
+                if (bodyfaxStatements != null)
+                {
+                    body["FaxStatements"] = SourceExpressionConverter.ConvertToken(bodyfaxStatements);
+                    bodypropCount++;
+                }
+
+                if (bodygstExemptFlag != null)
+                {
+                    body["GstExemptFlag"] = SourceExpressionConverter.ConvertToken(bodygstExemptFlag);
+                    bodypropCount++;
+                }
+
+                if (bodygstExemptNum != null)
+                {
+                    body["GstExemptNum"] = SourceExpressionConverter.ConvertToken(bodygstExemptNum);
+                    bodypropCount++;
+                }
+
+                if (bodygstLevel != null)
+                {
+                    body["GstLevel"] = SourceExpressionConverter.ConvertToken(bodygstLevel);
+                    bodypropCount++;
+                }
+
+                if (bodyhighInv != null)
+                {
+                    body["HighInv"] = SourceExpressionConverter.ConvertToken(bodyhighInv);
+                    bodypropCount++;
+                }
+
+                if (bodyhighInvDays != null)
+                {
+                    body["HighInvDays"] = SourceExpressionConverter.ConvertToken(bodyhighInvDays);
+                    bodypropCount++;
+                }
+
+                if (bodyhighestBalance != null)
+                {
+                    body["HighestBalance"] = SourceExpressionConverter.ConvertToken(bodyhighestBalance);
+                    bodypropCount++;
+                }
+
+                if (bodyibtCustomer != null)
+                {
+                    body["IbtCustomer"] = SourceExpressionConverter.ConvertToken(bodyibtCustomer);
+                    bodypropCount++;
+                }
+
+                if (bodyinvCommentCode != null)
+                {
+                    body["InvCommentCode"] = SourceExpressionConverter.ConvertToken(bodyinvCommentCode);
+                    bodypropCount++;
+                }
+
+                if (bodyinvDiscCode != null)
+                {
+                    body["InvDiscCode"] = SourceExpressionConverter.ConvertToken(bodyinvDiscCode);
+                    bodypropCount++;
+                }
+
+                if (bodylanguageCode != null)
+                {
+                    body["LanguageCode"] = SourceExpressionConverter.ConvertToken(bodylanguageCode);
+                    bodypropCount++;
+                }
+
+                if (bodylineDiscCode != null)
+                {
+                    body["LineDiscCode"] = SourceExpressionConverter.ConvertToken(bodylineDiscCode);
+                    bodypropCount++;
+                }
+
+                if (bodymaintHistory != null)
+                {
+                    body["MaintHistory"] = SourceExpressionConverter.ConvertToken(bodymaintHistory);
+                    bodypropCount++;
+                }
+
+                if (bodymaintLastPrcPaid != null)
+                {
+                    body["MaintLastPrcPaid"] = SourceExpressionConverter.ConvertToken(bodymaintLastPrcPaid);
+                    bodypropCount++;
+                }
+
+                if (bodyminimumOrderChgCod != null)
+                {
+                    body["MinimumOrderChgCod"] = SourceExpressionConverter.ConvertToken(bodyminimumOrderChgCod);
+                    bodypropCount++;
+                }
+
+                if (bodyminimumOrderValue != null)
+                {
+                    body["MinimumOrderValue"] = SourceExpressionConverter.ConvertToken(bodyminimumOrderValue);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["Name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodynationality != null)
+                {
+                    body["Nationality"] = SourceExpressionConverter.ConvertToken(bodynationality);
+                    bodypropCount++;
+                }
+
+                if (bodynewCustomerCode != null)
+                {
+                    body["NewCustomerCode"] = SourceExpressionConverter.ConvertToken(bodynewCustomerCode);
+                    bodypropCount++;
+                }
+
+                if (bodypoNumberMandatory != null)
+                {
+                    body["PoNumberMandatory"] = SourceExpressionConverter.ConvertToken(bodypoNumberMandatory);
+                    bodypropCount++;
+                }
+
+                if (bodypriceCategoryTable != null)
+                {
+                    body["PriceCategoryTable"] = SourceExpressionConverter.ConvertToken(bodypriceCategoryTable);
+                    bodypropCount++;
+                }
+
+                if (bodypriceCode != null)
+                {
+                    body["PriceCode"] = SourceExpressionConverter.ConvertToken(bodypriceCode);
+                    bodypropCount++;
+                }
+
+                if (bodyrouteCode != null)
+                {
+                    body["RouteCode"] = SourceExpressionConverter.ConvertToken(bodyrouteCode);
+                    bodypropCount++;
+                }
+
+                if (bodyrouteDistance != null)
+                {
+                    body["RouteDistance"] = SourceExpressionConverter.ConvertToken(bodyrouteDistance);
+                    bodypropCount++;
+                }
+
+                if (bodysalesWarehouse != null)
+                {
+                    body["SalesWarehouse"] = SourceExpressionConverter.ConvertToken(bodysalesWarehouse);
+                    bodypropCount++;
+                }
+
+                if (bodysalesperson != null)
+                {
+                    body["Salesperson"] = SourceExpressionConverter.ConvertToken(bodysalesperson);
+                    bodypropCount++;
+                }
+
+                if (bodysalesperson1 != null)
+                {
+                    body["Salesperson1"] = SourceExpressionConverter.ConvertToken(bodysalesperson1);
+                    bodypropCount++;
+                }
+
+                if (bodysalesperson2 != null)
+                {
+                    body["Salesperson2"] = SourceExpressionConverter.ConvertToken(bodysalesperson2);
+                    bodypropCount++;
+                }
+
+                if (bodysalesperson3 != null)
+                {
+                    body["Salesperson3"] = SourceExpressionConverter.ConvertToken(bodysalesperson3);
+                    bodypropCount++;
+                }
+
+                if (bodyshipPostalCode != null)
+                {
+                    body["ShipPostalCode"] = SourceExpressionConverter.ConvertToken(bodyshipPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToAddr1 != null)
+                {
+                    body["ShipToAddr1"] = SourceExpressionConverter.ConvertToken(bodyshipToAddr1);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToAddr2 != null)
+                {
+                    body["ShipToAddr2"] = SourceExpressionConverter.ConvertToken(bodyshipToAddr2);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToAddr3 != null)
+                {
+                    body["ShipToAddr3"] = SourceExpressionConverter.ConvertToken(bodyshipToAddr3);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToAddr3Loc != null)
+                {
+                    body["ShipToAddr3Loc"] = SourceExpressionConverter.ConvertToken(bodyshipToAddr3Loc);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToAddr4 != null)
+                {
+                    body["ShipToAddr4"] = SourceExpressionConverter.ConvertToken(bodyshipToAddr4);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToAddr5 != null)
+                {
+                    body["ShipToAddr5"] = SourceExpressionConverter.ConvertToken(bodyshipToAddr5);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToGpsLat != null)
+                {
+                    body["ShipToGpsLat"] = SourceExpressionConverter.ConvertToken(bodyshipToGpsLat);
+                    bodypropCount++;
+                }
+
+                if (bodyshipToGpsLong != null)
+                {
+                    body["ShipToGpsLong"] = SourceExpressionConverter.ConvertToken(bodyshipToGpsLong);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingInstrs != null)
+                {
+                    body["ShippingInstrs"] = SourceExpressionConverter.ConvertToken(bodyshippingInstrs);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingInstrsCod != null)
+                {
+                    body["ShippingInstrsCod"] = SourceExpressionConverter.ConvertToken(bodyshippingInstrsCod);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingLocation != null)
+                {
+                    body["ShippingLocation"] = SourceExpressionConverter.ConvertToken(bodyshippingLocation);
+                    bodypropCount++;
+                }
+
+                if (bodyshortName != null)
+                {
+                    body["ShortName"] = SourceExpressionConverter.ConvertToken(bodyshortName);
+                    bodypropCount++;
+                }
+
+                if (bodysoDefaultDoc != null)
+                {
+                    body["SoDefaultDoc"] = SourceExpressionConverter.ConvertToken(bodysoDefaultDoc);
+                    bodypropCount++;
+                }
+
+                if (bodysoDefaultType != null)
+                {
+                    body["SoDefaultType"] = SourceExpressionConverter.ConvertToken(bodysoDefaultType);
+                    bodypropCount++;
+                }
+
+                if (bodysoldPostalCode != null)
+                {
+                    body["SoldPostalCode"] = SourceExpressionConverter.ConvertToken(bodysoldPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodysoldToAddr1 != null)
+                {
+                    body["SoldToAddr1"] = SourceExpressionConverter.ConvertToken(bodysoldToAddr1);
+                    bodypropCount++;
+                }
+
+                if (bodysoldToAddr2 != null)
+                {
+                    body["SoldToAddr2"] = SourceExpressionConverter.ConvertToken(bodysoldToAddr2);
+                    bodypropCount++;
+                }
+
+                if (bodysoldToAddr3 != null)
+                {
+                    body["SoldToAddr3"] = SourceExpressionConverter.ConvertToken(bodysoldToAddr3);
+                    bodypropCount++;
+                }
+
+                if (bodysoldToAddr3Loc != null)
+                {
+                    body["SoldToAddr3Loc"] = SourceExpressionConverter.ConvertToken(bodysoldToAddr3Loc);
+                    bodypropCount++;
+                }
+
+                if (bodysoldToAddr4 != null)
+                {
+                    body["SoldToAddr4"] = SourceExpressionConverter.ConvertToken(bodysoldToAddr4);
+                    bodypropCount++;
+                }
+
+                if (bodysoldToAddr5 != null)
+                {
+                    body["SoldToAddr5"] = SourceExpressionConverter.ConvertToken(bodysoldToAddr5);
+                    bodypropCount++;
+                }
+
+                if (bodysoldToGpsLat != null)
+                {
+                    body["SoldToGpsLat"] = SourceExpressionConverter.ConvertToken(bodysoldToGpsLat);
+                    bodypropCount++;
+                }
+
+                if (bodysoldToGpsLong != null)
+                {
+                    body["SoldToGpsLong"] = SourceExpressionConverter.ConvertToken(bodysoldToGpsLong);
+                    bodypropCount++;
+                }
+
+                if (bodyspecialInstrs != null)
+                {
+                    body["SpecialInstrs"] = SourceExpressionConverter.ConvertToken(bodyspecialInstrs);
+                    bodypropCount++;
+                }
+
+                if (bodystate != null)
+                {
+                    body["State"] = SourceExpressionConverter.ConvertToken(bodystate);
+                    bodypropCount++;
+                }
+
+                if (bodystate1 != null)
+                {
+                    body["State1"] = SourceExpressionConverter.ConvertToken(bodystate1);
+                    bodypropCount++;
+                }
+
+                if (bodystateCode != null)
+                {
+                    body["StateCode"] = SourceExpressionConverter.ConvertToken(bodystateCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatementReqd != null)
+                {
+                    body["StatementReqd"] = SourceExpressionConverter.ConvertToken(bodystatementReqd);
+                    bodypropCount++;
+                }
+
+                if (bodystockInterchange != null)
+                {
+                    body["StockInterchange"] = SourceExpressionConverter.ConvertToken(bodystockInterchange);
+                    bodypropCount++;
+                }
+
+                if (bodytagsToDropFromXML != null)
+                {
+                    body["TagsToDropFromXML"] = SourceExpressionConverter.ConvertToken(bodytagsToDropFromXML);
+                    bodypropCount++;
+                }
+
+                if (bodytaxExemptNumber != null)
+                {
+                    body["TaxExemptNumber"] = SourceExpressionConverter.ConvertToken(bodytaxExemptNumber);
+                    bodypropCount++;
+                }
+
+                if (bodytaxStatus != null)
+                {
+                    body["TaxStatus"] = SourceExpressionConverter.ConvertToken(bodytaxStatus);
+                    bodypropCount++;
+                }
+
+                if (bodytelephone != null)
+                {
+                    body["Telephone"] = SourceExpressionConverter.ConvertToken(bodytelephone);
+                    bodypropCount++;
+                }
+
+                if (bodytelephoneExtn != null)
+                {
+                    body["TelephoneExtn"] = SourceExpressionConverter.ConvertToken(bodytelephoneExtn);
+                    bodypropCount++;
+                }
+
+                if (bodytelex != null)
+                {
+                    body["Telex"] = SourceExpressionConverter.ConvertToken(bodytelex);
+                    bodypropCount++;
+                }
+
+                if (bodytermsCode != null)
+                {
+                    body["TermsCode"] = SourceExpressionConverter.ConvertToken(bodytermsCode);
+                    bodypropCount++;
+                }
+
+                if (bodytpmCreditCheck != null)
+                {
+                    body["TpmCreditCheck"] = SourceExpressionConverter.ConvertToken(bodytpmCreditCheck);
+                    bodypropCount++;
+                }
+
+                if (bodytpmCustomerFlag != null)
+                {
+                    body["TpmCustomerFlag"] = SourceExpressionConverter.ConvertToken(bodytpmCustomerFlag);
+                    bodypropCount++;
+                }
+
+                if (bodytpmPricingFlag != null)
+                {
+                    body["TpmPricingFlag"] = SourceExpressionConverter.ConvertToken(bodytpmPricingFlag);
+                    bodypropCount++;
+                }
+
+                if (bodytransactionNature != null)
+                {
+                    body["TransactionNature"] = SourceExpressionConverter.ConvertToken(bodytransactionNature);
+                    bodypropCount++;
+                }
+
+                if (bodytransactionNatureC != null)
+                {
+                    body["TransactionNatureC"] = SourceExpressionConverter.ConvertToken(bodytransactionNatureC);
+                    bodypropCount++;
+                }
+
+                if (bodyukCurrency != null)
+                {
+                    body["UkCurrency"] = SourceExpressionConverter.ConvertToken(bodyukCurrency);
+                    bodypropCount++;
+                }
+
+                if (bodyukVatFlag != null)
+                {
+                    body["UkVatFlag"] = SourceExpressionConverter.ConvertToken(bodyukVatFlag);
+                    bodypropCount++;
+                }
+
+                if (bodyuserField1 != null)
+                {
+                    body["UserField1"] = SourceExpressionConverter.ConvertToken(bodyuserField1);
+                    bodypropCount++;
+                }
+
+                if (bodyuserField2 != null)
+                {
+                    body["UserField2"] = SourceExpressionConverter.ConvertToken(bodyuserField2);
+                    bodypropCount++;
+                }
+
+                if (bodywholeOrderShipFlag != null)
+                {
+                    body["WholeOrderShipFlag"] = SourceExpressionConverter.ConvertToken(bodywholeOrderShipFlag);
+                    bodypropCount++;
+                }
+
+                if (bodyeSignature != null)
+                {
+                    body["eSignature"] = SourceExpressionConverter.ConvertToken(bodyeSignature);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SYSPROCreateNewCustomerResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commercientcpq")]
-        public IBodyWorkflowAction<SYSPROCreateNewSalesOrderResponse> SYSPROCreateNewSalesOrder(Expression<Func<string>> bodyacceptEarlierShipDate = null, Expression<Func<string>> bodyacceptKitOptional = null, Expression<Func<string>> bodyacceptOrdersIfNoCredit = null, Expression<Func<string>> bodyaddAttachedServiceCharges = null, Expression<Func<string>> bodyaddDangerousGoodsText = null, Expression<Func<string>> bodyaddStockSalesOrderText = null, Expression<Func<string>> bodyallocationAction = null, Expression<Func<string>> bodyallowBackOrderForNegativeMerchLine = null, Expression<Func<string>> bodyallowBackOrderForPartialHold = null, Expression<Func<string>> bodyallowBackOrderForSuperseded = null, Expression<Func<string>> bodyallowChangeToZeroPrice = null, Expression<Func<string>> bodyallowDuplicateOrderNumbers = null, Expression<Func<string>> bodyallowManualOrderNumberToBeUsed = null, Expression<Func<string>> bodyallowNonStockItems = null, Expression<Func<string>> bodyallowZeroPrice = null, Expression<Func<string>> bodyalternateReference = null, Expression<Func<string>> bodyalwaysUsePriceEntered = null, Expression<Func<string>> bodyapplyLeadTimeCalculation = null, Expression<Func<string>> bodyapplyParentDiscountToComponents = null, Expression<Func<string>> bodyarea = null, Expression<Func<string>> bodybranch = null, Expression<Func<string>> bodycancelReasonCode = null, Expression<Func<string>> bodycheckForCustomerPoNumbers = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycompanyTaxNumber = null, Expression<Func<string>> bodycountyZip = null, Expression<Func<string>> bodycreditFailMessage = null, Expression<Func<string>> bodycurrency = null, Expression<Func<string>> bodycustomer = null, Expression<Func<string>> bodycustomerName = null, Expression<Func<string>> bodycustomerPoNumber = null, Expression<Func<string>> bodycustomerToUse = null, Expression<Func<string>> bodydeliveryRoute = null, Expression<Func<string>> bodydeliveryRouteAction = null, Expression<Func<string>> bodydeliveryTerms = null, Expression<Func<string>> bodydocumentFormat = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyglobalTradePromotionCodes = null, Expression<Func<string>> bodygstExemptNumber = null, Expression<Func<string>> bodygstExemptionStatus = null, Expression<Func<string>> bodyheaderFreightCharges = null, Expression<Func<string>> bodyheaderMiscCharges = null, Expression<Func<string>> bodyignoreWarnings = null, Expression<Func<string>> bodyinBoxMsgReqd = null, Expression<Func<string>> bodyincludeInMrp = null, Expression<Func<string>> bodyinvoiceDateEntered = null, Expression<Func<string>> bodyinvoiceNumberEntered = null, Expression<Func<string>> bodyinvoiceTerms = null, Expression<Func<string>> bodyinvoiceWholeOrderOnly = null, Expression<Func<string>> bodylanguageCode = null, Expression<Func<string>> bodyminimumDaysToShip = null, Expression<Func<string>> bodymultiShipCode = null, Expression<Func<string>> bodynationality = null, Expression<Func<string>> bodynewCustomerPoNumber = null, Expression<Func<string>> bodynewSalesOrderNumber = null, Expression<Func<string>> bodyoperatorToInform = null, Expression<Func<string>> bodyorderActionType = null, Expression<Func<string>> bodyorderComments = null, Expression<Func<string>> bodyorderDate = null, Expression<Func<string>> bodyorderDiscPercent1 = null, Expression<Func<string>> bodyorderDiscPercent2 = null, Expression<Func<string>> bodyorderDiscPercent3 = null, Expression<Func<string>> bodyorderStatus = null, Expression<Func<string>> bodyorderType = null, Expression<Func<string>> bodyoverrideCustomerBackOrder = null, Expression<Func<string>> bodypOSSalesOrder = null, Expression<Func<string>> bodyprocess = null, Expression<Func<string>> bodyprocessFlag = null, Expression<Func<string>> bodyputEntireQuantityOnNewLoadWhenChanged = null, Expression<Func<string>> bodyreceiverCode = null, Expression<Func<string>> bodyrequestedShipDate = null, Expression<Func<string>> bodyreserveStock = null, Expression<Func<string>> bodyreserveStockRequestAllocs = null, Expression<Func<string>> bodysalesOrder = null, Expression<Func<bodysalesOrderDetailsInputItem[]>> bodysalesOrderDetails = null, Expression<Func<bodysalesOrderFooterCommentsInputItem[]>> bodysalesOrderFooterComments = null, Expression<Func<bodysalesOrderFreightDetailsInputItem[]>> bodysalesOrderFreightDetails = null, Expression<Func<bodysalesOrderHeaderCommentsInputItem[]>> bodysalesOrderHeaderComments = null, Expression<Func<bodysalesOrderMiscChargesDetailsInputItem[]>> bodysalesOrderMiscChargesDetails = null, Expression<Func<string>> bodysalesOrderPromoQualifyAction = null, Expression<Func<string>> bodysalesOrderPromoSelectAction = null, Expression<Func<string>> bodysalesperson = null, Expression<Func<string>> bodysenderCode = null, Expression<Func<string>> bodyshipAddress1 = null, Expression<Func<string>> bodyshipAddress2 = null, Expression<Func<string>> bodyshipAddress3 = null, Expression<Func<string>> bodyshipAddress3Locality = null, Expression<Func<string>> bodyshipAddress4 = null, Expression<Func<string>> bodyshipAddress5 = null, Expression<Func<string>> bodyshipAddressPerLine = null, Expression<Func<string>> bodyshipAddressPerLineTax = null, Expression<Func<string>> bodyshipGpsLat = null, Expression<Func<string>> bodyshipGpsLong = null, Expression<Func<string>> bodyshipPostalCode = null, Expression<Func<string>> bodyshippingInstrs = null, Expression<Func<string>> bodyshippingInstrsCode = null, Expression<Func<string>> bodyshippingLocation = null, Expression<Func<string>> bodyspecialInstrs = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodystatusInProcess = null, Expression<Func<string>> bodystatusInProcessResponse = null, Expression<Func<string>> bodysupplier = null, Expression<Func<string>> bodytagsToDropFromXML = null, Expression<Func<string>> bodytaxExemptNumber = null, Expression<Func<string>> bodytaxExemptionStatus = null, Expression<Func<string>> bodytransactionNature = null, Expression<Func<string>> bodytransmissionReference = null, Expression<Func<string>> bodytransportMode = null, Expression<Func<string>> bodytypeOfOrder = null, Expression<Func<string>> bodyuseCustomerSalesWarehouse = null, Expression<Func<string>> bodyuseMasterAccountForCustomerPartNo = null, Expression<Func<string>> bodyuseStockDescSupplied = null, Expression<Func<string>> bodyvalidateShippingInstrs = null, Expression<Func<string>> bodywarehouse = null, Expression<Func<string>> bodywarehouseListToUse = null, Expression<Func<string>> bodywarnIfCustomerOnHold = null, Expression<Func<string>> bodyeSignature = null)
+        public IBodyWorkflowAction<SYSPROCreateNewSalesOrderResponse> SYSPROCreateNewSalesOrder([WorkflowExpression] Func<string> bodyacceptEarlierShipDate = null, [WorkflowExpression] Func<string> bodyacceptKitOptional = null, [WorkflowExpression] Func<string> bodyacceptOrdersIfNoCredit = null, [WorkflowExpression] Func<string> bodyaddAttachedServiceCharges = null, [WorkflowExpression] Func<string> bodyaddDangerousGoodsText = null, [WorkflowExpression] Func<string> bodyaddStockSalesOrderText = null, [WorkflowExpression] Func<string> bodyallocationAction = null, [WorkflowExpression] Func<string> bodyallowBackOrderForNegativeMerchLine = null, [WorkflowExpression] Func<string> bodyallowBackOrderForPartialHold = null, [WorkflowExpression] Func<string> bodyallowBackOrderForSuperseded = null, [WorkflowExpression] Func<string> bodyallowChangeToZeroPrice = null, [WorkflowExpression] Func<string> bodyallowDuplicateOrderNumbers = null, [WorkflowExpression] Func<string> bodyallowManualOrderNumberToBeUsed = null, [WorkflowExpression] Func<string> bodyallowNonStockItems = null, [WorkflowExpression] Func<string> bodyallowZeroPrice = null, [WorkflowExpression] Func<string> bodyalternateReference = null, [WorkflowExpression] Func<string> bodyalwaysUsePriceEntered = null, [WorkflowExpression] Func<string> bodyapplyLeadTimeCalculation = null, [WorkflowExpression] Func<string> bodyapplyParentDiscountToComponents = null, [WorkflowExpression] Func<string> bodyarea = null, [WorkflowExpression] Func<string> bodybranch = null, [WorkflowExpression] Func<string> bodycancelReasonCode = null, [WorkflowExpression] Func<string> bodycheckForCustomerPoNumbers = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycompanyTaxNumber = null, [WorkflowExpression] Func<string> bodycountyZip = null, [WorkflowExpression] Func<string> bodycreditFailMessage = null, [WorkflowExpression] Func<string> bodycurrency = null, [WorkflowExpression] Func<string> bodycustomer = null, [WorkflowExpression] Func<string> bodycustomerName = null, [WorkflowExpression] Func<string> bodycustomerPoNumber = null, [WorkflowExpression] Func<string> bodycustomerToUse = null, [WorkflowExpression] Func<string> bodydeliveryRoute = null, [WorkflowExpression] Func<string> bodydeliveryRouteAction = null, [WorkflowExpression] Func<string> bodydeliveryTerms = null, [WorkflowExpression] Func<string> bodydocumentFormat = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyglobalTradePromotionCodes = null, [WorkflowExpression] Func<string> bodygstExemptNumber = null, [WorkflowExpression] Func<string> bodygstExemptionStatus = null, [WorkflowExpression] Func<string> bodyheaderFreightCharges = null, [WorkflowExpression] Func<string> bodyheaderMiscCharges = null, [WorkflowExpression] Func<string> bodyignoreWarnings = null, [WorkflowExpression] Func<string> bodyinBoxMsgReqd = null, [WorkflowExpression] Func<string> bodyincludeInMrp = null, [WorkflowExpression] Func<string> bodyinvoiceDateEntered = null, [WorkflowExpression] Func<string> bodyinvoiceNumberEntered = null, [WorkflowExpression] Func<string> bodyinvoiceTerms = null, [WorkflowExpression] Func<string> bodyinvoiceWholeOrderOnly = null, [WorkflowExpression] Func<string> bodylanguageCode = null, [WorkflowExpression] Func<string> bodyminimumDaysToShip = null, [WorkflowExpression] Func<string> bodymultiShipCode = null, [WorkflowExpression] Func<string> bodynationality = null, [WorkflowExpression] Func<string> bodynewCustomerPoNumber = null, [WorkflowExpression] Func<string> bodynewSalesOrderNumber = null, [WorkflowExpression] Func<string> bodyoperatorToInform = null, [WorkflowExpression] Func<string> bodyorderActionType = null, [WorkflowExpression] Func<string> bodyorderComments = null, [WorkflowExpression] Func<string> bodyorderDate = null, [WorkflowExpression] Func<string> bodyorderDiscPercent1 = null, [WorkflowExpression] Func<string> bodyorderDiscPercent2 = null, [WorkflowExpression] Func<string> bodyorderDiscPercent3 = null, [WorkflowExpression] Func<string> bodyorderStatus = null, [WorkflowExpression] Func<string> bodyorderType = null, [WorkflowExpression] Func<string> bodyoverrideCustomerBackOrder = null, [WorkflowExpression] Func<string> bodypOSSalesOrder = null, [WorkflowExpression] Func<string> bodyprocess = null, [WorkflowExpression] Func<string> bodyprocessFlag = null, [WorkflowExpression] Func<string> bodyputEntireQuantityOnNewLoadWhenChanged = null, [WorkflowExpression] Func<string> bodyreceiverCode = null, [WorkflowExpression] Func<string> bodyrequestedShipDate = null, [WorkflowExpression] Func<string> bodyreserveStock = null, [WorkflowExpression] Func<string> bodyreserveStockRequestAllocs = null, [WorkflowExpression] Func<string> bodysalesOrder = null, [WorkflowExpression] Func<bodysalesOrderDetailsInputItem[]> bodysalesOrderDetails = null, [WorkflowExpression] Func<bodysalesOrderFooterCommentsInputItem[]> bodysalesOrderFooterComments = null, [WorkflowExpression] Func<bodysalesOrderFreightDetailsInputItem[]> bodysalesOrderFreightDetails = null, [WorkflowExpression] Func<bodysalesOrderHeaderCommentsInputItem[]> bodysalesOrderHeaderComments = null, [WorkflowExpression] Func<bodysalesOrderMiscChargesDetailsInputItem[]> bodysalesOrderMiscChargesDetails = null, [WorkflowExpression] Func<string> bodysalesOrderPromoQualifyAction = null, [WorkflowExpression] Func<string> bodysalesOrderPromoSelectAction = null, [WorkflowExpression] Func<string> bodysalesperson = null, [WorkflowExpression] Func<string> bodysenderCode = null, [WorkflowExpression] Func<string> bodyshipAddress1 = null, [WorkflowExpression] Func<string> bodyshipAddress2 = null, [WorkflowExpression] Func<string> bodyshipAddress3 = null, [WorkflowExpression] Func<string> bodyshipAddress3Locality = null, [WorkflowExpression] Func<string> bodyshipAddress4 = null, [WorkflowExpression] Func<string> bodyshipAddress5 = null, [WorkflowExpression] Func<string> bodyshipAddressPerLine = null, [WorkflowExpression] Func<string> bodyshipAddressPerLineTax = null, [WorkflowExpression] Func<string> bodyshipGpsLat = null, [WorkflowExpression] Func<string> bodyshipGpsLong = null, [WorkflowExpression] Func<string> bodyshipPostalCode = null, [WorkflowExpression] Func<string> bodyshippingInstrs = null, [WorkflowExpression] Func<string> bodyshippingInstrsCode = null, [WorkflowExpression] Func<string> bodyshippingLocation = null, [WorkflowExpression] Func<string> bodyspecialInstrs = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodystatusInProcess = null, [WorkflowExpression] Func<string> bodystatusInProcessResponse = null, [WorkflowExpression] Func<string> bodysupplier = null, [WorkflowExpression] Func<string> bodytagsToDropFromXML = null, [WorkflowExpression] Func<string> bodytaxExemptNumber = null, [WorkflowExpression] Func<string> bodytaxExemptionStatus = null, [WorkflowExpression] Func<string> bodytransactionNature = null, [WorkflowExpression] Func<string> bodytransmissionReference = null, [WorkflowExpression] Func<string> bodytransportMode = null, [WorkflowExpression] Func<string> bodytypeOfOrder = null, [WorkflowExpression] Func<string> bodyuseCustomerSalesWarehouse = null, [WorkflowExpression] Func<string> bodyuseMasterAccountForCustomerPartNo = null, [WorkflowExpression] Func<string> bodyuseStockDescSupplied = null, [WorkflowExpression] Func<string> bodyvalidateShippingInstrs = null, [WorkflowExpression] Func<string> bodywarehouse = null, [WorkflowExpression] Func<string> bodywarehouseListToUse = null, [WorkflowExpression] Func<string> bodywarnIfCustomerOnHold = null, [WorkflowExpression] Func<string> bodyeSignature = null)
         {
-            var apiCallPath = "/api/v1/syspro/salesorder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyacceptEarlierShipDate != null)
-            {
-                body["AcceptEarlierShipDate"] = ExpressionConverter.ConvertO(bodyacceptEarlierShipDate);
-                bodypropCount++;
-            }
-
-            if (bodyacceptKitOptional != null)
-            {
-                body["AcceptKitOptional"] = ExpressionConverter.ConvertO(bodyacceptKitOptional);
-                bodypropCount++;
-            }
-
-            if (bodyacceptOrdersIfNoCredit != null)
-            {
-                body["AcceptOrdersIfNoCredit"] = ExpressionConverter.ConvertO(bodyacceptOrdersIfNoCredit);
-                bodypropCount++;
-            }
-
-            if (bodyaddAttachedServiceCharges != null)
-            {
-                body["AddAttachedServiceCharges"] = ExpressionConverter.ConvertO(bodyaddAttachedServiceCharges);
-                bodypropCount++;
-            }
-
-            if (bodyaddDangerousGoodsText != null)
-            {
-                body["AddDangerousGoodsText"] = ExpressionConverter.ConvertO(bodyaddDangerousGoodsText);
-                bodypropCount++;
-            }
-
-            if (bodyaddStockSalesOrderText != null)
-            {
-                body["AddStockSalesOrderText"] = ExpressionConverter.ConvertO(bodyaddStockSalesOrderText);
-                bodypropCount++;
-            }
-
-            if (bodyallocationAction != null)
-            {
-                body["AllocationAction"] = ExpressionConverter.ConvertO(bodyallocationAction);
-                bodypropCount++;
-            }
-
-            if (bodyallowBackOrderForNegativeMerchLine != null)
-            {
-                body["AllowBackOrderForNegativeMerchLine"] = ExpressionConverter.ConvertO(bodyallowBackOrderForNegativeMerchLine);
-                bodypropCount++;
-            }
-
-            if (bodyallowBackOrderForPartialHold != null)
-            {
-                body["AllowBackOrderForPartialHold"] = ExpressionConverter.ConvertO(bodyallowBackOrderForPartialHold);
-                bodypropCount++;
-            }
-
-            if (bodyallowBackOrderForSuperseded != null)
-            {
-                body["AllowBackOrderForSuperseded"] = ExpressionConverter.ConvertO(bodyallowBackOrderForSuperseded);
-                bodypropCount++;
-            }
-
-            if (bodyallowChangeToZeroPrice != null)
-            {
-                body["AllowChangeToZeroPrice"] = ExpressionConverter.ConvertO(bodyallowChangeToZeroPrice);
-                bodypropCount++;
-            }
-
-            if (bodyallowDuplicateOrderNumbers != null)
-            {
-                body["AllowDuplicateOrderNumbers"] = ExpressionConverter.ConvertO(bodyallowDuplicateOrderNumbers);
-                bodypropCount++;
-            }
-
-            if (bodyallowManualOrderNumberToBeUsed != null)
-            {
-                body["AllowManualOrderNumberToBeUsed"] = ExpressionConverter.ConvertO(bodyallowManualOrderNumberToBeUsed);
-                bodypropCount++;
-            }
-
-            if (bodyallowNonStockItems != null)
-            {
-                body["AllowNonStockItems"] = ExpressionConverter.ConvertO(bodyallowNonStockItems);
-                bodypropCount++;
-            }
-
-            if (bodyallowZeroPrice != null)
-            {
-                body["AllowZeroPrice"] = ExpressionConverter.ConvertO(bodyallowZeroPrice);
-                bodypropCount++;
-            }
-
-            if (bodyalternateReference != null)
-            {
-                body["AlternateReference"] = ExpressionConverter.ConvertO(bodyalternateReference);
-                bodypropCount++;
-            }
-
-            if (bodyalwaysUsePriceEntered != null)
-            {
-                body["AlwaysUsePriceEntered"] = ExpressionConverter.ConvertO(bodyalwaysUsePriceEntered);
-                bodypropCount++;
-            }
-
-            if (bodyapplyLeadTimeCalculation != null)
-            {
-                body["ApplyLeadTimeCalculation"] = ExpressionConverter.ConvertO(bodyapplyLeadTimeCalculation);
-                bodypropCount++;
-            }
-
-            if (bodyapplyParentDiscountToComponents != null)
-            {
-                body["ApplyParentDiscountToComponents"] = ExpressionConverter.ConvertO(bodyapplyParentDiscountToComponents);
-                bodypropCount++;
-            }
-
-            if (bodyarea != null)
-            {
-                body["Area"] = ExpressionConverter.ConvertO(bodyarea);
-                bodypropCount++;
-            }
-
-            if (bodybranch != null)
-            {
-                body["Branch"] = ExpressionConverter.ConvertO(bodybranch);
-                bodypropCount++;
-            }
-
-            if (bodycancelReasonCode != null)
-            {
-                body["CancelReasonCode"] = ExpressionConverter.ConvertO(bodycancelReasonCode);
-                bodypropCount++;
-            }
-
-            if (bodycheckForCustomerPoNumbers != null)
-            {
-                body["CheckForCustomerPoNumbers"] = ExpressionConverter.ConvertO(bodycheckForCustomerPoNumbers);
-                bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["City"] = ExpressionConverter.ConvertO(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodycompanyTaxNumber != null)
-            {
-                body["CompanyTaxNumber"] = ExpressionConverter.ConvertO(bodycompanyTaxNumber);
-                bodypropCount++;
-            }
-
-            if (bodycountyZip != null)
-            {
-                body["CountyZip"] = ExpressionConverter.ConvertO(bodycountyZip);
-                bodypropCount++;
-            }
-
-            if (bodycreditFailMessage != null)
-            {
-                body["CreditFailMessage"] = ExpressionConverter.ConvertO(bodycreditFailMessage);
-                bodypropCount++;
-            }
-
-            if (bodycurrency != null)
-            {
-                body["Currency"] = ExpressionConverter.ConvertO(bodycurrency);
-                bodypropCount++;
-            }
-
-            if (bodycustomer != null)
-            {
-                body["Customer"] = ExpressionConverter.ConvertO(bodycustomer);
-                bodypropCount++;
-            }
-
-            if (bodycustomerName != null)
-            {
-                body["CustomerName"] = ExpressionConverter.ConvertO(bodycustomerName);
-                bodypropCount++;
-            }
-
-            if (bodycustomerPoNumber != null)
-            {
-                body["CustomerPoNumber"] = ExpressionConverter.ConvertO(bodycustomerPoNumber);
-                bodypropCount++;
-            }
-
-            if (bodycustomerToUse != null)
-            {
-                body["CustomerToUse"] = ExpressionConverter.ConvertO(bodycustomerToUse);
-                bodypropCount++;
-            }
-
-            if (bodydeliveryRoute != null)
-            {
-                body["DeliveryRoute"] = ExpressionConverter.ConvertO(bodydeliveryRoute);
-                bodypropCount++;
-            }
-
-            if (bodydeliveryRouteAction != null)
-            {
-                body["DeliveryRouteAction"] = ExpressionConverter.ConvertO(bodydeliveryRouteAction);
-                bodypropCount++;
-            }
-
-            if (bodydeliveryTerms != null)
-            {
-                body["DeliveryTerms"] = ExpressionConverter.ConvertO(bodydeliveryTerms);
-                bodypropCount++;
-            }
-
-            if (bodydocumentFormat != null)
-            {
-                body["DocumentFormat"] = ExpressionConverter.ConvertO(bodydocumentFormat);
-                bodypropCount++;
-            }
-
-            if (bodyemail != null)
-            {
-                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
-
-            if (bodyglobalTradePromotionCodes != null)
-            {
-                body["GlobalTradePromotionCodes"] = ExpressionConverter.ConvertO(bodyglobalTradePromotionCodes);
-                bodypropCount++;
-            }
-
-            if (bodygstExemptNumber != null)
-            {
-                body["GstExemptNumber"] = ExpressionConverter.ConvertO(bodygstExemptNumber);
-                bodypropCount++;
-            }
-
-            if (bodygstExemptionStatus != null)
-            {
-                body["GstExemptionStatus"] = ExpressionConverter.ConvertO(bodygstExemptionStatus);
-                bodypropCount++;
-            }
-
-            if (bodyheaderFreightCharges != null)
-            {
-                body["HeaderFreightCharges"] = ExpressionConverter.ConvertO(bodyheaderFreightCharges);
-                bodypropCount++;
-            }
-
-            if (bodyheaderMiscCharges != null)
-            {
-                body["HeaderMiscCharges"] = ExpressionConverter.ConvertO(bodyheaderMiscCharges);
-                bodypropCount++;
-            }
-
-            if (bodyignoreWarnings != null)
-            {
-                body["IgnoreWarnings"] = ExpressionConverter.ConvertO(bodyignoreWarnings);
-                bodypropCount++;
-            }
-
-            if (bodyinBoxMsgReqd != null)
-            {
-                body["InBoxMsgReqd"] = ExpressionConverter.ConvertO(bodyinBoxMsgReqd);
-                bodypropCount++;
-            }
-
-            if (bodyincludeInMrp != null)
-            {
-                body["IncludeInMrp"] = ExpressionConverter.ConvertO(bodyincludeInMrp);
-                bodypropCount++;
-            }
-
-            if (bodyinvoiceDateEntered != null)
-            {
-                body["InvoiceDateEntered"] = ExpressionConverter.ConvertO(bodyinvoiceDateEntered);
-                bodypropCount++;
-            }
-
-            if (bodyinvoiceNumberEntered != null)
-            {
-                body["InvoiceNumberEntered"] = ExpressionConverter.ConvertO(bodyinvoiceNumberEntered);
-                bodypropCount++;
-            }
-
-            if (bodyinvoiceTerms != null)
-            {
-                body["InvoiceTerms"] = ExpressionConverter.ConvertO(bodyinvoiceTerms);
-                bodypropCount++;
-            }
-
-            if (bodyinvoiceWholeOrderOnly != null)
-            {
-                body["InvoiceWholeOrderOnly"] = ExpressionConverter.ConvertO(bodyinvoiceWholeOrderOnly);
-                bodypropCount++;
-            }
-
-            if (bodylanguageCode != null)
-            {
-                body["LanguageCode"] = ExpressionConverter.ConvertO(bodylanguageCode);
-                bodypropCount++;
-            }
-
-            if (bodyminimumDaysToShip != null)
-            {
-                body["MinimumDaysToShip"] = ExpressionConverter.ConvertO(bodyminimumDaysToShip);
-                bodypropCount++;
-            }
-
-            if (bodymultiShipCode != null)
-            {
-                body["MultiShipCode"] = ExpressionConverter.ConvertO(bodymultiShipCode);
-                bodypropCount++;
-            }
-
-            if (bodynationality != null)
-            {
-                body["Nationality"] = ExpressionConverter.ConvertO(bodynationality);
-                bodypropCount++;
-            }
-
-            if (bodynewCustomerPoNumber != null)
-            {
-                body["NewCustomerPoNumber"] = ExpressionConverter.ConvertO(bodynewCustomerPoNumber);
-                bodypropCount++;
-            }
-
-            if (bodynewSalesOrderNumber != null)
-            {
-                body["NewSalesOrderNumber"] = ExpressionConverter.ConvertO(bodynewSalesOrderNumber);
-                bodypropCount++;
-            }
-
-            if (bodyoperatorToInform != null)
-            {
-                body["OperatorToInform"] = ExpressionConverter.ConvertO(bodyoperatorToInform);
-                bodypropCount++;
-            }
-
-            if (bodyorderActionType != null)
-            {
-                body["OrderActionType"] = ExpressionConverter.ConvertO(bodyorderActionType);
-                bodypropCount++;
-            }
-
-            if (bodyorderComments != null)
-            {
-                body["OrderComments"] = ExpressionConverter.ConvertO(bodyorderComments);
-                bodypropCount++;
-            }
-
-            if (bodyorderDate != null)
-            {
-                body["OrderDate"] = ExpressionConverter.ConvertO(bodyorderDate);
-                bodypropCount++;
-            }
-
-            if (bodyorderDiscPercent1 != null)
-            {
-                body["OrderDiscPercent1"] = ExpressionConverter.ConvertO(bodyorderDiscPercent1);
-                bodypropCount++;
-            }
-
-            if (bodyorderDiscPercent2 != null)
-            {
-                body["OrderDiscPercent2"] = ExpressionConverter.ConvertO(bodyorderDiscPercent2);
-                bodypropCount++;
-            }
-
-            if (bodyorderDiscPercent3 != null)
-            {
-                body["OrderDiscPercent3"] = ExpressionConverter.ConvertO(bodyorderDiscPercent3);
-                bodypropCount++;
-            }
-
-            if (bodyorderStatus != null)
-            {
-                body["OrderStatus"] = ExpressionConverter.ConvertO(bodyorderStatus);
-                bodypropCount++;
-            }
-
-            if (bodyorderType != null)
-            {
-                body["OrderType"] = ExpressionConverter.ConvertO(bodyorderType);
-                bodypropCount++;
-            }
-
-            if (bodyoverrideCustomerBackOrder != null)
-            {
-                body["OverrideCustomerBackOrder"] = ExpressionConverter.ConvertO(bodyoverrideCustomerBackOrder);
-                bodypropCount++;
-            }
-
-            if (bodypOSSalesOrder != null)
-            {
-                body["POSSalesOrder"] = ExpressionConverter.ConvertO(bodypOSSalesOrder);
-                bodypropCount++;
-            }
-
-            if (bodyprocess != null)
-            {
-                body["Process"] = ExpressionConverter.ConvertO(bodyprocess);
-                bodypropCount++;
-            }
-
-            if (bodyprocessFlag != null)
-            {
-                body["ProcessFlag"] = ExpressionConverter.ConvertO(bodyprocessFlag);
-                bodypropCount++;
-            }
-
-            if (bodyputEntireQuantityOnNewLoadWhenChanged != null)
-            {
-                body["PutEntireQuantityOnNewLoadWhenChanged"] = ExpressionConverter.ConvertO(bodyputEntireQuantityOnNewLoadWhenChanged);
-                bodypropCount++;
-            }
-
-            if (bodyreceiverCode != null)
-            {
-                body["ReceiverCode"] = ExpressionConverter.ConvertO(bodyreceiverCode);
-                bodypropCount++;
-            }
-
-            if (bodyrequestedShipDate != null)
-            {
-                body["RequestedShipDate"] = ExpressionConverter.ConvertO(bodyrequestedShipDate);
-                bodypropCount++;
-            }
-
-            if (bodyreserveStock != null)
-            {
-                body["ReserveStock"] = ExpressionConverter.ConvertO(bodyreserveStock);
-                bodypropCount++;
-            }
-
-            if (bodyreserveStockRequestAllocs != null)
-            {
-                body["ReserveStockRequestAllocs"] = ExpressionConverter.ConvertO(bodyreserveStockRequestAllocs);
-                bodypropCount++;
-            }
-
-            if (bodysalesOrder != null)
-            {
-                body["SalesOrder"] = ExpressionConverter.ConvertO(bodysalesOrder);
-                bodypropCount++;
-            }
-
-            if (bodysalesOrderDetails != null)
-            {
-                body["SalesOrderDetails"] = ExpressionConverter.ConvertO(bodysalesOrderDetails);
-                bodypropCount++;
-            }
-
-            if (bodysalesOrderFooterComments != null)
-            {
-                body["SalesOrderFooterComments"] = ExpressionConverter.ConvertO(bodysalesOrderFooterComments);
-                bodypropCount++;
-            }
-
-            if (bodysalesOrderFreightDetails != null)
-            {
-                body["SalesOrderFreightDetails"] = ExpressionConverter.ConvertO(bodysalesOrderFreightDetails);
-                bodypropCount++;
-            }
-
-            if (bodysalesOrderHeaderComments != null)
-            {
-                body["SalesOrderHeaderComments"] = ExpressionConverter.ConvertO(bodysalesOrderHeaderComments);
-                bodypropCount++;
-            }
-
-            if (bodysalesOrderMiscChargesDetails != null)
-            {
-                body["SalesOrderMiscChargesDetails"] = ExpressionConverter.ConvertO(bodysalesOrderMiscChargesDetails);
-                bodypropCount++;
-            }
-
-            if (bodysalesOrderPromoQualifyAction != null)
-            {
-                body["SalesOrderPromoQualifyAction"] = ExpressionConverter.ConvertO(bodysalesOrderPromoQualifyAction);
-                bodypropCount++;
-            }
-
-            if (bodysalesOrderPromoSelectAction != null)
-            {
-                body["SalesOrderPromoSelectAction"] = ExpressionConverter.ConvertO(bodysalesOrderPromoSelectAction);
-                bodypropCount++;
-            }
-
-            if (bodysalesperson != null)
-            {
-                body["Salesperson"] = ExpressionConverter.ConvertO(bodysalesperson);
-                bodypropCount++;
-            }
-
-            if (bodysenderCode != null)
-            {
-                body["SenderCode"] = ExpressionConverter.ConvertO(bodysenderCode);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddress1 != null)
-            {
-                body["ShipAddress1"] = ExpressionConverter.ConvertO(bodyshipAddress1);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddress2 != null)
-            {
-                body["ShipAddress2"] = ExpressionConverter.ConvertO(bodyshipAddress2);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddress3 != null)
-            {
-                body["ShipAddress3"] = ExpressionConverter.ConvertO(bodyshipAddress3);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddress3Locality != null)
-            {
-                body["ShipAddress3Locality"] = ExpressionConverter.ConvertO(bodyshipAddress3Locality);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddress4 != null)
-            {
-                body["ShipAddress4"] = ExpressionConverter.ConvertO(bodyshipAddress4);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddress5 != null)
-            {
-                body["ShipAddress5"] = ExpressionConverter.ConvertO(bodyshipAddress5);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressPerLine != null)
-            {
-                body["ShipAddressPerLine"] = ExpressionConverter.ConvertO(bodyshipAddressPerLine);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddressPerLineTax != null)
-            {
-                body["ShipAddressPerLineTax"] = ExpressionConverter.ConvertO(bodyshipAddressPerLineTax);
-                bodypropCount++;
-            }
-
-            if (bodyshipGpsLat != null)
-            {
-                body["ShipGpsLat"] = ExpressionConverter.ConvertO(bodyshipGpsLat);
-                bodypropCount++;
-            }
-
-            if (bodyshipGpsLong != null)
-            {
-                body["ShipGpsLong"] = ExpressionConverter.ConvertO(bodyshipGpsLong);
-                bodypropCount++;
-            }
-
-            if (bodyshipPostalCode != null)
-            {
-                body["ShipPostalCode"] = ExpressionConverter.ConvertO(bodyshipPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodyshippingInstrs != null)
-            {
-                body["ShippingInstrs"] = ExpressionConverter.ConvertO(bodyshippingInstrs);
-                bodypropCount++;
-            }
-
-            if (bodyshippingInstrsCode != null)
-            {
-                body["ShippingInstrsCode"] = ExpressionConverter.ConvertO(bodyshippingInstrsCode);
-                bodypropCount++;
-            }
-
-            if (bodyshippingLocation != null)
-            {
-                body["ShippingLocation"] = ExpressionConverter.ConvertO(bodyshippingLocation);
-                bodypropCount++;
-            }
-
-            if (bodyspecialInstrs != null)
-            {
-                body["SpecialInstrs"] = ExpressionConverter.ConvertO(bodyspecialInstrs);
-                bodypropCount++;
-            }
-
-            if (bodystate != null)
-            {
-                body["State"] = ExpressionConverter.ConvertO(bodystate);
-                bodypropCount++;
-            }
-
-            if (bodystatusInProcess != null)
-            {
-                body["StatusInProcess"] = ExpressionConverter.ConvertO(bodystatusInProcess);
-                bodypropCount++;
-            }
-
-            if (bodystatusInProcessResponse != null)
-            {
-                body["StatusInProcessResponse"] = ExpressionConverter.ConvertO(bodystatusInProcessResponse);
-                bodypropCount++;
-            }
-
-            if (bodysupplier != null)
-            {
-                body["Supplier"] = ExpressionConverter.ConvertO(bodysupplier);
-                bodypropCount++;
-            }
-
-            if (bodytagsToDropFromXML != null)
-            {
-                body["TagsToDropFromXML"] = ExpressionConverter.ConvertO(bodytagsToDropFromXML);
-                bodypropCount++;
-            }
-
-            if (bodytaxExemptNumber != null)
-            {
-                body["TaxExemptNumber"] = ExpressionConverter.ConvertO(bodytaxExemptNumber);
-                bodypropCount++;
-            }
-
-            if (bodytaxExemptionStatus != null)
-            {
-                body["TaxExemptionStatus"] = ExpressionConverter.ConvertO(bodytaxExemptionStatus);
-                bodypropCount++;
-            }
-
-            if (bodytransactionNature != null)
-            {
-                body["TransactionNature"] = ExpressionConverter.ConvertO(bodytransactionNature);
-                bodypropCount++;
-            }
-
-            if (bodytransmissionReference != null)
-            {
-                body["TransmissionReference"] = ExpressionConverter.ConvertO(bodytransmissionReference);
-                bodypropCount++;
-            }
-
-            if (bodytransportMode != null)
-            {
-                body["TransportMode"] = ExpressionConverter.ConvertO(bodytransportMode);
-                bodypropCount++;
-            }
-
-            if (bodytypeOfOrder != null)
-            {
-                body["TypeOfOrder"] = ExpressionConverter.ConvertO(bodytypeOfOrder);
-                bodypropCount++;
-            }
-
-            if (bodyuseCustomerSalesWarehouse != null)
-            {
-                body["UseCustomerSalesWarehouse"] = ExpressionConverter.ConvertO(bodyuseCustomerSalesWarehouse);
-                bodypropCount++;
-            }
-
-            if (bodyuseMasterAccountForCustomerPartNo != null)
-            {
-                body["UseMasterAccountForCustomerPartNo"] = ExpressionConverter.ConvertO(bodyuseMasterAccountForCustomerPartNo);
-                bodypropCount++;
-            }
-
-            if (bodyuseStockDescSupplied != null)
-            {
-                body["UseStockDescSupplied"] = ExpressionConverter.ConvertO(bodyuseStockDescSupplied);
-                bodypropCount++;
-            }
-
-            if (bodyvalidateShippingInstrs != null)
-            {
-                body["ValidateShippingInstrs"] = ExpressionConverter.ConvertO(bodyvalidateShippingInstrs);
-                bodypropCount++;
-            }
-
-            if (bodywarehouse != null)
-            {
-                body["Warehouse"] = ExpressionConverter.ConvertO(bodywarehouse);
-                bodypropCount++;
-            }
-
-            if (bodywarehouseListToUse != null)
-            {
-                body["WarehouseListToUse"] = ExpressionConverter.ConvertO(bodywarehouseListToUse);
-                bodypropCount++;
-            }
-
-            if (bodywarnIfCustomerOnHold != null)
-            {
-                body["WarnIfCustomerOnHold"] = ExpressionConverter.ConvertO(bodywarnIfCustomerOnHold);
-                bodypropCount++;
-            }
-
-            if (bodyeSignature != null)
-            {
-                body["eSignature"] = ExpressionConverter.ConvertO(bodyeSignature);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SYSPROCreateNewSalesOrderResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/syspro/salesorder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyacceptEarlierShipDate != null)
+                {
+                    body["AcceptEarlierShipDate"] = SourceExpressionConverter.ConvertToken(bodyacceptEarlierShipDate);
+                    bodypropCount++;
+                }
+
+                if (bodyacceptKitOptional != null)
+                {
+                    body["AcceptKitOptional"] = SourceExpressionConverter.ConvertToken(bodyacceptKitOptional);
+                    bodypropCount++;
+                }
+
+                if (bodyacceptOrdersIfNoCredit != null)
+                {
+                    body["AcceptOrdersIfNoCredit"] = SourceExpressionConverter.ConvertToken(bodyacceptOrdersIfNoCredit);
+                    bodypropCount++;
+                }
+
+                if (bodyaddAttachedServiceCharges != null)
+                {
+                    body["AddAttachedServiceCharges"] = SourceExpressionConverter.ConvertToken(bodyaddAttachedServiceCharges);
+                    bodypropCount++;
+                }
+
+                if (bodyaddDangerousGoodsText != null)
+                {
+                    body["AddDangerousGoodsText"] = SourceExpressionConverter.ConvertToken(bodyaddDangerousGoodsText);
+                    bodypropCount++;
+                }
+
+                if (bodyaddStockSalesOrderText != null)
+                {
+                    body["AddStockSalesOrderText"] = SourceExpressionConverter.ConvertToken(bodyaddStockSalesOrderText);
+                    bodypropCount++;
+                }
+
+                if (bodyallocationAction != null)
+                {
+                    body["AllocationAction"] = SourceExpressionConverter.ConvertToken(bodyallocationAction);
+                    bodypropCount++;
+                }
+
+                if (bodyallowBackOrderForNegativeMerchLine != null)
+                {
+                    body["AllowBackOrderForNegativeMerchLine"] = SourceExpressionConverter.ConvertToken(bodyallowBackOrderForNegativeMerchLine);
+                    bodypropCount++;
+                }
+
+                if (bodyallowBackOrderForPartialHold != null)
+                {
+                    body["AllowBackOrderForPartialHold"] = SourceExpressionConverter.ConvertToken(bodyallowBackOrderForPartialHold);
+                    bodypropCount++;
+                }
+
+                if (bodyallowBackOrderForSuperseded != null)
+                {
+                    body["AllowBackOrderForSuperseded"] = SourceExpressionConverter.ConvertToken(bodyallowBackOrderForSuperseded);
+                    bodypropCount++;
+                }
+
+                if (bodyallowChangeToZeroPrice != null)
+                {
+                    body["AllowChangeToZeroPrice"] = SourceExpressionConverter.ConvertToken(bodyallowChangeToZeroPrice);
+                    bodypropCount++;
+                }
+
+                if (bodyallowDuplicateOrderNumbers != null)
+                {
+                    body["AllowDuplicateOrderNumbers"] = SourceExpressionConverter.ConvertToken(bodyallowDuplicateOrderNumbers);
+                    bodypropCount++;
+                }
+
+                if (bodyallowManualOrderNumberToBeUsed != null)
+                {
+                    body["AllowManualOrderNumberToBeUsed"] = SourceExpressionConverter.ConvertToken(bodyallowManualOrderNumberToBeUsed);
+                    bodypropCount++;
+                }
+
+                if (bodyallowNonStockItems != null)
+                {
+                    body["AllowNonStockItems"] = SourceExpressionConverter.ConvertToken(bodyallowNonStockItems);
+                    bodypropCount++;
+                }
+
+                if (bodyallowZeroPrice != null)
+                {
+                    body["AllowZeroPrice"] = SourceExpressionConverter.ConvertToken(bodyallowZeroPrice);
+                    bodypropCount++;
+                }
+
+                if (bodyalternateReference != null)
+                {
+                    body["AlternateReference"] = SourceExpressionConverter.ConvertToken(bodyalternateReference);
+                    bodypropCount++;
+                }
+
+                if (bodyalwaysUsePriceEntered != null)
+                {
+                    body["AlwaysUsePriceEntered"] = SourceExpressionConverter.ConvertToken(bodyalwaysUsePriceEntered);
+                    bodypropCount++;
+                }
+
+                if (bodyapplyLeadTimeCalculation != null)
+                {
+                    body["ApplyLeadTimeCalculation"] = SourceExpressionConverter.ConvertToken(bodyapplyLeadTimeCalculation);
+                    bodypropCount++;
+                }
+
+                if (bodyapplyParentDiscountToComponents != null)
+                {
+                    body["ApplyParentDiscountToComponents"] = SourceExpressionConverter.ConvertToken(bodyapplyParentDiscountToComponents);
+                    bodypropCount++;
+                }
+
+                if (bodyarea != null)
+                {
+                    body["Area"] = SourceExpressionConverter.ConvertToken(bodyarea);
+                    bodypropCount++;
+                }
+
+                if (bodybranch != null)
+                {
+                    body["Branch"] = SourceExpressionConverter.ConvertToken(bodybranch);
+                    bodypropCount++;
+                }
+
+                if (bodycancelReasonCode != null)
+                {
+                    body["CancelReasonCode"] = SourceExpressionConverter.ConvertToken(bodycancelReasonCode);
+                    bodypropCount++;
+                }
+
+                if (bodycheckForCustomerPoNumbers != null)
+                {
+                    body["CheckForCustomerPoNumbers"] = SourceExpressionConverter.ConvertToken(bodycheckForCustomerPoNumbers);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["City"] = SourceExpressionConverter.ConvertToken(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodycompanyTaxNumber != null)
+                {
+                    body["CompanyTaxNumber"] = SourceExpressionConverter.ConvertToken(bodycompanyTaxNumber);
+                    bodypropCount++;
+                }
+
+                if (bodycountyZip != null)
+                {
+                    body["CountyZip"] = SourceExpressionConverter.ConvertToken(bodycountyZip);
+                    bodypropCount++;
+                }
+
+                if (bodycreditFailMessage != null)
+                {
+                    body["CreditFailMessage"] = SourceExpressionConverter.ConvertToken(bodycreditFailMessage);
+                    bodypropCount++;
+                }
+
+                if (bodycurrency != null)
+                {
+                    body["Currency"] = SourceExpressionConverter.ConvertToken(bodycurrency);
+                    bodypropCount++;
+                }
+
+                if (bodycustomer != null)
+                {
+                    body["Customer"] = SourceExpressionConverter.ConvertToken(bodycustomer);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerName != null)
+                {
+                    body["CustomerName"] = SourceExpressionConverter.ConvertToken(bodycustomerName);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerPoNumber != null)
+                {
+                    body["CustomerPoNumber"] = SourceExpressionConverter.ConvertToken(bodycustomerPoNumber);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerToUse != null)
+                {
+                    body["CustomerToUse"] = SourceExpressionConverter.ConvertToken(bodycustomerToUse);
+                    bodypropCount++;
+                }
+
+                if (bodydeliveryRoute != null)
+                {
+                    body["DeliveryRoute"] = SourceExpressionConverter.ConvertToken(bodydeliveryRoute);
+                    bodypropCount++;
+                }
+
+                if (bodydeliveryRouteAction != null)
+                {
+                    body["DeliveryRouteAction"] = SourceExpressionConverter.ConvertToken(bodydeliveryRouteAction);
+                    bodypropCount++;
+                }
+
+                if (bodydeliveryTerms != null)
+                {
+                    body["DeliveryTerms"] = SourceExpressionConverter.ConvertToken(bodydeliveryTerms);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentFormat != null)
+                {
+                    body["DocumentFormat"] = SourceExpressionConverter.ConvertToken(bodydocumentFormat);
+                    bodypropCount++;
+                }
+
+                if (bodyemail != null)
+                {
+                    body["Email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodyglobalTradePromotionCodes != null)
+                {
+                    body["GlobalTradePromotionCodes"] = SourceExpressionConverter.ConvertToken(bodyglobalTradePromotionCodes);
+                    bodypropCount++;
+                }
+
+                if (bodygstExemptNumber != null)
+                {
+                    body["GstExemptNumber"] = SourceExpressionConverter.ConvertToken(bodygstExemptNumber);
+                    bodypropCount++;
+                }
+
+                if (bodygstExemptionStatus != null)
+                {
+                    body["GstExemptionStatus"] = SourceExpressionConverter.ConvertToken(bodygstExemptionStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyheaderFreightCharges != null)
+                {
+                    body["HeaderFreightCharges"] = SourceExpressionConverter.ConvertToken(bodyheaderFreightCharges);
+                    bodypropCount++;
+                }
+
+                if (bodyheaderMiscCharges != null)
+                {
+                    body["HeaderMiscCharges"] = SourceExpressionConverter.ConvertToken(bodyheaderMiscCharges);
+                    bodypropCount++;
+                }
+
+                if (bodyignoreWarnings != null)
+                {
+                    body["IgnoreWarnings"] = SourceExpressionConverter.ConvertToken(bodyignoreWarnings);
+                    bodypropCount++;
+                }
+
+                if (bodyinBoxMsgReqd != null)
+                {
+                    body["InBoxMsgReqd"] = SourceExpressionConverter.ConvertToken(bodyinBoxMsgReqd);
+                    bodypropCount++;
+                }
+
+                if (bodyincludeInMrp != null)
+                {
+                    body["IncludeInMrp"] = SourceExpressionConverter.ConvertToken(bodyincludeInMrp);
+                    bodypropCount++;
+                }
+
+                if (bodyinvoiceDateEntered != null)
+                {
+                    body["InvoiceDateEntered"] = SourceExpressionConverter.ConvertToken(bodyinvoiceDateEntered);
+                    bodypropCount++;
+                }
+
+                if (bodyinvoiceNumberEntered != null)
+                {
+                    body["InvoiceNumberEntered"] = SourceExpressionConverter.ConvertToken(bodyinvoiceNumberEntered);
+                    bodypropCount++;
+                }
+
+                if (bodyinvoiceTerms != null)
+                {
+                    body["InvoiceTerms"] = SourceExpressionConverter.ConvertToken(bodyinvoiceTerms);
+                    bodypropCount++;
+                }
+
+                if (bodyinvoiceWholeOrderOnly != null)
+                {
+                    body["InvoiceWholeOrderOnly"] = SourceExpressionConverter.ConvertToken(bodyinvoiceWholeOrderOnly);
+                    bodypropCount++;
+                }
+
+                if (bodylanguageCode != null)
+                {
+                    body["LanguageCode"] = SourceExpressionConverter.ConvertToken(bodylanguageCode);
+                    bodypropCount++;
+                }
+
+                if (bodyminimumDaysToShip != null)
+                {
+                    body["MinimumDaysToShip"] = SourceExpressionConverter.ConvertToken(bodyminimumDaysToShip);
+                    bodypropCount++;
+                }
+
+                if (bodymultiShipCode != null)
+                {
+                    body["MultiShipCode"] = SourceExpressionConverter.ConvertToken(bodymultiShipCode);
+                    bodypropCount++;
+                }
+
+                if (bodynationality != null)
+                {
+                    body["Nationality"] = SourceExpressionConverter.ConvertToken(bodynationality);
+                    bodypropCount++;
+                }
+
+                if (bodynewCustomerPoNumber != null)
+                {
+                    body["NewCustomerPoNumber"] = SourceExpressionConverter.ConvertToken(bodynewCustomerPoNumber);
+                    bodypropCount++;
+                }
+
+                if (bodynewSalesOrderNumber != null)
+                {
+                    body["NewSalesOrderNumber"] = SourceExpressionConverter.ConvertToken(bodynewSalesOrderNumber);
+                    bodypropCount++;
+                }
+
+                if (bodyoperatorToInform != null)
+                {
+                    body["OperatorToInform"] = SourceExpressionConverter.ConvertToken(bodyoperatorToInform);
+                    bodypropCount++;
+                }
+
+                if (bodyorderActionType != null)
+                {
+                    body["OrderActionType"] = SourceExpressionConverter.ConvertToken(bodyorderActionType);
+                    bodypropCount++;
+                }
+
+                if (bodyorderComments != null)
+                {
+                    body["OrderComments"] = SourceExpressionConverter.ConvertToken(bodyorderComments);
+                    bodypropCount++;
+                }
+
+                if (bodyorderDate != null)
+                {
+                    body["OrderDate"] = SourceExpressionConverter.ConvertToken(bodyorderDate);
+                    bodypropCount++;
+                }
+
+                if (bodyorderDiscPercent1 != null)
+                {
+                    body["OrderDiscPercent1"] = SourceExpressionConverter.ConvertToken(bodyorderDiscPercent1);
+                    bodypropCount++;
+                }
+
+                if (bodyorderDiscPercent2 != null)
+                {
+                    body["OrderDiscPercent2"] = SourceExpressionConverter.ConvertToken(bodyorderDiscPercent2);
+                    bodypropCount++;
+                }
+
+                if (bodyorderDiscPercent3 != null)
+                {
+                    body["OrderDiscPercent3"] = SourceExpressionConverter.ConvertToken(bodyorderDiscPercent3);
+                    bodypropCount++;
+                }
+
+                if (bodyorderStatus != null)
+                {
+                    body["OrderStatus"] = SourceExpressionConverter.ConvertToken(bodyorderStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyorderType != null)
+                {
+                    body["OrderType"] = SourceExpressionConverter.ConvertToken(bodyorderType);
+                    bodypropCount++;
+                }
+
+                if (bodyoverrideCustomerBackOrder != null)
+                {
+                    body["OverrideCustomerBackOrder"] = SourceExpressionConverter.ConvertToken(bodyoverrideCustomerBackOrder);
+                    bodypropCount++;
+                }
+
+                if (bodypOSSalesOrder != null)
+                {
+                    body["POSSalesOrder"] = SourceExpressionConverter.ConvertToken(bodypOSSalesOrder);
+                    bodypropCount++;
+                }
+
+                if (bodyprocess != null)
+                {
+                    body["Process"] = SourceExpressionConverter.ConvertToken(bodyprocess);
+                    bodypropCount++;
+                }
+
+                if (bodyprocessFlag != null)
+                {
+                    body["ProcessFlag"] = SourceExpressionConverter.ConvertToken(bodyprocessFlag);
+                    bodypropCount++;
+                }
+
+                if (bodyputEntireQuantityOnNewLoadWhenChanged != null)
+                {
+                    body["PutEntireQuantityOnNewLoadWhenChanged"] = SourceExpressionConverter.ConvertToken(bodyputEntireQuantityOnNewLoadWhenChanged);
+                    bodypropCount++;
+                }
+
+                if (bodyreceiverCode != null)
+                {
+                    body["ReceiverCode"] = SourceExpressionConverter.ConvertToken(bodyreceiverCode);
+                    bodypropCount++;
+                }
+
+                if (bodyrequestedShipDate != null)
+                {
+                    body["RequestedShipDate"] = SourceExpressionConverter.ConvertToken(bodyrequestedShipDate);
+                    bodypropCount++;
+                }
+
+                if (bodyreserveStock != null)
+                {
+                    body["ReserveStock"] = SourceExpressionConverter.ConvertToken(bodyreserveStock);
+                    bodypropCount++;
+                }
+
+                if (bodyreserveStockRequestAllocs != null)
+                {
+                    body["ReserveStockRequestAllocs"] = SourceExpressionConverter.ConvertToken(bodyreserveStockRequestAllocs);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrder != null)
+                {
+                    body["SalesOrder"] = SourceExpressionConverter.ConvertToken(bodysalesOrder);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrderDetails != null)
+                {
+                    body["SalesOrderDetails"] = SourceExpressionConverter.ConvertToken(bodysalesOrderDetails);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrderFooterComments != null)
+                {
+                    body["SalesOrderFooterComments"] = SourceExpressionConverter.ConvertToken(bodysalesOrderFooterComments);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrderFreightDetails != null)
+                {
+                    body["SalesOrderFreightDetails"] = SourceExpressionConverter.ConvertToken(bodysalesOrderFreightDetails);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrderHeaderComments != null)
+                {
+                    body["SalesOrderHeaderComments"] = SourceExpressionConverter.ConvertToken(bodysalesOrderHeaderComments);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrderMiscChargesDetails != null)
+                {
+                    body["SalesOrderMiscChargesDetails"] = SourceExpressionConverter.ConvertToken(bodysalesOrderMiscChargesDetails);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrderPromoQualifyAction != null)
+                {
+                    body["SalesOrderPromoQualifyAction"] = SourceExpressionConverter.ConvertToken(bodysalesOrderPromoQualifyAction);
+                    bodypropCount++;
+                }
+
+                if (bodysalesOrderPromoSelectAction != null)
+                {
+                    body["SalesOrderPromoSelectAction"] = SourceExpressionConverter.ConvertToken(bodysalesOrderPromoSelectAction);
+                    bodypropCount++;
+                }
+
+                if (bodysalesperson != null)
+                {
+                    body["Salesperson"] = SourceExpressionConverter.ConvertToken(bodysalesperson);
+                    bodypropCount++;
+                }
+
+                if (bodysenderCode != null)
+                {
+                    body["SenderCode"] = SourceExpressionConverter.ConvertToken(bodysenderCode);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddress1 != null)
+                {
+                    body["ShipAddress1"] = SourceExpressionConverter.ConvertToken(bodyshipAddress1);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddress2 != null)
+                {
+                    body["ShipAddress2"] = SourceExpressionConverter.ConvertToken(bodyshipAddress2);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddress3 != null)
+                {
+                    body["ShipAddress3"] = SourceExpressionConverter.ConvertToken(bodyshipAddress3);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddress3Locality != null)
+                {
+                    body["ShipAddress3Locality"] = SourceExpressionConverter.ConvertToken(bodyshipAddress3Locality);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddress4 != null)
+                {
+                    body["ShipAddress4"] = SourceExpressionConverter.ConvertToken(bodyshipAddress4);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddress5 != null)
+                {
+                    body["ShipAddress5"] = SourceExpressionConverter.ConvertToken(bodyshipAddress5);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressPerLine != null)
+                {
+                    body["ShipAddressPerLine"] = SourceExpressionConverter.ConvertToken(bodyshipAddressPerLine);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddressPerLineTax != null)
+                {
+                    body["ShipAddressPerLineTax"] = SourceExpressionConverter.ConvertToken(bodyshipAddressPerLineTax);
+                    bodypropCount++;
+                }
+
+                if (bodyshipGpsLat != null)
+                {
+                    body["ShipGpsLat"] = SourceExpressionConverter.ConvertToken(bodyshipGpsLat);
+                    bodypropCount++;
+                }
+
+                if (bodyshipGpsLong != null)
+                {
+                    body["ShipGpsLong"] = SourceExpressionConverter.ConvertToken(bodyshipGpsLong);
+                    bodypropCount++;
+                }
+
+                if (bodyshipPostalCode != null)
+                {
+                    body["ShipPostalCode"] = SourceExpressionConverter.ConvertToken(bodyshipPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingInstrs != null)
+                {
+                    body["ShippingInstrs"] = SourceExpressionConverter.ConvertToken(bodyshippingInstrs);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingInstrsCode != null)
+                {
+                    body["ShippingInstrsCode"] = SourceExpressionConverter.ConvertToken(bodyshippingInstrsCode);
+                    bodypropCount++;
+                }
+
+                if (bodyshippingLocation != null)
+                {
+                    body["ShippingLocation"] = SourceExpressionConverter.ConvertToken(bodyshippingLocation);
+                    bodypropCount++;
+                }
+
+                if (bodyspecialInstrs != null)
+                {
+                    body["SpecialInstrs"] = SourceExpressionConverter.ConvertToken(bodyspecialInstrs);
+                    bodypropCount++;
+                }
+
+                if (bodystate != null)
+                {
+                    body["State"] = SourceExpressionConverter.ConvertToken(bodystate);
+                    bodypropCount++;
+                }
+
+                if (bodystatusInProcess != null)
+                {
+                    body["StatusInProcess"] = SourceExpressionConverter.ConvertToken(bodystatusInProcess);
+                    bodypropCount++;
+                }
+
+                if (bodystatusInProcessResponse != null)
+                {
+                    body["StatusInProcessResponse"] = SourceExpressionConverter.ConvertToken(bodystatusInProcessResponse);
+                    bodypropCount++;
+                }
+
+                if (bodysupplier != null)
+                {
+                    body["Supplier"] = SourceExpressionConverter.ConvertToken(bodysupplier);
+                    bodypropCount++;
+                }
+
+                if (bodytagsToDropFromXML != null)
+                {
+                    body["TagsToDropFromXML"] = SourceExpressionConverter.ConvertToken(bodytagsToDropFromXML);
+                    bodypropCount++;
+                }
+
+                if (bodytaxExemptNumber != null)
+                {
+                    body["TaxExemptNumber"] = SourceExpressionConverter.ConvertToken(bodytaxExemptNumber);
+                    bodypropCount++;
+                }
+
+                if (bodytaxExemptionStatus != null)
+                {
+                    body["TaxExemptionStatus"] = SourceExpressionConverter.ConvertToken(bodytaxExemptionStatus);
+                    bodypropCount++;
+                }
+
+                if (bodytransactionNature != null)
+                {
+                    body["TransactionNature"] = SourceExpressionConverter.ConvertToken(bodytransactionNature);
+                    bodypropCount++;
+                }
+
+                if (bodytransmissionReference != null)
+                {
+                    body["TransmissionReference"] = SourceExpressionConverter.ConvertToken(bodytransmissionReference);
+                    bodypropCount++;
+                }
+
+                if (bodytransportMode != null)
+                {
+                    body["TransportMode"] = SourceExpressionConverter.ConvertToken(bodytransportMode);
+                    bodypropCount++;
+                }
+
+                if (bodytypeOfOrder != null)
+                {
+                    body["TypeOfOrder"] = SourceExpressionConverter.ConvertToken(bodytypeOfOrder);
+                    bodypropCount++;
+                }
+
+                if (bodyuseCustomerSalesWarehouse != null)
+                {
+                    body["UseCustomerSalesWarehouse"] = SourceExpressionConverter.ConvertToken(bodyuseCustomerSalesWarehouse);
+                    bodypropCount++;
+                }
+
+                if (bodyuseMasterAccountForCustomerPartNo != null)
+                {
+                    body["UseMasterAccountForCustomerPartNo"] = SourceExpressionConverter.ConvertToken(bodyuseMasterAccountForCustomerPartNo);
+                    bodypropCount++;
+                }
+
+                if (bodyuseStockDescSupplied != null)
+                {
+                    body["UseStockDescSupplied"] = SourceExpressionConverter.ConvertToken(bodyuseStockDescSupplied);
+                    bodypropCount++;
+                }
+
+                if (bodyvalidateShippingInstrs != null)
+                {
+                    body["ValidateShippingInstrs"] = SourceExpressionConverter.ConvertToken(bodyvalidateShippingInstrs);
+                    bodypropCount++;
+                }
+
+                if (bodywarehouse != null)
+                {
+                    body["Warehouse"] = SourceExpressionConverter.ConvertToken(bodywarehouse);
+                    bodypropCount++;
+                }
+
+                if (bodywarehouseListToUse != null)
+                {
+                    body["WarehouseListToUse"] = SourceExpressionConverter.ConvertToken(bodywarehouseListToUse);
+                    bodypropCount++;
+                }
+
+                if (bodywarnIfCustomerOnHold != null)
+                {
+                    body["WarnIfCustomerOnHold"] = SourceExpressionConverter.ConvertToken(bodywarnIfCustomerOnHold);
+                    bodypropCount++;
+                }
+
+                if (bodyeSignature != null)
+                {
+                    body["eSignature"] = SourceExpressionConverter.ConvertToken(bodyeSignature);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SYSPROCreateNewSalesOrderResponse>(BuildSourceInput);
         }
     }
 

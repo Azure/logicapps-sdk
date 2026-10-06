@@ -12,236 +12,261 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
     public class EngagementcloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IBodyWorkflowAction<CreateAddressBookResponse> CreateAddressBook(Expression<Func<regionInput>> region, Expression<Func<string>> bodyname, Expression<Func<bodyvisibilityInput>> bodyvisibility = null)
+        public IBodyWorkflowAction<CreateAddressBookResponse> CreateAddressBook([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodyvisibilityInput> bodyvisibility = null)
         {
-            var apiCallPath = "/v2/address-books";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Region"] = ExpressionConverter.Convert(region);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodyvisibility != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/v2/address-books";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Region"] = SourceExpressionConverter.Convert(region);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 if (bodyvisibility != null)
                 {
-                    body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
+                    if (bodyvisibility != null)
+                    {
+                        body["visibility"] = SourceExpressionConverter.Convert(bodyvisibility);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["visibility"] = "Private";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateAddressBookResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
+        public IBodyWorkflowAction<CreateContactResponse> CreateContact([WorkflowExpression] Func<string> addressBook, [WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bodydataFieldsInputItem[]> bodydataFields = null, [WorkflowExpression] Func<bodyemailTypeInput> bodyemailType = null, [WorkflowExpression] Func<bodyoptInTypeInput> bodyoptInType = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/address-books/{0}/contacts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(addressBook, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Region"] = SourceExpressionConverter.Convert(region);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydataFields != null)
+                {
+                    body["dataFields"] = SourceExpressionConverter.ConvertToken(bodydataFields);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["visibility"] = "Private";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateAddressBookResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IBodyWorkflowAction<CreateContactResponse> CreateContact(Expression<Func<string>> addressBook, Expression<Func<regionInput>> region, Expression<Func<string>> bodyemail, Expression<Func<bodydataFieldsInputItem[]>> bodydataFields = null, Expression<Func<bodyemailTypeInput>> bodyemailType = null, Expression<Func<bodyoptInTypeInput>> bodyoptInType = null)
-        {
-            var apiCallPath = String.Format("/v2/address-books/{0}/contacts", ExpressionConverter.ConvertWithUrlEncoding(addressBook, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Region"] = ExpressionConverter.Convert(region);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydataFields != null)
-            {
-                body["dataFields"] = ExpressionConverter.ConvertO(bodydataFields);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyemailType != null)
-            {
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
                 if (bodyemailType != null)
                 {
-                    body["emailType"] = ExpressionConverter.ConvertO(bodyemailType);
+                    if (bodyemailType != null)
+                    {
+                        body["emailType"] = SourceExpressionConverter.Convert(bodyemailType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["emailType"] = "Html";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["emailType"] = "Html";
-                bodypropCount++;
-            }
-
-            if (bodyoptInType != null)
-            {
                 if (bodyoptInType != null)
                 {
-                    body["optInType"] = ExpressionConverter.ConvertO(bodyoptInType);
+                    if (bodyoptInType != null)
+                    {
+                        body["optInType"] = SourceExpressionConverter.Convert(bodyoptInType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["optInType"] = "Unknown";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateContactResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
+        public IBodyWorkflowAction<SendEmailCampaignResponse> SendEmailCampaign([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<int> bodycampaignId, [WorkflowExpression] Func<int[]> bodyaddressBookIDs = null, [WorkflowExpression] Func<int[]> bodycontactIDs = null, [WorkflowExpression] Func<string> bodysendDate = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/campaigns/send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Region"] = SourceExpressionConverter.Convert(region);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaddressBookIDs != null)
+                {
+                    body["AddressBookIDs"] = SourceExpressionConverter.ConvertToken(bodyaddressBookIDs);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["optInType"] = "Unknown";
-                bodypropCount++;
+                body["CampaignID"] = SourceExpressionConverter.ConvertToken(bodycampaignId);
+                if (bodycontactIDs != null)
+                {
+                    body["ContactIDs"] = SourceExpressionConverter.ConvertToken(bodycontactIDs);
+                    bodypropCount++;
+                }
+
+                if (bodysendDate != null)
+                {
+                    body["SendDate"] = SourceExpressionConverter.ConvertToken(bodysendDate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateContactResponse>(callPayload);
+            return new ApiConnectionAction<SendEmailCampaignResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IBodyWorkflowAction<SendEmailCampaignResponse> SendEmailCampaign(Expression<Func<regionInput>> region, Expression<Func<int>> bodycampaignID, Expression<Func<int[]>> bodyaddressBookIDs = null, Expression<Func<int[]>> bodycontactIDs = null, Expression<Func<string>> bodysendDate = null)
+        public IWorkflowAction SendTransactionalEmailUsingTriggeredCampagin([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<int> bodycampaignId, [WorkflowExpression] Func<string[]> bodytoAddresses, [WorkflowExpression] Func<bodypersonalizationValuesInputItem[]> bodypersonalizationValues = null)
         {
-            var apiCallPath = "/v2/campaigns/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Region"] = ExpressionConverter.Convert(region);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaddressBookIDs != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["AddressBookIDs"] = ExpressionConverter.ConvertO(bodyaddressBookIDs);
+                var apiCallPath = "/v2/email/triggered-campaign";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Region"] = SourceExpressionConverter.Convert(region);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["CampaignID"] = SourceExpressionConverter.ConvertToken(bodycampaignId);
+                if (bodypersonalizationValues != null)
+                {
+                    body["PersonalizationValues"] = SourceExpressionConverter.ConvertToken(bodypersonalizationValues);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["CampaignID"] = ExpressionConverter.ConvertO(bodycampaignID);
-            if (bodycontactIDs != null)
-            {
-                body["ContactIDs"] = ExpressionConverter.ConvertO(bodycontactIDs);
                 bodypropCount++;
+                body["ToAddresses"] = SourceExpressionConverter.ConvertToken(bodytoAddresses);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysendDate != null)
-            {
-                body["SendDate"] = ExpressionConverter.ConvertO(bodysendDate);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendEmailCampaignResponse>(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IWorkflowAction SendTransactionalEmailUsingTriggeredCampagin(Expression<Func<regionInput>> region, Expression<Func<int>> bodycampaignID, Expression<Func<string[]>> bodytoAddresses, Expression<Func<bodypersonalizationValuesInputItem[]>> bodypersonalizationValues = null)
+        public IBodyWorkflowAction<CreateProgramEnrolmentResponse> CreateProgramEnrolment([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<int> bodyprogramId, [WorkflowExpression] Func<int[]> bodyaddressBooks = null, [WorkflowExpression] Func<int[]> bodycontacts = null)
         {
-            var apiCallPath = "/v2/email/triggered-campaign";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Region"] = ExpressionConverter.Convert(region);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["CampaignID"] = ExpressionConverter.ConvertO(bodycampaignID);
-            if (bodypersonalizationValues != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["PersonalizationValues"] = ExpressionConverter.ConvertO(bodypersonalizationValues);
+                var apiCallPath = "/v2/programs/enrolments";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Region"] = SourceExpressionConverter.Convert(region);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaddressBooks != null)
+                {
+                    body["AddressBooks"] = SourceExpressionConverter.ConvertToken(bodyaddressBooks);
+                    bodypropCount++;
+                }
+
+                if (bodycontacts != null)
+                {
+                    body["Contacts"] = SourceExpressionConverter.ConvertToken(bodycontacts);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["ProgramID"] = SourceExpressionConverter.ConvertToken(bodyprogramId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["ToAddresses"] = ExpressionConverter.ConvertO(bodytoAddresses);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<CreateProgramEnrolmentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IBodyWorkflowAction<CreateProgramEnrolmentResponse> CreateProgramEnrolment(Expression<Func<regionInput>> region, Expression<Func<int>> bodyprogramID, Expression<Func<int[]>> bodyaddressBooks = null, Expression<Func<int[]>> bodycontacts = null)
+        public IWorkflowAction SendSmsMessage([WorkflowExpression] Func<string> telephoneNumber, [WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<string> bodymessage)
         {
-            var apiCallPath = "/v2/programs/enrolments";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Region"] = ExpressionConverter.Convert(region);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaddressBooks != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["AddressBooks"] = ExpressionConverter.ConvertO(bodyaddressBooks);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/sms-messages/send-to/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(telephoneNumber, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Region"] = SourceExpressionConverter.Convert(region);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["Message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycontacts != null)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
+        public IWorkflowAction GetContactsImportStatus([WorkflowExpression] Func<string> id)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Contacts"] = ExpressionConverter.ConvertO(bodycontacts);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/contacts/import/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["ProgramID"] = ExpressionConverter.ConvertO(bodyprogramID);
-            if (bodypropCount > 0)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
+        public IWorkflowAction GetContactsImportReport([WorkflowExpression] Func<string> id)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/contacts/import/{0}/report", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CreateProgramEnrolmentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IWorkflowAction SendSmsMessage(Expression<Func<string>> telephoneNumber, Expression<Func<regionInput>> region, Expression<Func<string>> bodymessage)
-        {
-            var apiCallPath = String.Format("/v2/sms-messages/send-to/{0}", ExpressionConverter.ConvertWithUrlEncoding(telephoneNumber, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Region"] = ExpressionConverter.Convert(region);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Message"] = ExpressionConverter.ConvertO(bodymessage);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IWorkflowAction BulkContactsImport(Expression<Func<string>> addressBook, Expression<Func<object>> filedata)
-        {
-            var apiCallPath = String.Format("/v2/address-books/{0}/contacts/import", ExpressionConverter.ConvertWithUrlEncoding(addressBook, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IWorkflowAction GetContactsImportStatus(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/v2/contacts/import/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
-        public IWorkflowAction GetContactsImportReport(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/v2/contacts/import/{0}/report", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
@@ -266,12 +291,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
 
     public enum regionInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public enum bodyvisibilityInput

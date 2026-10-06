@@ -12,43 +12,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip
     public class LoginllamaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loginllamaip")]
-        public IBodyWorkflowAction<LoginPostResponse> Login(Expression<Func<string>> bodyipAddress, Expression<Func<string>> bodyuserAgent, Expression<Func<string>> bodyidentityKey, Expression<Func<string>> bodygeoCountry = null, Expression<Func<string>> bodygeoCity = null, Expression<Func<string>> bodyuserTimeOfDay = null)
+        public IBodyWorkflowAction<LoginPostResponse> Login([WorkflowExpression] Func<string> bodyipAddress, [WorkflowExpression] Func<string> bodyuserAgent, [WorkflowExpression] Func<string> bodyidentityKey, [WorkflowExpression] Func<string> bodygeoCountry = null, [WorkflowExpression] Func<string> bodygeoCity = null, [WorkflowExpression] Func<string> bodyuserTimeOfDay = null)
         {
-            var apiCallPath = "/login/check";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ip_address"] = ExpressionConverter.ConvertO(bodyipAddress);
-            bodypropCount++;
-            body["user_agent"] = ExpressionConverter.ConvertO(bodyuserAgent);
-            bodypropCount++;
-            body["identity_key"] = ExpressionConverter.ConvertO(bodyidentityKey);
-            if (bodygeoCountry != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["geo_country"] = ExpressionConverter.ConvertO(bodygeoCountry);
+                var apiCallPath = "/login/check";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodygeoCity != null)
-            {
-                body["geo_city"] = ExpressionConverter.ConvertO(bodygeoCity);
+                body["ip_address"] = SourceExpressionConverter.ConvertToken(bodyipAddress);
                 bodypropCount++;
-            }
-
-            if (bodyuserTimeOfDay != null)
-            {
-                body["user_time_of_day"] = ExpressionConverter.ConvertO(bodyuserTimeOfDay);
+                body["user_agent"] = SourceExpressionConverter.ConvertToken(bodyuserAgent);
                 bodypropCount++;
+                body["identity_key"] = SourceExpressionConverter.ConvertToken(bodyidentityKey);
+                if (bodygeoCountry != null)
+                {
+                    body["geo_country"] = SourceExpressionConverter.ConvertToken(bodygeoCountry);
+                    bodypropCount++;
+                }
+
+                if (bodygeoCity != null)
+                {
+                    body["geo_city"] = SourceExpressionConverter.ConvertToken(bodygeoCity);
+                    bodypropCount++;
+                }
+
+                if (bodyuserTimeOfDay != null)
+                {
+                    body["user_time_of_day"] = SourceExpressionConverter.ConvertToken(bodyuserTimeOfDay);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LoginPostResponse>(callPayload);
+            return new ApiConnectionAction<LoginPostResponse>(BuildSourceInput);
         }
     }
 

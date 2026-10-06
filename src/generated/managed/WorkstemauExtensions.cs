@@ -12,6014 +12,6812 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workstemau
     public class WorkstemauActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _001addFixedSalaryData(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodypayrollItemId, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<double>> bodytotalLimitAmount = null, Expression<Func<double>> bodypaidAmount = null, Expression<Func<double>> bodysurplusAmount = null)
+        public IBodyWorkflowAction<ResultBoolean> _001addFixedSalaryData([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodypayrollItemId, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<double> bodytotalLimitAmount = null, [WorkflowExpression] Func<double> bodypaidAmount = null, [WorkflowExpression] Func<double> bodysurplusAmount = null)
         {
-            var apiCallPath = "/v3/payroll/addFixedSalaryData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["payrollItemId"] = ExpressionConverter.ConvertO(bodypayrollItemId);
-            if (bodymoney != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["money"] = ExpressionConverter.ConvertO(bodymoney);
+                var apiCallPath = "/v3/payroll/addFixedSalaryData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["employeeId"] = SourceExpressionConverter.ConvertToken(bodyemployeeId);
                 bodypropCount++;
+                body["payrollItemId"] = SourceExpressionConverter.ConvertToken(bodypayrollItemId);
+                if (bodymoney != null)
+                {
+                    body["money"] = SourceExpressionConverter.ConvertToken(bodymoney);
+                    bodypropCount++;
+                }
+
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                    bodypropCount++;
+                }
+
+                if (bodytotalLimitAmount != null)
+                {
+                    body["totalLimitAmount"] = SourceExpressionConverter.ConvertToken(bodytotalLimitAmount);
+                    bodypropCount++;
+                }
+
+                if (bodypaidAmount != null)
+                {
+                    body["paidAmount"] = SourceExpressionConverter.ConvertToken(bodypaidAmount);
+                    bodypropCount++;
+                }
+
+                if (bodysurplusAmount != null)
+                {
+                    body["surplusAmount"] = SourceExpressionConverter.ConvertToken(bodysurplusAmount);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
-
-            if (bodytotalLimitAmount != null)
-            {
-                body["totalLimitAmount"] = ExpressionConverter.ConvertO(bodytotalLimitAmount);
-                bodypropCount++;
-            }
-
-            if (bodypaidAmount != null)
-            {
-                body["paidAmount"] = ExpressionConverter.ConvertO(bodypaidAmount);
-                bodypropCount++;
-            }
-
-            if (bodysurplusAmount != null)
-            {
-                body["surplusAmount"] = ExpressionConverter.ConvertO(bodysurplusAmount);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         public IBodyWorkflowAction<ResultV3TenantResp> _001getCompanyInfo()
         {
-            var apiCallPath = "/v3/company/getCompanyInfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResultV3TenantResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/getCompanyInfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3TenantResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _002deleteFixedSalaryDataById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _002deleteFixedSalaryDataById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/payroll/deleteFixedSalaryDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/deleteFixedSalaryDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         public IBodyWorkflowAction<ResultListV3SysEnterpriseUserResp> _002getUserList()
         {
-            var apiCallPath = "/v3/company/getUserList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResultListV3SysEnterpriseUserResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/getUserList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultListV3SysEnterpriseUserResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3SysEnterpriseUserResp> _003getUserInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3SysEnterpriseUserResp> _003getUserInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/company/getUserInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3SysEnterpriseUserResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/getUserInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3SysEnterpriseUserResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _003updateFixedSalaryDataById(Expression<Func<string>> bodyid, Expression<Func<string>> bodypayrollItemId = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<double>> bodytotalLimitAmount = null, Expression<Func<double>> bodypaidAmount = null, Expression<Func<double>> bodysurplusAmount = null)
+        public IBodyWorkflowAction<ResultBoolean> _003updateFixedSalaryDataById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodypayrollItemId = null, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<double> bodytotalLimitAmount = null, [WorkflowExpression] Func<double> bodypaidAmount = null, [WorkflowExpression] Func<double> bodysurplusAmount = null)
         {
-            var apiCallPath = "/v3/payroll/updateFixedSalaryDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypayrollItemId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["payrollItemId"] = ExpressionConverter.ConvertO(bodypayrollItemId);
+                var apiCallPath = "/v3/payroll/updateFixedSalaryDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodypayrollItemId != null)
+                {
+                    body["payrollItemId"] = SourceExpressionConverter.ConvertToken(bodypayrollItemId);
+                    bodypropCount++;
+                }
+
+                if (bodymoney != null)
+                {
+                    body["money"] = SourceExpressionConverter.ConvertToken(bodymoney);
+                    bodypropCount++;
+                }
+
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                    bodypropCount++;
+                }
+
+                if (bodytotalLimitAmount != null)
+                {
+                    body["totalLimitAmount"] = SourceExpressionConverter.ConvertToken(bodytotalLimitAmount);
+                    bodypropCount++;
+                }
+
+                if (bodypaidAmount != null)
+                {
+                    body["paidAmount"] = SourceExpressionConverter.ConvertToken(bodypaidAmount);
+                    bodypropCount++;
+                }
+
+                if (bodysurplusAmount != null)
+                {
+                    body["surplusAmount"] = SourceExpressionConverter.ConvertToken(bodysurplusAmount);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymoney != null)
-            {
-                body["money"] = ExpressionConverter.ConvertO(bodymoney);
-                bodypropCount++;
-            }
-
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
-
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
-
-            if (bodytotalLimitAmount != null)
-            {
-                body["totalLimitAmount"] = ExpressionConverter.ConvertO(bodytotalLimitAmount);
-                bodypropCount++;
-            }
-
-            if (bodypaidAmount != null)
-            {
-                body["paidAmount"] = ExpressionConverter.ConvertO(bodypaidAmount);
-                bodypropCount++;
-            }
-
-            if (bodysurplusAmount != null)
-            {
-                body["surplusAmount"] = ExpressionConverter.ConvertO(bodysurplusAmount);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _004addLocationInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodyaddress, Expression<Func<double>> bodylongitude, Expression<Func<double>> bodylatitude, Expression<Func<string>> bodyareaCode, Expression<Func<int>> bodyregion = null, Expression<Func<bool>> bodyisEnableGps = null, Expression<Func<bool>> bodyisEnableBluetooth = null, Expression<Func<string>> bodyattendanceAddressCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymapType = null)
+        public IBodyWorkflowAction<ResultBoolean> _004addLocationInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyaddress, [WorkflowExpression] Func<double> bodylongitude, [WorkflowExpression] Func<double> bodylatitude, [WorkflowExpression] Func<string> bodyareaCode, [WorkflowExpression] Func<int> bodyregion = null, [WorkflowExpression] Func<bool> bodyisEnableGps = null, [WorkflowExpression] Func<bool> bodyisEnableBluetooth = null, [WorkflowExpression] Func<string> bodyattendanceAddressCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodymapType = null)
         {
-            var apiCallPath = "/v3/company/addLocationInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-            bodypropCount++;
-            body["longitude"] = ExpressionConverter.ConvertO(bodylongitude);
-            bodypropCount++;
-            body["latitude"] = ExpressionConverter.ConvertO(bodylatitude);
-            if (bodyregion != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                var apiCallPath = "/v3/company/addLocationInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyisEnableGps != null)
-            {
-                body["isEnableGps"] = ExpressionConverter.ConvertO(bodyisEnableGps);
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
-            }
-
-            if (bodyisEnableBluetooth != null)
-            {
-                body["isEnableBluetooth"] = ExpressionConverter.ConvertO(bodyisEnableBluetooth);
+                body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
                 bodypropCount++;
-            }
-
-            if (bodyattendanceAddressCode != null)
-            {
-                body["attendanceAddressCode"] = ExpressionConverter.ConvertO(bodyattendanceAddressCode);
+                body["longitude"] = SourceExpressionConverter.ConvertToken(bodylongitude);
                 bodypropCount++;
-            }
+                body["latitude"] = SourceExpressionConverter.ConvertToken(bodylatitude);
+                if (bodyregion != null)
+                {
+                    body["region"] = SourceExpressionConverter.ConvertToken(bodyregion);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                if (bodyisEnableGps != null)
+                {
+                    body["isEnableGps"] = SourceExpressionConverter.ConvertToken(bodyisEnableGps);
+                    bodypropCount++;
+                }
+
+                if (bodyisEnableBluetooth != null)
+                {
+                    body["isEnableBluetooth"] = SourceExpressionConverter.ConvertToken(bodyisEnableBluetooth);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceAddressCode != null)
+                {
+                    body["attendanceAddressCode"] = SourceExpressionConverter.ConvertToken(bodyattendanceAddressCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodymapType != null)
+                {
+                    body["mapType"] = SourceExpressionConverter.ConvertToken(bodymapType);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["areaCode"] = SourceExpressionConverter.ConvertToken(bodyareaCode);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymapType != null)
-            {
-                body["mapType"] = ExpressionConverter.ConvertO(bodymapType);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["areaCode"] = ExpressionConverter.ConvertO(bodyareaCode);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultListV3PayrollFixedResp> _004getFixedSalaryDataByEmployeeId(Expression<Func<string>> employeeId)
+        public IBodyWorkflowAction<ResultListV3PayrollFixedResp> _004getFixedSalaryDataByEmployeeId([WorkflowExpression] Func<string> employeeId)
         {
-            var apiCallPath = "/v3/payroll/getFixedSalaryDataByEmployeeId";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            return new ApiConnectionAction<ResultListV3PayrollFixedResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/getFixedSalaryDataByEmployeeId";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["employeeId"] = SourceExpressionConverter.ConvertO(employeeId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultListV3PayrollFixedResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _005addVariableSalaryData(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodypayrollItemId, Expression<Func<double>> bodymoney, Expression<Func<string>> bodypayrollDate, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodydataType = null)
+        public IBodyWorkflowAction<ResultBoolean> _005addVariableSalaryData([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodypayrollItemId, [WorkflowExpression] Func<double> bodymoney, [WorkflowExpression] Func<string> bodypayrollDate, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodydataType = null)
         {
-            var apiCallPath = "/v3/payroll/addVariableSalaryData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["payrollItemId"] = ExpressionConverter.ConvertO(bodypayrollItemId);
-            bodypropCount++;
-            body["money"] = ExpressionConverter.ConvertO(bodymoney);
-            bodypropCount++;
-            body["payrollDate"] = ExpressionConverter.ConvertO(bodypayrollDate);
-            if (bodyremark != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                var apiCallPath = "/v3/payroll/addVariableSalaryData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodydataType != null)
-            {
-                body["dataType"] = ExpressionConverter.ConvertO(bodydataType);
+                body["employeeId"] = SourceExpressionConverter.ConvertToken(bodyemployeeId);
                 bodypropCount++;
+                body["payrollItemId"] = SourceExpressionConverter.ConvertToken(bodypayrollItemId);
+                bodypropCount++;
+                body["money"] = SourceExpressionConverter.ConvertToken(bodymoney);
+                bodypropCount++;
+                body["payrollDate"] = SourceExpressionConverter.ConvertToken(bodypayrollDate);
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodydataType != null)
+                {
+                    body["dataType"] = SourceExpressionConverter.ConvertToken(bodydataType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _005deleteLocationById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _005deleteLocationById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/company/deleteLocationById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/deleteLocationById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _006deleteVariableSalaryDataById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _006deleteVariableSalaryDataById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/payroll/deleteVariableSalaryDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/deleteVariableSalaryDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _006updateLocationById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyaddress = null, Expression<Func<double>> bodylongitude = null, Expression<Func<double>> bodylatitude = null, Expression<Func<int>> bodyregion = null, Expression<Func<bool>> bodyisEnableGps = null, Expression<Func<bool>> bodyisEnableBluetooth = null, Expression<Func<string>> bodyattendanceAddressCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodymapType = null, Expression<Func<string>> bodyareaCode = null)
+        public IBodyWorkflowAction<ResultBoolean> _006updateLocationById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<double> bodylongitude = null, [WorkflowExpression] Func<double> bodylatitude = null, [WorkflowExpression] Func<int> bodyregion = null, [WorkflowExpression] Func<bool> bodyisEnableGps = null, [WorkflowExpression] Func<bool> bodyisEnableBluetooth = null, [WorkflowExpression] Func<string> bodyattendanceAddressCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodymapType = null, [WorkflowExpression] Func<string> bodyareaCode = null)
         {
-            var apiCallPath = "/v3/company/updateLocationById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/v3/company/updateLocationById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodylongitude != null)
+                {
+                    body["longitude"] = SourceExpressionConverter.ConvertToken(bodylongitude);
+                    bodypropCount++;
+                }
+
+                if (bodylatitude != null)
+                {
+                    body["latitude"] = SourceExpressionConverter.ConvertToken(bodylatitude);
+                    bodypropCount++;
+                }
+
+                if (bodyregion != null)
+                {
+                    body["region"] = SourceExpressionConverter.ConvertToken(bodyregion);
+                    bodypropCount++;
+                }
+
+                if (bodyisEnableGps != null)
+                {
+                    body["isEnableGps"] = SourceExpressionConverter.ConvertToken(bodyisEnableGps);
+                    bodypropCount++;
+                }
+
+                if (bodyisEnableBluetooth != null)
+                {
+                    body["isEnableBluetooth"] = SourceExpressionConverter.ConvertToken(bodyisEnableBluetooth);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceAddressCode != null)
+                {
+                    body["attendanceAddressCode"] = SourceExpressionConverter.ConvertToken(bodyattendanceAddressCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodymapType != null)
+                {
+                    body["mapType"] = SourceExpressionConverter.ConvertToken(bodymapType);
+                    bodypropCount++;
+                }
+
+                if (bodyareaCode != null)
+                {
+                    body["areaCode"] = SourceExpressionConverter.ConvertToken(bodyareaCode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodylongitude != null)
-            {
-                body["longitude"] = ExpressionConverter.ConvertO(bodylongitude);
-                bodypropCount++;
-            }
-
-            if (bodylatitude != null)
-            {
-                body["latitude"] = ExpressionConverter.ConvertO(bodylatitude);
-                bodypropCount++;
-            }
-
-            if (bodyregion != null)
-            {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
-                bodypropCount++;
-            }
-
-            if (bodyisEnableGps != null)
-            {
-                body["isEnableGps"] = ExpressionConverter.ConvertO(bodyisEnableGps);
-                bodypropCount++;
-            }
-
-            if (bodyisEnableBluetooth != null)
-            {
-                body["isEnableBluetooth"] = ExpressionConverter.ConvertO(bodyisEnableBluetooth);
-                bodypropCount++;
-            }
-
-            if (bodyattendanceAddressCode != null)
-            {
-                body["attendanceAddressCode"] = ExpressionConverter.ConvertO(bodyattendanceAddressCode);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodymapType != null)
-            {
-                body["mapType"] = ExpressionConverter.ConvertO(bodymapType);
-                bodypropCount++;
-            }
-
-            if (bodyareaCode != null)
-            {
-                body["areaCode"] = ExpressionConverter.ConvertO(bodyareaCode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3AttAddressResp> _007getLocationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3AttAddressResp> _007getLocationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/company/getLocationList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3AttAddressResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/getLocationList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3AttAddressResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _007updateVariableSalaryDataById(Expression<Func<string>> bodyid, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean> _007updateVariableSalaryDataById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v3/payroll/updateVariableSalaryDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodymoney != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["money"] = ExpressionConverter.ConvertO(bodymoney);
+                var apiCallPath = "/v3/payroll/updateVariableSalaryDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodymoney != null)
+                {
+                    body["money"] = SourceExpressionConverter.ConvertToken(bodymoney);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AttAddressResp> _008getLocationInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3AttAddressResp> _008getLocationInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/company/getLocationInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3AttAddressResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/getLocationInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3AttAddressResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3PayrollNonFixedResp> _008getVariableSalaryDataList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> payrollDateFilter = null, Expression<Func<string>> moneyFilter = null, Expression<Func<string>> payrollItemIdFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> bizLabelIds = null)
+        public IBodyWorkflowAction<ResultIPageV3PayrollNonFixedResp> _008getVariableSalaryDataList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> hireTypeFilter = null, [WorkflowExpression] Func<string> payrollDateFilter = null, [WorkflowExpression] Func<string> moneyFilter = null, [WorkflowExpression] Func<string> payrollItemIdFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> bizLabelIds = null)
         {
-            var apiCallPath = "/v3/payroll/getVariableSalaryDataList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (hireTypeFilter != null)
-                callPayload.Queries["hireTypeFilter"] = ExpressionConverter.Convert(hireTypeFilter);
-            if (payrollDateFilter != null)
-                callPayload.Queries["payrollDateFilter"] = ExpressionConverter.Convert(payrollDateFilter);
-            if (moneyFilter != null)
-                callPayload.Queries["moneyFilter"] = ExpressionConverter.Convert(moneyFilter);
-            if (payrollItemIdFilter != null)
-                callPayload.Queries["payrollItemIdFilter"] = ExpressionConverter.Convert(payrollItemIdFilter);
-            if (calculateSalaryTypeFilter != null)
-                callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
-            if (bizLabelIds != null)
-                callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(bizLabelIds);
-            return new ApiConnectionAction<ResultIPageV3PayrollNonFixedResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/getVariableSalaryDataList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = SourceExpressionConverter.ConvertO(employeeIdFilter);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = SourceExpressionConverter.ConvertO(statusFilter);
+                if (hireTypeFilter != null)
+                    callPayload.Queries["hireTypeFilter"] = SourceExpressionConverter.ConvertO(hireTypeFilter);
+                if (payrollDateFilter != null)
+                    callPayload.Queries["payrollDateFilter"] = SourceExpressionConverter.ConvertO(payrollDateFilter);
+                if (moneyFilter != null)
+                    callPayload.Queries["moneyFilter"] = SourceExpressionConverter.ConvertO(moneyFilter);
+                if (payrollItemIdFilter != null)
+                    callPayload.Queries["payrollItemIdFilter"] = SourceExpressionConverter.ConvertO(payrollItemIdFilter);
+                if (calculateSalaryTypeFilter != null)
+                    callPayload.Queries["calculateSalaryTypeFilter"] = SourceExpressionConverter.ConvertO(calculateSalaryTypeFilter);
+                if (bizLabelIds != null)
+                    callPayload.Queries["bizLabelIds"] = SourceExpressionConverter.ConvertO(bizLabelIds);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3PayrollNonFixedResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _009addExternalSalaryData(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodybusinessSalaryItemId, Expression<Func<double>> bodymoney, Expression<Func<string>> bodyoccurrenceDate, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyexpirationDate = null)
+        public IBodyWorkflowAction<ResultBoolean> _009addExternalSalaryData([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodybusinessSalaryItemId, [WorkflowExpression] Func<double> bodymoney, [WorkflowExpression] Func<string> bodyoccurrenceDate, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyexpirationDate = null)
         {
-            var apiCallPath = "/v3/payroll/addExternalSalaryData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
+                var apiCallPath = "/v3/payroll/addExternalSalaryData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycode != null)
+                {
+                    body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["businessSalaryItemId"] = ExpressionConverter.ConvertO(bodybusinessSalaryItemId);
-            bodypropCount++;
-            body["money"] = ExpressionConverter.ConvertO(bodymoney);
-            bodypropCount++;
-            body["occurrenceDate"] = ExpressionConverter.ConvertO(bodyoccurrenceDate);
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                body["employeeId"] = SourceExpressionConverter.ConvertToken(bodyemployeeId);
                 bodypropCount++;
-            }
-
-            if (bodyexpirationDate != null)
-            {
-                body["expirationDate"] = ExpressionConverter.ConvertO(bodyexpirationDate);
+                body["businessSalaryItemId"] = SourceExpressionConverter.ConvertToken(bodybusinessSalaryItemId);
                 bodypropCount++;
+                body["money"] = SourceExpressionConverter.ConvertToken(bodymoney);
+                bodypropCount++;
+                body["occurrenceDate"] = SourceExpressionConverter.ConvertToken(bodyoccurrenceDate);
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodyexpirationDate != null)
+                {
+                    body["expirationDate"] = SourceExpressionConverter.ConvertToken(bodyexpirationDate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AttRuleResp> _009getLocationAttendanceRulesById(Expression<Func<string>> workLocationId)
+        public IBodyWorkflowAction<ResultV3AttRuleResp> _009getLocationAttendanceRulesById([WorkflowExpression] Func<string> workLocationId)
         {
-            var apiCallPath = "/v3/company/getLocationAttendanceRulesById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workLocationId"] = ExpressionConverter.Convert(workLocationId);
-            return new ApiConnectionAction<ResultV3AttRuleResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/getLocationAttendanceRulesById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workLocationId"] = SourceExpressionConverter.ConvertO(workLocationId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3AttRuleResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _010addDepartmentInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodydepartmentCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyparentId = null)
+        public IBodyWorkflowAction<ResultBoolean> _010addDepartmentInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydepartmentCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            var apiCallPath = "/v3/company/addDepartmentInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodydepartmentCode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["departmentCode"] = ExpressionConverter.ConvertO(bodydepartmentCode);
+                var apiCallPath = "/v3/company/addDepartmentInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodydepartmentCode != null)
+                {
+                    body["departmentCode"] = SourceExpressionConverter.ConvertToken(bodydepartmentCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyparentId != null)
-            {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _010deleteExternalSalaryDataById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _010deleteExternalSalaryDataById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/payroll/deleteExternalSalaryDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/deleteExternalSalaryDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _011deleteDepartmentById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _011deleteDepartmentById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/company/deleteDepartmentById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/deleteDepartmentById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _011updateExternalSalaryDataById(Expression<Func<string>> bodyid, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyemployeeId = null, Expression<Func<string>> bodybusinessSalaryItemId = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyoccurrenceDate = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyexpirationDate = null)
+        public IBodyWorkflowAction<ResultBoolean> _011updateExternalSalaryDataById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyemployeeId = null, [WorkflowExpression] Func<string> bodybusinessSalaryItemId = null, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodyoccurrenceDate = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyexpirationDate = null)
         {
-            var apiCallPath = "/v3/payroll/updateExternalSalaryDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodycode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
+                var apiCallPath = "/v3/payroll/updateExternalSalaryDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodycode != null)
+                {
+                    body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                    bodypropCount++;
+                }
+
+                if (bodyemployeeId != null)
+                {
+                    body["employeeId"] = SourceExpressionConverter.ConvertToken(bodyemployeeId);
+                    bodypropCount++;
+                }
+
+                if (bodybusinessSalaryItemId != null)
+                {
+                    body["businessSalaryItemId"] = SourceExpressionConverter.ConvertToken(bodybusinessSalaryItemId);
+                    bodypropCount++;
+                }
+
+                if (bodymoney != null)
+                {
+                    body["money"] = SourceExpressionConverter.ConvertToken(bodymoney);
+                    bodypropCount++;
+                }
+
+                if (bodyoccurrenceDate != null)
+                {
+                    body["occurrenceDate"] = SourceExpressionConverter.ConvertToken(bodyoccurrenceDate);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodyexpirationDate != null)
+                {
+                    body["expirationDate"] = SourceExpressionConverter.ConvertToken(bodyexpirationDate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyemployeeId != null)
-            {
-                body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-                bodypropCount++;
-            }
-
-            if (bodybusinessSalaryItemId != null)
-            {
-                body["businessSalaryItemId"] = ExpressionConverter.ConvertO(bodybusinessSalaryItemId);
-                bodypropCount++;
-            }
-
-            if (bodymoney != null)
-            {
-                body["money"] = ExpressionConverter.ConvertO(bodymoney);
-                bodypropCount++;
-            }
-
-            if (bodyoccurrenceDate != null)
-            {
-                body["occurrenceDate"] = ExpressionConverter.ConvertO(bodyoccurrenceDate);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodyexpirationDate != null)
-            {
-                body["expirationDate"] = ExpressionConverter.ConvertO(bodyexpirationDate);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3ExternalPayrollResp> _012getExternalSalaryDataList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> businessSalaryItemFilter = null, Expression<Func<string>> occurrenceDateFilter = null, Expression<Func<string>> moneyFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> labelFilter = null)
+        public IBodyWorkflowAction<ResultIPageV3ExternalPayrollResp> _012getExternalSalaryDataList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> hireTypeFilter = null, [WorkflowExpression] Func<string> businessSalaryItemFilter = null, [WorkflowExpression] Func<string> occurrenceDateFilter = null, [WorkflowExpression] Func<string> moneyFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> labelFilter = null)
         {
-            var apiCallPath = "/v3/payroll/getExternalSalaryDataList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (hireTypeFilter != null)
-                callPayload.Queries["hireTypeFilter"] = ExpressionConverter.Convert(hireTypeFilter);
-            if (businessSalaryItemFilter != null)
-                callPayload.Queries["businessSalaryItemFilter"] = ExpressionConverter.Convert(businessSalaryItemFilter);
-            if (occurrenceDateFilter != null)
-                callPayload.Queries["occurrenceDateFilter"] = ExpressionConverter.Convert(occurrenceDateFilter);
-            if (moneyFilter != null)
-                callPayload.Queries["moneyFilter"] = ExpressionConverter.Convert(moneyFilter);
-            if (calculateSalaryTypeFilter != null)
-                callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
-            if (labelFilter != null)
-                callPayload.Queries["labelFilter"] = ExpressionConverter.Convert(labelFilter);
-            return new ApiConnectionAction<ResultIPageV3ExternalPayrollResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/getExternalSalaryDataList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = SourceExpressionConverter.ConvertO(employeeIdFilter);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = SourceExpressionConverter.ConvertO(statusFilter);
+                if (hireTypeFilter != null)
+                    callPayload.Queries["hireTypeFilter"] = SourceExpressionConverter.ConvertO(hireTypeFilter);
+                if (businessSalaryItemFilter != null)
+                    callPayload.Queries["businessSalaryItemFilter"] = SourceExpressionConverter.ConvertO(businessSalaryItemFilter);
+                if (occurrenceDateFilter != null)
+                    callPayload.Queries["occurrenceDateFilter"] = SourceExpressionConverter.ConvertO(occurrenceDateFilter);
+                if (moneyFilter != null)
+                    callPayload.Queries["moneyFilter"] = SourceExpressionConverter.ConvertO(moneyFilter);
+                if (calculateSalaryTypeFilter != null)
+                    callPayload.Queries["calculateSalaryTypeFilter"] = SourceExpressionConverter.ConvertO(calculateSalaryTypeFilter);
+                if (labelFilter != null)
+                    callPayload.Queries["labelFilter"] = SourceExpressionConverter.ConvertO(labelFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3ExternalPayrollResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _012updateDepartmentById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydepartmentCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyparentId = null)
+        public IBodyWorkflowAction<ResultBoolean> _012updateDepartmentById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydepartmentCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            var apiCallPath = "/v3/company/updateDepartmentById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/v3/company/updateDepartmentById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodydepartmentCode != null)
+                {
+                    body["departmentCode"] = SourceExpressionConverter.ConvertToken(bodydepartmentCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydepartmentCode != null)
-            {
-                body["departmentCode"] = ExpressionConverter.ConvertO(bodydepartmentCode);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyparentId != null)
-            {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3DepartmentResp> _013getDepartmentList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3DepartmentResp> _013getDepartmentList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/company/getDepartmentList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3DepartmentResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/getDepartmentList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3DepartmentResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3PayrollPlanResp> _013getPayrollRunList(Expression<Func<string>> status, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3PayrollPlanResp> _013getPayrollRunList([WorkflowExpression] Func<string> status, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/payroll/getPayrollRunList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3PayrollPlanResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/getPayrollRunList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3PayrollPlanResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _014addPositionInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodypositionCode = null, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<ResultBoolean> _014addPositionInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypositionCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            var apiCallPath = "/v3/company/addPositionInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypositionCode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["positionCode"] = ExpressionConverter.ConvertO(bodypositionCode);
+                var apiCallPath = "/v3/company/addPositionInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodypositionCode != null)
+                {
+                    body["positionCode"] = SourceExpressionConverter.ConvertToken(bodypositionCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3PayrollPlanDetailResp> _014getPayrollRunDataList(Expression<Func<string>> planId, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3PayrollPlanDetailResp> _014getPayrollRunDataList([WorkflowExpression] Func<string> planId, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/payroll/getPayrollRunDataList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["planId"] = ExpressionConverter.Convert(planId);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3PayrollPlanDetailResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/getPayrollRunDataList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["planId"] = SourceExpressionConverter.ConvertO(planId);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3PayrollPlanDetailResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _015deletePositionById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _015deletePositionById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/company/deletePositionById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/deletePositionById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultListV3PayrollPlanDetailResp> _015getPayrollDetailsInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultListV3PayrollPlanDetailResp> _015getPayrollDetailsInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/payroll/getPayrollDetailsInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultListV3PayrollPlanDetailResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/getPayrollDetailsInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultListV3PayrollPlanDetailResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3PayrollRegResp> _016getPayrollPolicyList(Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> q = null)
+        public IBodyWorkflowAction<ResultIPageV3PayrollRegResp> _016getPayrollPolicyList([WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> q = null)
         {
-            var apiCallPath = "/v3/payroll/getPayrollPolicyList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            return new ApiConnectionAction<ResultIPageV3PayrollRegResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/getPayrollPolicyList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3PayrollRegResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _016updatePositionById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypositionCode = null, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<ResultBoolean> _016updatePositionById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodypositionCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            var apiCallPath = "/v3/company/updatePositionById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/v3/company/updatePositionById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodypositionCode != null)
+                {
+                    body["positionCode"] = SourceExpressionConverter.ConvertToken(bodypositionCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypositionCode != null)
-            {
-                body["positionCode"] = ExpressionConverter.ConvertO(bodypositionCode);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3PayrollRegResp> _017getPayrollPolicyInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3PayrollRegResp> _017getPayrollPolicyInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/payroll/getPayrollPolicyInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3PayrollRegResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/getPayrollPolicyInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3PayrollRegResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3PositionResp> _017getPositionList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3PositionResp> _017getPositionList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/company/getPositionList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3PositionResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/getPositionList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3PositionResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _018addCostCenterInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodycostCenterCode = null, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<ResultBoolean> _018addCostCenterInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodycostCenterCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            var apiCallPath = "/v3/company/addCostCenterInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodycostCenterCode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["costCenterCode"] = ExpressionConverter.ConvertO(bodycostCenterCode);
+                var apiCallPath = "/v3/company/addCostCenterInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodycostCenterCode != null)
+                {
+                    body["costCenterCode"] = SourceExpressionConverter.ConvertToken(bodycostCenterCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3PayrollItemResp> _018getPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> nameFilter = null, Expression<Func<string>> paymentTypeFilter = null, Expression<Func<string>> payrollItemTypeId = null, Expression<Func<string>> statusFilter = null)
+        public IBodyWorkflowAction<ResultIPageV3PayrollItemResp> _018getPayItemList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> nameFilter = null, [WorkflowExpression] Func<string> paymentTypeFilter = null, [WorkflowExpression] Func<string> payrollItemTypeId = null, [WorkflowExpression] Func<string> statusFilter = null)
         {
-            var apiCallPath = "/v3/payroll/getPayItemList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (nameFilter != null)
-                callPayload.Queries["nameFilter"] = ExpressionConverter.Convert(nameFilter);
-            if (paymentTypeFilter != null)
-                callPayload.Queries["paymentTypeFilter"] = ExpressionConverter.Convert(paymentTypeFilter);
-            if (payrollItemTypeId != null)
-                callPayload.Queries["payrollItemTypeId"] = ExpressionConverter.Convert(payrollItemTypeId);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            return new ApiConnectionAction<ResultIPageV3PayrollItemResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/getPayItemList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (nameFilter != null)
+                    callPayload.Queries["nameFilter"] = SourceExpressionConverter.ConvertO(nameFilter);
+                if (paymentTypeFilter != null)
+                    callPayload.Queries["paymentTypeFilter"] = SourceExpressionConverter.ConvertO(paymentTypeFilter);
+                if (payrollItemTypeId != null)
+                    callPayload.Queries["payrollItemTypeId"] = SourceExpressionConverter.ConvertO(payrollItemTypeId);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = SourceExpressionConverter.ConvertO(statusFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3PayrollItemResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _019deleteCostCenterById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _019deleteCostCenterById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/company/deleteCostCenterById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/deleteCostCenterById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3PayrollItemResp> _019getPayItemInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3PayrollItemResp> _019getPayItemInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/payroll/getPayItemInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3PayrollItemResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/getPayItemInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3PayrollItemResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AddEmployeeResp> _01addEmployeeInfo(Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodyenglishName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyemployeeStatus = null, Expression<Func<string>> bodysex = null, Expression<Func<string>> bodynationality = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<string>> bodycountryCode = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyidentityCard = null, Expression<Func<string>> bodychineseName = null, Expression<Func<string>> bodysurnameEnglish = null, Expression<Func<string>> bodypersonalNameEnglish = null, Expression<Func<string>> bodybirthday = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodyemergencyContactName = null, Expression<Func<string>> bodyemergencyContactRelation = null, Expression<Func<string>> bodyemergencyContactPhone = null, Expression<Func<string>> bodybankCode = null, Expression<Func<string>> bodybankBranchNumber = null, Expression<Func<string>> bodybankAccountNo = null, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodydate1 = null, Expression<Func<string>> bodydate2 = null, Expression<Func<string>> bodydate3 = null, Expression<Func<string>> bodydate4 = null, Expression<Func<string>> bodytext1 = null, Expression<Func<string>> bodytext2 = null, Expression<Func<string>> bodytext3 = null, Expression<Func<string>> bodytext4 = null, Expression<Func<string>> bodytext5 = null, Expression<Func<string>> bodytext6 = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodymobileCardCalType = null, Expression<Func<string>> bodyregularType = null, Expression<Func<string>> bodyinsurePlanName = null, Expression<Func<string>> bodybizLabelIds = null)
+        public IBodyWorkflowAction<ResultV3AddEmployeeResp> _01addEmployeeInfo([WorkflowExpression] Func<string> bodyentryDate, [WorkflowExpression] Func<string> bodyenglishName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyemployeeStatus = null, [WorkflowExpression] Func<string> bodysex = null, [WorkflowExpression] Func<string> bodynationality = null, [WorkflowExpression] Func<string> bodymaritalStatus = null, [WorkflowExpression] Func<string> bodycountryCode = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodycalculateSalaryType = null, [WorkflowExpression] Func<string> bodyworkDate = null, [WorkflowExpression] Func<double> bodybasicPay = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyidentityCard = null, [WorkflowExpression] Func<string> bodychineseName = null, [WorkflowExpression] Func<string> bodysurnameEnglish = null, [WorkflowExpression] Func<string> bodypersonalNameEnglish = null, [WorkflowExpression] Func<string> bodybirthday = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodyemergencyContactName = null, [WorkflowExpression] Func<string> bodyemergencyContactRelation = null, [WorkflowExpression] Func<string> bodyemergencyContactPhone = null, [WorkflowExpression] Func<string> bodybankCode = null, [WorkflowExpression] Func<string> bodybankBranchNumber = null, [WorkflowExpression] Func<string> bodybankAccountNo = null, [WorkflowExpression] Func<string> bodyconfirmationDate = null, [WorkflowExpression] Func<string> bodydate1 = null, [WorkflowExpression] Func<string> bodydate2 = null, [WorkflowExpression] Func<string> bodydate3 = null, [WorkflowExpression] Func<string> bodydate4 = null, [WorkflowExpression] Func<string> bodytext1 = null, [WorkflowExpression] Func<string> bodytext2 = null, [WorkflowExpression] Func<string> bodytext3 = null, [WorkflowExpression] Func<string> bodytext4 = null, [WorkflowExpression] Func<string> bodytext5 = null, [WorkflowExpression] Func<string> bodytext6 = null, [WorkflowExpression] Func<string> bodydirectSupervisorId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodypositionId = null, [WorkflowExpression] Func<string> bodyhireType = null, [WorkflowExpression] Func<string> bodypayrollRegulationId = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyattendCalculationId = null, [WorkflowExpression] Func<string> bodymobileCardCalType = null, [WorkflowExpression] Func<string> bodyregularType = null, [WorkflowExpression] Func<string> bodyinsurePlanName = null, [WorkflowExpression] Func<string> bodybizLabelIds = null)
         {
-            var apiCallPath = "/v3/employee/addEmployeeInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["entryDate"] = ExpressionConverter.ConvertO(bodyentryDate);
-            bodypropCount++;
-            body["englishName"] = ExpressionConverter.ConvertO(bodyenglishName);
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyemployeeStatus != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["employeeStatus"] = ExpressionConverter.ConvertO(bodyemployeeStatus);
+                var apiCallPath = "/v3/employee/addEmployeeInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodysex != null)
-            {
-                body["sex"] = ExpressionConverter.ConvertO(bodysex);
+                body["entryDate"] = SourceExpressionConverter.ConvertToken(bodyentryDate);
                 bodypropCount++;
-            }
-
-            if (bodynationality != null)
-            {
-                body["nationality"] = ExpressionConverter.ConvertO(bodynationality);
+                body["englishName"] = SourceExpressionConverter.ConvertToken(bodyenglishName);
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodyemployeeStatus != null)
+                {
+                    body["employeeStatus"] = SourceExpressionConverter.ConvertToken(bodyemployeeStatus);
+                    bodypropCount++;
+                }
+
+                if (bodysex != null)
+                {
+                    body["sex"] = SourceExpressionConverter.ConvertToken(bodysex);
+                    bodypropCount++;
+                }
+
+                if (bodynationality != null)
+                {
+                    body["nationality"] = SourceExpressionConverter.ConvertToken(bodynationality);
+                    bodypropCount++;
+                }
+
+                if (bodymaritalStatus != null)
+                {
+                    body["maritalStatus"] = SourceExpressionConverter.ConvertToken(bodymaritalStatus);
+                    bodypropCount++;
+                }
+
+                if (bodycountryCode != null)
+                {
+                    body["countryCode"] = SourceExpressionConverter.ConvertToken(bodycountryCode);
+                    bodypropCount++;
+                }
+
+                if (bodyphone != null)
+                {
+                    body["phone"] = SourceExpressionConverter.ConvertToken(bodyphone);
+                    bodypropCount++;
+                }
+
+                if (bodycalculateSalaryType != null)
+                {
+                    body["calculateSalaryType"] = SourceExpressionConverter.ConvertToken(bodycalculateSalaryType);
+                    bodypropCount++;
+                }
+
+                if (bodyworkDate != null)
+                {
+                    body["workDate"] = SourceExpressionConverter.ConvertToken(bodyworkDate);
+                    bodypropCount++;
+                }
+
+                if (bodybasicPay != null)
+                {
+                    body["basicPay"] = SourceExpressionConverter.ConvertToken(bodybasicPay);
+                    bodypropCount++;
+                }
+
+                if (bodycode != null)
+                {
+                    body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                    bodypropCount++;
+                }
+
+                if (bodyidentityCard != null)
+                {
+                    body["identityCard"] = SourceExpressionConverter.ConvertToken(bodyidentityCard);
+                    bodypropCount++;
+                }
+
+                if (bodychineseName != null)
+                {
+                    body["chineseName"] = SourceExpressionConverter.ConvertToken(bodychineseName);
+                    bodypropCount++;
+                }
+
+                if (bodysurnameEnglish != null)
+                {
+                    body["surnameEnglish"] = SourceExpressionConverter.ConvertToken(bodysurnameEnglish);
+                    bodypropCount++;
+                }
+
+                if (bodypersonalNameEnglish != null)
+                {
+                    body["personalNameEnglish"] = SourceExpressionConverter.ConvertToken(bodypersonalNameEnglish);
+                    bodypropCount++;
+                }
+
+                if (bodybirthday != null)
+                {
+                    body["birthday"] = SourceExpressionConverter.ConvertToken(bodybirthday);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodyemergencyContactName != null)
+                {
+                    body["emergencyContactName"] = SourceExpressionConverter.ConvertToken(bodyemergencyContactName);
+                    bodypropCount++;
+                }
+
+                if (bodyemergencyContactRelation != null)
+                {
+                    body["emergencyContactRelation"] = SourceExpressionConverter.ConvertToken(bodyemergencyContactRelation);
+                    bodypropCount++;
+                }
+
+                if (bodyemergencyContactPhone != null)
+                {
+                    body["emergencyContactPhone"] = SourceExpressionConverter.ConvertToken(bodyemergencyContactPhone);
+                    bodypropCount++;
+                }
+
+                if (bodybankCode != null)
+                {
+                    body["bankCode"] = SourceExpressionConverter.ConvertToken(bodybankCode);
+                    bodypropCount++;
+                }
+
+                if (bodybankBranchNumber != null)
+                {
+                    body["bankBranchNumber"] = SourceExpressionConverter.ConvertToken(bodybankBranchNumber);
+                    bodypropCount++;
+                }
+
+                if (bodybankAccountNo != null)
+                {
+                    body["bankAccountNo"] = SourceExpressionConverter.ConvertToken(bodybankAccountNo);
+                    bodypropCount++;
+                }
+
+                if (bodyconfirmationDate != null)
+                {
+                    body["confirmationDate"] = SourceExpressionConverter.ConvertToken(bodyconfirmationDate);
+                    bodypropCount++;
+                }
+
+                if (bodydate1 != null)
+                {
+                    body["date1"] = SourceExpressionConverter.ConvertToken(bodydate1);
+                    bodypropCount++;
+                }
+
+                if (bodydate2 != null)
+                {
+                    body["date2"] = SourceExpressionConverter.ConvertToken(bodydate2);
+                    bodypropCount++;
+                }
+
+                if (bodydate3 != null)
+                {
+                    body["date3"] = SourceExpressionConverter.ConvertToken(bodydate3);
+                    bodypropCount++;
+                }
+
+                if (bodydate4 != null)
+                {
+                    body["date4"] = SourceExpressionConverter.ConvertToken(bodydate4);
+                    bodypropCount++;
+                }
+
+                if (bodytext1 != null)
+                {
+                    body["text1"] = SourceExpressionConverter.ConvertToken(bodytext1);
+                    bodypropCount++;
+                }
+
+                if (bodytext2 != null)
+                {
+                    body["text2"] = SourceExpressionConverter.ConvertToken(bodytext2);
+                    bodypropCount++;
+                }
+
+                if (bodytext3 != null)
+                {
+                    body["text3"] = SourceExpressionConverter.ConvertToken(bodytext3);
+                    bodypropCount++;
+                }
+
+                if (bodytext4 != null)
+                {
+                    body["text4"] = SourceExpressionConverter.ConvertToken(bodytext4);
+                    bodypropCount++;
+                }
+
+                if (bodytext5 != null)
+                {
+                    body["text5"] = SourceExpressionConverter.ConvertToken(bodytext5);
+                    bodypropCount++;
+                }
+
+                if (bodytext6 != null)
+                {
+                    body["text6"] = SourceExpressionConverter.ConvertToken(bodytext6);
+                    bodypropCount++;
+                }
+
+                if (bodydirectSupervisorId != null)
+                {
+                    body["directSupervisorId"] = SourceExpressionConverter.ConvertToken(bodydirectSupervisorId);
+                    bodypropCount++;
+                }
+
+                if (bodydepartmentId != null)
+                {
+                    body["departmentId"] = SourceExpressionConverter.ConvertToken(bodydepartmentId);
+                    bodypropCount++;
+                }
+
+                if (bodypositionId != null)
+                {
+                    body["positionId"] = SourceExpressionConverter.ConvertToken(bodypositionId);
+                    bodypropCount++;
+                }
+
+                if (bodyhireType != null)
+                {
+                    body["hireType"] = SourceExpressionConverter.ConvertToken(bodyhireType);
+                    bodypropCount++;
+                }
+
+                if (bodypayrollRegulationId != null)
+                {
+                    body["payrollRegulationId"] = SourceExpressionConverter.ConvertToken(bodypayrollRegulationId);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = SourceExpressionConverter.ConvertToken(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodyattendCalculationId != null)
+                {
+                    body["attendCalculationId"] = SourceExpressionConverter.ConvertToken(bodyattendCalculationId);
+                    bodypropCount++;
+                }
+
+                if (bodymobileCardCalType != null)
+                {
+                    body["mobileCardCalType"] = SourceExpressionConverter.ConvertToken(bodymobileCardCalType);
+                    bodypropCount++;
+                }
+
+                if (bodyregularType != null)
+                {
+                    body["regularType"] = SourceExpressionConverter.ConvertToken(bodyregularType);
+                    bodypropCount++;
+                }
+
+                if (bodyinsurePlanName != null)
+                {
+                    body["insurePlanName"] = SourceExpressionConverter.ConvertToken(bodyinsurePlanName);
+                    bodypropCount++;
+                }
+
+                if (bodybizLabelIds != null)
+                {
+                    body["bizLabelIds"] = SourceExpressionConverter.ConvertToken(bodybizLabelIds);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymaritalStatus != null)
-            {
-                body["maritalStatus"] = ExpressionConverter.ConvertO(bodymaritalStatus);
-                bodypropCount++;
-            }
-
-            if (bodycountryCode != null)
-            {
-                body["countryCode"] = ExpressionConverter.ConvertO(bodycountryCode);
-                bodypropCount++;
-            }
-
-            if (bodyphone != null)
-            {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
-                bodypropCount++;
-            }
-
-            if (bodycalculateSalaryType != null)
-            {
-                body["calculateSalaryType"] = ExpressionConverter.ConvertO(bodycalculateSalaryType);
-                bodypropCount++;
-            }
-
-            if (bodyworkDate != null)
-            {
-                body["workDate"] = ExpressionConverter.ConvertO(bodyworkDate);
-                bodypropCount++;
-            }
-
-            if (bodybasicPay != null)
-            {
-                body["basicPay"] = ExpressionConverter.ConvertO(bodybasicPay);
-                bodypropCount++;
-            }
-
-            if (bodycode != null)
-            {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                bodypropCount++;
-            }
-
-            if (bodyidentityCard != null)
-            {
-                body["identityCard"] = ExpressionConverter.ConvertO(bodyidentityCard);
-                bodypropCount++;
-            }
-
-            if (bodychineseName != null)
-            {
-                body["chineseName"] = ExpressionConverter.ConvertO(bodychineseName);
-                bodypropCount++;
-            }
-
-            if (bodysurnameEnglish != null)
-            {
-                body["surnameEnglish"] = ExpressionConverter.ConvertO(bodysurnameEnglish);
-                bodypropCount++;
-            }
-
-            if (bodypersonalNameEnglish != null)
-            {
-                body["personalNameEnglish"] = ExpressionConverter.ConvertO(bodypersonalNameEnglish);
-                bodypropCount++;
-            }
-
-            if (bodybirthday != null)
-            {
-                body["birthday"] = ExpressionConverter.ConvertO(bodybirthday);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactName != null)
-            {
-                body["emergencyContactName"] = ExpressionConverter.ConvertO(bodyemergencyContactName);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactRelation != null)
-            {
-                body["emergencyContactRelation"] = ExpressionConverter.ConvertO(bodyemergencyContactRelation);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactPhone != null)
-            {
-                body["emergencyContactPhone"] = ExpressionConverter.ConvertO(bodyemergencyContactPhone);
-                bodypropCount++;
-            }
-
-            if (bodybankCode != null)
-            {
-                body["bankCode"] = ExpressionConverter.ConvertO(bodybankCode);
-                bodypropCount++;
-            }
-
-            if (bodybankBranchNumber != null)
-            {
-                body["bankBranchNumber"] = ExpressionConverter.ConvertO(bodybankBranchNumber);
-                bodypropCount++;
-            }
-
-            if (bodybankAccountNo != null)
-            {
-                body["bankAccountNo"] = ExpressionConverter.ConvertO(bodybankAccountNo);
-                bodypropCount++;
-            }
-
-            if (bodyconfirmationDate != null)
-            {
-                body["confirmationDate"] = ExpressionConverter.ConvertO(bodyconfirmationDate);
-                bodypropCount++;
-            }
-
-            if (bodydate1 != null)
-            {
-                body["date1"] = ExpressionConverter.ConvertO(bodydate1);
-                bodypropCount++;
-            }
-
-            if (bodydate2 != null)
-            {
-                body["date2"] = ExpressionConverter.ConvertO(bodydate2);
-                bodypropCount++;
-            }
-
-            if (bodydate3 != null)
-            {
-                body["date3"] = ExpressionConverter.ConvertO(bodydate3);
-                bodypropCount++;
-            }
-
-            if (bodydate4 != null)
-            {
-                body["date4"] = ExpressionConverter.ConvertO(bodydate4);
-                bodypropCount++;
-            }
-
-            if (bodytext1 != null)
-            {
-                body["text1"] = ExpressionConverter.ConvertO(bodytext1);
-                bodypropCount++;
-            }
-
-            if (bodytext2 != null)
-            {
-                body["text2"] = ExpressionConverter.ConvertO(bodytext2);
-                bodypropCount++;
-            }
-
-            if (bodytext3 != null)
-            {
-                body["text3"] = ExpressionConverter.ConvertO(bodytext3);
-                bodypropCount++;
-            }
-
-            if (bodytext4 != null)
-            {
-                body["text4"] = ExpressionConverter.ConvertO(bodytext4);
-                bodypropCount++;
-            }
-
-            if (bodytext5 != null)
-            {
-                body["text5"] = ExpressionConverter.ConvertO(bodytext5);
-                bodypropCount++;
-            }
-
-            if (bodytext6 != null)
-            {
-                body["text6"] = ExpressionConverter.ConvertO(bodytext6);
-                bodypropCount++;
-            }
-
-            if (bodydirectSupervisorId != null)
-            {
-                body["directSupervisorId"] = ExpressionConverter.ConvertO(bodydirectSupervisorId);
-                bodypropCount++;
-            }
-
-            if (bodydepartmentId != null)
-            {
-                body["departmentId"] = ExpressionConverter.ConvertO(bodydepartmentId);
-                bodypropCount++;
-            }
-
-            if (bodypositionId != null)
-            {
-                body["positionId"] = ExpressionConverter.ConvertO(bodypositionId);
-                bodypropCount++;
-            }
-
-            if (bodyhireType != null)
-            {
-                body["hireType"] = ExpressionConverter.ConvertO(bodyhireType);
-                bodypropCount++;
-            }
-
-            if (bodypayrollRegulationId != null)
-            {
-                body["payrollRegulationId"] = ExpressionConverter.ConvertO(bodypayrollRegulationId);
-                bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodyattendCalculationId != null)
-            {
-                body["attendCalculationId"] = ExpressionConverter.ConvertO(bodyattendCalculationId);
-                bodypropCount++;
-            }
-
-            if (bodymobileCardCalType != null)
-            {
-                body["mobileCardCalType"] = ExpressionConverter.ConvertO(bodymobileCardCalType);
-                bodypropCount++;
-            }
-
-            if (bodyregularType != null)
-            {
-                body["regularType"] = ExpressionConverter.ConvertO(bodyregularType);
-                bodypropCount++;
-            }
-
-            if (bodyinsurePlanName != null)
-            {
-                body["insurePlanName"] = ExpressionConverter.ConvertO(bodyinsurePlanName);
-                bodypropCount++;
-            }
-
-            if (bodybizLabelIds != null)
-            {
-                body["bizLabelIds"] = ExpressionConverter.ConvertO(bodybizLabelIds);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultV3AddEmployeeResp>(callPayload);
+            return new ApiConnectionAction<ResultV3AddEmployeeResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _01addLeaveBalanceAdjustInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyholidayType, Expression<Func<string>> bodyoccurrenceTime, Expression<Func<string>> bodycause, Expression<Func<string>> bodyadjust)
+        public IBodyWorkflowAction<ResultBoolean> _01addLeaveBalanceAdjustInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyholidayType, [WorkflowExpression] Func<string> bodyoccurrenceTime, [WorkflowExpression] Func<string> bodycause, [WorkflowExpression] Func<string> bodyadjust)
         {
-            var apiCallPath = "/v3/leave/addLeaveBalanceAdjustInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["holidayType"] = ExpressionConverter.ConvertO(bodyholidayType);
-            bodypropCount++;
-            body["occurrenceTime"] = ExpressionConverter.ConvertO(bodyoccurrenceTime);
-            bodypropCount++;
-            body["cause"] = ExpressionConverter.ConvertO(bodycause);
-            bodypropCount++;
-            body["adjust"] = ExpressionConverter.ConvertO(bodyadjust);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v3/leave/addLeaveBalanceAdjustInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["employeeId"] = SourceExpressionConverter.ConvertToken(bodyemployeeId);
+                bodypropCount++;
+                body["holidayType"] = SourceExpressionConverter.ConvertToken(bodyholidayType);
+                bodypropCount++;
+                body["occurrenceTime"] = SourceExpressionConverter.ConvertToken(bodyoccurrenceTime);
+                bodypropCount++;
+                body["cause"] = SourceExpressionConverter.ConvertToken(bodycause);
+                bodypropCount++;
+                body["adjust"] = SourceExpressionConverter.ConvertToken(bodyadjust);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _01addRosterInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyattendDay, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodyshiftTemplateId = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<double>> bodyhourlyRate = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<double>> bodytierRate = null, Expression<Func<double>> bodyscheduledAmount = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean> _01addRosterInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyattendDay, [WorkflowExpression] Func<string> bodyshiftIn, [WorkflowExpression] Func<string> bodyshiftOff, [WorkflowExpression] Func<string> bodyshiftTemplateId = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyshiftStatus = null, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyattendanceItemId = null, [WorkflowExpression] Func<double> bodyhourlyRate = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<double> bodytierRate = null, [WorkflowExpression] Func<double> bodyscheduledAmount = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v3/attendCalculation/addRosterInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["attendDay"] = ExpressionConverter.ConvertO(bodyattendDay);
-            if (bodyshiftTemplateId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["shiftTemplateId"] = ExpressionConverter.ConvertO(bodyshiftTemplateId);
+                var apiCallPath = "/v3/attendCalculation/addRosterInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyaddressCardId != null)
-            {
-                body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
+                body["employeeId"] = SourceExpressionConverter.ConvertToken(bodyemployeeId);
                 bodypropCount++;
-            }
+                body["attendDay"] = SourceExpressionConverter.ConvertToken(bodyattendDay);
+                if (bodyshiftTemplateId != null)
+                {
+                    body["shiftTemplateId"] = SourceExpressionConverter.ConvertToken(bodyshiftTemplateId);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
-            bodypropCount++;
-            body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                if (bodyaddressCardId != null)
+                {
+                    body["addressCardId"] = SourceExpressionConverter.ConvertToken(bodyaddressCardId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodyshiftStatus != null)
-            {
-                body["shiftStatus"] = ExpressionConverter.ConvertO(bodyshiftStatus);
+                body["shiftIn"] = SourceExpressionConverter.ConvertToken(bodyshiftIn);
                 bodypropCount++;
+                body["shiftOff"] = SourceExpressionConverter.ConvertToken(bodyshiftOff);
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = SourceExpressionConverter.ConvertToken(bodymealTime);
+                    bodypropCount++;
+                }
+
+                if (bodyshiftStatus != null)
+                {
+                    body["shiftStatus"] = SourceExpressionConverter.ConvertToken(bodyshiftStatus);
+                    bodypropCount++;
+                }
+
+                if (bodydateType != null)
+                {
+                    body["dateType"] = SourceExpressionConverter.ConvertToken(bodydateType);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceItemId != null)
+                {
+                    body["attendanceItemId"] = SourceExpressionConverter.ConvertToken(bodyattendanceItemId);
+                    bodypropCount++;
+                }
+
+                if (bodyhourlyRate != null)
+                {
+                    body["hourlyRate"] = SourceExpressionConverter.ConvertToken(bodyhourlyRate);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = SourceExpressionConverter.ConvertToken(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodytierRate != null)
+                {
+                    body["tierRate"] = SourceExpressionConverter.ConvertToken(bodytierRate);
+                    bodypropCount++;
+                }
+
+                if (bodyscheduledAmount != null)
+                {
+                    body["scheduledAmount"] = SourceExpressionConverter.ConvertToken(bodyscheduledAmount);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydateType != null)
-            {
-                body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
-                bodypropCount++;
-            }
-
-            if (bodyattendanceItemId != null)
-            {
-                body["attendanceItemId"] = ExpressionConverter.ConvertO(bodyattendanceItemId);
-                bodypropCount++;
-            }
-
-            if (bodyhourlyRate != null)
-            {
-                body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
-                bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodytierRate != null)
-            {
-                body["tierRate"] = ExpressionConverter.ConvertO(bodytierRate);
-                bodypropCount++;
-            }
-
-            if (bodyscheduledAmount != null)
-            {
-                body["scheduledAmount"] = ExpressionConverter.ConvertO(bodyscheduledAmount);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3CalAttendanceResp> _01attendanceSummaryCalculate(Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<string[]>> bodyemployeeIds = null, Expression<Func<string[]>> bodydepartmentIds = null, Expression<Func<string[]>> bodypositionIds = null)
+        public IBodyWorkflowAction<ResultV3CalAttendanceResp> _01attendanceSummaryCalculate([WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodyendDate, [WorkflowExpression] Func<string[]> bodyemployeeIds = null, [WorkflowExpression] Func<string[]> bodydepartmentIds = null, [WorkflowExpression] Func<string[]> bodypositionIds = null)
         {
-            var apiCallPath = "/v3/attendance/attendanceSummaryCalculate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-            bodypropCount++;
-            body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-            if (bodyemployeeIds != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["employeeIds"] = ExpressionConverter.ConvertO(bodyemployeeIds);
+                var apiCallPath = "/v3/attendance/attendanceSummaryCalculate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodydepartmentIds != null)
-            {
-                body["departmentIds"] = ExpressionConverter.ConvertO(bodydepartmentIds);
+                body["startDate"] = SourceExpressionConverter.ConvertToken(bodystartDate);
                 bodypropCount++;
+                body["endDate"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                if (bodyemployeeIds != null)
+                {
+                    body["employeeIds"] = SourceExpressionConverter.ConvertToken(bodyemployeeIds);
+                    bodypropCount++;
+                }
+
+                if (bodydepartmentIds != null)
+                {
+                    body["departmentIds"] = SourceExpressionConverter.ConvertToken(bodydepartmentIds);
+                    bodypropCount++;
+                }
+
+                if (bodypositionIds != null)
+                {
+                    body["positionIds"] = SourceExpressionConverter.ConvertToken(bodypositionIds);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypositionIds != null)
-            {
-                body["positionIds"] = ExpressionConverter.ConvertO(bodypositionIds);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultV3CalAttendanceResp>(callPayload);
+            return new ApiConnectionAction<ResultV3CalAttendanceResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         public IBodyWorkflowAction<ResultV3BizAttendanceConfigureResp> _01getAttendanceConfigurationList()
         {
-            var apiCallPath = "/v3/settings/getAttendanceConfigurationList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResultV3BizAttendanceConfigureResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/settings/getAttendanceConfigurationList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3BizAttendanceConfigureResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3BizReimbursementTypeResp> _01getExpenseTypeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3BizReimbursementTypeResp> _01getExpenseTypeList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/expense/getExpenseTypeList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3BizReimbursementTypeResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/expense/getExpenseTypeList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3BizReimbursementTypeResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3ExternalPayItemResp> _020getExternalPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3ExternalPayItemResp> _020getExternalPayItemList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/payroll/getExternalPayItemList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3ExternalPayItemResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/getExternalPayItemList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3ExternalPayItemResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _020updateCostCenterById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycostCenterCode = null, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<ResultBoolean> _020updateCostCenterById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycostCenterCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            var apiCallPath = "/v3/company/updateCostCenterById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/v3/company/updateCostCenterById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterCode != null)
+                {
+                    body["costCenterCode"] = SourceExpressionConverter.ConvertToken(bodycostCenterCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycostCenterCode != null)
-            {
-                body["costCenterCode"] = ExpressionConverter.ConvertO(bodycostCenterCode);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3CostCenterResp> _021getCostCenterList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3CostCenterResp> _021getCostCenterList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/company/getCostCenterList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3CostCenterResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/getCostCenterList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3CostCenterResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3ExternalPayItemResp> _021getExternalPayItemInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3ExternalPayItemResp> _021getExternalPayItemInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/payroll/getExternalPayItemInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3ExternalPayItemResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/getExternalPayItemInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3ExternalPayItemResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _022addTagInfo(Expression<Func<string>> bodylabelName, Expression<Func<string>> bodylabelCode = null, Expression<Func<int>> bodylabelStatus = null, Expression<Func<string>> bodyparentId = null)
+        public IBodyWorkflowAction<ResultBoolean> _022addTagInfo([WorkflowExpression] Func<string> bodylabelName, [WorkflowExpression] Func<string> bodylabelCode = null, [WorkflowExpression] Func<int> bodylabelStatus = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            var apiCallPath = "/v3/company/addTagInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodylabelCode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["labelCode"] = ExpressionConverter.ConvertO(bodylabelCode);
+                var apiCallPath = "/v3/company/addTagInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodylabelCode != null)
+                {
+                    body["labelCode"] = SourceExpressionConverter.ConvertToken(bodylabelCode);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["labelName"] = SourceExpressionConverter.ConvertToken(bodylabelName);
+                if (bodylabelStatus != null)
+                {
+                    body["labelStatus"] = SourceExpressionConverter.ConvertToken(bodylabelStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["labelName"] = ExpressionConverter.ConvertO(bodylabelName);
-            if (bodylabelStatus != null)
-            {
-                body["labelStatus"] = ExpressionConverter.ConvertO(bodylabelStatus);
-                bodypropCount++;
-            }
-
-            if (bodyparentId != null)
-            {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _022addWorkPatternInfo(Expression<Func<string>> bodyname, Expression<Func<double>> bodyworkHoursForDay, Expression<Func<double>> bodyworkHoursForWeek, Expression<Func<double>> bodyworkHoursForYear, Expression<Func<double>> bodytotalHours, Expression<Func<string>> bodycycleType, Expression<Func<string>> bodyadvancedSetting = null, Expression<Func<string>> bodynumber = null, Expression<Func<string>> bodyfte = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodysalaryCalculationStyle = null, Expression<Func<int>> bodyworkTime = null, Expression<Func<string>> bodydoubleWeekBaseDate = null, Expression<Func<string>> bodyweekSalaryType = null, Expression<Func<int>> bodyisThisWeek = null, Expression<Func<V3TermsSettingInsert[]>> bodysettingList = null)
+        public IBodyWorkflowAction<ResultBoolean> _022addWorkPatternInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<double> bodyworkHoursForDay, [WorkflowExpression] Func<double> bodyworkHoursForWeek, [WorkflowExpression] Func<double> bodyworkHoursForYear, [WorkflowExpression] Func<double> bodytotalHours, [WorkflowExpression] Func<string> bodycycleType, [WorkflowExpression] Func<string> bodyadvancedSetting = null, [WorkflowExpression] Func<string> bodynumber = null, [WorkflowExpression] Func<string> bodyfte = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<int> bodysalaryCalculationStyle = null, [WorkflowExpression] Func<int> bodyworkTime = null, [WorkflowExpression] Func<string> bodydoubleWeekBaseDate = null, [WorkflowExpression] Func<string> bodyweekSalaryType = null, [WorkflowExpression] Func<int> bodyisThisWeek = null, [WorkflowExpression] Func<V3TermsSettingInsert[]> bodysettingList = null)
         {
-            var apiCallPath = "/v3/payroll/addWorkPatternInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyadvancedSetting != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["advancedSetting"] = ExpressionConverter.ConvertO(bodyadvancedSetting);
+                var apiCallPath = "/v3/payroll/addWorkPatternInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyadvancedSetting != null)
+                {
+                    body["advancedSetting"] = SourceExpressionConverter.ConvertToken(bodyadvancedSetting);
+                    bodypropCount++;
+                }
+
+                if (bodynumber != null)
+                {
+                    body["number"] = SourceExpressionConverter.ConvertToken(bodynumber);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodynumber != null)
-            {
-                body["number"] = ExpressionConverter.ConvertO(bodynumber);
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["workHoursForDay"] = ExpressionConverter.ConvertO(bodyworkHoursForDay);
-            bodypropCount++;
-            body["workHoursForWeek"] = ExpressionConverter.ConvertO(bodyworkHoursForWeek);
-            bodypropCount++;
-            body["workHoursForYear"] = ExpressionConverter.ConvertO(bodyworkHoursForYear);
-            bodypropCount++;
-            body["totalHours"] = ExpressionConverter.ConvertO(bodytotalHours);
-            bodypropCount++;
-            body["cycleType"] = ExpressionConverter.ConvertO(bodycycleType);
-            if (bodyfte != null)
-            {
-                body["fte"] = ExpressionConverter.ConvertO(bodyfte);
+                body["workHoursForDay"] = SourceExpressionConverter.ConvertToken(bodyworkHoursForDay);
                 bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                body["workHoursForWeek"] = SourceExpressionConverter.ConvertToken(bodyworkHoursForWeek);
                 bodypropCount++;
-            }
-
-            if (bodysalaryCalculationStyle != null)
-            {
-                body["salaryCalculationStyle"] = ExpressionConverter.ConvertO(bodysalaryCalculationStyle);
+                body["workHoursForYear"] = SourceExpressionConverter.ConvertToken(bodyworkHoursForYear);
                 bodypropCount++;
-            }
-
-            if (bodyworkTime != null)
-            {
-                body["workTime"] = ExpressionConverter.ConvertO(bodyworkTime);
+                body["totalHours"] = SourceExpressionConverter.ConvertToken(bodytotalHours);
                 bodypropCount++;
+                body["cycleType"] = SourceExpressionConverter.ConvertToken(bodycycleType);
+                if (bodyfte != null)
+                {
+                    body["fte"] = SourceExpressionConverter.ConvertToken(bodyfte);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodysalaryCalculationStyle != null)
+                {
+                    body["salaryCalculationStyle"] = SourceExpressionConverter.ConvertToken(bodysalaryCalculationStyle);
+                    bodypropCount++;
+                }
+
+                if (bodyworkTime != null)
+                {
+                    body["workTime"] = SourceExpressionConverter.ConvertToken(bodyworkTime);
+                    bodypropCount++;
+                }
+
+                if (bodydoubleWeekBaseDate != null)
+                {
+                    body["doubleWeekBaseDate"] = SourceExpressionConverter.ConvertToken(bodydoubleWeekBaseDate);
+                    bodypropCount++;
+                }
+
+                if (bodyweekSalaryType != null)
+                {
+                    body["weekSalaryType"] = SourceExpressionConverter.ConvertToken(bodyweekSalaryType);
+                    bodypropCount++;
+                }
+
+                if (bodyisThisWeek != null)
+                {
+                    body["isThisWeek"] = SourceExpressionConverter.ConvertToken(bodyisThisWeek);
+                    bodypropCount++;
+                }
+
+                if (bodysettingList != null)
+                {
+                    body["settingList"] = SourceExpressionConverter.ConvertToken(bodysettingList);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydoubleWeekBaseDate != null)
-            {
-                body["doubleWeekBaseDate"] = ExpressionConverter.ConvertO(bodydoubleWeekBaseDate);
-                bodypropCount++;
-            }
-
-            if (bodyweekSalaryType != null)
-            {
-                body["weekSalaryType"] = ExpressionConverter.ConvertO(bodyweekSalaryType);
-                bodypropCount++;
-            }
-
-            if (bodyisThisWeek != null)
-            {
-                body["isThisWeek"] = ExpressionConverter.ConvertO(bodyisThisWeek);
-                bodypropCount++;
-            }
-
-            if (bodysettingList != null)
-            {
-                body["settingList"] = ExpressionConverter.ConvertO(bodysettingList);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _023deleteTagById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _023deleteTagById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/company/deleteTagById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/deleteTagById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _023updateWorkPatternById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyadvancedSetting = null, Expression<Func<string>> bodynumber = null, Expression<Func<string>> bodyname = null, Expression<Func<double>> bodyworkHoursForDay = null, Expression<Func<double>> bodyworkHoursForWeek = null, Expression<Func<double>> bodyworkHoursForYear = null, Expression<Func<double>> bodytotalHours = null, Expression<Func<string>> bodycycleType = null, Expression<Func<string>> bodyfte = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodysalaryCalculationStyle = null, Expression<Func<int>> bodyworkTime = null, Expression<Func<string>> bodydoubleWeekBaseDate = null, Expression<Func<string>> bodyweekSalaryType = null, Expression<Func<int>> bodyisThisWeek = null, Expression<Func<string>> bodytermsWorkDefaultId = null, Expression<Func<V3TermsSettingUpdate[]>> bodysettingList = null)
+        public IBodyWorkflowAction<ResultBoolean> _023updateWorkPatternById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyadvancedSetting = null, [WorkflowExpression] Func<string> bodynumber = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<double> bodyworkHoursForDay = null, [WorkflowExpression] Func<double> bodyworkHoursForWeek = null, [WorkflowExpression] Func<double> bodyworkHoursForYear = null, [WorkflowExpression] Func<double> bodytotalHours = null, [WorkflowExpression] Func<string> bodycycleType = null, [WorkflowExpression] Func<string> bodyfte = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<int> bodysalaryCalculationStyle = null, [WorkflowExpression] Func<int> bodyworkTime = null, [WorkflowExpression] Func<string> bodydoubleWeekBaseDate = null, [WorkflowExpression] Func<string> bodyweekSalaryType = null, [WorkflowExpression] Func<int> bodyisThisWeek = null, [WorkflowExpression] Func<string> bodytermsWorkDefaultId = null, [WorkflowExpression] Func<V3TermsSettingUpdate[]> bodysettingList = null)
         {
-            var apiCallPath = "/v3/payroll/updateWorkPatternById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyadvancedSetting != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["advancedSetting"] = ExpressionConverter.ConvertO(bodyadvancedSetting);
+                var apiCallPath = "/v3/payroll/updateWorkPatternById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyadvancedSetting != null)
+                {
+                    body["advancedSetting"] = SourceExpressionConverter.ConvertToken(bodyadvancedSetting);
+                    bodypropCount++;
+                }
+
+                if (bodynumber != null)
+                {
+                    body["number"] = SourceExpressionConverter.ConvertToken(bodynumber);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyworkHoursForDay != null)
+                {
+                    body["workHoursForDay"] = SourceExpressionConverter.ConvertToken(bodyworkHoursForDay);
+                    bodypropCount++;
+                }
+
+                if (bodyworkHoursForWeek != null)
+                {
+                    body["workHoursForWeek"] = SourceExpressionConverter.ConvertToken(bodyworkHoursForWeek);
+                    bodypropCount++;
+                }
+
+                if (bodyworkHoursForYear != null)
+                {
+                    body["workHoursForYear"] = SourceExpressionConverter.ConvertToken(bodyworkHoursForYear);
+                    bodypropCount++;
+                }
+
+                if (bodytotalHours != null)
+                {
+                    body["totalHours"] = SourceExpressionConverter.ConvertToken(bodytotalHours);
+                    bodypropCount++;
+                }
+
+                if (bodycycleType != null)
+                {
+                    body["cycleType"] = SourceExpressionConverter.ConvertToken(bodycycleType);
+                    bodypropCount++;
+                }
+
+                if (bodyfte != null)
+                {
+                    body["fte"] = SourceExpressionConverter.ConvertToken(bodyfte);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodysalaryCalculationStyle != null)
+                {
+                    body["salaryCalculationStyle"] = SourceExpressionConverter.ConvertToken(bodysalaryCalculationStyle);
+                    bodypropCount++;
+                }
+
+                if (bodyworkTime != null)
+                {
+                    body["workTime"] = SourceExpressionConverter.ConvertToken(bodyworkTime);
+                    bodypropCount++;
+                }
+
+                if (bodydoubleWeekBaseDate != null)
+                {
+                    body["doubleWeekBaseDate"] = SourceExpressionConverter.ConvertToken(bodydoubleWeekBaseDate);
+                    bodypropCount++;
+                }
+
+                if (bodyweekSalaryType != null)
+                {
+                    body["weekSalaryType"] = SourceExpressionConverter.ConvertToken(bodyweekSalaryType);
+                    bodypropCount++;
+                }
+
+                if (bodyisThisWeek != null)
+                {
+                    body["isThisWeek"] = SourceExpressionConverter.ConvertToken(bodyisThisWeek);
+                    bodypropCount++;
+                }
+
+                if (bodytermsWorkDefaultId != null)
+                {
+                    body["termsWorkDefaultId"] = SourceExpressionConverter.ConvertToken(bodytermsWorkDefaultId);
+                    bodypropCount++;
+                }
+
+                if (bodysettingList != null)
+                {
+                    body["settingList"] = SourceExpressionConverter.ConvertToken(bodysettingList);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodynumber != null)
-            {
-                body["number"] = ExpressionConverter.ConvertO(bodynumber);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodyworkHoursForDay != null)
-            {
-                body["workHoursForDay"] = ExpressionConverter.ConvertO(bodyworkHoursForDay);
-                bodypropCount++;
-            }
-
-            if (bodyworkHoursForWeek != null)
-            {
-                body["workHoursForWeek"] = ExpressionConverter.ConvertO(bodyworkHoursForWeek);
-                bodypropCount++;
-            }
-
-            if (bodyworkHoursForYear != null)
-            {
-                body["workHoursForYear"] = ExpressionConverter.ConvertO(bodyworkHoursForYear);
-                bodypropCount++;
-            }
-
-            if (bodytotalHours != null)
-            {
-                body["totalHours"] = ExpressionConverter.ConvertO(bodytotalHours);
-                bodypropCount++;
-            }
-
-            if (bodycycleType != null)
-            {
-                body["cycleType"] = ExpressionConverter.ConvertO(bodycycleType);
-                bodypropCount++;
-            }
-
-            if (bodyfte != null)
-            {
-                body["fte"] = ExpressionConverter.ConvertO(bodyfte);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodysalaryCalculationStyle != null)
-            {
-                body["salaryCalculationStyle"] = ExpressionConverter.ConvertO(bodysalaryCalculationStyle);
-                bodypropCount++;
-            }
-
-            if (bodyworkTime != null)
-            {
-                body["workTime"] = ExpressionConverter.ConvertO(bodyworkTime);
-                bodypropCount++;
-            }
-
-            if (bodydoubleWeekBaseDate != null)
-            {
-                body["doubleWeekBaseDate"] = ExpressionConverter.ConvertO(bodydoubleWeekBaseDate);
-                bodypropCount++;
-            }
-
-            if (bodyweekSalaryType != null)
-            {
-                body["weekSalaryType"] = ExpressionConverter.ConvertO(bodyweekSalaryType);
-                bodypropCount++;
-            }
-
-            if (bodyisThisWeek != null)
-            {
-                body["isThisWeek"] = ExpressionConverter.ConvertO(bodyisThisWeek);
-                bodypropCount++;
-            }
-
-            if (bodytermsWorkDefaultId != null)
-            {
-                body["termsWorkDefaultId"] = ExpressionConverter.ConvertO(bodytermsWorkDefaultId);
-                bodypropCount++;
-            }
-
-            if (bodysettingList != null)
-            {
-                body["settingList"] = ExpressionConverter.ConvertO(bodysettingList);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _024deleteWorkPatternById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _024deleteWorkPatternById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/payroll/deleteWorkPatternById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/deleteWorkPatternById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _024updateTagById(Expression<Func<string>> bodyid, Expression<Func<string>> bodylabelCode = null, Expression<Func<string>> bodylabelName = null, Expression<Func<int>> bodylabelStatus = null, Expression<Func<string>> bodyparentId = null)
+        public IBodyWorkflowAction<ResultBoolean> _024updateTagById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylabelCode = null, [WorkflowExpression] Func<string> bodylabelName = null, [WorkflowExpression] Func<int> bodylabelStatus = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            var apiCallPath = "/v3/company/updateTagById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodylabelCode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["labelCode"] = ExpressionConverter.ConvertO(bodylabelCode);
+                var apiCallPath = "/v3/company/updateTagById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodylabelCode != null)
+                {
+                    body["labelCode"] = SourceExpressionConverter.ConvertToken(bodylabelCode);
+                    bodypropCount++;
+                }
+
+                if (bodylabelName != null)
+                {
+                    body["labelName"] = SourceExpressionConverter.ConvertToken(bodylabelName);
+                    bodypropCount++;
+                }
+
+                if (bodylabelStatus != null)
+                {
+                    body["labelStatus"] = SourceExpressionConverter.ConvertToken(bodylabelStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodylabelName != null)
-            {
-                body["labelName"] = ExpressionConverter.ConvertO(bodylabelName);
-                bodypropCount++;
-            }
-
-            if (bodylabelStatus != null)
-            {
-                body["labelStatus"] = ExpressionConverter.ConvertO(bodylabelStatus);
-                bodypropCount++;
-            }
-
-            if (bodyparentId != null)
-            {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LabelResp> _025getTagList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3LabelResp> _025getTagList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/company/getTagList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3LabelResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/getTagList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3LabelResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3WorkPatternSummaryResp> _025getWorkPatternList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3WorkPatternSummaryResp> _025getWorkPatternList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/payroll/getWorkPatternList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3WorkPatternSummaryResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/getWorkPatternList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3WorkPatternSummaryResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3DeviceResp> _026getDeviceList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3DeviceResp> _026getDeviceList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/company/getDeviceList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3DeviceResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/company/getDeviceList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3DeviceResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3WorkPatternResp> _026getWorkPatternInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3WorkPatternResp> _026getWorkPatternInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/payroll/getWorkPatternInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3WorkPatternResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/payroll/getWorkPatternInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3WorkPatternResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3BizReimbursementInsertResp> _02addExpenseApplicationInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyreimbursementType, Expression<Func<string>> bodyreimbursementDate, Expression<Func<string>> bodyreimbursementName, Expression<Func<double>> bodyamount, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultV3BizReimbursementInsertResp> _02addExpenseApplicationInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyreimbursementType, [WorkflowExpression] Func<string> bodyreimbursementDate, [WorkflowExpression] Func<string> bodyreimbursementName, [WorkflowExpression] Func<double> bodyamount, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v3/expense/addExpenseApplicationInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["reimbursementType"] = ExpressionConverter.ConvertO(bodyreimbursementType);
-            bodypropCount++;
-            body["reimbursementDate"] = ExpressionConverter.ConvertO(bodyreimbursementDate);
-            bodypropCount++;
-            body["reimbursementName"] = ExpressionConverter.ConvertO(bodyreimbursementName);
-            bodypropCount++;
-            body["amount"] = ExpressionConverter.ConvertO(bodyamount);
-            if (bodyremark != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                var apiCallPath = "/v3/expense/addExpenseApplicationInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["employeeId"] = SourceExpressionConverter.ConvertToken(bodyemployeeId);
+                bodypropCount++;
+                body["reimbursementType"] = SourceExpressionConverter.ConvertToken(bodyreimbursementType);
+                bodypropCount++;
+                body["reimbursementDate"] = SourceExpressionConverter.ConvertToken(bodyreimbursementDate);
+                bodypropCount++;
+                body["reimbursementName"] = SourceExpressionConverter.ConvertToken(bodyreimbursementName);
+                bodypropCount++;
+                body["amount"] = SourceExpressionConverter.ConvertToken(bodyamount);
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultV3BizReimbursementInsertResp>(callPayload);
+            return new ApiConnectionAction<ResultV3BizReimbursementInsertResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _02batchSaveRosterInfo(Expression<Func<string[]>> bodyemployeeIds, Expression<Func<string[]>> bodydates, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodyshiftTemplateId = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<double>> bodyhourlyRate = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<bool>> bodyreplaceOriginal = null)
+        public IBodyWorkflowAction<ResultBoolean> _02batchSaveRosterInfo([WorkflowExpression] Func<string[]> bodyemployeeIds, [WorkflowExpression] Func<string[]> bodydates, [WorkflowExpression] Func<string> bodyshiftIn, [WorkflowExpression] Func<string> bodyshiftOff, [WorkflowExpression] Func<string> bodyshiftTemplateId = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyshiftStatus = null, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyattendanceItemId = null, [WorkflowExpression] Func<double> bodyhourlyRate = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<bool> bodyreplaceOriginal = null)
         {
-            var apiCallPath = "/v3/attendCalculation/batchSaveRosterInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeIds"] = ExpressionConverter.ConvertO(bodyemployeeIds);
-            bodypropCount++;
-            body["dates"] = ExpressionConverter.ConvertO(bodydates);
-            if (bodyshiftTemplateId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["shiftTemplateId"] = ExpressionConverter.ConvertO(bodyshiftTemplateId);
+                var apiCallPath = "/v3/attendCalculation/batchSaveRosterInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyaddressCardId != null)
-            {
-                body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
+                body["employeeIds"] = SourceExpressionConverter.ConvertToken(bodyemployeeIds);
                 bodypropCount++;
-            }
+                body["dates"] = SourceExpressionConverter.ConvertToken(bodydates);
+                if (bodyshiftTemplateId != null)
+                {
+                    body["shiftTemplateId"] = SourceExpressionConverter.ConvertToken(bodyshiftTemplateId);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
-            bodypropCount++;
-            body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                if (bodyaddressCardId != null)
+                {
+                    body["addressCardId"] = SourceExpressionConverter.ConvertToken(bodyaddressCardId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodyshiftStatus != null)
-            {
-                body["shiftStatus"] = ExpressionConverter.ConvertO(bodyshiftStatus);
+                body["shiftIn"] = SourceExpressionConverter.ConvertToken(bodyshiftIn);
                 bodypropCount++;
+                body["shiftOff"] = SourceExpressionConverter.ConvertToken(bodyshiftOff);
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = SourceExpressionConverter.ConvertToken(bodymealTime);
+                    bodypropCount++;
+                }
+
+                if (bodyshiftStatus != null)
+                {
+                    body["shiftStatus"] = SourceExpressionConverter.ConvertToken(bodyshiftStatus);
+                    bodypropCount++;
+                }
+
+                if (bodydateType != null)
+                {
+                    body["dateType"] = SourceExpressionConverter.ConvertToken(bodydateType);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceItemId != null)
+                {
+                    body["attendanceItemId"] = SourceExpressionConverter.ConvertToken(bodyattendanceItemId);
+                    bodypropCount++;
+                }
+
+                if (bodyhourlyRate != null)
+                {
+                    body["hourlyRate"] = SourceExpressionConverter.ConvertToken(bodyhourlyRate);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = SourceExpressionConverter.ConvertToken(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodyreplaceOriginal != null)
+                {
+                    body["replaceOriginal"] = SourceExpressionConverter.ConvertToken(bodyreplaceOriginal);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydateType != null)
-            {
-                body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
-                bodypropCount++;
-            }
-
-            if (bodyattendanceItemId != null)
-            {
-                body["attendanceItemId"] = ExpressionConverter.ConvertO(bodyattendanceItemId);
-                bodypropCount++;
-            }
-
-            if (bodyhourlyRate != null)
-            {
-                body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
-                bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodyreplaceOriginal != null)
-            {
-                body["replaceOriginal"] = ExpressionConverter.ConvertO(bodyreplaceOriginal);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _02deleteEmployeeById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _02deleteEmployeeById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/employee/deleteAllData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/employee/deleteAllData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _02deleteLeaveBalanceAdjustmentById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _02deleteLeaveBalanceAdjustmentById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/leave/deleteLeaveBalanceAdjustmentById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/leave/deleteLeaveBalanceAdjustmentById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3AttendanceListResp> _02getAttendanceSummaryList(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> unit, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> attendCalculationFilter = null, Expression<Func<string>> employeeFilter = null, Expression<Func<string>> labelFilter = null, Expression<Func<string>> payrollRegulationFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> attendanceTypeFilter = null, Expression<Func<string>> shiftTypeFilter = null)
+        public IBodyWorkflowAction<ResultIPageV3AttendanceListResp> _02getAttendanceSummaryList([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> unit, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> positionFilter = null, [WorkflowExpression] Func<string> attendCalculationFilter = null, [WorkflowExpression] Func<string> employeeFilter = null, [WorkflowExpression] Func<string> labelFilter = null, [WorkflowExpression] Func<string> payrollRegulationFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> hireTypeFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> attendanceTypeFilter = null, [WorkflowExpression] Func<string> shiftTypeFilter = null)
         {
-            var apiCallPath = "/v3/attendance/getAttendanceSummaryList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            callPayload.Queries["unit"] = ExpressionConverter.Convert(unit);
-            if (departmentFilter != null)
-                callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
-            if (positionFilter != null)
-                callPayload.Queries["positionFilter"] = ExpressionConverter.Convert(positionFilter);
-            if (attendCalculationFilter != null)
-                callPayload.Queries["attendCalculationFilter"] = ExpressionConverter.Convert(attendCalculationFilter);
-            if (employeeFilter != null)
-                callPayload.Queries["employeeFilter"] = ExpressionConverter.Convert(employeeFilter);
-            if (labelFilter != null)
-                callPayload.Queries["labelFilter"] = ExpressionConverter.Convert(labelFilter);
-            if (payrollRegulationFilter != null)
-                callPayload.Queries["payrollRegulationFilter"] = ExpressionConverter.Convert(payrollRegulationFilter);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (hireTypeFilter != null)
-                callPayload.Queries["hireTypeFilter"] = ExpressionConverter.Convert(hireTypeFilter);
-            if (calculateSalaryTypeFilter != null)
-                callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
-            if (attendanceTypeFilter != null)
-                callPayload.Queries["attendanceTypeFilter"] = ExpressionConverter.Convert(attendanceTypeFilter);
-            if (shiftTypeFilter != null)
-                callPayload.Queries["shiftTypeFilter"] = ExpressionConverter.Convert(shiftTypeFilter);
-            return new ApiConnectionAction<ResultIPageV3AttendanceListResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendance/getAttendanceSummaryList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                callPayload.Queries["unit"] = SourceExpressionConverter.ConvertO(unit);
+                if (departmentFilter != null)
+                    callPayload.Queries["departmentFilter"] = SourceExpressionConverter.ConvertO(departmentFilter);
+                if (positionFilter != null)
+                    callPayload.Queries["positionFilter"] = SourceExpressionConverter.ConvertO(positionFilter);
+                if (attendCalculationFilter != null)
+                    callPayload.Queries["attendCalculationFilter"] = SourceExpressionConverter.ConvertO(attendCalculationFilter);
+                if (employeeFilter != null)
+                    callPayload.Queries["employeeFilter"] = SourceExpressionConverter.ConvertO(employeeFilter);
+                if (labelFilter != null)
+                    callPayload.Queries["labelFilter"] = SourceExpressionConverter.ConvertO(labelFilter);
+                if (payrollRegulationFilter != null)
+                    callPayload.Queries["payrollRegulationFilter"] = SourceExpressionConverter.ConvertO(payrollRegulationFilter);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = SourceExpressionConverter.ConvertO(statusFilter);
+                if (hireTypeFilter != null)
+                    callPayload.Queries["hireTypeFilter"] = SourceExpressionConverter.ConvertO(hireTypeFilter);
+                if (calculateSalaryTypeFilter != null)
+                    callPayload.Queries["calculateSalaryTypeFilter"] = SourceExpressionConverter.ConvertO(calculateSalaryTypeFilter);
+                if (attendanceTypeFilter != null)
+                    callPayload.Queries["attendanceTypeFilter"] = SourceExpressionConverter.ConvertO(attendanceTypeFilter);
+                if (shiftTypeFilter != null)
+                    callPayload.Queries["shiftTypeFilter"] = SourceExpressionConverter.ConvertO(shiftTypeFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3AttendanceListResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         public IBodyWorkflowAction<ResultListV3BizCustomizeDictionaryResp> _02getDataDictionaryList()
         {
-            var apiCallPath = "/v3/settings/getDataDictionaryList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResultListV3BizCustomizeDictionaryResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _03deleteExpenseApplicationById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/expense/deleteExpenseApplicationById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _03deleteRosterById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/attendCalculation/deleteRosterById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultListV3BizCustomizeDictionaryItemResp> _03GetDataDictionaryDetailsInfoById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/settings/getDataDictionaryDetailsInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultListV3BizCustomizeDictionaryItemResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultListV3AttendanceDetailListResp> _03getEmployeeDailyAttendanceList(Expression<Func<string>> employeeId, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> attendStatusFilter = null)
-        {
-            var apiCallPath = "/v3/attendance/getEmployeeDailyAttendanceList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (attendStatusFilter != null)
-                callPayload.Queries["attendStatusFilter"] = ExpressionConverter.Convert(attendStatusFilter);
-            return new ApiConnectionAction<ResultListV3AttendanceDetailListResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LeaveHolidayBalanceResp> _03getLeaveBalanceAdjustmentList(Expression<Func<string>> employeeId, Expression<Func<string>> holidayType, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
-        {
-            var apiCallPath = "/v3/leave/getLeaveBalanceAdjustmentList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            callPayload.Queries["holidayType"] = ExpressionConverter.Convert(holidayType);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3LeaveHolidayBalanceResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _03updateEmployeeById(Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodyenglishName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyemployeeStatus = null, Expression<Func<string>> bodysex = null, Expression<Func<string>> bodynationality = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<string>> bodycountryCode = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyidentityCard = null, Expression<Func<string>> bodychineseName = null, Expression<Func<string>> bodysurnameEnglish = null, Expression<Func<string>> bodypersonalNameEnglish = null, Expression<Func<string>> bodybirthday = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodyemergencyContactName = null, Expression<Func<string>> bodyemergencyContactRelation = null, Expression<Func<string>> bodyemergencyContactPhone = null, Expression<Func<string>> bodybankCode = null, Expression<Func<string>> bodybankBranchNumber = null, Expression<Func<string>> bodybankAccountNo = null, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodydate1 = null, Expression<Func<string>> bodydate2 = null, Expression<Func<string>> bodydate3 = null, Expression<Func<string>> bodydate4 = null, Expression<Func<string>> bodytext1 = null, Expression<Func<string>> bodytext2 = null, Expression<Func<string>> bodytext3 = null, Expression<Func<string>> bodytext4 = null, Expression<Func<string>> bodytext5 = null, Expression<Func<string>> bodytext6 = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodymobileCardCalType = null, Expression<Func<string>> bodyregularType = null, Expression<Func<string>> bodyinsurePlanName = null, Expression<Func<string>> bodybizLabelIds = null)
-        {
-            var apiCallPath = "/v3/employee/updateEmployeeById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["entryDate"] = ExpressionConverter.ConvertO(bodyentryDate);
-            bodypropCount++;
-            body["englishName"] = ExpressionConverter.ConvertO(bodyenglishName);
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyemployeeStatus != null)
-            {
-                body["employeeStatus"] = ExpressionConverter.ConvertO(bodyemployeeStatus);
-                bodypropCount++;
-            }
-
-            if (bodysex != null)
-            {
-                body["sex"] = ExpressionConverter.ConvertO(bodysex);
-                bodypropCount++;
-            }
-
-            if (bodynationality != null)
-            {
-                body["nationality"] = ExpressionConverter.ConvertO(bodynationality);
-                bodypropCount++;
-            }
-
-            if (bodymaritalStatus != null)
-            {
-                body["maritalStatus"] = ExpressionConverter.ConvertO(bodymaritalStatus);
-                bodypropCount++;
-            }
-
-            if (bodycountryCode != null)
-            {
-                body["countryCode"] = ExpressionConverter.ConvertO(bodycountryCode);
-                bodypropCount++;
-            }
-
-            if (bodyphone != null)
-            {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
-                bodypropCount++;
-            }
-
-            if (bodycalculateSalaryType != null)
-            {
-                body["calculateSalaryType"] = ExpressionConverter.ConvertO(bodycalculateSalaryType);
-                bodypropCount++;
-            }
-
-            if (bodyworkDate != null)
-            {
-                body["workDate"] = ExpressionConverter.ConvertO(bodyworkDate);
-                bodypropCount++;
-            }
-
-            if (bodybasicPay != null)
-            {
-                body["basicPay"] = ExpressionConverter.ConvertO(bodybasicPay);
-                bodypropCount++;
-            }
-
-            if (bodycode != null)
-            {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                bodypropCount++;
-            }
-
-            if (bodyidentityCard != null)
-            {
-                body["identityCard"] = ExpressionConverter.ConvertO(bodyidentityCard);
-                bodypropCount++;
-            }
-
-            if (bodychineseName != null)
-            {
-                body["chineseName"] = ExpressionConverter.ConvertO(bodychineseName);
-                bodypropCount++;
-            }
-
-            if (bodysurnameEnglish != null)
-            {
-                body["surnameEnglish"] = ExpressionConverter.ConvertO(bodysurnameEnglish);
-                bodypropCount++;
-            }
-
-            if (bodypersonalNameEnglish != null)
-            {
-                body["personalNameEnglish"] = ExpressionConverter.ConvertO(bodypersonalNameEnglish);
-                bodypropCount++;
-            }
-
-            if (bodybirthday != null)
-            {
-                body["birthday"] = ExpressionConverter.ConvertO(bodybirthday);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactName != null)
-            {
-                body["emergencyContactName"] = ExpressionConverter.ConvertO(bodyemergencyContactName);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactRelation != null)
-            {
-                body["emergencyContactRelation"] = ExpressionConverter.ConvertO(bodyemergencyContactRelation);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactPhone != null)
-            {
-                body["emergencyContactPhone"] = ExpressionConverter.ConvertO(bodyemergencyContactPhone);
-                bodypropCount++;
-            }
-
-            if (bodybankCode != null)
-            {
-                body["bankCode"] = ExpressionConverter.ConvertO(bodybankCode);
-                bodypropCount++;
-            }
-
-            if (bodybankBranchNumber != null)
-            {
-                body["bankBranchNumber"] = ExpressionConverter.ConvertO(bodybankBranchNumber);
-                bodypropCount++;
-            }
-
-            if (bodybankAccountNo != null)
-            {
-                body["bankAccountNo"] = ExpressionConverter.ConvertO(bodybankAccountNo);
-                bodypropCount++;
-            }
-
-            if (bodyconfirmationDate != null)
-            {
-                body["confirmationDate"] = ExpressionConverter.ConvertO(bodyconfirmationDate);
-                bodypropCount++;
-            }
-
-            if (bodydate1 != null)
-            {
-                body["date1"] = ExpressionConverter.ConvertO(bodydate1);
-                bodypropCount++;
-            }
-
-            if (bodydate2 != null)
-            {
-                body["date2"] = ExpressionConverter.ConvertO(bodydate2);
-                bodypropCount++;
-            }
-
-            if (bodydate3 != null)
-            {
-                body["date3"] = ExpressionConverter.ConvertO(bodydate3);
-                bodypropCount++;
-            }
-
-            if (bodydate4 != null)
-            {
-                body["date4"] = ExpressionConverter.ConvertO(bodydate4);
-                bodypropCount++;
-            }
-
-            if (bodytext1 != null)
-            {
-                body["text1"] = ExpressionConverter.ConvertO(bodytext1);
-                bodypropCount++;
-            }
-
-            if (bodytext2 != null)
-            {
-                body["text2"] = ExpressionConverter.ConvertO(bodytext2);
-                bodypropCount++;
-            }
-
-            if (bodytext3 != null)
-            {
-                body["text3"] = ExpressionConverter.ConvertO(bodytext3);
-                bodypropCount++;
-            }
-
-            if (bodytext4 != null)
-            {
-                body["text4"] = ExpressionConverter.ConvertO(bodytext4);
-                bodypropCount++;
-            }
-
-            if (bodytext5 != null)
-            {
-                body["text5"] = ExpressionConverter.ConvertO(bodytext5);
-                bodypropCount++;
-            }
-
-            if (bodytext6 != null)
-            {
-                body["text6"] = ExpressionConverter.ConvertO(bodytext6);
-                bodypropCount++;
-            }
-
-            if (bodydirectSupervisorId != null)
-            {
-                body["directSupervisorId"] = ExpressionConverter.ConvertO(bodydirectSupervisorId);
-                bodypropCount++;
-            }
-
-            if (bodydepartmentId != null)
-            {
-                body["departmentId"] = ExpressionConverter.ConvertO(bodydepartmentId);
-                bodypropCount++;
-            }
-
-            if (bodypositionId != null)
-            {
-                body["positionId"] = ExpressionConverter.ConvertO(bodypositionId);
-                bodypropCount++;
-            }
-
-            if (bodyhireType != null)
-            {
-                body["hireType"] = ExpressionConverter.ConvertO(bodyhireType);
-                bodypropCount++;
-            }
-
-            if (bodypayrollRegulationId != null)
-            {
-                body["payrollRegulationId"] = ExpressionConverter.ConvertO(bodypayrollRegulationId);
-                bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodyattendCalculationId != null)
-            {
-                body["attendCalculationId"] = ExpressionConverter.ConvertO(bodyattendCalculationId);
-                bodypropCount++;
-            }
-
-            if (bodymobileCardCalType != null)
-            {
-                body["mobileCardCalType"] = ExpressionConverter.ConvertO(bodymobileCardCalType);
-                bodypropCount++;
-            }
-
-            if (bodyregularType != null)
-            {
-                body["regularType"] = ExpressionConverter.ConvertO(bodyregularType);
-                bodypropCount++;
-            }
-
-            if (bodyinsurePlanName != null)
-            {
-                body["insurePlanName"] = ExpressionConverter.ConvertO(bodyinsurePlanName);
-                bodypropCount++;
-            }
-
-            if (bodybizLabelIds != null)
-            {
-                body["bizLabelIds"] = ExpressionConverter.ConvertO(bodybizLabelIds);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AddMobileCardResp> _04addAttendanceDataInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodydate, Expression<Func<string>> bodymode, Expression<Func<string>> bodycardType = null, Expression<Func<double>> bodyactualLongitude = null, Expression<Func<double>> bodyactualLatitude = null, Expression<Func<string>> bodydeviceName = null, Expression<Func<string>> bodycodeSource = null, Expression<Func<string>> bodylocationName = null, Expression<Func<string>> bodyworkLocationId = null, Expression<Func<string>> bodydeviceId = null)
-        {
-            var apiCallPath = "/v3/attendance/addAttendanceDataInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["date"] = ExpressionConverter.ConvertO(bodydate);
-            bodypropCount++;
-            body["mode"] = ExpressionConverter.ConvertO(bodymode);
-            if (bodycardType != null)
-            {
-                body["cardType"] = ExpressionConverter.ConvertO(bodycardType);
-                bodypropCount++;
-            }
-
-            if (bodyactualLongitude != null)
-            {
-                body["actualLongitude"] = ExpressionConverter.ConvertO(bodyactualLongitude);
-                bodypropCount++;
-            }
-
-            if (bodyactualLatitude != null)
-            {
-                body["actualLatitude"] = ExpressionConverter.ConvertO(bodyactualLatitude);
-                bodypropCount++;
-            }
-
-            if (bodydeviceName != null)
-            {
-                body["deviceName"] = ExpressionConverter.ConvertO(bodydeviceName);
-                bodypropCount++;
-            }
-
-            if (bodycodeSource != null)
-            {
-                body["codeSource"] = ExpressionConverter.ConvertO(bodycodeSource);
-                bodypropCount++;
-            }
-
-            if (bodylocationName != null)
-            {
-                body["locationName"] = ExpressionConverter.ConvertO(bodylocationName);
-                bodypropCount++;
-            }
-
-            if (bodyworkLocationId != null)
-            {
-                body["workLocationId"] = ExpressionConverter.ConvertO(bodyworkLocationId);
-                bodypropCount++;
-            }
-
-            if (bodydeviceId != null)
-            {
-                body["deviceId"] = ExpressionConverter.ConvertO(bodydeviceId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultV3AddMobileCardResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _04calculationLeaveBalance(Expression<Func<string>> bodydate = null, Expression<Func<bool>> bodyisForceCal = null, Expression<Func<string[]>> bodyemployeeIdsList = null, Expression<Func<string[]>> bodyposition = null, Expression<Func<string[]>> bodydept = null)
-        {
-            var apiCallPath = "/v3/leave/calculationLeaveBalance";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydate != null)
-            {
-                body["date"] = ExpressionConverter.ConvertO(bodydate);
-                bodypropCount++;
-            }
-
-            if (bodyisForceCal != null)
-            {
-                body["isForceCal"] = ExpressionConverter.ConvertO(bodyisForceCal);
-                bodypropCount++;
-            }
-
-            if (bodyemployeeIdsList != null)
-            {
-                body["employeeIdsList"] = ExpressionConverter.ConvertO(bodyemployeeIdsList);
-                bodypropCount++;
-            }
-
-            if (bodyposition != null)
-            {
-                body["position"] = ExpressionConverter.ConvertO(bodyposition);
-                bodypropCount++;
-            }
-
-            if (bodydept != null)
-            {
-                body["dept"] = ExpressionConverter.ConvertO(bodydept);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3BizEmployeeCustomizationResp> _04getCustomizeUserFieldList(Expression<Func<int>> current = null, Expression<Func<int>> size = null)
-        {
-            var apiCallPath = "/v3/settings/getCustomizeUserFieldList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3BizEmployeeCustomizationResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3EmployeeListResp> _04getEmployeeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> id = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<string>> sex = null, Expression<Func<int>> status = null, Expression<Func<string>> hireType = null, Expression<Func<string>> calculateSalaryType = null, Expression<Func<string>> costCenterId = null, Expression<Func<string>> payrollRegulationId = null, Expression<Func<string>> regularType = null)
-        {
-            var apiCallPath = "/v3/employee/getEmployeeList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (departmentId != null)
-                callPayload.Queries["departmentId"] = ExpressionConverter.Convert(departmentId);
-            if (positionId != null)
-                callPayload.Queries["positionId"] = ExpressionConverter.Convert(positionId);
-            if (sex != null)
-                callPayload.Queries["sex"] = ExpressionConverter.Convert(sex);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (hireType != null)
-                callPayload.Queries["hireType"] = ExpressionConverter.Convert(hireType);
-            if (calculateSalaryType != null)
-                callPayload.Queries["calculateSalaryType"] = ExpressionConverter.Convert(calculateSalaryType);
-            if (costCenterId != null)
-                callPayload.Queries["costCenterId"] = ExpressionConverter.Convert(costCenterId);
-            if (payrollRegulationId != null)
-                callPayload.Queries["payrollRegulationId"] = ExpressionConverter.Convert(payrollRegulationId);
-            if (regularType != null)
-                callPayload.Queries["regularType"] = ExpressionConverter.Convert(regularType);
-            return new ApiConnectionAction<ResultIPageV3EmployeeListResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _04updateExpenseApplicationById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyreimbursementType = null, Expression<Func<string>> bodyreimbursementDate = null, Expression<Func<string>> bodyreimbursementName = null, Expression<Func<double>> bodyamount = null, Expression<Func<string>> bodyremark = null)
-        {
-            var apiCallPath = "/v3/expense/updateExpenseApplicationById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyreimbursementType != null)
-            {
-                body["reimbursementType"] = ExpressionConverter.ConvertO(bodyreimbursementType);
-                bodypropCount++;
-            }
-
-            if (bodyreimbursementDate != null)
-            {
-                body["reimbursementDate"] = ExpressionConverter.ConvertO(bodyreimbursementDate);
-                bodypropCount++;
-            }
-
-            if (bodyreimbursementName != null)
-            {
-                body["reimbursementName"] = ExpressionConverter.ConvertO(bodyreimbursementName);
-                bodypropCount++;
-            }
-
-            if (bodyamount != null)
-            {
-                body["amount"] = ExpressionConverter.ConvertO(bodyamount);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _04updateRosterInfoById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodyshiftTemplateId = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<double>> bodyhourlyRate = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<double>> bodytierRate = null, Expression<Func<double>> bodyscheduledAmount = null, Expression<Func<string>> bodyremark = null)
-        {
-            var apiCallPath = "/v3/attendCalculation/updateRosterInfoById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyshiftTemplateId != null)
-            {
-                body["shiftTemplateId"] = ExpressionConverter.ConvertO(bodyshiftTemplateId);
-                bodypropCount++;
-            }
-
-            if (bodyaddressCardId != null)
-            {
-                body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
-            bodypropCount++;
-            body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
-
-            if (bodyshiftStatus != null)
-            {
-                body["shiftStatus"] = ExpressionConverter.ConvertO(bodyshiftStatus);
-                bodypropCount++;
-            }
-
-            if (bodydateType != null)
-            {
-                body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
-                bodypropCount++;
-            }
-
-            if (bodyattendanceItemId != null)
-            {
-                body["attendanceItemId"] = ExpressionConverter.ConvertO(bodyattendanceItemId);
-                bodypropCount++;
-            }
-
-            if (bodyhourlyRate != null)
-            {
-                body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
-                bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodytierRate != null)
-            {
-                body["tierRate"] = ExpressionConverter.ConvertO(bodytierRate);
-                bodypropCount++;
-            }
-
-            if (bodyscheduledAmount != null)
-            {
-                body["scheduledAmount"] = ExpressionConverter.ConvertO(bodyscheduledAmount);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _05deleteAttendanceDataById(Expression<Func<string>> ids)
-        {
-            var apiCallPath = "/v3/attendance/deleteAttendanceDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3BizEmployeeCustomizationResp> _05getCustomizeUserFieldInfoById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/settings/getCustomizeUserFieldInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3BizEmployeeCustomizationResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3EmployeeInfoResp> _05getEmployeeInfoById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/employee/getEmployeeInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3EmployeeInfoResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3BizReimbursementResp> _05GetExpenseApplicationList(Expression<Func<string>> q = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> dateFilter = null, Expression<Func<string>> reimbursementStatusFilter = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
-        {
-            var apiCallPath = "/v3/expense/getExpenseApplicationList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (departmentFilter != null)
-                callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (dateFilter != null)
-                callPayload.Queries["dateFilter"] = ExpressionConverter.Convert(dateFilter);
-            if (reimbursementStatusFilter != null)
-                callPayload.Queries["reimbursementStatusFilter"] = ExpressionConverter.Convert(reimbursementStatusFilter);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3BizReimbursementResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LeaveBalanceResp> _05getLeaveBalanceList(Expression<Func<string>> holidayType, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> regularTypeFilter = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> sexFilter = null, Expression<Func<string>> leaveHolidayBalanceStatusFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> bizLabelIds = null)
-        {
-            var apiCallPath = "/v3/leave/getLeaveBalanceList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            callPayload.Queries["holidayType"] = ExpressionConverter.Convert(holidayType);
-            if (regularTypeFilter != null)
-                callPayload.Queries["regularTypeFilter"] = ExpressionConverter.Convert(regularTypeFilter);
-            if (departmentFilter != null)
-                callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
-            if (positionFilter != null)
-                callPayload.Queries["positionFilter"] = ExpressionConverter.Convert(positionFilter);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (sexFilter != null)
-                callPayload.Queries["sexFilter"] = ExpressionConverter.Convert(sexFilter);
-            if (leaveHolidayBalanceStatusFilter != null)
-                callPayload.Queries["leaveHolidayBalanceStatusFilter"] = ExpressionConverter.Convert(leaveHolidayBalanceStatusFilter);
-            if (calculateSalaryTypeFilter != null)
-                callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
-            if (hireTypeFilter != null)
-                callPayload.Queries["hireTypeFilter"] = ExpressionConverter.Convert(hireTypeFilter);
-            if (bizLabelIds != null)
-                callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(bizLabelIds);
-            return new ApiConnectionAction<ResultIPageV3LeaveBalanceResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3RosterListResp> _05getRosterList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendDay = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> attendStatus = null, Expression<Func<string>> dateType = null)
-        {
-            var apiCallPath = "/v3/attendCalculation/getRosterList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (attendDay != null)
-                callPayload.Queries["attendDay"] = ExpressionConverter.Convert(attendDay);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (attendStatus != null)
-                callPayload.Queries["attendStatus"] = ExpressionConverter.Convert(attendStatus);
-            if (dateType != null)
-                callPayload.Queries["dateType"] = ExpressionConverter.Convert(dateType);
-            return new ApiConnectionAction<ResultIPageV3RosterListResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LeaveWorkFlowDefinitionResp> _06getApproveProcessList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
-        {
-            var apiCallPath = "/v3/settings/getApproveProcessList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3LeaveWorkFlowDefinitionResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3BizReimbursementDetailResp> _06GetExpenseApplicationById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/expense/getExpenseApplicationById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3BizReimbursementDetailResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3LeaveBalanceDetailResp> _06GetLeaveBalanceInfoById(Expression<Func<string>> employeeId, Expression<Func<string>> holidayType)
-        {
-            var apiCallPath = "/v3/leave/getLeaveBalanceInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            callPayload.Queries["holidayType"] = ExpressionConverter.Convert(holidayType);
-            return new ApiConnectionAction<ResultV3LeaveBalanceDetailResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3RosterInfoResp> _06getRosterInfoById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/attendCalculation/getRosterInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3RosterInfoResp>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _06resign(Expression<Func<string>> bodyid, Expression<Func<string>> bodylastWorkingDate, Expression<Func<string>> bodyreasonsLeave, Expression<Func<string>> bodyremark = null)
-        {
-            var apiCallPath = "/v3/employee/resign";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["lastWorkingDate"] = ExpressionConverter.ConvertO(bodylastWorkingDate);
-            bodypropCount++;
-            body["reasonsLeave"] = ExpressionConverter.ConvertO(bodyreasonsLeave);
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v3/settings/getDataDictionaryList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultListV3BizCustomizeDictionaryResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _06updateAttendanceDataById(Expression<Func<string>> bodyid, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodycardType = null, Expression<Func<double>> bodyactualLongitude = null, Expression<Func<double>> bodyactualLatitude = null, Expression<Func<string>> bodydeviceName = null, Expression<Func<string>> bodycodeSource = null, Expression<Func<string>> bodylocationName = null, Expression<Func<string>> bodyworkLocationId = null, Expression<Func<string>> bodydeviceId = null)
+        public IBodyWorkflowAction<ResultBoolean> _03deleteExpenseApplicationById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendance/updateAttendanceDataById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodydate != null)
-            {
-                body["date"] = ExpressionConverter.ConvertO(bodydate);
-                bodypropCount++;
-            }
-
-            if (bodymode != null)
-            {
-                body["mode"] = ExpressionConverter.ConvertO(bodymode);
-                bodypropCount++;
-            }
-
-            if (bodycardType != null)
-            {
-                body["cardType"] = ExpressionConverter.ConvertO(bodycardType);
-                bodypropCount++;
-            }
-
-            if (bodyactualLongitude != null)
-            {
-                body["actualLongitude"] = ExpressionConverter.ConvertO(bodyactualLongitude);
-                bodypropCount++;
-            }
-
-            if (bodyactualLatitude != null)
-            {
-                body["actualLatitude"] = ExpressionConverter.ConvertO(bodyactualLatitude);
-                bodypropCount++;
-            }
-
-            if (bodydeviceName != null)
-            {
-                body["deviceName"] = ExpressionConverter.ConvertO(bodydeviceName);
-                bodypropCount++;
-            }
-
-            if (bodycodeSource != null)
-            {
-                body["codeSource"] = ExpressionConverter.ConvertO(bodycodeSource);
-                bodypropCount++;
-            }
-
-            if (bodylocationName != null)
-            {
-                body["locationName"] = ExpressionConverter.ConvertO(bodylocationName);
-                bodypropCount++;
-            }
-
-            if (bodyworkLocationId != null)
-            {
-                body["workLocationId"] = ExpressionConverter.ConvertO(bodyworkLocationId);
-                bodypropCount++;
-            }
-
-            if (bodydeviceId != null)
-            {
-                body["deviceId"] = ExpressionConverter.ConvertO(bodydeviceId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v3/expense/deleteExpenseApplicationById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AddEmployeeHistoryResp> _07addEmployeeHistory(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodytakeEffectType, Expression<Func<string>> bodytakeEffectDate, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<string>> bodycause = null, Expression<Func<string>> bodymajorWorkLocationId = null)
+        public IBodyWorkflowAction<ResultBoolean> _03deleteRosterById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/employee/addEmployeeHistory";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["entryDate"] = ExpressionConverter.ConvertO(bodyentryDate);
-            if (bodyconfirmationDate != null)
-            {
-                body["confirmationDate"] = ExpressionConverter.ConvertO(bodyconfirmationDate);
-                bodypropCount++;
-            }
-
-            if (bodyhireType != null)
-            {
-                body["hireType"] = ExpressionConverter.ConvertO(bodyhireType);
-                bodypropCount++;
-            }
-
-            if (bodypositionId != null)
-            {
-                body["positionId"] = ExpressionConverter.ConvertO(bodypositionId);
-                bodypropCount++;
-            }
-
-            if (bodydepartmentId != null)
-            {
-                body["departmentId"] = ExpressionConverter.ConvertO(bodydepartmentId);
-                bodypropCount++;
-            }
-
-            if (bodydirectSupervisorId != null)
-            {
-                body["directSupervisorId"] = ExpressionConverter.ConvertO(bodydirectSupervisorId);
-                bodypropCount++;
-            }
-
-            if (bodyattendCalculationId != null)
-            {
-                body["attendCalculationId"] = ExpressionConverter.ConvertO(bodyattendCalculationId);
-                bodypropCount++;
-            }
-
-            if (bodypayrollRegulationId != null)
-            {
-                body["payrollRegulationId"] = ExpressionConverter.ConvertO(bodypayrollRegulationId);
-                bodypropCount++;
-            }
-
-            if (bodybasicPay != null)
-            {
-                body["basicPay"] = ExpressionConverter.ConvertO(bodybasicPay);
-                bodypropCount++;
-            }
-
-            if (bodycalculateSalaryType != null)
-            {
-                body["calculateSalaryType"] = ExpressionConverter.ConvertO(bodycalculateSalaryType);
-                bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodyworkDate != null)
-            {
-                body["workDate"] = ExpressionConverter.ConvertO(bodyworkDate);
-                bodypropCount++;
-            }
-
-            if (bodycause != null)
-            {
-                body["cause"] = ExpressionConverter.ConvertO(bodycause);
-                bodypropCount++;
-            }
-
-            if (bodymajorWorkLocationId != null)
-            {
-                body["majorWorkLocationId"] = ExpressionConverter.ConvertO(bodymajorWorkLocationId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["takeEffectType"] = ExpressionConverter.ConvertO(bodytakeEffectType);
-            bodypropCount++;
-            body["takeEffectDate"] = ExpressionConverter.ConvertO(bodytakeEffectDate);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v3/attendCalculation/deleteRosterById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultV3AddEmployeeHistoryResp>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3LeaveHolidayInsertResp> _07addLeaveApplicationInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyholidayType, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<double>> bodyleaveTime = null, Expression<Func<string>> bodytimeType = null, Expression<Func<string>> bodyholidayDate = null, Expression<Func<string>> bodytime = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultListV3BizCustomizeDictionaryItemResp> _03GetDataDictionaryDetailsInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/leave/addLeaveApplicationInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["holidayType"] = ExpressionConverter.ConvertO(bodyholidayType);
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
-
-            if (bodystartTime != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-                bodypropCount++;
+                var apiCallPath = "/v3/settings/getDataDictionaryDetailsInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
             }
 
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
+            return new ApiConnectionAction<ResultListV3BizCustomizeDictionaryItemResp>(BuildSourceInput);
+        }
 
-            if (bodyendTime != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultListV3AttendanceDetailListResp> _03getEmployeeDailyAttendanceList([WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> attendStatusFilter = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-                bodypropCount++;
+                var apiCallPath = "/v3/attendance/getEmployeeDailyAttendanceList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["employeeId"] = SourceExpressionConverter.ConvertO(employeeId);
+                callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                if (attendStatusFilter != null)
+                    callPayload.Queries["attendStatusFilter"] = SourceExpressionConverter.ConvertO(attendStatusFilter);
+                return callPayload;
             }
 
-            if (bodyleaveTime != null)
-            {
-                body["leaveTime"] = ExpressionConverter.ConvertO(bodyleaveTime);
-                bodypropCount++;
-            }
+            return new ApiConnectionAction<ResultListV3AttendanceDetailListResp>(BuildSourceInput);
+        }
 
-            if (bodytimeType != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultIPageV3LeaveHolidayBalanceResp> _03getLeaveBalanceAdjustmentList([WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<string> holidayType, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["timeType"] = ExpressionConverter.ConvertO(bodytimeType);
-                bodypropCount++;
+                var apiCallPath = "/v3/leave/getLeaveBalanceAdjustmentList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["employeeId"] = SourceExpressionConverter.ConvertO(employeeId);
+                callPayload.Queries["holidayType"] = SourceExpressionConverter.ConvertO(holidayType);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
             }
 
-            if (bodyholidayDate != null)
-            {
-                body["holidayDate"] = ExpressionConverter.ConvertO(bodyholidayDate);
-                bodypropCount++;
-            }
+            return new ApiConnectionAction<ResultIPageV3LeaveHolidayBalanceResp>(BuildSourceInput);
+        }
 
-            if (bodytime != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultBoolean> _03updateEmployeeById([WorkflowExpression] Func<string> bodyentryDate, [WorkflowExpression] Func<string> bodyenglishName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyemployeeStatus = null, [WorkflowExpression] Func<string> bodysex = null, [WorkflowExpression] Func<string> bodynationality = null, [WorkflowExpression] Func<string> bodymaritalStatus = null, [WorkflowExpression] Func<string> bodycountryCode = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodycalculateSalaryType = null, [WorkflowExpression] Func<string> bodyworkDate = null, [WorkflowExpression] Func<double> bodybasicPay = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyidentityCard = null, [WorkflowExpression] Func<string> bodychineseName = null, [WorkflowExpression] Func<string> bodysurnameEnglish = null, [WorkflowExpression] Func<string> bodypersonalNameEnglish = null, [WorkflowExpression] Func<string> bodybirthday = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodyemergencyContactName = null, [WorkflowExpression] Func<string> bodyemergencyContactRelation = null, [WorkflowExpression] Func<string> bodyemergencyContactPhone = null, [WorkflowExpression] Func<string> bodybankCode = null, [WorkflowExpression] Func<string> bodybankBranchNumber = null, [WorkflowExpression] Func<string> bodybankAccountNo = null, [WorkflowExpression] Func<string> bodyconfirmationDate = null, [WorkflowExpression] Func<string> bodydate1 = null, [WorkflowExpression] Func<string> bodydate2 = null, [WorkflowExpression] Func<string> bodydate3 = null, [WorkflowExpression] Func<string> bodydate4 = null, [WorkflowExpression] Func<string> bodytext1 = null, [WorkflowExpression] Func<string> bodytext2 = null, [WorkflowExpression] Func<string> bodytext3 = null, [WorkflowExpression] Func<string> bodytext4 = null, [WorkflowExpression] Func<string> bodytext5 = null, [WorkflowExpression] Func<string> bodytext6 = null, [WorkflowExpression] Func<string> bodydirectSupervisorId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodypositionId = null, [WorkflowExpression] Func<string> bodyhireType = null, [WorkflowExpression] Func<string> bodypayrollRegulationId = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyattendCalculationId = null, [WorkflowExpression] Func<string> bodymobileCardCalType = null, [WorkflowExpression] Func<string> bodyregularType = null, [WorkflowExpression] Func<string> bodyinsurePlanName = null, [WorkflowExpression] Func<string> bodybizLabelIds = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["time"] = ExpressionConverter.ConvertO(bodytime);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v3/employee/updateEmployeeById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["entryDate"] = SourceExpressionConverter.ConvertToken(bodyentryDate);
+                bodypropCount++;
+                body["englishName"] = SourceExpressionConverter.ConvertToken(bodyenglishName);
+                bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodyemployeeStatus != null)
+                {
+                    body["employeeStatus"] = SourceExpressionConverter.ConvertToken(bodyemployeeStatus);
+                    bodypropCount++;
+                }
+
+                if (bodysex != null)
+                {
+                    body["sex"] = SourceExpressionConverter.ConvertToken(bodysex);
+                    bodypropCount++;
+                }
+
+                if (bodynationality != null)
+                {
+                    body["nationality"] = SourceExpressionConverter.ConvertToken(bodynationality);
+                    bodypropCount++;
+                }
+
+                if (bodymaritalStatus != null)
+                {
+                    body["maritalStatus"] = SourceExpressionConverter.ConvertToken(bodymaritalStatus);
+                    bodypropCount++;
+                }
+
+                if (bodycountryCode != null)
+                {
+                    body["countryCode"] = SourceExpressionConverter.ConvertToken(bodycountryCode);
+                    bodypropCount++;
+                }
+
+                if (bodyphone != null)
+                {
+                    body["phone"] = SourceExpressionConverter.ConvertToken(bodyphone);
+                    bodypropCount++;
+                }
+
+                if (bodycalculateSalaryType != null)
+                {
+                    body["calculateSalaryType"] = SourceExpressionConverter.ConvertToken(bodycalculateSalaryType);
+                    bodypropCount++;
+                }
+
+                if (bodyworkDate != null)
+                {
+                    body["workDate"] = SourceExpressionConverter.ConvertToken(bodyworkDate);
+                    bodypropCount++;
+                }
+
+                if (bodybasicPay != null)
+                {
+                    body["basicPay"] = SourceExpressionConverter.ConvertToken(bodybasicPay);
+                    bodypropCount++;
+                }
+
+                if (bodycode != null)
+                {
+                    body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                    bodypropCount++;
+                }
+
+                if (bodyidentityCard != null)
+                {
+                    body["identityCard"] = SourceExpressionConverter.ConvertToken(bodyidentityCard);
+                    bodypropCount++;
+                }
+
+                if (bodychineseName != null)
+                {
+                    body["chineseName"] = SourceExpressionConverter.ConvertToken(bodychineseName);
+                    bodypropCount++;
+                }
+
+                if (bodysurnameEnglish != null)
+                {
+                    body["surnameEnglish"] = SourceExpressionConverter.ConvertToken(bodysurnameEnglish);
+                    bodypropCount++;
+                }
+
+                if (bodypersonalNameEnglish != null)
+                {
+                    body["personalNameEnglish"] = SourceExpressionConverter.ConvertToken(bodypersonalNameEnglish);
+                    bodypropCount++;
+                }
+
+                if (bodybirthday != null)
+                {
+                    body["birthday"] = SourceExpressionConverter.ConvertToken(bodybirthday);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodyemergencyContactName != null)
+                {
+                    body["emergencyContactName"] = SourceExpressionConverter.ConvertToken(bodyemergencyContactName);
+                    bodypropCount++;
+                }
+
+                if (bodyemergencyContactRelation != null)
+                {
+                    body["emergencyContactRelation"] = SourceExpressionConverter.ConvertToken(bodyemergencyContactRelation);
+                    bodypropCount++;
+                }
+
+                if (bodyemergencyContactPhone != null)
+                {
+                    body["emergencyContactPhone"] = SourceExpressionConverter.ConvertToken(bodyemergencyContactPhone);
+                    bodypropCount++;
+                }
+
+                if (bodybankCode != null)
+                {
+                    body["bankCode"] = SourceExpressionConverter.ConvertToken(bodybankCode);
+                    bodypropCount++;
+                }
+
+                if (bodybankBranchNumber != null)
+                {
+                    body["bankBranchNumber"] = SourceExpressionConverter.ConvertToken(bodybankBranchNumber);
+                    bodypropCount++;
+                }
+
+                if (bodybankAccountNo != null)
+                {
+                    body["bankAccountNo"] = SourceExpressionConverter.ConvertToken(bodybankAccountNo);
+                    bodypropCount++;
+                }
+
+                if (bodyconfirmationDate != null)
+                {
+                    body["confirmationDate"] = SourceExpressionConverter.ConvertToken(bodyconfirmationDate);
+                    bodypropCount++;
+                }
+
+                if (bodydate1 != null)
+                {
+                    body["date1"] = SourceExpressionConverter.ConvertToken(bodydate1);
+                    bodypropCount++;
+                }
+
+                if (bodydate2 != null)
+                {
+                    body["date2"] = SourceExpressionConverter.ConvertToken(bodydate2);
+                    bodypropCount++;
+                }
+
+                if (bodydate3 != null)
+                {
+                    body["date3"] = SourceExpressionConverter.ConvertToken(bodydate3);
+                    bodypropCount++;
+                }
+
+                if (bodydate4 != null)
+                {
+                    body["date4"] = SourceExpressionConverter.ConvertToken(bodydate4);
+                    bodypropCount++;
+                }
+
+                if (bodytext1 != null)
+                {
+                    body["text1"] = SourceExpressionConverter.ConvertToken(bodytext1);
+                    bodypropCount++;
+                }
+
+                if (bodytext2 != null)
+                {
+                    body["text2"] = SourceExpressionConverter.ConvertToken(bodytext2);
+                    bodypropCount++;
+                }
+
+                if (bodytext3 != null)
+                {
+                    body["text3"] = SourceExpressionConverter.ConvertToken(bodytext3);
+                    bodypropCount++;
+                }
+
+                if (bodytext4 != null)
+                {
+                    body["text4"] = SourceExpressionConverter.ConvertToken(bodytext4);
+                    bodypropCount++;
+                }
+
+                if (bodytext5 != null)
+                {
+                    body["text5"] = SourceExpressionConverter.ConvertToken(bodytext5);
+                    bodypropCount++;
+                }
+
+                if (bodytext6 != null)
+                {
+                    body["text6"] = SourceExpressionConverter.ConvertToken(bodytext6);
+                    bodypropCount++;
+                }
+
+                if (bodydirectSupervisorId != null)
+                {
+                    body["directSupervisorId"] = SourceExpressionConverter.ConvertToken(bodydirectSupervisorId);
+                    bodypropCount++;
+                }
+
+                if (bodydepartmentId != null)
+                {
+                    body["departmentId"] = SourceExpressionConverter.ConvertToken(bodydepartmentId);
+                    bodypropCount++;
+                }
+
+                if (bodypositionId != null)
+                {
+                    body["positionId"] = SourceExpressionConverter.ConvertToken(bodypositionId);
+                    bodypropCount++;
+                }
+
+                if (bodyhireType != null)
+                {
+                    body["hireType"] = SourceExpressionConverter.ConvertToken(bodyhireType);
+                    bodypropCount++;
+                }
+
+                if (bodypayrollRegulationId != null)
+                {
+                    body["payrollRegulationId"] = SourceExpressionConverter.ConvertToken(bodypayrollRegulationId);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = SourceExpressionConverter.ConvertToken(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodyattendCalculationId != null)
+                {
+                    body["attendCalculationId"] = SourceExpressionConverter.ConvertToken(bodyattendCalculationId);
+                    bodypropCount++;
+                }
+
+                if (bodymobileCardCalType != null)
+                {
+                    body["mobileCardCalType"] = SourceExpressionConverter.ConvertToken(bodymobileCardCalType);
+                    bodypropCount++;
+                }
+
+                if (bodyregularType != null)
+                {
+                    body["regularType"] = SourceExpressionConverter.ConvertToken(bodyregularType);
+                    bodypropCount++;
+                }
+
+                if (bodyinsurePlanName != null)
+                {
+                    body["insurePlanName"] = SourceExpressionConverter.ConvertToken(bodyinsurePlanName);
+                    bodypropCount++;
+                }
+
+                if (bodybizLabelIds != null)
+                {
+                    body["bizLabelIds"] = SourceExpressionConverter.ConvertToken(bodybizLabelIds);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultV3AddMobileCardResp> _04addAttendanceDataInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodymode, [WorkflowExpression] Func<string> bodycardType = null, [WorkflowExpression] Func<double> bodyactualLongitude = null, [WorkflowExpression] Func<double> bodyactualLatitude = null, [WorkflowExpression] Func<string> bodydeviceName = null, [WorkflowExpression] Func<string> bodycodeSource = null, [WorkflowExpression] Func<string> bodylocationName = null, [WorkflowExpression] Func<string> bodyworkLocationId = null, [WorkflowExpression] Func<string> bodydeviceId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendance/addAttendanceDataInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["employeeId"] = SourceExpressionConverter.ConvertToken(bodyemployeeId);
+                bodypropCount++;
+                body["date"] = SourceExpressionConverter.ConvertToken(bodydate);
+                bodypropCount++;
+                body["mode"] = SourceExpressionConverter.ConvertToken(bodymode);
+                if (bodycardType != null)
+                {
+                    body["cardType"] = SourceExpressionConverter.ConvertToken(bodycardType);
+                    bodypropCount++;
+                }
+
+                if (bodyactualLongitude != null)
+                {
+                    body["actualLongitude"] = SourceExpressionConverter.ConvertToken(bodyactualLongitude);
+                    bodypropCount++;
+                }
+
+                if (bodyactualLatitude != null)
+                {
+                    body["actualLatitude"] = SourceExpressionConverter.ConvertToken(bodyactualLatitude);
+                    bodypropCount++;
+                }
+
+                if (bodydeviceName != null)
+                {
+                    body["deviceName"] = SourceExpressionConverter.ConvertToken(bodydeviceName);
+                    bodypropCount++;
+                }
+
+                if (bodycodeSource != null)
+                {
+                    body["codeSource"] = SourceExpressionConverter.ConvertToken(bodycodeSource);
+                    bodypropCount++;
+                }
+
+                if (bodylocationName != null)
+                {
+                    body["locationName"] = SourceExpressionConverter.ConvertToken(bodylocationName);
+                    bodypropCount++;
+                }
+
+                if (bodyworkLocationId != null)
+                {
+                    body["workLocationId"] = SourceExpressionConverter.ConvertToken(bodyworkLocationId);
+                    bodypropCount++;
+                }
+
+                if (bodydeviceId != null)
+                {
+                    body["deviceId"] = SourceExpressionConverter.ConvertToken(bodydeviceId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3AddMobileCardResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultBoolean> _04calculationLeaveBalance([WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<bool> bodyisForceCal = null, [WorkflowExpression] Func<string[]> bodyemployeeIdsList = null, [WorkflowExpression] Func<string[]> bodyposition = null, [WorkflowExpression] Func<string[]> bodydept = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/leave/calculationLeaveBalance";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydate != null)
+                {
+                    body["date"] = SourceExpressionConverter.ConvertToken(bodydate);
+                    bodypropCount++;
+                }
+
+                if (bodyisForceCal != null)
+                {
+                    body["isForceCal"] = SourceExpressionConverter.ConvertToken(bodyisForceCal);
+                    bodypropCount++;
+                }
+
+                if (bodyemployeeIdsList != null)
+                {
+                    body["employeeIdsList"] = SourceExpressionConverter.ConvertToken(bodyemployeeIdsList);
+                    bodypropCount++;
+                }
+
+                if (bodyposition != null)
+                {
+                    body["position"] = SourceExpressionConverter.ConvertToken(bodyposition);
+                    bodypropCount++;
+                }
+
+                if (bodydept != null)
+                {
+                    body["dept"] = SourceExpressionConverter.ConvertToken(bodydept);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultIPageV3BizEmployeeCustomizationResp> _04getCustomizeUserFieldList([WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/settings/getCustomizeUserFieldList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3BizEmployeeCustomizationResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultIPageV3EmployeeListResp> _04getEmployeeList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> departmentId = null, [WorkflowExpression] Func<string> positionId = null, [WorkflowExpression] Func<string> sex = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<string> hireType = null, [WorkflowExpression] Func<string> calculateSalaryType = null, [WorkflowExpression] Func<string> costCenterId = null, [WorkflowExpression] Func<string> payrollRegulationId = null, [WorkflowExpression] Func<string> regularType = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/employee/getEmployeeList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (id != null)
+                    callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                if (departmentId != null)
+                    callPayload.Queries["departmentId"] = SourceExpressionConverter.ConvertO(departmentId);
+                if (positionId != null)
+                    callPayload.Queries["positionId"] = SourceExpressionConverter.ConvertO(positionId);
+                if (sex != null)
+                    callPayload.Queries["sex"] = SourceExpressionConverter.ConvertO(sex);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                if (hireType != null)
+                    callPayload.Queries["hireType"] = SourceExpressionConverter.ConvertO(hireType);
+                if (calculateSalaryType != null)
+                    callPayload.Queries["calculateSalaryType"] = SourceExpressionConverter.ConvertO(calculateSalaryType);
+                if (costCenterId != null)
+                    callPayload.Queries["costCenterId"] = SourceExpressionConverter.ConvertO(costCenterId);
+                if (payrollRegulationId != null)
+                    callPayload.Queries["payrollRegulationId"] = SourceExpressionConverter.ConvertO(payrollRegulationId);
+                if (regularType != null)
+                    callPayload.Queries["regularType"] = SourceExpressionConverter.ConvertO(regularType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3EmployeeListResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultBoolean> _04updateExpenseApplicationById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyreimbursementType = null, [WorkflowExpression] Func<string> bodyreimbursementDate = null, [WorkflowExpression] Func<string> bodyreimbursementName = null, [WorkflowExpression] Func<double> bodyamount = null, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/expense/updateExpenseApplicationById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyreimbursementType != null)
+                {
+                    body["reimbursementType"] = SourceExpressionConverter.ConvertToken(bodyreimbursementType);
+                    bodypropCount++;
+                }
+
+                if (bodyreimbursementDate != null)
+                {
+                    body["reimbursementDate"] = SourceExpressionConverter.ConvertToken(bodyreimbursementDate);
+                    bodypropCount++;
+                }
+
+                if (bodyreimbursementName != null)
+                {
+                    body["reimbursementName"] = SourceExpressionConverter.ConvertToken(bodyreimbursementName);
+                    bodypropCount++;
+                }
+
+                if (bodyamount != null)
+                {
+                    body["amount"] = SourceExpressionConverter.ConvertToken(bodyamount);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultBoolean> _04updateRosterInfoById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyshiftIn, [WorkflowExpression] Func<string> bodyshiftOff, [WorkflowExpression] Func<string> bodyshiftTemplateId = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyshiftStatus = null, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyattendanceItemId = null, [WorkflowExpression] Func<double> bodyhourlyRate = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<double> bodytierRate = null, [WorkflowExpression] Func<double> bodyscheduledAmount = null, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/updateRosterInfoById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyshiftTemplateId != null)
+                {
+                    body["shiftTemplateId"] = SourceExpressionConverter.ConvertToken(bodyshiftTemplateId);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressCardId != null)
+                {
+                    body["addressCardId"] = SourceExpressionConverter.ConvertToken(bodyaddressCardId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["shiftIn"] = SourceExpressionConverter.ConvertToken(bodyshiftIn);
+                bodypropCount++;
+                body["shiftOff"] = SourceExpressionConverter.ConvertToken(bodyshiftOff);
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = SourceExpressionConverter.ConvertToken(bodymealTime);
+                    bodypropCount++;
+                }
+
+                if (bodyshiftStatus != null)
+                {
+                    body["shiftStatus"] = SourceExpressionConverter.ConvertToken(bodyshiftStatus);
+                    bodypropCount++;
+                }
+
+                if (bodydateType != null)
+                {
+                    body["dateType"] = SourceExpressionConverter.ConvertToken(bodydateType);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceItemId != null)
+                {
+                    body["attendanceItemId"] = SourceExpressionConverter.ConvertToken(bodyattendanceItemId);
+                    bodypropCount++;
+                }
+
+                if (bodyhourlyRate != null)
+                {
+                    body["hourlyRate"] = SourceExpressionConverter.ConvertToken(bodyhourlyRate);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = SourceExpressionConverter.ConvertToken(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodytierRate != null)
+                {
+                    body["tierRate"] = SourceExpressionConverter.ConvertToken(bodytierRate);
+                    bodypropCount++;
+                }
+
+                if (bodyscheduledAmount != null)
+                {
+                    body["scheduledAmount"] = SourceExpressionConverter.ConvertToken(bodyscheduledAmount);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultBoolean> _05deleteAttendanceDataById([WorkflowExpression] Func<string> ids)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendance/deleteAttendanceDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ids"] = SourceExpressionConverter.ConvertO(ids);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultV3BizEmployeeCustomizationResp> _05getCustomizeUserFieldInfoById([WorkflowExpression] Func<string> id)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/settings/getCustomizeUserFieldInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3BizEmployeeCustomizationResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultV3EmployeeInfoResp> _05getEmployeeInfoById([WorkflowExpression] Func<string> id)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/employee/getEmployeeInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3EmployeeInfoResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultIPageV3BizReimbursementResp> _05GetExpenseApplicationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> dateFilter = null, [WorkflowExpression] Func<string> reimbursementStatusFilter = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/expense/getExpenseApplicationList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (departmentFilter != null)
+                    callPayload.Queries["departmentFilter"] = SourceExpressionConverter.ConvertO(departmentFilter);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = SourceExpressionConverter.ConvertO(employeeIdFilter);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = SourceExpressionConverter.ConvertO(statusFilter);
+                if (dateFilter != null)
+                    callPayload.Queries["dateFilter"] = SourceExpressionConverter.ConvertO(dateFilter);
+                if (reimbursementStatusFilter != null)
+                    callPayload.Queries["reimbursementStatusFilter"] = SourceExpressionConverter.ConvertO(reimbursementStatusFilter);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3BizReimbursementResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultIPageV3LeaveBalanceResp> _05getLeaveBalanceList([WorkflowExpression] Func<string> holidayType, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> regularTypeFilter = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> positionFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> sexFilter = null, [WorkflowExpression] Func<string> leaveHolidayBalanceStatusFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> hireTypeFilter = null, [WorkflowExpression] Func<string> bizLabelIds = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/leave/getLeaveBalanceList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                callPayload.Queries["holidayType"] = SourceExpressionConverter.ConvertO(holidayType);
+                if (regularTypeFilter != null)
+                    callPayload.Queries["regularTypeFilter"] = SourceExpressionConverter.ConvertO(regularTypeFilter);
+                if (departmentFilter != null)
+                    callPayload.Queries["departmentFilter"] = SourceExpressionConverter.ConvertO(departmentFilter);
+                if (positionFilter != null)
+                    callPayload.Queries["positionFilter"] = SourceExpressionConverter.ConvertO(positionFilter);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = SourceExpressionConverter.ConvertO(statusFilter);
+                if (sexFilter != null)
+                    callPayload.Queries["sexFilter"] = SourceExpressionConverter.ConvertO(sexFilter);
+                if (leaveHolidayBalanceStatusFilter != null)
+                    callPayload.Queries["leaveHolidayBalanceStatusFilter"] = SourceExpressionConverter.ConvertO(leaveHolidayBalanceStatusFilter);
+                if (calculateSalaryTypeFilter != null)
+                    callPayload.Queries["calculateSalaryTypeFilter"] = SourceExpressionConverter.ConvertO(calculateSalaryTypeFilter);
+                if (hireTypeFilter != null)
+                    callPayload.Queries["hireTypeFilter"] = SourceExpressionConverter.ConvertO(hireTypeFilter);
+                if (bizLabelIds != null)
+                    callPayload.Queries["bizLabelIds"] = SourceExpressionConverter.ConvertO(bizLabelIds);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3LeaveBalanceResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultIPageV3RosterListResp> _05getRosterList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> attendDay = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> attendStatus = null, [WorkflowExpression] Func<string> dateType = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/getRosterList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (attendDay != null)
+                    callPayload.Queries["attendDay"] = SourceExpressionConverter.ConvertO(attendDay);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = SourceExpressionConverter.ConvertO(employeeId);
+                if (attendStatus != null)
+                    callPayload.Queries["attendStatus"] = SourceExpressionConverter.ConvertO(attendStatus);
+                if (dateType != null)
+                    callPayload.Queries["dateType"] = SourceExpressionConverter.ConvertO(dateType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3RosterListResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultIPageV3LeaveWorkFlowDefinitionResp> _06getApproveProcessList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/settings/getApproveProcessList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3LeaveWorkFlowDefinitionResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultV3BizReimbursementDetailResp> _06GetExpenseApplicationById([WorkflowExpression] Func<string> id)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/expense/getExpenseApplicationById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3BizReimbursementDetailResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultV3LeaveBalanceDetailResp> _06GetLeaveBalanceInfoById([WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<string> holidayType)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/leave/getLeaveBalanceInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["employeeId"] = SourceExpressionConverter.ConvertO(employeeId);
+                callPayload.Queries["holidayType"] = SourceExpressionConverter.ConvertO(holidayType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3LeaveBalanceDetailResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultV3RosterInfoResp> _06getRosterInfoById([WorkflowExpression] Func<string> id)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/getRosterInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3RosterInfoResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultBoolean> _06resign([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylastWorkingDate, [WorkflowExpression] Func<string> bodyreasonsLeave, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/employee/resign";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                bodypropCount++;
+                body["lastWorkingDate"] = SourceExpressionConverter.ConvertToken(bodylastWorkingDate);
+                bodypropCount++;
+                body["reasonsLeave"] = SourceExpressionConverter.ConvertToken(bodyreasonsLeave);
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultBoolean> _06updateAttendanceDataById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodymode = null, [WorkflowExpression] Func<string> bodycardType = null, [WorkflowExpression] Func<double> bodyactualLongitude = null, [WorkflowExpression] Func<double> bodyactualLatitude = null, [WorkflowExpression] Func<string> bodydeviceName = null, [WorkflowExpression] Func<string> bodycodeSource = null, [WorkflowExpression] Func<string> bodylocationName = null, [WorkflowExpression] Func<string> bodyworkLocationId = null, [WorkflowExpression] Func<string> bodydeviceId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendance/updateAttendanceDataById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodydate != null)
+                {
+                    body["date"] = SourceExpressionConverter.ConvertToken(bodydate);
+                    bodypropCount++;
+                }
+
+                if (bodymode != null)
+                {
+                    body["mode"] = SourceExpressionConverter.ConvertToken(bodymode);
+                    bodypropCount++;
+                }
+
+                if (bodycardType != null)
+                {
+                    body["cardType"] = SourceExpressionConverter.ConvertToken(bodycardType);
+                    bodypropCount++;
+                }
+
+                if (bodyactualLongitude != null)
+                {
+                    body["actualLongitude"] = SourceExpressionConverter.ConvertToken(bodyactualLongitude);
+                    bodypropCount++;
+                }
+
+                if (bodyactualLatitude != null)
+                {
+                    body["actualLatitude"] = SourceExpressionConverter.ConvertToken(bodyactualLatitude);
+                    bodypropCount++;
+                }
+
+                if (bodydeviceName != null)
+                {
+                    body["deviceName"] = SourceExpressionConverter.ConvertToken(bodydeviceName);
+                    bodypropCount++;
+                }
+
+                if (bodycodeSource != null)
+                {
+                    body["codeSource"] = SourceExpressionConverter.ConvertToken(bodycodeSource);
+                    bodypropCount++;
+                }
+
+                if (bodylocationName != null)
+                {
+                    body["locationName"] = SourceExpressionConverter.ConvertToken(bodylocationName);
+                    bodypropCount++;
+                }
+
+                if (bodyworkLocationId != null)
+                {
+                    body["workLocationId"] = SourceExpressionConverter.ConvertToken(bodyworkLocationId);
+                    bodypropCount++;
+                }
+
+                if (bodydeviceId != null)
+                {
+                    body["deviceId"] = SourceExpressionConverter.ConvertToken(bodydeviceId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultV3AddEmployeeHistoryResp> _07addEmployeeHistory([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyentryDate, [WorkflowExpression] Func<string> bodytakeEffectType, [WorkflowExpression] Func<string> bodytakeEffectDate, [WorkflowExpression] Func<string> bodyconfirmationDate = null, [WorkflowExpression] Func<string> bodyhireType = null, [WorkflowExpression] Func<string> bodypositionId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodydirectSupervisorId = null, [WorkflowExpression] Func<string> bodyattendCalculationId = null, [WorkflowExpression] Func<string> bodypayrollRegulationId = null, [WorkflowExpression] Func<double> bodybasicPay = null, [WorkflowExpression] Func<string> bodycalculateSalaryType = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyworkDate = null, [WorkflowExpression] Func<string> bodycause = null, [WorkflowExpression] Func<string> bodymajorWorkLocationId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/employee/addEmployeeHistory";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["employeeId"] = SourceExpressionConverter.ConvertToken(bodyemployeeId);
+                bodypropCount++;
+                body["entryDate"] = SourceExpressionConverter.ConvertToken(bodyentryDate);
+                if (bodyconfirmationDate != null)
+                {
+                    body["confirmationDate"] = SourceExpressionConverter.ConvertToken(bodyconfirmationDate);
+                    bodypropCount++;
+                }
+
+                if (bodyhireType != null)
+                {
+                    body["hireType"] = SourceExpressionConverter.ConvertToken(bodyhireType);
+                    bodypropCount++;
+                }
+
+                if (bodypositionId != null)
+                {
+                    body["positionId"] = SourceExpressionConverter.ConvertToken(bodypositionId);
+                    bodypropCount++;
+                }
+
+                if (bodydepartmentId != null)
+                {
+                    body["departmentId"] = SourceExpressionConverter.ConvertToken(bodydepartmentId);
+                    bodypropCount++;
+                }
+
+                if (bodydirectSupervisorId != null)
+                {
+                    body["directSupervisorId"] = SourceExpressionConverter.ConvertToken(bodydirectSupervisorId);
+                    bodypropCount++;
+                }
+
+                if (bodyattendCalculationId != null)
+                {
+                    body["attendCalculationId"] = SourceExpressionConverter.ConvertToken(bodyattendCalculationId);
+                    bodypropCount++;
+                }
+
+                if (bodypayrollRegulationId != null)
+                {
+                    body["payrollRegulationId"] = SourceExpressionConverter.ConvertToken(bodypayrollRegulationId);
+                    bodypropCount++;
+                }
+
+                if (bodybasicPay != null)
+                {
+                    body["basicPay"] = SourceExpressionConverter.ConvertToken(bodybasicPay);
+                    bodypropCount++;
+                }
+
+                if (bodycalculateSalaryType != null)
+                {
+                    body["calculateSalaryType"] = SourceExpressionConverter.ConvertToken(bodycalculateSalaryType);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = SourceExpressionConverter.ConvertToken(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodyworkDate != null)
+                {
+                    body["workDate"] = SourceExpressionConverter.ConvertToken(bodyworkDate);
+                    bodypropCount++;
+                }
+
+                if (bodycause != null)
+                {
+                    body["cause"] = SourceExpressionConverter.ConvertToken(bodycause);
+                    bodypropCount++;
+                }
+
+                if (bodymajorWorkLocationId != null)
+                {
+                    body["majorWorkLocationId"] = SourceExpressionConverter.ConvertToken(bodymajorWorkLocationId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["takeEffectType"] = SourceExpressionConverter.ConvertToken(bodytakeEffectType);
+                bodypropCount++;
+                body["takeEffectDate"] = SourceExpressionConverter.ConvertToken(bodytakeEffectDate);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3AddEmployeeHistoryResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultV3LeaveHolidayInsertResp> _07addLeaveApplicationInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyholidayType, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<double> bodyleaveTime = null, [WorkflowExpression] Func<string> bodytimeType = null, [WorkflowExpression] Func<string> bodyholidayDate = null, [WorkflowExpression] Func<string> bodytime = null, [WorkflowExpression] Func<string> bodyremark = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/leave/addLeaveApplicationInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["employeeId"] = SourceExpressionConverter.ConvertToken(bodyemployeeId);
+                bodypropCount++;
+                body["holidayType"] = SourceExpressionConverter.ConvertToken(bodyholidayType);
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodystartTime != null)
+                {
+                    body["startTime"] = SourceExpressionConverter.ConvertToken(bodystartTime);
+                    bodypropCount++;
+                }
+
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                    bodypropCount++;
+                }
+
+                if (bodyendTime != null)
+                {
+                    body["endTime"] = SourceExpressionConverter.ConvertToken(bodyendTime);
+                    bodypropCount++;
+                }
+
+                if (bodyleaveTime != null)
+                {
+                    body["leaveTime"] = SourceExpressionConverter.ConvertToken(bodyleaveTime);
+                    bodypropCount++;
+                }
+
+                if (bodytimeType != null)
+                {
+                    body["timeType"] = SourceExpressionConverter.ConvertToken(bodytimeType);
+                    bodypropCount++;
+                }
+
+                if (bodyholidayDate != null)
+                {
+                    body["holidayDate"] = SourceExpressionConverter.ConvertToken(bodyholidayDate);
+                    bodypropCount++;
+                }
+
+                if (bodytime != null)
+                {
+                    body["time"] = SourceExpressionConverter.ConvertToken(bodytime);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3LeaveHolidayInsertResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultBoolean> _07addShitTemplateInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyshiftIn, [WorkflowExpression] Func<string> bodyshiftOff, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyattendanceAddressId = null, [WorkflowExpression] Func<int> bodymealTime = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/addShitTemplateInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                bodypropCount++;
+                body["shiftIn"] = SourceExpressionConverter.ConvertToken(bodyshiftIn);
+                bodypropCount++;
+                body["shiftOff"] = SourceExpressionConverter.ConvertToken(bodyshiftOff);
+                if (bodydateType != null)
+                {
+                    body["dateType"] = SourceExpressionConverter.ConvertToken(bodydateType);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceAddressId != null)
+                {
+                    body["attendanceAddressId"] = SourceExpressionConverter.ConvertToken(bodyattendanceAddressId);
+                    bodypropCount++;
+                }
 
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = SourceExpressionConverter.ConvertToken(bodymealTime);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultV3LeaveHolidayInsertResp>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _07addShitTemplateInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceAddressId = null, Expression<Func<int>> bodymealTime = null)
+        public IBodyWorkflowAction<ResultIPageV3MobileCardListResp> _07getAttendanceDataList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> positionFilter = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> attendCalculationId = null, [WorkflowExpression] Func<string> bizLabelIds = null, [WorkflowExpression] Func<string> hireTypeFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            var apiCallPath = "/v3/attendCalculation/addShitTemplateInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
-            bodypropCount++;
-            body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
-            if (bodydateType != null)
-            {
-                body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
-                bodypropCount++;
-            }
-
-            if (bodyattendanceAddressId != null)
-            {
-                body["attendanceAddressId"] = ExpressionConverter.ConvertO(bodyattendanceAddressId);
-                bodypropCount++;
-            }
-
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v3/attendance/getAttendanceDataList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (departmentFilter != null)
+                    callPayload.Queries["departmentFilter"] = SourceExpressionConverter.ConvertO(departmentFilter);
+                if (positionFilter != null)
+                    callPayload.Queries["positionFilter"] = SourceExpressionConverter.ConvertO(positionFilter);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = SourceExpressionConverter.ConvertO(employeeIdFilter);
+                if (attendCalculationId != null)
+                    callPayload.Queries["attendCalculationId"] = SourceExpressionConverter.ConvertO(attendCalculationId);
+                if (bizLabelIds != null)
+                    callPayload.Queries["bizLabelIds"] = SourceExpressionConverter.ConvertO(bizLabelIds);
+                if (hireTypeFilter != null)
+                    callPayload.Queries["hireTypeFilter"] = SourceExpressionConverter.ConvertO(hireTypeFilter);
+                if (calculateSalaryTypeFilter != null)
+                    callPayload.Queries["calculateSalaryTypeFilter"] = SourceExpressionConverter.ConvertO(calculateSalaryTypeFilter);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultIPageV3MobileCardListResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3MobileCardListResp> _07getAttendanceDataList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> attendCalculationId = null, Expression<Func<string>> bizLabelIds = null, Expression<Func<string>> hireTypeFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
+        public IBodyWorkflowAction<ResultBoolean> _08deleteEmployeeHistoryById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendance/getAttendanceDataList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (departmentFilter != null)
-                callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
-            if (positionFilter != null)
-                callPayload.Queries["positionFilter"] = ExpressionConverter.Convert(positionFilter);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (attendCalculationId != null)
-                callPayload.Queries["attendCalculationId"] = ExpressionConverter.Convert(attendCalculationId);
-            if (bizLabelIds != null)
-                callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(bizLabelIds);
-            if (hireTypeFilter != null)
-                callPayload.Queries["hireTypeFilter"] = ExpressionConverter.Convert(hireTypeFilter);
-            if (calculateSalaryTypeFilter != null)
-                callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            return new ApiConnectionAction<ResultIPageV3MobileCardListResp>(callPayload);
-        }
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/employee/deleteEmployeeHistoryById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _08deleteEmployeeHistoryById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/employee/deleteEmployeeHistoryById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _08deleteLeaveApplicationById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _08deleteLeaveApplicationById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/leave/deleteLeaveApplicationById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
-        }
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/leave/deleteLeaveApplicationById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _08deleteShiftTemplateById(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v3/attendCalculation/deleteShiftTemplateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3MobileCardInfoResp> _08getAttendanceDataInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _08deleteShiftTemplateById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendance/getAttendanceDataInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3MobileCardInfoResp>(callPayload);
-        }
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/deleteShiftTemplateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3AttendanceItemListResp> _09getAttendanceItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
-        {
-            var apiCallPath = "/v3/attendance/getAttendanceItemList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3AttendanceItemListResp>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _09updateEmployeeHistoryById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyentryDate, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodyhireType = null, Expression<Func<string>> bodypositionId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodydirectSupervisorId = null, Expression<Func<string>> bodyattendCalculationId = null, Expression<Func<string>> bodypayrollRegulationId = null, Expression<Func<double>> bodybasicPay = null, Expression<Func<string>> bodycalculateSalaryType = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<string>> bodycause = null, Expression<Func<string>> bodymajorWorkLocationId = null)
+        public IBodyWorkflowAction<ResultV3MobileCardInfoResp> _08getAttendanceDataInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/employee/updateEmployeeHistoryById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["entryDate"] = ExpressionConverter.ConvertO(bodyentryDate);
-            if (bodyconfirmationDate != null)
-            {
-                body["confirmationDate"] = ExpressionConverter.ConvertO(bodyconfirmationDate);
-                bodypropCount++;
-            }
-
-            if (bodyhireType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["hireType"] = ExpressionConverter.ConvertO(bodyhireType);
-                bodypropCount++;
+                var apiCallPath = "/v3/attendance/getAttendanceDataInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
             }
 
-            if (bodypositionId != null)
-            {
-                body["positionId"] = ExpressionConverter.ConvertO(bodypositionId);
-                bodypropCount++;
-            }
+            return new ApiConnectionAction<ResultV3MobileCardInfoResp>(BuildSourceInput);
+        }
 
-            if (bodydepartmentId != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultIPageV3AttendanceItemListResp> _09getAttendanceItemList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["departmentId"] = ExpressionConverter.ConvertO(bodydepartmentId);
-                bodypropCount++;
+                var apiCallPath = "/v3/attendance/getAttendanceItemList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
             }
 
-            if (bodydirectSupervisorId != null)
+            return new ApiConnectionAction<ResultIPageV3AttendanceItemListResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
+        public IBodyWorkflowAction<ResultBoolean> _09updateEmployeeHistoryById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyentryDate, [WorkflowExpression] Func<string> bodyconfirmationDate = null, [WorkflowExpression] Func<string> bodyhireType = null, [WorkflowExpression] Func<string> bodypositionId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodydirectSupervisorId = null, [WorkflowExpression] Func<string> bodyattendCalculationId = null, [WorkflowExpression] Func<string> bodypayrollRegulationId = null, [WorkflowExpression] Func<double> bodybasicPay = null, [WorkflowExpression] Func<string> bodycalculateSalaryType = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyworkDate = null, [WorkflowExpression] Func<string> bodycause = null, [WorkflowExpression] Func<string> bodymajorWorkLocationId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["directSupervisorId"] = ExpressionConverter.ConvertO(bodydirectSupervisorId);
+                var apiCallPath = "/v3/employee/updateEmployeeHistoryById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyattendCalculationId != null)
-            {
-                body["attendCalculationId"] = ExpressionConverter.ConvertO(bodyattendCalculationId);
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
-            }
-
-            if (bodypayrollRegulationId != null)
-            {
-                body["payrollRegulationId"] = ExpressionConverter.ConvertO(bodypayrollRegulationId);
+                body["employeeId"] = SourceExpressionConverter.ConvertToken(bodyemployeeId);
                 bodypropCount++;
-            }
+                body["entryDate"] = SourceExpressionConverter.ConvertToken(bodyentryDate);
+                if (bodyconfirmationDate != null)
+                {
+                    body["confirmationDate"] = SourceExpressionConverter.ConvertToken(bodyconfirmationDate);
+                    bodypropCount++;
+                }
 
-            if (bodybasicPay != null)
-            {
-                body["basicPay"] = ExpressionConverter.ConvertO(bodybasicPay);
-                bodypropCount++;
-            }
+                if (bodyhireType != null)
+                {
+                    body["hireType"] = SourceExpressionConverter.ConvertToken(bodyhireType);
+                    bodypropCount++;
+                }
 
-            if (bodycalculateSalaryType != null)
-            {
-                body["calculateSalaryType"] = ExpressionConverter.ConvertO(bodycalculateSalaryType);
-                bodypropCount++;
-            }
+                if (bodypositionId != null)
+                {
+                    body["positionId"] = SourceExpressionConverter.ConvertToken(bodypositionId);
+                    bodypropCount++;
+                }
 
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
-                bodypropCount++;
-            }
+                if (bodydepartmentId != null)
+                {
+                    body["departmentId"] = SourceExpressionConverter.ConvertToken(bodydepartmentId);
+                    bodypropCount++;
+                }
 
-            if (bodyworkDate != null)
-            {
-                body["workDate"] = ExpressionConverter.ConvertO(bodyworkDate);
-                bodypropCount++;
-            }
+                if (bodydirectSupervisorId != null)
+                {
+                    body["directSupervisorId"] = SourceExpressionConverter.ConvertToken(bodydirectSupervisorId);
+                    bodypropCount++;
+                }
 
-            if (bodycause != null)
-            {
-                body["cause"] = ExpressionConverter.ConvertO(bodycause);
-                bodypropCount++;
-            }
+                if (bodyattendCalculationId != null)
+                {
+                    body["attendCalculationId"] = SourceExpressionConverter.ConvertToken(bodyattendCalculationId);
+                    bodypropCount++;
+                }
+
+                if (bodypayrollRegulationId != null)
+                {
+                    body["payrollRegulationId"] = SourceExpressionConverter.ConvertToken(bodypayrollRegulationId);
+                    bodypropCount++;
+                }
+
+                if (bodybasicPay != null)
+                {
+                    body["basicPay"] = SourceExpressionConverter.ConvertToken(bodybasicPay);
+                    bodypropCount++;
+                }
+
+                if (bodycalculateSalaryType != null)
+                {
+                    body["calculateSalaryType"] = SourceExpressionConverter.ConvertToken(bodycalculateSalaryType);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = SourceExpressionConverter.ConvertToken(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodyworkDate != null)
+                {
+                    body["workDate"] = SourceExpressionConverter.ConvertToken(bodyworkDate);
+                    bodypropCount++;
+                }
+
+                if (bodycause != null)
+                {
+                    body["cause"] = SourceExpressionConverter.ConvertToken(bodycause);
+                    bodypropCount++;
+                }
 
-            if (bodymajorWorkLocationId != null)
-            {
-                body["majorWorkLocationId"] = ExpressionConverter.ConvertO(bodymajorWorkLocationId);
-                bodypropCount++;
-            }
+                if (bodymajorWorkLocationId != null)
+                {
+                    body["majorWorkLocationId"] = SourceExpressionConverter.ConvertToken(bodymajorWorkLocationId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _09updateLeaveApplicationById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyholidayType = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<double>> bodyleaveTime = null, Expression<Func<string>> bodytimeType = null, Expression<Func<string>> bodyholidayDate = null, Expression<Func<string>> bodytime = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean> _09updateLeaveApplicationById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyholidayType = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<double> bodyleaveTime = null, [WorkflowExpression] Func<string> bodytimeType = null, [WorkflowExpression] Func<string> bodyholidayDate = null, [WorkflowExpression] Func<string> bodytime = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v3/leave/updateLeaveApplicationById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyholidayType != null)
-            {
-                body["holidayType"] = ExpressionConverter.ConvertO(bodyholidayType);
-                bodypropCount++;
-            }
-
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
-
-            if (bodystartTime != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
+                var apiCallPath = "/v3/leave/updateLeaveApplicationById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyholidayType != null)
+                {
+                    body["holidayType"] = SourceExpressionConverter.ConvertToken(bodyholidayType);
+                    bodypropCount++;
+                }
 
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodystartTime != null)
+                {
+                    body["startTime"] = SourceExpressionConverter.ConvertToken(bodystartTime);
+                    bodypropCount++;
+                }
+
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                    bodypropCount++;
+                }
 
-            if (bodyendTime != null)
-            {
-                body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-                bodypropCount++;
-            }
+                if (bodyendTime != null)
+                {
+                    body["endTime"] = SourceExpressionConverter.ConvertToken(bodyendTime);
+                    bodypropCount++;
+                }
 
-            if (bodyleaveTime != null)
-            {
-                body["leaveTime"] = ExpressionConverter.ConvertO(bodyleaveTime);
-                bodypropCount++;
-            }
+                if (bodyleaveTime != null)
+                {
+                    body["leaveTime"] = SourceExpressionConverter.ConvertToken(bodyleaveTime);
+                    bodypropCount++;
+                }
 
-            if (bodytimeType != null)
-            {
-                body["timeType"] = ExpressionConverter.ConvertO(bodytimeType);
-                bodypropCount++;
-            }
+                if (bodytimeType != null)
+                {
+                    body["timeType"] = SourceExpressionConverter.ConvertToken(bodytimeType);
+                    bodypropCount++;
+                }
 
-            if (bodyholidayDate != null)
-            {
-                body["holidayDate"] = ExpressionConverter.ConvertO(bodyholidayDate);
-                bodypropCount++;
-            }
+                if (bodyholidayDate != null)
+                {
+                    body["holidayDate"] = SourceExpressionConverter.ConvertToken(bodyholidayDate);
+                    bodypropCount++;
+                }
 
-            if (bodytime != null)
-            {
-                body["time"] = ExpressionConverter.ConvertO(bodytime);
-                bodypropCount++;
-            }
+                if (bodytime != null)
+                {
+                    body["time"] = SourceExpressionConverter.ConvertToken(bodytime);
+                    bodypropCount++;
+                }
 
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _09updateShiftTemplateById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodyshiftIn, Expression<Func<string>> bodyshiftOff, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyattendanceAddressId = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean> _09updateShiftTemplateById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyshiftIn, [WorkflowExpression] Func<string> bodyshiftOff, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyattendanceAddressId = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v3/attendCalculation/updateShiftTemplateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
-            bodypropCount++;
-            body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
-            if (bodydateType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
+                var apiCallPath = "/v3/attendCalculation/updateShiftTemplateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyattendanceAddressId != null)
-            {
-                body["attendanceAddressId"] = ExpressionConverter.ConvertO(bodyattendanceAddressId);
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
-            }
-
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                body["shiftIn"] = SourceExpressionConverter.ConvertToken(bodyshiftIn);
                 bodypropCount++;
-            }
+                body["shiftOff"] = SourceExpressionConverter.ConvertToken(bodyshiftOff);
+                if (bodydateType != null)
+                {
+                    body["dateType"] = SourceExpressionConverter.ConvertToken(bodydateType);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodyattendanceAddressId != null)
+                {
+                    body["attendanceAddressId"] = SourceExpressionConverter.ConvertToken(bodyattendanceAddressId);
+                    bodypropCount++;
+                }
+
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = SourceExpressionConverter.ConvertToken(bodymealTime);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AddTimesheetResp> _10addTimesheetInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodytype, Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string>> bodyworkOverTimeType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultV3AddTimesheetResp> _10addTimesheetInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<string> bodyworkOverTimeType = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<string> bodyattendanceItemId = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v3/attendance/addTimesheetInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            if (bodyworkOverTimeType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["workOverTimeType"] = ExpressionConverter.ConvertO(bodyworkOverTimeType);
+                var apiCallPath = "/v3/attendance/addTimesheetInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["date"] = ExpressionConverter.ConvertO(bodydate);
-            bodypropCount++;
-            body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-            bodypropCount++;
-            body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                body["employeeId"] = SourceExpressionConverter.ConvertToken(bodyemployeeId);
                 bodypropCount++;
-            }
+                body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                if (bodyworkOverTimeType != null)
+                {
+                    body["workOverTimeType"] = SourceExpressionConverter.ConvertToken(bodyworkOverTimeType);
+                    bodypropCount++;
+                }
 
-            if (bodyaddressCardId != null)
-            {
-                body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
                 bodypropCount++;
-            }
-
-            if (bodyattendanceItemId != null)
-            {
-                body["attendanceItemId"] = ExpressionConverter.ConvertO(bodyattendanceItemId);
+                body["date"] = SourceExpressionConverter.ConvertToken(bodydate);
                 bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
+                body["startTime"] = SourceExpressionConverter.ConvertToken(bodystartTime);
                 bodypropCount++;
-            }
+                body["endTime"] = SourceExpressionConverter.ConvertToken(bodyendTime);
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = SourceExpressionConverter.ConvertToken(bodymealTime);
+                    bodypropCount++;
+                }
 
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
+                if (bodyaddressCardId != null)
+                {
+                    body["addressCardId"] = SourceExpressionConverter.ConvertToken(bodyaddressCardId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodyattendanceItemId != null)
+                {
+                    body["attendanceItemId"] = SourceExpressionConverter.ConvertToken(bodyattendanceItemId);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = SourceExpressionConverter.ConvertToken(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultV3AddTimesheetResp>(callPayload);
+            return new ApiConnectionAction<ResultV3AddTimesheetResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3EmployeeHistoryListResp> _10getEmployeeHistoryList(Expression<Func<string>> employeeId, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3EmployeeHistoryListResp> _10getEmployeeHistoryList([WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/employee/getEmployeeHistoryList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3EmployeeHistoryListResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/employee/getEmployeeHistoryList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["employeeId"] = SourceExpressionConverter.ConvertO(employeeId);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3EmployeeHistoryListResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LeaveHolidayResp> _10getLeaveApplicationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> employeeFilter = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> holidayTypeFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> recordStatusFilter = null, Expression<Func<string>> attendCalculationId = null, Expression<Func<string>> bizLabelIds = null, Expression<Func<string>> startDateFilter = null)
+        public IBodyWorkflowAction<ResultIPageV3LeaveHolidayResp> _10getLeaveApplicationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> employeeFilter = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> holidayTypeFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> recordStatusFilter = null, [WorkflowExpression] Func<string> attendCalculationId = null, [WorkflowExpression] Func<string> bizLabelIds = null, [WorkflowExpression] Func<string> startDateFilter = null)
         {
-            var apiCallPath = "/v3/leave/getLeaveApplicationList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (departmentFilter != null)
-                callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
-            if (employeeFilter != null)
-                callPayload.Queries["employeeFilter"] = ExpressionConverter.Convert(employeeFilter);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (holidayTypeFilter != null)
-                callPayload.Queries["holidayTypeFilter"] = ExpressionConverter.Convert(holidayTypeFilter);
-            if (calculateSalaryTypeFilter != null)
-                callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
-            if (recordStatusFilter != null)
-                callPayload.Queries["recordStatusFilter"] = ExpressionConverter.Convert(recordStatusFilter);
-            if (attendCalculationId != null)
-                callPayload.Queries["attendCalculationId"] = ExpressionConverter.Convert(attendCalculationId);
-            if (bizLabelIds != null)
-                callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(bizLabelIds);
-            if (startDateFilter != null)
-                callPayload.Queries["startDateFilter"] = ExpressionConverter.Convert(startDateFilter);
-            return new ApiConnectionAction<ResultIPageV3LeaveHolidayResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/leave/getLeaveApplicationList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (departmentFilter != null)
+                    callPayload.Queries["departmentFilter"] = SourceExpressionConverter.ConvertO(departmentFilter);
+                if (employeeFilter != null)
+                    callPayload.Queries["employeeFilter"] = SourceExpressionConverter.ConvertO(employeeFilter);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = SourceExpressionConverter.ConvertO(statusFilter);
+                if (holidayTypeFilter != null)
+                    callPayload.Queries["holidayTypeFilter"] = SourceExpressionConverter.ConvertO(holidayTypeFilter);
+                if (calculateSalaryTypeFilter != null)
+                    callPayload.Queries["calculateSalaryTypeFilter"] = SourceExpressionConverter.ConvertO(calculateSalaryTypeFilter);
+                if (recordStatusFilter != null)
+                    callPayload.Queries["recordStatusFilter"] = SourceExpressionConverter.ConvertO(recordStatusFilter);
+                if (attendCalculationId != null)
+                    callPayload.Queries["attendCalculationId"] = SourceExpressionConverter.ConvertO(attendCalculationId);
+                if (bizLabelIds != null)
+                    callPayload.Queries["bizLabelIds"] = SourceExpressionConverter.ConvertO(bizLabelIds);
+                if (startDateFilter != null)
+                    callPayload.Queries["startDateFilter"] = SourceExpressionConverter.ConvertO(startDateFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3LeaveHolidayResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3ShiftTemplateListResp> _10getShiftTemplateList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendanceAddressId = null, Expression<Func<string>> dateType = null, Expression<Func<string>> status = null)
+        public IBodyWorkflowAction<ResultIPageV3ShiftTemplateListResp> _10getShiftTemplateList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> attendanceAddressId = null, [WorkflowExpression] Func<string> dateType = null, [WorkflowExpression] Func<string> status = null)
         {
-            var apiCallPath = "/v3/attendCalculation/getShiftTemplateList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (attendanceAddressId != null)
-                callPayload.Queries["attendanceAddressId"] = ExpressionConverter.Convert(attendanceAddressId);
-            if (dateType != null)
-                callPayload.Queries["dateType"] = ExpressionConverter.Convert(dateType);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<ResultIPageV3ShiftTemplateListResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/getShiftTemplateList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (attendanceAddressId != null)
+                    callPayload.Queries["attendanceAddressId"] = SourceExpressionConverter.ConvertO(attendanceAddressId);
+                if (dateType != null)
+                    callPayload.Queries["dateType"] = SourceExpressionConverter.ConvertO(dateType);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3ShiftTemplateListResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _11addOpenShiftInfo(Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<double>> bodyhourlyRate, Expression<Func<int>> bodyempPlanNo, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyshiftType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean> _11addOpenShiftInfo([WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<double> bodyhourlyRate, [WorkflowExpression] Func<int> bodyempPlanNo, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<string> bodyshiftType = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v3/attendCalculation/addOpenShiftInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v3/attendCalculation/addOpenShiftInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycode != null)
+                {
+                    body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
-            if (bodylocationId != null)
-            {
-                body["locationId"] = ExpressionConverter.ConvertO(bodylocationId);
                 bodypropCount++;
-            }
+                body["projectId"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
+                if (bodylocationId != null)
+                {
+                    body["locationId"] = SourceExpressionConverter.ConvertToken(bodylocationId);
+                    bodypropCount++;
+                }
 
-            if (bodyshiftType != null)
-            {
-                body["shiftType"] = ExpressionConverter.ConvertO(bodyshiftType);
-                bodypropCount++;
-            }
+                if (bodyshiftType != null)
+                {
+                    body["shiftType"] = SourceExpressionConverter.ConvertToken(bodyshiftType);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["date"] = ExpressionConverter.ConvertO(bodydate);
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
                 bodypropCount++;
-            }
+                body["date"] = SourceExpressionConverter.ConvertToken(bodydate);
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = SourceExpressionConverter.ConvertToken(bodymealTime);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-            bodypropCount++;
-            body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-            bodypropCount++;
-            body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
-            bodypropCount++;
-            body["empPlanNo"] = ExpressionConverter.ConvertO(bodyempPlanNo);
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
                 bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                body["startTime"] = SourceExpressionConverter.ConvertToken(bodystartTime);
                 bodypropCount++;
-            }
+                body["endTime"] = SourceExpressionConverter.ConvertToken(bodyendTime);
+                bodypropCount++;
+                body["hourlyRate"] = SourceExpressionConverter.ConvertToken(bodyhourlyRate);
+                bodypropCount++;
+                body["empPlanNo"] = SourceExpressionConverter.ConvertToken(bodyempPlanNo);
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = SourceExpressionConverter.ConvertToken(bodycostCenterId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _11deleteTimesheetById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _11deleteTimesheetById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendance/deleteTimesheetById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendance/deleteTimesheetById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3LeaveHolidayDetailResp> _11getLeaveApplicationInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3LeaveHolidayDetailResp> _11getLeaveApplicationInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/leave/getLeaveApplicationInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3LeaveHolidayDetailResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/leave/getLeaveApplicationInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3LeaveHolidayDetailResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _12deleteOpenShiftById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _12deleteOpenShiftById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendCalculation/deleteOpenShiftById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/deleteOpenShiftById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultListV3LeaveProcessResp> _12getLeaveApplicationApproveProcessById(Expression<Func<string>> recordId)
+        public IBodyWorkflowAction<ResultListV3LeaveProcessResp> _12getLeaveApplicationApproveProcessById([WorkflowExpression] Func<string> recordId)
         {
-            var apiCallPath = "/v3/leave/getLeaveApplicationApproveProcessById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["recordId"] = ExpressionConverter.Convert(recordId);
-            return new ApiConnectionAction<ResultListV3LeaveProcessResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/leave/getLeaveApplicationApproveProcessById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["recordId"] = SourceExpressionConverter.ConvertO(recordId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultListV3LeaveProcessResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _12updateTimesheetById(Expression<Func<string>> bodyid, Expression<Func<string>> bodytype, Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string>> bodyworkOverTimeType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<string>> bodyattendanceItemId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean> _12updateTimesheetById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<string> bodyworkOverTimeType = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<string> bodyattendanceItemId = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v3/attendance/updateTimesheetById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            if (bodyworkOverTimeType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["workOverTimeType"] = ExpressionConverter.ConvertO(bodyworkOverTimeType);
+                var apiCallPath = "/v3/attendance/updateTimesheetById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["date"] = ExpressionConverter.ConvertO(bodydate);
-            bodypropCount++;
-            body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-            bodypropCount++;
-            body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
-            }
+                body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                if (bodyworkOverTimeType != null)
+                {
+                    body["workOverTimeType"] = SourceExpressionConverter.ConvertToken(bodyworkOverTimeType);
+                    bodypropCount++;
+                }
 
-            if (bodyaddressCardId != null)
-            {
-                body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
                 bodypropCount++;
-            }
-
-            if (bodyattendanceItemId != null)
-            {
-                body["attendanceItemId"] = ExpressionConverter.ConvertO(bodyattendanceItemId);
+                body["date"] = SourceExpressionConverter.ConvertToken(bodydate);
                 bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
+                body["startTime"] = SourceExpressionConverter.ConvertToken(bodystartTime);
                 bodypropCount++;
-            }
+                body["endTime"] = SourceExpressionConverter.ConvertToken(bodyendTime);
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = SourceExpressionConverter.ConvertToken(bodymealTime);
+                    bodypropCount++;
+                }
 
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
+                if (bodyaddressCardId != null)
+                {
+                    body["addressCardId"] = SourceExpressionConverter.ConvertToken(bodyaddressCardId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodyattendanceItemId != null)
+                {
+                    body["attendanceItemId"] = SourceExpressionConverter.ConvertToken(bodyattendanceItemId);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = SourceExpressionConverter.ConvertToken(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LeaveTypeResp> _13getLeaveTypeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> shortName = null)
+        public IBodyWorkflowAction<ResultIPageV3LeaveTypeResp> _13getLeaveTypeList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> shortName = null)
         {
-            var apiCallPath = "/v3/leave/getLeaveTypeList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (shortName != null)
-                callPayload.Queries["shortName"] = ExpressionConverter.Convert(shortName);
-            return new ApiConnectionAction<ResultIPageV3LeaveTypeResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/leave/getLeaveTypeList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (shortName != null)
+                    callPayload.Queries["shortName"] = SourceExpressionConverter.ConvertO(shortName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3LeaveTypeResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3TimesheetListResp> _13getTimesheetList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> departmentFilter = null, Expression<Func<string>> positionFilter = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> bizLabelIds = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> calculateSalaryTypeFilter = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> addressCardId = null, Expression<Func<string>> typeFilter = null)
+        public IBodyWorkflowAction<ResultIPageV3TimesheetListResp> _13getTimesheetList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> departmentFilter = null, [WorkflowExpression] Func<string> positionFilter = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> bizLabelIds = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> calculateSalaryTypeFilter = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> addressCardId = null, [WorkflowExpression] Func<string> typeFilter = null)
         {
-            var apiCallPath = "/v3/attendance/getTimesheetList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (departmentFilter != null)
-                callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
-            if (positionFilter != null)
-                callPayload.Queries["positionFilter"] = ExpressionConverter.Convert(positionFilter);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (bizLabelIds != null)
-                callPayload.Queries["bizLabelIds"] = ExpressionConverter.Convert(bizLabelIds);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (calculateSalaryTypeFilter != null)
-                callPayload.Queries["calculateSalaryTypeFilter"] = ExpressionConverter.Convert(calculateSalaryTypeFilter);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (addressCardId != null)
-                callPayload.Queries["addressCardId"] = ExpressionConverter.Convert(addressCardId);
-            if (typeFilter != null)
-                callPayload.Queries["typeFilter"] = ExpressionConverter.Convert(typeFilter);
-            return new ApiConnectionAction<ResultIPageV3TimesheetListResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendance/getTimesheetList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (departmentFilter != null)
+                    callPayload.Queries["departmentFilter"] = SourceExpressionConverter.ConvertO(departmentFilter);
+                if (positionFilter != null)
+                    callPayload.Queries["positionFilter"] = SourceExpressionConverter.ConvertO(positionFilter);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = SourceExpressionConverter.ConvertO(employeeIdFilter);
+                if (bizLabelIds != null)
+                    callPayload.Queries["bizLabelIds"] = SourceExpressionConverter.ConvertO(bizLabelIds);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = SourceExpressionConverter.ConvertO(statusFilter);
+                if (calculateSalaryTypeFilter != null)
+                    callPayload.Queries["calculateSalaryTypeFilter"] = SourceExpressionConverter.ConvertO(calculateSalaryTypeFilter);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                if (addressCardId != null)
+                    callPayload.Queries["addressCardId"] = SourceExpressionConverter.ConvertO(addressCardId);
+                if (typeFilter != null)
+                    callPayload.Queries["typeFilter"] = SourceExpressionConverter.ConvertO(typeFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3TimesheetListResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _13updateOpenShiftById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<double>> bodyhourlyRate, Expression<Func<int>> bodyempPlanNo, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyshiftType = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean> _13updateOpenShiftById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<double> bodyhourlyRate, [WorkflowExpression] Func<int> bodyempPlanNo, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<string> bodyshiftType = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v3/attendCalculation/updateOpenShiftById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodycode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
+                var apiCallPath = "/v3/attendCalculation/updateOpenShiftById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodycode != null)
+                {
+                    body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
-            if (bodylocationId != null)
-            {
-                body["locationId"] = ExpressionConverter.ConvertO(bodylocationId);
                 bodypropCount++;
-            }
+                body["projectId"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
+                if (bodylocationId != null)
+                {
+                    body["locationId"] = SourceExpressionConverter.ConvertToken(bodylocationId);
+                    bodypropCount++;
+                }
 
-            if (bodyshiftType != null)
-            {
-                body["shiftType"] = ExpressionConverter.ConvertO(bodyshiftType);
-                bodypropCount++;
-            }
+                if (bodyshiftType != null)
+                {
+                    body["shiftType"] = SourceExpressionConverter.ConvertToken(bodyshiftType);
+                    bodypropCount++;
+                }
 
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = SourceExpressionConverter.ConvertToken(bodymealTime);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-            bodypropCount++;
-            body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-            bodypropCount++;
-            body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
-            bodypropCount++;
-            body["empPlanNo"] = ExpressionConverter.ConvertO(bodyempPlanNo);
-            if (bodycostCenterId != null)
-            {
-                body["costCenterId"] = ExpressionConverter.ConvertO(bodycostCenterId);
                 bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                body["startTime"] = SourceExpressionConverter.ConvertToken(bodystartTime);
                 bodypropCount++;
-            }
+                body["endTime"] = SourceExpressionConverter.ConvertToken(bodyendTime);
+                bodypropCount++;
+                body["hourlyRate"] = SourceExpressionConverter.ConvertToken(bodyhourlyRate);
+                bodypropCount++;
+                body["empPlanNo"] = SourceExpressionConverter.ConvertToken(bodyempPlanNo);
+                if (bodycostCenterId != null)
+                {
+                    body["costCenterId"] = SourceExpressionConverter.ConvertToken(bodycostCenterId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LeavePolicyResp> _14getLeavePolicyList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null)
+        public IBodyWorkflowAction<ResultIPageV3LeavePolicyResp> _14getLeavePolicyList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null)
         {
-            var apiCallPath = "/v3/leave/getLeavePolicyList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            return new ApiConnectionAction<ResultIPageV3LeavePolicyResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/leave/getLeavePolicyList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3LeavePolicyResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3OpenShiftListResp> _14getOpenShiftList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> projectId = null, Expression<Func<string>> locationId = null, Expression<Func<string>> costCenterId = null, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<ResultIPageV3OpenShiftListResp> _14getOpenShiftList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> locationId = null, [WorkflowExpression] Func<string> costCenterId = null, [WorkflowExpression] Func<string> date = null)
         {
-            var apiCallPath = "/v3/attendCalculation/getOpenShiftList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            if (locationId != null)
-                callPayload.Queries["locationId"] = ExpressionConverter.Convert(locationId);
-            if (costCenterId != null)
-                callPayload.Queries["costCenterId"] = ExpressionConverter.Convert(costCenterId);
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            return new ApiConnectionAction<ResultIPageV3OpenShiftListResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/getOpenShiftList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (projectId != null)
+                    callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                if (locationId != null)
+                    callPayload.Queries["locationId"] = SourceExpressionConverter.ConvertO(locationId);
+                if (costCenterId != null)
+                    callPayload.Queries["costCenterId"] = SourceExpressionConverter.ConvertO(costCenterId);
+                if (date != null)
+                    callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3OpenShiftListResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3TimesheetInfoResp> _14getTimesheetInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3TimesheetInfoResp> _14getTimesheetInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendance/getTimesheetInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3TimesheetInfoResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendance/getTimesheetInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3TimesheetInfoResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3AddCalendarRemarkInfoResp> _15addCalendarRemarkInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyemployeeStatus, Expression<Func<string>> bodytimeType, Expression<Func<string>> bodyexpectWorkStartTime, Expression<Func<string>> bodyexpectWorkEndTime, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyrecordDate = null, Expression<Func<string>> bodyexpectWorkLocation = null, Expression<Func<string>> bodyexpectWorkTimeTemplate = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultV3AddCalendarRemarkInfoResp> _15addCalendarRemarkInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyemployeeStatus, [WorkflowExpression] Func<string> bodytimeType, [WorkflowExpression] Func<string> bodyexpectWorkStartTime, [WorkflowExpression] Func<string> bodyexpectWorkEndTime, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyrecordDate = null, [WorkflowExpression] Func<string> bodyexpectWorkLocation = null, [WorkflowExpression] Func<string> bodyexpectWorkTimeTemplate = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v3/attendance/addCalendarRemarkInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["employeeStatus"] = ExpressionConverter.ConvertO(bodyemployeeStatus);
-            bodypropCount++;
-            body["timeType"] = ExpressionConverter.ConvertO(bodytimeType);
-            if (bodystartDate != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                var apiCallPath = "/v3/attendance/addCalendarRemarkInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                body["employeeId"] = SourceExpressionConverter.ConvertToken(bodyemployeeId);
                 bodypropCount++;
-            }
-
-            if (bodyrecordDate != null)
-            {
-                body["recordDate"] = ExpressionConverter.ConvertO(bodyrecordDate);
+                body["employeeStatus"] = SourceExpressionConverter.ConvertToken(bodyemployeeStatus);
                 bodypropCount++;
-            }
+                body["timeType"] = SourceExpressionConverter.ConvertToken(bodytimeType);
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                    bodypropCount++;
+                }
 
-            if (bodyexpectWorkLocation != null)
-            {
-                body["expectWorkLocation"] = ExpressionConverter.ConvertO(bodyexpectWorkLocation);
-                bodypropCount++;
-            }
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                    bodypropCount++;
+                }
 
-            if (bodyexpectWorkTimeTemplate != null)
-            {
-                body["expectWorkTimeTemplate"] = ExpressionConverter.ConvertO(bodyexpectWorkTimeTemplate);
-                bodypropCount++;
-            }
+                if (bodyrecordDate != null)
+                {
+                    body["recordDate"] = SourceExpressionConverter.ConvertToken(bodyrecordDate);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["expectWorkStartTime"] = ExpressionConverter.ConvertO(bodyexpectWorkStartTime);
-            bodypropCount++;
-            body["expectWorkEndTime"] = ExpressionConverter.ConvertO(bodyexpectWorkEndTime);
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                if (bodyexpectWorkLocation != null)
+                {
+                    body["expectWorkLocation"] = SourceExpressionConverter.ConvertToken(bodyexpectWorkLocation);
+                    bodypropCount++;
+                }
+
+                if (bodyexpectWorkTimeTemplate != null)
+                {
+                    body["expectWorkTimeTemplate"] = SourceExpressionConverter.ConvertToken(bodyexpectWorkTimeTemplate);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["expectWorkStartTime"] = SourceExpressionConverter.ConvertToken(bodyexpectWorkStartTime);
+                bodypropCount++;
+                body["expectWorkEndTime"] = SourceExpressionConverter.ConvertToken(bodyexpectWorkEndTime);
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultV3AddCalendarRemarkInfoResp>(callPayload);
+            return new ApiConnectionAction<ResultV3AddCalendarRemarkInfoResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3LeavePolicyDetailResp> _15getLeavePolicyInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3LeavePolicyDetailResp> _15getLeavePolicyInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/leave/getLeavePolicyInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3LeavePolicyDetailResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/leave/getLeavePolicyInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3LeavePolicyDetailResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3OpenShiftInfoResp> _15getOpenShiftInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3OpenShiftInfoResp> _15getOpenShiftInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendCalculation/getOpenShiftInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3OpenShiftInfoResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/getOpenShiftInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3OpenShiftInfoResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _16addProjectCategoryInfo(Expression<Func<string>> bodyname, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyparentId = null)
+        public IBodyWorkflowAction<ResultBoolean> _16addProjectCategoryInfo([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            var apiCallPath = "/v3/attendCalculation/addProjectCategoryInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodycode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
+                var apiCallPath = "/v3/attendCalculation/addProjectCategoryInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodycode != null)
+                {
+                    body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                    bodypropCount++;
+                }
 
-            if (bodyparentId != null)
-            {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
-                bodypropCount++;
-            }
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _16deleteCalendarRemarkById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _16deleteCalendarRemarkById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendance/deleteCalendarRemarkById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendance/deleteCalendarRemarkById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3LeavePolicyTypeResp> _16getLeavePolicyTypeList(Expression<Func<string>> regulationId, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> id = null, Expression<Func<string>> holidayId = null, Expression<Func<string>> generationFrequency = null)
+        public IBodyWorkflowAction<ResultIPageV3LeavePolicyTypeResp> _16getLeavePolicyTypeList([WorkflowExpression] Func<string> regulationId, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> holidayId = null, [WorkflowExpression] Func<string> generationFrequency = null)
         {
-            var apiCallPath = "/v3/leave/getLeavePolicyTypeList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Queries["regulationId"] = ExpressionConverter.Convert(regulationId);
-            if (holidayId != null)
-                callPayload.Queries["holidayId"] = ExpressionConverter.Convert(holidayId);
-            if (generationFrequency != null)
-                callPayload.Queries["generationFrequency"] = ExpressionConverter.Convert(generationFrequency);
-            return new ApiConnectionAction<ResultIPageV3LeavePolicyTypeResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/leave/getLeavePolicyTypeList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (id != null)
+                    callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                callPayload.Queries["regulationId"] = SourceExpressionConverter.ConvertO(regulationId);
+                if (holidayId != null)
+                    callPayload.Queries["holidayId"] = SourceExpressionConverter.ConvertO(holidayId);
+                if (generationFrequency != null)
+                    callPayload.Queries["generationFrequency"] = SourceExpressionConverter.ConvertO(generationFrequency);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3LeavePolicyTypeResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _17deleteProjectCategoryById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _17deleteProjectCategoryById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendCalculation/deleteProjectCategoryById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/deleteProjectCategoryById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _17updateCalendarRemarkById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyemployeeStatus, Expression<Func<string>> bodytimeType, Expression<Func<string>> bodyexpectWorkStartTime, Expression<Func<string>> bodyexpectWorkEndTime, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyrecordDate = null, Expression<Func<string>> bodyexpectWorkLocation = null, Expression<Func<string>> bodyexpectWorkTimeTemplate = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean> _17updateCalendarRemarkById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyemployeeStatus, [WorkflowExpression] Func<string> bodytimeType, [WorkflowExpression] Func<string> bodyexpectWorkStartTime, [WorkflowExpression] Func<string> bodyexpectWorkEndTime, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyrecordDate = null, [WorkflowExpression] Func<string> bodyexpectWorkLocation = null, [WorkflowExpression] Func<string> bodyexpectWorkTimeTemplate = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v3/attendance/updateCalendarRemarkById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["employeeStatus"] = ExpressionConverter.ConvertO(bodyemployeeStatus);
-            bodypropCount++;
-            body["timeType"] = ExpressionConverter.ConvertO(bodytimeType);
-            if (bodystartDate != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                var apiCallPath = "/v3/attendance/updateCalendarRemarkById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
-            }
-
-            if (bodyrecordDate != null)
-            {
-                body["recordDate"] = ExpressionConverter.ConvertO(bodyrecordDate);
+                body["employeeId"] = SourceExpressionConverter.ConvertToken(bodyemployeeId);
                 bodypropCount++;
-            }
-
-            if (bodyexpectWorkLocation != null)
-            {
-                body["expectWorkLocation"] = ExpressionConverter.ConvertO(bodyexpectWorkLocation);
+                body["employeeStatus"] = SourceExpressionConverter.ConvertToken(bodyemployeeStatus);
                 bodypropCount++;
-            }
+                body["timeType"] = SourceExpressionConverter.ConvertToken(bodytimeType);
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                    bodypropCount++;
+                }
 
-            if (bodyexpectWorkTimeTemplate != null)
-            {
-                body["expectWorkTimeTemplate"] = ExpressionConverter.ConvertO(bodyexpectWorkTimeTemplate);
-                bodypropCount++;
-            }
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["expectWorkStartTime"] = ExpressionConverter.ConvertO(bodyexpectWorkStartTime);
-            bodypropCount++;
-            body["expectWorkEndTime"] = ExpressionConverter.ConvertO(bodyexpectWorkEndTime);
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
+                if (bodyrecordDate != null)
+                {
+                    body["recordDate"] = SourceExpressionConverter.ConvertToken(bodyrecordDate);
+                    bodypropCount++;
+                }
+
+                if (bodyexpectWorkLocation != null)
+                {
+                    body["expectWorkLocation"] = SourceExpressionConverter.ConvertToken(bodyexpectWorkLocation);
+                    bodypropCount++;
+                }
+
+                if (bodyexpectWorkTimeTemplate != null)
+                {
+                    body["expectWorkTimeTemplate"] = SourceExpressionConverter.ConvertToken(bodyexpectWorkTimeTemplate);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["expectWorkStartTime"] = SourceExpressionConverter.ConvertToken(bodyexpectWorkStartTime);
+                bodypropCount++;
+                body["expectWorkEndTime"] = SourceExpressionConverter.ConvertToken(bodyexpectWorkEndTime);
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3StatusFlagListResp> _18getCalendarRemarkList(Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIds = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
+        public IBodyWorkflowAction<ResultIPageV3StatusFlagListResp> _18getCalendarRemarkList([WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeIds = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            var apiCallPath = "/v3/attendance/getCalendarRemarkList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeIds != null)
-                callPayload.Queries["employeeIds"] = ExpressionConverter.Convert(employeeIds);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            return new ApiConnectionAction<ResultIPageV3StatusFlagListResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendance/getCalendarRemarkList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (employeeIds != null)
+                    callPayload.Queries["employeeIds"] = SourceExpressionConverter.ConvertO(employeeIds);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3StatusFlagListResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _18updateProjectCategoryById(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyparentId = null)
+        public IBodyWorkflowAction<ResultBoolean> _18updateProjectCategoryById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            var apiCallPath = "/v3/attendCalculation/updateProjectCategoryById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodycode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
+                var apiCallPath = "/v3/attendCalculation/updateProjectCategoryById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyparentId != null)
-            {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
-            }
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodycode != null)
+                {
+                    body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3ScheduleProjectCategoryListResp> _19getProjectCategoryList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3ScheduleProjectCategoryListResp> _19getProjectCategoryList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/attendCalculation/getProjectCategoryList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3ScheduleProjectCategoryListResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/getProjectCategoryList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3ScheduleProjectCategoryListResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _20addProjectInfo(Expression<Func<string>> bodycode, Expression<Func<string>> bodyname, Expression<Func<double>> bodyhourlyRate, Expression<Func<string>> bodycategoryId = null, Expression<Func<double>> bodyminRate = null, Expression<Func<double>> bodymaxRate = null)
+        public IBodyWorkflowAction<ResultBoolean> _20addProjectInfo([WorkflowExpression] Func<string> bodycode, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<double> bodyhourlyRate, [WorkflowExpression] Func<string> bodycategoryId = null, [WorkflowExpression] Func<double> bodyminRate = null, [WorkflowExpression] Func<double> bodymaxRate = null)
         {
-            var apiCallPath = "/v3/attendCalculation/addProjectInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["code"] = ExpressionConverter.ConvertO(bodycode);
-            if (bodycategoryId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
+                var apiCallPath = "/v3/attendCalculation/addProjectInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                if (bodycategoryId != null)
+                {
+                    body["categoryId"] = SourceExpressionConverter.ConvertToken(bodycategoryId);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
-            if (bodyminRate != null)
-            {
-                body["minRate"] = ExpressionConverter.ConvertO(bodyminRate);
                 bodypropCount++;
-            }
-
-            if (bodymaxRate != null)
-            {
-                body["maxRate"] = ExpressionConverter.ConvertO(bodymaxRate);
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
-            }
+                body["hourlyRate"] = SourceExpressionConverter.ConvertToken(bodyhourlyRate);
+                if (bodyminRate != null)
+                {
+                    body["minRate"] = SourceExpressionConverter.ConvertToken(bodyminRate);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodymaxRate != null)
+                {
+                    body["maxRate"] = SourceExpressionConverter.ConvertToken(bodymaxRate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _21deleteProjectById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _21deleteProjectById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendCalculation/deleteProjectById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/deleteProjectById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _22updateProjectById(Expression<Func<string>> bodyid, Expression<Func<string>> bodycode, Expression<Func<string>> bodyname, Expression<Func<double>> bodyhourlyRate, Expression<Func<string>> bodycategoryId = null, Expression<Func<double>> bodyminRate = null, Expression<Func<double>> bodymaxRate = null)
+        public IBodyWorkflowAction<ResultBoolean> _22updateProjectById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodycode, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<double> bodyhourlyRate, [WorkflowExpression] Func<string> bodycategoryId = null, [WorkflowExpression] Func<double> bodyminRate = null, [WorkflowExpression] Func<double> bodymaxRate = null)
         {
-            var apiCallPath = "/v3/attendCalculation/updateProjectById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["code"] = ExpressionConverter.ConvertO(bodycode);
-            if (bodycategoryId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
+                var apiCallPath = "/v3/attendCalculation/updateProjectById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["hourlyRate"] = ExpressionConverter.ConvertO(bodyhourlyRate);
-            if (bodyminRate != null)
-            {
-                body["minRate"] = ExpressionConverter.ConvertO(bodyminRate);
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
-            }
+                body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                if (bodycategoryId != null)
+                {
+                    body["categoryId"] = SourceExpressionConverter.ConvertToken(bodycategoryId);
+                    bodypropCount++;
+                }
 
-            if (bodymaxRate != null)
-            {
-                body["maxRate"] = ExpressionConverter.ConvertO(bodymaxRate);
                 bodypropCount++;
-            }
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                bodypropCount++;
+                body["hourlyRate"] = SourceExpressionConverter.ConvertToken(bodyhourlyRate);
+                if (bodyminRate != null)
+                {
+                    body["minRate"] = SourceExpressionConverter.ConvertToken(bodyminRate);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodymaxRate != null)
+                {
+                    body["maxRate"] = SourceExpressionConverter.ConvertToken(bodymaxRate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3ProjectListResp> _23getProjectList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3ProjectListResp> _23getProjectList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/attendCalculation/getProjectList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3ProjectListResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/getProjectList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3ProjectListResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultV3ProjectInfoResp> _24getProjectInfoById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultV3ProjectInfoResp> _24getProjectInfoById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendCalculation/getProjectInfoById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultV3ProjectInfoResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/getProjectInfoById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV3ProjectInfoResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _25addProjectCertificateInfo(Expression<Func<string>> bodyemployeeId, Expression<Func<string>> bodyprojectId, Expression<Func<double>> bodyshiftHours, Expression<Func<double>> bodyworkedHours, Expression<Func<string>> bodytier = null, Expression<Func<double>> bodytierRate = null, Expression<Func<string>> bodyreason = null)
+        public IBodyWorkflowAction<ResultBoolean> _25addProjectCertificateInfo([WorkflowExpression] Func<string> bodyemployeeId, [WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<double> bodyshiftHours, [WorkflowExpression] Func<double> bodyworkedHours, [WorkflowExpression] Func<string> bodytier = null, [WorkflowExpression] Func<double> bodytierRate = null, [WorkflowExpression] Func<string> bodyreason = null)
         {
-            var apiCallPath = "/v3/attendCalculation/addProjectCertificateInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["employeeId"] = ExpressionConverter.ConvertO(bodyemployeeId);
-            bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
-            if (bodytier != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["tier"] = ExpressionConverter.ConvertO(bodytier);
+                var apiCallPath = "/v3/attendCalculation/addProjectCertificateInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodytierRate != null)
-            {
-                body["tierRate"] = ExpressionConverter.ConvertO(bodytierRate);
+                body["employeeId"] = SourceExpressionConverter.ConvertToken(bodyemployeeId);
                 bodypropCount++;
-            }
+                body["projectId"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
+                if (bodytier != null)
+                {
+                    body["tier"] = SourceExpressionConverter.ConvertToken(bodytier);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["shiftHours"] = ExpressionConverter.ConvertO(bodyshiftHours);
-            bodypropCount++;
-            body["workedHours"] = ExpressionConverter.ConvertO(bodyworkedHours);
-            if (bodyreason != null)
-            {
-                body["reason"] = ExpressionConverter.ConvertO(bodyreason);
+                if (bodytierRate != null)
+                {
+                    body["tierRate"] = SourceExpressionConverter.ConvertToken(bodytierRate);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["shiftHours"] = SourceExpressionConverter.ConvertToken(bodyshiftHours);
+                bodypropCount++;
+                body["workedHours"] = SourceExpressionConverter.ConvertToken(bodyworkedHours);
+                if (bodyreason != null)
+                {
+                    body["reason"] = SourceExpressionConverter.ConvertToken(bodyreason);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _26updateProjectCertificateById(Expression<Func<string>> bodyid, Expression<Func<string>> bodytier = null, Expression<Func<double>> bodytierRate = null)
+        public IBodyWorkflowAction<ResultBoolean> _26updateProjectCertificateById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodytier = null, [WorkflowExpression] Func<double> bodytierRate = null)
         {
-            var apiCallPath = "/v3/attendCalculation/updateProjectCertificateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodytier != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["tier"] = ExpressionConverter.ConvertO(bodytier);
+                var apiCallPath = "/v3/attendCalculation/updateProjectCertificateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodytier != null)
+                {
+                    body["tier"] = SourceExpressionConverter.ConvertToken(bodytier);
+                    bodypropCount++;
+                }
 
-            if (bodytierRate != null)
-            {
-                body["tierRate"] = ExpressionConverter.ConvertO(bodytierRate);
-                bodypropCount++;
-            }
+                if (bodytierRate != null)
+                {
+                    body["tierRate"] = SourceExpressionConverter.ConvertToken(bodytierRate);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3ProjectCertificateListResp> _27getProjectCertificateList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<int>> status = null, Expression<Func<string>> hireType = null, Expression<Func<string>> projectId = null)
+        public IBodyWorkflowAction<ResultIPageV3ProjectCertificateListResp> _27getProjectCertificateList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> departmentId = null, [WorkflowExpression] Func<string> positionId = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<string> hireType = null, [WorkflowExpression] Func<string> projectId = null)
         {
-            var apiCallPath = "/v3/attendCalculation/getProjectCertificateList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (departmentId != null)
-                callPayload.Queries["departmentId"] = ExpressionConverter.Convert(departmentId);
-            if (positionId != null)
-                callPayload.Queries["positionId"] = ExpressionConverter.Convert(positionId);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (hireType != null)
-                callPayload.Queries["hireType"] = ExpressionConverter.Convert(hireType);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            return new ApiConnectionAction<ResultIPageV3ProjectCertificateListResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/getProjectCertificateList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = SourceExpressionConverter.ConvertO(employeeId);
+                if (departmentId != null)
+                    callPayload.Queries["departmentId"] = SourceExpressionConverter.ConvertO(departmentId);
+                if (positionId != null)
+                    callPayload.Queries["positionId"] = SourceExpressionConverter.ConvertO(positionId);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                if (hireType != null)
+                    callPayload.Queries["hireType"] = SourceExpressionConverter.ConvertO(hireType);
+                if (projectId != null)
+                    callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3ProjectCertificateListResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _28addProjectCertificateHours(Expression<Func<string>> bodyprojectCertificateId, Expression<Func<string>> bodyoccurrenceTime, Expression<Func<double>> bodybalance, Expression<Func<string>> bodyreason)
+        public IBodyWorkflowAction<ResultBoolean> _28addProjectCertificateHours([WorkflowExpression] Func<string> bodyprojectCertificateId, [WorkflowExpression] Func<string> bodyoccurrenceTime, [WorkflowExpression] Func<double> bodybalance, [WorkflowExpression] Func<string> bodyreason)
         {
-            var apiCallPath = "/v3/attendCalculation/addProjectCertificateHours";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["projectCertificateId"] = ExpressionConverter.ConvertO(bodyprojectCertificateId);
-            bodypropCount++;
-            body["occurrenceTime"] = ExpressionConverter.ConvertO(bodyoccurrenceTime);
-            bodypropCount++;
-            body["balance"] = ExpressionConverter.ConvertO(bodybalance);
-            bodypropCount++;
-            body["reason"] = ExpressionConverter.ConvertO(bodyreason);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v3/attendCalculation/addProjectCertificateHours";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["projectCertificateId"] = SourceExpressionConverter.ConvertToken(bodyprojectCertificateId);
+                bodypropCount++;
+                body["occurrenceTime"] = SourceExpressionConverter.ConvertToken(bodyoccurrenceTime);
+                bodypropCount++;
+                body["balance"] = SourceExpressionConverter.ConvertToken(bodybalance);
+                bodypropCount++;
+                body["reason"] = SourceExpressionConverter.ConvertToken(bodyreason);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> _29deleteProjectCertificateHoursById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ResultBoolean> _29deleteProjectCertificateHoursById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v3/attendCalculation/deleteProjectCertificateHoursById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/deleteProjectCertificateHoursById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV3ProjectCertificateHoursListResp> _30getProjectCertificateHourList(Expression<Func<string>> projectCertificateId, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV3ProjectCertificateHoursListResp> _30getProjectCertificateHourList([WorkflowExpression] Func<string> projectCertificateId, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v3/attendCalculation/getProjectCertificateHourList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectCertificateId"] = ExpressionConverter.Convert(projectCertificateId);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ResultIPageV3ProjectCertificateHoursListResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/attendCalculation/getProjectCertificateHourList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["projectCertificateId"] = SourceExpressionConverter.ConvertO(projectCertificateId);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV3ProjectCertificateHoursListResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2AttendanceResp> GetAttendCalculationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendDay = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> attendStatus = null, Expression<Func<string>> type = null)
+        public IBodyWorkflowAction<ResultIPageV2AttendanceResp> GetAttendCalculationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> attendDay = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> attendStatus = null, [WorkflowExpression] Func<string> type = null)
         {
-            var apiCallPath = "/v2/attendance/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (attendDay != null)
-                callPayload.Queries["attendDay"] = ExpressionConverter.Convert(attendDay);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (attendStatus != null)
-                callPayload.Queries["attendStatus"] = ExpressionConverter.Convert(attendStatus);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<ResultIPageV2AttendanceResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/attendance/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (attendDay != null)
+                    callPayload.Queries["attendDay"] = SourceExpressionConverter.ConvertO(attendDay);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = SourceExpressionConverter.ConvertO(employeeId);
+                if (attendStatus != null)
+                    callPayload.Queries["attendStatus"] = SourceExpressionConverter.ConvertO(attendStatus);
+                if (type != null)
+                    callPayload.Queries["type"] = SourceExpressionConverter.ConvertO(type);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2AttendanceResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2CostCenterResp> GetCostCenterList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> costCenterCode = null)
+        public IBodyWorkflowAction<ResultIPageV2CostCenterResp> GetCostCenterList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> costCenterCode = null)
         {
-            var apiCallPath = "/v2/tenants/getCostCenterList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (costCenterCode != null)
-                callPayload.Queries["costCenterCode"] = ExpressionConverter.Convert(costCenterCode);
-            return new ApiConnectionAction<ResultIPageV2CostCenterResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/tenants/getCostCenterList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (costCenterCode != null)
+                    callPayload.Queries["costCenterCode"] = SourceExpressionConverter.ConvertO(costCenterCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2CostCenterResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2DepartmentResp> GetDepartmentList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> departmentCode = null, Expression<Func<string>> parentId = null, Expression<Func<string>> status = null)
+        public IBodyWorkflowAction<ResultIPageV2DepartmentResp> GetDepartmentList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> departmentCode = null, [WorkflowExpression] Func<string> parentId = null, [WorkflowExpression] Func<string> status = null)
         {
-            var apiCallPath = "/v2/department/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (departmentCode != null)
-                callPayload.Queries["departmentCode"] = ExpressionConverter.Convert(departmentCode);
-            if (parentId != null)
-                callPayload.Queries["parentId"] = ExpressionConverter.Convert(parentId);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<ResultIPageV2DepartmentResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/department/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (departmentCode != null)
+                    callPayload.Queries["departmentCode"] = SourceExpressionConverter.ConvertO(departmentCode);
+                if (parentId != null)
+                    callPayload.Queries["parentId"] = SourceExpressionConverter.ConvertO(parentId);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2DepartmentResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2EmployeeResp> GetEmployeeList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> englishName = null, Expression<Func<string>> chineseName = null, Expression<Func<string>> email = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> phone = null, Expression<Func<string>> code = null, Expression<Func<int>> status = null, Expression<Func<string>> education = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<string>> hireType = null, Expression<Func<string>> bankCode = null, Expression<Func<string>> costCenterId = null, Expression<Func<string>> payrollRegulationId = null, Expression<Func<string>> workDate = null)
+        public IBodyWorkflowAction<ResultIPageV2EmployeeResp> GetEmployeeList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> englishName = null, [WorkflowExpression] Func<string> chineseName = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<int> status = null, [WorkflowExpression] Func<string> education = null, [WorkflowExpression] Func<string> departmentId = null, [WorkflowExpression] Func<string> positionId = null, [WorkflowExpression] Func<string> hireType = null, [WorkflowExpression] Func<string> bankCode = null, [WorkflowExpression] Func<string> costCenterId = null, [WorkflowExpression] Func<string> payrollRegulationId = null, [WorkflowExpression] Func<string> workDate = null)
         {
-            var apiCallPath = "/v2/employee/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (englishName != null)
-                callPayload.Queries["englishName"] = ExpressionConverter.Convert(englishName);
-            if (chineseName != null)
-                callPayload.Queries["chineseName"] = ExpressionConverter.Convert(chineseName);
-            if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            if (countryCode != null)
-                callPayload.Queries["countryCode"] = ExpressionConverter.Convert(countryCode);
-            if (phone != null)
-                callPayload.Queries["phone"] = ExpressionConverter.Convert(phone);
-            if (code != null)
-                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (education != null)
-                callPayload.Queries["education"] = ExpressionConverter.Convert(education);
-            if (departmentId != null)
-                callPayload.Queries["departmentId"] = ExpressionConverter.Convert(departmentId);
-            if (positionId != null)
-                callPayload.Queries["positionId"] = ExpressionConverter.Convert(positionId);
-            if (hireType != null)
-                callPayload.Queries["hireType"] = ExpressionConverter.Convert(hireType);
-            if (bankCode != null)
-                callPayload.Queries["bankCode"] = ExpressionConverter.Convert(bankCode);
-            if (costCenterId != null)
-                callPayload.Queries["costCenterId"] = ExpressionConverter.Convert(costCenterId);
-            if (payrollRegulationId != null)
-                callPayload.Queries["payrollRegulationId"] = ExpressionConverter.Convert(payrollRegulationId);
-            if (workDate != null)
-                callPayload.Queries["workDate"] = ExpressionConverter.Convert(workDate);
-            return new ApiConnectionAction<ResultIPageV2EmployeeResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/employee/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (englishName != null)
+                    callPayload.Queries["englishName"] = SourceExpressionConverter.ConvertO(englishName);
+                if (chineseName != null)
+                    callPayload.Queries["chineseName"] = SourceExpressionConverter.ConvertO(chineseName);
+                if (email != null)
+                    callPayload.Queries["email"] = SourceExpressionConverter.ConvertO(email);
+                if (countryCode != null)
+                    callPayload.Queries["countryCode"] = SourceExpressionConverter.ConvertO(countryCode);
+                if (phone != null)
+                    callPayload.Queries["phone"] = SourceExpressionConverter.ConvertO(phone);
+                if (code != null)
+                    callPayload.Queries["code"] = SourceExpressionConverter.ConvertO(code);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                if (education != null)
+                    callPayload.Queries["education"] = SourceExpressionConverter.ConvertO(education);
+                if (departmentId != null)
+                    callPayload.Queries["departmentId"] = SourceExpressionConverter.ConvertO(departmentId);
+                if (positionId != null)
+                    callPayload.Queries["positionId"] = SourceExpressionConverter.ConvertO(positionId);
+                if (hireType != null)
+                    callPayload.Queries["hireType"] = SourceExpressionConverter.ConvertO(hireType);
+                if (bankCode != null)
+                    callPayload.Queries["bankCode"] = SourceExpressionConverter.ConvertO(bankCode);
+                if (costCenterId != null)
+                    callPayload.Queries["costCenterId"] = SourceExpressionConverter.ConvertO(costCenterId);
+                if (payrollRegulationId != null)
+                    callPayload.Queries["payrollRegulationId"] = SourceExpressionConverter.ConvertO(payrollRegulationId);
+                if (workDate != null)
+                    callPayload.Queries["workDate"] = SourceExpressionConverter.ConvertO(workDate);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2EmployeeResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2ExpenseResp> GetExpenseApplicationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> reimbursementStatusFilter = null, Expression<Func<string>> reimbursementName = null, Expression<Func<string>> departmentFilter = null)
+        public IBodyWorkflowAction<ResultIPageV2ExpenseResp> GetExpenseApplicationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> reimbursementStatusFilter = null, [WorkflowExpression] Func<string> reimbursementName = null, [WorkflowExpression] Func<string> departmentFilter = null)
         {
-            var apiCallPath = "/v2/tenants/getExpenseApplicationList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (reimbursementStatusFilter != null)
-                callPayload.Queries["reimbursementStatusFilter"] = ExpressionConverter.Convert(reimbursementStatusFilter);
-            if (reimbursementName != null)
-                callPayload.Queries["reimbursementName"] = ExpressionConverter.Convert(reimbursementName);
-            if (departmentFilter != null)
-                callPayload.Queries["departmentFilter"] = ExpressionConverter.Convert(departmentFilter);
-            return new ApiConnectionAction<ResultIPageV2ExpenseResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/tenants/getExpenseApplicationList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = SourceExpressionConverter.ConvertO(employeeIdFilter);
+                if (reimbursementStatusFilter != null)
+                    callPayload.Queries["reimbursementStatusFilter"] = SourceExpressionConverter.ConvertO(reimbursementStatusFilter);
+                if (reimbursementName != null)
+                    callPayload.Queries["reimbursementName"] = SourceExpressionConverter.ConvertO(reimbursementName);
+                if (departmentFilter != null)
+                    callPayload.Queries["departmentFilter"] = SourceExpressionConverter.ConvertO(departmentFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2ExpenseResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2ExternalPayItemResp> GetExtPayItemData(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> employeeCode = null, Expression<Func<string>> businessSalaryItemId = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> businessSalaryItemFilter = null)
+        public IBodyWorkflowAction<ResultIPageV2ExternalPayItemResp> GetExtPayItemData([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> employeeCode = null, [WorkflowExpression] Func<string> businessSalaryItemId = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> businessSalaryItemFilter = null)
         {
-            var apiCallPath = "/v2/payroll/getExtPayItemData";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (employeeCode != null)
-                callPayload.Queries["employeeCode"] = ExpressionConverter.Convert(employeeCode);
-            if (businessSalaryItemId != null)
-                callPayload.Queries["businessSalaryItemId"] = ExpressionConverter.Convert(businessSalaryItemId);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (businessSalaryItemFilter != null)
-                callPayload.Queries["businessSalaryItemFilter"] = ExpressionConverter.Convert(businessSalaryItemFilter);
-            return new ApiConnectionAction<ResultIPageV2ExternalPayItemResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/payroll/getExtPayItemData";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = SourceExpressionConverter.ConvertO(employeeId);
+                if (employeeCode != null)
+                    callPayload.Queries["employeeCode"] = SourceExpressionConverter.ConvertO(employeeCode);
+                if (businessSalaryItemId != null)
+                    callPayload.Queries["businessSalaryItemId"] = SourceExpressionConverter.ConvertO(businessSalaryItemId);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = SourceExpressionConverter.ConvertO(employeeIdFilter);
+                if (businessSalaryItemFilter != null)
+                    callPayload.Queries["businessSalaryItemFilter"] = SourceExpressionConverter.ConvertO(businessSalaryItemFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2ExternalPayItemResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2ExtPayItemResp> GetExtPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> paymentType = null, Expression<Func<string>> status = null)
+        public IBodyWorkflowAction<ResultIPageV2ExtPayItemResp> GetExtPayItemList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> paymentType = null, [WorkflowExpression] Func<string> status = null)
         {
-            var apiCallPath = "/v2/payroll/getExtPayItemList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (paymentType != null)
-                callPayload.Queries["paymentType"] = ExpressionConverter.Convert(paymentType);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<ResultIPageV2ExtPayItemResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/payroll/getExtPayItemList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (paymentType != null)
+                    callPayload.Queries["paymentType"] = SourceExpressionConverter.ConvertO(paymentType);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2ExtPayItemResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2FixedPayItemResp> GetFixedPayItemData(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> payrollItemId = null)
+        public IBodyWorkflowAction<ResultIPageV2FixedPayItemResp> GetFixedPayItemData([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> payrollItemId = null)
         {
-            var apiCallPath = "/v2/payroll/getFixedPayItemData";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (payrollItemId != null)
-                callPayload.Queries["payrollItemId"] = ExpressionConverter.Convert(payrollItemId);
-            return new ApiConnectionAction<ResultIPageV2FixedPayItemResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/payroll/getFixedPayItemData";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = SourceExpressionConverter.ConvertO(employeeId);
+                if (payrollItemId != null)
+                    callPayload.Queries["payrollItemId"] = SourceExpressionConverter.ConvertO(payrollItemId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2FixedPayItemResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2LabelResp> GetLabelList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> labelCode = null, Expression<Func<string>> labelName = null, Expression<Func<int>> labelStatus = null)
+        public IBodyWorkflowAction<ResultIPageV2LabelResp> GetLabelList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> labelCode = null, [WorkflowExpression] Func<string> labelName = null, [WorkflowExpression] Func<int> labelStatus = null)
         {
-            var apiCallPath = "/v2/label/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (labelCode != null)
-                callPayload.Queries["labelCode"] = ExpressionConverter.Convert(labelCode);
-            if (labelName != null)
-                callPayload.Queries["labelName"] = ExpressionConverter.Convert(labelName);
-            if (labelStatus != null)
-                callPayload.Queries["labelStatus"] = ExpressionConverter.Convert(labelStatus);
-            return new ApiConnectionAction<ResultIPageV2LabelResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/label/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (labelCode != null)
+                    callPayload.Queries["labelCode"] = SourceExpressionConverter.ConvertO(labelCode);
+                if (labelName != null)
+                    callPayload.Queries["labelName"] = SourceExpressionConverter.ConvertO(labelName);
+                if (labelStatus != null)
+                    callPayload.Queries["labelStatus"] = SourceExpressionConverter.ConvertO(labelStatus);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2LabelResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2LeaveApplicationResp> GetLeaveApplicationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> holidayType = null, Expression<Func<string>> status = null, Expression<Func<string>> holidayDate = null)
+        public IBodyWorkflowAction<ResultIPageV2LeaveApplicationResp> GetLeaveApplicationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> holidayType = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> holidayDate = null)
         {
-            var apiCallPath = "/v2/leave/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (holidayType != null)
-                callPayload.Queries["holidayType"] = ExpressionConverter.Convert(holidayType);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (holidayDate != null)
-                callPayload.Queries["holidayDate"] = ExpressionConverter.Convert(holidayDate);
-            return new ApiConnectionAction<ResultIPageV2LeaveApplicationResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/leave/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = SourceExpressionConverter.ConvertO(employeeId);
+                if (holidayType != null)
+                    callPayload.Queries["holidayType"] = SourceExpressionConverter.ConvertO(holidayType);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                if (holidayDate != null)
+                    callPayload.Queries["holidayDate"] = SourceExpressionConverter.ConvertO(holidayDate);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2LeaveApplicationResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2PayItemResp> GetPayItemList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> status = null)
+        public IBodyWorkflowAction<ResultIPageV2PayItemResp> GetPayItemList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> status = null)
         {
-            var apiCallPath = "/v2/payroll/getPayItemList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<ResultIPageV2PayItemResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/payroll/getPayItemList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2PayItemResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2PayrollPlanResp> GetPayrunList(Expression<Func<string>> status, Expression<Func<int>> current = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<ResultIPageV2PayrollPlanResp> GetPayrunList([WorkflowExpression] Func<string> status, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v2/payroll/getPayrunList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<ResultIPageV2PayrollPlanResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/payroll/getPayrunList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2PayrollPlanResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2PositionResp> GetPositionList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> positionCode = null)
+        public IBodyWorkflowAction<ResultIPageV2PositionResp> GetPositionList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> positionCode = null)
         {
-            var apiCallPath = "/v2/tenants/getPositionList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (positionCode != null)
-                callPayload.Queries["positionCode"] = ExpressionConverter.Convert(positionCode);
-            return new ApiConnectionAction<ResultIPageV2PositionResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/tenants/getPositionList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (positionCode != null)
+                    callPayload.Queries["positionCode"] = SourceExpressionConverter.ConvertO(positionCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2PositionResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultListV2RosterResp> GetRosterDataList(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> attendCalculationId = null, Expression<Func<string>> departmentId = null, Expression<Func<string>> positionId = null, Expression<Func<string>> statusFilter = null, Expression<Func<string>> englishName = null, Expression<Func<string>> code = null, Expression<Func<string>> surnameEnglish = null, Expression<Func<string>> personalNameEnglish = null)
+        public IBodyWorkflowAction<ResultListV2RosterResp> GetRosterDataList([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> attendCalculationId = null, [WorkflowExpression] Func<string> departmentId = null, [WorkflowExpression] Func<string> positionId = null, [WorkflowExpression] Func<string> statusFilter = null, [WorkflowExpression] Func<string> englishName = null, [WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> surnameEnglish = null, [WorkflowExpression] Func<string> personalNameEnglish = null)
         {
-            var apiCallPath = "/v2/tenants/getRosterDataList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (attendCalculationId != null)
-                callPayload.Queries["attendCalculationId"] = ExpressionConverter.Convert(attendCalculationId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (departmentId != null)
-                callPayload.Queries["departmentId"] = ExpressionConverter.Convert(departmentId);
-            if (positionId != null)
-                callPayload.Queries["positionId"] = ExpressionConverter.Convert(positionId);
-            if (statusFilter != null)
-                callPayload.Queries["statusFilter"] = ExpressionConverter.Convert(statusFilter);
-            if (englishName != null)
-                callPayload.Queries["englishName"] = ExpressionConverter.Convert(englishName);
-            if (code != null)
-                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-            if (surnameEnglish != null)
-                callPayload.Queries["surnameEnglish"] = ExpressionConverter.Convert(surnameEnglish);
-            if (personalNameEnglish != null)
-                callPayload.Queries["personalNameEnglish"] = ExpressionConverter.Convert(personalNameEnglish);
-            return new ApiConnectionAction<ResultListV2RosterResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/tenants/getRosterDataList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (attendCalculationId != null)
+                    callPayload.Queries["attendCalculationId"] = SourceExpressionConverter.ConvertO(attendCalculationId);
+                callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                if (departmentId != null)
+                    callPayload.Queries["departmentId"] = SourceExpressionConverter.ConvertO(departmentId);
+                if (positionId != null)
+                    callPayload.Queries["positionId"] = SourceExpressionConverter.ConvertO(positionId);
+                if (statusFilter != null)
+                    callPayload.Queries["statusFilter"] = SourceExpressionConverter.ConvertO(statusFilter);
+                if (englishName != null)
+                    callPayload.Queries["englishName"] = SourceExpressionConverter.ConvertO(englishName);
+                if (code != null)
+                    callPayload.Queries["code"] = SourceExpressionConverter.ConvertO(code);
+                if (surnameEnglish != null)
+                    callPayload.Queries["surnameEnglish"] = SourceExpressionConverter.ConvertO(surnameEnglish);
+                if (personalNameEnglish != null)
+                    callPayload.Queries["personalNameEnglish"] = SourceExpressionConverter.ConvertO(personalNameEnglish);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultListV2RosterResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
         public IBodyWorkflowAction<ResultV2TenantResp> GetTenantInfo()
         {
-            var apiCallPath = "/v2/tenant/getById";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResultV2TenantResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/tenant/getById";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultV2TenantResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2TimesheetResp> GetTimesheetList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> type = null, Expression<Func<string>> date = null, Expression<Func<string>> status = null)
+        public IBodyWorkflowAction<ResultIPageV2TimesheetResp> GetTimesheetList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> status = null)
         {
-            var apiCallPath = "/v2/timesheet/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<ResultIPageV2TimesheetResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/timesheet/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = SourceExpressionConverter.ConvertO(employeeId);
+                if (type != null)
+                    callPayload.Queries["type"] = SourceExpressionConverter.ConvertO(type);
+                if (date != null)
+                    callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2TimesheetResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2VarPayItemResp> GetVarPayItemData(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> employeeId = null, Expression<Func<string>> payrollItemId = null, Expression<Func<string>> employeeIdFilter = null, Expression<Func<string>> payrollItemIdFilter = null, Expression<Func<string>> payrollPlanId = null)
+        public IBodyWorkflowAction<ResultIPageV2VarPayItemResp> GetVarPayItemData([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> employeeId = null, [WorkflowExpression] Func<string> payrollItemId = null, [WorkflowExpression] Func<string> employeeIdFilter = null, [WorkflowExpression] Func<string> payrollItemIdFilter = null, [WorkflowExpression] Func<string> payrollPlanId = null)
         {
-            var apiCallPath = "/v2/payroll/getVarPayItemData";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (employeeId != null)
-                callPayload.Queries["employeeId"] = ExpressionConverter.Convert(employeeId);
-            if (payrollItemId != null)
-                callPayload.Queries["payrollItemId"] = ExpressionConverter.Convert(payrollItemId);
-            if (employeeIdFilter != null)
-                callPayload.Queries["employeeIdFilter"] = ExpressionConverter.Convert(employeeIdFilter);
-            if (payrollItemIdFilter != null)
-                callPayload.Queries["payrollItemIdFilter"] = ExpressionConverter.Convert(payrollItemIdFilter);
-            if (payrollPlanId != null)
-                callPayload.Queries["payrollPlanId"] = ExpressionConverter.Convert(payrollPlanId);
-            return new ApiConnectionAction<ResultIPageV2VarPayItemResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/payroll/getVarPayItemData";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (employeeId != null)
+                    callPayload.Queries["employeeId"] = SourceExpressionConverter.ConvertO(employeeId);
+                if (payrollItemId != null)
+                    callPayload.Queries["payrollItemId"] = SourceExpressionConverter.ConvertO(payrollItemId);
+                if (employeeIdFilter != null)
+                    callPayload.Queries["employeeIdFilter"] = SourceExpressionConverter.ConvertO(employeeIdFilter);
+                if (payrollItemIdFilter != null)
+                    callPayload.Queries["payrollItemIdFilter"] = SourceExpressionConverter.ConvertO(payrollItemIdFilter);
+                if (payrollPlanId != null)
+                    callPayload.Queries["payrollPlanId"] = SourceExpressionConverter.ConvertO(payrollPlanId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2VarPayItemResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultIPageV2WorkLocationResp> GetWorkLocationList(Expression<Func<string>> q = null, Expression<Func<int>> current = null, Expression<Func<int>> size = null, Expression<Func<string>> name = null, Expression<Func<string>> attendanceAddressCode = null, Expression<Func<string>> status = null)
+        public IBodyWorkflowAction<ResultIPageV2WorkLocationResp> GetWorkLocationList([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> current = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> attendanceAddressCode = null, [WorkflowExpression] Func<string> status = null)
         {
-            var apiCallPath = "/v2/workLocation/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (current != null)
-                callPayload.Queries["current"] = ExpressionConverter.Convert(current);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (attendanceAddressCode != null)
-                callPayload.Queries["attendanceAddressCode"] = ExpressionConverter.Convert(attendanceAddressCode);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<ResultIPageV2WorkLocationResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/workLocation/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (current != null)
+                    callPayload.Queries["current"] = SourceExpressionConverter.ConvertO(current);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (attendanceAddressCode != null)
+                    callPayload.Queries["attendanceAddressCode"] = SourceExpressionConverter.ConvertO(attendanceAddressCode);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultIPageV2WorkLocationResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateCardById(Expression<Func<string>> bodyid, Expression<Func<bool>> bodyisInValid = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateCardById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bool> bodyisInValid = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v2/attendance/updateCardById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyisInValid != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["isInValid"] = ExpressionConverter.ConvertO(bodyisInValid);
+                var apiCallPath = "/v2/attendance/updateCardById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyisInValid != null)
+                {
+                    body["isInValid"] = SourceExpressionConverter.ConvertToken(bodyisInValid);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateCostCenterInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycostCenterCode = null, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateCostCenterInfo([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycostCenterCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            var apiCallPath = "/v2/tenants/updateCostCenterInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/v2/tenants/updateCostCenterInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterCode != null)
+                {
+                    body["costCenterCode"] = SourceExpressionConverter.ConvertToken(bodycostCenterCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycostCenterCode != null)
-            {
-                body["costCenterCode"] = ExpressionConverter.ConvertO(bodycostCenterCode);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateDepartmentInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydepartmentCode = null, Expression<Func<string>> bodyparentId = null, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateDepartmentInfo([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydepartmentCode = null, [WorkflowExpression] Func<string> bodyparentId = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            var apiCallPath = "/v2/department/updateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/v2/department/updateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodydepartmentCode != null)
+                {
+                    body["departmentCode"] = SourceExpressionConverter.ConvertToken(bodydepartmentCode);
+                    bodypropCount++;
+                }
+
+                if (bodyparentId != null)
+                {
+                    body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentId);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydepartmentCode != null)
-            {
-                body["departmentCode"] = ExpressionConverter.ConvertO(bodydepartmentCode);
-                bodypropCount++;
-            }
-
-            if (bodyparentId != null)
-            {
-                body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateEmployeeInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyenglishName = null, Expression<Func<string>> bodychineseName = null, Expression<Func<string>> bodysex = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycode = null, Expression<Func<string>> bodyidentityCard = null, Expression<Func<string>> bodybankCard = null, Expression<Func<string>> bodynickName = null, Expression<Func<string>> bodyeducation = null, Expression<Func<string>> bodynationality = null, Expression<Func<string>> bodymaritalStatus = null, Expression<Func<string>> bodyemergencyContactName = null, Expression<Func<string>> bodyemergencyContactRelation = null, Expression<Func<string>> bodyemergencyContactPhone = null, Expression<Func<string>> bodybankName = null, Expression<Func<string>> bodybankBranchNumber = null, Expression<Func<string>> bodybankAccountNo = null, Expression<Func<string>> bodybankCode = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyregionCode = null, Expression<Func<string>> bodyidentityCardHk = null, Expression<Func<string>> bodypassportNumber = null, Expression<Func<string>> bodypassportIssuingPlace = null, Expression<Func<string>> bodyspouseName = null, Expression<Func<string>> bodyspouseIdentityCardHk = null, Expression<Func<string>> bodyspousePassportNumber = null, Expression<Func<string>> bodyspousePassportIssuingPlace = null, Expression<Func<string>> bodypostalAddress = null, Expression<Func<string>> bodyemployerName = null, Expression<Func<string>> bodyhometown = null, Expression<Func<string>> bodynation = null, Expression<Func<string>> bodypoliticalStatus = null, Expression<Func<string>> bodyhighestEducation = null, Expression<Func<string>> bodyworkDate = null, Expression<Func<string>> bodyconfirmationDate = null, Expression<Func<string>> bodyprobation = null, Expression<Func<bool>> bodyisDisabled = null, Expression<Func<bool>> bodyisForeignNationality = null, Expression<Func<string>> bodydomicileLocation = null, Expression<Func<string>> bodycertificateType = null, Expression<Func<string>> bodycertificateNumber = null, Expression<Func<bool>> bodyisMartyrDependents = null, Expression<Func<string>> bodyoccupationTaxNumber = null, Expression<Func<string>> bodynonLocalBlueCardNumber = null, Expression<Func<bool>> bodyisForeignEmployees = null, Expression<Func<string>> bodyweeklyLeaveWorkAgreement = null, Expression<Func<string>> bodyemployeeType = null, Expression<Func<string>> bodyjobLevel = null, Expression<Func<string>> bodypost = null, Expression<Func<string>> bodysalaryScale = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodyrecruitmentSource = null, Expression<Func<string>> bodygraduatedSchool = null, Expression<Func<string>> bodyprofession = null, Expression<Func<string>> bodyappellation = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodyhomePhone = null, Expression<Func<string>> bodyofficePhone = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodyprovince = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodypostcode = null, Expression<Func<string>> bodycontractEndDate = null, Expression<Func<string>> bodytaxIdentity = null, Expression<Func<string>> bodyotherIncomeName = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateEmployeeInfo([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyenglishName = null, [WorkflowExpression] Func<string> bodychineseName = null, [WorkflowExpression] Func<string> bodysex = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<string> bodyidentityCard = null, [WorkflowExpression] Func<string> bodybankCard = null, [WorkflowExpression] Func<string> bodynickName = null, [WorkflowExpression] Func<string> bodyeducation = null, [WorkflowExpression] Func<string> bodynationality = null, [WorkflowExpression] Func<string> bodymaritalStatus = null, [WorkflowExpression] Func<string> bodyemergencyContactName = null, [WorkflowExpression] Func<string> bodyemergencyContactRelation = null, [WorkflowExpression] Func<string> bodyemergencyContactPhone = null, [WorkflowExpression] Func<string> bodybankName = null, [WorkflowExpression] Func<string> bodybankBranchNumber = null, [WorkflowExpression] Func<string> bodybankAccountNo = null, [WorkflowExpression] Func<string> bodybankCode = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyregionCode = null, [WorkflowExpression] Func<string> bodyidentityCardHk = null, [WorkflowExpression] Func<string> bodypassportNumber = null, [WorkflowExpression] Func<string> bodypassportIssuingPlace = null, [WorkflowExpression] Func<string> bodyspouseName = null, [WorkflowExpression] Func<string> bodyspouseIdentityCardHk = null, [WorkflowExpression] Func<string> bodyspousePassportNumber = null, [WorkflowExpression] Func<string> bodyspousePassportIssuingPlace = null, [WorkflowExpression] Func<string> bodypostalAddress = null, [WorkflowExpression] Func<string> bodyemployerName = null, [WorkflowExpression] Func<string> bodyhometown = null, [WorkflowExpression] Func<string> bodynation = null, [WorkflowExpression] Func<string> bodypoliticalStatus = null, [WorkflowExpression] Func<string> bodyhighestEducation = null, [WorkflowExpression] Func<string> bodyworkDate = null, [WorkflowExpression] Func<string> bodyconfirmationDate = null, [WorkflowExpression] Func<string> bodyprobation = null, [WorkflowExpression] Func<bool> bodyisDisabled = null, [WorkflowExpression] Func<bool> bodyisForeignNationality = null, [WorkflowExpression] Func<string> bodydomicileLocation = null, [WorkflowExpression] Func<string> bodycertificateType = null, [WorkflowExpression] Func<string> bodycertificateNumber = null, [WorkflowExpression] Func<bool> bodyisMartyrDependents = null, [WorkflowExpression] Func<string> bodyoccupationTaxNumber = null, [WorkflowExpression] Func<string> bodynonLocalBlueCardNumber = null, [WorkflowExpression] Func<bool> bodyisForeignEmployees = null, [WorkflowExpression] Func<string> bodyweeklyLeaveWorkAgreement = null, [WorkflowExpression] Func<string> bodyemployeeType = null, [WorkflowExpression] Func<string> bodyjobLevel = null, [WorkflowExpression] Func<string> bodypost = null, [WorkflowExpression] Func<string> bodysalaryScale = null, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodyrecruitmentSource = null, [WorkflowExpression] Func<string> bodygraduatedSchool = null, [WorkflowExpression] Func<string> bodyprofession = null, [WorkflowExpression] Func<string> bodyappellation = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodyhomePhone = null, [WorkflowExpression] Func<string> bodyofficePhone = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodyprovince = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodypostcode = null, [WorkflowExpression] Func<string> bodycontractEndDate = null, [WorkflowExpression] Func<string> bodytaxIdentity = null, [WorkflowExpression] Func<string> bodyotherIncomeName = null)
         {
-            var apiCallPath = "/v2/employee/updateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyenglishName != null)
-            {
-                body["englishName"] = ExpressionConverter.ConvertO(bodyenglishName);
-                bodypropCount++;
-            }
-
-            if (bodychineseName != null)
-            {
-                body["chineseName"] = ExpressionConverter.ConvertO(bodychineseName);
-                bodypropCount++;
-            }
-
-            if (bodysex != null)
-            {
-                body["sex"] = ExpressionConverter.ConvertO(bodysex);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodycode != null)
-            {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                bodypropCount++;
-            }
-
-            if (bodyidentityCard != null)
-            {
-                body["identityCard"] = ExpressionConverter.ConvertO(bodyidentityCard);
-                bodypropCount++;
-            }
-
-            if (bodybankCard != null)
-            {
-                body["bankCard"] = ExpressionConverter.ConvertO(bodybankCard);
-                bodypropCount++;
-            }
-
-            if (bodynickName != null)
-            {
-                body["nickName"] = ExpressionConverter.ConvertO(bodynickName);
-                bodypropCount++;
-            }
-
-            if (bodyeducation != null)
-            {
-                body["education"] = ExpressionConverter.ConvertO(bodyeducation);
-                bodypropCount++;
-            }
-
-            if (bodynationality != null)
-            {
-                body["nationality"] = ExpressionConverter.ConvertO(bodynationality);
-                bodypropCount++;
-            }
-
-            if (bodymaritalStatus != null)
-            {
-                body["maritalStatus"] = ExpressionConverter.ConvertO(bodymaritalStatus);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactName != null)
-            {
-                body["emergencyContactName"] = ExpressionConverter.ConvertO(bodyemergencyContactName);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactRelation != null)
-            {
-                body["emergencyContactRelation"] = ExpressionConverter.ConvertO(bodyemergencyContactRelation);
-                bodypropCount++;
-            }
-
-            if (bodyemergencyContactPhone != null)
-            {
-                body["emergencyContactPhone"] = ExpressionConverter.ConvertO(bodyemergencyContactPhone);
-                bodypropCount++;
-            }
-
-            if (bodybankName != null)
-            {
-                body["bankName"] = ExpressionConverter.ConvertO(bodybankName);
-                bodypropCount++;
-            }
-
-            if (bodybankBranchNumber != null)
-            {
-                body["bankBranchNumber"] = ExpressionConverter.ConvertO(bodybankBranchNumber);
-                bodypropCount++;
-            }
-
-            if (bodybankAccountNo != null)
-            {
-                body["bankAccountNo"] = ExpressionConverter.ConvertO(bodybankAccountNo);
-                bodypropCount++;
-            }
-
-            if (bodybankCode != null)
-            {
-                body["bankCode"] = ExpressionConverter.ConvertO(bodybankCode);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodyregionCode != null)
-            {
-                body["regionCode"] = ExpressionConverter.ConvertO(bodyregionCode);
-                bodypropCount++;
-            }
-
-            if (bodyidentityCardHk != null)
-            {
-                body["identityCardHk"] = ExpressionConverter.ConvertO(bodyidentityCardHk);
-                bodypropCount++;
-            }
-
-            if (bodypassportNumber != null)
-            {
-                body["passportNumber"] = ExpressionConverter.ConvertO(bodypassportNumber);
-                bodypropCount++;
-            }
-
-            if (bodypassportIssuingPlace != null)
-            {
-                body["passportIssuingPlace"] = ExpressionConverter.ConvertO(bodypassportIssuingPlace);
-                bodypropCount++;
-            }
-
-            if (bodyspouseName != null)
-            {
-                body["spouseName"] = ExpressionConverter.ConvertO(bodyspouseName);
-                bodypropCount++;
-            }
-
-            if (bodyspouseIdentityCardHk != null)
-            {
-                body["spouseIdentityCardHk"] = ExpressionConverter.ConvertO(bodyspouseIdentityCardHk);
-                bodypropCount++;
-            }
-
-            if (bodyspousePassportNumber != null)
-            {
-                body["spousePassportNumber"] = ExpressionConverter.ConvertO(bodyspousePassportNumber);
-                bodypropCount++;
-            }
-
-            if (bodyspousePassportIssuingPlace != null)
-            {
-                body["spousePassportIssuingPlace"] = ExpressionConverter.ConvertO(bodyspousePassportIssuingPlace);
-                bodypropCount++;
-            }
-
-            if (bodypostalAddress != null)
-            {
-                body["postalAddress"] = ExpressionConverter.ConvertO(bodypostalAddress);
-                bodypropCount++;
-            }
-
-            if (bodyemployerName != null)
-            {
-                body["employerName"] = ExpressionConverter.ConvertO(bodyemployerName);
-                bodypropCount++;
-            }
-
-            if (bodyhometown != null)
-            {
-                body["hometown"] = ExpressionConverter.ConvertO(bodyhometown);
-                bodypropCount++;
-            }
-
-            if (bodynation != null)
-            {
-                body["nation"] = ExpressionConverter.ConvertO(bodynation);
-                bodypropCount++;
-            }
-
-            if (bodypoliticalStatus != null)
-            {
-                body["politicalStatus"] = ExpressionConverter.ConvertO(bodypoliticalStatus);
-                bodypropCount++;
-            }
-
-            if (bodyhighestEducation != null)
-            {
-                body["highestEducation"] = ExpressionConverter.ConvertO(bodyhighestEducation);
-                bodypropCount++;
-            }
-
-            if (bodyworkDate != null)
-            {
-                body["workDate"] = ExpressionConverter.ConvertO(bodyworkDate);
-                bodypropCount++;
-            }
-
-            if (bodyconfirmationDate != null)
-            {
-                body["confirmationDate"] = ExpressionConverter.ConvertO(bodyconfirmationDate);
-                bodypropCount++;
-            }
-
-            if (bodyprobation != null)
-            {
-                body["probation"] = ExpressionConverter.ConvertO(bodyprobation);
-                bodypropCount++;
-            }
-
-            if (bodyisDisabled != null)
-            {
-                body["isDisabled"] = ExpressionConverter.ConvertO(bodyisDisabled);
-                bodypropCount++;
-            }
-
-            if (bodyisForeignNationality != null)
-            {
-                body["isForeignNationality"] = ExpressionConverter.ConvertO(bodyisForeignNationality);
-                bodypropCount++;
-            }
-
-            if (bodydomicileLocation != null)
-            {
-                body["domicileLocation"] = ExpressionConverter.ConvertO(bodydomicileLocation);
-                bodypropCount++;
-            }
-
-            if (bodycertificateType != null)
-            {
-                body["certificateType"] = ExpressionConverter.ConvertO(bodycertificateType);
-                bodypropCount++;
-            }
-
-            if (bodycertificateNumber != null)
-            {
-                body["certificateNumber"] = ExpressionConverter.ConvertO(bodycertificateNumber);
-                bodypropCount++;
-            }
-
-            if (bodyisMartyrDependents != null)
-            {
-                body["isMartyrDependents"] = ExpressionConverter.ConvertO(bodyisMartyrDependents);
-                bodypropCount++;
-            }
-
-            if (bodyoccupationTaxNumber != null)
-            {
-                body["occupationTaxNumber"] = ExpressionConverter.ConvertO(bodyoccupationTaxNumber);
-                bodypropCount++;
-            }
-
-            if (bodynonLocalBlueCardNumber != null)
-            {
-                body["nonLocalBlueCardNumber"] = ExpressionConverter.ConvertO(bodynonLocalBlueCardNumber);
-                bodypropCount++;
-            }
-
-            if (bodyisForeignEmployees != null)
-            {
-                body["isForeignEmployees"] = ExpressionConverter.ConvertO(bodyisForeignEmployees);
-                bodypropCount++;
-            }
-
-            if (bodyweeklyLeaveWorkAgreement != null)
-            {
-                body["weeklyLeaveWorkAgreement"] = ExpressionConverter.ConvertO(bodyweeklyLeaveWorkAgreement);
-                bodypropCount++;
-            }
-
-            if (bodyemployeeType != null)
-            {
-                body["employeeType"] = ExpressionConverter.ConvertO(bodyemployeeType);
-                bodypropCount++;
-            }
-
-            if (bodyjobLevel != null)
-            {
-                body["jobLevel"] = ExpressionConverter.ConvertO(bodyjobLevel);
-                bodypropCount++;
-            }
-
-            if (bodypost != null)
-            {
-                body["post"] = ExpressionConverter.ConvertO(bodypost);
-                bodypropCount++;
-            }
-
-            if (bodysalaryScale != null)
-            {
-                body["salaryScale"] = ExpressionConverter.ConvertO(bodysalaryScale);
-                bodypropCount++;
-            }
-
-            if (bodyjobTitle != null)
-            {
-                body["jobTitle"] = ExpressionConverter.ConvertO(bodyjobTitle);
-                bodypropCount++;
-            }
-
-            if (bodyrecruitmentSource != null)
-            {
-                body["recruitmentSource"] = ExpressionConverter.ConvertO(bodyrecruitmentSource);
-                bodypropCount++;
-            }
-
-            if (bodygraduatedSchool != null)
-            {
-                body["graduatedSchool"] = ExpressionConverter.ConvertO(bodygraduatedSchool);
-                bodypropCount++;
-            }
-
-            if (bodyprofession != null)
-            {
-                body["profession"] = ExpressionConverter.ConvertO(bodyprofession);
-                bodypropCount++;
-            }
-
-            if (bodyappellation != null)
-            {
-                body["appellation"] = ExpressionConverter.ConvertO(bodyappellation);
-                bodypropCount++;
-            }
-
-            if (bodymiddleName != null)
-            {
-                body["middleName"] = ExpressionConverter.ConvertO(bodymiddleName);
-                bodypropCount++;
-            }
-
-            if (bodyhomePhone != null)
-            {
-                body["homePhone"] = ExpressionConverter.ConvertO(bodyhomePhone);
-                bodypropCount++;
-            }
-
-            if (bodyofficePhone != null)
-            {
-                body["officePhone"] = ExpressionConverter.ConvertO(bodyofficePhone);
-                bodypropCount++;
-            }
-
-            if (bodycountry != null)
-            {
-                body["country"] = ExpressionConverter.ConvertO(bodycountry);
-                bodypropCount++;
-            }
-
-            if (bodyprovince != null)
-            {
-                body["province"] = ExpressionConverter.ConvertO(bodyprovince);
-                bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodypostcode != null)
-            {
-                body["postcode"] = ExpressionConverter.ConvertO(bodypostcode);
-                bodypropCount++;
-            }
-
-            if (bodycontractEndDate != null)
-            {
-                body["contractEndDate"] = ExpressionConverter.ConvertO(bodycontractEndDate);
-                bodypropCount++;
-            }
-
-            if (bodytaxIdentity != null)
-            {
-                body["taxIdentity"] = ExpressionConverter.ConvertO(bodytaxIdentity);
-                bodypropCount++;
-            }
-
-            if (bodyotherIncomeName != null)
-            {
-                body["otherIncomeName"] = ExpressionConverter.ConvertO(bodyotherIncomeName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/employee/updateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyenglishName != null)
+                {
+                    body["englishName"] = SourceExpressionConverter.ConvertToken(bodyenglishName);
+                    bodypropCount++;
+                }
+
+                if (bodychineseName != null)
+                {
+                    body["chineseName"] = SourceExpressionConverter.ConvertToken(bodychineseName);
+                    bodypropCount++;
+                }
+
+                if (bodysex != null)
+                {
+                    body["sex"] = SourceExpressionConverter.ConvertToken(bodysex);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodycode != null)
+                {
+                    body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                    bodypropCount++;
+                }
+
+                if (bodyidentityCard != null)
+                {
+                    body["identityCard"] = SourceExpressionConverter.ConvertToken(bodyidentityCard);
+                    bodypropCount++;
+                }
+
+                if (bodybankCard != null)
+                {
+                    body["bankCard"] = SourceExpressionConverter.ConvertToken(bodybankCard);
+                    bodypropCount++;
+                }
+
+                if (bodynickName != null)
+                {
+                    body["nickName"] = SourceExpressionConverter.ConvertToken(bodynickName);
+                    bodypropCount++;
+                }
+
+                if (bodyeducation != null)
+                {
+                    body["education"] = SourceExpressionConverter.ConvertToken(bodyeducation);
+                    bodypropCount++;
+                }
+
+                if (bodynationality != null)
+                {
+                    body["nationality"] = SourceExpressionConverter.ConvertToken(bodynationality);
+                    bodypropCount++;
+                }
+
+                if (bodymaritalStatus != null)
+                {
+                    body["maritalStatus"] = SourceExpressionConverter.ConvertToken(bodymaritalStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyemergencyContactName != null)
+                {
+                    body["emergencyContactName"] = SourceExpressionConverter.ConvertToken(bodyemergencyContactName);
+                    bodypropCount++;
+                }
+
+                if (bodyemergencyContactRelation != null)
+                {
+                    body["emergencyContactRelation"] = SourceExpressionConverter.ConvertToken(bodyemergencyContactRelation);
+                    bodypropCount++;
+                }
+
+                if (bodyemergencyContactPhone != null)
+                {
+                    body["emergencyContactPhone"] = SourceExpressionConverter.ConvertToken(bodyemergencyContactPhone);
+                    bodypropCount++;
+                }
+
+                if (bodybankName != null)
+                {
+                    body["bankName"] = SourceExpressionConverter.ConvertToken(bodybankName);
+                    bodypropCount++;
+                }
+
+                if (bodybankBranchNumber != null)
+                {
+                    body["bankBranchNumber"] = SourceExpressionConverter.ConvertToken(bodybankBranchNumber);
+                    bodypropCount++;
+                }
+
+                if (bodybankAccountNo != null)
+                {
+                    body["bankAccountNo"] = SourceExpressionConverter.ConvertToken(bodybankAccountNo);
+                    bodypropCount++;
+                }
+
+                if (bodybankCode != null)
+                {
+                    body["bankCode"] = SourceExpressionConverter.ConvertToken(bodybankCode);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodyregionCode != null)
+                {
+                    body["regionCode"] = SourceExpressionConverter.ConvertToken(bodyregionCode);
+                    bodypropCount++;
+                }
+
+                if (bodyidentityCardHk != null)
+                {
+                    body["identityCardHk"] = SourceExpressionConverter.ConvertToken(bodyidentityCardHk);
+                    bodypropCount++;
+                }
+
+                if (bodypassportNumber != null)
+                {
+                    body["passportNumber"] = SourceExpressionConverter.ConvertToken(bodypassportNumber);
+                    bodypropCount++;
+                }
+
+                if (bodypassportIssuingPlace != null)
+                {
+                    body["passportIssuingPlace"] = SourceExpressionConverter.ConvertToken(bodypassportIssuingPlace);
+                    bodypropCount++;
+                }
+
+                if (bodyspouseName != null)
+                {
+                    body["spouseName"] = SourceExpressionConverter.ConvertToken(bodyspouseName);
+                    bodypropCount++;
+                }
+
+                if (bodyspouseIdentityCardHk != null)
+                {
+                    body["spouseIdentityCardHk"] = SourceExpressionConverter.ConvertToken(bodyspouseIdentityCardHk);
+                    bodypropCount++;
+                }
+
+                if (bodyspousePassportNumber != null)
+                {
+                    body["spousePassportNumber"] = SourceExpressionConverter.ConvertToken(bodyspousePassportNumber);
+                    bodypropCount++;
+                }
+
+                if (bodyspousePassportIssuingPlace != null)
+                {
+                    body["spousePassportIssuingPlace"] = SourceExpressionConverter.ConvertToken(bodyspousePassportIssuingPlace);
+                    bodypropCount++;
+                }
+
+                if (bodypostalAddress != null)
+                {
+                    body["postalAddress"] = SourceExpressionConverter.ConvertToken(bodypostalAddress);
+                    bodypropCount++;
+                }
+
+                if (bodyemployerName != null)
+                {
+                    body["employerName"] = SourceExpressionConverter.ConvertToken(bodyemployerName);
+                    bodypropCount++;
+                }
+
+                if (bodyhometown != null)
+                {
+                    body["hometown"] = SourceExpressionConverter.ConvertToken(bodyhometown);
+                    bodypropCount++;
+                }
+
+                if (bodynation != null)
+                {
+                    body["nation"] = SourceExpressionConverter.ConvertToken(bodynation);
+                    bodypropCount++;
+                }
+
+                if (bodypoliticalStatus != null)
+                {
+                    body["politicalStatus"] = SourceExpressionConverter.ConvertToken(bodypoliticalStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyhighestEducation != null)
+                {
+                    body["highestEducation"] = SourceExpressionConverter.ConvertToken(bodyhighestEducation);
+                    bodypropCount++;
+                }
+
+                if (bodyworkDate != null)
+                {
+                    body["workDate"] = SourceExpressionConverter.ConvertToken(bodyworkDate);
+                    bodypropCount++;
+                }
+
+                if (bodyconfirmationDate != null)
+                {
+                    body["confirmationDate"] = SourceExpressionConverter.ConvertToken(bodyconfirmationDate);
+                    bodypropCount++;
+                }
+
+                if (bodyprobation != null)
+                {
+                    body["probation"] = SourceExpressionConverter.ConvertToken(bodyprobation);
+                    bodypropCount++;
+                }
+
+                if (bodyisDisabled != null)
+                {
+                    body["isDisabled"] = SourceExpressionConverter.ConvertToken(bodyisDisabled);
+                    bodypropCount++;
+                }
+
+                if (bodyisForeignNationality != null)
+                {
+                    body["isForeignNationality"] = SourceExpressionConverter.ConvertToken(bodyisForeignNationality);
+                    bodypropCount++;
+                }
+
+                if (bodydomicileLocation != null)
+                {
+                    body["domicileLocation"] = SourceExpressionConverter.ConvertToken(bodydomicileLocation);
+                    bodypropCount++;
+                }
+
+                if (bodycertificateType != null)
+                {
+                    body["certificateType"] = SourceExpressionConverter.ConvertToken(bodycertificateType);
+                    bodypropCount++;
+                }
+
+                if (bodycertificateNumber != null)
+                {
+                    body["certificateNumber"] = SourceExpressionConverter.ConvertToken(bodycertificateNumber);
+                    bodypropCount++;
+                }
+
+                if (bodyisMartyrDependents != null)
+                {
+                    body["isMartyrDependents"] = SourceExpressionConverter.ConvertToken(bodyisMartyrDependents);
+                    bodypropCount++;
+                }
+
+                if (bodyoccupationTaxNumber != null)
+                {
+                    body["occupationTaxNumber"] = SourceExpressionConverter.ConvertToken(bodyoccupationTaxNumber);
+                    bodypropCount++;
+                }
+
+                if (bodynonLocalBlueCardNumber != null)
+                {
+                    body["nonLocalBlueCardNumber"] = SourceExpressionConverter.ConvertToken(bodynonLocalBlueCardNumber);
+                    bodypropCount++;
+                }
+
+                if (bodyisForeignEmployees != null)
+                {
+                    body["isForeignEmployees"] = SourceExpressionConverter.ConvertToken(bodyisForeignEmployees);
+                    bodypropCount++;
+                }
+
+                if (bodyweeklyLeaveWorkAgreement != null)
+                {
+                    body["weeklyLeaveWorkAgreement"] = SourceExpressionConverter.ConvertToken(bodyweeklyLeaveWorkAgreement);
+                    bodypropCount++;
+                }
+
+                if (bodyemployeeType != null)
+                {
+                    body["employeeType"] = SourceExpressionConverter.ConvertToken(bodyemployeeType);
+                    bodypropCount++;
+                }
+
+                if (bodyjobLevel != null)
+                {
+                    body["jobLevel"] = SourceExpressionConverter.ConvertToken(bodyjobLevel);
+                    bodypropCount++;
+                }
+
+                if (bodypost != null)
+                {
+                    body["post"] = SourceExpressionConverter.ConvertToken(bodypost);
+                    bodypropCount++;
+                }
+
+                if (bodysalaryScale != null)
+                {
+                    body["salaryScale"] = SourceExpressionConverter.ConvertToken(bodysalaryScale);
+                    bodypropCount++;
+                }
+
+                if (bodyjobTitle != null)
+                {
+                    body["jobTitle"] = SourceExpressionConverter.ConvertToken(bodyjobTitle);
+                    bodypropCount++;
+                }
+
+                if (bodyrecruitmentSource != null)
+                {
+                    body["recruitmentSource"] = SourceExpressionConverter.ConvertToken(bodyrecruitmentSource);
+                    bodypropCount++;
+                }
+
+                if (bodygraduatedSchool != null)
+                {
+                    body["graduatedSchool"] = SourceExpressionConverter.ConvertToken(bodygraduatedSchool);
+                    bodypropCount++;
+                }
+
+                if (bodyprofession != null)
+                {
+                    body["profession"] = SourceExpressionConverter.ConvertToken(bodyprofession);
+                    bodypropCount++;
+                }
+
+                if (bodyappellation != null)
+                {
+                    body["appellation"] = SourceExpressionConverter.ConvertToken(bodyappellation);
+                    bodypropCount++;
+                }
+
+                if (bodymiddleName != null)
+                {
+                    body["middleName"] = SourceExpressionConverter.ConvertToken(bodymiddleName);
+                    bodypropCount++;
+                }
+
+                if (bodyhomePhone != null)
+                {
+                    body["homePhone"] = SourceExpressionConverter.ConvertToken(bodyhomePhone);
+                    bodypropCount++;
+                }
+
+                if (bodyofficePhone != null)
+                {
+                    body["officePhone"] = SourceExpressionConverter.ConvertToken(bodyofficePhone);
+                    bodypropCount++;
+                }
+
+                if (bodycountry != null)
+                {
+                    body["country"] = SourceExpressionConverter.ConvertToken(bodycountry);
+                    bodypropCount++;
+                }
+
+                if (bodyprovince != null)
+                {
+                    body["province"] = SourceExpressionConverter.ConvertToken(bodyprovince);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["city"] = SourceExpressionConverter.ConvertToken(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodypostcode != null)
+                {
+                    body["postcode"] = SourceExpressionConverter.ConvertToken(bodypostcode);
+                    bodypropCount++;
+                }
+
+                if (bodycontractEndDate != null)
+                {
+                    body["contractEndDate"] = SourceExpressionConverter.ConvertToken(bodycontractEndDate);
+                    bodypropCount++;
+                }
+
+                if (bodytaxIdentity != null)
+                {
+                    body["taxIdentity"] = SourceExpressionConverter.ConvertToken(bodytaxIdentity);
+                    bodypropCount++;
+                }
+
+                if (bodyotherIncomeName != null)
+                {
+                    body["otherIncomeName"] = SourceExpressionConverter.ConvertToken(bodyotherIncomeName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateExpenseApplication(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyreimbursementName = null, Expression<Func<double>> bodyamount = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateExpenseApplication([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyreimbursementName = null, [WorkflowExpression] Func<double> bodyamount = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v2/tenants/updateExpenseApplication";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
+                var apiCallPath = "/v2/tenants/updateExpenseApplication";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodyreimbursementName != null)
+                {
+                    body["reimbursementName"] = SourceExpressionConverter.ConvertToken(bodyreimbursementName);
+                    bodypropCount++;
+                }
+
+                if (bodyamount != null)
+                {
+                    body["amount"] = SourceExpressionConverter.ConvertToken(bodyamount);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyreimbursementName != null)
-            {
-                body["reimbursementName"] = ExpressionConverter.ConvertO(bodyreimbursementName);
-                bodypropCount++;
-            }
-
-            if (bodyamount != null)
-            {
-                body["amount"] = ExpressionConverter.ConvertO(bodyamount);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateExternalSalary(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodycode = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyoccurrenceDate = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyexpirationDate = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateExternalSalary([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodyoccurrenceDate = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyexpirationDate = null)
         {
-            var apiCallPath = "/v2/payroll/updateExternalSalary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
+                var apiCallPath = "/v2/payroll/updateExternalSalary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodycode != null)
+                {
+                    body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                    bodypropCount++;
+                }
+
+                if (bodymoney != null)
+                {
+                    body["money"] = SourceExpressionConverter.ConvertToken(bodymoney);
+                    bodypropCount++;
+                }
+
+                if (bodyoccurrenceDate != null)
+                {
+                    body["occurrenceDate"] = SourceExpressionConverter.ConvertToken(bodyoccurrenceDate);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodyexpirationDate != null)
+                {
+                    body["expirationDate"] = SourceExpressionConverter.ConvertToken(bodyexpirationDate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycode != null)
-            {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                bodypropCount++;
-            }
-
-            if (bodymoney != null)
-            {
-                body["money"] = ExpressionConverter.ConvertO(bodymoney);
-                bodypropCount++;
-            }
-
-            if (bodyoccurrenceDate != null)
-            {
-                body["occurrenceDate"] = ExpressionConverter.ConvertO(bodyoccurrenceDate);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodyexpirationDate != null)
-            {
-                body["expirationDate"] = ExpressionConverter.ConvertO(bodyexpirationDate);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateFixedSalary(Expression<Func<string>> bodyid, Expression<Func<string>> bodypayrollItemId = null, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateFixedSalary([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodypayrollItemId = null, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null)
         {
-            var apiCallPath = "/v2/payroll/updateFixedSalary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypayrollItemId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["payrollItemId"] = ExpressionConverter.ConvertO(bodypayrollItemId);
+                var apiCallPath = "/v2/payroll/updateFixedSalary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodypayrollItemId != null)
+                {
+                    body["payrollItemId"] = SourceExpressionConverter.ConvertToken(bodypayrollItemId);
+                    bodypropCount++;
+                }
+
+                if (bodymoney != null)
+                {
+                    body["money"] = SourceExpressionConverter.ConvertToken(bodymoney);
+                    bodypropCount++;
+                }
+
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymoney != null)
-            {
-                body["money"] = ExpressionConverter.ConvertO(bodymoney);
-                bodypropCount++;
-            }
-
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
-
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateLabelInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodylabelCode = null, Expression<Func<string>> bodylabelName = null, Expression<Func<int>> bodylabelStatus = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateLabelInfo([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylabelCode = null, [WorkflowExpression] Func<string> bodylabelName = null, [WorkflowExpression] Func<int> bodylabelStatus = null)
         {
-            var apiCallPath = "/v2/label/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodylabelCode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["labelCode"] = ExpressionConverter.ConvertO(bodylabelCode);
+                var apiCallPath = "/v2/label/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodylabelCode != null)
+                {
+                    body["labelCode"] = SourceExpressionConverter.ConvertToken(bodylabelCode);
+                    bodypropCount++;
+                }
+
+                if (bodylabelName != null)
+                {
+                    body["labelName"] = SourceExpressionConverter.ConvertToken(bodylabelName);
+                    bodypropCount++;
+                }
+
+                if (bodylabelStatus != null)
+                {
+                    body["labelStatus"] = SourceExpressionConverter.ConvertToken(bodylabelStatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodylabelName != null)
-            {
-                body["labelName"] = ExpressionConverter.ConvertO(bodylabelName);
-                bodypropCount++;
-            }
-
-            if (bodylabelStatus != null)
-            {
-                body["labelStatus"] = ExpressionConverter.ConvertO(bodylabelStatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateLeaveApplication(Expression<Func<string>> bodyid, Expression<Func<string>> bodyholidayType = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyendTime = null, Expression<Func<double>> bodyleaveTime = null, Expression<Func<string>> bodytimeType = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyholidayDate = null, Expression<Func<string>> bodytime = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateLeaveApplication([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyholidayType = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<double> bodyleaveTime = null, [WorkflowExpression] Func<string> bodytimeType = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodyholidayDate = null, [WorkflowExpression] Func<string> bodytime = null)
         {
-            var apiCallPath = "/v2/leave/updateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyholidayType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["holidayType"] = ExpressionConverter.ConvertO(bodyholidayType);
+                var apiCallPath = "/v2/leave/updateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyholidayType != null)
+                {
+                    body["holidayType"] = SourceExpressionConverter.ConvertToken(bodyholidayType);
+                    bodypropCount++;
+                }
+
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodystartTime != null)
+                {
+                    body["startTime"] = SourceExpressionConverter.ConvertToken(bodystartTime);
+                    bodypropCount++;
+                }
+
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                    bodypropCount++;
+                }
+
+                if (bodyendTime != null)
+                {
+                    body["endTime"] = SourceExpressionConverter.ConvertToken(bodyendTime);
+                    bodypropCount++;
+                }
+
+                if (bodyleaveTime != null)
+                {
+                    body["leaveTime"] = SourceExpressionConverter.ConvertToken(bodyleaveTime);
+                    bodypropCount++;
+                }
+
+                if (bodytimeType != null)
+                {
+                    body["timeType"] = SourceExpressionConverter.ConvertToken(bodytimeType);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodyholidayDate != null)
+                {
+                    body["holidayDate"] = SourceExpressionConverter.ConvertToken(bodyholidayDate);
+                    bodypropCount++;
+                }
+
+                if (bodytime != null)
+                {
+                    body["time"] = SourceExpressionConverter.ConvertToken(bodytime);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
-
-            if (bodystartTime != null)
-            {
-                body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-                bodypropCount++;
-            }
-
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
-
-            if (bodyendTime != null)
-            {
-                body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-                bodypropCount++;
-            }
-
-            if (bodyleaveTime != null)
-            {
-                body["leaveTime"] = ExpressionConverter.ConvertO(bodyleaveTime);
-                bodypropCount++;
-            }
-
-            if (bodytimeType != null)
-            {
-                body["timeType"] = ExpressionConverter.ConvertO(bodytimeType);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodyholidayDate != null)
-            {
-                body["holidayDate"] = ExpressionConverter.ConvertO(bodyholidayDate);
-                bodypropCount++;
-            }
-
-            if (bodytime != null)
-            {
-                body["time"] = ExpressionConverter.ConvertO(bodytime);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdatePositionInfo(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypositionCode = null, Expression<Func<string>> bodystatus = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdatePositionInfo([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodypositionCode = null, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            var apiCallPath = "/v2/tenants/updatePositionInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/v2/tenants/updatePositionInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodypositionCode != null)
+                {
+                    body["positionCode"] = SourceExpressionConverter.ConvertToken(bodypositionCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypositionCode != null)
-            {
-                body["positionCode"] = ExpressionConverter.ConvertO(bodypositionCode);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateRosterData(Expression<Func<string>> bodyid, Expression<Func<string>> bodyshiftIn = null, Expression<Func<string>> bodyshiftOff = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyshiftStatus = null, Expression<Func<string>> bodyaddressCardId = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodyacrossTheNight = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateRosterData([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyshiftIn = null, [WorkflowExpression] Func<string> bodyshiftOff = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyshiftStatus = null, [WorkflowExpression] Func<string> bodyaddressCardId = null, [WorkflowExpression] Func<string> bodyremark = null, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodyacrossTheNight = null)
         {
-            var apiCallPath = "/v2/tenants/updateRosterData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyshiftIn != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
+                var apiCallPath = "/v2/tenants/updateRosterData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyshiftIn != null)
+                {
+                    body["shiftIn"] = SourceExpressionConverter.ConvertToken(bodyshiftIn);
+                    bodypropCount++;
+                }
+
+                if (bodyshiftOff != null)
+                {
+                    body["shiftOff"] = SourceExpressionConverter.ConvertToken(bodyshiftOff);
+                    bodypropCount++;
+                }
+
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = SourceExpressionConverter.ConvertToken(bodymealTime);
+                    bodypropCount++;
+                }
+
+                if (bodyshiftStatus != null)
+                {
+                    body["shiftStatus"] = SourceExpressionConverter.ConvertToken(bodyshiftStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressCardId != null)
+                {
+                    body["addressCardId"] = SourceExpressionConverter.ConvertToken(bodyaddressCardId);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodydateType != null)
+                {
+                    body["dateType"] = SourceExpressionConverter.ConvertToken(bodydateType);
+                    bodypropCount++;
+                }
+
+                if (bodyacrossTheNight != null)
+                {
+                    body["acrossTheNight"] = SourceExpressionConverter.ConvertToken(bodyacrossTheNight);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyshiftOff != null)
-            {
-                body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
-                bodypropCount++;
-            }
-
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
-
-            if (bodyshiftStatus != null)
-            {
-                body["shiftStatus"] = ExpressionConverter.ConvertO(bodyshiftStatus);
-                bodypropCount++;
-            }
-
-            if (bodyaddressCardId != null)
-            {
-                body["addressCardId"] = ExpressionConverter.ConvertO(bodyaddressCardId);
-                bodypropCount++;
-            }
-
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodydateType != null)
-            {
-                body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
-                bodypropCount++;
-            }
-
-            if (bodyacrossTheNight != null)
-            {
-                body["acrossTheNight"] = ExpressionConverter.ConvertO(bodyacrossTheNight);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateRosterItem(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycode = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateRosterItem([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycode = null)
         {
-            var apiCallPath = "/v2/attendance/updateRosterItem";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/v2/attendance/updateRosterItem";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodycode != null)
+                {
+                    body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycode != null)
-            {
-                body["code"] = ExpressionConverter.ConvertO(bodycode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateShiftTemplate(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyshiftIn = null, Expression<Func<string>> bodyshiftOff = null, Expression<Func<int>> bodymealTime = null, Expression<Func<string>> bodyattendanceAddressId = null, Expression<Func<string>> bodydateType = null, Expression<Func<string>> bodylunchStartTime = null, Expression<Func<string>> bodylunchEndTime = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateShiftTemplate([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyshiftIn = null, [WorkflowExpression] Func<string> bodyshiftOff = null, [WorkflowExpression] Func<int> bodymealTime = null, [WorkflowExpression] Func<string> bodyattendanceAddressId = null, [WorkflowExpression] Func<string> bodydateType = null, [WorkflowExpression] Func<string> bodylunchStartTime = null, [WorkflowExpression] Func<string> bodylunchEndTime = null)
         {
-            var apiCallPath = "/v2/attendance/updateShiftTemplate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/v2/attendance/updateShiftTemplate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyshiftIn != null)
+                {
+                    body["shiftIn"] = SourceExpressionConverter.ConvertToken(bodyshiftIn);
+                    bodypropCount++;
+                }
+
+                if (bodyshiftOff != null)
+                {
+                    body["shiftOff"] = SourceExpressionConverter.ConvertToken(bodyshiftOff);
+                    bodypropCount++;
+                }
+
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = SourceExpressionConverter.ConvertToken(bodymealTime);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceAddressId != null)
+                {
+                    body["attendanceAddressId"] = SourceExpressionConverter.ConvertToken(bodyattendanceAddressId);
+                    bodypropCount++;
+                }
+
+                if (bodydateType != null)
+                {
+                    body["dateType"] = SourceExpressionConverter.ConvertToken(bodydateType);
+                    bodypropCount++;
+                }
+
+                if (bodylunchStartTime != null)
+                {
+                    body["lunchStartTime"] = SourceExpressionConverter.ConvertToken(bodylunchStartTime);
+                    bodypropCount++;
+                }
+
+                if (bodylunchEndTime != null)
+                {
+                    body["lunchEndTime"] = SourceExpressionConverter.ConvertToken(bodylunchEndTime);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyshiftIn != null)
-            {
-                body["shiftIn"] = ExpressionConverter.ConvertO(bodyshiftIn);
-                bodypropCount++;
-            }
-
-            if (bodyshiftOff != null)
-            {
-                body["shiftOff"] = ExpressionConverter.ConvertO(bodyshiftOff);
-                bodypropCount++;
-            }
-
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
-
-            if (bodyattendanceAddressId != null)
-            {
-                body["attendanceAddressId"] = ExpressionConverter.ConvertO(bodyattendanceAddressId);
-                bodypropCount++;
-            }
-
-            if (bodydateType != null)
-            {
-                body["dateType"] = ExpressionConverter.ConvertO(bodydateType);
-                bodypropCount++;
-            }
-
-            if (bodylunchStartTime != null)
-            {
-                body["lunchStartTime"] = ExpressionConverter.ConvertO(bodylunchStartTime);
-                bodypropCount++;
-            }
-
-            if (bodylunchEndTime != null)
-            {
-                body["lunchEndTime"] = ExpressionConverter.ConvertO(bodylunchEndTime);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateTenantInfo(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodybusinessRegistrationNumber = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodybankName = null, Expression<Func<string>> bodybankBranchCode = null, Expression<Func<string>> bodybankAccountNo = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateTenantInfo([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodybusinessRegistrationNumber = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodybankName = null, [WorkflowExpression] Func<string> bodybankBranchCode = null, [WorkflowExpression] Func<string> bodybankAccountNo = null)
         {
-            var apiCallPath = "/v2/tenant/updateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
+                var apiCallPath = "/v2/tenant/updateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodybusinessRegistrationNumber != null)
+                {
+                    body["businessRegistrationNumber"] = SourceExpressionConverter.ConvertToken(bodybusinessRegistrationNumber);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodybankName != null)
+                {
+                    body["bankName"] = SourceExpressionConverter.ConvertToken(bodybankName);
+                    bodypropCount++;
+                }
+
+                if (bodybankBranchCode != null)
+                {
+                    body["bankBranchCode"] = SourceExpressionConverter.ConvertToken(bodybankBranchCode);
+                    bodypropCount++;
+                }
+
+                if (bodybankAccountNo != null)
+                {
+                    body["bankAccountNo"] = SourceExpressionConverter.ConvertToken(bodybankAccountNo);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodybusinessRegistrationNumber != null)
-            {
-                body["businessRegistrationNumber"] = ExpressionConverter.ConvertO(bodybusinessRegistrationNumber);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodybankName != null)
-            {
-                body["bankName"] = ExpressionConverter.ConvertO(bodybankName);
-                bodypropCount++;
-            }
-
-            if (bodybankBranchCode != null)
-            {
-                body["bankBranchCode"] = ExpressionConverter.ConvertO(bodybankBranchCode);
-                bodypropCount++;
-            }
-
-            if (bodybankAccountNo != null)
-            {
-                body["bankAccountNo"] = ExpressionConverter.ConvertO(bodybankAccountNo);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateTimesheet(Expression<Func<string>> bodyid, Expression<Func<string>> bodydate = null, Expression<Func<bool>> bodyisCrossTheSky = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodymealTime = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateTimesheet([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<bool> bodyisCrossTheSky = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<int> bodymealTime = null)
         {
-            var apiCallPath = "/v2/timesheet/updateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodydate != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["date"] = ExpressionConverter.ConvertO(bodydate);
+                var apiCallPath = "/v2/timesheet/updateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodydate != null)
+                {
+                    body["date"] = SourceExpressionConverter.ConvertToken(bodydate);
+                    bodypropCount++;
+                }
+
+                if (bodyisCrossTheSky != null)
+                {
+                    body["isCrossTheSky"] = SourceExpressionConverter.ConvertToken(bodyisCrossTheSky);
+                    bodypropCount++;
+                }
+
+                if (bodystartTime != null)
+                {
+                    body["startTime"] = SourceExpressionConverter.ConvertToken(bodystartTime);
+                    bodypropCount++;
+                }
+
+                if (bodyendTime != null)
+                {
+                    body["endTime"] = SourceExpressionConverter.ConvertToken(bodyendTime);
+                    bodypropCount++;
+                }
+
+                if (bodymealTime != null)
+                {
+                    body["mealTime"] = SourceExpressionConverter.ConvertToken(bodymealTime);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyisCrossTheSky != null)
-            {
-                body["isCrossTheSky"] = ExpressionConverter.ConvertO(bodyisCrossTheSky);
-                bodypropCount++;
-            }
-
-            if (bodystartTime != null)
-            {
-                body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-                bodypropCount++;
-            }
-
-            if (bodyendTime != null)
-            {
-                body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-                bodypropCount++;
-            }
-
-            if (bodymealTime != null)
-            {
-                body["mealTime"] = ExpressionConverter.ConvertO(bodymealTime);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateVarSalary(Expression<Func<string>> bodyid, Expression<Func<double>> bodymoney = null, Expression<Func<string>> bodyremark = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateVarSalary([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<double> bodymoney = null, [WorkflowExpression] Func<string> bodyremark = null)
         {
-            var apiCallPath = "/v2/payroll/updateVarSalary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodymoney != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["money"] = ExpressionConverter.ConvertO(bodymoney);
+                var apiCallPath = "/v2/payroll/updateVarSalary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodymoney != null)
+                {
+                    body["money"] = SourceExpressionConverter.ConvertToken(bodymoney);
+                    bodypropCount++;
+                }
+
+                if (bodyremark != null)
+                {
+                    body["remark"] = SourceExpressionConverter.ConvertToken(bodyremark);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyremark != null)
-            {
-                body["remark"] = ExpressionConverter.ConvertO(bodyremark);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workstemau")]
-        public IBodyWorkflowAction<ResultBoolean> UpdateWorkLocation(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodyregion = null, Expression<Func<string>> bodyattendanceAddressCode = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyareaCode = null)
+        public IBodyWorkflowAction<ResultBoolean> UpdateWorkLocation([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyregion = null, [WorkflowExpression] Func<string> bodyattendanceAddressCode = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyareaCode = null)
         {
-            var apiCallPath = "/v2/workLocation/updateById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/v2/workLocation/updateById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyregion != null)
+                {
+                    body["region"] = SourceExpressionConverter.ConvertToken(bodyregion);
+                    bodypropCount++;
+                }
+
+                if (bodyattendanceAddressCode != null)
+                {
+                    body["attendanceAddressCode"] = SourceExpressionConverter.ConvertToken(bodyattendanceAddressCode);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyareaCode != null)
+                {
+                    body["areaCode"] = SourceExpressionConverter.ConvertToken(bodyareaCode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyregion != null)
-            {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
-                bodypropCount++;
-            }
-
-            if (bodyattendanceAddressCode != null)
-            {
-                body["attendanceAddressCode"] = ExpressionConverter.ConvertO(bodyattendanceAddressCode);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyareaCode != null)
-            {
-                body["areaCode"] = ExpressionConverter.ConvertO(bodyareaCode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResultBoolean>(callPayload);
+            return new ApiConnectionAction<ResultBoolean>(BuildSourceInput);
         }
     }
 

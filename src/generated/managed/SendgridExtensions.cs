@@ -12,138 +12,171 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
     public class SendgridActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
-        public IBodyWorkflowAction<AddGlobalSuppressRequestAndResponse> AddGlobalSuppression(Expression<Func<string[]>> recipientEmailsrecipientEmail = null)
+        public IBodyWorkflowAction<AddGlobalSuppressRequestAndResponse> AddGlobalSuppression([WorkflowExpression] Func<string[]> recipientEmailsrecipientEmail = null)
         {
-            var apiCallPath = "/suppressions/global";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var recipientEmails = new JObject();
-            var recipientEmailspropCount = 0;
-            if (recipientEmailsrecipientEmail != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                recipientEmails["recipient_emails"] = ExpressionConverter.ConvertO(recipientEmailsrecipientEmail);
-                recipientEmailspropCount++;
+                var apiCallPath = "/suppressions/global";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var recipientEmails = new JObject();
+                var recipientEmailspropCount = 0;
+                if (recipientEmailsrecipientEmail != null)
+                {
+                    recipientEmails["recipient_emails"] = SourceExpressionConverter.ConvertToken(recipientEmailsrecipientEmail);
+                    recipientEmailspropCount++;
+                }
+
+                if (recipientEmailspropCount > 0)
+                {
+                    callPayload.Body = recipientEmails;
+                }
+                return callPayload;
             }
 
-            if (recipientEmailspropCount > 0)
-            {
-                callPayload.Body = recipientEmails;
-            }
-
-            return new ApiConnectionAction<AddGlobalSuppressRequestAndResponse>(callPayload);
+            return new ApiConnectionAction<AddGlobalSuppressRequestAndResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
-        public IWorkflowAction DeleteGlobalSuppression(Expression<Func<string>> email)
+        public IWorkflowAction DeleteGlobalSuppression([WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = String.Format("/suppressions/global/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/suppressions/global/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
-        public IBodyWorkflowAction<JToken> AddRecipientToList(Expression<Func<string>> listId, Expression<Func<string>> recipientId)
+        public IBodyWorkflowAction<JToken> AddRecipientToList([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> recipientId)
         {
-            var apiCallPath = String.Format("/v3/contactdb/lists/{0}/recipients/{1}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1), ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/contactdb/lists/{0}/recipients/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
-        public IBodyWorkflowAction<Bounce[]> GetBounce(Expression<Func<string>> email)
+        public IBodyWorkflowAction<Bounce[]> GetBounce([WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = String.Format("/suppression/bounces/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Bounce[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/suppression/bounces/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Bounce[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
-        public IWorkflowAction DeleteBounce(Expression<Func<string>> email)
+        public IWorkflowAction DeleteBounce([WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = String.Format("/suppression/bounces/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/suppression/bounces/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
-        public IBodyWorkflowAction<EmailIsUnsubscribedResponse> CheckEmailIsInUnsubscribesList(Expression<Func<string>> email)
+        public IBodyWorkflowAction<EmailIsUnsubscribedResponse> CheckEmailIsInUnsubscribesList([WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = String.Format("/unsubscribes/{0}", ExpressionConverter.ConvertWithUrlEncoding(email, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EmailIsUnsubscribedResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/unsubscribes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EmailIsUnsubscribedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
-        public IBodyWorkflowAction<JToken> SendEmail(Expression<Func<string>> requestfrom, Expression<Func<string>> requestto, Expression<Func<string>> requestsubject, Expression<Func<string>> requestemailBody, Expression<Func<EmailAttachment[]>> requestattachment = null, Expression<Func<string>> requestfromName = null, Expression<Func<string>> requesttoNames = null, Expression<Func<string>> requestcC = null, Expression<Func<string>> requestcCNames = null, Expression<Func<string>> requestbcc = null, Expression<Func<string>> requestbCCNames = null)
+        public IBodyWorkflowAction<JToken> SendEmail([WorkflowExpression] Func<string> requestfrom, [WorkflowExpression] Func<string> requestto, [WorkflowExpression] Func<string> requestsubject, [WorkflowExpression] Func<string> requestemailBody, [WorkflowExpression] Func<EmailAttachment[]> requestattachment = null, [WorkflowExpression] Func<string> requestfromName = null, [WorkflowExpression] Func<string> requesttoNames = null, [WorkflowExpression] Func<string> requestcC = null, [WorkflowExpression] Func<string> requestcCNames = null, [WorkflowExpression] Func<string> requestbcc = null, [WorkflowExpression] Func<string> requestbCCNames = null)
         {
-            var apiCallPath = "/v4/mail/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestattachment != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["attachments"] = ExpressionConverter.ConvertO(requestattachment);
+                var apiCallPath = "/v4/mail/send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestattachment != null)
+                {
+                    request["attachments"] = SourceExpressionConverter.ConvertToken(requestattachment);
+                    requestpropCount++;
+                }
+
                 requestpropCount++;
-            }
+                request["from"] = SourceExpressionConverter.ConvertToken(requestfrom);
+                if (requestfromName != null)
+                {
+                    request["fromname"] = SourceExpressionConverter.ConvertToken(requestfromName);
+                    requestpropCount++;
+                }
 
-            requestpropCount++;
-            request["from"] = ExpressionConverter.ConvertO(requestfrom);
-            if (requestfromName != null)
-            {
-                request["fromname"] = ExpressionConverter.ConvertO(requestfromName);
                 requestpropCount++;
-            }
+                request["to"] = SourceExpressionConverter.ConvertToken(requestto);
+                if (requesttoNames != null)
+                {
+                    request["toname"] = SourceExpressionConverter.ConvertToken(requesttoNames);
+                    requestpropCount++;
+                }
 
-            requestpropCount++;
-            request["to"] = ExpressionConverter.ConvertO(requestto);
-            if (requesttoNames != null)
-            {
-                request["toname"] = ExpressionConverter.ConvertO(requesttoNames);
                 requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["subject"] = ExpressionConverter.ConvertO(requestsubject);
-            requestpropCount++;
-            request["text"] = ExpressionConverter.ConvertO(requestemailBody);
-            request["ishtml"] = true;
-            requestpropCount++;
-            if (requestcC != null)
-            {
-                request["cc"] = ExpressionConverter.ConvertO(requestcC);
+                request["subject"] = SourceExpressionConverter.ConvertToken(requestsubject);
                 requestpropCount++;
-            }
-
-            if (requestcCNames != null)
-            {
-                request["ccname"] = ExpressionConverter.ConvertO(requestcCNames);
+                request["text"] = SourceExpressionConverter.ConvertToken(requestemailBody);
+                request["ishtml"] = true;
                 requestpropCount++;
+                if (requestcC != null)
+                {
+                    request["cc"] = SourceExpressionConverter.ConvertToken(requestcC);
+                    requestpropCount++;
+                }
+
+                if (requestcCNames != null)
+                {
+                    request["ccname"] = SourceExpressionConverter.ConvertToken(requestcCNames);
+                    requestpropCount++;
+                }
+
+                if (requestbcc != null)
+                {
+                    request["bcc"] = SourceExpressionConverter.ConvertToken(requestbcc);
+                    requestpropCount++;
+                }
+
+                if (requestbCCNames != null)
+                {
+                    request["bccname"] = SourceExpressionConverter.ConvertToken(requestbCCNames);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestbcc != null)
-            {
-                request["bcc"] = ExpressionConverter.ConvertO(requestbcc);
-                requestpropCount++;
-            }
-
-            if (requestbCCNames != null)
-            {
-                request["bccname"] = ExpressionConverter.ConvertO(requestbCCNames);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 

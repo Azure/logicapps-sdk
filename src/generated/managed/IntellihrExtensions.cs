@@ -12,29 +12,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intellihr
     public class IntellihrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intellihr")]
-        public IBodyWorkflowAction<SingleJob> EndJob(Expression<Func<string>> id, Expression<Func<string>> bodyendDate, Expression<Func<string>> bodyturnoverType, Expression<Func<string>> bodyturnoverReason = null)
+        public IBodyWorkflowAction<SingleJob> EndJob([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyendDate, [WorkflowExpression] Func<string> bodyturnoverType, [WorkflowExpression] Func<string> bodyturnoverReason = null)
         {
-            var apiCallPath = String.Format("/job-end/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-            bodypropCount++;
-            body["turnoverType"] = ExpressionConverter.ConvertO(bodyturnoverType);
-            if (bodyturnoverReason != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["turnoverReason"] = ExpressionConverter.ConvertO(bodyturnoverReason);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/job-end/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["endDate"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                bodypropCount++;
+                body["turnoverType"] = SourceExpressionConverter.ConvertToken(bodyturnoverType);
+                if (bodyturnoverReason != null)
+                {
+                    body["turnoverReason"] = SourceExpressionConverter.ConvertToken(bodyturnoverReason);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SingleJob>(callPayload);
+            return new ApiConnectionAction<SingleJob>(BuildSourceInput);
         }
     }
 

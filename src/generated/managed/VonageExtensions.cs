@@ -12,200 +12,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
     public class VonageActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        public IBodyWorkflowAction<VerifyRequestResponse> VerifyRequest(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> brand, Expression<Func<string>> country = null, Expression<Func<string>> senderId = null, Expression<Func<codeLengthInput>> codeLength = null, Expression<Func<lgInput>> lg = null, Expression<Func<int>> pinExpiry = null, Expression<Func<int>> nextEventWait = null, Expression<Func<workflowIdInput>> workflowId = null)
+        public IBodyWorkflowAction<BasicNumberInsightResponse> BasicNumberInsight([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> apiSecret, [WorkflowExpression] Func<string> number, [WorkflowExpression] Func<string> country)
         {
-            var apiCallPath = String.Format("/verify/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VerifyRequestResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ni/basic/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api_key"] = SourceExpressionConverter.ConvertO(apiKey);
+                callPayload.Queries["api_secret"] = SourceExpressionConverter.ConvertO(apiSecret);
+                callPayload.Queries["number"] = SourceExpressionConverter.ConvertO(number);
+                callPayload.Queries["country"] = SourceExpressionConverter.ConvertO(country);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BasicNumberInsightResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        public IBodyWorkflowAction<VerifyCheckResponse> VerifyCheck(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> requestId, Expression<Func<string>> code)
+        public IBodyWorkflowAction<StandardNumberInsightResponse> StandardNumberInsight([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> apiSecret, [WorkflowExpression] Func<string> number, [WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> cnam = null)
         {
-            var apiCallPath = String.Format("/verify/check/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VerifyCheckResponse>(callPayload);
-        }
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ni/standard/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api_key"] = SourceExpressionConverter.ConvertO(apiKey);
+                callPayload.Queries["api_secret"] = SourceExpressionConverter.ConvertO(apiSecret);
+                callPayload.Queries["number"] = SourceExpressionConverter.ConvertO(number);
+                callPayload.Queries["country"] = SourceExpressionConverter.ConvertO(country);
+                if (cnam != null)
+                    callPayload.Queries["cnam"] = SourceExpressionConverter.ConvertO(cnam);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        public IBodyWorkflowAction<BasicNumberInsightResponse> BasicNumberInsight(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> country)
-        {
-            var apiCallPath = String.Format("/ni/basic/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api_key"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["api_secret"] = ExpressionConverter.Convert(apiSecret);
-            callPayload.Queries["number"] = ExpressionConverter.Convert(number);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            return new ApiConnectionAction<BasicNumberInsightResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        public IBodyWorkflowAction<StandardNumberInsightResponse> StandardNumberInsight(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> country, Expression<Func<string>> cnam = null)
-        {
-            var apiCallPath = String.Format("/ni/standard/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api_key"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["api_secret"] = ExpressionConverter.Convert(apiSecret);
-            callPayload.Queries["number"] = ExpressionConverter.Convert(number);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            if (cnam != null)
-                callPayload.Queries["cnam"] = ExpressionConverter.Convert(cnam);
-            return new ApiConnectionAction<StandardNumberInsightResponse>(callPayload);
+            return new ApiConnectionAction<StandardNumberInsightResponse>(BuildSourceInput);
         }
     }
 
     public class VonageTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class VerifyRequestResponse
-    {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("request_id")]
-        public string RequestId { get; set; }
-    }
-
-    public enum formatInput
-    {
-        [EnumMember(Value = "json")]
-        Json,
-        [EnumMember(Value = "xml")]
-        Xml
-    }
-
-    public enum codeLengthInput
-    {
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "6")]
-        _6
-    }
-
-    public enum lgInput
-    {
-        [EnumMember(Value = "ar-xa")]
-        ArXa,
-        [EnumMember(Value = "cs-cz")]
-        CsCz,
-        [EnumMember(Value = "cy-cy")]
-        CyCy,
-        [EnumMember(Value = "cy-gb")]
-        CyGb,
-        [EnumMember(Value = "da-dk")]
-        DaDk,
-        [EnumMember(Value = "de-de")]
-        DeDe,
-        [EnumMember(Value = "el-gr")]
-        ElGr,
-        [EnumMember(Value = "en-au")]
-        EnAu,
-        [EnumMember(Value = "en-gb")]
-        EnGb,
-        [EnumMember(Value = "en-in")]
-        EnIn,
-        [EnumMember(Value = "en-us")]
-        EnUs,
-        [EnumMember(Value = "es-es")]
-        EsEs,
-        [EnumMember(Value = "es-mx")]
-        EsMx,
-        [EnumMember(Value = "es-us")]
-        EsUs,
-        [EnumMember(Value = "fi-fi")]
-        FiFi,
-        [EnumMember(Value = "fil-ph")]
-        FilPh,
-        [EnumMember(Value = "fr-ca")]
-        FrCa,
-        [EnumMember(Value = "fr-fr")]
-        FrFr,
-        [EnumMember(Value = "hi-in")]
-        HiIn,
-        [EnumMember(Value = "hu-hu")]
-        HuHu,
-        [EnumMember(Value = "id-id")]
-        IdId,
-        [EnumMember(Value = "is-is")]
-        IsIs,
-        [EnumMember(Value = "it-it")]
-        ItIt,
-        [EnumMember(Value = "ja-jp")]
-        JaJp,
-        [EnumMember(Value = "ko-kr")]
-        KoKr,
-        [EnumMember(Value = "nb-no")]
-        NbNo,
-        [EnumMember(Value = "nl-nl")]
-        NlNl,
-        [EnumMember(Value = "pl-pl")]
-        PlPl,
-        [EnumMember(Value = "pt-br")]
-        PtBr,
-        [EnumMember(Value = "pt-pt")]
-        PtPt,
-        [EnumMember(Value = "ro-ro")]
-        RoRo,
-        [EnumMember(Value = "ru-ru")]
-        RuRu,
-        [EnumMember(Value = "sv-se")]
-        SvSe,
-        [EnumMember(Value = "th-th")]
-        ThTh,
-        [EnumMember(Value = "tr-tr")]
-        TrTr,
-        [EnumMember(Value = "vi-vn")]
-        ViVn,
-        [EnumMember(Value = "yue-cn")]
-        YueCn,
-        [EnumMember(Value = "zh-cn")]
-        ZhCn,
-        [EnumMember(Value = "zh-tw")]
-        ZhTw
-    }
-
-    public enum workflowIdInput
-    {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7
-    }
-
-    public class VerifyCheckResponse
-    {
-        [JsonProperty("request_id")]
-        public string RequestId { get; set; }
-
-        [JsonProperty("event_id")]
-        public string EventId { get; set; }
-
-        [JsonProperty("status")]
-        public string Status { get; set; }
-
-        [JsonProperty("price")]
-        public string Price { get; set; }
-
-        [JsonProperty("currency")]
-        public string Currency { get; set; }
-
-        [JsonProperty("estimated_price_messages_sent")]
-        public string EstimatedPriceMessagesSent { get; set; }
     }
 
     public class BasicNumberInsightResponse
@@ -236,6 +82,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
 
         [JsonProperty("country_prefix")]
         public string CountryPrefix { get; set; }
+    }
+
+    public enum formatInput
+    {
+        [EnumMember(Value = "json")]
+        Json,
+        [EnumMember(Value = "xml")]
+        Xml
     }
 
     public class StandardNumberInsightResponse

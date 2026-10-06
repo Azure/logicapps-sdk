@@ -12,530 +12,602 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
     public class TelephonyxtendedsrvActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction Raw(Expression<Func<string>> bodyuserID, Expression<Func<string>> bodypath, Expression<Func<string>> bodypayload = null, Expression<Func<acceptInput>> accept = null)
+        public IWorkflowAction Raw([WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodypayload = null, [WorkflowExpression] Func<acceptInput> accept = null)
         {
-            var apiCallPath = "/api/XSI-Action";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            if (accept != null)
-                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["userId"] = ExpressionConverter.ConvertO(bodyuserID);
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            if (bodypayload != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["payload"] = ExpressionConverter.ConvertO(bodypayload);
+                var apiCallPath = "/api/XSI-Action";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                if (accept != null)
+                    callPayload.Headers["Accept"] = SourceExpressionConverter.Convert(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IBodyWorkflowAction<UserCallsResponseItem[]> UserCalls(Expression<Func<string>> bodyuserId)
-        {
-            var apiCallPath = "/api/User-Calls";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserCallsResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IBodyWorkflowAction<UserProfileResponse> UserProfile(Expression<Func<string>> bodyuserId)
-        {
-            var apiCallPath = "/api/User-Profile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserProfileResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IBodyWorkflowAction<JToken> CallRecording(Expression<Func<string>> bodyaction, Expression<Func<string>> bodycallId, Expression<Func<string>> bodyuserId)
-        {
-            var apiCallPath = "/api/Toogle-Call-Recording";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["action"] = ExpressionConverter.ConvertO(bodyaction);
-            bodypropCount++;
-            body["callId"] = ExpressionConverter.ConvertO(bodycallId);
-            bodypropCount++;
-            body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction ToggleAgentACDState(Expression<Func<string>> bodyagentACDState, Expression<Func<string>> bodyuserID = null)
-        {
-            var apiCallPath = "/api/ACD-Toggle";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["agentACDState"] = ExpressionConverter.ConvertO(bodyagentACDState);
-            if (bodyuserID != null)
-            {
-                body["userID"] = ExpressionConverter.ConvertO(bodyuserID);
+                body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
                 bodypropCount++;
+                body["path"] = SourceExpressionConverter.ConvertToken(bodypath);
+                if (bodypayload != null)
+                {
+                    body["payload"] = SourceExpressionConverter.ConvertToken(bodypayload);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction CallNew(Expression<Func<string>> bodyaddress, Expression<Func<string>> bodyuserID = null)
+        public IBodyWorkflowAction<UserCallsResponseItem[]> UserCalls([WorkflowExpression] Func<string> bodyuserId)
         {
-            var apiCallPath = "/api/Call-New";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserID != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["userID"] = ExpressionConverter.ConvertO(bodyuserID);
+                var apiCallPath = "/api/User-Calls";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<UserCallsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction CallHold(Expression<Func<string>> bodycallId, Expression<Func<string>> bodyuserId = null)
+        public IBodyWorkflowAction<UserProfileResponse> UserProfile([WorkflowExpression] Func<string> bodyuserId)
         {
-            var apiCallPath = "/api/Call-Hold";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                var apiCallPath = "/api/User-Profile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["callId"] = ExpressionConverter.ConvertO(bodycallId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<UserProfileResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction CallEnd(Expression<Func<string>> bodycallId, Expression<Func<string>> bodyuserId = null)
+        public IBodyWorkflowAction<JToken> CallRecording([WorkflowExpression] Func<string> bodyaction, [WorkflowExpression] Func<string> bodycallId, [WorkflowExpression] Func<string> bodyuserId)
         {
-            var apiCallPath = "/api/Call-End";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                var apiCallPath = "/api/Toogle-Call-Recording";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["action"] = SourceExpressionConverter.ConvertToken(bodyaction);
+                bodypropCount++;
+                body["callId"] = SourceExpressionConverter.ConvertToken(bodycallId);
+                bodypropCount++;
+                body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["callId"] = ExpressionConverter.ConvertO(bodycallId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction CallTransfertoVoicemail(Expression<Func<string>> bodycallId, Expression<Func<string>> bodyuserId = null)
+        public IWorkflowAction ToggleAgentACDState([WorkflowExpression] Func<string> bodyagentACDState, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            var apiCallPath = "/api/Call-Transfer-to-Voicemail";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                var apiCallPath = "/api/ACD-Toggle";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["agentACDState"] = SourceExpressionConverter.ConvertToken(bodyagentACDState);
+                if (bodyuserId != null)
+                {
+                    body["userID"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["callId"] = ExpressionConverter.ConvertO(bodycallId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction CallTransfer(Expression<Func<string>> bodycallId, Expression<Func<string>> bodyaddress, Expression<Func<string>> bodyuserId = null)
+        public IWorkflowAction CallNew([WorkflowExpression] Func<string> bodyaddress, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            var apiCallPath = "/api/Call-Transfer-to-Another-User";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                var apiCallPath = "/api/Call-New";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserId != null)
+                {
+                    body["userID"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["callId"] = ExpressionConverter.ConvertO(bodycallId);
-            bodypropCount++;
-            body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
-        public IWorkflowAction CallAnswer(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodycallId = null)
+        public IWorkflowAction CallHold([WorkflowExpression] Func<string> bodycallId, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            var apiCallPath = "/api/Call-Answer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                var apiCallPath = "/api/Call-Hold";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserId != null)
+                {
+                    body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["callId"] = SourceExpressionConverter.ConvertToken(bodycallId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycallId != null)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
+        public IWorkflowAction CallEnd([WorkflowExpression] Func<string> bodycallId, [WorkflowExpression] Func<string> bodyuserId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["callId"] = ExpressionConverter.ConvertO(bodycallId);
+                var apiCallPath = "/api/Call-End";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserId != null)
+                {
+                    body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["callId"] = SourceExpressionConverter.ConvertToken(bodycallId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
+        public IWorkflowAction CallTransfertoVoicemail([WorkflowExpression] Func<string> bodycallId, [WorkflowExpression] Func<string> bodyuserId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/Call-Transfer-to-Voicemail";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserId != null)
+                {
+                    body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["callId"] = SourceExpressionConverter.ConvertToken(bodycallId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
+        public IWorkflowAction CallTransfer([WorkflowExpression] Func<string> bodycallId, [WorkflowExpression] Func<string> bodyaddress, [WorkflowExpression] Func<string> bodyuserId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Call-Transfer-to-Another-User";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserId != null)
+                {
+                    body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["callId"] = SourceExpressionConverter.ConvertToken(bodycallId);
+                bodypropCount++;
+                body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
+        public IWorkflowAction CallAnswer([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodycallId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Call-Answer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserId != null)
+                {
+                    body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
+                if (bodycallId != null)
+                {
+                    body["callId"] = SourceExpressionConverter.ConvertToken(bodycallId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
     public class TelephonyxtendedsrvTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger Events(Expression<Func<string>> bodyEvent, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, Expression<Func<string>> bodytype = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger Events([WorkflowExpression] Func<string> bodyEvent, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, [WorkflowExpression] Func<string> bodytype = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Events-Subscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                var apiCallPath = "/api/Events-Subscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserId != null)
+                {
+                    body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
+                if (bodygroupId != null)
+                {
+                    body["groupId"] = SourceExpressionConverter.ConvertToken(bodygroupId);
+                    bodypropCount++;
+                }
+
+                if (bodyenterpriseId != null)
+                {
+                    body["enterpriseId"] = SourceExpressionConverter.ConvertToken(bodyenterpriseId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["event"] = SourceExpressionConverter.ConvertToken(bodyEvent);
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
 
-            if (bodygroupId != null)
-            {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["notificationUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyenterpriseId != null)
-            {
-                body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["event"] = ExpressionConverter.ConvertO(bodyEvent);
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
-
-            body["notificationUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger EventsDoNotDisturb(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventsDoNotDisturb([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Events-Subscribe-Do-Not-Disturb";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                var apiCallPath = "/api/Events-Subscribe-Do-Not-Disturb";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserId != null)
+                {
+                    body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
+                if (bodygroupId != null)
+                {
+                    body["groupId"] = SourceExpressionConverter.ConvertToken(bodygroupId);
+                    bodypropCount++;
+                }
+
+                if (bodyenterpriseId != null)
+                {
+                    body["enterpriseId"] = SourceExpressionConverter.ConvertToken(bodyenterpriseId);
+                    bodypropCount++;
+                }
+
+                body["event"] = "Do Not Disturb";
                 bodypropCount++;
-            }
-
-            if (bodygroupId != null)
-            {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["notificationUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyenterpriseId != null)
-            {
-                body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
-                bodypropCount++;
-            }
-
-            body["event"] = "Do Not Disturb";
-            bodypropCount++;
-            body["notificationUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger EventsCallCenterMonitoring(Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventsCallCenterMonitoring([WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Events-Subscribe-Call-Center-Monitoring";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodygroupId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                var apiCallPath = "/api/Events-Subscribe-Call-Center-Monitoring";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodygroupId != null)
+                {
+                    body["groupId"] = SourceExpressionConverter.ConvertToken(bodygroupId);
+                    bodypropCount++;
+                }
+
+                if (bodyenterpriseId != null)
+                {
+                    body["enterpriseId"] = SourceExpressionConverter.ConvertToken(bodyenterpriseId);
+                    bodypropCount++;
+                }
+
+                body["event"] = "Call Center Monitoring";
                 bodypropCount++;
-            }
-
-            if (bodyenterpriseId != null)
-            {
-                body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
+                body["notificationUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["event"] = "Call Center Monitoring";
-            bodypropCount++;
-            body["notificationUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger EventsCallCenterQueue(Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventsCallCenterQueue([WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Events-Subscribe-Call-Center-Queue";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodygroupId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                var apiCallPath = "/api/Events-Subscribe-Call-Center-Queue";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodygroupId != null)
+                {
+                    body["groupId"] = SourceExpressionConverter.ConvertToken(bodygroupId);
+                    bodypropCount++;
+                }
+
+                if (bodyenterpriseId != null)
+                {
+                    body["enterpriseId"] = SourceExpressionConverter.ConvertToken(bodyenterpriseId);
+                    bodypropCount++;
+                }
+
+                body["event"] = "Call Center Queue";
                 bodypropCount++;
-            }
-
-            if (bodyenterpriseId != null)
-            {
-                body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
+                body["notificationUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["event"] = "Call Center Queue";
-            bodypropCount++;
-            body["notificationUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger EventsCallCenterAgent(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventsCallCenterAgent([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Events-Subscribe-Call-Center-Agent";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                var apiCallPath = "/api/Events-Subscribe-Call-Center-Agent";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserId != null)
+                {
+                    body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
+                if (bodygroupId != null)
+                {
+                    body["groupId"] = SourceExpressionConverter.ConvertToken(bodygroupId);
+                    bodypropCount++;
+                }
+
+                if (bodyenterpriseId != null)
+                {
+                    body["enterpriseId"] = SourceExpressionConverter.ConvertToken(bodyenterpriseId);
+                    bodypropCount++;
+                }
+
+                body["event"] = "Call Center Agent";
                 bodypropCount++;
-            }
-
-            if (bodygroupId != null)
-            {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["notificationUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyenterpriseId != null)
-            {
-                body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
-                bodypropCount++;
-            }
-
-            body["event"] = "Call Center Agent";
-            bodypropCount++;
-            body["notificationUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger EventsVoicemail(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventsVoicemail([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Events-Subscribe-Voicemail";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                var apiCallPath = "/api/Events-Subscribe-Voicemail";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserId != null)
+                {
+                    body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
+                if (bodygroupId != null)
+                {
+                    body["groupId"] = SourceExpressionConverter.ConvertToken(bodygroupId);
+                    bodypropCount++;
+                }
+
+                if (bodyenterpriseId != null)
+                {
+                    body["enterpriseId"] = SourceExpressionConverter.ConvertToken(bodyenterpriseId);
+                    bodypropCount++;
+                }
+
+                body["event"] = "Voice Mail Message Summary";
                 bodypropCount++;
-            }
-
-            if (bodygroupId != null)
-            {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["notificationUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyenterpriseId != null)
-            {
-                body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
-                bodypropCount++;
-            }
-
-            body["event"] = "Voice Mail Message Summary";
-            bodypropCount++;
-            body["notificationUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger EventsCall(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, Expression<Func<string>> bodytype = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventsCall([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, [WorkflowExpression] Func<string> bodytype = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Events-Subscribe-Calls";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["userId"] = ExpressionConverter.ConvertO(bodyuserId);
+                var apiCallPath = "/api/Events-Subscribe-Calls";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserId != null)
+                {
+                    body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
+                if (bodygroupId != null)
+                {
+                    body["groupId"] = SourceExpressionConverter.ConvertToken(bodygroupId);
+                    bodypropCount++;
+                }
+
+                if (bodyenterpriseId != null)
+                {
+                    body["enterpriseId"] = SourceExpressionConverter.ConvertToken(bodyenterpriseId);
+                    bodypropCount++;
+                }
+
+                body["event"] = "Advanced Call";
                 bodypropCount++;
-            }
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
 
-            if (bodygroupId != null)
-            {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                body["notificationUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyenterpriseId != null)
-            {
-                body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
-                bodypropCount++;
-            }
-
-            body["event"] = "Advanced Call";
-            bodypropCount++;
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
-
-            body["notificationUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

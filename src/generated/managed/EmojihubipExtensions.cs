@@ -14,55 +14,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
         public IBodyWorkflowAction<AllResponseItem[]> All()
         {
-            var apiCallPath = "/all";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AllResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/all";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AllResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<AllCategoryResponseItem[]> AllCategory(Expression<Func<categoryNameInput>> categoryName)
+        public IBodyWorkflowAction<AllCategoryResponseItem[]> AllCategory([WorkflowExpression] Func<categoryNameInput> categoryName)
         {
-            var apiCallPath = String.Format("/all/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(categoryName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AllCategoryResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/all/category_{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(categoryName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AllCategoryResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<AllGroupResponseItem[]> AllGroup(Expression<Func<groupNameInput>> groupName)
+        public IBodyWorkflowAction<AllGroupResponseItem[]> AllGroup([WorkflowExpression] Func<groupNameInput> groupName)
         {
-            var apiCallPath = String.Format("/all/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(groupName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AllGroupResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/all/group_{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AllGroupResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
         public IBodyWorkflowAction<RandomResponse> Random()
         {
-            var apiCallPath = "/random";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RandomResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/random";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RandomResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<RandomCategoryResponse> RandomCategory(Expression<Func<categoryNameInput>> categoryName)
+        public IBodyWorkflowAction<RandomCategoryResponse> RandomCategory([WorkflowExpression] Func<categoryNameInput> categoryName)
         {
-            var apiCallPath = String.Format("/random/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(categoryName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RandomCategoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/random/category_{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(categoryName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RandomCategoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<RandomGroupResponse> RandomGroup(Expression<Func<groupNameInput>> groupName)
+        public IBodyWorkflowAction<RandomGroupResponse> RandomGroup([WorkflowExpression] Func<groupNameInput> groupName)
         {
-            var apiCallPath = String.Format("/random/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(groupName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RandomGroupResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/random/group_{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RandomGroupResponse>(BuildSourceInput);
         }
     }
 

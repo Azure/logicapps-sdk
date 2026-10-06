@@ -12,446 +12,503 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
     public class AzureagentserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<ListAgentsResponse> ListAgents(Expression<Func<apiVersionInput>> apiVersion)
+        public IBodyWorkflowAction<ListAgentsResponse> ListAgents([WorkflowExpression] Func<apiVersionInput> apiVersion)
         {
-            var apiCallPath = "/assistants";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<ListAgentsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/assistants";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.Convert(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAgentsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<CreateThreadResponse> CreateThread(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<Messages[]>> requestBodymessages = null)
+        public IBodyWorkflowAction<ListAgentsServiceResponse> ListAgentsFromService()
         {
-            var apiCallPath = "/threads";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            if (requestBodymessages != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                requestBody["messages"] = ExpressionConverter.ConvertO(requestBodymessages);
-                requestBodypropCount++;
+                var apiCallPath = "/agents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
-            {
-                requestBody["metadata"] = metadataObject;
-                requestBodypropCount++;
-            }
-
-            var toolResourcesObject = new JObject();
-            var toolResourcesObjectpropCount = 0;
-            if (toolResourcesObjectpropCount > 0)
-            {
-                requestBody["tool_resources"] = toolResourcesObject;
-                requestBodypropCount++;
-            }
-
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionAction<CreateThreadResponse>(callPayload);
+            return new ApiConnectionAction<ListAgentsServiceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<CreateRunResponse> CreateRun(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<string>> requestBodyassistantId, Expression<Func<string>> requestBodymodel = null, Expression<Func<string>> requestBodyinstructions = null, Expression<Func<string>> requestBodyadditionalInstructions = null, Expression<Func<Messages[]>> requestBodyadditionalMessages = null, Expression<Func<Tools[]>> requestBodytools = null, Expression<Func<double>> requestBodytemperature = null, Expression<Func<double>> requestBodytopP = null, Expression<Func<bool>> requestBodystream = null, Expression<Func<int>> requestBodymaxPromptTokens = null, Expression<Func<int>> requestBodymaxCompletionTokens = null)
+        public IBodyWorkflowAction<CreateThreadResponse> CreateThread([WorkflowExpression] Func<apiVersionInput> apiVersion, [WorkflowExpression] Func<Messages[]> requestBodymessages = null)
         {
-            var apiCallPath = String.Format("/threads/{0}/runs", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["assistant_id"] = ExpressionConverter.ConvertO(requestBodyassistantId);
-            if (requestBodymodel != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                requestBody["model"] = ExpressionConverter.ConvertO(requestBodymodel);
-                requestBodypropCount++;
+                var apiCallPath = "/threads";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.Convert(apiVersion);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                if (requestBodymessages != null)
+                {
+                    requestBody["messages"] = SourceExpressionConverter.ConvertToken(requestBodymessages);
+                    requestBodypropCount++;
+                }
+
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    requestBody["metadata"] = metadataObject;
+                    requestBodypropCount++;
+                }
+
+                var toolResourcesObject = new JObject();
+                var toolResourcesObjectpropCount = 0;
+                if (toolResourcesObjectpropCount > 0)
+                {
+                    requestBody["tool_resources"] = toolResourcesObject;
+                    requestBodypropCount++;
+                }
+
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
+                return callPayload;
             }
 
-            if (requestBodyinstructions != null)
-            {
-                requestBody["instructions"] = ExpressionConverter.ConvertO(requestBodyinstructions);
-                requestBodypropCount++;
-            }
+            return new ApiConnectionAction<CreateThreadResponse>(BuildSourceInput);
+        }
 
-            if (requestBodyadditionalInstructions != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
+        public IBodyWorkflowAction<CreateRunResponse> CreateRun([WorkflowExpression] Func<apiVersionInput> apiVersion, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> requestBodyassistantId, [WorkflowExpression] Func<string> requestBodymodel = null, [WorkflowExpression] Func<string> requestBodyinstructions = null, [WorkflowExpression] Func<string> requestBodyadditionalInstructions = null, [WorkflowExpression] Func<Messages[]> requestBodyadditionalMessages = null, [WorkflowExpression] Func<Tools[]> requestBodytools = null, [WorkflowExpression] Func<double> requestBodytemperature = null, [WorkflowExpression] Func<double> requestBodytopP = null, [WorkflowExpression] Func<bool> requestBodystream = null, [WorkflowExpression] Func<int> requestBodymaxPromptTokens = null, [WorkflowExpression] Func<int> requestBodymaxCompletionTokens = null, [WorkflowExpression] Func<object> requestBodytoolChoice = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                requestBody["additional_instructions"] = ExpressionConverter.ConvertO(requestBodyadditionalInstructions);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.Convert(apiVersion);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
                 requestBodypropCount++;
-            }
+                requestBody["assistant_id"] = SourceExpressionConverter.ConvertToken(requestBodyassistantId);
+                if (requestBodymodel != null)
+                {
+                    requestBody["model"] = SourceExpressionConverter.ConvertToken(requestBodymodel);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodyadditionalMessages != null)
-            {
-                requestBody["additional_messages"] = ExpressionConverter.ConvertO(requestBodyadditionalMessages);
-                requestBodypropCount++;
-            }
+                if (requestBodyinstructions != null)
+                {
+                    requestBody["instructions"] = SourceExpressionConverter.ConvertToken(requestBodyinstructions);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodytools != null)
-            {
-                requestBody["tools"] = ExpressionConverter.ConvertO(requestBodytools);
-                requestBodypropCount++;
-            }
+                if (requestBodyadditionalInstructions != null)
+                {
+                    requestBody["additional_instructions"] = SourceExpressionConverter.ConvertToken(requestBodyadditionalInstructions);
+                    requestBodypropCount++;
+                }
 
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
-            {
-                requestBody["metadata"] = metadataObject;
-                requestBodypropCount++;
-            }
+                if (requestBodyadditionalMessages != null)
+                {
+                    requestBody["additional_messages"] = SourceExpressionConverter.ConvertToken(requestBodyadditionalMessages);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodytemperature != null)
-            {
+                if (requestBodytools != null)
+                {
+                    requestBody["tools"] = SourceExpressionConverter.ConvertToken(requestBodytools);
+                    requestBodypropCount++;
+                }
+
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    requestBody["metadata"] = metadataObject;
+                    requestBodypropCount++;
+                }
+
                 if (requestBodytemperature != null)
                 {
-                    requestBody["temperature"] = ExpressionConverter.ConvertO(requestBodytemperature);
+                    if (requestBodytemperature != null)
+                    {
+                        requestBody["temperature"] = SourceExpressionConverter.ConvertToken(requestBodytemperature);
+                        requestBodypropCount++;
+                    }
+
+                    requestBodypropCount++;
+                }
+                else
+                {
+                    requestBody["temperature"] = 1;
                     requestBodypropCount++;
                 }
 
-                requestBodypropCount++;
-            }
-            else
-            {
-                requestBody["temperature"] = 1;
-                requestBodypropCount++;
-            }
-
-            if (requestBodytopP != null)
-            {
                 if (requestBodytopP != null)
                 {
-                    requestBody["top_p"] = ExpressionConverter.ConvertO(requestBodytopP);
+                    if (requestBodytopP != null)
+                    {
+                        requestBody["top_p"] = SourceExpressionConverter.ConvertToken(requestBodytopP);
+                        requestBodypropCount++;
+                    }
+
+                    requestBodypropCount++;
+                }
+                else
+                {
+                    requestBody["top_p"] = 1;
                     requestBodypropCount++;
                 }
 
-                requestBodypropCount++;
-            }
-            else
-            {
-                requestBody["top_p"] = 1;
-                requestBodypropCount++;
+                if (requestBodystream != null)
+                {
+                    requestBody["stream"] = SourceExpressionConverter.ConvertToken(requestBodystream);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodymaxPromptTokens != null)
+                {
+                    requestBody["max_prompt_tokens"] = SourceExpressionConverter.ConvertToken(requestBodymaxPromptTokens);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodymaxCompletionTokens != null)
+                {
+                    requestBody["max_completion_tokens"] = SourceExpressionConverter.ConvertToken(requestBodymaxCompletionTokens);
+                    requestBodypropCount++;
+                }
+
+                var truncationStrategyObject = new JObject();
+                var truncationStrategyObjectpropCount = 0;
+                if (truncationStrategyObjectpropCount > 0)
+                {
+                    requestBody["truncation_strategy"] = truncationStrategyObject;
+                    requestBodypropCount++;
+                }
+
+                if (requestBodytoolChoice != null)
+                {
+                    requestBody["tool_choice"] = SourceExpressionConverter.ConvertToken(requestBodytoolChoice);
+                    requestBodypropCount++;
+                }
+
+                var responseFormatObject = new JObject();
+                var responseFormatObjectpropCount = 0;
+                if (responseFormatObjectpropCount > 0)
+                {
+                    requestBody["response_format"] = responseFormatObject;
+                    requestBodypropCount++;
+                }
+
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
+                return callPayload;
             }
 
-            if (requestBodystream != null)
-            {
-                requestBody["stream"] = ExpressionConverter.ConvertO(requestBodystream);
-                requestBodypropCount++;
-            }
-
-            if (requestBodymaxPromptTokens != null)
-            {
-                requestBody["max_prompt_tokens"] = ExpressionConverter.ConvertO(requestBodymaxPromptTokens);
-                requestBodypropCount++;
-            }
-
-            if (requestBodymaxCompletionTokens != null)
-            {
-                requestBody["max_completion_tokens"] = ExpressionConverter.ConvertO(requestBodymaxCompletionTokens);
-                requestBodypropCount++;
-            }
-
-            var truncationStrategyObject = new JObject();
-            var truncationStrategyObjectpropCount = 0;
-            if (truncationStrategyObjectpropCount > 0)
-            {
-                requestBody["truncation_strategy"] = truncationStrategyObject;
-                requestBodypropCount++;
-            }
-
-            var toolChoiceObject = new JObject();
-            var toolChoiceObjectpropCount = 0;
-            if (toolChoiceObjectpropCount > 0)
-            {
-                requestBody["tool_choice"] = toolChoiceObject;
-                requestBodypropCount++;
-            }
-
-            var responseFormatObject = new JObject();
-            var responseFormatObjectpropCount = 0;
-            if (responseFormatObjectpropCount > 0)
-            {
-                requestBody["response_format"] = responseFormatObject;
-                requestBodypropCount++;
-            }
-
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionAction<CreateRunResponse>(callPayload);
+            return new ApiConnectionAction<CreateRunResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<GetRunResponse> GetRun(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<string>> runId)
+        public IBodyWorkflowAction<GetRunResponse> GetRun([WorkflowExpression] Func<apiVersionInput> apiVersion, [WorkflowExpression] Func<string> threadId, [WorkflowExpression] Func<string> runId)
         {
-            var apiCallPath = String.Format("/threads/{0}/runs/{1}", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<GetRunResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.Convert(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRunResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<ListMessageResponse> ListMessages(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId)
+        public IBodyWorkflowAction<ListMessageResponse> ListMessages([WorkflowExpression] Func<apiVersionInput> apiVersion, [WorkflowExpression] Func<string> threadId)
         {
-            var apiCallPath = String.Format("/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            return new ApiConnectionAction<ListMessageResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(threadId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.Convert(apiVersion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListMessageResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<OpenAIResponse> InvokeAgent(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> bodypromptid, Expression<Func<bodyagenttypeInput>> bodyagenttype, Expression<Func<string>> bodyagentname, Expression<Func<string>> bodyagentversion, Expression<Func<string>> bodyuser = null, Expression<Func<int>> bodytopLogprobs = null, Expression<Func<string>> bodypreviousResponseId = null, Expression<Func<bool>> bodybackground = null, Expression<Func<int>> bodymaxOutputTokens = null, Expression<Func<int>> bodymaxToolCalls = null, Expression<Func<bodytextformattypeInput>> bodytextformattype = null, Expression<Func<OpenAITool[]>> bodytools = null, Expression<Func<object>> bodytoolChoice = null, Expression<Func<string>> bodypromptversion = null, Expression<Func<bodytruncationInput>> bodytruncation = null, Expression<Func<object>> bodyinput = null, Expression<Func<OpenAIIncludable[]>> bodyinclude = null, Expression<Func<bool>> bodyparallelToolCalls = null, Expression<Func<bool>> bodystore = null, Expression<Func<string>> bodyinstructions = null)
+        public IBodyWorkflowAction<OpenAIResponse> InvokeAgent([WorkflowExpression] Func<apiVersionInput> apiVersion, [WorkflowExpression] Func<string> bodypromptid, [WorkflowExpression] Func<bodyconversationconversationIdInput> bodyconversationconversationId, [WorkflowExpression] Func<bodyagenttypeInput> bodyagenttype, [WorkflowExpression] Func<string> bodyagentname, [WorkflowExpression] Func<string> bodyagentversion, [WorkflowExpression] Func<string> bodyuser = null, [WorkflowExpression] Func<int> bodytopLogprobs = null, [WorkflowExpression] Func<string> bodypreviousResponseId = null, [WorkflowExpression] Func<bool> bodybackground = null, [WorkflowExpression] Func<int> bodymaxOutputTokens = null, [WorkflowExpression] Func<int> bodymaxToolCalls = null, [WorkflowExpression] Func<bodytextformattypeInput> bodytextformattype = null, [WorkflowExpression] Func<OpenAITool[]> bodytools = null, [WorkflowExpression] Func<object> bodytoolChoice = null, [WorkflowExpression] Func<string> bodypromptversion = null, [WorkflowExpression] Func<bodytruncationInput> bodytruncation = null, [WorkflowExpression] Func<object> bodyinput = null, [WorkflowExpression] Func<OpenAIIncludable[]> bodyinclude = null, [WorkflowExpression] Func<bool> bodyparallelToolCalls = null, [WorkflowExpression] Func<bool> bodystore = null, [WorkflowExpression] Func<string> bodyinstructions = null)
         {
-            var apiCallPath = "/openai/responses";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["metadata"] = metadataObject;
-                bodypropCount++;
-            }
+                var apiCallPath = "/openai/responses";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = SourceExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
 
-            if (bodyuser != null)
-            {
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
-                bodypropCount++;
-            }
+                if (bodyuser != null)
+                {
+                    body["user"] = SourceExpressionConverter.ConvertToken(bodyuser);
+                    bodypropCount++;
+                }
 
-            if (bodytopLogprobs != null)
-            {
-                body["top_logprobs"] = ExpressionConverter.ConvertO(bodytopLogprobs);
-                bodypropCount++;
-            }
+                if (bodytopLogprobs != null)
+                {
+                    body["top_logprobs"] = SourceExpressionConverter.ConvertToken(bodytopLogprobs);
+                    bodypropCount++;
+                }
 
-            if (bodypreviousResponseId != null)
-            {
-                body["previous_response_id"] = ExpressionConverter.ConvertO(bodypreviousResponseId);
-                bodypropCount++;
-            }
+                if (bodypreviousResponseId != null)
+                {
+                    body["previous_response_id"] = SourceExpressionConverter.ConvertToken(bodypreviousResponseId);
+                    bodypropCount++;
+                }
 
-            if (bodybackground != null)
-            {
                 if (bodybackground != null)
                 {
-                    body["background"] = ExpressionConverter.ConvertO(bodybackground);
+                    if (bodybackground != null)
+                    {
+                        body["background"] = SourceExpressionConverter.ConvertToken(bodybackground);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["background"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["background"] = false;
-                bodypropCount++;
-            }
+                if (bodymaxOutputTokens != null)
+                {
+                    body["max_output_tokens"] = SourceExpressionConverter.ConvertToken(bodymaxOutputTokens);
+                    bodypropCount++;
+                }
 
-            if (bodymaxOutputTokens != null)
-            {
-                body["max_output_tokens"] = ExpressionConverter.ConvertO(bodymaxOutputTokens);
-                bodypropCount++;
-            }
+                if (bodymaxToolCalls != null)
+                {
+                    body["max_tool_calls"] = SourceExpressionConverter.ConvertToken(bodymaxToolCalls);
+                    bodypropCount++;
+                }
 
-            if (bodymaxToolCalls != null)
-            {
-                body["max_tool_calls"] = ExpressionConverter.ConvertO(bodymaxToolCalls);
-                bodypropCount++;
-            }
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                var formatObject = new JObject();
+                var formatObjectpropCount = 0;
+                if (bodytextformattype != null)
+                {
+                    formatObject["type"] = SourceExpressionConverter.Convert(bodytextformattype);
+                    formatObjectpropCount++;
+                }
 
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            var formatObject = new JObject();
-            var formatObjectpropCount = 0;
-            if (bodytextformattype != null)
-            {
-                formatObject["type"] = ExpressionConverter.ConvertO(bodytextformattype);
-                formatObjectpropCount++;
-            }
+                if (formatObjectpropCount > 0)
+                {
+                    textObject["format"] = formatObject;
+                    textObjectpropCount++;
+                }
 
-            if (formatObjectpropCount > 0)
-            {
-                textObject["format"] = formatObject;
-                textObjectpropCount++;
-            }
+                if (textObjectpropCount > 0)
+                {
+                    body["text"] = textObject;
+                    bodypropCount++;
+                }
 
-            if (textObjectpropCount > 0)
-            {
-                body["text"] = textObject;
-                bodypropCount++;
-            }
+                if (bodytools != null)
+                {
+                    body["tools"] = SourceExpressionConverter.ConvertToken(bodytools);
+                    bodypropCount++;
+                }
 
-            if (bodytools != null)
-            {
-                body["tools"] = ExpressionConverter.ConvertO(bodytools);
-                bodypropCount++;
-            }
+                if (bodytoolChoice != null)
+                {
+                    body["tool_choice"] = SourceExpressionConverter.ConvertToken(bodytoolChoice);
+                    bodypropCount++;
+                }
 
-            if (bodytoolChoice != null)
-            {
-                body["tool_choice"] = ExpressionConverter.ConvertO(bodytoolChoice);
-                bodypropCount++;
-            }
-
-            var promptObject = new JObject();
-            var promptObjectpropCount = 0;
-            promptObjectpropCount++;
-            promptObject["id"] = ExpressionConverter.ConvertO(bodypromptid);
-            if (bodypromptversion != null)
-            {
-                promptObject["version"] = ExpressionConverter.ConvertO(bodypromptversion);
+                var promptObject = new JObject();
+                var promptObjectpropCount = 0;
                 promptObjectpropCount++;
-            }
+                promptObject["id"] = SourceExpressionConverter.ConvertToken(bodypromptid);
+                if (bodypromptversion != null)
+                {
+                    promptObject["version"] = SourceExpressionConverter.ConvertToken(bodypromptversion);
+                    promptObjectpropCount++;
+                }
 
-            var variablesObject = new JObject();
-            var variablesObjectpropCount = 0;
-            if (variablesObjectpropCount > 0)
-            {
-                promptObject["variables"] = variablesObject;
-                promptObjectpropCount++;
-            }
+                var variablesObject = new JObject();
+                var variablesObjectpropCount = 0;
+                if (variablesObjectpropCount > 0)
+                {
+                    promptObject["variables"] = variablesObject;
+                    promptObjectpropCount++;
+                }
 
-            if (promptObjectpropCount > 0)
-            {
-                body["prompt"] = promptObject;
-                bodypropCount++;
-            }
+                if (promptObjectpropCount > 0)
+                {
+                    body["prompt"] = promptObject;
+                    bodypropCount++;
+                }
 
-            if (bodytruncation != null)
-            {
                 if (bodytruncation != null)
                 {
-                    body["truncation"] = ExpressionConverter.ConvertO(bodytruncation);
+                    if (bodytruncation != null)
+                    {
+                        body["truncation"] = SourceExpressionConverter.Convert(bodytruncation);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["truncation"] = "disabled";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["truncation"] = "disabled";
-                bodypropCount++;
-            }
+                if (bodyinput != null)
+                {
+                    body["input"] = SourceExpressionConverter.ConvertToken(bodyinput);
+                    bodypropCount++;
+                }
 
-            if (bodyinput != null)
-            {
-                body["input"] = ExpressionConverter.ConvertO(bodyinput);
-                bodypropCount++;
-            }
+                if (bodyinclude != null)
+                {
+                    body["include"] = SourceExpressionConverter.ConvertToken(bodyinclude);
+                    bodypropCount++;
+                }
 
-            if (bodyinclude != null)
-            {
-                body["include"] = ExpressionConverter.ConvertO(bodyinclude);
-                bodypropCount++;
-            }
-
-            if (bodyparallelToolCalls != null)
-            {
                 if (bodyparallelToolCalls != null)
                 {
-                    body["parallel_tool_calls"] = ExpressionConverter.ConvertO(bodyparallelToolCalls);
+                    if (bodyparallelToolCalls != null)
+                    {
+                        body["parallel_tool_calls"] = SourceExpressionConverter.ConvertToken(bodyparallelToolCalls);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["parallel_tool_calls"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["parallel_tool_calls"] = true;
-                bodypropCount++;
-            }
-
-            if (bodystore != null)
-            {
                 if (bodystore != null)
                 {
-                    body["store"] = ExpressionConverter.ConvertO(bodystore);
+                    if (bodystore != null)
+                    {
+                        body["store"] = SourceExpressionConverter.ConvertToken(bodystore);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["store"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["store"] = true;
-                bodypropCount++;
+                if (bodyinstructions != null)
+                {
+                    body["instructions"] = SourceExpressionConverter.ConvertToken(bodyinstructions);
+                    bodypropCount++;
+                }
+
+                var conversationObject = new JObject();
+                var conversationObjectpropCount = 0;
+                conversationObjectpropCount++;
+                conversationObject["id"] = SourceExpressionConverter.Convert(bodyconversationconversationId);
+                if (conversationObjectpropCount > 0)
+                {
+                    body["conversation"] = conversationObject;
+                    bodypropCount++;
+                }
+
+                var agentObject = new JObject();
+                var agentObjectpropCount = 0;
+                agentObjectpropCount++;
+                agentObject["type"] = SourceExpressionConverter.Convert(bodyagenttype);
+                agentObjectpropCount++;
+                agentObject["name"] = SourceExpressionConverter.ConvertToken(bodyagentname);
+                agentObjectpropCount++;
+                agentObject["version"] = SourceExpressionConverter.ConvertToken(bodyagentversion);
+                if (agentObjectpropCount > 0)
+                {
+                    body["agent"] = agentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyinstructions != null)
-            {
-                body["instructions"] = ExpressionConverter.ConvertO(bodyinstructions);
-                bodypropCount++;
-            }
-
-            var agentObject = new JObject();
-            var agentObjectpropCount = 0;
-            agentObjectpropCount++;
-            agentObject["type"] = ExpressionConverter.ConvertO(bodyagenttype);
-            agentObjectpropCount++;
-            agentObject["name"] = ExpressionConverter.ConvertO(bodyagentname);
-            agentObjectpropCount++;
-            agentObject["version"] = ExpressionConverter.ConvertO(bodyagentversion);
-            if (agentObjectpropCount > 0)
-            {
-                body["agent"] = agentObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<OpenAIResponse>(callPayload);
+            return new ApiConnectionAction<OpenAIResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<JToken> SendActivity(Expression<Func<string>> agentId)
+        public IBodyWorkflowAction<JToken> SendActivityApplication([WorkflowExpression] Func<string> myApplication)
         {
-            var apiCallPath = String.Format("/agents/{0}/protocols/activityprotocol", ExpressionConverter.ConvertWithUrlEncoding(agentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2025-11-15-preview");
-            var activity = new JObject();
-            var activitypropCount = 0;
-            if (activitypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = activity;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/applications/{0}/protocols/activityprotocol", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(myApplication, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2025-11-15-preview");
+                var activity = new JObject();
+                var activitypropCount = 0;
+                if (activitypropCount > 0)
+                {
+                    callPayload.Body = activity;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
-        public IBodyWorkflowAction<JToken> SendActivityApplication(Expression<Func<string>> myApplication)
+        public IBodyWorkflowAction<JToken> SendActivity([WorkflowExpression] Func<string> agentId)
         {
-            var apiCallPath = String.Format("/applications/{0}/protocols/activityprotocol", ExpressionConverter.ConvertWithUrlEncoding(myApplication, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2025-11-15-preview");
-            var activity = new JObject();
-            var activitypropCount = 0;
-            if (activitypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = activity;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/agents/{0}/endpoint/protocols/activityprotocol", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(agentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2025-11-15-preview");
+                var activity = new JObject();
+                var activitypropCount = 0;
+                if (activitypropCount > 0)
+                {
+                    callPayload.Body = activity;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 
@@ -529,6 +586,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
     {
         [EnumMember(Value = "2025-11-15-preview")]
         _20251115Preview
+    }
+
+    public class ListAgentsServiceResponse
+    {
+        [JsonProperty("data")]
+        public AgentServiceData[] Data { get; set; }
+    }
+
+    public class AgentServiceData
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [JsonProperty("version")]
+        public string Version { get; set; }
+
+        [JsonProperty("createdAt")]
+        public string CreatedAt { get; set; }
     }
 
     public class CreateThreadResponse
@@ -1184,6 +1265,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
     {
         [EnumMember(Value = "agent_id")]
         AgentId
+    }
+
+    public enum bodyconversationconversationIdInput
+    {
+        [EnumMember(Value = "Create new Conversation")]
+        CreateNewConversation
     }
 
     public enum bodyagenttypeInput

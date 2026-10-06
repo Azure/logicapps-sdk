@@ -12,29 +12,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Niftygatewayip
     public class NiftygatewayipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "niftygatewayip")]
-        public IBodyWorkflowAction<NiftiesforUserResponse> NiftiesforUser(Expression<Func<string>> username, Expression<Func<string>> contractAddress = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<NiftiesforUserResponse> NiftiesforUser([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> contractAddress = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = String.Format("/users/{0}/nifties/", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (contractAddress != null)
-                callPayload.Queries["contractAddress"] = ExpressionConverter.Convert(contractAddress);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<NiftiesforUserResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/nifties/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(username, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (contractAddress != null)
+                    callPayload.Queries["contractAddress"] = SourceExpressionConverter.ConvertO(contractAddress);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NiftiesforUserResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "niftygatewayip")]
-        public IBodyWorkflowAction<NiftiesforCreatorResponse> NiftiesforCreator(Expression<Func<string>> creatorProfileName, Expression<Func<int>> limit, Expression<Func<int>> offset)
+        public IBodyWorkflowAction<NiftiesforCreatorResponse> NiftiesforCreator([WorkflowExpression] Func<string> creatorProfileName, [WorkflowExpression] Func<int> limit, [WorkflowExpression] Func<int> offset)
         {
-            var apiCallPath = String.Format("/creators/{0}/collectors/", ExpressionConverter.ConvertWithUrlEncoding(creatorProfileName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<NiftiesforCreatorResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/creators/{0}/collectors/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(creatorProfileName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NiftiesforCreatorResponse>(BuildSourceInput);
         }
     }
 

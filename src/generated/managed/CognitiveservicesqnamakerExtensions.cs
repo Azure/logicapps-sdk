@@ -12,48 +12,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
     public class CognitiveservicesqnamakerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicesqnamaker")]
-        public IBodyWorkflowAction<GenerateAnswerResponse> GenerateAnswer(Expression<Func<string>> knowledgeBaseId, Expression<Func<string>> serviceHost, Expression<Func<string>> endpointKey, Expression<Func<string>> bodyquestion, Expression<Func<int>> bodytop = null)
+        public IBodyWorkflowAction<GenerateAnswerResponse> GenerateAnswer([WorkflowExpression] Func<string> knowledgeBaseId, [WorkflowExpression] Func<string> serviceHost, [WorkflowExpression] Func<string> endpointKey, [WorkflowExpression] Func<string> bodyquestion, [WorkflowExpression] Func<int> bodytop = null)
         {
-            var apiCallPath = String.Format("/knowledgebases/{0}/generateAnswer", ExpressionConverter.ConvertWithUrlEncoding(knowledgeBaseId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["ServiceHost"] = ExpressionConverter.Convert(serviceHost);
-            callPayload.Headers["EndpointKey"] = ExpressionConverter.Convert(endpointKey);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["question"] = ExpressionConverter.ConvertO(bodyquestion);
-            if (bodytop != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/knowledgebases/{0}/generateAnswer", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeBaseId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["ServiceHost"] = SourceExpressionConverter.ConvertO(serviceHost);
+                callPayload.Headers["EndpointKey"] = SourceExpressionConverter.ConvertO(endpointKey);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["question"] = SourceExpressionConverter.ConvertToken(bodyquestion);
                 if (bodytop != null)
                 {
-                    body["top"] = ExpressionConverter.ConvertO(bodytop);
+                    if (bodytop != null)
+                    {
+                        body["top"] = SourceExpressionConverter.ConvertToken(bodytop);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["top"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["top"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GenerateAnswerResponse>(callPayload);
+            return new ApiConnectionAction<GenerateAnswerResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicesqnamaker")]
-        public IBodyWorkflowAction<DownloadKnowledgeBaseResponse> DownloadKnowledgeBaseOld(Expression<Func<string>> knowledgeBaseId)
+        public IBodyWorkflowAction<DownloadKnowledgeBaseResponse> DownloadKnowledgeBaseOld([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<string> knowledgeBaseId)
         {
-            var apiCallPath = String.Format("/qnamaker/v4.0/knowledgebases/{0}", ExpressionConverter.ConvertWithUrlEncoding(knowledgeBaseId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DownloadKnowledgeBaseResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/qnamaker/v4.0/knowledgebases/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomainName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeBaseId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DownloadKnowledgeBaseResponse>(BuildSourceInput);
         }
     }
 

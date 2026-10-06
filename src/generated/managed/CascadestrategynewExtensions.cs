@@ -12,73 +12,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
     public class CascadestrategynewActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
-        public IBodyWorkflowAction<UpdateMeasure2Response> UpdateMeasure2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<double>> bodymeasureValue, Expression<Func<string>> measureId)
+        public IBodyWorkflowAction<UpdateMeasure2Response> UpdateMeasure2([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<double> bodymeasureValue, [WorkflowExpression] Func<string> measureId)
         {
-            var apiCallPath = String.Format("/v2/measures/{0}", ExpressionConverter.ConvertWithUrlEncoding(measureId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["workspace_id"] = ExpressionConverter.ConvertO(bodyworkspaceId);
-            bodypropCount++;
-            body["plan_id"] = ExpressionConverter.ConvertO(bodyplanId);
-            bodypropCount++;
-            body["measure_value"] = ExpressionConverter.ConvertO(bodymeasureValue);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateMeasure2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
-        public IBodyWorkflowAction<UpdateMeasureHistoricalValue2Response> UpdateMeasureHistoricalValue2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<string>> measureId, Expression<Func<bodyhistoricalDataInputItem[]>> bodyhistoricalData = null)
-        {
-            var apiCallPath = String.Format("/v2/measures/historical/{0}", ExpressionConverter.ConvertWithUrlEncoding(measureId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["workspace_id"] = ExpressionConverter.ConvertO(bodyworkspaceId);
-            bodypropCount++;
-            body["plan_id"] = ExpressionConverter.ConvertO(bodyplanId);
-            if (bodyhistoricalData != null)
-            {
-                body["historical_data"] = ExpressionConverter.ConvertO(bodyhistoricalData);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/measures/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(measureId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["workspace_id"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                bodypropCount++;
+                body["plan_id"] = SourceExpressionConverter.ConvertToken(bodyplanId);
+                bodypropCount++;
+                body["measure_value"] = SourceExpressionConverter.ConvertToken(bodymeasureValue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateMeasureHistoricalValue2Response>(callPayload);
+            return new ApiConnectionAction<UpdateMeasure2Response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
-        public IBodyWorkflowAction<UpdateAction2Response> UpdateAction2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<double>> bodyactionValue, Expression<Func<string>> actionId)
+        public IBodyWorkflowAction<UpdateMeasureHistoricalValue2Response> UpdateMeasureHistoricalValue2([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<string> measureId, [WorkflowExpression] Func<bodyhistoricalDataInputItem[]> bodyhistoricalData = null)
         {
-            var apiCallPath = String.Format("/v2/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(actionId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["workspace_id"] = ExpressionConverter.ConvertO(bodyworkspaceId);
-            bodypropCount++;
-            body["plan_id"] = ExpressionConverter.ConvertO(bodyplanId);
-            bodypropCount++;
-            body["action_value"] = ExpressionConverter.ConvertO(bodyactionValue);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/measures/historical/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(measureId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["workspace_id"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                bodypropCount++;
+                body["plan_id"] = SourceExpressionConverter.ConvertToken(bodyplanId);
+                if (bodyhistoricalData != null)
+                {
+                    body["historical_data"] = SourceExpressionConverter.ConvertToken(bodyhistoricalData);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<UpdateAction2Response>(callPayload);
+            return new ApiConnectionAction<UpdateMeasureHistoricalValue2Response>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
+        public IBodyWorkflowAction<UpdateAction2Response> UpdateAction2([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyplanId, [WorkflowExpression] Func<double> bodyactionValue, [WorkflowExpression] Func<string> actionId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/actions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["workspace_id"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                bodypropCount++;
+                body["plan_id"] = SourceExpressionConverter.ConvertToken(bodyplanId);
+                bodypropCount++;
+                body["action_value"] = SourceExpressionConverter.ConvertToken(bodyactionValue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UpdateAction2Response>(BuildSourceInput);
         }
     }
 

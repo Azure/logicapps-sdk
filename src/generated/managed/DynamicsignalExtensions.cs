@@ -12,529 +12,598 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
     public class DynamicsignalActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<UserRequestResponse> GetUserByEmail(Expression<Func<string>> bodyemail, Expression<Func<string[]>> bodyinclude = null)
+        public IBodyWorkflowAction<UserRequestResponse> GetUserByEmail([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string[]> bodyinclude = null)
         {
-            var apiCallPath = "/user/email";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyinclude != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["include"] = ExpressionConverter.ConvertO(bodyinclude);
+                var apiCallPath = "/user/email";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodyinclude != null)
+                {
+                    body["include"] = SourceExpressionConverter.ConvertToken(bodyinclude);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserRequestResponse>(callPayload);
+            return new ApiConnectionAction<UserRequestResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<ManageUserTagsResponse> GetUserTags()
         {
-            var apiCallPath = "/manage/usertags";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ManageUserTagsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/manage/usertags";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ManageUserTagsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<DivisionsResponse> GetDivisions()
         {
-            var apiCallPath = "/divisions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DivisionsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/divisions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DivisionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<DocumentInfoResponse> PutDocument(Expression<Func<string>> fileName, Expression<Func<string>> id, Expression<Func<string>> contentType, Expression<Func<string>> file = null)
+        public IBodyWorkflowAction<DocumentInfoResponse> PutDocument([WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> @file = null)
         {
-            var apiCallPath = String.Format("/post/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileName"] = ExpressionConverter.Convert(fileName);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(file);
-            return new ApiConnectionAction<DocumentInfoResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/post/{0}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fileName"] = SourceExpressionConverter.ConvertO(fileName);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(@file);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DocumentInfoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<UserRequestResponse> PreregisterUser(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyexternalSsoUserID = null, Expression<Func<string>> bodyhandle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<int[]>> bodydivisionIDs = null, Expression<Func<int[]>> bodytargetIDs = null, Expression<Func<UserTagRequestResponse[]>> bodytags = null, Expression<Func<bool>> bodysendInvitationEmail = null, Expression<Func<string>> bodyinvitationMessage = null, Expression<Func<bodynotificationsDefaultInput>> bodynotificationsDefault = null, Expression<Func<bool>> bodyvaluecanSharePosts = null, Expression<Func<bool>> bodyvaluecanCommentPosts = null, Expression<Func<bool>> bodyvaluecanSubmitPosts = null, Expression<Func<bool>> bodyvaluecanManageOrganization = null)
+        public IBodyWorkflowAction<UserRequestResponse> PreregisterUser([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyexternalSsoUserId = null, [WorkflowExpression] Func<string> bodyhandle = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<int[]> bodydivisionIDs = null, [WorkflowExpression] Func<int[]> bodytargetIDs = null, [WorkflowExpression] Func<UserTagRequestResponse[]> bodytags = null, [WorkflowExpression] Func<bool> bodysendInvitationEmail = null, [WorkflowExpression] Func<string> bodyinvitationMessage = null, [WorkflowExpression] Func<bodynotificationsDefaultInput> bodynotificationsDefault = null, [WorkflowExpression] Func<bool> bodyvaluecanSharePosts = null, [WorkflowExpression] Func<bool> bodyvaluecanCommentPosts = null, [WorkflowExpression] Func<bool> bodyvaluecanSubmitPosts = null, [WorkflowExpression] Func<bool> bodyvaluecanManageOrganization = null)
         {
-            var apiCallPath = "/manage/preregister";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyemail != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
+                var apiCallPath = "/manage/preregister";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyemail != null)
+                {
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalSsoUserId != null)
+                {
+                    body["externalSsoUserId"] = SourceExpressionConverter.ConvertToken(bodyexternalSsoUserId);
+                    bodypropCount++;
+                }
+
+                if (bodyhandle != null)
+                {
+                    body["handle"] = SourceExpressionConverter.ConvertToken(bodyhandle);
+                    bodypropCount++;
+                }
+
+                if (bodyfirstName != null)
+                {
+                    body["firstName"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodylastName != null)
+                {
+                    body["lastName"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodydivisionIDs != null)
+                {
+                    body["divisionIds"] = SourceExpressionConverter.ConvertToken(bodydivisionIDs);
+                    bodypropCount++;
+                }
+
+                if (bodytargetIDs != null)
+                {
+                    body["targetIds"] = SourceExpressionConverter.ConvertToken(bodytargetIDs);
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodysendInvitationEmail != null)
+                {
+                    body["sendInvitationEmail"] = SourceExpressionConverter.ConvertToken(bodysendInvitationEmail);
+                    bodypropCount++;
+                }
+
+                if (bodyinvitationMessage != null)
+                {
+                    body["invitationMessage"] = SourceExpressionConverter.ConvertToken(bodyinvitationMessage);
+                    bodypropCount++;
+                }
+
+                if (bodynotificationsDefault != null)
+                {
+                    body["notificationsDefault"] = SourceExpressionConverter.Convert(bodynotificationsDefault);
+                    bodypropCount++;
+                }
+
+                var privilegesObject = new JObject();
+                var privilegesObjectpropCount = 0;
+                if (bodyvaluecanSharePosts != null)
+                {
+                    privilegesObject["canSharePosts"] = SourceExpressionConverter.ConvertToken(bodyvaluecanSharePosts);
+                    privilegesObjectpropCount++;
+                }
+
+                if (bodyvaluecanCommentPosts != null)
+                {
+                    privilegesObject["canCommentPosts"] = SourceExpressionConverter.ConvertToken(bodyvaluecanCommentPosts);
+                    privilegesObjectpropCount++;
+                }
+
+                if (bodyvaluecanSubmitPosts != null)
+                {
+                    privilegesObject["canSubmitPosts"] = SourceExpressionConverter.ConvertToken(bodyvaluecanSubmitPosts);
+                    privilegesObjectpropCount++;
+                }
+
+                if (bodyvaluecanManageOrganization != null)
+                {
+                    privilegesObject["canManageOrganization"] = SourceExpressionConverter.ConvertToken(bodyvaluecanManageOrganization);
+                    privilegesObjectpropCount++;
+                }
+
+                if (privilegesObjectpropCount > 0)
+                {
+                    body["privileges"] = privilegesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyexternalSsoUserID != null)
-            {
-                body["externalSsoUserId"] = ExpressionConverter.ConvertO(bodyexternalSsoUserID);
-                bodypropCount++;
-            }
-
-            if (bodyhandle != null)
-            {
-                body["handle"] = ExpressionConverter.ConvertO(bodyhandle);
-                bodypropCount++;
-            }
-
-            if (bodyfirstName != null)
-            {
-                body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
-                bodypropCount++;
-            }
-
-            if (bodydivisionIDs != null)
-            {
-                body["divisionIds"] = ExpressionConverter.ConvertO(bodydivisionIDs);
-                bodypropCount++;
-            }
-
-            if (bodytargetIDs != null)
-            {
-                body["targetIds"] = ExpressionConverter.ConvertO(bodytargetIDs);
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodysendInvitationEmail != null)
-            {
-                body["sendInvitationEmail"] = ExpressionConverter.ConvertO(bodysendInvitationEmail);
-                bodypropCount++;
-            }
-
-            if (bodyinvitationMessage != null)
-            {
-                body["invitationMessage"] = ExpressionConverter.ConvertO(bodyinvitationMessage);
-                bodypropCount++;
-            }
-
-            if (bodynotificationsDefault != null)
-            {
-                body["notificationsDefault"] = ExpressionConverter.ConvertO(bodynotificationsDefault);
-                bodypropCount++;
-            }
-
-            var privilegesObject = new JObject();
-            var privilegesObjectpropCount = 0;
-            if (bodyvaluecanSharePosts != null)
-            {
-                privilegesObject["canSharePosts"] = ExpressionConverter.ConvertO(bodyvaluecanSharePosts);
-                privilegesObjectpropCount++;
-            }
-
-            if (bodyvaluecanCommentPosts != null)
-            {
-                privilegesObject["canCommentPosts"] = ExpressionConverter.ConvertO(bodyvaluecanCommentPosts);
-                privilegesObjectpropCount++;
-            }
-
-            if (bodyvaluecanSubmitPosts != null)
-            {
-                privilegesObject["canSubmitPosts"] = ExpressionConverter.ConvertO(bodyvaluecanSubmitPosts);
-                privilegesObjectpropCount++;
-            }
-
-            if (bodyvaluecanManageOrganization != null)
-            {
-                privilegesObject["canManageOrganization"] = ExpressionConverter.ConvertO(bodyvaluecanManageOrganization);
-                privilegesObjectpropCount++;
-            }
-
-            if (privilegesObjectpropCount > 0)
-            {
-                body["privileges"] = privilegesObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserRequestResponse>(callPayload);
+            return new ApiConnectionAction<UserRequestResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<UploadImageResponse> ManageImage(Expression<Func<string>> contentType, Expression<Func<string>> file = null)
+        public IBodyWorkflowAction<UploadImageResponse> ManageImage([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> @file = null)
         {
-            var apiCallPath = "/manage/images";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(file);
-            return new ApiConnectionAction<UploadImageResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/manage/images";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(@file);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UploadImageResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<PostResponse> Get(Expression<Func<string>> id, Expression<Func<int>> userId = null)
+        public IBodyWorkflowAction<PostResponse> Get([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> userId = null)
         {
-            var apiCallPath = String.Format("/post/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            return new ApiConnectionAction<PostResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/post/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (userId != null)
+                    callPayload.Queries["userId"] = SourceExpressionConverter.ConvertO(userId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<PostResponse> Create(Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytagLine = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodycreatorComments = null, Expression<Func<string>> bodypermaLink = null, Expression<Func<bool>> bodyinternalDiscussionsEnabled = null, Expression<Func<string>> bodymemberVideoUrl = null, Expression<Func<bodypostTypeInput>> bodypostType = null, Expression<Func<bodyapprovalStateInput>> bodyapprovalState = null, Expression<Func<bodydisplayModeInput>> bodydisplayMode = null, Expression<Func<bool>> bodysharable = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodysuggestedShareText = null, Expression<Func<string>> bodyshortSuggestedShareText = null, Expression<Func<int>> bodysharePoints = null, Expression<Func<int>> bodyclickPoints = null, Expression<Func<bool>> bodyshareWithImages = null, Expression<Func<bool>> bodyshareImagesOnly = null, Expression<Func<PostTagRequestResponse[]>> bodytags = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string[]>> bodydocuments = null, Expression<Func<int>> bodycreatorID = null, Expression<Func<bool>> bodydisplayCreator = null, Expression<Func<int[]>> bodycategoryIDs = null, Expression<Func<int[]>> bodytargetIDs = null)
+        public IBodyWorkflowAction<PostResponse> Create([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodytagLine = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodycreatorComments = null, [WorkflowExpression] Func<string> bodypermaLink = null, [WorkflowExpression] Func<bool> bodyinternalDiscussionsEnabled = null, [WorkflowExpression] Func<string> bodymemberVideoUrl = null, [WorkflowExpression] Func<bodypostTypeInput> bodypostType = null, [WorkflowExpression] Func<bodyapprovalStateInput> bodyapprovalState = null, [WorkflowExpression] Func<bodydisplayModeInput> bodydisplayMode = null, [WorkflowExpression] Func<bool> bodysharable = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodysuggestedShareText = null, [WorkflowExpression] Func<string> bodyshortSuggestedShareText = null, [WorkflowExpression] Func<int> bodysharePoints = null, [WorkflowExpression] Func<int> bodyclickPoints = null, [WorkflowExpression] Func<bool> bodyshareWithImages = null, [WorkflowExpression] Func<bool> bodyshareImagesOnly = null, [WorkflowExpression] Func<PostTagRequestResponse[]> bodytags = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string[]> bodydocuments = null, [WorkflowExpression] Func<int> bodycreatorId = null, [WorkflowExpression] Func<bool> bodydisplayCreator = null, [WorkflowExpression] Func<int[]> bodycategoryIDs = null, [WorkflowExpression] Func<int[]> bodytargetIDs = null)
         {
-            var apiCallPath = "/post";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = "/post";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodytagLine != null)
+                {
+                    body["tagLine"] = SourceExpressionConverter.ConvertToken(bodytagLine);
+                    bodypropCount++;
+                }
+
+                if (bodycontent != null)
+                {
+                    body["content"] = SourceExpressionConverter.ConvertToken(bodycontent);
+                    bodypropCount++;
+                }
+
+                if (bodycreatorComments != null)
+                {
+                    body["creatorComments"] = SourceExpressionConverter.ConvertToken(bodycreatorComments);
+                    bodypropCount++;
+                }
+
+                if (bodypermaLink != null)
+                {
+                    body["permaLink"] = SourceExpressionConverter.ConvertToken(bodypermaLink);
+                    bodypropCount++;
+                }
+
+                if (bodyinternalDiscussionsEnabled != null)
+                {
+                    body["internalDiscussionsEnabled"] = SourceExpressionConverter.ConvertToken(bodyinternalDiscussionsEnabled);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodymemberVideoUrl != null)
+                {
+                    body["memberVideoUrl"] = SourceExpressionConverter.ConvertToken(bodymemberVideoUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypostType != null)
+                {
+                    body["postType"] = SourceExpressionConverter.Convert(bodypostType);
+                    bodypropCount++;
+                }
+
+                if (bodyapprovalState != null)
+                {
+                    body["approvalState"] = SourceExpressionConverter.Convert(bodyapprovalState);
+                    bodypropCount++;
+                }
+
+                if (bodydisplayMode != null)
+                {
+                    body["displayMode"] = SourceExpressionConverter.Convert(bodydisplayMode);
+                    bodypropCount++;
+                }
+
+                if (bodysharable != null)
+                {
+                    body["sharable"] = SourceExpressionConverter.ConvertToken(bodysharable);
+                    bodypropCount++;
+                }
+
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodyendDate != null)
+                {
+                    body["endDate"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                    bodypropCount++;
+                }
+
+                if (bodysuggestedShareText != null)
+                {
+                    body["suggestedShareText"] = SourceExpressionConverter.ConvertToken(bodysuggestedShareText);
+                    bodypropCount++;
+                }
+
+                if (bodyshortSuggestedShareText != null)
+                {
+                    body["shortSuggestedShareText"] = SourceExpressionConverter.ConvertToken(bodyshortSuggestedShareText);
+                    bodypropCount++;
+                }
+
+                if (bodysharePoints != null)
+                {
+                    body["sharePoints"] = SourceExpressionConverter.ConvertToken(bodysharePoints);
+                    bodypropCount++;
+                }
+
+                if (bodyclickPoints != null)
+                {
+                    body["clickPoints"] = SourceExpressionConverter.ConvertToken(bodyclickPoints);
+                    bodypropCount++;
+                }
+
+                if (bodyshareWithImages != null)
+                {
+                    body["shareWithImages"] = SourceExpressionConverter.ConvertToken(bodyshareWithImages);
+                    bodypropCount++;
+                }
+
+                if (bodyshareImagesOnly != null)
+                {
+                    body["shareImagesOnly"] = SourceExpressionConverter.ConvertToken(bodyshareImagesOnly);
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodylanguage != null)
+                {
+                    body["language"] = SourceExpressionConverter.ConvertToken(bodylanguage);
+                    bodypropCount++;
+                }
+
+                if (bodydocuments != null)
+                {
+                    body["documents"] = SourceExpressionConverter.ConvertToken(bodydocuments);
+                    bodypropCount++;
+                }
+
+                if (bodycreatorId != null)
+                {
+                    body["creatorId"] = SourceExpressionConverter.ConvertToken(bodycreatorId);
+                    bodypropCount++;
+                }
+
+                if (bodydisplayCreator != null)
+                {
+                    body["displayCreator"] = SourceExpressionConverter.ConvertToken(bodydisplayCreator);
+                    bodypropCount++;
+                }
+
+                if (bodycategoryIDs != null)
+                {
+                    body["categoryIds"] = SourceExpressionConverter.ConvertToken(bodycategoryIDs);
+                    bodypropCount++;
+                }
+
+                if (bodytargetIDs != null)
+                {
+                    body["targetIds"] = SourceExpressionConverter.ConvertToken(bodytargetIDs);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytagLine != null)
-            {
-                body["tagLine"] = ExpressionConverter.ConvertO(bodytagLine);
-                bodypropCount++;
-            }
-
-            if (bodycontent != null)
-            {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
-
-            if (bodycreatorComments != null)
-            {
-                body["creatorComments"] = ExpressionConverter.ConvertO(bodycreatorComments);
-                bodypropCount++;
-            }
-
-            if (bodypermaLink != null)
-            {
-                body["permaLink"] = ExpressionConverter.ConvertO(bodypermaLink);
-                bodypropCount++;
-            }
-
-            if (bodyinternalDiscussionsEnabled != null)
-            {
-                body["internalDiscussionsEnabled"] = ExpressionConverter.ConvertO(bodyinternalDiscussionsEnabled);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodymemberVideoUrl != null)
-            {
-                body["memberVideoUrl"] = ExpressionConverter.ConvertO(bodymemberVideoUrl);
-                bodypropCount++;
-            }
-
-            if (bodypostType != null)
-            {
-                body["postType"] = ExpressionConverter.ConvertO(bodypostType);
-                bodypropCount++;
-            }
-
-            if (bodyapprovalState != null)
-            {
-                body["approvalState"] = ExpressionConverter.ConvertO(bodyapprovalState);
-                bodypropCount++;
-            }
-
-            if (bodydisplayMode != null)
-            {
-                body["displayMode"] = ExpressionConverter.ConvertO(bodydisplayMode);
-                bodypropCount++;
-            }
-
-            if (bodysharable != null)
-            {
-                body["sharable"] = ExpressionConverter.ConvertO(bodysharable);
-                bodypropCount++;
-            }
-
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
-
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
-
-            if (bodysuggestedShareText != null)
-            {
-                body["suggestedShareText"] = ExpressionConverter.ConvertO(bodysuggestedShareText);
-                bodypropCount++;
-            }
-
-            if (bodyshortSuggestedShareText != null)
-            {
-                body["shortSuggestedShareText"] = ExpressionConverter.ConvertO(bodyshortSuggestedShareText);
-                bodypropCount++;
-            }
-
-            if (bodysharePoints != null)
-            {
-                body["sharePoints"] = ExpressionConverter.ConvertO(bodysharePoints);
-                bodypropCount++;
-            }
-
-            if (bodyclickPoints != null)
-            {
-                body["clickPoints"] = ExpressionConverter.ConvertO(bodyclickPoints);
-                bodypropCount++;
-            }
-
-            if (bodyshareWithImages != null)
-            {
-                body["shareWithImages"] = ExpressionConverter.ConvertO(bodyshareWithImages);
-                bodypropCount++;
-            }
-
-            if (bodyshareImagesOnly != null)
-            {
-                body["shareImagesOnly"] = ExpressionConverter.ConvertO(bodyshareImagesOnly);
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodylanguage != null)
-            {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
-                bodypropCount++;
-            }
-
-            if (bodydocuments != null)
-            {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
-                bodypropCount++;
-            }
-
-            if (bodycreatorID != null)
-            {
-                body["creatorId"] = ExpressionConverter.ConvertO(bodycreatorID);
-                bodypropCount++;
-            }
-
-            if (bodydisplayCreator != null)
-            {
-                body["displayCreator"] = ExpressionConverter.ConvertO(bodydisplayCreator);
-                bodypropCount++;
-            }
-
-            if (bodycategoryIDs != null)
-            {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIDs);
-                bodypropCount++;
-            }
-
-            if (bodytargetIDs != null)
-            {
-                body["targetIds"] = ExpressionConverter.ConvertO(bodytargetIDs);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostResponse>(callPayload);
+            return new ApiConnectionAction<PostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<SuccessResponse> PutImageTo(Expression<Func<string>> id, Expression<Func<string>> contentType, Expression<Func<string>> file = null)
+        public IBodyWorkflowAction<SuccessResponse> PutImageTo([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> @file = null)
         {
-            var apiCallPath = String.Format("/post/{0}/image", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(file);
-            return new ApiConnectionAction<SuccessResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/post/{0}/image", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(@file);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SuccessResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<SuccessResponse> AddImageTo(Expression<Func<string>> id, Expression<Func<string>> bodyurl)
+        public IBodyWorkflowAction<SuccessResponse> AddImageTo([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyurl)
         {
-            var apiCallPath = String.Format("/post/{0}/imageurl", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/post/{0}/imageurl", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["url"] = SourceExpressionConverter.ConvertToken(bodyurl);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SuccessResponse>(callPayload);
+            return new ApiConnectionAction<SuccessResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<PostResponse> Update(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytagLine = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodycreatorComments = null, Expression<Func<string>> bodypermaLink = null, Expression<Func<bool>> bodyinternalDiscussionsEnabled = null)
+        public IBodyWorkflowAction<PostResponse> Update([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodytagLine = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodycreatorComments = null, [WorkflowExpression] Func<string> bodypermaLink = null, [WorkflowExpression] Func<bool> bodyinternalDiscussionsEnabled = null)
         {
-            var apiCallPath = String.Format("/manage/post/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/manage/post/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodytagLine != null)
+                {
+                    body["tagLine"] = SourceExpressionConverter.ConvertToken(bodytagLine);
+                    bodypropCount++;
+                }
+
+                if (bodycontent != null)
+                {
+                    body["content"] = SourceExpressionConverter.ConvertToken(bodycontent);
+                    bodypropCount++;
+                }
+
+                if (bodycreatorComments != null)
+                {
+                    body["creatorComments"] = SourceExpressionConverter.ConvertToken(bodycreatorComments);
+                    bodypropCount++;
+                }
+
+                if (bodypermaLink != null)
+                {
+                    body["permaLink"] = SourceExpressionConverter.ConvertToken(bodypermaLink);
+                    bodypropCount++;
+                }
+
+                if (bodyinternalDiscussionsEnabled != null)
+                {
+                    body["internalDiscussionsEnabled"] = SourceExpressionConverter.ConvertToken(bodyinternalDiscussionsEnabled);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodytagLine != null)
-            {
-                body["tagLine"] = ExpressionConverter.ConvertO(bodytagLine);
-                bodypropCount++;
-            }
-
-            if (bodycontent != null)
-            {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
-
-            if (bodycreatorComments != null)
-            {
-                body["creatorComments"] = ExpressionConverter.ConvertO(bodycreatorComments);
-                bodypropCount++;
-            }
-
-            if (bodypermaLink != null)
-            {
-                body["permaLink"] = ExpressionConverter.ConvertO(bodypermaLink);
-                bodypropCount++;
-            }
-
-            if (bodyinternalDiscussionsEnabled != null)
-            {
-                body["internalDiscussionsEnabled"] = ExpressionConverter.ConvertO(bodyinternalDiscussionsEnabled);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostResponse>(callPayload);
+            return new ApiConnectionAction<PostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<ManagePostTagsResponse> GetPostTags()
         {
-            var apiCallPath = "/manage/posttags";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ManagePostTagsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/manage/posttags";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ManagePostTagsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<CategoriesResponse> GetCategories()
         {
-            var apiCallPath = "/categories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CategoriesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/categories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CategoriesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
         public IBodyWorkflowAction<TargetDefinitionsInfoResponse> GetTargets()
         {
-            var apiCallPath = "/targets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TargetDefinitionsInfoResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/targets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TargetDefinitionsInfoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsignal")]
-        public IBodyWorkflowAction<SuccessResponse> ManagePosts(Expression<Func<string[]>> bodypostIDs, Expression<Func<string[]>> bodytags = null, Expression<Func<int[]>> bodydivisionIDs = null, Expression<Func<int[]>> bodycategoryIDs = null, Expression<Func<int[]>> bodytargetIDs = null, Expression<Func<bodyapprovalStateInput>> bodyapprovalState = null)
+        public IBodyWorkflowAction<SuccessResponse> ManagePosts([WorkflowExpression] Func<string[]> bodypostIDs, [WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<int[]> bodydivisionIDs = null, [WorkflowExpression] Func<int[]> bodycategoryIDs = null, [WorkflowExpression] Func<int[]> bodytargetIDs = null, [WorkflowExpression] Func<bodyapprovalStateInput> bodyapprovalState = null)
         {
-            var apiCallPath = "/manage/posts";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["postIds"] = ExpressionConverter.ConvertO(bodypostIDs);
-            if (bodytags != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                var apiCallPath = "/manage/posts";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["postIds"] = SourceExpressionConverter.ConvertToken(bodypostIDs);
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodydivisionIDs != null)
+                {
+                    body["divisionIds"] = SourceExpressionConverter.ConvertToken(bodydivisionIDs);
+                    bodypropCount++;
+                }
+
+                if (bodycategoryIDs != null)
+                {
+                    body["categoryIds"] = SourceExpressionConverter.ConvertToken(bodycategoryIDs);
+                    bodypropCount++;
+                }
+
+                if (bodytargetIDs != null)
+                {
+                    body["targetIds"] = SourceExpressionConverter.ConvertToken(bodytargetIDs);
+                    bodypropCount++;
+                }
+
+                if (bodyapprovalState != null)
+                {
+                    body["approvalState"] = SourceExpressionConverter.Convert(bodyapprovalState);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydivisionIDs != null)
-            {
-                body["divisionIds"] = ExpressionConverter.ConvertO(bodydivisionIDs);
-                bodypropCount++;
-            }
-
-            if (bodycategoryIDs != null)
-            {
-                body["categoryIds"] = ExpressionConverter.ConvertO(bodycategoryIDs);
-                bodypropCount++;
-            }
-
-            if (bodytargetIDs != null)
-            {
-                body["targetIds"] = ExpressionConverter.ConvertO(bodytargetIDs);
-                bodypropCount++;
-            }
-
-            if (bodyapprovalState != null)
-            {
-                body["approvalState"] = ExpressionConverter.ConvertO(bodyapprovalState);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SuccessResponse>(callPayload);
+            return new ApiConnectionAction<SuccessResponse>(BuildSourceInput);
         }
     }
 

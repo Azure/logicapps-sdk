@@ -12,48 +12,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
     public class ZanranscaffolderActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<string> UploadDocument(Expression<Func<object>> file, Expression<Func<int>> startPage = null, Expression<Func<int>> endPage = null, Expression<Func<string>> coords = null)
+        public IBodyWorkflowAction<object> DownloadFileXlsx([WorkflowExpression] Func<string> docname)
         {
-            var apiCallPath = "/api/Upload/UploadFile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/{0}.xlsx", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docname, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<object>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<string> GetStatus(Expression<Func<string>> docname)
+        public IBodyWorkflowAction<object> DownloadFileAllXml([WorkflowExpression] Func<string> docname)
         {
-            var apiCallPath = "/api/DocSearch/GetStatus";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/allxml/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docname, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<object>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<object> DownloadFileXlsx(Expression<Func<string>> docname)
+        public IBodyWorkflowAction<object> DownloadFileZnr([WorkflowExpression] Func<string> docname)
         {
-            var apiCallPath = String.Format("/files/{0}.xlsx", ExpressionConverter.ConvertWithUrlEncoding(docname, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<object>(callPayload);
-        }
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/znr/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docname, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<object> DownloadFileAllXml(Expression<Func<string>> docname)
-        {
-            var apiCallPath = String.Format("/files/allxml/{0}", ExpressionConverter.ConvertWithUrlEncoding(docname, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<object>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<object> DownloadFileZnr(Expression<Func<string>> docname)
-        {
-            var apiCallPath = String.Format("/files/znr/{0}", ExpressionConverter.ConvertWithUrlEncoding(docname, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<object>(callPayload);
+            return new ApiConnectionAction<object>(BuildSourceInput);
         }
     }
 

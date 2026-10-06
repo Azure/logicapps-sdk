@@ -12,41 +12,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
     public class YoutubetranscriptActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "youtubetranscript")]
-        public IBodyWorkflowAction<TranscriptResponse> GetTranscript(Expression<Func<string>> bodyyouTubeVideoID)
+        public IBodyWorkflowAction<TranscriptResponse> GetTranscript([WorkflowExpression] Func<string> bodyyouTubeVideoId)
         {
-            var apiCallPath = "/youtubei/v1/get_transcript";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var contextObject = new JObject();
-            var contextObjectpropCount = 0;
-            var clientObject = new JObject();
-            var clientObjectpropCount = 0;
-            clientObject["clientName"] = "WEB";
-            clientObjectpropCount++;
-            clientObject["clientVersion"] = "2.20250923.08.00";
-            clientObjectpropCount++;
-            if (clientObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                contextObject["client"] = clientObject;
-                contextObjectpropCount++;
-            }
+                var apiCallPath = "/youtubei/v1/get_transcript";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var contextObject = new JObject();
+                var contextObjectpropCount = 0;
+                var clientObject = new JObject();
+                var clientObjectpropCount = 0;
+                clientObject["clientName"] = "WEB";
+                clientObjectpropCount++;
+                clientObject["clientVersion"] = "2.20250923.08.00";
+                clientObjectpropCount++;
+                if (clientObjectpropCount > 0)
+                {
+                    contextObject["client"] = clientObject;
+                    contextObjectpropCount++;
+                }
 
-            if (contextObjectpropCount > 0)
-            {
-                body["context"] = contextObject;
+                if (contextObjectpropCount > 0)
+                {
+                    body["context"] = contextObject;
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["externalVideoId"] = SourceExpressionConverter.ConvertToken(bodyyouTubeVideoId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["externalVideoId"] = ExpressionConverter.ConvertO(bodyyouTubeVideoID);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TranscriptResponse>(callPayload);
+            return new ApiConnectionAction<TranscriptResponse>(BuildSourceInput);
         }
     }
 

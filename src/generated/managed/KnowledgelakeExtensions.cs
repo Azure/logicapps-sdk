@@ -12,27 +12,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
     public class KnowledgelakeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgelake")]
-        public IBodyWorkflowAction<ImportJobsPostResponse> ImportJobs(Expression<Func<string>> batchimportData, Expression<Func<string>> batchnameForImport, Expression<Func<string>> batchsecurityToken, Expression<Func<batchrPAEnvironmentInput>> batchrPAEnvironment)
+        public IBodyWorkflowAction<ImportJobsPostResponse> ImportJobs([WorkflowExpression] Func<string> batchimportData, [WorkflowExpression] Func<string> batchnameForImport, [WorkflowExpression] Func<string> batchsecurityToken, [WorkflowExpression] Func<batchrPAEnvironmentInput> batchrPAEnvironment)
         {
-            var apiCallPath = "/ImportJobs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var batch = new JObject();
-            var batchpropCount = 0;
-            batchpropCount++;
-            batch["Data"] = ExpressionConverter.ConvertO(batchimportData);
-            batchpropCount++;
-            batch["FileName"] = ExpressionConverter.ConvertO(batchnameForImport);
-            batchpropCount++;
-            batch["SecurityKey"] = ExpressionConverter.ConvertO(batchsecurityToken);
-            batchpropCount++;
-            batch["Version"] = ExpressionConverter.ConvertO(batchrPAEnvironment);
-            if (batchpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = batch;
+                var apiCallPath = "/ImportJobs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var batch = new JObject();
+                var batchpropCount = 0;
+                batchpropCount++;
+                batch["Data"] = SourceExpressionConverter.ConvertToken(batchimportData);
+                batchpropCount++;
+                batch["FileName"] = SourceExpressionConverter.ConvertToken(batchnameForImport);
+                batchpropCount++;
+                batch["SecurityKey"] = SourceExpressionConverter.ConvertToken(batchsecurityToken);
+                batchpropCount++;
+                batch["Version"] = SourceExpressionConverter.Convert(batchrPAEnvironment);
+                if (batchpropCount > 0)
+                {
+                    callPayload.Body = batch;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ImportJobsPostResponse>(callPayload);
+            return new ApiConnectionAction<ImportJobsPostResponse>(BuildSourceInput);
         }
     }
 

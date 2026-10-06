@@ -12,81 +12,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
     public class JupyrestActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        public IBodyWorkflowAction<NotebookResponse> GetNotebookExecution(Expression<Func<string>> executionId, Expression<Func<bool>> output, Expression<Func<bool>> html, Expression<Func<bool>> report = null)
+        public IBodyWorkflowAction<NotebookResponse> GetNotebookExecution([WorkflowExpression] Func<string> executionId, [WorkflowExpression] Func<bool> output, [WorkflowExpression] Func<bool> html, [WorkflowExpression] Func<bool> report = null)
         {
-            var apiCallPath = "/NotebookExecutions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["executionId"] = ExpressionConverter.Convert(executionId);
-            callPayload.Queries["disableRedirect"] = Convert.ToString(true);
-            callPayload.Queries["output"] = ExpressionConverter.Convert(output);
-            callPayload.Queries["html"] = ExpressionConverter.Convert(html);
-            callPayload.Queries["report"] = Convert.ToString(false);
-            if (report != null)
-                callPayload.Queries["report"] = ExpressionConverter.Convert(report);
-            return new ApiConnectionAction<NotebookResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/NotebookExecutions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["executionId"] = SourceExpressionConverter.ConvertO(executionId);
+                callPayload.Queries["disableRedirect"] = Convert.ToString(true);
+                callPayload.Queries["output"] = SourceExpressionConverter.ConvertO(output);
+                callPayload.Queries["html"] = SourceExpressionConverter.ConvertO(html);
+                callPayload.Queries["report"] = Convert.ToString(false);
+                if (report != null)
+                    callPayload.Queries["report"] = SourceExpressionConverter.ConvertO(report);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NotebookResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        public IBodyWorkflowAction<NotebookResponse> NotebookExecution(Expression<Func<bool>> report = null, Expression<Func<string>> parametersnotebook = null, Expression<Func<object>> parametersparameters = null)
+        public IBodyWorkflowAction<NotebookResponse> NotebookExecution([WorkflowExpression] Func<bool> report = null, [WorkflowExpression] Func<string> parametersnotebook = null, [WorkflowExpression] Func<object> parametersparameters = null)
         {
-            var apiCallPath = "/NotebookExecutions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["disableRedirect"] = Convert.ToString(true);
-            callPayload.Queries["output"] = Convert.ToString(true);
-            callPayload.Queries["html"] = Convert.ToString(true);
-            callPayload.Queries["report"] = Convert.ToString(false);
-            if (report != null)
-                callPayload.Queries["report"] = ExpressionConverter.Convert(report);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            if (parametersnotebook != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                parameters["notebook"] = ExpressionConverter.ConvertO(parametersnotebook);
-                parameterspropCount++;
+                var apiCallPath = "/NotebookExecutions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["disableRedirect"] = Convert.ToString(true);
+                callPayload.Queries["output"] = Convert.ToString(true);
+                callPayload.Queries["html"] = Convert.ToString(true);
+                callPayload.Queries["report"] = Convert.ToString(false);
+                if (report != null)
+                    callPayload.Queries["report"] = SourceExpressionConverter.ConvertO(report);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
+                if (parametersnotebook != null)
+                {
+                    parameters["notebook"] = SourceExpressionConverter.ConvertToken(parametersnotebook);
+                    parameterspropCount++;
+                }
+
+                if (parametersparameters != null)
+                {
+                    parameters["parameters"] = SourceExpressionConverter.ConvertToken(parametersparameters);
+                    parameterspropCount++;
+                }
+
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+                return callPayload;
             }
 
-            if (parametersparameters != null)
-            {
-                parameters["parameters"] = ExpressionConverter.ConvertO(parametersparameters);
-                parameterspropCount++;
-            }
-
-            if (parameterspropCount > 0)
-            {
-                callPayload.Body = parameters;
-            }
-
-            return new ApiConnectionAction<NotebookResponse>(callPayload);
+            return new ApiConnectionAction<NotebookResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        public IBodyWorkflowAction<SynapseResponse> UploadToSynapse(Expression<Func<string>> parametersnotebook = null, Expression<Func<object>> parametersparameters = null)
+        public IBodyWorkflowAction<SynapseResponse> UploadToSynapse([WorkflowExpression] Func<string> parametersnotebook = null, [WorkflowExpression] Func<object> parametersparameters = null)
         {
-            var apiCallPath = "/Synapse";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            if (parametersnotebook != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                parameters["notebook"] = ExpressionConverter.ConvertO(parametersnotebook);
-                parameterspropCount++;
+                var apiCallPath = "/Synapse";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
+                if (parametersnotebook != null)
+                {
+                    parameters["notebook"] = SourceExpressionConverter.ConvertToken(parametersnotebook);
+                    parameterspropCount++;
+                }
+
+                if (parametersparameters != null)
+                {
+                    parameters["parameters"] = SourceExpressionConverter.ConvertToken(parametersparameters);
+                    parameterspropCount++;
+                }
+
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+                return callPayload;
             }
 
-            if (parametersparameters != null)
-            {
-                parameters["parameters"] = ExpressionConverter.ConvertO(parametersparameters);
-                parameterspropCount++;
-            }
-
-            if (parameterspropCount > 0)
-            {
-                callPayload.Body = parameters;
-            }
-
-            return new ApiConnectionAction<SynapseResponse>(callPayload);
+            return new ApiConnectionAction<SynapseResponse>(BuildSourceInput);
         }
     }
 

@@ -12,34 +12,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
     public class SigninghubwebhooksActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signinghubwebhooks")]
-        public IWorkflowAction UnsubscribeWebhook(Expression<Func<string>> subscriptionId)
+        public IWorkflowAction UnsubscribeWebhook([WorkflowExpression] Func<string> subscriptionId)
         {
-            var apiCallPath = String.Format("/powerautomate/webhook/unsubscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/powerautomate/webhook/unsubscribe/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
     public class SigninghubwebhooksTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookSubscribeTrigger(Expression<Func<bodyeventTypeInput>> bodyeventType, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookSubscribeTrigger([WorkflowExpression] Func<bodyeventTypeInput> bodyeventType, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/powerautomate/webhook/subscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/powerautomate/webhook/subscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["eventType"] = SourceExpressionConverter.Convert(bodyeventType);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 
@@ -56,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
         REMINDED,
         COMPLETED,
         [EnumMember(Value = "EVIDENCE_REPORT_GENERATED")]
-        EVIDENCEREPORTGENERATED,
+        EVIdENCEREPORTGENERATED,
         [EnumMember(Value = "DOCUMENT_DELETED")]
         DOCUMENTDELETED
     }

@@ -14,18 +14,94 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.CicsProgramCall
     public class CicsProgramCallActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "cicsProgramCall")]
-        public IBodyWorkflowAction<JToken> ExecuteMethod(Expression<Func<string>> hidx, Expression<Func<string>> method, Expression<Func<object>> inputParameters)
+        public IBodyWorkflowAction<JToken> ExecuteMethod([WorkflowExpression] Func<string> hidx, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> inputParameters)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["hidx"] = ExpressionConverter.ConvertO(hidx);
-            serviceProviderParameters["method"] = ExpressionConverter.ConvertO(method);
-            serviceProviderParameters["inputParameters"] = ExpressionConverter.ConvertO(inputParameters);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/cicsProgramCall", operationId: "executeMethod", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["hidx"] = SourceExpressionConverter.ConvertToken(hidx);
+                serviceProviderParameters["method"] = SourceExpressionConverter.ConvertToken(method);
+                serviceProviderParameters["inputParameters"] = SourceExpressionConverter.ConvertToken(inputParameters);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/cicsProgramCall", operationId: "executeMethod", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "cicsProgramCall")]
+        public IOutputWorkflowAction<JToken[]> GetHidxs()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/cicsProgramCall", operationId: "getHidxs", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "cicsProgramCall")]
+        public IOutputWorkflowAction<JToken[]> GetMethods([WorkflowExpression] Func<string> hidx)
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["hidx"] = SourceExpressionConverter.ConvertToken(hidx);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/cicsProgramCall", operationId: "getMethods", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "cicsProgramCall")]
+        public IOutputWorkflowAction<JToken> GetInputSwagger([WorkflowExpression] Func<string> hidx, [WorkflowExpression] Func<string> method)
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["hidx"] = SourceExpressionConverter.ConvertToken(hidx);
+                serviceProviderParameters["method"] = SourceExpressionConverter.ConvertToken(method);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/cicsProgramCall", operationId: "getInputSwagger", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "cicsProgramCall")]
+        public IOutputWorkflowAction<JToken> GetOutputSwagger([WorkflowExpression] Func<string> hidx, [WorkflowExpression] Func<string> method)
+        {
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["hidx"] = SourceExpressionConverter.ConvertToken(hidx);
+                serviceProviderParameters["method"] = SourceExpressionConverter.ConvertToken(method);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/cicsProgramCall", operationId: "getOutputSwagger", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
         }
     }
 }

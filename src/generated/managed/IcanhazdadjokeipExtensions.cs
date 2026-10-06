@@ -14,37 +14,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icanhazdadjokeip")]
         public IBodyWorkflowAction<FetchRandomJokeResponse> FetchRandomJoke()
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<FetchRandomJokeResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FetchRandomJokeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icanhazdadjokeip")]
-        public IBodyWorkflowAction<SearchForDadJokesResponse> SearchForDadJokes(Expression<Func<int>> page = null, Expression<Func<int>> limit = null, Expression<Func<string>> term = null)
+        public IBodyWorkflowAction<SearchForDadJokesResponse> SearchForDadJokes([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> term = null)
         {
-            var apiCallPath = "/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (term != null)
-                callPayload.Queries["term"] = ExpressionConverter.Convert(term);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<SearchForDadJokesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (term != null)
+                    callPayload.Queries["term"] = SourceExpressionConverter.ConvertO(term);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchForDadJokesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icanhazdadjokeip")]
-        public IBodyWorkflowAction<FetchaDadJokeResponse> FetchaDadJoke(Expression<Func<string>> jokeid)
+        public IBodyWorkflowAction<FetchaDadJokeResponse> FetchaDadJoke([WorkflowExpression] Func<string> jokeid)
         {
-            var apiCallPath = String.Format("/j/{0}", ExpressionConverter.ConvertWithUrlEncoding(jokeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<FetchaDadJokeResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/j/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jokeid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FetchaDadJokeResponse>(BuildSourceInput);
         }
     }
 

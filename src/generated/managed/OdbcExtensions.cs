@@ -14,10 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Odbc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "odbc")]
         public IBodyWorkflowAction<TablesList> GetTables()
         {
-            var apiCallPath = "/datasets/default/tables";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TablesList>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/datasets/default/tables";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TablesList>(BuildSourceInput);
         }
     }
 

@@ -12,354 +12,402 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Craftmypdfip
     public class CraftmypdfipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> Create(Expression<Func<string>> bodydata, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyexportType = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null, Expression<Func<bool>> bodyisCmyk = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile> Create([WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodyexportType = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyoutputFile = null, [WorkflowExpression] Func<bool> bodyisCmyk = null)
         {
-            var apiCallPath = "/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
-            bodypropCount++;
-            body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
-            if (bodyexportType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["export_type"] = ExpressionConverter.ConvertO(bodyexportType);
+                var apiCallPath = "/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyexpiration != null)
-            {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
                 bodypropCount++;
+                body["template_id"] = SourceExpressionConverter.ConvertToken(bodytemplateId);
+                if (bodyexportType != null)
+                {
+                    body["export_type"] = SourceExpressionConverter.ConvertToken(bodyexportType);
+                    bodypropCount++;
+                }
+
+                if (bodyexpiration != null)
+                {
+                    body["expiration"] = SourceExpressionConverter.ConvertToken(bodyexpiration);
+                    bodypropCount++;
+                }
+
+                if (bodyoutputFile != null)
+                {
+                    body["output_file"] = SourceExpressionConverter.ConvertToken(bodyoutputFile);
+                    bodypropCount++;
+                }
+
+                if (bodyisCmyk != null)
+                {
+                    body["is_cmyk"] = SourceExpressionConverter.ConvertToken(bodyisCmyk);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyoutputFile != null)
-            {
-                body["output_file"] = ExpressionConverter.ConvertO(bodyoutputFile);
-                bodypropCount++;
-            }
-
-            if (bodyisCmyk != null)
-            {
-                body["is_cmyk"] = ExpressionConverter.ConvertO(bodyisCmyk);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
+            return new ApiConnectionAction<ResponseSuccessSingleFile>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> CreateMerge(Expression<Func<JToken[]>> bodytemplates, Expression<Func<string>> bodyexportType = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null, Expression<Func<string>> bodypaging = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile> CreateMerge([WorkflowExpression] Func<JToken[]> bodytemplates, [WorkflowExpression] Func<string> bodyexportType = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyoutputFile = null, [WorkflowExpression] Func<string> bodypaging = null)
         {
-            var apiCallPath = "/create-merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["templates"] = ExpressionConverter.ConvertO(bodytemplates);
-            if (bodyexportType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["export_type"] = ExpressionConverter.ConvertO(bodyexportType);
+                var apiCallPath = "/create-merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["templates"] = SourceExpressionConverter.ConvertToken(bodytemplates);
+                if (bodyexportType != null)
+                {
+                    body["export_type"] = SourceExpressionConverter.ConvertToken(bodyexportType);
+                    bodypropCount++;
+                }
+
+                if (bodyexpiration != null)
+                {
+                    body["expiration"] = SourceExpressionConverter.ConvertToken(bodyexpiration);
+                    bodypropCount++;
+                }
+
+                if (bodyoutputFile != null)
+                {
+                    body["output_file"] = SourceExpressionConverter.ConvertToken(bodyoutputFile);
+                    bodypropCount++;
+                }
+
+                if (bodypaging != null)
+                {
+                    body["paging"] = SourceExpressionConverter.ConvertToken(bodypaging);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyexpiration != null)
-            {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
-                bodypropCount++;
-            }
-
-            if (bodyoutputFile != null)
-            {
-                body["output_file"] = ExpressionConverter.ConvertO(bodyoutputFile);
-                bodypropCount++;
-            }
-
-            if (bodypaging != null)
-            {
-                body["paging"] = ExpressionConverter.ConvertO(bodypaging);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
+            return new ApiConnectionAction<ResponseSuccessSingleFile>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseListTemplate> ListTemplates(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ResponseListTemplate> ListTemplates([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = "/list-templates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<ResponseListTemplate>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/list-templates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResponseListTemplate>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessCreateNewTemplate> NewTemplateFrom(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<ResponseSuccessCreateNewTemplate> NewTemplateFrom([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodyname = null)
         {
-            var apiCallPath = "/new-template-from";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/new-template-from";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["template_id"] = SourceExpressionConverter.ConvertToken(bodytemplateId);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseSuccessCreateNewTemplate>(callPayload);
+            return new ApiConnectionAction<ResponseSuccessCreateNewTemplate>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseUpdateTemplate> UpdateTemplate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyjson = null)
+        public IBodyWorkflowAction<ResponseUpdateTemplate> UpdateTemplate([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyjson = null)
         {
-            var apiCallPath = "/update-template";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/update-template";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["template_id"] = SourceExpressionConverter.ConvertToken(bodytemplateId);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyjson != null)
+                {
+                    body["json"] = SourceExpressionConverter.ConvertToken(bodyjson);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyjson != null)
-            {
-                body["json"] = ExpressionConverter.ConvertO(bodyjson);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseUpdateTemplate>(callPayload);
+            return new ApiConnectionAction<ResponseUpdateTemplate>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessDeleteTemplate> DeleteTemplate(Expression<Func<string>> templateId)
+        public IBodyWorkflowAction<ResponseSuccessDeleteTemplate> DeleteTemplate([WorkflowExpression] Func<string> templateId)
         {
-            var apiCallPath = "/delete-template";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
-            return new ApiConnectionAction<ResponseSuccessDeleteTemplate>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/delete-template";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["template_id"] = SourceExpressionConverter.ConvertO(templateId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResponseSuccessDeleteTemplate>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessCreateNewEditorSession> CreateEditorSession(Expression<Func<string>> bodytemplateId, Expression<Func<bool>> bodycanSave = null, Expression<Func<bool>> bodycanCreatePDF = null, Expression<Func<bool>> bodycanViewSettings = null, Expression<Func<bool>> bodycanPreview = null, Expression<Func<bool>> bodycanEditJSON = null, Expression<Func<bool>> bodycanShowHeader = null, Expression<Func<int>> bodyjsonMode = null, Expression<Func<string>> bodybackURL = null)
+        public IBodyWorkflowAction<ResponseSuccessCreateNewEditorSession> CreateEditorSession([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<bool> bodycanSave = null, [WorkflowExpression] Func<bool> bodycanCreatePDF = null, [WorkflowExpression] Func<bool> bodycanViewSettings = null, [WorkflowExpression] Func<bool> bodycanPreview = null, [WorkflowExpression] Func<bool> bodycanEditJSON = null, [WorkflowExpression] Func<bool> bodycanShowHeader = null, [WorkflowExpression] Func<int> bodyjsonMode = null, [WorkflowExpression] Func<string> bodybackURL = null)
         {
-            var apiCallPath = "/create-editor-session";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
-            var expirationObject = new JObject();
-            var expirationObjectpropCount = 0;
-            if (expirationObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["expiration"] = expirationObject;
+                var apiCallPath = "/create-editor-session";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["template_id"] = SourceExpressionConverter.ConvertToken(bodytemplateId);
+                var expirationObject = new JObject();
+                var expirationObjectpropCount = 0;
+                if (expirationObjectpropCount > 0)
+                {
+                    body["expiration"] = expirationObject;
+                    bodypropCount++;
+                }
+
+                if (bodycanSave != null)
+                {
+                    body["canSave"] = SourceExpressionConverter.ConvertToken(bodycanSave);
+                    bodypropCount++;
+                }
+
+                if (bodycanCreatePDF != null)
+                {
+                    body["canCreatePDF"] = SourceExpressionConverter.ConvertToken(bodycanCreatePDF);
+                    bodypropCount++;
+                }
+
+                if (bodycanViewSettings != null)
+                {
+                    body["canViewSettings"] = SourceExpressionConverter.ConvertToken(bodycanViewSettings);
+                    bodypropCount++;
+                }
+
+                if (bodycanPreview != null)
+                {
+                    body["canPreview"] = SourceExpressionConverter.ConvertToken(bodycanPreview);
+                    bodypropCount++;
+                }
+
+                if (bodycanEditJSON != null)
+                {
+                    body["canEditJSON"] = SourceExpressionConverter.ConvertToken(bodycanEditJSON);
+                    bodypropCount++;
+                }
+
+                if (bodycanShowHeader != null)
+                {
+                    body["canShowHeader"] = SourceExpressionConverter.ConvertToken(bodycanShowHeader);
+                    bodypropCount++;
+                }
+
+                if (bodyjsonMode != null)
+                {
+                    body["jsonMode"] = SourceExpressionConverter.ConvertToken(bodyjsonMode);
+                    bodypropCount++;
+                }
+
+                if (bodybackURL != null)
+                {
+                    body["backURL"] = SourceExpressionConverter.ConvertToken(bodybackURL);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycanSave != null)
-            {
-                body["canSave"] = ExpressionConverter.ConvertO(bodycanSave);
-                bodypropCount++;
-            }
-
-            if (bodycanCreatePDF != null)
-            {
-                body["canCreatePDF"] = ExpressionConverter.ConvertO(bodycanCreatePDF);
-                bodypropCount++;
-            }
-
-            if (bodycanViewSettings != null)
-            {
-                body["canViewSettings"] = ExpressionConverter.ConvertO(bodycanViewSettings);
-                bodypropCount++;
-            }
-
-            if (bodycanPreview != null)
-            {
-                body["canPreview"] = ExpressionConverter.ConvertO(bodycanPreview);
-                bodypropCount++;
-            }
-
-            if (bodycanEditJSON != null)
-            {
-                body["canEditJSON"] = ExpressionConverter.ConvertO(bodycanEditJSON);
-                bodypropCount++;
-            }
-
-            if (bodycanShowHeader != null)
-            {
-                body["canShowHeader"] = ExpressionConverter.ConvertO(bodycanShowHeader);
-                bodypropCount++;
-            }
-
-            if (bodyjsonMode != null)
-            {
-                body["jsonMode"] = ExpressionConverter.ConvertO(bodyjsonMode);
-                bodypropCount++;
-            }
-
-            if (bodybackURL != null)
-            {
-                body["backURL"] = ExpressionConverter.ConvertO(bodybackURL);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseSuccessCreateNewEditorSession>(callPayload);
+            return new ApiConnectionAction<ResponseSuccessCreateNewEditorSession>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseListTransactions> ListTransactions(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ResponseListTransactions> ListTransactions([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = "/list-transactions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<ResponseListTransactions>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/list-transactions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResponseListTransactions>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
         public IBodyWorkflowAction<ResponseAccountInformation> GetAccountInfo()
         {
-            var apiCallPath = "/get-account-info";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResponseAccountInformation>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/get-account-info";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResponseAccountInformation>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> MergePdfs(Expression<Func<JToken[]>> bodyurls, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile> MergePdfs([WorkflowExpression] Func<JToken[]> bodyurls, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyoutputFile = null)
         {
-            var apiCallPath = "/merge-pdfs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["urls"] = ExpressionConverter.ConvertO(bodyurls);
-            if (bodyexpiration != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                var apiCallPath = "/merge-pdfs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["urls"] = SourceExpressionConverter.ConvertToken(bodyurls);
+                if (bodyexpiration != null)
+                {
+                    body["expiration"] = SourceExpressionConverter.ConvertToken(bodyexpiration);
+                    bodypropCount++;
+                }
+
+                if (bodyoutputFile != null)
+                {
+                    body["output_file"] = SourceExpressionConverter.ConvertToken(bodyoutputFile);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyoutputFile != null)
-            {
-                body["output_file"] = ExpressionConverter.ConvertO(bodyoutputFile);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
+            return new ApiConnectionAction<ResponseSuccessSingleFile>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "craftmypdfip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> AddWatermark(Expression<Func<string>> bodyurl, Expression<Func<string>> bodytext, Expression<Func<int>> bodyfontSize = null, Expression<Func<int>> bodyopacity = null, Expression<Func<int>> bodyrotation = null, Expression<Func<string>> bodyhexColor = null, Expression<Func<string>> bodyfontFamily = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<string>> bodyoutputFile = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile> AddWatermark([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyfontSize = null, [WorkflowExpression] Func<int> bodyopacity = null, [WorkflowExpression] Func<int> bodyrotation = null, [WorkflowExpression] Func<string> bodyhexColor = null, [WorkflowExpression] Func<string> bodyfontFamily = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<string> bodyoutputFile = null)
         {
-            var apiCallPath = "/add-watermark";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodyfontSize != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["font_size"] = ExpressionConverter.ConvertO(bodyfontSize);
+                var apiCallPath = "/add-watermark";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyopacity != null)
-            {
-                body["opacity"] = ExpressionConverter.ConvertO(bodyopacity);
+                body["url"] = SourceExpressionConverter.ConvertToken(bodyurl);
                 bodypropCount++;
+                body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                if (bodyfontSize != null)
+                {
+                    body["font_size"] = SourceExpressionConverter.ConvertToken(bodyfontSize);
+                    bodypropCount++;
+                }
+
+                if (bodyopacity != null)
+                {
+                    body["opacity"] = SourceExpressionConverter.ConvertToken(bodyopacity);
+                    bodypropCount++;
+                }
+
+                if (bodyrotation != null)
+                {
+                    body["rotation"] = SourceExpressionConverter.ConvertToken(bodyrotation);
+                    bodypropCount++;
+                }
+
+                if (bodyhexColor != null)
+                {
+                    body["hex_color"] = SourceExpressionConverter.ConvertToken(bodyhexColor);
+                    bodypropCount++;
+                }
+
+                if (bodyfontFamily != null)
+                {
+                    body["font_family"] = SourceExpressionConverter.ConvertToken(bodyfontFamily);
+                    bodypropCount++;
+                }
+
+                if (bodyexpiration != null)
+                {
+                    body["expiration"] = SourceExpressionConverter.ConvertToken(bodyexpiration);
+                    bodypropCount++;
+                }
+
+                if (bodyoutputFile != null)
+                {
+                    body["output_file"] = SourceExpressionConverter.ConvertToken(bodyoutputFile);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyrotation != null)
-            {
-                body["rotation"] = ExpressionConverter.ConvertO(bodyrotation);
-                bodypropCount++;
-            }
-
-            if (bodyhexColor != null)
-            {
-                body["hex_color"] = ExpressionConverter.ConvertO(bodyhexColor);
-                bodypropCount++;
-            }
-
-            if (bodyfontFamily != null)
-            {
-                body["font_family"] = ExpressionConverter.ConvertO(bodyfontFamily);
-                bodypropCount++;
-            }
-
-            if (bodyexpiration != null)
-            {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
-                bodypropCount++;
-            }
-
-            if (bodyoutputFile != null)
-            {
-                body["output_file"] = ExpressionConverter.ConvertO(bodyoutputFile);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
+            return new ApiConnectionAction<ResponseSuccessSingleFile>(BuildSourceInput);
         }
     }
 

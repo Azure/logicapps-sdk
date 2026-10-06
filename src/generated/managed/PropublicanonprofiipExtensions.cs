@@ -12,31 +12,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip
     public class PropublicanonprofiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q = null, Expression<Func<int>> page = null, Expression<Func<string>> stateId = null, Expression<Func<int>> nteeId = null, Expression<Func<int>> cCodeId = null)
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> stateId = null, [WorkflowExpression] Func<int> nteeId = null, [WorkflowExpression] Func<int> cCodeId = null)
         {
-            var apiCallPath = "/search.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (stateId != null)
-                callPayload.Queries["state[id]"] = ExpressionConverter.Convert(stateId);
-            if (nteeId != null)
-                callPayload.Queries["ntee[id]"] = ExpressionConverter.Convert(nteeId);
-            if (cCodeId != null)
-                callPayload.Queries["c_code[id]"] = ExpressionConverter.Convert(cCodeId);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/search.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (stateId != null)
+                    callPayload.Queries["state[id]"] = SourceExpressionConverter.ConvertO(stateId);
+                if (nteeId != null)
+                    callPayload.Queries["ntee[id]"] = SourceExpressionConverter.ConvertO(nteeId);
+                if (cCodeId != null)
+                    callPayload.Queries["c_code[id]"] = SourceExpressionConverter.ConvertO(cCodeId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
-        public IBodyWorkflowAction<NonprofitGetResponse> NonprofitGet(Expression<Func<string>> ein)
+        public IBodyWorkflowAction<NonprofitGetResponse> NonprofitGet([WorkflowExpression] Func<string> ein)
         {
-            var apiCallPath = String.Format("/organizations/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(ein, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<NonprofitGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizations/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ein, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NonprofitGetResponse>(BuildSourceInput);
         }
     }
 

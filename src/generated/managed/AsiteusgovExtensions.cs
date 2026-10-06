@@ -12,88 +12,111 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteusgov
     public class AsiteusgovActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asiteusgov")]
-        public IBodyWorkflowAction<string> FILEDOWNLOADBYURL(Expression<Func<string>> downloadUrl)
+        public IBodyWorkflowAction<string> FILEDOWNLOADBYURL([WorkflowExpression] Func<string> downloadUrl)
         {
-            var apiCallPath = "/downloadFileByUrl";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["downloadUrl"] = ExpressionConverter.Convert(downloadUrl);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/downloadFileByUrl";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["downloadUrl"] = SourceExpressionConverter.ConvertO(downloadUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asiteusgov")]
-        public IBodyWorkflowAction<string> SETFILEMETADATA(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<object>> items = null)
+        public IBodyWorkflowAction<string> SETFILEMETADATA([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<object> items = null)
         {
-            var apiCallPath = "/saveMetadataForUpload";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
-            callPayload.Body = ExpressionConverter.ConvertO(items);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/saveMetadataForUpload";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                callPayload.Queries["folderId"] = SourceExpressionConverter.ConvertO(folderId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(items);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asiteusgov")]
-        public IBodyWorkflowAction<JToken> UPLOADBINARYFILE(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<string>> fileName, Expression<Func<string>> metadataId, Expression<Func<string>> fileBinary = null)
+        public IBodyWorkflowAction<JToken> UPLOADBINARYFILE([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> metadataId, [WorkflowExpression] Func<string> fileBinary = null)
         {
-            var apiCallPath = "/uploadFileFromExternalSystem";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
-            callPayload.Queries["fileName"] = ExpressionConverter.Convert(fileName);
-            callPayload.Queries["metadataId"] = ExpressionConverter.Convert(metadataId);
-            callPayload.Body = ExpressionConverter.ConvertO(fileBinary);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/uploadFileFromExternalSystem";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                callPayload.Queries["folderId"] = SourceExpressionConverter.ConvertO(folderId);
+                callPayload.Queries["fileName"] = SourceExpressionConverter.ConvertO(fileName);
+                callPayload.Queries["metadataId"] = SourceExpressionConverter.ConvertO(metadataId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(fileBinary);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 
     public class AsiteusgovTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ASITETRIGGEREVENT(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ASITETRIGGEREVENT([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodytriggerName, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/asitePullDataWebhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Headers["Accept"] = Convert.ToString("*/*");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webhookUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["resourceId"] = ExpressionConverter.ConvertO(bodytriggerName);
-            body["resourceType"] = 1;
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/asitePullDataWebhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                callPayload.Headers["Accept"] = Convert.ToString("*/*");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webhookUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["resourceId"] = SourceExpressionConverter.ConvertToken(bodytriggerName);
+                body["resourceType"] = 1;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ASITETRIGGEREVENTAPPFORM(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ASITETRIGGEREVENTAPPFORM([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodytriggerName, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/asitePullAppFormDataWebhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Headers["Accept"] = Convert.ToString("*/*");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webhookUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["resourceId"] = ExpressionConverter.ConvertO(bodytriggerName);
-            body["resourceType"] = 1;
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/asitePullAppFormDataWebhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                callPayload.Headers["Accept"] = Convert.ToString("*/*");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webhookUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["resourceId"] = SourceExpressionConverter.ConvertToken(bodytriggerName);
+                body["resourceType"] = 1;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

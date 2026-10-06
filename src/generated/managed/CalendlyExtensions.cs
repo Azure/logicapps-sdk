@@ -17,36 +17,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendly
     {
         public IBodyWorkflowTrigger<string> WebhookCreateInvitee(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook1/api/v1/hooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhook1/api/v1/hooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<string> WebhookCancelInvitee(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook2/api/v1/hooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhook2/api/v1/hooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

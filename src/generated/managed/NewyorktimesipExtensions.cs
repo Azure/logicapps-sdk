@@ -12,35 +12,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
     public class NewyorktimesipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        public IBodyWorkflowAction<ArticleSearchResponse> ArticleSearch(Expression<Func<string>> q, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null)
+        public IBodyWorkflowAction<ArticleSearchResponse> ArticleSearch([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            var apiCallPath = "/search/v2/articlesearch.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (beginDate != null)
-                callPayload.Queries["begin_date"] = ExpressionConverter.Convert(beginDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-            return new ApiConnectionAction<ArticleSearchResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/search/v2/articlesearch.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (beginDate != null)
+                    callPayload.Queries["begin_date"] = SourceExpressionConverter.ConvertO(beginDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ArticleSearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        public IBodyWorkflowAction<TopStoriesResponse> TopStories(Expression<Func<sectionInput>> section)
+        public IBodyWorkflowAction<TopStoriesResponse> TopStories([WorkflowExpression] Func<sectionInput> section)
         {
-            var apiCallPath = String.Format("/topstories/v2/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(section, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TopStoriesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/topstories/v2/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(section, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TopStoriesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        public IBodyWorkflowAction<MostViewedResponse> MostViewed(Expression<Func<periodInput>> period)
+        public IBodyWorkflowAction<MostViewedResponse> MostViewed([WorkflowExpression] Func<periodInput> period)
         {
-            var apiCallPath = String.Format("/mostpopular/v2/viewed/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(period, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MostViewedResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/mostpopular/v2/viewed/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MostViewedResponse>(BuildSourceInput);
         }
     }
 
@@ -313,12 +328,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
 
     public enum periodInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "30")]
-        _30
+        _1 = 1,
+        _7 = 7,
+        _30 = 30
     }
 }
 

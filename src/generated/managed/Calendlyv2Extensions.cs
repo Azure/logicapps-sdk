@@ -12,102 +12,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
     public class Calendlyv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<GetEventTypesResponse> GetEventTypes(Expression<Func<bool>> active = null, Expression<Func<int>> count = null, Expression<Func<string>> pageToken = null, Expression<Func<bool>> adminManaged = null)
+        public IBodyWorkflowAction<GetEventTypesResponse> GetEventTypes([WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<string> pageToken = null, [WorkflowExpression] Func<bool> adminManaged = null)
         {
-            var apiCallPath = "/event_types";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            callPayload.Queries["count"] = Convert.ToString(20);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (pageToken != null)
-                callPayload.Queries["page_token"] = ExpressionConverter.Convert(pageToken);
-            if (adminManaged != null)
-                callPayload.Queries["admin_managed"] = ExpressionConverter.Convert(adminManaged);
-            return new ApiConnectionAction<GetEventTypesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<CreateInviteeNoShowResponse> CreateInviteeNoShow(Expression<Func<string>> bodyinvitee)
-        {
-            var apiCallPath = "/invitee_no_shows";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["invitee"] = ExpressionConverter.ConvertO(bodyinvitee);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/event_types";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (active != null)
+                    callPayload.Queries["active"] = SourceExpressionConverter.ConvertO(active);
+                callPayload.Queries["count"] = Convert.ToString(20);
+                if (count != null)
+                    callPayload.Queries["count"] = SourceExpressionConverter.ConvertO(count);
+                if (pageToken != null)
+                    callPayload.Queries["page_token"] = SourceExpressionConverter.ConvertO(pageToken);
+                if (adminManaged != null)
+                    callPayload.Queries["admin_managed"] = SourceExpressionConverter.ConvertO(adminManaged);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CreateInviteeNoShowResponse>(callPayload);
+            return new ApiConnectionAction<GetEventTypesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<GetEventTypeResponse> GetEventType(Expression<Func<string>> uuid)
+        public IBodyWorkflowAction<CreateInviteeNoShowResponse> CreateInviteeNoShow([WorkflowExpression] Func<string> bodyinvitee)
         {
-            var apiCallPath = String.Format("/event_types/{0}", ExpressionConverter.ConvertWithUrlEncoding(uuid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetEventTypeResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/invitee_no_shows";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["invitee"] = SourceExpressionConverter.ConvertToken(bodyinvitee);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateInviteeNoShowResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<JToken> DeleteInviteeNoShow(Expression<Func<string>> uuid)
+        public IBodyWorkflowAction<GetEventTypeResponse> GetEventType([WorkflowExpression] Func<string> uuid)
         {
-            var apiCallPath = String.Format("/invitee_no_shows/{0}", ExpressionConverter.ConvertWithUrlEncoding(uuid, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/event_types/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uuid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetEventTypeResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
+        public IBodyWorkflowAction<JToken> DeleteInviteeNoShow([WorkflowExpression] Func<string> uuid)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invitee_no_shows/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(uuid, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 
     public class Calendlyv2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse> CreateWebhookSubscription(Expression<Func<bodyeventsInputItem[]>> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse> CreateWebhookSubscription([WorkflowExpression] Func<bodyeventsInputItem[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook_subscriptions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["events"] = ExpressionConverter.ConvertO(bodyevents);
-            body["scope"] = "organization";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhook_subscriptions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["events"] = SourceExpressionConverter.ConvertToken(bodyevents);
+                body["scope"] = "organization";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<CreateWebhookSubscriptionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<CreateWebhookSubscriptionResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<bodyeventsInputItem[]>> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse> CreateWebhookSubscriptionRoutingFormSubmission([WorkflowExpression] Func<bodyeventsInputItem[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook_subscriptions/routing_form_submission";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["events"] = ExpressionConverter.ConvertO(bodyevents);
-            body["scope"] = "organization";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhook_subscriptions/routing_form_submission";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["events"] = SourceExpressionConverter.ConvertToken(bodyevents);
+                body["scope"] = "organization";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

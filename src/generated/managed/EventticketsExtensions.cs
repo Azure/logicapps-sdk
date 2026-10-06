@@ -17,42 +17,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventtickets
     {
         public IBodyWorkflowTrigger<AttendeeTriggerResponse> AttendeeTrigger(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/attendees/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<AttendeeTriggerResponse>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/attendees/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<AttendeeTriggerResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<UpdatedAttendeeTriggerResponse> UpdatedAttendeeTrigger(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/updated-attendees/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<UpdatedAttendeeTriggerResponse>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/updated-attendees/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<UpdatedAttendeeTriggerResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<CheckinTriggerResponse> CheckinTrigger(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/checkin/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<CheckinTriggerResponse>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/checkin/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<CheckinTriggerResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<NewOrderTriggerResponse> NewOrderTrigger(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/orders/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewOrderTriggerResponse>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/orders/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<NewOrderTriggerResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<RefundedOrderTriggerResponse> RefundedOrderTrigger(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/refunded-orders/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<RefundedOrderTriggerResponse>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/refunded-orders/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<RefundedOrderTriggerResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

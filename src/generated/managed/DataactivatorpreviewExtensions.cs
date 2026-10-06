@@ -15,22 +15,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataactivatorpreview
 
     public class DataactivatorpreviewTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreatePowerAutomateWorkflow(Expression<Func<string>> connectionString, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreatePowerAutomateWorkflow([WorkflowExpression] Func<string> connectionString, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/powerAutomateFlow";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Connection-String"] = ExpressionConverter.Convert(connectionString);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/powerAutomateFlow";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Connection-String"] = SourceExpressionConverter.ConvertO(connectionString);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

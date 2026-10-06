@@ -12,23 +12,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shrtcodeip
     public class ShrtcodeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shrtcodeip")]
-        public IBodyWorkflowAction<ShortenLinkResponse> ShortenLink(Expression<Func<string>> url)
+        public IBodyWorkflowAction<ShortenLinkResponse> ShortenLink([WorkflowExpression] Func<string> url)
         {
-            var apiCallPath = "/shorten";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            return new ApiConnectionAction<ShortenLinkResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/shorten";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = SourceExpressionConverter.ConvertO(url);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ShortenLinkResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shrtcodeip")]
-        public IBodyWorkflowAction<GettingInformationLinkResponse> GettingInformationLink(Expression<Func<string>> code)
+        public IBodyWorkflowAction<GettingInformationLinkResponse> GettingInformationLink([WorkflowExpression] Func<string> code)
         {
-            var apiCallPath = "/info";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-            return new ApiConnectionAction<GettingInformationLinkResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/info";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["code"] = SourceExpressionConverter.ConvertO(code);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GettingInformationLinkResponse>(BuildSourceInput);
         }
     }
 

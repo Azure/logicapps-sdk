@@ -14,120 +14,153 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
         public IBodyWorkflowAction<NotebookGetResponse> NotebookGet()
         {
-            var apiCallPath = "/notebooks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<NotebookGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<NotebookPostResponse> Notebook(Expression<Func<string>> bodydisplayName)
-        {
-            var apiCallPath = "/notebooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/notebooks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<NotebookPostResponse>(callPayload);
+            return new ApiConnectionAction<NotebookGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<NotebookGetAResponse> NotebookGetA(Expression<Func<string>> notebookId)
+        public IBodyWorkflowAction<NotebookPostResponse> Notebook([WorkflowExpression] Func<string> bodydisplayName)
         {
-            var apiCallPath = String.Format("/notebooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(notebookId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<NotebookGetAResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<SectionGetResponse> SectionGet(Expression<Func<string>> notebookId, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<bool>> count = null, Expression<Func<string>> skiptoken = null)
-        {
-            var apiCallPath = String.Format("/notebooks/{0}/sections", ExpressionConverter.ConvertWithUrlEncoding(notebookId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (search != null)
-                callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (count != null)
-                callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(skiptoken);
-            return new ApiConnectionAction<SectionGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<SectionPostResponse> Section(Expression<Func<string>> notebookId, Expression<Func<string>> bodydisplayName)
-        {
-            var apiCallPath = String.Format("/notebooks/{0}/sections", ExpressionConverter.ConvertWithUrlEncoding(notebookId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/notebooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SectionPostResponse>(callPayload);
+            return new ApiConnectionAction<NotebookPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<PageGetResponse> PageGet(Expression<Func<string>> sectionId, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<bool>> count = null, Expression<Func<string>> skiptoken = null)
+        public IBodyWorkflowAction<NotebookGetAResponse> NotebookGetA([WorkflowExpression] Func<string> notebookId)
         {
-            var apiCallPath = String.Format("/sections/{0}/pages", ExpressionConverter.ConvertWithUrlEncoding(sectionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (search != null)
-                callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (count != null)
-                callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(skiptoken);
-            return new ApiConnectionAction<PageGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/notebooks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(notebookId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NotebookGetAResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<PagePostResponse> Page(Expression<Func<string>> sectionId, Expression<Func<string>> contentType, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<SectionGetResponse> SectionGet([WorkflowExpression] Func<string> notebookId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<bool> count = null, [WorkflowExpression] Func<string> skiptoken = null)
         {
-            var apiCallPath = String.Format("/sections/{0}/pages", ExpressionConverter.ConvertWithUrlEncoding(sectionId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PagePostResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/notebooks/{0}/sections", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(notebookId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (expand != null)
+                    callPayload.Queries["$expand"] = SourceExpressionConverter.ConvertO(expand);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                if (search != null)
+                    callPayload.Queries["$search"] = SourceExpressionConverter.ConvertO(search);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = SourceExpressionConverter.ConvertO(skip);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                if (count != null)
+                    callPayload.Queries["$count"] = SourceExpressionConverter.ConvertO(count);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SectionGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
+        public IBodyWorkflowAction<SectionPostResponse> Section([WorkflowExpression] Func<string> notebookId, [WorkflowExpression] Func<string> bodydisplayName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/notebooks/{0}/sections", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(notebookId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SectionPostResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
+        public IBodyWorkflowAction<PageGetResponse> PageGet([WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<bool> count = null, [WorkflowExpression] Func<string> skiptoken = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sections/{0}/pages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (expand != null)
+                    callPayload.Queries["$expand"] = SourceExpressionConverter.ConvertO(expand);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                if (search != null)
+                    callPayload.Queries["$search"] = SourceExpressionConverter.ConvertO(search);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = SourceExpressionConverter.ConvertO(skip);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                if (count != null)
+                    callPayload.Queries["$count"] = SourceExpressionConverter.ConvertO(count);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
+        public IBodyWorkflowAction<PagePostResponse> Page([WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> body = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sections/{0}/pages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sectionId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PagePostResponse>(BuildSourceInput);
         }
     }
 

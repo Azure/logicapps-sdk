@@ -12,14 +12,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faanotam
     public class FaanotamActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faanotam")]
-        public IBodyWorkflowAction<GetNotamResponse> GetNotam(Expression<Func<string>> clientId, Expression<Func<string>> clientSecret)
+        public IBodyWorkflowAction<GetNotamResponse> GetNotam([WorkflowExpression] Func<string> clientId, [WorkflowExpression] Func<string> clientSecret)
         {
-            var apiCallPath = "/notamapi/v1/notams";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["client_id"] = ExpressionConverter.Convert(clientId);
-            callPayload.Headers["client_secret"] = ExpressionConverter.Convert(clientSecret);
-            return new ApiConnectionAction<GetNotamResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/notamapi/v1/notams";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["client_id"] = SourceExpressionConverter.ConvertO(clientId);
+                callPayload.Headers["client_secret"] = SourceExpressionConverter.ConvertO(clientSecret);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetNotamResponse>(BuildSourceInput);
         }
     }
 

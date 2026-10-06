@@ -12,1018 +12,1385 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     public class DqondemandActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<GetUsage> UsageGet(Expression<Func<string>> startDate, Expression<Func<string>> endDate)
-        {
-            var apiCallPath = "/Account/Usage";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StartDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["EndDate"] = ExpressionConverter.Convert(endDate);
-            return new ApiConnectionAction<GetUsage>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<GetPricesOutput> PricingGet()
         {
-            var apiCallPath = "/Account/Prices";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPricesOutput>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Account/Prices";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetPricesOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
         public IBodyWorkflowAction<DQGlobalInt> BalanceGet()
         {
-            var apiCallPath = "/Account/Balance";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DQGlobalInt>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Account/Balance";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalInt>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
+        public IBodyWorkflowAction<DQGlobal> CaseSingular([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<caseTypeInput> caseType, [WorkflowExpression] Func<languageInput> language)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Case";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["CaseType"] = SourceExpressionConverter.Convert(caseType);
+                callPayload.Queries["Language"] = SourceExpressionConverter.Convert(language);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> CaseSingular(Expression<Func<string>> input, Expression<Func<caseTypeInput>> caseType, Expression<Func<languageInput>> language)
+        public IBodyWorkflowAction<ClassifyGetResponse> ClassifyGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<categoriesInput> categories, [WorkflowExpression] Func<languageInput> language = null)
         {
-            var apiCallPath = "/Case";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CaseType"] = ExpressionConverter.Convert(caseType);
-            callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Classify";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["Categories"] = SourceExpressionConverter.Convert(categories);
+                callPayload.Queries["Language"] = Convert.ToString("English");
+                if (language != null)
+                    callPayload.Queries["Language"] = SourceExpressionConverter.Convert(language);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ClassifyGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ClassifyGetResponse> ClassifyGet(Expression<Func<string>> input, Expression<Func<categoriesInput>> categories, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<DQGlobalFloat> CompareGet([WorkflowExpression] Func<string> input1, [WorkflowExpression] Func<string> input2, [WorkflowExpression] Func<comparisonAlgorithmInput> comparisonAlgorithm)
         {
-            var apiCallPath = "/Classify";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["Categories"] = ExpressionConverter.Convert(categories);
-            callPayload.Queries["Language"] = Convert.ToString("English");
-            if (language != null)
-                callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
-            return new ApiConnectionAction<ClassifyGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Compare";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input1"] = SourceExpressionConverter.ConvertO(input1);
+                callPayload.Queries["Input2"] = SourceExpressionConverter.ConvertO(input2);
+                callPayload.Queries["ComparisonAlgorithm"] = SourceExpressionConverter.Convert(comparisonAlgorithm);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalFloat>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalFloat> CompareGet(Expression<Func<string>> input1, Expression<Func<string>> input2, Expression<Func<comparisonAlgorithmInput>> comparisonAlgorithm)
+        public IBodyWorkflowAction<CongruenceResultSingle> EmailCongruenceGet([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<string> firstName, [WorkflowExpression] Func<string> lastName)
         {
-            var apiCallPath = "/Compare";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input1"] = ExpressionConverter.Convert(input1);
-            callPayload.Queries["Input2"] = ExpressionConverter.Convert(input2);
-            callPayload.Queries["ComparisonAlgorithm"] = ExpressionConverter.Convert(comparisonAlgorithm);
-            return new ApiConnectionAction<DQGlobalFloat>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Congruence/Email";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Email"] = SourceExpressionConverter.ConvertO(email);
+                callPayload.Queries["FirstName"] = SourceExpressionConverter.ConvertO(firstName);
+                callPayload.Queries["LastName"] = SourceExpressionConverter.ConvertO(lastName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CongruenceResultSingle>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<CongruenceResultSingle> EmailCongruenceGet(Expression<Func<string>> email, Expression<Func<string>> firstName, Expression<Func<string>> lastName)
+        public IBodyWorkflowAction<CongruenceResultSingle> CountryCongruenceGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> country, [WorkflowExpression] Func<actionTypeInput> actionType)
         {
-            var apiCallPath = "/Congruence/Email";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
-            callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-            callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
-            return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Congruence/Country";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["Country"] = SourceExpressionConverter.ConvertO(country);
+                callPayload.Queries["ActionType"] = SourceExpressionConverter.Convert(actionType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CongruenceResultSingle>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<CongruenceResultSingle> CountryCongruenceGet(Expression<Func<string>> input, Expression<Func<string>> country, Expression<Func<actionTypeInput>> actionType)
+        public IBodyWorkflowAction<CongruenceResultSingle> SalutationCongruenceGet([WorkflowExpression] Func<string> salutation, [WorkflowExpression] Func<string> firstName, [WorkflowExpression] Func<languageInput> language)
         {
-            var apiCallPath = "/Congruence/Country";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["ActionType"] = ExpressionConverter.Convert(actionType);
-            return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Congruence/Salutation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Salutation"] = SourceExpressionConverter.ConvertO(salutation);
+                callPayload.Queries["FirstName"] = SourceExpressionConverter.ConvertO(firstName);
+                callPayload.Queries["Language"] = SourceExpressionConverter.Convert(language);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CongruenceResultSingle>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<CongruenceResultSingle> SalutationCongruenceGet(Expression<Func<string>> salutation, Expression<Func<string>> firstName, Expression<Func<languageInput>> language)
+        public IBodyWorkflowAction<DeriveGenderGetResponse> DeriveGenderGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/Congruence/Salutation";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Salutation"] = ExpressionConverter.Convert(salutation);
-            callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-            callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
-            return new ApiConnectionAction<CongruenceResultSingle>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Derive/Gender";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeriveGenderGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DeriveGenderGetResponse> DeriveGenderGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DeriveCityGetResponse> DeriveCityGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/Derive/Gender";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DeriveGenderGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Derive/CountryFromCity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeriveCityGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DeriveCityGetResponse> DeriveCityGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DerivePostCodeGetResponse> DerivePostCodeGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/Derive/CountryFromCity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DeriveCityGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Derive/FromPostalCode";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DerivePostCodeGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DerivePostCodeGetResponse> DerivePostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DeriveEmailGetResponse> DeriveEmailGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/Derive/FromPostalCode";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DerivePostCodeGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Derive/EmailType";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeriveEmailGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DeriveEmailGetResponse> DeriveEmailGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DeriveISOGetResponse> DeriveISOGet([WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> url = null, [WorkflowExpression] Func<string> phone = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<int> threshold = null, [WorkflowExpression] Func<bool> onlyReturnBest = null, [WorkflowExpression] Func<bool> defaultToCountry = null)
         {
-            var apiCallPath = "/Derive/EmailType";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DeriveEmailGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/DeriveISO";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (email != null)
+                    callPayload.Queries["Email"] = SourceExpressionConverter.ConvertO(email);
+                if (url != null)
+                    callPayload.Queries["Url"] = SourceExpressionConverter.ConvertO(url);
+                if (phone != null)
+                    callPayload.Queries["Phone"] = SourceExpressionConverter.ConvertO(phone);
+                if (country != null)
+                    callPayload.Queries["Country"] = SourceExpressionConverter.ConvertO(country);
+                if (city != null)
+                    callPayload.Queries["City"] = SourceExpressionConverter.ConvertO(city);
+                callPayload.Queries["Threshold"] = Convert.ToString(70);
+                if (threshold != null)
+                    callPayload.Queries["Threshold"] = SourceExpressionConverter.ConvertO(threshold);
+                callPayload.Queries["OnlyReturnBest"] = Convert.ToString(false);
+                if (onlyReturnBest != null)
+                    callPayload.Queries["OnlyReturnBest"] = SourceExpressionConverter.ConvertO(onlyReturnBest);
+                callPayload.Queries["DefaultToCountry"] = Convert.ToString(false);
+                if (defaultToCountry != null)
+                    callPayload.Queries["DefaultToCountry"] = SourceExpressionConverter.ConvertO(defaultToCountry);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeriveISOGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DeriveISOGetResponse> DeriveISOGet(Expression<Func<string>> email = null, Expression<Func<string>> url = null, Expression<Func<string>> phone = null, Expression<Func<string>> country = null, Expression<Func<string>> city = null, Expression<Func<int>> threshold = null, Expression<Func<bool>> onlyReturnBest = null, Expression<Func<bool>> defaultToCountry = null)
+        public IBodyWorkflowAction<DQGlobal> FormatEmailGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/DeriveISO";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (email != null)
-                callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
-            if (url != null)
-                callPayload.Queries["Url"] = ExpressionConverter.Convert(url);
-            if (phone != null)
-                callPayload.Queries["Phone"] = ExpressionConverter.Convert(phone);
-            if (country != null)
-                callPayload.Queries["Country"] = ExpressionConverter.Convert(country);
-            if (city != null)
-                callPayload.Queries["City"] = ExpressionConverter.Convert(city);
-            callPayload.Queries["Threshold"] = Convert.ToString(70);
-            if (threshold != null)
-                callPayload.Queries["Threshold"] = ExpressionConverter.Convert(threshold);
-            callPayload.Queries["OnlyReturnBest"] = Convert.ToString(false);
-            if (onlyReturnBest != null)
-                callPayload.Queries["OnlyReturnBest"] = ExpressionConverter.Convert(onlyReturnBest);
-            callPayload.Queries["DefaultToCountry"] = Convert.ToString(false);
-            if (defaultToCountry != null)
-                callPayload.Queries["DefaultToCountry"] = ExpressionConverter.Convert(defaultToCountry);
-            return new ApiConnectionAction<DeriveISOGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Format/Email";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatEmailGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal> FormatPostCodeGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/Format/Email";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Format/PostCode";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatPostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DQGlobal> FormatE164Get([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/Format/PostCode";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Format/TelephoneE164";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatE164Get(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DQGlobal> FormatInternationalGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/Format/TelephoneE164";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Format/TelephoneInternational";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatInternationalGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DQGlobal> FormatNationalGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/Format/TelephoneInternational";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Format/TelephoneNational";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatNationalGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DQGlobal> FormatRFC3966Get([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/Format/TelephoneNational";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Format/TelephoneRFC3966";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatRFC3966Get(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DQGlobal> FormatURLGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> uRLPrefix)
         {
-            var apiCallPath = "/Format/TelephoneRFC3966";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Format/UrlAddress";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["URLPrefix"] = SourceExpressionConverter.ConvertO(uRLPrefix);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> FormatURLGet(Expression<Func<string>> input, Expression<Func<string>> uRLPrefix)
+        public IBodyWorkflowAction<GeneratePatternResponse> GeneratePattern([WorkflowExpression] Func<inputInputItem[]> input = null)
         {
-            var apiCallPath = "/Format/UrlAddress";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["URLPrefix"] = ExpressionConverter.Convert(uRLPrefix);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Generate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GeneratePatternResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<GeneratePatternResponse> GeneratePattern(Expression<Func<inputInputItem[]>> input = null)
+        public IBodyWorkflowAction<DQGlobal> GenerateTokenGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<generateAlgorithmTypeInput> generateAlgorithmType, [WorkflowExpression] Func<languageInput> language = null)
         {
-            var apiCallPath = "/Generate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(input);
-            return new ApiConnectionAction<GeneratePatternResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/GenerateToken";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["generateAlgorithmType"] = SourceExpressionConverter.Convert(generateAlgorithmType);
+                callPayload.Queries["Language"] = Convert.ToString("English");
+                if (language != null)
+                    callPayload.Queries["Language"] = SourceExpressionConverter.Convert(language);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> GenerateTokenGet(Expression<Func<string>> input, Expression<Func<generateAlgorithmTypeInput>> generateAlgorithmType, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<ParsePhoneGetResponse> ParsePhoneGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/GenerateToken";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["generateAlgorithmType"] = ExpressionConverter.Convert(generateAlgorithmType);
-            callPayload.Queries["Language"] = Convert.ToString("English");
-            if (language != null)
-                callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Parse/PhoneNumber";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ParsePhoneGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ParsePhoneGetResponse> ParsePhoneGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<ParseEmailGetResponse> ParseEmailGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/Parse/PhoneNumber";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<ParsePhoneGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Parse/Email";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ParseEmailGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ParseEmailGetResponse> ParseEmailGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<ParseURLGetResponse> ParseURLGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/Parse/Email";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<ParseEmailGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Parse/URL";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ParseURLGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ParseURLGetResponse> ParseURLGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<ScoringResponse> Scoring([WorkflowExpression] Func<inputInputItem2[]> input = null)
         {
-            var apiCallPath = "/Parse/URL";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<ParseURLGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Scoring";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ScoringResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ScoringResponse> Scoring(Expression<Func<inputInputItem2[]>> input = null)
+        public IBodyWorkflowAction<DQGlobal> TransformGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<entityTypeInput> entityType, [WorkflowExpression] Func<operationTypeInput> operationType, [WorkflowExpression] Func<languageInput> language = null)
         {
-            var apiCallPath = "/Scoring";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(input);
-            return new ApiConnectionAction<ScoringResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Transform";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["EntityType"] = SourceExpressionConverter.Convert(entityType);
+                callPayload.Queries["OperationType"] = SourceExpressionConverter.Convert(operationType);
+                callPayload.Queries["Language"] = Convert.ToString("English");
+                if (language != null)
+                    callPayload.Queries["Language"] = SourceExpressionConverter.Convert(language);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> TransformGet(Expression<Func<string>> input, Expression<Func<entityTypeInput>> entityType, Expression<Func<operationTypeInput>> operationType, Expression<Func<languageInput>> language = null)
+        public IBodyWorkflowAction<SequenceTransformResponse> SequenceTransform([WorkflowExpression] Func<inputInputItem22[]> input = null)
         {
-            var apiCallPath = "/Transform";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["EntityType"] = ExpressionConverter.Convert(entityType);
-            callPayload.Queries["OperationType"] = ExpressionConverter.Convert(operationType);
-            callPayload.Queries["Language"] = Convert.ToString("English");
-            if (language != null)
-                callPayload.Queries["Language"] = ExpressionConverter.Convert(language);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/SequenceTransform";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SequenceTransformResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SequenceTransformResponse> SequenceTransform(Expression<Func<inputInputItem22[]>> input = null)
+        public IBodyWorkflowAction<DQGlobalBool> ValidateEmailGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/SequenceTransform";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(input);
-            return new ApiConnectionAction<SequenceTransformResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Validate/Email";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> ValidateEmailGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool> ValidatePostCodeGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/Validate/Email";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Validate/PostCode";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> ValidatePostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DQGlobalBool> ValidateURLGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/Validate/PostCode";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Validate/UrlAddress";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> ValidateURLGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool> ValidatePhoneGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/Validate/UrlAddress";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Validate/Telephone";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> ValidatePhoneGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DQGlobalBool> ValidateDateTimeGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> dateTimeFormat)
         {
-            var apiCallPath = "/Validate/Telephone";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Validate/DateTime";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["DateTimeFormat"] = SourceExpressionConverter.ConvertO(dateTimeFormat);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> ValidateDateTimeGet(Expression<Func<string>> input, Expression<Func<string>> dateTimeFormat)
+        public IBodyWorkflowAction<ValidatePlusEmailGetResponse> ValidatePlusEmailGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/Validate/DateTime";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["DateTimeFormat"] = ExpressionConverter.Convert(dateTimeFormat);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/ValidatePlus/Email";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ValidatePlusEmailGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ValidatePlusEmailGetResponse> ValidatePlusEmailGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<ValidatePlusPostCodeGetResponse> ValidatePlusPostCodeGet([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = "/ValidatePlus/Email";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<ValidatePlusEmailGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/ValidatePlus/PostCode";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ValidatePlusPostCodeGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ValidatePlusPostCodeGetResponse> ValidatePlusPostCodeGet(Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<ValidatePlusURLGetResponse> ValidatePlusURLGet([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/ValidatePlus/PostCode";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<ValidatePlusPostCodeGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/ValidatePlus/UrlAddress";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ValidatePlusURLGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<ValidatePlusURLGetResponse> ValidatePlusURLGet(Expression<Func<string>> input)
+        public IBodyWorkflowAction<VerifyAddressGetResponse> VerifyAddressGet([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> countryIdentifier, [WorkflowExpression] Func<bool> geocode, [WorkflowExpression] Func<string> line1 = null, [WorkflowExpression] Func<string> line2 = null, [WorkflowExpression] Func<string> line3 = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> state = null)
         {
-            var apiCallPath = "/ValidatePlus/UrlAddress";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<ValidatePlusURLGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Verify/Address/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (line1 != null)
+                    callPayload.Queries["Line1"] = SourceExpressionConverter.ConvertO(line1);
+                if (line2 != null)
+                    callPayload.Queries["Line2"] = SourceExpressionConverter.ConvertO(line2);
+                if (line3 != null)
+                    callPayload.Queries["Line3"] = SourceExpressionConverter.ConvertO(line3);
+                if (postalCode != null)
+                    callPayload.Queries["PostalCode"] = SourceExpressionConverter.ConvertO(postalCode);
+                if (city != null)
+                    callPayload.Queries["City"] = SourceExpressionConverter.ConvertO(city);
+                if (state != null)
+                    callPayload.Queries["State"] = SourceExpressionConverter.ConvertO(state);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                callPayload.Queries["Geocode"] = SourceExpressionConverter.ConvertO(geocode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<VerifyAddressGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<VerifyAddressGetResponse> VerifyAddressGet(Expression<Func<providerInput>> provider, Expression<Func<string>> countryIdentifier, Expression<Func<bool>> geocode, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null)
+        public IBodyWorkflowAction<SearchAddressFindResponse> SearchAddressFind([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = String.Format("/Verify/Address/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (line1 != null)
-                callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
-            if (line2 != null)
-                callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
-            if (line3 != null)
-                callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
-            if (postalCode != null)
-                callPayload.Queries["PostalCode"] = ExpressionConverter.Convert(postalCode);
-            if (city != null)
-                callPayload.Queries["City"] = ExpressionConverter.Convert(city);
-            if (state != null)
-                callPayload.Queries["State"] = ExpressionConverter.Convert(state);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            callPayload.Queries["Geocode"] = ExpressionConverter.Convert(geocode);
-            return new ApiConnectionAction<VerifyAddressGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Search/Address/Find/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["query"] = SourceExpressionConverter.ConvertO(query);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchAddressFindResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SearchAddressFindResponse> SearchAddressFind(Expression<Func<providerInput>> provider, Expression<Func<string>> query, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<SearchAddressRetrieveResponse> SearchAddressRetrieve([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = String.Format("/Search/Address/Find/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<SearchAddressFindResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Search/Address/Retrieve/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Id"] = SourceExpressionConverter.ConvertO(id);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchAddressRetrieveResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SearchAddressRetrieveResponse> SearchAddressRetrieve(Expression<Func<providerInput>> provider, Expression<Func<string>> id, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<SuppressDeceasedResponse> SuppressDeceased([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> lastName, [WorkflowExpression] Func<string> postcode, [WorkflowExpression] Func<string> countryIdentifier, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> line1 = null, [WorkflowExpression] Func<string> line2 = null, [WorkflowExpression] Func<string> line3 = null, [WorkflowExpression] Func<string> town = null, [WorkflowExpression] Func<string> county = null)
         {
-            var apiCallPath = String.Format("/Search/Address/Retrieve/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<SearchAddressRetrieveResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Suppress/Address/Deceased/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (title != null)
+                    callPayload.Queries["Title"] = SourceExpressionConverter.ConvertO(title);
+                if (firstName != null)
+                    callPayload.Queries["FirstName"] = SourceExpressionConverter.ConvertO(firstName);
+                callPayload.Queries["LastName"] = SourceExpressionConverter.ConvertO(lastName);
+                if (line1 != null)
+                    callPayload.Queries["Line1"] = SourceExpressionConverter.ConvertO(line1);
+                if (line2 != null)
+                    callPayload.Queries["Line2"] = SourceExpressionConverter.ConvertO(line2);
+                if (line3 != null)
+                    callPayload.Queries["Line3"] = SourceExpressionConverter.ConvertO(line3);
+                if (town != null)
+                    callPayload.Queries["Town"] = SourceExpressionConverter.ConvertO(town);
+                if (county != null)
+                    callPayload.Queries["County"] = SourceExpressionConverter.ConvertO(county);
+                callPayload.Queries["Postcode"] = SourceExpressionConverter.ConvertO(postcode);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SuppressDeceasedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressDeceasedResponse> SuppressDeceased(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> countryIdentifier, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
+        public IBodyWorkflowAction<SuppressGoneAwayResponse> SuppressGoneAway([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> lastName, [WorkflowExpression] Func<string> postcode, [WorkflowExpression] Func<string> iSO2, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> line1 = null, [WorkflowExpression] Func<string> line2 = null, [WorkflowExpression] Func<string> line3 = null, [WorkflowExpression] Func<string> town = null, [WorkflowExpression] Func<string> county = null)
         {
-            var apiCallPath = String.Format("/Suppress/Address/Deceased/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
-            if (firstName != null)
-                callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-            callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
-            if (line1 != null)
-                callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
-            if (line2 != null)
-                callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
-            if (line3 != null)
-                callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
-            if (town != null)
-                callPayload.Queries["Town"] = ExpressionConverter.Convert(town);
-            if (county != null)
-                callPayload.Queries["County"] = ExpressionConverter.Convert(county);
-            callPayload.Queries["Postcode"] = ExpressionConverter.Convert(postcode);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<SuppressDeceasedResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Suppress/Address/GoneAway/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (title != null)
+                    callPayload.Queries["Title"] = SourceExpressionConverter.ConvertO(title);
+                if (firstName != null)
+                    callPayload.Queries["FirstName"] = SourceExpressionConverter.ConvertO(firstName);
+                callPayload.Queries["LastName"] = SourceExpressionConverter.ConvertO(lastName);
+                if (line1 != null)
+                    callPayload.Queries["Line1"] = SourceExpressionConverter.ConvertO(line1);
+                if (line2 != null)
+                    callPayload.Queries["Line2"] = SourceExpressionConverter.ConvertO(line2);
+                if (line3 != null)
+                    callPayload.Queries["Line3"] = SourceExpressionConverter.ConvertO(line3);
+                if (town != null)
+                    callPayload.Queries["Town"] = SourceExpressionConverter.ConvertO(town);
+                if (county != null)
+                    callPayload.Queries["County"] = SourceExpressionConverter.ConvertO(county);
+                callPayload.Queries["Postcode"] = SourceExpressionConverter.ConvertO(postcode);
+                callPayload.Queries["ISO2"] = SourceExpressionConverter.ConvertO(iSO2);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SuppressGoneAwayResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressGoneAwayResponse> SuppressGoneAway(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
+        public IBodyWorkflowAction<SuppressRelocatedResponse> SuppressRelocated([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> lastName, [WorkflowExpression] Func<string> postcode, [WorkflowExpression] Func<string> iSO2, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> line1 = null, [WorkflowExpression] Func<string> line2 = null, [WorkflowExpression] Func<string> line3 = null, [WorkflowExpression] Func<string> town = null, [WorkflowExpression] Func<string> county = null)
         {
-            var apiCallPath = String.Format("/Suppress/Address/GoneAway/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
-            if (firstName != null)
-                callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-            callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
-            if (line1 != null)
-                callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
-            if (line2 != null)
-                callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
-            if (line3 != null)
-                callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
-            if (town != null)
-                callPayload.Queries["Town"] = ExpressionConverter.Convert(town);
-            if (county != null)
-                callPayload.Queries["County"] = ExpressionConverter.Convert(county);
-            callPayload.Queries["Postcode"] = ExpressionConverter.Convert(postcode);
-            callPayload.Queries["ISO2"] = ExpressionConverter.Convert(iSO2);
-            return new ApiConnectionAction<SuppressGoneAwayResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Suppress/Address/Relocated/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (title != null)
+                    callPayload.Queries["Title"] = SourceExpressionConverter.ConvertO(title);
+                if (firstName != null)
+                    callPayload.Queries["FirstName"] = SourceExpressionConverter.ConvertO(firstName);
+                callPayload.Queries["LastName"] = SourceExpressionConverter.ConvertO(lastName);
+                if (line1 != null)
+                    callPayload.Queries["Line1"] = SourceExpressionConverter.ConvertO(line1);
+                if (line2 != null)
+                    callPayload.Queries["Line2"] = SourceExpressionConverter.ConvertO(line2);
+                if (line3 != null)
+                    callPayload.Queries["Line3"] = SourceExpressionConverter.ConvertO(line3);
+                if (town != null)
+                    callPayload.Queries["Town"] = SourceExpressionConverter.ConvertO(town);
+                if (county != null)
+                    callPayload.Queries["County"] = SourceExpressionConverter.ConvertO(county);
+                callPayload.Queries["Postcode"] = SourceExpressionConverter.ConvertO(postcode);
+                callPayload.Queries["ISO2"] = SourceExpressionConverter.ConvertO(iSO2);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SuppressRelocatedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressRelocatedResponse> SuppressRelocated(Expression<Func<providerInput>> provider, Expression<Func<string>> lastName, Expression<Func<string>> postcode, Expression<Func<string>> iSO2, Expression<Func<string>> title = null, Expression<Func<string>> firstName = null, Expression<Func<string>> line1 = null, Expression<Func<string>> line2 = null, Expression<Func<string>> line3 = null, Expression<Func<string>> town = null, Expression<Func<string>> county = null)
+        public IBodyWorkflowAction<SuppressPhonePersonalResponse> SuppressPhonePersonal([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = String.Format("/Suppress/Address/Relocated/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (title != null)
-                callPayload.Queries["Title"] = ExpressionConverter.Convert(title);
-            if (firstName != null)
-                callPayload.Queries["FirstName"] = ExpressionConverter.Convert(firstName);
-            callPayload.Queries["LastName"] = ExpressionConverter.Convert(lastName);
-            if (line1 != null)
-                callPayload.Queries["Line1"] = ExpressionConverter.Convert(line1);
-            if (line2 != null)
-                callPayload.Queries["Line2"] = ExpressionConverter.Convert(line2);
-            if (line3 != null)
-                callPayload.Queries["Line3"] = ExpressionConverter.Convert(line3);
-            if (town != null)
-                callPayload.Queries["Town"] = ExpressionConverter.Convert(town);
-            if (county != null)
-                callPayload.Queries["County"] = ExpressionConverter.Convert(county);
-            callPayload.Queries["Postcode"] = ExpressionConverter.Convert(postcode);
-            callPayload.Queries["ISO2"] = ExpressionConverter.Convert(iSO2);
-            return new ApiConnectionAction<SuppressRelocatedResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Suppress/Phone/Personal/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SuppressPhonePersonalResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressPhonePersonalResponse> SuppressPhonePersonal(Expression<Func<providerInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<SuppressPhoneCorporateResponse> SuppressPhoneCorporate([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = String.Format("/Suppress/Phone/Personal/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<SuppressPhonePersonalResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Suppress/Phone/Corporate/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SuppressPhoneCorporateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<SuppressPhoneCorporateResponse> SuppressPhoneCorporate(Expression<Func<providerInput>> provider, Expression<Func<string>> input, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<AuthenticateEmailGetResponse> AuthenticateEmailGet([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = String.Format("/Suppress/Phone/Corporate/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<SuppressPhoneCorporateResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Authenticate/Email/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Email"] = SourceExpressionConverter.ConvertO(email);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AuthenticateEmailGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<AuthenticateEmailGetResponse> AuthenticateEmailGet(Expression<Func<providerInput>> provider, Expression<Func<string>> email)
+        public IBodyWorkflowAction<AuthenticatePhoneGetResponse> AuthenticatePhoneGet([WorkflowExpression] Func<providerInput> provider, [WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<string> countryIdentifier)
         {
-            var apiCallPath = String.Format("/Authenticate/Email/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
-            return new ApiConnectionAction<AuthenticateEmailGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Authenticate/Phone/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(provider, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Phone"] = SourceExpressionConverter.ConvertO(phone);
+                callPayload.Queries["CountryIdentifier"] = SourceExpressionConverter.ConvertO(countryIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AuthenticatePhoneGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<AuthenticatePhoneGetResponse> AuthenticatePhoneGet(Expression<Func<providerInput>> provider, Expression<Func<string>> phone, Expression<Func<string>> countryIdentifier)
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsAllUpper([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = String.Format("/Authenticate/Phone/{0}", ExpressionConverter.ConvertWithUrlEncoding(provider, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Phone"] = ExpressionConverter.Convert(phone);
-            callPayload.Queries["CountryIdentifier"] = ExpressionConverter.Convert(countryIdentifier);
-            return new ApiConnectionAction<AuthenticatePhoneGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/IsAllUpper";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsAllUpper(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsAllLower([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/IsAllUpper";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/IsAllLower";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsAllLower(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsMixedCase([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/IsAllLower";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/IsMixedCase";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsMixedCase(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsAlphaNumeric([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/IsMixedCase";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/IsAlphaNumeric";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsAlphaNumeric(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsNumeric([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/IsAlphaNumeric";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/IsNumeric";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsNumeric(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO4217([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/IsNumeric";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/IsISO4217CurrencyCode";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO4217(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO2([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/IsISO4217CurrencyCode";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/IsISO2Code";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO2(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO3([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/IsISO2Code";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/IsISO3Code";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtIsISO3(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal> StringExtRemoveLeading([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> valToRemove, [WorkflowExpression] Func<bool> leaveOneAtStart)
         {
-            var apiCallPath = "/StringExtension/IsISO3Code";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/RemoveLeading";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["ValToRemove"] = SourceExpressionConverter.ConvertO(valToRemove);
+                callPayload.Queries["LeaveOneAtStart"] = SourceExpressionConverter.ConvertO(leaveOneAtStart);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRemoveLeading(Expression<Func<string>> input, Expression<Func<string>> valToRemove, Expression<Func<bool>> leaveOneAtStart)
+        public IBodyWorkflowAction<DQGlobal> StringExtRemoveChars([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<characterTypeInput> characterType)
         {
-            var apiCallPath = "/StringExtension/RemoveLeading";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["ValToRemove"] = ExpressionConverter.Convert(valToRemove);
-            callPayload.Queries["LeaveOneAtStart"] = ExpressionConverter.Convert(leaveOneAtStart);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/RemoveCharacters";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["characterType"] = SourceExpressionConverter.Convert(characterType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRemoveChars(Expression<Func<string>> input, Expression<Func<characterTypeInput>> characterType)
+        public IBodyWorkflowAction<DQGlobal> StringExtRemoveSingleWords([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/RemoveCharacters";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["characterType"] = ExpressionConverter.Convert(characterType);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/RemoveSingleCharacterWords";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRemoveSingleWords(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal> StringExtReplaceRepeatingText([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> repeatingValue, [WorkflowExpression] Func<string> replacement)
         {
-            var apiCallPath = "/StringExtension/RemoveSingleCharacterWords";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/ReplaceAdjacentRepeatingText";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["RepeatingValue"] = SourceExpressionConverter.ConvertO(repeatingValue);
+                callPayload.Queries["Replacement"] = SourceExpressionConverter.ConvertO(replacement);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtReplaceRepeatingText(Expression<Func<string>> input, Expression<Func<string>> repeatingValue, Expression<Func<string>> replacement)
+        public IBodyWorkflowAction<DQGlobal> StringExtReplaceEndsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> stringToReplace, [WorkflowExpression] Func<string> replacement)
         {
-            var apiCallPath = "/StringExtension/ReplaceAdjacentRepeatingText";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["RepeatingValue"] = ExpressionConverter.Convert(repeatingValue);
-            callPayload.Queries["Replacement"] = ExpressionConverter.Convert(replacement);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/ReplaceIfEndsWith";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["stringToReplace"] = SourceExpressionConverter.ConvertO(stringToReplace);
+                callPayload.Queries["replacement"] = SourceExpressionConverter.ConvertO(replacement);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtReplaceEndsWith(Expression<Func<string>> input, Expression<Func<string>> stringToReplace, Expression<Func<string>> replacement)
+        public IBodyWorkflowAction<DQGlobal> StringExtReplaceStartsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> stringToReplace, [WorkflowExpression] Func<string> replacement)
         {
-            var apiCallPath = "/StringExtension/ReplaceIfEndsWith";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["stringToReplace"] = ExpressionConverter.Convert(stringToReplace);
-            callPayload.Queries["replacement"] = ExpressionConverter.Convert(replacement);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/ReplaceIfStartsWith";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["stringToReplace"] = SourceExpressionConverter.ConvertO(stringToReplace);
+                callPayload.Queries["replacement"] = SourceExpressionConverter.ConvertO(replacement);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtReplaceStartsWith(Expression<Func<string>> input, Expression<Func<string>> stringToReplace, Expression<Func<string>> replacement)
+        public IBodyWorkflowAction<DQGlobal> StringExtStringToBinary([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/ReplaceIfStartsWith";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["stringToReplace"] = ExpressionConverter.Convert(stringToReplace);
-            callPayload.Queries["replacement"] = ExpressionConverter.Convert(replacement);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/StringToBinary";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtStringToBinary(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal> StringExtBinaryToString([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/StringToBinary";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/BinaryToString";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtBinaryToString(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal> StringExtStringToHex([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/BinaryToString";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/StringToHex";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtStringToHex(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal> StringExtHexToString([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/StringToHex";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/HexToString";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtHexToString(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal> StringExtReverse([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/HexToString";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/Reverse";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtReverse(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal> StringExtNormWhiteSpace([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/Reverse";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/NormalizeWhiteSpace";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtNormWhiteSpace(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal> StringExtNormPhone([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/NormalizeWhiteSpace";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/NormalizeAlphaNumericPhone";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtNormPhone(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal> StringExtCollapseRepeatedChars([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<bool> collapseNumerics, [WorkflowExpression] Func<int> maximumRepeat = null)
         {
-            var apiCallPath = "/StringExtension/NormalizeAlphaNumericPhone";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/CollapseAdjacentRepeatedCharacters";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["collapseNumerics"] = SourceExpressionConverter.ConvertO(collapseNumerics);
+                if (maximumRepeat != null)
+                    callPayload.Queries["maximumRepeat"] = SourceExpressionConverter.ConvertO(maximumRepeat);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtCollapseRepeatedChars(Expression<Func<string>> input, Expression<Func<bool>> collapseNumerics, Expression<Func<int>> maximumRepeat = null)
+        public IBodyWorkflowAction<DQGlobal> StringExtCollapseRepeatedType([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<int> maximumRepeat, [WorkflowExpression] Func<typeInput> type)
         {
-            var apiCallPath = "/StringExtension/CollapseAdjacentRepeatedCharacters";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["collapseNumerics"] = ExpressionConverter.Convert(collapseNumerics);
-            if (maximumRepeat != null)
-                callPayload.Queries["maximumRepeat"] = ExpressionConverter.Convert(maximumRepeat);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/CollapseAdjacentRepeatedType";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["MaximumRepeat"] = SourceExpressionConverter.ConvertO(maximumRepeat);
+                callPayload.Queries["type"] = SourceExpressionConverter.Convert(type);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtCollapseRepeatedType(Expression<Func<string>> input, Expression<Func<int>> maximumRepeat, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<DQGlobal> StringExtRemoveStopWords([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/CollapseAdjacentRepeatedType";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["MaximumRepeat"] = ExpressionConverter.Convert(maximumRepeat);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/FilterStopWords";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRemoveStopWords(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobal> StringExtRetainChars([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> replacement, [WorkflowExpression] Func<string> charactersToRetain)
         {
-            var apiCallPath = "/StringExtension/FilterStopWords";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/RetainCharacters";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["replacement"] = SourceExpressionConverter.ConvertO(replacement);
+                callPayload.Queries["charactersToRetain"] = SourceExpressionConverter.ConvertO(charactersToRetain);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRetainChars(Expression<Func<string>> input, Expression<Func<string>> replacement, Expression<Func<string>> charactersToRetain)
+        public IBodyWorkflowAction<DQGlobal> StringExtExtractChars([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<int> extractLength, [WorkflowExpression] Func<extractFromInput> extractFrom)
         {
-            var apiCallPath = "/StringExtension/RetainCharacters";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["replacement"] = ExpressionConverter.Convert(replacement);
-            callPayload.Queries["charactersToRetain"] = ExpressionConverter.Convert(charactersToRetain);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/ExtractCharacters";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["extractLength"] = SourceExpressionConverter.ConvertO(extractLength);
+                callPayload.Queries["extractFrom"] = SourceExpressionConverter.Convert(extractFrom);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtExtractChars(Expression<Func<string>> input, Expression<Func<int>> extractLength, Expression<Func<extractFromInput>> extractFrom)
+        public IBodyWorkflowAction<DQGlobal> StringExtExtractWords([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<int> extractLength, [WorkflowExpression] Func<extractFromInput> extractFrom)
         {
-            var apiCallPath = "/StringExtension/ExtractCharacters";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["extractLength"] = ExpressionConverter.Convert(extractLength);
-            callPayload.Queries["extractFrom"] = ExpressionConverter.Convert(extractFrom);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/ExtractWords";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["extractLength"] = SourceExpressionConverter.ConvertO(extractLength);
+                callPayload.Queries["extractFrom"] = SourceExpressionConverter.Convert(extractFrom);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtExtractWords(Expression<Func<string>> input, Expression<Func<int>> extractLength, Expression<Func<extractFromInput>> extractFrom)
+        public IBodyWorkflowAction<DQGlobal> StringExtRemoveHTML([WorkflowExpression] Func<string> input)
         {
-            var apiCallPath = "/StringExtension/ExtractWords";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["extractLength"] = ExpressionConverter.Convert(extractLength);
-            callPayload.Queries["extractFrom"] = ExpressionConverter.Convert(extractFrom);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/RemoveHTML";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtRemoveHTML(Expression<Func<string>> input)
+        public IBodyWorkflowAction<DQGlobalBool> StringExtEndsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> checkfor)
         {
-            var apiCallPath = "/StringExtension/RemoveHTML";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/EndsWith";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["checkfor"] = SourceExpressionConverter.ConvertO(checkfor);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtEndsWith(Expression<Func<string>> input, Expression<Func<string>> checkfor)
+        public IBodyWorkflowAction<DQGlobalBool> StringExtStartsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> checkfor)
         {
-            var apiCallPath = "/StringExtension/EndsWith";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["checkfor"] = ExpressionConverter.Convert(checkfor);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/StartsWith";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["checkfor"] = SourceExpressionConverter.ConvertO(checkfor);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtStartsWith(Expression<Func<string>> input, Expression<Func<string>> checkfor)
+        public IBodyWorkflowAction<DQGlobal> StringExtEnsureEndsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> checkFor)
         {
-            var apiCallPath = "/StringExtension/StartsWith";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["checkfor"] = ExpressionConverter.Convert(checkfor);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/EnsureEndsWith";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["checkFor"] = SourceExpressionConverter.ConvertO(checkFor);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtEnsureEndsWith(Expression<Func<string>> input, Expression<Func<string>> checkFor)
+        public IBodyWorkflowAction<DQGlobal> StringExtEnsureStartEndsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> checkFor)
         {
-            var apiCallPath = "/StringExtension/EnsureEndsWith";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["checkFor"] = ExpressionConverter.Convert(checkFor);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/EnsureStartsAndEndsWith";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["checkFor"] = SourceExpressionConverter.ConvertO(checkFor);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtEnsureStartEndsWith(Expression<Func<string>> input, Expression<Func<string>> checkFor)
+        public IBodyWorkflowAction<DQGlobal> StringExtEnsureStartsWith([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<string> checkFor)
         {
-            var apiCallPath = "/StringExtension/EnsureStartsAndEndsWith";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["checkFor"] = ExpressionConverter.Convert(checkFor);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/EnsureStartsWith";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["checkFor"] = SourceExpressionConverter.ConvertO(checkFor);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobal>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobal> StringExtEnsureStartsWith(Expression<Func<string>> input, Expression<Func<string>> checkFor)
+        public IBodyWorkflowAction<DQGlobalBool> StringExtStartWithType([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<typeInput> type)
         {
-            var apiCallPath = "/StringExtension/EnsureStartsWith";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["checkFor"] = ExpressionConverter.Convert(checkFor);
-            return new ApiConnectionAction<DQGlobal>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/StartsWithType";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["type"] = SourceExpressionConverter.Convert(type);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtStartWithType(Expression<Func<string>> input, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<DQGlobalBool> StringExtEndsWithType([WorkflowExpression] Func<string> input, [WorkflowExpression] Func<typeInput> type)
         {
-            var apiCallPath = "/StringExtension/StartsWithType";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/StringExtension/EndsWithType";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Input"] = SourceExpressionConverter.ConvertO(input);
+                callPayload.Queries["type"] = SourceExpressionConverter.Convert(type);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DQGlobalBool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dqondemand")]
-        public IBodyWorkflowAction<DQGlobalBool> StringExtEndsWithType(Expression<Func<string>> input, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<GetUsageV2> UsageGet([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<summariseByInput> summariseBy = null)
         {
-            var apiCallPath = "/StringExtension/EndsWithType";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Input"] = ExpressionConverter.Convert(input);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<DQGlobalBool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Account/Usage/v2.0";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["StartDate"] = SourceExpressionConverter.ConvertO(startDate);
+                callPayload.Queries["EndDate"] = SourceExpressionConverter.ConvertO(endDate);
+                if (summariseBy != null)
+                    callPayload.Queries["SummariseBy"] = SourceExpressionConverter.Convert(summariseBy);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetUsageV2>(BuildSourceInput);
         }
     }
 
     public class DqondemandTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class GetUsage
-    {
-        [JsonProperty("status")]
-        public int Status { get; set; }
-
-        [JsonProperty("message")]
-        public string Message { get; set; }
-
-        [JsonProperty("data")]
-        public GetUsageDataType Data { get; set; }
-    }
-
-    public class GetUsageDataType
-    {
-        public GetUsageDataTypeFilterCriteriaType FilterCriteria { get; set; }
-        public GetUsageDataTypeResultsTypeItem[] Results { get; set; }
-    }
-
-    public class GetUsageDataTypeFilterCriteriaType
-    {
-        [JsonProperty("startDate")]
-        public string StartDate { get; set; }
-
-        [JsonProperty("endDate")]
-        public string EndDate { get; set; }
-    }
-
-    public class GetUsageDataTypeResultsTypeItem
-    {
-        [JsonProperty("providerName")]
-        public string ProviderName { get; set; }
-
-        [JsonProperty("usage")]
-        public GetUsageDataTypeResultsTypeItemUsageTypeItem[] Usage { get; set; }
-    }
-
-    public class GetUsageDataTypeResultsTypeItemUsageTypeItem
-    {
-        [JsonProperty("functionName")]
-        public string FunctionName { get; set; }
-
-        [JsonProperty("creditsUsed")]
-        public int CreditsUsed { get; set; }
     }
 
     public class GetPricesOutput
@@ -2442,6 +2809,99 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
     {
         Start,
         End
+    }
+
+    public class GetUsageV2
+    {
+        [JsonProperty("status")]
+        public int Status { get; set; }
+
+        [JsonProperty("message")]
+        public string Message { get; set; }
+
+        [JsonProperty("data")]
+        public GetUsageV2DataType Data { get; set; }
+    }
+
+    public class GetUsageV2DataType
+    {
+        public GetUsageV2DataTypeFilterCriteriaType FilterCriteria { get; set; }
+        public GetUsageV2DataTypeResultsTypeItem[] Results { get; set; }
+        public GetUsageV2DataTypeSummaryTypeItem[] Summary { get; set; }
+    }
+
+    public class GetUsageV2DataTypeFilterCriteriaType
+    {
+        [JsonProperty("startDate")]
+        public string StartDate { get; set; }
+
+        [JsonProperty("endDate")]
+        public string EndDate { get; set; }
+    }
+
+    public class GetUsageV2DataTypeResultsTypeItem
+    {
+        [JsonProperty("providerName")]
+        public string ProviderName { get; set; }
+
+        [JsonProperty("usage")]
+        public GetUsageV2DataTypeResultsTypeItemUsageTypeItem[] Usage { get; set; }
+    }
+
+    public class GetUsageV2DataTypeResultsTypeItemUsageTypeItem
+    {
+        [JsonProperty("functionName")]
+        public string FunctionName { get; set; }
+
+        [JsonProperty("creditsUsed")]
+        public int CreditsUsed { get; set; }
+
+        [JsonProperty("creditsUsedBy")]
+        public GetUsageV2DataTypeResultsTypeItemUsageTypeItemCreditsUsedByTypeItem[] CreditsUsedBy { get; set; }
+    }
+
+    public class GetUsageV2DataTypeResultsTypeItemUsageTypeItemCreditsUsedByTypeItem
+    {
+        [JsonProperty("applicationName")]
+        public string ApplicationName { get; set; }
+
+        [JsonProperty("creditsUsed")]
+        public int CreditsUsed { get; set; }
+    }
+
+    public class GetUsageV2DataTypeSummaryTypeItem
+    {
+        [JsonProperty("periodStart")]
+        public string PeriodStart { get; set; }
+
+        [JsonProperty("periodEnd")]
+        public string PeriodEnd { get; set; }
+
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("creditsUsed")]
+        public int CreditsUsed { get; set; }
+
+        [JsonProperty("creditsUsedBy")]
+        public GetUsageV2DataTypeSummaryTypeItemCreditsUsedByTypeItem[] CreditsUsedBy { get; set; }
+    }
+
+    public class GetUsageV2DataTypeSummaryTypeItemCreditsUsedByTypeItem
+    {
+        [JsonProperty("applicationName")]
+        public string ApplicationName { get; set; }
+
+        [JsonProperty("creditsUsed")]
+        public int CreditsUsed { get; set; }
+    }
+
+    public enum summariseByInput
+    {
+        Day,
+        Month,
+        Year,
+        Quarter
     }
 }
 

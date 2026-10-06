@@ -12,18 +12,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
     public class ProgressusadvancedprActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "progressusadvancedpr")]
-        public IWorkflowAction Get(Expression<Func<string>> aPIVersion, Expression<Func<string>> tenantID, Expression<Func<string>> environmentName, Expression<Func<aPINameInput>> aPIName, Expression<Func<string>> aPIVersion2, Expression<Func<string>> companyID, Expression<Func<pluralAPINameInput>> pluralAPIName, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> orderby = null)
+        public IWorkflowAction Get([WorkflowExpression] Func<string> aPIVersion, [WorkflowExpression] Func<string> tenantId, [WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<aPINameInput> aPIName, [WorkflowExpression] Func<string> aPIVersion2, [WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<pluralAPINameInput> pluralAPIName, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> orderby = null)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(tenantID, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentName, 1), ExpressionConverter.ConvertWithUrlEncoding(aPIName, 1), ExpressionConverter.ConvertWithUrlEncoding(aPIVersion2, 1), ExpressionConverter.ConvertWithUrlEncoding(companyID, 1), ExpressionConverter.ConvertWithUrlEncoding(pluralAPIName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion2, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pluralAPIName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

@@ -15,42 +15,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
 
     public class CpqsyncTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ProductUpdated(Expression<Func<string>> tenantId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductUpdated([WorkflowExpression] Func<string> tenantId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/master-data/tenants/{0}/web-hooks/PricedItemUpdated", ExpressionConverter.ConvertWithUrlEncoding(tenantId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            callPayload.Headers["accept"] = Convert.ToString("*/*");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/master-data/tenants/{0}/web-hooks/PricedItemUpdated", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                callPayload.Headers["accept"] = Convert.ToString("*/*");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ProductCreated(Expression<Func<string>> tenantId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductCreated([WorkflowExpression] Func<string> tenantId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/master-data/tenants/{0}/web-hooks/PricedItemCreated", ExpressionConverter.ConvertWithUrlEncoding(tenantId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            callPayload.Headers["accept"] = Convert.ToString("*/*");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/master-data/tenants/{0}/web-hooks/PricedItemCreated", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                callPayload.Headers["accept"] = Convert.ToString("*/*");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

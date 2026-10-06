@@ -12,133 +12,141 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
     public class ViafirmaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
-        public IBodyWorkflowAction<SendSignRequestResponse> SendSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodygroupCode, Expression<Func<string>> bodynotificationsharedLinkemail, Expression<Func<string>> bodynotificationtext = null, Expression<Func<string>> bodynotificationdetail = null, Expression<Func<string>> bodynotificationsharedLinksubject = null, Expression<Func<string>> bodydocumenttemplateCode = null, Expression<Func<string>> bodycallbackMails = null)
+        public IBodyWorkflowAction<SendSignRequestResponse> SendSignRequest([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodygroupCode, [WorkflowExpression] Func<string> bodynotificationsharedLinkemail, [WorkflowExpression] Func<string> bodynotificationtext = null, [WorkflowExpression] Func<string> bodynotificationdetail = null, [WorkflowExpression] Func<string> bodynotificationsharedLinksubject = null, [WorkflowExpression] Func<string> bodydocumenttemplateCode = null, [WorkflowExpression] Func<string> bodycallbackMails = null)
         {
-            var apiCallPath = "/documents/api/v3/messages/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["groupCode"] = ExpressionConverter.ConvertO(bodygroupCode);
-            var workflowObject = new JObject();
-            var workflowObjectpropCount = 0;
-            workflowObject["type"] = "WEB";
-            workflowObjectpropCount++;
-            if (workflowObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["workflow"] = workflowObject;
+                var apiCallPath = "/documents/api/v3/messages/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["groupCode"] = SourceExpressionConverter.ConvertToken(bodygroupCode);
+                var workflowObject = new JObject();
+                var workflowObjectpropCount = 0;
+                workflowObject["type"] = "WEB";
+                workflowObjectpropCount++;
+                if (workflowObjectpropCount > 0)
+                {
+                    body["workflow"] = workflowObject;
+                    bodypropCount++;
+                }
 
-            var notificationObject = new JObject();
-            var notificationObjectpropCount = 0;
-            if (bodynotificationtext != null)
-            {
-                notificationObject["text"] = ExpressionConverter.ConvertO(bodynotificationtext);
-                notificationObjectpropCount++;
-            }
+                var notificationObject = new JObject();
+                var notificationObjectpropCount = 0;
+                if (bodynotificationtext != null)
+                {
+                    notificationObject["text"] = SourceExpressionConverter.ConvertToken(bodynotificationtext);
+                    notificationObjectpropCount++;
+                }
 
-            if (bodynotificationdetail != null)
-            {
-                notificationObject["detail"] = ExpressionConverter.ConvertO(bodynotificationdetail);
-                notificationObjectpropCount++;
-            }
+                if (bodynotificationdetail != null)
+                {
+                    notificationObject["detail"] = SourceExpressionConverter.ConvertToken(bodynotificationdetail);
+                    notificationObjectpropCount++;
+                }
 
-            var sharedLinkObject = new JObject();
-            var sharedLinkObjectpropCount = 0;
-            sharedLinkObjectpropCount++;
-            sharedLinkObject["email"] = ExpressionConverter.ConvertO(bodynotificationsharedLinkemail);
-            if (bodynotificationsharedLinksubject != null)
-            {
-                sharedLinkObject["subject"] = ExpressionConverter.ConvertO(bodynotificationsharedLinksubject);
+                var sharedLinkObject = new JObject();
+                var sharedLinkObjectpropCount = 0;
                 sharedLinkObjectpropCount++;
+                sharedLinkObject["email"] = SourceExpressionConverter.ConvertToken(bodynotificationsharedLinkemail);
+                if (bodynotificationsharedLinksubject != null)
+                {
+                    sharedLinkObject["subject"] = SourceExpressionConverter.ConvertToken(bodynotificationsharedLinksubject);
+                    sharedLinkObjectpropCount++;
+                }
+
+                if (sharedLinkObjectpropCount > 0)
+                {
+                    notificationObject["sharedLink"] = sharedLinkObject;
+                    notificationObjectpropCount++;
+                }
+
+                if (notificationObjectpropCount > 0)
+                {
+                    body["notification"] = notificationObject;
+                    bodypropCount++;
+                }
+
+                var documentObject = new JObject();
+                var documentObjectpropCount = 0;
+                if (bodydocumenttemplateCode != null)
+                {
+                    documentObject["templateCode"] = SourceExpressionConverter.ConvertToken(bodydocumenttemplateCode);
+                    documentObjectpropCount++;
+                }
+
+                if (documentObjectpropCount > 0)
+                {
+                    body["document"] = documentObject;
+                    bodypropCount++;
+                }
+
+                if (bodycallbackMails != null)
+                {
+                    body["callbackMails"] = SourceExpressionConverter.ConvertToken(bodycallbackMails);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (sharedLinkObjectpropCount > 0)
-            {
-                notificationObject["sharedLink"] = sharedLinkObject;
-                notificationObjectpropCount++;
-            }
-
-            if (notificationObjectpropCount > 0)
-            {
-                body["notification"] = notificationObject;
-                bodypropCount++;
-            }
-
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (bodydocumenttemplateCode != null)
-            {
-                documentObject["templateCode"] = ExpressionConverter.ConvertO(bodydocumenttemplateCode);
-                documentObjectpropCount++;
-            }
-
-            if (documentObjectpropCount > 0)
-            {
-                body["document"] = documentObject;
-                bodypropCount++;
-            }
-
-            if (bodycallbackMails != null)
-            {
-                body["callbackMails"] = ExpressionConverter.ConvertO(bodycallbackMails);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendSignRequestResponse>(callPayload);
+            return new ApiConnectionAction<SendSignRequestResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
-        public IBodyWorkflowAction<CreateSignRequestResponse> CreateSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodygroupCode, Expression<Func<string>> bodydocumenttemplateCode = null)
+        public IBodyWorkflowAction<CreateSignRequestResponse> CreateSignRequest([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodygroupCode, [WorkflowExpression] Func<string> bodydocumenttemplateCode = null)
         {
-            var apiCallPath = "/documents/api/v3/messages/dispatch";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["groupCode"] = ExpressionConverter.ConvertO(bodygroupCode);
-            var workflowObject = new JObject();
-            var workflowObjectpropCount = 0;
-            workflowObject["type"] = "PRESENTIAL";
-            workflowObjectpropCount++;
-            if (workflowObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["workflow"] = workflowObject;
+                var apiCallPath = "/documents/api/v3/messages/dispatch";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["groupCode"] = SourceExpressionConverter.ConvertToken(bodygroupCode);
+                var workflowObject = new JObject();
+                var workflowObjectpropCount = 0;
+                workflowObject["type"] = "PRESENTIAL";
+                workflowObjectpropCount++;
+                if (workflowObjectpropCount > 0)
+                {
+                    body["workflow"] = workflowObject;
+                    bodypropCount++;
+                }
+
+                var documentObject = new JObject();
+                var documentObjectpropCount = 0;
+                if (bodydocumenttemplateCode != null)
+                {
+                    documentObject["templateCode"] = SourceExpressionConverter.ConvertToken(bodydocumenttemplateCode);
+                    documentObjectpropCount++;
+                }
+
+                if (documentObjectpropCount > 0)
+                {
+                    body["document"] = documentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (bodydocumenttemplateCode != null)
-            {
-                documentObject["templateCode"] = ExpressionConverter.ConvertO(bodydocumenttemplateCode);
-                documentObjectpropCount++;
-            }
-
-            if (documentObjectpropCount > 0)
-            {
-                body["document"] = documentObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateSignRequestResponse>(callPayload);
+            return new ApiConnectionAction<CreateSignRequestResponse>(BuildSourceInput);
         }
     }
 

@@ -12,48 +12,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
     public class SendansmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendansms")]
-        public IWorkflowAction SendSms(Expression<Func<string>> xTopMessageKey, Expression<Func<string>> contentType = null, Expression<Func<string>> bodydatafrom = null, Expression<Func<string[]>> bodydatato = null, Expression<Func<string>> bodydatatext = null)
+        public IWorkflowAction SendSms([WorkflowExpression] Func<string> xTopMessageKey, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> bodydatafrom = null, [WorkflowExpression] Func<string[]> bodydatato = null, [WorkflowExpression] Func<string> bodydatatext = null)
         {
-            var apiCallPath = "/messages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-TopMessage-Key"] = ExpressionConverter.Convert(xTopMessageKey);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (bodydatafrom != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                dataObject["from"] = ExpressionConverter.ConvertO(bodydatafrom);
-                dataObjectpropCount++;
+                var apiCallPath = "/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-TopMessage-Key"] = SourceExpressionConverter.ConvertO(xTopMessageKey);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (bodydatafrom != null)
+                {
+                    dataObject["from"] = SourceExpressionConverter.ConvertToken(bodydatafrom);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydatato != null)
+                {
+                    dataObject["to"] = SourceExpressionConverter.ConvertToken(bodydatato);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydatatext != null)
+                {
+                    dataObject["text"] = SourceExpressionConverter.ConvertToken(bodydatatext);
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydatato != null)
-            {
-                dataObject["to"] = ExpressionConverter.ConvertO(bodydatato);
-                dataObjectpropCount++;
-            }
-
-            if (bodydatatext != null)
-            {
-                dataObject["text"] = ExpressionConverter.ConvertO(bodydatatext);
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

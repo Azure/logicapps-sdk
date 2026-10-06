@@ -12,52 +12,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
     public class MystromipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
-        public IBodyWorkflowAction<ExecuteSceneResponse> ExecuteScene(Expression<Func<string>> sceneID, Expression<Func<string>> authToken)
+        public IBodyWorkflowAction<ExecuteSceneResponse> ExecuteScene([WorkflowExpression] Func<string> sceneId, [WorkflowExpression] Func<string> authToken)
         {
-            var apiCallPath = String.Format("/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(sceneID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
-            return new ApiConnectionAction<ExecuteSceneResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
-        public IBodyWorkflowAction<GetWebhookResponse> GetWebhook(Expression<Func<string>> deviceID, Expression<Func<string>> authToken)
-        {
-            var apiCallPath = String.Format("/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
-            return new ApiConnectionAction<GetWebhookResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
-        public IBodyWorkflowAction<DeleteWebhookResponse> DeleteWebhook(Expression<Func<string>> deviceID, Expression<Func<string>> authToken)
-        {
-            var apiCallPath = String.Format("/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceID, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
-            return new ApiConnectionAction<DeleteWebhookResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
-        public IBodyWorkflowAction<CreateWebhookResponse> CreateWebhook(Expression<Func<string>> deviceID, Expression<Func<string>> webhook, Expression<Func<string>> authToken)
-        {
-            var apiCallPath = String.Format("/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["webhook"] = ExpressionConverter.Convert(webhook);
-            callPayload.Queries["authToken"] = ExpressionConverter.Convert(authToken);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/scene/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sceneId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["authToken"] = SourceExpressionConverter.ConvertO(authToken);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CreateWebhookResponse>(callPayload);
+            return new ApiConnectionAction<ExecuteSceneResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
+        public IBodyWorkflowAction<GetWebhookResponse> GetWebhook([WorkflowExpression] Func<string> deviceId, [WorkflowExpression] Func<string> authToken)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["authToken"] = SourceExpressionConverter.ConvertO(authToken);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetWebhookResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
+        public IBodyWorkflowAction<DeleteWebhookResponse> DeleteWebhook([WorkflowExpression] Func<string> deviceId, [WorkflowExpression] Func<string> authToken)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["authToken"] = SourceExpressionConverter.ConvertO(authToken);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeleteWebhookResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
+        public IBodyWorkflowAction<CreateWebhookResponse> CreateWebhook([WorkflowExpression] Func<string> deviceId, [WorkflowExpression] Func<string> webhook, [WorkflowExpression] Func<string> authToken)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["webhook"] = SourceExpressionConverter.ConvertO(webhook);
+                callPayload.Queries["authToken"] = SourceExpressionConverter.ConvertO(authToken);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateWebhookResponse>(BuildSourceInput);
         }
     }
 

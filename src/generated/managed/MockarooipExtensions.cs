@@ -12,38 +12,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockarooip
     public class MockarooipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockarooip")]
-        public IBodyWorkflowAction<JToken[]> GenerateDataFromExistingSchema(Expression<Func<string>> bodyschemaName = null, Expression<Func<string>> bodyschemaJSON = null, Expression<Func<int>> bodyrecordCount = null)
+        public IBodyWorkflowAction<JToken[]> GenerateDataFromExistingSchema([WorkflowExpression] Func<string> bodyschemaName = null, [WorkflowExpression] Func<string> bodyschemaJSON = null, [WorkflowExpression] Func<int> bodyrecordCount = null)
         {
-            var apiCallPath = "/api/generate.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["array"] = Convert.ToString(true);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyschemaName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["schema"] = ExpressionConverter.ConvertO(bodyschemaName);
-                bodypropCount++;
+                var apiCallPath = "/api/generate.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["array"] = Convert.ToString(true);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyschemaName != null)
+                {
+                    body["schema"] = SourceExpressionConverter.ConvertToken(bodyschemaName);
+                    bodypropCount++;
+                }
+
+                if (bodyschemaJSON != null)
+                {
+                    body["fields"] = SourceExpressionConverter.ConvertToken(bodyschemaJSON);
+                    bodypropCount++;
+                }
+
+                if (bodyrecordCount != null)
+                {
+                    body["count"] = SourceExpressionConverter.ConvertToken(bodyrecordCount);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyschemaJSON != null)
-            {
-                body["fields"] = ExpressionConverter.ConvertO(bodyschemaJSON);
-                bodypropCount++;
-            }
-
-            if (bodyrecordCount != null)
-            {
-                body["count"] = ExpressionConverter.ConvertO(bodyrecordCount);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken[]>(callPayload);
+            return new ApiConnectionAction<JToken[]>(BuildSourceInput);
         }
     }
 

@@ -12,112 +12,129 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expirationreminder
     public class ExpirationreminderActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
-        public IBodyWorkflowAction<FindExpirationResponse> FindExpiration(Expression<Func<string>> category = null, Expression<Func<string>> email = null, Expression<Func<string>> name = null)
+        public IBodyWorkflowAction<FindExpirationResponse> FindExpiration([WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> name = null)
         {
-            var apiCallPath = "/v1/expirationitems/find";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            return new ApiConnectionAction<FindExpirationResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/expirationitems/find";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (category != null)
+                    callPayload.Queries["category"] = SourceExpressionConverter.ConvertO(category);
+                if (email != null)
+                    callPayload.Queries["email"] = SourceExpressionConverter.ConvertO(email);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FindExpirationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
-        public IWorkflowAction CreateContact(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null)
+        public IWorkflowAction CreateContact([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyemail = null)
         {
-            var apiCallPath = "/v1/contacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
+                var apiCallPath = "/v1/contacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyemail != null)
+                {
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyemail != null)
-            {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
-        public IBodyWorkflowAction<RenewExpirationResponse> RenewExpiration(Expression<Func<string>> expirationItemId, Expression<Func<string>> bodyexpirationDate = null, Expression<Func<string>> bodydetails = null)
+        public IBodyWorkflowAction<RenewExpirationResponse> RenewExpiration([WorkflowExpression] Func<string> expirationItemId, [WorkflowExpression] Func<string> bodyexpirationDate = null, [WorkflowExpression] Func<string> bodydetails = null)
         {
-            var apiCallPath = String.Format("/v1/expirationitems/{0}/renew", ExpressionConverter.ConvertWithUrlEncoding(expirationItemId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyexpirationDate != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["expiration_date"] = ExpressionConverter.ConvertO(bodyexpirationDate);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/expirationitems/{0}/renew", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(expirationItemId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyexpirationDate != null)
+                {
+                    body["expiration_date"] = SourceExpressionConverter.ConvertToken(bodyexpirationDate);
+                    bodypropCount++;
+                }
+
+                if (bodydetails != null)
+                {
+                    body["details"] = SourceExpressionConverter.ConvertToken(bodydetails);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydetails != null)
-            {
-                body["details"] = ExpressionConverter.ConvertO(bodydetails);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<RenewExpirationResponse>(callPayload);
+            return new ApiConnectionAction<RenewExpirationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expirationreminder")]
-        public IBodyWorkflowAction<CreateExpirationItemResponse> CreateExpirationItem(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycategoryName = null, Expression<Func<string>> bodyexpirationDate = null)
+        public IBodyWorkflowAction<CreateExpirationItemResponse> CreateExpirationItem([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycategoryName = null, [WorkflowExpression] Func<string> bodyexpirationDate = null)
         {
-            var apiCallPath = "/v1/expirationitems";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
+                var apiCallPath = "/v1/expirationitems";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodycategoryName != null)
+                {
+                    body["category_name"] = SourceExpressionConverter.ConvertToken(bodycategoryName);
+                    bodypropCount++;
+                }
+
+                if (bodyexpirationDate != null)
+                {
+                    body["expiration_date"] = SourceExpressionConverter.ConvertToken(bodyexpirationDate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycategoryName != null)
-            {
-                body["category_name"] = ExpressionConverter.ConvertO(bodycategoryName);
-                bodypropCount++;
-            }
-
-            if (bodyexpirationDate != null)
-            {
-                body["expiration_date"] = ExpressionConverter.ConvertO(bodyexpirationDate);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateExpirationItemResponse>(callPayload);
+            return new ApiConnectionAction<CreateExpirationItemResponse>(BuildSourceInput);
         }
     }
 

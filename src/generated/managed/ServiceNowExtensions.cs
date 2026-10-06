@@ -12,262 +12,361 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
     public class ServiceNowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction GetAttachmentMetdata(Expression<Func<string>> sysparmLimit = null, Expression<Func<string>> sysparmOffset = null, Expression<Func<string>> sysparmQuery = null)
+        public IWorkflowAction GetAttachmentMetdata([WorkflowExpression] Func<string> sysparmLimit = null, [WorkflowExpression] Func<string> sysparmOffset = null, [WorkflowExpression] Func<string> sysparmQuery = null)
         {
-            var apiCallPath = "/api/now/v1/attachment";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sysparm_limit"] = Convert.ToString("1000");
-            if (sysparmLimit != null)
-                callPayload.Queries["sysparm_limit"] = ExpressionConverter.Convert(sysparmLimit);
-            callPayload.Queries["sysparm_offset"] = Convert.ToString("0");
-            if (sysparmOffset != null)
-                callPayload.Queries["sysparm_offset"] = ExpressionConverter.Convert(sysparmOffset);
-            if (sysparmQuery != null)
-                callPayload.Queries["sysparm_query"] = ExpressionConverter.Convert(sysparmQuery);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/now/v1/attachment";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sysparm_limit"] = Convert.ToString("1000");
+                if (sysparmLimit != null)
+                    callPayload.Queries["sysparm_limit"] = SourceExpressionConverter.ConvertO(sysparmLimit);
+                callPayload.Queries["sysparm_offset"] = Convert.ToString("0");
+                if (sysparmOffset != null)
+                    callPayload.Queries["sysparm_offset"] = SourceExpressionConverter.ConvertO(sysparmOffset);
+                if (sysparmQuery != null)
+                    callPayload.Queries["sysparm_query"] = SourceExpressionConverter.ConvertO(sysparmQuery);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<UploadAttachmentResponse> UploadAttachmentFile(Expression<Func<string>> tableName, Expression<Func<string>> tableSysId, Expression<Func<string>> fileName, Expression<Func<string>> file = null)
+        public IBodyWorkflowAction<UploadAttachmentResponse> UploadAttachmentFile([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> tableSysId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> @file = null)
         {
-            var apiCallPath = "/api/now/v1/attachment/file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["table_name"] = ExpressionConverter.Convert(tableName);
-            callPayload.Queries["table_sys_id"] = ExpressionConverter.Convert(tableSysId);
-            callPayload.Queries["file_name"] = ExpressionConverter.Convert(fileName);
-            callPayload.Body = ExpressionConverter.ConvertO(file);
-            return new ApiConnectionAction<UploadAttachmentResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/now/v1/attachment/file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["table_name"] = SourceExpressionConverter.ConvertO(tableName);
+                callPayload.Queries["table_sys_id"] = SourceExpressionConverter.ConvertO(tableSysId);
+                callPayload.Queries["file_name"] = SourceExpressionConverter.ConvertO(fileName);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(@file);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UploadAttachmentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<UploadAttachmentResponse> UploadAttachment(Expression<Func<object>> attachmentContent, Expression<Func<string>> tableName, Expression<Func<string>> tableSysId)
+        public IWorkflowAction RetrieveAttachmentMetadata([WorkflowExpression] Func<string> sysId)
         {
-            var apiCallPath = "/api/now/v1/attachment/upload";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UploadAttachmentResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v1/attachment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction RetrieveAttachmentMetadata(Expression<Func<string>> sysId)
+        public IWorkflowAction DeleteAttachment([WorkflowExpression] Func<string> sysId)
         {
-            var apiCallPath = String.Format("/api/now/v1/attachment/{0}", ExpressionConverter.ConvertWithUrlEncoding(sysId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v1/attachment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction DeleteAttachment(Expression<Func<string>> sysId)
+        public IWorkflowAction RetrieveAttachmentContent([WorkflowExpression] Func<string> sysId)
         {
-            var apiCallPath = String.Format("/api/now/v1/attachment/{0}", ExpressionConverter.ConvertWithUrlEncoding(sysId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v1/attachment/{0}/file", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction RetrieveAttachmentContent(Expression<Func<string>> sysId)
+        public IBodyWorkflowAction<GetRecordsResponse> GetRecords([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmQuery = null, [WorkflowExpression] Func<int> sysparmLimit = null, [WorkflowExpression] Func<int> sysparmOffset = null, [WorkflowExpression] Func<string> sysparmFields = null)
         {
-            var apiCallPath = String.Format("/api/now/v1/attachment/{0}/file", ExpressionConverter.ConvertWithUrlEncoding(sysId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v2/table/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableType, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
+                if (sysparmDisplayValue != null)
+                    callPayload.Queries["sysparm_display_value"] = SourceExpressionConverter.ConvertO(sysparmDisplayValue);
+                callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
+                if (sysparmExcludeReferenceLink != null)
+                    callPayload.Queries["sysparm_exclude_reference_link"] = SourceExpressionConverter.ConvertO(sysparmExcludeReferenceLink);
+                if (sysparmQuery != null)
+                    callPayload.Queries["sysparm_query"] = SourceExpressionConverter.ConvertO(sysparmQuery);
+                if (sysparmLimit != null)
+                    callPayload.Queries["sysparm_limit"] = SourceExpressionConverter.ConvertO(sysparmLimit);
+                if (sysparmOffset != null)
+                    callPayload.Queries["sysparm_offset"] = SourceExpressionConverter.ConvertO(sysparmOffset);
+                if (sysparmFields != null)
+                    callPayload.Queries["sysparm_fields"] = SourceExpressionConverter.ConvertO(sysparmFields);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRecordsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetRecordsResponse> GetRecords(Expression<Func<string>> tableType, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmQuery = null, Expression<Func<int>> sysparmLimit = null, Expression<Func<int>> sysparmOffset = null, Expression<Func<string>> sysparmFields = null)
+        public IBodyWorkflowAction<SingleRecordResponse> CreateRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<object> body = null, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmInputDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmFields = null)
         {
-            var apiCallPath = String.Format("/api/now/v2/table/{0}", ExpressionConverter.ConvertWithUrlEncoding(tableType, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
-            if (sysparmDisplayValue != null)
-                callPayload.Queries["sysparm_display_value"] = ExpressionConverter.Convert(sysparmDisplayValue);
-            callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
-            if (sysparmExcludeReferenceLink != null)
-                callPayload.Queries["sysparm_exclude_reference_link"] = ExpressionConverter.Convert(sysparmExcludeReferenceLink);
-            if (sysparmQuery != null)
-                callPayload.Queries["sysparm_query"] = ExpressionConverter.Convert(sysparmQuery);
-            if (sysparmLimit != null)
-                callPayload.Queries["sysparm_limit"] = ExpressionConverter.Convert(sysparmLimit);
-            if (sysparmOffset != null)
-                callPayload.Queries["sysparm_offset"] = ExpressionConverter.Convert(sysparmOffset);
-            if (sysparmFields != null)
-                callPayload.Queries["sysparm_fields"] = ExpressionConverter.Convert(sysparmFields);
-            return new ApiConnectionAction<GetRecordsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v2/table/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
+                if (sysparmDisplayValue != null)
+                    callPayload.Queries["sysparm_display_value"] = SourceExpressionConverter.ConvertO(sysparmDisplayValue);
+                callPayload.Queries["sysparm_input_display_value"] = Convert.ToString(false);
+                if (sysparmInputDisplayValue != null)
+                    callPayload.Queries["sysparm_input_display_value"] = SourceExpressionConverter.ConvertO(sysparmInputDisplayValue);
+                callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
+                if (sysparmExcludeReferenceLink != null)
+                    callPayload.Queries["sysparm_exclude_reference_link"] = SourceExpressionConverter.ConvertO(sysparmExcludeReferenceLink);
+                if (sysparmFields != null)
+                    callPayload.Queries["sysparm_fields"] = SourceExpressionConverter.ConvertO(sysparmFields);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SingleRecordResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<SingleRecordResponse> CreateRecord(Expression<Func<string>> tableType, Expression<Func<object>> body = null, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmFields = null)
+        public IBodyWorkflowAction<SingleRecordResponse> GetRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<string> sysid, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmFields = null)
         {
-            var apiCallPath = String.Format("/api/now/v2/table/{0}", ExpressionConverter.ConvertWithUrlEncoding(tableType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
-            if (sysparmDisplayValue != null)
-                callPayload.Queries["sysparm_display_value"] = ExpressionConverter.Convert(sysparmDisplayValue);
-            callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
-            if (sysparmExcludeReferenceLink != null)
-                callPayload.Queries["sysparm_exclude_reference_link"] = ExpressionConverter.Convert(sysparmExcludeReferenceLink);
-            if (sysparmFields != null)
-                callPayload.Queries["sysparm_fields"] = ExpressionConverter.Convert(sysparmFields);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<SingleRecordResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v2/table/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
+                if (sysparmDisplayValue != null)
+                    callPayload.Queries["sysparm_display_value"] = SourceExpressionConverter.ConvertO(sysparmDisplayValue);
+                callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
+                if (sysparmExcludeReferenceLink != null)
+                    callPayload.Queries["sysparm_exclude_reference_link"] = SourceExpressionConverter.ConvertO(sysparmExcludeReferenceLink);
+                if (sysparmFields != null)
+                    callPayload.Queries["sysparm_fields"] = SourceExpressionConverter.ConvertO(sysparmFields);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SingleRecordResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<SingleRecordResponse> GetRecord(Expression<Func<string>> tableType, Expression<Func<string>> sysid, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmFields = null)
+        public IBodyWorkflowAction<SingleRecordResponse> UpdateRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<string> sysid, [WorkflowExpression] Func<object> body = null, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmInputDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmFields = null)
         {
-            var apiCallPath = String.Format("/api/now/v2/table/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(tableType, 1), ExpressionConverter.ConvertWithUrlEncoding(sysid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
-            if (sysparmDisplayValue != null)
-                callPayload.Queries["sysparm_display_value"] = ExpressionConverter.Convert(sysparmDisplayValue);
-            callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
-            if (sysparmExcludeReferenceLink != null)
-                callPayload.Queries["sysparm_exclude_reference_link"] = ExpressionConverter.Convert(sysparmExcludeReferenceLink);
-            if (sysparmFields != null)
-                callPayload.Queries["sysparm_fields"] = ExpressionConverter.Convert(sysparmFields);
-            return new ApiConnectionAction<SingleRecordResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v2/table/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysid, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
+                if (sysparmDisplayValue != null)
+                    callPayload.Queries["sysparm_display_value"] = SourceExpressionConverter.ConvertO(sysparmDisplayValue);
+                callPayload.Queries["sysparm_input_display_value"] = Convert.ToString(false);
+                if (sysparmInputDisplayValue != null)
+                    callPayload.Queries["sysparm_input_display_value"] = SourceExpressionConverter.ConvertO(sysparmInputDisplayValue);
+                callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
+                if (sysparmExcludeReferenceLink != null)
+                    callPayload.Queries["sysparm_exclude_reference_link"] = SourceExpressionConverter.ConvertO(sysparmExcludeReferenceLink);
+                if (sysparmFields != null)
+                    callPayload.Queries["sysparm_fields"] = SourceExpressionConverter.ConvertO(sysparmFields);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SingleRecordResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<SingleRecordResponse> UpdateRecord(Expression<Func<string>> tableType, Expression<Func<string>> sysid, Expression<Func<object>> body = null, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmFields = null)
+        public IWorkflowAction DeleteRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<string> sysid)
         {
-            var apiCallPath = String.Format("/api/now/v2/table/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(tableType, 1), ExpressionConverter.ConvertWithUrlEncoding(sysid, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
-            if (sysparmDisplayValue != null)
-                callPayload.Queries["sysparm_display_value"] = ExpressionConverter.Convert(sysparmDisplayValue);
-            callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
-            if (sysparmExcludeReferenceLink != null)
-                callPayload.Queries["sysparm_exclude_reference_link"] = ExpressionConverter.Convert(sysparmExcludeReferenceLink);
-            if (sysparmFields != null)
-                callPayload.Queries["sysparm_fields"] = ExpressionConverter.Convert(sysparmFields);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<SingleRecordResponse>(callPayload);
-        }
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/now/v2/table/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableType, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysid, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction DeleteRecord(Expression<Func<string>> tableType, Expression<Func<string>> sysid)
-        {
-            var apiCallPath = String.Format("/api/now/v2/table/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(tableType, 1), ExpressionConverter.ConvertWithUrlEncoding(sysid, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
         public IBodyWorkflowAction<GetTypesResponse> GetRecordTypes()
         {
-            var apiCallPath = "/api/now/doc/table/schema";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTypesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetCatalogsResponse> GetCatalogs(Expression<Func<int>> sysparmLimit = null, Expression<Func<string>> sysparmText = null)
-        {
-            var apiCallPath = "/api/sn_sc/servicecatalog/catalogs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sysparmLimit != null)
-                callPayload.Queries["sysparm_limit"] = ExpressionConverter.Convert(sysparmLimit);
-            if (sysparmText != null)
-                callPayload.Queries["sysparm_text"] = ExpressionConverter.Convert(sysparmText);
-            return new ApiConnectionAction<GetCatalogsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetCatalogCategoriesResponse> GetCatalogCategories(Expression<Func<string>> catalogId, Expression<Func<int>> sysparmLimit = null, Expression<Func<int>> sysparmOffset = null)
-        {
-            var apiCallPath = String.Format("/api/sn_sc/servicecatalog/catalogs/{0}/categories", ExpressionConverter.ConvertWithUrlEncoding(catalogId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sysparmLimit != null)
-                callPayload.Queries["sysparm_limit"] = ExpressionConverter.Convert(sysparmLimit);
-            if (sysparmOffset != null)
-                callPayload.Queries["sysparm_offset"] = ExpressionConverter.Convert(sysparmOffset);
-            return new ApiConnectionAction<GetCatalogCategoriesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetCatalogItemsResponse> GetCatalogItems(Expression<Func<int>> sysparmLimit, Expression<Func<string>> sysparmCategory = null, Expression<Func<string>> sysparmText = null, Expression<Func<string>> sysparmCatalog = null)
-        {
-            var apiCallPath = "/api/sn_sc/servicecatalog/items";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sysparmCategory != null)
-                callPayload.Queries["sysparm_category"] = ExpressionConverter.Convert(sysparmCategory);
-            callPayload.Queries["sysparm_limit"] = ExpressionConverter.Convert(sysparmLimit);
-            if (sysparmText != null)
-                callPayload.Queries["sysparm_text"] = ExpressionConverter.Convert(sysparmText);
-            if (sysparmCatalog != null)
-                callPayload.Queries["sysparm_catalog"] = ExpressionConverter.Convert(sysparmCatalog);
-            return new ApiConnectionAction<GetCatalogItemsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetCatalogItemResponse> GetCatalogItem(Expression<Func<string>> sysId)
-        {
-            var apiCallPath = String.Format("/api/sn_sc/servicecatalog/items/{0}", ExpressionConverter.ConvertWithUrlEncoding(sysId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCatalogItemResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<OrderItemResponse> OrderItem(Expression<Func<string>> sysId, Expression<Func<int>> bodysysparmQuantity, Expression<Func<string>> bodysysparmRequestedFor = null, Expression<Func<object>> bodyvariables = null)
-        {
-            var apiCallPath = String.Format("/api/sn_sc/servicecatalog/items/{0}/order_now", ExpressionConverter.ConvertWithUrlEncoding(sysId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["sysparm_quantity"] = ExpressionConverter.ConvertO(bodysysparmQuantity);
-            if (bodysysparmRequestedFor != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["sysparm_requested_for"] = ExpressionConverter.ConvertO(bodysysparmRequestedFor);
+                var apiCallPath = "/api/now/doc/table/schema";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTypesResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
+        public IBodyWorkflowAction<GetCatalogsResponse> GetCatalogs([WorkflowExpression] Func<int> sysparmLimit = null, [WorkflowExpression] Func<string> sysparmText = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/sn_sc/servicecatalog/catalogs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sysparmLimit != null)
+                    callPayload.Queries["sysparm_limit"] = SourceExpressionConverter.ConvertO(sysparmLimit);
+                if (sysparmText != null)
+                    callPayload.Queries["sysparm_text"] = SourceExpressionConverter.ConvertO(sysparmText);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCatalogsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
+        public IBodyWorkflowAction<GetCatalogCategoriesResponse> GetCatalogCategories([WorkflowExpression] Func<string> catalogId, [WorkflowExpression] Func<int> sysparmLimit = null, [WorkflowExpression] Func<int> sysparmOffset = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/sn_sc/servicecatalog/catalogs/{0}/categories", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(catalogId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sysparmLimit != null)
+                    callPayload.Queries["sysparm_limit"] = SourceExpressionConverter.ConvertO(sysparmLimit);
+                if (sysparmOffset != null)
+                    callPayload.Queries["sysparm_offset"] = SourceExpressionConverter.ConvertO(sysparmOffset);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCatalogCategoriesResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
+        public IBodyWorkflowAction<GetCatalogItemsResponse> GetCatalogItems([WorkflowExpression] Func<int> sysparmLimit, [WorkflowExpression] Func<string> sysparmCategory = null, [WorkflowExpression] Func<string> sysparmText = null, [WorkflowExpression] Func<string> sysparmCatalog = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/sn_sc/servicecatalog/items";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sysparmCategory != null)
+                    callPayload.Queries["sysparm_category"] = SourceExpressionConverter.ConvertO(sysparmCategory);
+                callPayload.Queries["sysparm_limit"] = SourceExpressionConverter.ConvertO(sysparmLimit);
+                if (sysparmText != null)
+                    callPayload.Queries["sysparm_text"] = SourceExpressionConverter.ConvertO(sysparmText);
+                if (sysparmCatalog != null)
+                    callPayload.Queries["sysparm_catalog"] = SourceExpressionConverter.ConvertO(sysparmCatalog);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCatalogItemsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
+        public IBodyWorkflowAction<GetCatalogItemResponse> GetCatalogItem([WorkflowExpression] Func<string> sysId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/sn_sc/servicecatalog/items/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCatalogItemResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
+        public IBodyWorkflowAction<OrderItemResponse> OrderItem([WorkflowExpression] Func<string> sysId, [WorkflowExpression] Func<int> bodysysparmQuantity, [WorkflowExpression] Func<string> bodysysparmRequestedFor = null, [WorkflowExpression] Func<object> bodyvariables = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/sn_sc/servicecatalog/items/{0}/order_now", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sysId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["sysparm_quantity"] = SourceExpressionConverter.ConvertToken(bodysysparmQuantity);
+                if (bodysysparmRequestedFor != null)
+                {
+                    body["sysparm_requested_for"] = SourceExpressionConverter.ConvertToken(bodysysparmRequestedFor);
+                    bodypropCount++;
+                }
+
+                if (bodyvariables != null)
+                {
+                    body["variables"] = SourceExpressionConverter.ConvertToken(bodyvariables);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyvariables != null)
-            {
-                body["variables"] = ExpressionConverter.ConvertO(bodyvariables);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<OrderItemResponse>(callPayload);
+            return new ApiConnectionAction<OrderItemResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetArticlesResponse> GetKnowledgeArticles(Expression<Func<string>> query, Expression<Func<string>> fields = null, Expression<Func<int>> limit = null, Expression<Func<string>> filter = null, Expression<Func<string>> kb = null)
+        public IBodyWorkflowAction<GetArticlesResponse> GetKnowledgeArticles([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> kb = null)
         {
-            var apiCallPath = "/api/sn_km_api/knowledge/articles";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (kb != null)
-                callPayload.Queries["kb"] = ExpressionConverter.Convert(kb);
-            return new ApiConnectionAction<GetArticlesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/sn_km_api/knowledge/articles";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Queries["query"] = SourceExpressionConverter.ConvertO(query);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (kb != null)
+                    callPayload.Queries["kb"] = SourceExpressionConverter.ConvertO(kb);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetArticlesResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
+        public IBodyWorkflowAction<GetArticleResponse> GetKnowledgeArticle([WorkflowExpression] Func<string> articleSysId, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> language = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/sn_km_api/knowledge/articles/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(articleSysId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (language != null)
+                    callPayload.Queries["language"] = SourceExpressionConverter.ConvertO(language);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetArticleResponse>(BuildSourceInput);
         }
     }
 
@@ -852,6 +951,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
 
         [JsonProperty("value")]
         public string Value { get; set; }
+    }
+
+    public class GetArticleResponse
+    {
+        [JsonProperty("result")]
+        public GetArticleResponseResultType Result { get; set; }
+    }
+
+    public class GetArticleResponseResultType
+    {
+        [JsonProperty("number")]
+        public string Number { get; set; }
+
+        [JsonProperty("sys_id")]
+        public string SysID { get; set; }
+
+        [JsonProperty("short_description")]
+        public string ShortDescription { get; set; }
+
+        [JsonProperty("text")]
+        public string Text { get; set; }
+
+        [JsonProperty("template")]
+        public bool Template { get; set; }
+
+        [JsonProperty("template_table")]
+        public string TemplateTable { get; set; }
+
+        [JsonProperty("language")]
+        public string Language { get; set; }
+
+        [JsonProperty("content")]
+        public GetArticleResponseResultTypeContentTypeItem[] Content { get; set; }
+    }
+
+    public class GetArticleResponseResultTypeContentTypeItem
+    {
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        [JsonProperty("column")]
+        public string Column { get; set; }
+
+        [JsonProperty("type")]
+        public string Type { get; set; }
+
+        [JsonProperty("content")]
+        public string Content { get; set; }
     }
 }
 

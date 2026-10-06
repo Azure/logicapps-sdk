@@ -59,14 +59,12 @@ namespace Microsoft.Azure.Workflows.Sdk
                 Cases = templateCases,
             };
 
-            if (this.defaultCaseRoot != null)
+            action.Default = new FlowTemplateActionBranch
             {
-                var defaultActions = ControlActionHelper.CollectActions(this.defaultCaseRoot, flowName, flowKind);
-                action.Default = new FlowTemplateActionBranch
-                {
-                    Actions = defaultActions,
-                };
-            }
+                Actions = this.defaultCaseRoot == null
+                    ? new Dictionary<string, FlowTemplateAction>()
+                    : ControlActionHelper.CollectActions(this.defaultCaseRoot, flowName, flowKind),
+            };
 
             return action;
         }

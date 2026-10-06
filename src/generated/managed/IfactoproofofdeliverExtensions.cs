@@ -14,28 +14,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]
         public IBodyWorkflowAction<ListEnvironmentResponse> ListEnvironment()
         {
-            var apiCallPath = "/environments/v1.0";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListEnvironmentResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/environments/v1.0";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListEnvironmentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]
-        public IBodyWorkflowAction<ListCompanyResponse> ListCompany(Expression<Func<string>> bcenvironment)
+        public IBodyWorkflowAction<ListCompanyResponse> ListCompany([WorkflowExpression] Func<string> bcenvironment)
         {
-            var apiCallPath = String.Format("/v2.0/{0}/api/v2.0/companies", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListCompanyResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2.0/{0}/api/v2.0/companies", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListCompanyResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]
-        public IBodyWorkflowAction<GetCompanyResponse> GetCompany(Expression<Func<string>> bcenvironment, Expression<Func<string>> company)
+        public IBodyWorkflowAction<GetCompanyResponse> GetCompany([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company)
         {
-            var apiCallPath = String.Format("/v2.0/{0}/api/v2.0/companies({1})", ExpressionConverter.ConvertWithUrlEncoding(bcenvironment, 1), ExpressionConverter.ConvertWithUrlEncoding(company, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCompanyResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2.0/{0}/api/v2.0/companies({1})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCompanyResponse>(BuildSourceInput);
         }
     }
 

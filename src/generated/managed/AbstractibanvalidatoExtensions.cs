@@ -12,13 +12,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractibanvalidato
     public class AbstractibanvalidatoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractibanvalidato")]
-        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> iban)
+        public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<string> iban)
         {
-            var apiCallPath = "/v1/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["iban"] = ExpressionConverter.Convert(iban);
-            return new ApiConnectionAction<ValidateResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["iban"] = SourceExpressionConverter.ConvertO(iban);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ValidateResponse>(BuildSourceInput);
         }
     }
 

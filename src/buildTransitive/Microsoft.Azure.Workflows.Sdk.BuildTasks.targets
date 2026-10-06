@@ -1,0 +1,140 @@
+<Project>
+  <UsingTask TaskName="WriteWorkflowBuildManifest" TaskFactory="RoslynCodeTaskFactory"
+             AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <Sources ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+      <References ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+      <SchemaFiles ParameterType="Microsoft.Build.Framework.ITaskItem[]" />
+      <Defines ParameterType="System.String[]" />
+      <LanguageVersion ParameterType="System.String" />
+      <Nullable ParameterType="System.String" />
+      <AllowUnsafe ParameterType="System.Boolean" />
+      <CheckOverflow ParameterType="System.Boolean" />
+      <OutputKind ParameterType="System.String" />
+      <Platform ParameterType="System.String" />
+      <StartupObject ParameterType="System.String" />
+      <AssemblyName ParameterType="System.String" Required="true" />
+      <SignAssembly ParameterType="System.Boolean" />
+      <DelaySign ParameterType="System.Boolean" />
+      <PublicSign ParameterType="System.Boolean" />
+      <KeyFile ParameterType="System.String" />
+      <KeyContainer ParameterType="System.String" />
+      <ManifestPath ParameterType="System.String" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System" />
+      <Using Namespace="System.IO" />
+      <Using Namespace="System.Linq" />
+      <Using Namespace="System.Text" />
+      <Code Type="Fragment" Language="cs"><![CDATA[
+        Func<string, string> quote = value => {
+            var text = new StringBuilder("\"");
+            foreach (char ch in value ?? "")
+            {
+                if (ch == '"' || ch == '\\') text.Append('\\').Append(ch);
+                else if (ch < 0x20) text.Append("\\u").Append(((int)ch).ToString("x4"));
+                else text.Append(ch);
+            }
+            return text.Append('"').ToString();
+        };
+        Func<System.Collections.Generic.IEnumerable<string>, string> array =
+            values => "[" + string.Join(",", values.Select(quote)) + "]";
+        var referenceGroups = References.GroupBy(item => item.GetMetadata("FullPath"),
+            Path.DirectorySeparatorChar == '\\' ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal);
+        var aliasEntries = referenceGroups.Where(group => group.Any(item => !string.IsNullOrWhiteSpace(item.GetMetadata("Aliases"))))
+            .Select(group => quote(group.Key) + ":" + array(group.SelectMany(item =>
+                string.IsNullOrWhiteSpace(item.GetMetadata("Aliases"))
+                    ? new[] { "global" }
+                    : item.GetMetadata("Aliases").Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries).Select(alias => alias.Trim()))
+                .Distinct(StringComparer.Ordinal)));
+        var json = "{" +
+            "\"sources\":" + array(Sources.Select(item => item.GetMetadata("FullPath"))) + "," +
+            "\"schemaFiles\":" + array((SchemaFiles ?? new Microsoft.Build.Framework.ITaskItem[0])
+                .Select(item => item.GetMetadata("FullPath")).Distinct()) + "," +
+            "\"references\":" + array(References.Select(item => item.GetMetadata("FullPath"))) + "," +
+            "\"referenceAliases\":{" + string.Join(",", aliasEntries) + "}," +
+            "\"embedInteropReferences\":" + array(References.Where(item =>
+                string.Equals(item.GetMetadata("EmbedInteropTypes"), "true", StringComparison.OrdinalIgnoreCase))
+                .Select(item => item.GetMetadata("FullPath")).Distinct()) + "," +
+            "\"defines\":" + array((Defines ?? new string[0])
+                .SelectMany(value => value.Split(new[] { ',', ';' }, StringSplitOptions.RemoveEmptyEntries))
+                .Select(value => value.Trim()).Where(value => value.Length != 0).Distinct(StringComparer.Ordinal)) + "," +
+            "\"languageVersion\":" + quote(LanguageVersion) + "," +
+            "\"nullable\":" + quote(Nullable) + "," +
+            "\"allowUnsafe\":" + (AllowUnsafe ? "true" : "false") + "," +
+            "\"checkOverflow\":" + (CheckOverflow ? "true" : "false") + "," +
+            "\"outputKind\":" + quote(OutputKind) + "," +
+            "\"platform\":" + quote(string.IsNullOrEmpty(Platform) ? "AnyCpu" : Platform) + "," +
+            "\"startupObject\":" + (string.IsNullOrEmpty(StartupObject) ? "null" : quote(StartupObject)) + "," +
+            "\"assemblyName\":" + quote(AssemblyName) + "," +
+            "\"signAssembly\":" + (SignAssembly ? "true" : "false") + "," +
+            "\"delaySign\":" + (DelaySign ? "true" : "false") + "," +
+            "\"publicSign\":" + (PublicSign ? "true" : "false") + "," +
+            "\"keyFile\":" + (string.IsNullOrEmpty(KeyFile) ? "null" : quote(KeyFile)) + "," +
+            "\"keyContainer\":" + (string.IsNullOrEmpty(KeyContainer) ? "null" : quote(KeyContainer)) + "}";
+        File.WriteAllText(ManifestPath, json, new UTF8Encoding(false));
+      ]]></Code>
+    </Task>
+  </UsingTask>
+
+  <UsingTask TaskName="ReadWorkflowCompiledFiles" TaskFactory="RoslynCodeTaskFactory"
+             AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <Sources ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+      <ListPath ParameterType="System.String" Required="true" />
+      <AllowGeneratedFiles ParameterType="System.Boolean" />
+      <CompiledFiles ParameterType="Microsoft.Build.Framework.ITaskItem[]" Output="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System" />
+      <Using Namespace="System.IO" />
+      <Using Namespace="Microsoft.Build.Utilities" />
+      <Code Type="Fragment" Language="cs"><![CDATA[
+        if (!File.Exists(ListPath))
+        {
+            Log.LogError("WFSDK1003: The workflow compiler did not produce compiled-files.txt.");
+            return false;
+        }
+        var paths = File.ReadAllLines(ListPath);
+        if (paths.Length < Sources.Length || (!AllowGeneratedFiles && paths.Length != Sources.Length))
+        {
+            Log.LogError("WFSDK1003: The workflow compiler must return one input per original source in order, followed only by declared-schema generated inputs.");
+            return false;
+        }
+        var items = new Microsoft.Build.Framework.ITaskItem[paths.Length];
+        var uniquePaths = new System.Collections.Generic.HashSet<string>(
+            Path.DirectorySeparatorChar == '\\' ? StringComparer.OrdinalIgnoreCase : StringComparer.Ordinal);
+        for (int index = 0; index < paths.Length; index++)
+        {
+            if (!Path.IsPathRooted(paths[index]) || !File.Exists(paths[index]))
+            {
+                Log.LogError("WFSDK1003: The workflow compiler returned a missing or non-absolute compiler input: " + paths[index]);
+                return false;
+            }
+            if (!uniquePaths.Add(Path.GetFullPath(paths[index])))
+            {
+                Log.LogError("WFSDK1003: The workflow compiler returned a duplicate compiler input: " + paths[index]);
+                return false;
+            }
+            var item = index < Sources.Length ? new TaskItem(Sources[index]) : new TaskItem(paths[index]);
+            item.ItemSpec = paths[index];
+            if (index >= Sources.Length)
+            {
+                var root = Path.GetFullPath(Path.GetDirectoryName(ListPath)) + Path.DirectorySeparatorChar;
+                var comparison = Path.DirectorySeparatorChar == '\\' ? StringComparison.OrdinalIgnoreCase : StringComparison.Ordinal;
+                if (!Path.GetFullPath(paths[index]).StartsWith(root, comparison) ||
+                    !string.Equals(Path.GetExtension(paths[index]), ".cs", StringComparison.OrdinalIgnoreCase))
+                {
+                    Log.LogError("WFSDK1003: Generated compiler inputs must be C# files inside the isolated compiler output directory: " + paths[index]);
+                    return false;
+                }
+                item.SetMetadata("AutoGen", "true");
+                item.SetMetadata("Visible", "false");
+            }
+            items[index] = item;
+        }
+        CompiledFiles = items;
+      ]]></Code>
+    </Task>
+  </UsingTask>
+</Project>

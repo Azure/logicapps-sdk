@@ -12,197 +12,221 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
     public class PersonrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IBodyWorkflowAction<ApiApplicantCreateResponse> ApiApplicantCreate(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodynameFirst = null, Expression<Func<string>> bodynameLast = null, Expression<Func<string>> bodyflowName = null)
+        public IBodyWorkflowAction<ApiApplicantCreateResponse> ApiApplicantCreate([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodynameFirst = null, [WorkflowExpression] Func<string> bodynameLast = null, [WorkflowExpression] Func<string> bodyflowName = null)
         {
-            var apiCallPath = "/api-applicant-create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyemail != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
+                var apiCallPath = "/api-applicant-create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyemail != null)
+                {
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodyphone != null)
+                {
+                    body["phone"] = SourceExpressionConverter.ConvertToken(bodyphone);
+                    bodypropCount++;
+                }
+
+                if (bodynameFirst != null)
+                {
+                    body["nameFirst"] = SourceExpressionConverter.ConvertToken(bodynameFirst);
+                    bodypropCount++;
+                }
+
+                if (bodynameLast != null)
+                {
+                    body["nameLast"] = SourceExpressionConverter.ConvertToken(bodynameLast);
+                    bodypropCount++;
+                }
+
+                if (bodyflowName != null)
+                {
+                    body["flowName"] = SourceExpressionConverter.ConvertToken(bodyflowName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyphone != null)
-            {
-                body["phone"] = ExpressionConverter.ConvertO(bodyphone);
-                bodypropCount++;
-            }
-
-            if (bodynameFirst != null)
-            {
-                body["nameFirst"] = ExpressionConverter.ConvertO(bodynameFirst);
-                bodypropCount++;
-            }
-
-            if (bodynameLast != null)
-            {
-                body["nameLast"] = ExpressionConverter.ConvertO(bodynameLast);
-                bodypropCount++;
-            }
-
-            if (bodyflowName != null)
-            {
-                body["flowName"] = ExpressionConverter.ConvertO(bodyflowName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ApiApplicantCreateResponse>(callPayload);
+            return new ApiConnectionAction<ApiApplicantCreateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IBodyWorkflowAction<ApiVerificationlinkCreateResponse> ApiVerificationlinkCreate(Expression<Func<string>> bodyapplicant = null)
+        public IBodyWorkflowAction<ApiVerificationlinkCreateResponse> ApiVerificationlinkCreate([WorkflowExpression] Func<string> bodyapplicant = null)
         {
-            var apiCallPath = "/api-verificationlink-create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyapplicant != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["applicant"] = ExpressionConverter.ConvertO(bodyapplicant);
-                bodypropCount++;
+                var apiCallPath = "/api-verificationlink-create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyapplicant != null)
+                {
+                    body["applicant"] = SourceExpressionConverter.ConvertToken(bodyapplicant);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ApiVerificationlinkCreateResponse>(callPayload);
+            return new ApiConnectionAction<ApiVerificationlinkCreateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IWorkflowAction ApiDocumentUpload(Expression<Func<string>> bodyapplicantId = null, Expression<Func<string>> bodydocType = null, Expression<Func<string>> bodydocSubType = null, Expression<Func<string>> bodydocCountryISO = null, Expression<Func<string>> bodydocFilefilename = null, Expression<Func<string>> bodydocFilecontents = null)
+        public IWorkflowAction ApiDocumentUpload([WorkflowExpression] Func<string> bodyapplicantId = null, [WorkflowExpression] Func<string> bodydocType = null, [WorkflowExpression] Func<string> bodydocSubType = null, [WorkflowExpression] Func<string> bodydocCountryISO = null, [WorkflowExpression] Func<string> bodydocFilefilename = null, [WorkflowExpression] Func<string> bodydocFilecontents = null)
         {
-            var apiCallPath = "/api-document-upload";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyapplicantId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["applicantId"] = ExpressionConverter.ConvertO(bodyapplicantId);
-                bodypropCount++;
+                var apiCallPath = "/api-document-upload";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyapplicantId != null)
+                {
+                    body["applicantId"] = SourceExpressionConverter.ConvertToken(bodyapplicantId);
+                    bodypropCount++;
+                }
+
+                if (bodydocType != null)
+                {
+                    body["docType"] = SourceExpressionConverter.ConvertToken(bodydocType);
+                    bodypropCount++;
+                }
+
+                if (bodydocSubType != null)
+                {
+                    body["docSubType"] = SourceExpressionConverter.ConvertToken(bodydocSubType);
+                    bodypropCount++;
+                }
+
+                if (bodydocCountryISO != null)
+                {
+                    body["docCountryISO"] = SourceExpressionConverter.ConvertToken(bodydocCountryISO);
+                    bodypropCount++;
+                }
+
+                var docFileObject = new JObject();
+                var docFileObjectpropCount = 0;
+                if (bodydocFilefilename != null)
+                {
+                    docFileObject["filename"] = SourceExpressionConverter.ConvertToken(bodydocFilefilename);
+                    docFileObjectpropCount++;
+                }
+
+                if (bodydocFilecontents != null)
+                {
+                    docFileObject["contents"] = SourceExpressionConverter.ConvertToken(bodydocFilecontents);
+                    docFileObjectpropCount++;
+                }
+
+                if (docFileObjectpropCount > 0)
+                {
+                    body["docFile"] = docFileObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydocType != null)
-            {
-                body["docType"] = ExpressionConverter.ConvertO(bodydocType);
-                bodypropCount++;
-            }
-
-            if (bodydocSubType != null)
-            {
-                body["docSubType"] = ExpressionConverter.ConvertO(bodydocSubType);
-                bodypropCount++;
-            }
-
-            if (bodydocCountryISO != null)
-            {
-                body["docCountryISO"] = ExpressionConverter.ConvertO(bodydocCountryISO);
-                bodypropCount++;
-            }
-
-            var docFileObject = new JObject();
-            var docFileObjectpropCount = 0;
-            if (bodydocFilefilename != null)
-            {
-                docFileObject["filename"] = ExpressionConverter.ConvertO(bodydocFilefilename);
-                docFileObjectpropCount++;
-            }
-
-            if (bodydocFilecontents != null)
-            {
-                docFileObject["contents"] = ExpressionConverter.ConvertO(bodydocFilecontents);
-                docFileObjectpropCount++;
-            }
-
-            if (docFileObjectpropCount > 0)
-            {
-                body["docFile"] = docFileObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IBodyWorkflowAction<ApiApplicantStatusResponse> ApiApplicantStatus(Expression<Func<string>> bodyapplicantId = null)
+        public IBodyWorkflowAction<ApiApplicantStatusResponse> ApiApplicantStatus([WorkflowExpression] Func<string> bodyapplicantId = null)
         {
-            var apiCallPath = "/api-applicant-status";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyapplicantId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["applicantId"] = ExpressionConverter.ConvertO(bodyapplicantId);
-                bodypropCount++;
+                var apiCallPath = "/api-applicant-status";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyapplicantId != null)
+                {
+                    body["applicantId"] = SourceExpressionConverter.ConvertToken(bodyapplicantId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ApiApplicantStatusResponse>(callPayload);
+            return new ApiConnectionAction<ApiApplicantStatusResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IBodyWorkflowAction<ApiApplicantDetailsResponse> ApiApplicantDetails(Expression<Func<string>> bodyapplicantId = null)
+        public IBodyWorkflowAction<ApiApplicantDetailsResponse> ApiApplicantDetails([WorkflowExpression] Func<string> bodyapplicantId = null)
         {
-            var apiCallPath = "/api-applicant-details";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyapplicantId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["applicantId"] = ExpressionConverter.ConvertO(bodyapplicantId);
-                bodypropCount++;
+                var apiCallPath = "/api-applicant-details";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyapplicantId != null)
+                {
+                    body["applicantId"] = SourceExpressionConverter.ConvertToken(bodyapplicantId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ApiApplicantDetailsResponse>(callPayload);
+            return new ApiConnectionAction<ApiApplicantDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
-        public IWorkflowAction ApiRequestApplicantCheck(Expression<Func<string>> bodyapplicantId = null)
+        public IWorkflowAction ApiRequestApplicantCheck([WorkflowExpression] Func<string> bodyapplicantId = null)
         {
-            var apiCallPath = "/api-request-applicant-check";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyapplicantId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["applicantId"] = ExpressionConverter.ConvertO(bodyapplicantId);
-                bodypropCount++;
+                var apiCallPath = "/api-request-applicant-check";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyapplicantId != null)
+                {
+                    body["applicantId"] = SourceExpressionConverter.ConvertToken(bodyapplicantId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

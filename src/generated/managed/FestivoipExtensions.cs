@@ -12,43 +12,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Festivoip
     public class FestivoipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "festivoip")]
-        public IBodyWorkflowAction<HolidaysGetResponse> HolidaysGet(Expression<Func<string>> country, Expression<Func<int>> year, Expression<Func<int>> month = null, Expression<Func<int>> day = null, Expression<Func<string>> language = null, Expression<Func<bool>> before = null, Expression<Func<bool>> after = null, Expression<Func<bool>> @public = null, Expression<Func<string>> timezone = null)
+        public IBodyWorkflowAction<HolidaysGetResponse> HolidaysGet([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<int> year, [WorkflowExpression] Func<int> month = null, [WorkflowExpression] Func<int> day = null, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> before = null, [WorkflowExpression] Func<bool> after = null, [WorkflowExpression] Func<bool> @public = null, [WorkflowExpression] Func<string> timezone = null)
         {
-            var apiCallPath = "/holidays";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (month != null)
-                callPayload.Queries["month"] = ExpressionConverter.Convert(month);
-            if (day != null)
-                callPayload.Queries["day"] = ExpressionConverter.Convert(day);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["before"] = Convert.ToString(false);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            callPayload.Queries["after"] = Convert.ToString(false);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            callPayload.Queries["public"] = Convert.ToString(false);
-            if (@public != null)
-                callPayload.Queries["public"] = ExpressionConverter.Convert(@public);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (timezone != null)
-                callPayload.Queries["timezone"] = ExpressionConverter.Convert(timezone);
-            return new ApiConnectionAction<HolidaysGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/holidays";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country"] = SourceExpressionConverter.ConvertO(country);
+                callPayload.Queries["year"] = SourceExpressionConverter.ConvertO(year);
+                if (month != null)
+                    callPayload.Queries["month"] = SourceExpressionConverter.ConvertO(month);
+                if (day != null)
+                    callPayload.Queries["day"] = SourceExpressionConverter.ConvertO(day);
+                if (language != null)
+                    callPayload.Queries["language"] = SourceExpressionConverter.ConvertO(language);
+                callPayload.Queries["before"] = Convert.ToString(false);
+                if (before != null)
+                    callPayload.Queries["before"] = SourceExpressionConverter.ConvertO(before);
+                callPayload.Queries["after"] = Convert.ToString(false);
+                if (after != null)
+                    callPayload.Queries["after"] = SourceExpressionConverter.ConvertO(after);
+                callPayload.Queries["public"] = Convert.ToString(false);
+                if (@public != null)
+                    callPayload.Queries["public"] = SourceExpressionConverter.ConvertO(@public);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (timezone != null)
+                    callPayload.Queries["timezone"] = SourceExpressionConverter.ConvertO(timezone);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HolidaysGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "festivoip")]
-        public IBodyWorkflowAction<CountriesGetResponseItem[]> CountriesGet(Expression<Func<string>> code = null)
+        public IBodyWorkflowAction<CountriesGetResponseItem[]> CountriesGet([WorkflowExpression] Func<string> code = null)
         {
-            var apiCallPath = "/countries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (code != null)
-                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-            return new ApiConnectionAction<CountriesGetResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/countries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (code != null)
+                    callPayload.Queries["code"] = SourceExpressionConverter.ConvertO(code);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CountriesGetResponseItem[]>(BuildSourceInput);
         }
     }
 

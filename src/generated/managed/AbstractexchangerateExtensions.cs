@@ -12,30 +12,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractexchangerate
     public class AbstractexchangerateActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractexchangerate")]
-        public IBodyWorkflowAction<LiveRatesResponse> LiveRates(Expression<Func<string>> @base, Expression<Func<string>> target = null)
+        public IBodyWorkflowAction<LiveRatesResponse> LiveRates([WorkflowExpression] Func<string> @base, [WorkflowExpression] Func<string> target = null)
         {
-            var apiCallPath = "/v1/live/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["base"] = ExpressionConverter.Convert(@base);
-            if (target != null)
-                callPayload.Queries["target"] = ExpressionConverter.Convert(target);
-            return new ApiConnectionAction<LiveRatesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/live/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["base"] = SourceExpressionConverter.ConvertO(@base);
+                if (target != null)
+                    callPayload.Queries["target"] = SourceExpressionConverter.ConvertO(target);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LiveRatesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractexchangerate")]
-        public IBodyWorkflowAction<ConvertResponse> Convert(Expression<Func<string>> @base, Expression<Func<string>> target, Expression<Func<string>> date = null, Expression<Func<double>> baseAmount = null)
+        public IBodyWorkflowAction<ConvertResponse> Convert([WorkflowExpression] Func<string> @base, [WorkflowExpression] Func<string> target, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<double> baseAmount = null)
         {
-            var apiCallPath = "/v1/convert/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["base"] = ExpressionConverter.Convert(@base);
-            callPayload.Queries["target"] = ExpressionConverter.Convert(target);
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            if (baseAmount != null)
-                callPayload.Queries["base_amount"] = ExpressionConverter.Convert(baseAmount);
-            return new ApiConnectionAction<ConvertResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/convert/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["base"] = SourceExpressionConverter.ConvertO(@base);
+                callPayload.Queries["target"] = SourceExpressionConverter.ConvertO(target);
+                if (date != null)
+                    callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                if (baseAmount != null)
+                    callPayload.Queries["base_amount"] = SourceExpressionConverter.ConvertO(baseAmount);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ConvertResponse>(BuildSourceInput);
         }
     }
 

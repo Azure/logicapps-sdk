@@ -12,93 +12,105 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
     public class MaqtextanalyticsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<SentimentClassifierResponseItem[]> SentimentClassifier(Expression<Func<bodydataInputItem[]>> bodydata = null)
+        public IBodyWorkflowAction<SentimentClassifierResponseItem[]> SentimentClassifier([WorkflowExpression] Func<bodydataInputItem[]> bodydata = null)
         {
-            var apiCallPath = "/text/SentimentClassifier";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydata != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
+                var apiCallPath = "/text/SentimentClassifier";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SentimentClassifierResponseItem[]>(callPayload);
+            return new ApiConnectionAction<SentimentClassifierResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<PIIScrubberResponse> PIIScrubber(Expression<Func<string>> bodydata = null, Expression<Func<string>> bodyentityList = null)
+        public IBodyWorkflowAction<PIIScrubberResponse> PIIScrubber([WorkflowExpression] Func<string> bodydata = null, [WorkflowExpression] Func<string> bodyentityList = null)
         {
-            var apiCallPath = "/text/PIIScrubber";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydata != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
+                var apiCallPath = "/text/PIIScrubber";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodyentityList != null)
+                {
+                    body["entity_list"] = SourceExpressionConverter.ConvertToken(bodyentityList);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyentityList != null)
-            {
-                body["entity_list"] = ExpressionConverter.ConvertO(bodyentityList);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PIIScrubberResponse>(callPayload);
+            return new ApiConnectionAction<PIIScrubberResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[]> KeyPhraseExtractor(Expression<Func<string>> bodytext = null, Expression<Func<int>> bodykeyphrasesCount = null, Expression<Func<double>> bodydiversityThreshold = null, Expression<Func<double>> bodyaliasThreshold = null)
+        public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[]> KeyPhraseExtractor([WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<int> bodykeyphrasesCount = null, [WorkflowExpression] Func<double> bodydiversityThreshold = null, [WorkflowExpression] Func<double> bodyaliasThreshold = null)
         {
-            var apiCallPath = "/text/KeyPhrase";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytext != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
+                var apiCallPath = "/text/KeyPhrase";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytext != null)
+                {
+                    body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                    bodypropCount++;
+                }
+
+                if (bodykeyphrasesCount != null)
+                {
+                    body["keyphrases_count"] = SourceExpressionConverter.ConvertToken(bodykeyphrasesCount);
+                    bodypropCount++;
+                }
+
+                if (bodydiversityThreshold != null)
+                {
+                    body["diversity_threshold"] = SourceExpressionConverter.ConvertToken(bodydiversityThreshold);
+                    bodypropCount++;
+                }
+
+                if (bodyaliasThreshold != null)
+                {
+                    body["alias_threshold"] = SourceExpressionConverter.ConvertToken(bodyaliasThreshold);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodykeyphrasesCount != null)
-            {
-                body["keyphrases_count"] = ExpressionConverter.ConvertO(bodykeyphrasesCount);
-                bodypropCount++;
-            }
-
-            if (bodydiversityThreshold != null)
-            {
-                body["diversity_threshold"] = ExpressionConverter.ConvertO(bodydiversityThreshold);
-                bodypropCount++;
-            }
-
-            if (bodyaliasThreshold != null)
-            {
-                body["alias_threshold"] = ExpressionConverter.ConvertO(bodyaliasThreshold);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<KeyPhraseExtractorResponseItem[]>(callPayload);
+            return new ApiConnectionAction<KeyPhraseExtractorResponseItem[]>(BuildSourceInput);
         }
     }
 

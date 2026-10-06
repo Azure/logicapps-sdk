@@ -12,55 +12,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simpleedi
     public class SimpleediActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simpleedi")]
-        public IBodyWorkflowAction<JToken> EdiToJson(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken> EdiToJson([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            var apiCallPath = "/api/EdiToJson";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
-            bodypropCount++;
-            body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
-            if (bodylogFileName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                var apiCallPath = "/api/EdiToJson";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["inputString"] = SourceExpressionConverter.ConvertToken(bodyinputString);
+                if (bodyliquidTemplate != null)
+                {
+                    body["liquidTemplate"] = SourceExpressionConverter.ConvertToken(bodyliquidTemplate);
+                    bodypropCount++;
+                }
+
+                if (bodylogFileName != null)
+                {
+                    body["logFileName"] = SourceExpressionConverter.ConvertToken(bodylogFileName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simpleedi")]
-        public IBodyWorkflowAction<JToken> XmlToXml(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate, Expression<Func<string>> bodylogFileName = null)
+        public IBodyWorkflowAction<JToken> XmlToXml([WorkflowExpression] Func<string> bodyinputString, [WorkflowExpression] Func<string> bodyliquidTemplate = null, [WorkflowExpression] Func<string> bodylogFileName = null)
         {
-            var apiCallPath = "/api/EdiToXml";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["inputString"] = ExpressionConverter.ConvertO(bodyinputString);
-            bodypropCount++;
-            body["liquidTemplate"] = ExpressionConverter.ConvertO(bodyliquidTemplate);
-            if (bodylogFileName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["logFileName"] = ExpressionConverter.ConvertO(bodylogFileName);
+                var apiCallPath = "/api/EdiToXml";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["inputString"] = SourceExpressionConverter.ConvertToken(bodyinputString);
+                if (bodyliquidTemplate != null)
+                {
+                    body["liquidTemplate"] = SourceExpressionConverter.ConvertToken(bodyliquidTemplate);
+                    bodypropCount++;
+                }
+
+                if (bodylogFileName != null)
+                {
+                    body["logFileName"] = SourceExpressionConverter.ConvertToken(bodylogFileName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 

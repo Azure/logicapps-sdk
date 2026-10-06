@@ -12,54 +12,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
     public class PlumsailformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
-        public IBodyWorkflowAction<string> DownloadAttachment(Expression<Func<string>> fileUrl)
+        public IBodyWorkflowAction<string> DownloadAttachment([WorkflowExpression] Func<string> fileUrl)
         {
-            var apiCallPath = "/api/attachments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileUrl"] = ExpressionConverter.Convert(fileUrl);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/attachments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fileUrl"] = SourceExpressionConverter.ConvertO(fileUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
-        public IWorkflowAction DeleteAttachment(Expression<Func<string>> fileUrl = null)
+        public IWorkflowAction DeleteAttachment([WorkflowExpression] Func<string> fileUrl = null)
         {
-            var apiCallPath = "/api/attachments";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(fileUrl);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/attachments";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(fileUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
-        public IWorkflowAction DeleteSubmission(Expression<Func<string>> formId, Expression<Func<string>> submissionId)
+        public IWorkflowAction DeleteSubmission([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> submissionId)
         {
-            var apiCallPath = String.Format("/api/forms/{0}/submissions/{1}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1), ExpressionConverter.ConvertWithUrlEncoding(submissionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/forms/{0}/submissions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(submissionId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
     public class PlumsailformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FormIsSubmitted(Expression<Func<string>> subscriberform, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FormIsSubmitted([WorkflowExpression] Func<string> subscriberform, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/submissions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subscriber = new JObject();
-            var subscriberpropCount = 0;
-            subscriber["callbackUrl"] = "@listCallbackUrl()";
-            subscriberpropCount++;
-            subscriberpropCount++;
-            subscriber["formId"] = ExpressionConverter.ConvertO(subscriberform);
-            if (subscriberpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = subscriber;
+                var apiCallPath = "/api/submissions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subscriber = new JObject();
+                var subscriberpropCount = 0;
+                subscriber["callbackUrl"] = "#{listCallbackUrl()}";
+                subscriberpropCount++;
+                subscriberpropCount++;
+                subscriber["formId"] = SourceExpressionConverter.ConvertToken(subscriberform);
+                if (subscriberpropCount > 0)
+                {
+                    callPayload.Body = subscriber;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

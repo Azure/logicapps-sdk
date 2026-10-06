@@ -12,12 +12,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.K2workflow
     public class K2workflowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "k2workflow")]
-        public IBodyWorkflowAction<JToken> TasksPostReleaseAction(Expression<Func<string>> serialNumber)
+        public IBodyWorkflowAction<JToken> TasksPostReleaseAction([WorkflowExpression] Func<string> serialNumber)
         {
-            var apiCallPath = String.Format("/v1/tasks/{0}/actions/release", ExpressionConverter.ConvertWithUrlEncoding(serialNumber, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/tasks/{0}/actions/release", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(serialNumber, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 

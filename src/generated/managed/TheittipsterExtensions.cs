@@ -12,47 +12,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
     public class TheittipsterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
-        public IBodyWorkflowAction<GenerateBarcodeResponse> GenerateBarcode(Expression<Func<string>> bodybarcodeNumber = null)
+        public IBodyWorkflowAction<GenerateBarcodeResponse> GenerateBarcode([WorkflowExpression] Func<string> bodybarcodeNumber = null)
         {
-            var apiCallPath = "/api/generateBarcode";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodybarcodeNumber != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["barcodeNumber"] = ExpressionConverter.ConvertO(bodybarcodeNumber);
-                bodypropCount++;
+                var apiCallPath = "/api/generateBarcode";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodybarcodeNumber != null)
+                {
+                    body["barcodeNumber"] = SourceExpressionConverter.ConvertToken(bodybarcodeNumber);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GenerateBarcodeResponse>(callPayload);
+            return new ApiConnectionAction<GenerateBarcodeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
-        public IBodyWorkflowAction<GenerateQRCodeResponse> GenerateQRCode(Expression<Func<string>> bodyqrcodeText = null)
+        public IBodyWorkflowAction<GenerateQRCodeResponse> GenerateQRCode([WorkflowExpression] Func<string> bodyqrcodeText = null)
         {
-            var apiCallPath = "/api/generateQRCode";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyqrcodeText != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["qrcodeText"] = ExpressionConverter.ConvertO(bodyqrcodeText);
-                bodypropCount++;
+                var apiCallPath = "/api/generateQRCode";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyqrcodeText != null)
+                {
+                    body["qrcodeText"] = SourceExpressionConverter.ConvertToken(bodyqrcodeText);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GenerateQRCodeResponse>(callPayload);
+            return new ApiConnectionAction<GenerateQRCodeResponse>(BuildSourceInput);
         }
     }
 

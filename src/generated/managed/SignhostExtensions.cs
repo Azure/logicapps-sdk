@@ -12,189 +12,222 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
     public class SignhostActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<Transaction> Getdetails(Expression<Func<string>> transactionId)
+        public IBodyWorkflowAction<Transaction> Getdetails([WorkflowExpression] Func<string> transactionId)
         {
-            var apiCallPath = String.Format("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Transaction>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Transaction>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<ErrorModel> Delete(Expression<Func<string>> transactionId, Expression<Func<bool>> bodysendNotifications = null, Expression<Func<string>> bodyreason = null)
+        public IBodyWorkflowAction<ErrorModel> Delete([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<bool> bodysendNotifications = null, [WorkflowExpression] Func<string> bodyreason = null)
         {
-            var apiCallPath = String.Format("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysendNotifications != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodysendNotifications != null)
                 {
-                    body["SendNotifications"] = ExpressionConverter.ConvertO(bodysendNotifications);
+                    if (bodysendNotifications != null)
+                    {
+                        body["SendNotifications"] = SourceExpressionConverter.ConvertToken(bodysendNotifications);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["SendNotifications"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["SendNotifications"] = false;
-                bodypropCount++;
+                if (bodyreason != null)
+                {
+                    body["Reason"] = SourceExpressionConverter.ConvertToken(bodyreason);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyreason != null)
-            {
-                body["Reason"] = ExpressionConverter.ConvertO(bodyreason);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ErrorModel>(callPayload);
+            return new ApiConnectionAction<ErrorModel>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<string> Downloadpdf(Expression<Func<string>> transactionId, Expression<Func<string>> fileId)
+        public IBodyWorkflowAction<string> Downloadpdf([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<string> fileId)
         {
-            var apiCallPath = String.Format("/api/transaction/{0}/file/{1}/", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<string> Downloadreceipt(Expression<Func<string>> transactionId)
+        public IBodyWorkflowAction<string> Downloadreceipt([WorkflowExpression] Func<string> transactionId)
         {
-            var apiCallPath = String.Format("/api/file/receipt/{0}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/file/receipt/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<Transaction> Create(Expression<Func<transactionlanguageInput>> transactionlanguage = null, Expression<Func<bool>> transactionseal = null, Expression<Func<transactionsignersInputItem[]>> transactionsigners = null, Expression<Func<transactionreceiversInputItem[]>> transactionreceivers = null, Expression<Func<string>> transactionreference = null, Expression<Func<string>> transactionpostbackUrl = null, Expression<Func<int>> transactionsignRequestMode = null, Expression<Func<int>> transactiondaysToExpire = null)
+        public IBodyWorkflowAction<Transaction> Create([WorkflowExpression] Func<transactionlanguageInput> transactionlanguage = null, [WorkflowExpression] Func<bool> transactionseal = null, [WorkflowExpression] Func<transactionsignersInputItem[]> transactionsigners = null, [WorkflowExpression] Func<transactionreceiversInputItem[]> transactionreceivers = null, [WorkflowExpression] Func<string> transactionreference = null, [WorkflowExpression] Func<string> transactionpostbackUrl = null, [WorkflowExpression] Func<int> transactionsignRequestMode = null, [WorkflowExpression] Func<int> transactiondaysToExpire = null)
         {
-            var apiCallPath = "/api/transaction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var transaction = new JObject();
-            var transactionpropCount = 0;
-            var filesObject = new JObject();
-            var filesObjectpropCount = 0;
-            if (filesObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                transaction["Files"] = filesObject;
-                transactionpropCount++;
-            }
+                var apiCallPath = "/api/transaction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var transaction = new JObject();
+                var transactionpropCount = 0;
+                var filesObject = new JObject();
+                var filesObjectpropCount = 0;
+                if (filesObjectpropCount > 0)
+                {
+                    transaction["Files"] = filesObject;
+                    transactionpropCount++;
+                }
 
-            if (transactionlanguage != null)
-            {
-                transaction["Language"] = ExpressionConverter.ConvertO(transactionlanguage);
-                transactionpropCount++;
-            }
+                if (transactionlanguage != null)
+                {
+                    transaction["Language"] = SourceExpressionConverter.Convert(transactionlanguage);
+                    transactionpropCount++;
+                }
 
-            if (transactionseal != null)
-            {
                 if (transactionseal != null)
                 {
-                    transaction["Seal"] = ExpressionConverter.ConvertO(transactionseal);
+                    if (transactionseal != null)
+                    {
+                        transaction["Seal"] = SourceExpressionConverter.ConvertToken(transactionseal);
+                        transactionpropCount++;
+                    }
+
+                    transactionpropCount++;
+                }
+                else
+                {
+                    transaction["Seal"] = false;
                     transactionpropCount++;
                 }
 
-                transactionpropCount++;
-            }
-            else
-            {
-                transaction["Seal"] = false;
-                transactionpropCount++;
-            }
+                if (transactionsigners != null)
+                {
+                    transaction["Signers"] = SourceExpressionConverter.ConvertToken(transactionsigners);
+                    transactionpropCount++;
+                }
 
-            if (transactionsigners != null)
-            {
-                transaction["Signers"] = ExpressionConverter.ConvertO(transactionsigners);
-                transactionpropCount++;
-            }
+                if (transactionreceivers != null)
+                {
+                    transaction["Receivers"] = SourceExpressionConverter.ConvertToken(transactionreceivers);
+                    transactionpropCount++;
+                }
 
-            if (transactionreceivers != null)
-            {
-                transaction["Receivers"] = ExpressionConverter.ConvertO(transactionreceivers);
-                transactionpropCount++;
-            }
+                if (transactionreference != null)
+                {
+                    transaction["Reference"] = SourceExpressionConverter.ConvertToken(transactionreference);
+                    transactionpropCount++;
+                }
 
-            if (transactionreference != null)
-            {
-                transaction["Reference"] = ExpressionConverter.ConvertO(transactionreference);
-                transactionpropCount++;
-            }
+                if (transactionpostbackUrl != null)
+                {
+                    transaction["PostbackUrl"] = SourceExpressionConverter.ConvertToken(transactionpostbackUrl);
+                    transactionpropCount++;
+                }
 
-            if (transactionpostbackUrl != null)
-            {
-                transaction["PostbackUrl"] = ExpressionConverter.ConvertO(transactionpostbackUrl);
-                transactionpropCount++;
-            }
-
-            if (transactionsignRequestMode != null)
-            {
                 if (transactionsignRequestMode != null)
                 {
-                    transaction["SignRequestMode"] = ExpressionConverter.ConvertO(transactionsignRequestMode);
+                    if (transactionsignRequestMode != null)
+                    {
+                        transaction["SignRequestMode"] = SourceExpressionConverter.ConvertToken(transactionsignRequestMode);
+                        transactionpropCount++;
+                    }
+
+                    transactionpropCount++;
+                }
+                else
+                {
+                    transaction["SignRequestMode"] = 2;
                     transactionpropCount++;
                 }
 
-                transactionpropCount++;
-            }
-            else
-            {
-                transaction["SignRequestMode"] = 2;
-                transactionpropCount++;
-            }
-
-            if (transactiondaysToExpire != null)
-            {
                 if (transactiondaysToExpire != null)
                 {
-                    transaction["DaysToExpire"] = ExpressionConverter.ConvertO(transactiondaysToExpire);
+                    if (transactiondaysToExpire != null)
+                    {
+                        transaction["DaysToExpire"] = SourceExpressionConverter.ConvertToken(transactiondaysToExpire);
+                        transactionpropCount++;
+                    }
+
+                    transactionpropCount++;
+                }
+                else
+                {
+                    transaction["DaysToExpire"] = 60;
                     transactionpropCount++;
                 }
 
-                transactionpropCount++;
-            }
-            else
-            {
-                transaction["DaysToExpire"] = 60;
-                transactionpropCount++;
-            }
-
-            if (transactionpropCount > 0)
-            {
-                callPayload.Body = transaction;
+                if (transactionpropCount > 0)
+                {
+                    callPayload.Body = transaction;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<Transaction>(callPayload);
+            return new ApiConnectionAction<Transaction>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IWorkflowAction Addfile(Expression<Func<string>> transactionId, Expression<Func<string>> fileId, Expression<Func<string>> body = null)
+        public IWorkflowAction Addfile([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = String.Format("/api/transaction/{0}/file/{1}", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<ErrorModel> Start(Expression<Func<string>> transactionId)
+        public IBodyWorkflowAction<ErrorModel> Start([WorkflowExpression] Func<string> transactionId)
         {
-            var apiCallPath = String.Format("/api/transaction/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ErrorModel>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/start", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ErrorModel>(BuildSourceInput);
         }
     }
 
@@ -299,11 +332,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [EnumMember(Value = "eHerkenning")]
         EHerkenning,
         [EnumMember(Value = "eIDAS Login")]
-        EIDASLogin,
+        EIdASLogin,
         [EnumMember(Value = "iDeal")]
         IDeal,
         [EnumMember(Value = "iDIN")]
-        IDIN,
+        IdIN,
         [EnumMember(Value = "itsme Identification")]
         ItsmeIdentification,
         PhoneNumber,
@@ -344,34 +377,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
 
     public enum TransactionSignersTypeItemActivitiesTypeItemCodeType
     {
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "102")]
-        _102,
-        [EnumMember(Value = "103")]
-        _103,
-        [EnumMember(Value = "104")]
-        _104,
-        [EnumMember(Value = "105")]
-        _105,
-        [EnumMember(Value = "201")]
-        _201,
-        [EnumMember(Value = "202")]
-        _202,
-        [EnumMember(Value = "203")]
-        _203,
-        [EnumMember(Value = "301")]
-        _301,
-        [EnumMember(Value = "302")]
-        _302,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "402")]
-        _402,
-        [EnumMember(Value = "403")]
-        _403
+        _101 = 101,
+        _102 = 102,
+        _103 = 103,
+        _104 = 104,
+        _105 = 105,
+        _201 = 201,
+        _202 = 202,
+        _203 = 203,
+        _301 = 301,
+        _302 = 302,
+        _303 = 303,
+        _401 = 401,
+        _402 = 402,
+        _403 = 403
     }
 
     public class TransactionReceiversTypeItem
@@ -387,22 +406,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
 
     public enum TransactionStatusType
     {
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "40")]
-        _40,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70
+        _5 = 5,
+        _10 = 10,
+        _20 = 20,
+        _30 = 30,
+        _40 = 40,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70
     }
 
     public class ErrorModel
@@ -479,34 +490,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
 
     public enum transactionsignersInputItemActivitiesTypeItemCodeType
     {
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "102")]
-        _102,
-        [EnumMember(Value = "103")]
-        _103,
-        [EnumMember(Value = "104")]
-        _104,
-        [EnumMember(Value = "105")]
-        _105,
-        [EnumMember(Value = "201")]
-        _201,
-        [EnumMember(Value = "202")]
-        _202,
-        [EnumMember(Value = "203")]
-        _203,
-        [EnumMember(Value = "301")]
-        _301,
-        [EnumMember(Value = "302")]
-        _302,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "402")]
-        _402,
-        [EnumMember(Value = "403")]
-        _403
+        _101 = 101,
+        _102 = 102,
+        _103 = 103,
+        _104 = 104,
+        _105 = 105,
+        _201 = 201,
+        _202 = 202,
+        _203 = 203,
+        _301 = 301,
+        _302 = 302,
+        _303 = 303,
+        _401 = 401,
+        _402 = 402,
+        _403 = 403
     }
 
     public class transactionreceiversInputItem

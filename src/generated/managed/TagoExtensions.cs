@@ -12,117 +12,130 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
     public class TagoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tago")]
-        public IBodyWorkflowAction<JToken> GetData(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<queryInput>> query = null, Expression<Func<int>> qty = null, Expression<Func<timezoneInput>> timezone = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> serie = null)
+        public IBodyWorkflowAction<JToken> GetData([WorkflowExpression] Func<string> device, [WorkflowExpression] Func<string> variable, [WorkflowExpression] Func<queryInput> query = null, [WorkflowExpression] Func<int> qty = null, [WorkflowExpression] Func<timezoneInput> timezone = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> serie = null)
         {
-            var apiCallPath = "/prod/data";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["device"] = ExpressionConverter.Convert(device);
-            callPayload.Queries["variable"] = ExpressionConverter.Convert(variable);
-            callPayload.Queries["query"] = Convert.ToString("last_item");
-            if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            if (qty != null)
-                callPayload.Queries["qty"] = ExpressionConverter.Convert(qty);
-            callPayload.Queries["timezone"] = Convert.ToString("(GMT+00:00) UTC");
-            if (timezone != null)
-                callPayload.Queries["timezone"] = ExpressionConverter.Convert(timezone);
-            if (startDate != null)
-                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-            if (serie != null)
-                callPayload.Queries["serie"] = ExpressionConverter.Convert(serie);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/prod/data";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["device"] = SourceExpressionConverter.ConvertO(device);
+                callPayload.Queries["variable"] = SourceExpressionConverter.ConvertO(variable);
+                callPayload.Queries["query"] = Convert.ToString("last_item");
+                if (query != null)
+                    callPayload.Queries["query"] = SourceExpressionConverter.Convert(query);
+                if (qty != null)
+                    callPayload.Queries["qty"] = SourceExpressionConverter.ConvertO(qty);
+                callPayload.Queries["timezone"] = Convert.ToString("(GMT+00:00) UTC");
+                if (timezone != null)
+                    callPayload.Queries["timezone"] = SourceExpressionConverter.Convert(timezone);
+                if (startDate != null)
+                    callPayload.Queries["start_date"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                if (serie != null)
+                    callPayload.Queries["serie"] = SourceExpressionConverter.ConvertO(serie);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tago")]
-        public IBodyWorkflowAction<PostDataResponse> PostData(Expression<Func<string>> bodydeviceId, Expression<Func<string>> bodyvariable, Expression<Func<string>> bodyvalue, Expression<Func<bodytimezoneInput>> bodytimezone = null, Expression<Func<string>> bodytimestamp = null, Expression<Func<string>> bodyserie = null, Expression<Func<string>> bodyunit = null)
+        public IBodyWorkflowAction<PostDataResponse> PostData([WorkflowExpression] Func<string> bodydeviceId, [WorkflowExpression] Func<string> bodyvariable, [WorkflowExpression] Func<string> bodyvalue, [WorkflowExpression] Func<bodytimezoneInput> bodytimezone = null, [WorkflowExpression] Func<string> bodytimestamp = null, [WorkflowExpression] Func<string> bodyserie = null, [WorkflowExpression] Func<string> bodyunit = null)
         {
-            var apiCallPath = "/prod/data";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["device"] = ExpressionConverter.ConvertO(bodydeviceId);
-            bodypropCount++;
-            body["variable"] = ExpressionConverter.ConvertO(bodyvariable);
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodytimezone != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/prod/data";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["device"] = SourceExpressionConverter.ConvertToken(bodydeviceId);
+                bodypropCount++;
+                body["variable"] = SourceExpressionConverter.ConvertToken(bodyvariable);
+                bodypropCount++;
+                body["value"] = SourceExpressionConverter.ConvertToken(bodyvalue);
                 if (bodytimezone != null)
                 {
-                    body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                    if (bodytimezone != null)
+                    {
+                        body["timezone"] = SourceExpressionConverter.Convert(bodytimezone);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["timezone"] = "(GMT+00:00) UTC";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["timezone"] = "(GMT+00:00) UTC";
-                bodypropCount++;
+                if (bodytimestamp != null)
+                {
+                    body["time"] = SourceExpressionConverter.ConvertToken(bodytimestamp);
+                    bodypropCount++;
+                }
+
+                if (bodyserie != null)
+                {
+                    body["serie"] = SourceExpressionConverter.ConvertToken(bodyserie);
+                    bodypropCount++;
+                }
+
+                if (bodyunit != null)
+                {
+                    body["unit"] = SourceExpressionConverter.ConvertToken(bodyunit);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytimestamp != null)
-            {
-                body["time"] = ExpressionConverter.ConvertO(bodytimestamp);
-                bodypropCount++;
-            }
-
-            if (bodyserie != null)
-            {
-                body["serie"] = ExpressionConverter.ConvertO(bodyserie);
-                bodypropCount++;
-            }
-
-            if (bodyunit != null)
-            {
-                body["unit"] = ExpressionConverter.ConvertO(bodyunit);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostDataResponse>(callPayload);
+            return new ApiConnectionAction<PostDataResponse>(BuildSourceInput);
         }
     }
 
     public class TagoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PostDataResponse> DataTrigger(Expression<Func<string>> device, Expression<Func<string>> variable, Expression<Func<conditionInput>> condition, Expression<Func<string>> value = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PostDataResponse> DataTrigger([WorkflowExpression] Func<string> device, [WorkflowExpression] Func<string> variable, [WorkflowExpression] Func<conditionInput> condition, [WorkflowExpression] Func<string> value = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/prod/flow";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["device"] = ExpressionConverter.Convert(device);
-            callPayload.Queries["variable"] = ExpressionConverter.Convert(variable);
-            callPayload.Queries["condition"] = ExpressionConverter.Convert(condition);
-            if (value != null)
-                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var configObject = new JObject();
-            var configObjectpropCount = 0;
-            configObject["callback"] = "@listCallbackUrl()";
-            configObjectpropCount++;
-            if (configObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["config"] = configObject;
-                bodypropCount++;
+                var apiCallPath = "/prod/flow";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["device"] = SourceExpressionConverter.ConvertO(device);
+                callPayload.Queries["variable"] = SourceExpressionConverter.ConvertO(variable);
+                callPayload.Queries["condition"] = SourceExpressionConverter.Convert(condition);
+                if (value != null)
+                    callPayload.Queries["value"] = SourceExpressionConverter.ConvertO(value);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var configObject = new JObject();
+                var configObjectpropCount = 0;
+                configObject["callback"] = "#{listCallbackUrl()}";
+                configObjectpropCount++;
+                if (configObjectpropCount > 0)
+                {
+                    body["config"] = configObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<PostDataResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<PostDataResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -14,45 +14,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
         public IBodyWorkflowAction<GetCategoriesResponse> GetCategories()
         {
-            var apiCallPath = "/api_category.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCategoriesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api_category.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCategoriesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
-        public IBodyWorkflowAction<GetQuestionResponse> GetQuestion(Expression<Func<int>> amount, Expression<Func<int>> category = null, Expression<Func<difficultyInput>> difficulty = null, Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<GetQuestionResponse> GetQuestion([WorkflowExpression] Func<int> amount, [WorkflowExpression] Func<int> category = null, [WorkflowExpression] Func<difficultyInput> difficulty = null, [WorkflowExpression] Func<typeInput> type = null)
         {
-            var apiCallPath = "/api.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["amount"] = ExpressionConverter.Convert(amount);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (difficulty != null)
-                callPayload.Queries["difficulty"] = ExpressionConverter.Convert(difficulty);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<GetQuestionResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["amount"] = SourceExpressionConverter.ConvertO(amount);
+                if (category != null)
+                    callPayload.Queries["category"] = SourceExpressionConverter.ConvertO(category);
+                if (difficulty != null)
+                    callPayload.Queries["difficulty"] = SourceExpressionConverter.Convert(difficulty);
+                if (type != null)
+                    callPayload.Queries["type"] = SourceExpressionConverter.Convert(type);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetQuestionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
-        public IBodyWorkflowAction<QuestionCountLookupResponse> QuestionCountLookup(Expression<Func<int>> category)
+        public IBodyWorkflowAction<QuestionCountLookupResponse> QuestionCountLookup([WorkflowExpression] Func<int> category)
         {
-            var apiCallPath = "/api_count.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            return new ApiConnectionAction<QuestionCountLookupResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api_count.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["category"] = SourceExpressionConverter.ConvertO(category);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<QuestionCountLookupResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
         public IBodyWorkflowAction<GlobalCountLookupResponse> GlobalCountLookup()
         {
-            var apiCallPath = "/api_count_global.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GlobalCountLookupResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api_count_global.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GlobalCountLookupResponse>(BuildSourceInput);
         }
     }
 

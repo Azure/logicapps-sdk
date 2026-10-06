@@ -14,32 +14,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thegoodapiip")]
         public IBodyWorkflowAction<TreesGetResponse> TreesGet()
         {
-            var apiCallPath = "/plant/trees";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TreesGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/plant/trees";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TreesGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thegoodapiip")]
-        public IBodyWorkflowAction<PlantPostResponse> Plant(Expression<Func<int>> bodycount = null)
+        public IBodyWorkflowAction<PlantPostResponse> Plant([WorkflowExpression] Func<int> bodycount = null)
         {
-            var apiCallPath = "/plant/trees";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycount != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
-                bodypropCount++;
+                var apiCallPath = "/plant/trees";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycount != null)
+                {
+                    body["count"] = SourceExpressionConverter.ConvertToken(bodycount);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PlantPostResponse>(callPayload);
+            return new ApiConnectionAction<PlantPostResponse>(BuildSourceInput);
         }
     }
 

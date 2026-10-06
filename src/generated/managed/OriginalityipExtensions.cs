@@ -12,77 +12,100 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
     public class OriginalityipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
-        public IBodyWorkflowAction<GetCreditBalanceResponse> GetCreditBalance(Expression<Func<string>> accept)
+        public IBodyWorkflowAction<GetCreditBalanceResponse> GetCreditBalance([WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = "/api/v1/account/credits/balance";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetCreditBalanceResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/account/credits/balance";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCreditBalanceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
-        public IBodyWorkflowAction<GetCreditUsageResponse> GetCreditUsage(Expression<Func<string>> accept)
+        public IBodyWorkflowAction<GetCreditUsageResponse> GetCreditUsage([WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = "/api/v1/account/credits/content_scan_usage";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetCreditUsageResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/account/credits/content_scan_usage";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCreditUsageResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
-        public IBodyWorkflowAction<GetPaymentResponse> GetPayment(Expression<Func<string>> accept)
+        public IBodyWorkflowAction<GetPaymentResponse> GetPayment([WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = "/api/v1/account/credits/payments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetPaymentResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/account/credits/payments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetPaymentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
-        public IBodyWorkflowAction<PostAIDetectionResponse> PostAIDetection(Expression<Func<string>> bodycontent = null)
+        public IBodyWorkflowAction<PostAIDetectionResponse> PostAIDetection([WorkflowExpression] Func<string> bodycontent = null)
         {
-            var apiCallPath = "/api/v1/scan/ai";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontent != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/scan/ai";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontent != null)
+                {
+                    body["content"] = SourceExpressionConverter.ConvertToken(bodycontent);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostAIDetectionResponse>(callPayload);
+            return new ApiConnectionAction<PostAIDetectionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
-        public IBodyWorkflowAction<PostUrlAIDetectionResponse> PostUrlAIDetection(Expression<Func<string>> bodyurl = null)
+        public IBodyWorkflowAction<PostUrlAIDetectionResponse> PostUrlAIDetection([WorkflowExpression] Func<string> bodyurl = null)
         {
-            var apiCallPath = "/api/v1/scan/url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyurl != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/scan/url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyurl != null)
+                {
+                    body["url"] = SourceExpressionConverter.ConvertToken(bodyurl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostUrlAIDetectionResponse>(callPayload);
+            return new ApiConnectionAction<PostUrlAIDetectionResponse>(BuildSourceInput);
         }
     }
 

@@ -12,181 +12,236 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
     public class AzuretablesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IBodyWorkflowAction<InsertEntityResponse> CreateEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null)
+        public IBodyWorkflowAction<InsertEntityResponse> CreateEntity([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
-            var entity = new JObject();
-            var entitypropCount = 0;
-            if (entitypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = entity;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsClientRequestId != null)
+                    callPayload.Headers["x-ms-client-request-id"] = SourceExpressionConverter.ConvertO(xMsClientRequestId);
+                var entity = new JObject();
+                var entitypropCount = 0;
+                if (entitypropCount > 0)
+                {
+                    callPayload.Body = entity;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<InsertEntityResponse>(callPayload);
+            return new ApiConnectionAction<InsertEntityResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IBodyWorkflowAction<GetTableResponse> CreateTable(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName = null, Expression<Func<string>> xMsClientRequestId = null)
+        public IBodyWorkflowAction<GetTableResponse> CreateTable([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName = null, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
-            callPayload.Body = ExpressionConverter.ConvertO(tableName);
-            return new ApiConnectionAction<GetTableResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction DeleteEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null, Expression<Func<string>> ifMatch = null)
-        {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
-            if (ifMatch != null)
-                callPayload.Headers["If-Match"] = ExpressionConverter.Convert(ifMatch);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction DeleteTable(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null)
-        {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IBodyWorkflowAction<GetEntitiesResponse> GetEntities(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null, Expression<Func<string>> filter = null, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
-            return new ApiConnectionAction<GetEntitiesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IBodyWorkflowAction<GetEntityResponse> GetEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
-            return new ApiConnectionAction<GetEntityResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IBodyWorkflowAction<GetTableResponse> GetTable(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null)
-        {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
-            return new ApiConnectionAction<GetTableResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IBodyWorkflowAction<GetTablesResponse> GetTables(Expression<Func<string>> storageAccountName, Expression<Func<string>> xMsClientRequestId = null)
-        {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
-            return new ApiConnectionAction<GetTablesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction InsertMergeEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null)
-        {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
-            var entity = new JObject();
-            var entitypropCount = 0;
-            if (entitypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = entity;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsClientRequestId != null)
+                    callPayload.Headers["x-ms-client-request-id"] = SourceExpressionConverter.ConvertO(xMsClientRequestId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(tableName);
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<GetTableResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction InsertReplaceEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null)
+        public IWorkflowAction DeleteEntity([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> xMsClientRequestId = null, [WorkflowExpression] Func<string> ifMatch = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
-            var entity = new JObject();
-            var entitypropCount = 0;
-            if (entitypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = entity;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsClientRequestId != null)
+                    callPayload.Headers["x-ms-client-request-id"] = SourceExpressionConverter.ConvertO(xMsClientRequestId);
+                if (ifMatch != null)
+                    callPayload.Headers["If-Match"] = SourceExpressionConverter.ConvertO(ifMatch);
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction MergeEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch, Expression<Func<string>> xMsClientRequestId = null)
+        public IWorkflowAction DeleteTable([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["If-Match"] = ExpressionConverter.Convert(ifMatch);
-            if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
-            var entity = new JObject();
-            var entitypropCount = 0;
-            if (entitypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = entity;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsClientRequestId != null)
+                    callPayload.Headers["x-ms-client-request-id"] = SourceExpressionConverter.ConvertO(xMsClientRequestId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction ReplaceEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch, Expression<Func<string>> xMsClientRequestId = null)
+        public IBodyWorkflowAction<GetEntitiesResponse> GetEntities([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> xMsClientRequestId = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["If-Match"] = ExpressionConverter.Convert(ifMatch);
-            if (xMsClientRequestId != null)
-                callPayload.Headers["x-ms-client-request-id"] = ExpressionConverter.Convert(xMsClientRequestId);
-            var entity = new JObject();
-            var entitypropCount = 0;
-            if (entitypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = entity;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (xMsClientRequestId != null)
+                    callPayload.Headers["x-ms-client-request-id"] = SourceExpressionConverter.ConvertO(xMsClientRequestId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<GetEntitiesResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
+        public IBodyWorkflowAction<GetEntityResponse> GetEntity([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> xMsClientRequestId = null, [WorkflowExpression] Func<string> select = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (xMsClientRequestId != null)
+                    callPayload.Headers["x-ms-client-request-id"] = SourceExpressionConverter.ConvertO(xMsClientRequestId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetEntityResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
+        public IBodyWorkflowAction<GetTableResponse> GetTable([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> xMsClientRequestId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsClientRequestId != null)
+                    callPayload.Headers["x-ms-client-request-id"] = SourceExpressionConverter.ConvertO(xMsClientRequestId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTableResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
+        public IBodyWorkflowAction<GetTablesResponse> GetTables([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> xMsClientRequestId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsClientRequestId != null)
+                    callPayload.Headers["x-ms-client-request-id"] = SourceExpressionConverter.ConvertO(xMsClientRequestId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTablesResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
+        public IWorkflowAction InsertMergeEntity([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> xMsClientRequestId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsClientRequestId != null)
+                    callPayload.Headers["x-ms-client-request-id"] = SourceExpressionConverter.ConvertO(xMsClientRequestId);
+                var entity = new JObject();
+                var entitypropCount = 0;
+                if (entitypropCount > 0)
+                {
+                    callPayload.Body = entity;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
+        public IWorkflowAction InsertReplaceEntity([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> xMsClientRequestId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsClientRequestId != null)
+                    callPayload.Headers["x-ms-client-request-id"] = SourceExpressionConverter.ConvertO(xMsClientRequestId);
+                var entity = new JObject();
+                var entitypropCount = 0;
+                if (entitypropCount > 0)
+                {
+                    callPayload.Body = entity;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
+        public IWorkflowAction MergeEntity([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> ifMatch, [WorkflowExpression] Func<string> xMsClientRequestId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["If-Match"] = SourceExpressionConverter.ConvertO(ifMatch);
+                if (xMsClientRequestId != null)
+                    callPayload.Headers["x-ms-client-request-id"] = SourceExpressionConverter.ConvertO(xMsClientRequestId);
+                var entity = new JObject();
+                var entitypropCount = 0;
+                if (entitypropCount > 0)
+                {
+                    callPayload.Body = entity;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
+        public IWorkflowAction ReplaceEntity([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> ifMatch, [WorkflowExpression] Func<string> xMsClientRequestId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partitionKey, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rowKey, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["If-Match"] = SourceExpressionConverter.ConvertO(ifMatch);
+                if (xMsClientRequestId != null)
+                    callPayload.Headers["x-ms-client-request-id"] = SourceExpressionConverter.ConvertO(xMsClientRequestId);
+                var entity = new JObject();
+                var entitypropCount = 0;
+                if (entitypropCount > 0)
+                {
+                    callPayload.Body = entity;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

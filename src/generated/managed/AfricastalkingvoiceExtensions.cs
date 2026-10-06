@@ -12,29 +12,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
     public class AfricastalkingvoiceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingvoice")]
-        public IBodyWorkflowAction<CallResponse> Call(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyfrom, Expression<Func<string[]>> bodyto, Expression<Func<bodyactionsInputItem[]>> bodyactions)
+        public IBodyWorkflowAction<CallResponse> Call([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<bodyactionsInputItem[]> bodyactions)
         {
-            var apiCallPath = "/call";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
-            bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-            bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["actions"] = ExpressionConverter.ConvertO(bodyactions);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/call";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["username"] = SourceExpressionConverter.ConvertToken(bodyusername);
+                bodypropCount++;
+                body["from"] = SourceExpressionConverter.ConvertToken(bodyfrom);
+                bodypropCount++;
+                body["to"] = SourceExpressionConverter.ConvertToken(bodyto);
+                bodypropCount++;
+                body["actions"] = SourceExpressionConverter.ConvertToken(bodyactions);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CallResponse>(callPayload);
+            return new ApiConnectionAction<CallResponse>(BuildSourceInput);
         }
     }
 

@@ -12,17 +12,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
     public class WttrinActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wttrin")]
-        public IBodyWorkflowAction<string> WeatherGet(Expression<Func<string>> location, Expression<Func<viewInput>> view = null, Expression<Func<langInput>> lang = null)
+        public IBodyWorkflowAction<string> WeatherGet([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<viewInput> view = null, [WorkflowExpression] Func<langInput> lang = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (view != null)
-                callPayload.Queries["view"] = ExpressionConverter.Convert(view);
-            callPayload.Queries["lang"] = Convert.ToString("en");
-            if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.Convert(view);
+                callPayload.Queries["lang"] = Convert.ToString("en");
+                if (lang != null)
+                    callPayload.Queries["lang"] = SourceExpressionConverter.Convert(lang);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

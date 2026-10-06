@@ -14,30 +14,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Focusmateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "focusmateip")]
         public IBodyWorkflowAction<ProfileResponse> Profile()
         {
-            var apiCallPath = "/v1/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProfileResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProfileResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "focusmateip")]
-        public IBodyWorkflowAction<PartnerProfileResponse> PartnerProfile(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<PartnerProfileResponse> PartnerProfile([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = String.Format("/v1/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PartnerProfileResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PartnerProfileResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "focusmateip")]
-        public IBodyWorkflowAction<GetSessionsResponse> GetSessions(Expression<Func<string>> start, Expression<Func<string>> end)
+        public IBodyWorkflowAction<GetSessionsResponse> GetSessions([WorkflowExpression] Func<string> start, [WorkflowExpression] Func<string> end)
         {
-            var apiCallPath = "/v1/sessions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            return new ApiConnectionAction<GetSessionsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/sessions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSessionsResponse>(BuildSourceInput);
         }
     }
 

@@ -12,37 +12,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontentsv2
     public class Webcontentsv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontentsv2")]
-        public IBodyWorkflowAction<JToken> InvokeHttp(Expression<Func<requestmethodInput>> requestmethod, Expression<Func<string>> requesturlOfTheRequest, Expression<Func<string>> requestbodyOfTheRequest = null)
+        public IBodyWorkflowAction<JToken> InvokeHttp([WorkflowExpression] Func<requestmethodInput> requestmethod, [WorkflowExpression] Func<string> requesturlOfTheRequest, [WorkflowExpression] Func<string> requestbodyOfTheRequest = null)
         {
-            var apiCallPath = "/InvokeHttp";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["method"] = ExpressionConverter.ConvertO(requestmethod);
-            requestpropCount++;
-            request["url"] = ExpressionConverter.ConvertO(requesturlOfTheRequest);
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["headers"] = headersObject;
+                var apiCallPath = "/InvokeHttp";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
-            }
-
-            if (requestbodyOfTheRequest != null)
-            {
-                request["body"] = ExpressionConverter.ConvertO(requestbodyOfTheRequest);
+                request["method"] = SourceExpressionConverter.Convert(requestmethod);
                 requestpropCount++;
+                request["url"] = SourceExpressionConverter.ConvertToken(requesturlOfTheRequest);
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    request["headers"] = headersObject;
+                    requestpropCount++;
+                }
+
+                if (requestbodyOfTheRequest != null)
+                {
+                    request["body"] = SourceExpressionConverter.ConvertToken(requestbodyOfTheRequest);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 

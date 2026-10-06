@@ -12,113 +12,131 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
     public class PushoveripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> bodyuser, Expression<Func<string>> bodymessage, Expression<Func<string>> bodydevice = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodyhtmlInput>> bodyhtml = null, Expression<Func<string>> bodysound = null, Expression<Func<string>> bodytimestamp = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodyurlTitle = null)
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodydevice = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<bodyhtmlInput> bodyhtml = null, [WorkflowExpression] Func<string> bodysound = null, [WorkflowExpression] Func<string> bodytimestamp = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodyurlTitle = null)
         {
-            var apiCallPath = "/1/messages.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["user"] = ExpressionConverter.ConvertO(bodyuser);
-            if (bodydevice != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["device"] = ExpressionConverter.ConvertO(bodydevice);
+                var apiCallPath = "/1/messages.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["user"] = SourceExpressionConverter.ConvertToken(bodyuser);
+                if (bodydevice != null)
+                {
+                    body["device"] = SourceExpressionConverter.ConvertToken(bodydevice);
+                    bodypropCount++;
+                }
 
-            if (bodypriority != null)
-            {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                if (bodypriority != null)
+                {
+                    body["priority"] = SourceExpressionConverter.Convert(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodyhtml != null)
+                {
+                    body["html"] = SourceExpressionConverter.Convert(bodyhtml);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                if (bodysound != null)
+                {
+                    body["sound"] = SourceExpressionConverter.ConvertToken(bodysound);
+                    bodypropCount++;
+                }
+
+                if (bodytimestamp != null)
+                {
+                    body["timestamp"] = SourceExpressionConverter.ConvertToken(bodytimestamp);
+                    bodypropCount++;
+                }
+
+                if (bodyurl != null)
+                {
+                    body["url"] = SourceExpressionConverter.ConvertToken(bodyurl);
+                    bodypropCount++;
+                }
+
+                if (bodyurlTitle != null)
+                {
+                    body["url_title"] = SourceExpressionConverter.ConvertToken(bodyurlTitle);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodyhtml != null)
-            {
-                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
-            if (bodysound != null)
-            {
-                body["sound"] = ExpressionConverter.ConvertO(bodysound);
-                bodypropCount++;
-            }
-
-            if (bodytimestamp != null)
-            {
-                body["timestamp"] = ExpressionConverter.ConvertO(bodytimestamp);
-                bodypropCount++;
-            }
-
-            if (bodyurl != null)
-            {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
-                bodypropCount++;
-            }
-
-            if (bodyurlTitle != null)
-            {
-                body["url_title"] = ExpressionConverter.ConvertO(bodyurlTitle);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendMessageResponse>(callPayload);
+            return new ApiConnectionAction<SendMessageResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
         public IBodyWorkflowAction<GetSoundsResponse> GetSounds()
         {
-            var apiCallPath = "/1/sounds.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSoundsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1/sounds.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSoundsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
-        public IBodyWorkflowAction<ValidateKeyResponse> ValidateKey(Expression<Func<string>> bodyuser, Expression<Func<string>> bodydevice = null)
+        public IBodyWorkflowAction<ValidateKeyResponse> ValidateKey([WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<string> bodydevice = null)
         {
-            var apiCallPath = "/1/users/validate.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["user"] = ExpressionConverter.ConvertO(bodyuser);
-            if (bodydevice != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["device"] = ExpressionConverter.ConvertO(bodydevice);
+                var apiCallPath = "/1/users/validate.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["user"] = SourceExpressionConverter.ConvertToken(bodyuser);
+                if (bodydevice != null)
+                {
+                    body["device"] = SourceExpressionConverter.ConvertToken(bodydevice);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ValidateKeyResponse>(callPayload);
+            return new ApiConnectionAction<ValidateKeyResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
         public IBodyWorkflowAction<LimitsResponse> Limits()
         {
-            var apiCallPath = "/1/apps/limits.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LimitsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1/apps/limits.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LimitsResponse>(BuildSourceInput);
         }
     }
 
@@ -137,22 +155,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
 
     public enum bodypriorityInput
     {
-        [EnumMember(Value = "-2")]
-        Negative2,
-        [EnumMember(Value = "-1")]
-        Negative1,
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        Negative2 = -2,
+        Negative1 = -1,
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public enum bodyhtmlInput
     {
-        [EnumMember(Value = "1")]
-        _1
+        _1 = 1
     }
 
     public class GetSoundsResponse

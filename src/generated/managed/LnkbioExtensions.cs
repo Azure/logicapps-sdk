@@ -12,29 +12,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
     public class LnkbioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lnkbio")]
-        public IBodyWorkflowAction<InlineResponse200> Lnkadd(Expression<Func<string>> bodytitle, Expression<Func<string>> bodylink, Expression<Func<string>> bodyimage = null)
+        public IBodyWorkflowAction<InlineResponse200> Lnkadd([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodylink, [WorkflowExpression] Func<string> bodyimage = null)
         {
-            var apiCallPath = "/lnk/add";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            bodypropCount++;
-            body["link"] = ExpressionConverter.ConvertO(bodylink);
-            if (bodyimage != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["image"] = ExpressionConverter.ConvertO(bodyimage);
+                var apiCallPath = "/lnk/add";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                bodypropCount++;
+                body["link"] = SourceExpressionConverter.ConvertToken(bodylink);
+                if (bodyimage != null)
+                {
+                    body["image"] = SourceExpressionConverter.ConvertToken(bodyimage);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<InlineResponse200>(callPayload);
+            return new ApiConnectionAction<InlineResponse200>(BuildSourceInput);
         }
     }
 

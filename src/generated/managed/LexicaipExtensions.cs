@@ -12,13 +12,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexicaip
     public class LexicaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexicaip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q)
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> q)
         {
-            var apiCallPath = "/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchResponse>(BuildSourceInput);
         }
     }
 

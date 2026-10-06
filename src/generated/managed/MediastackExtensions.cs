@@ -12,55 +12,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mediastack
     public class MediastackActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mediastack")]
-        public IBodyWorkflowAction<ListNewsResponse> ListNews(Expression<Func<string>> sources = null, Expression<Func<string>> categories = null, Expression<Func<string>> countries = null, Expression<Func<string>> languages = null, Expression<Func<string>> keywords = null, Expression<Func<string>> date = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListNewsResponse> ListNews([WorkflowExpression] Func<string> sources = null, [WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<string> countries = null, [WorkflowExpression] Func<string> languages = null, [WorkflowExpression] Func<string> keywords = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = "/v1/news";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sources != null)
-                callPayload.Queries["sources"] = ExpressionConverter.Convert(sources);
-            if (categories != null)
-                callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
-            if (countries != null)
-                callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
-            if (languages != null)
-                callPayload.Queries["languages"] = ExpressionConverter.Convert(languages);
-            if (keywords != null)
-                callPayload.Queries["keywords"] = ExpressionConverter.Convert(keywords);
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            callPayload.Queries["sort"] = Convert.ToString("published_desc");
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Queries["limit"] = Convert.ToString(25);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<ListNewsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/news";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sources != null)
+                    callPayload.Queries["sources"] = SourceExpressionConverter.ConvertO(sources);
+                if (categories != null)
+                    callPayload.Queries["categories"] = SourceExpressionConverter.ConvertO(categories);
+                if (countries != null)
+                    callPayload.Queries["countries"] = SourceExpressionConverter.ConvertO(countries);
+                if (languages != null)
+                    callPayload.Queries["languages"] = SourceExpressionConverter.ConvertO(languages);
+                if (keywords != null)
+                    callPayload.Queries["keywords"] = SourceExpressionConverter.ConvertO(keywords);
+                if (date != null)
+                    callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                callPayload.Queries["sort"] = Convert.ToString("published_desc");
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.Convert(sort);
+                callPayload.Queries["limit"] = Convert.ToString(25);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListNewsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mediastack")]
-        public IBodyWorkflowAction<ListSourcesResponse> ListSources(Expression<Func<string>> search, Expression<Func<string>> countries = null, Expression<Func<string>> languages = null, Expression<Func<string>> categories = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<ListSourcesResponse> ListSources([WorkflowExpression] Func<string> search, [WorkflowExpression] Func<string> countries = null, [WorkflowExpression] Func<string> languages = null, [WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = "/v1/sources";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (countries != null)
-                callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
-            if (languages != null)
-                callPayload.Queries["languages"] = ExpressionConverter.Convert(languages);
-            if (categories != null)
-                callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
-            callPayload.Queries["limit"] = Convert.ToString(25);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<ListSourcesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/sources";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (countries != null)
+                    callPayload.Queries["countries"] = SourceExpressionConverter.ConvertO(countries);
+                if (languages != null)
+                    callPayload.Queries["languages"] = SourceExpressionConverter.ConvertO(languages);
+                if (categories != null)
+                    callPayload.Queries["categories"] = SourceExpressionConverter.ConvertO(categories);
+                callPayload.Queries["limit"] = Convert.ToString(25);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListSourcesResponse>(BuildSourceInput);
         }
     }
 

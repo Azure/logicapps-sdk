@@ -12,315 +12,351 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
     public class FreshbooksActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IBodyWorkflowAction<Expense[]> ListExpenses(Expression<Func<string>> accountid)
+        public IBodyWorkflowAction<Expense[]> ListExpenses([WorkflowExpression] Func<string> accountid)
         {
-            var apiCallPath = String.Format("/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            return new ApiConnectionAction<Expense[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Expense[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IBodyWorkflowAction<Expense> AddExpense(Expression<Func<string>> accountid, Expression<Func<string>> bodyexpenseamountamount, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
+        public IBodyWorkflowAction<Expense> AddExpense([WorkflowExpression] Func<string> accountid, [WorkflowExpression] Func<string> bodyexpenseamountamount, [WorkflowExpression] Func<bodyexpenseamountcurrencyInput> bodyexpenseamountcurrency = null, [WorkflowExpression] Func<int> bodyexpensecategory = null, [WorkflowExpression] Func<int> bodyexpensestaff = null, [WorkflowExpression] Func<string> bodyexpensedate = null, [WorkflowExpression] Func<string> bodyexpensevendor = null, [WorkflowExpression] Func<string> bodyexpensenotes = null)
         {
-            var apiCallPath = String.Format("/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var expenseObject = new JObject();
-            var expenseObjectpropCount = 0;
-            var amountObject = new JObject();
-            var amountObjectpropCount = 0;
-            amountObjectpropCount++;
-            amountObject["amount"] = ExpressionConverter.ConvertO(bodyexpenseamountamount);
-            if (bodyexpenseamountcurrency != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                amountObject["code"] = ExpressionConverter.ConvertO(bodyexpenseamountcurrency);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var expenseObject = new JObject();
+                var expenseObjectpropCount = 0;
+                var amountObject = new JObject();
+                var amountObjectpropCount = 0;
                 amountObjectpropCount++;
+                amountObject["amount"] = SourceExpressionConverter.ConvertToken(bodyexpenseamountamount);
+                if (bodyexpenseamountcurrency != null)
+                {
+                    amountObject["code"] = SourceExpressionConverter.Convert(bodyexpenseamountcurrency);
+                    amountObjectpropCount++;
+                }
+
+                if (amountObjectpropCount > 0)
+                {
+                    expenseObject["amount"] = amountObject;
+                    expenseObjectpropCount++;
+                }
+
+                if (bodyexpensecategory != null)
+                {
+                    expenseObject["categoryid"] = SourceExpressionConverter.ConvertToken(bodyexpensecategory);
+                    expenseObjectpropCount++;
+                }
+
+                if (bodyexpensestaff != null)
+                {
+                    expenseObject["staffid"] = SourceExpressionConverter.ConvertToken(bodyexpensestaff);
+                    expenseObjectpropCount++;
+                }
+
+                if (bodyexpensedate != null)
+                {
+                    expenseObject["date"] = SourceExpressionConverter.ConvertToken(bodyexpensedate);
+                    expenseObjectpropCount++;
+                }
+
+                if (bodyexpensevendor != null)
+                {
+                    expenseObject["vendor"] = SourceExpressionConverter.ConvertToken(bodyexpensevendor);
+                    expenseObjectpropCount++;
+                }
+
+                if (bodyexpensenotes != null)
+                {
+                    expenseObject["notes"] = SourceExpressionConverter.ConvertToken(bodyexpensenotes);
+                    expenseObjectpropCount++;
+                }
+
+                if (expenseObjectpropCount > 0)
+                {
+                    body["expense"] = expenseObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (amountObjectpropCount > 0)
-            {
-                expenseObject["amount"] = amountObject;
-                expenseObjectpropCount++;
-            }
-
-            if (bodyexpensecategory != null)
-            {
-                expenseObject["categoryid"] = ExpressionConverter.ConvertO(bodyexpensecategory);
-                expenseObjectpropCount++;
-            }
-
-            if (bodyexpensestaff != null)
-            {
-                expenseObject["staffid"] = ExpressionConverter.ConvertO(bodyexpensestaff);
-                expenseObjectpropCount++;
-            }
-
-            if (bodyexpensedate != null)
-            {
-                expenseObject["date"] = ExpressionConverter.ConvertO(bodyexpensedate);
-                expenseObjectpropCount++;
-            }
-
-            if (bodyexpensevendor != null)
-            {
-                expenseObject["vendor"] = ExpressionConverter.ConvertO(bodyexpensevendor);
-                expenseObjectpropCount++;
-            }
-
-            if (bodyexpensenotes != null)
-            {
-                expenseObject["notes"] = ExpressionConverter.ConvertO(bodyexpensenotes);
-                expenseObjectpropCount++;
-            }
-
-            if (expenseObjectpropCount > 0)
-            {
-                body["expense"] = expenseObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Expense>(callPayload);
+            return new ApiConnectionAction<Expense>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IWorkflowAction UpdateExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid, Expression<Func<string>> bodyexpenseamountamount = null, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
+        public IWorkflowAction UpdateExpense([WorkflowExpression] Func<string> accountid, [WorkflowExpression] Func<string> expenseid, [WorkflowExpression] Func<string> bodyexpenseamountamount = null, [WorkflowExpression] Func<bodyexpenseamountcurrencyInput> bodyexpenseamountcurrency = null, [WorkflowExpression] Func<int> bodyexpensecategory = null, [WorkflowExpression] Func<int> bodyexpensestaff = null, [WorkflowExpression] Func<string> bodyexpensedate = null, [WorkflowExpression] Func<string> bodyexpensevendor = null, [WorkflowExpression] Func<string> bodyexpensenotes = null)
         {
-            var apiCallPath = String.Format("/accounting/account/{0}/expenses/expenses/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1), ExpressionConverter.ConvertWithUrlEncoding(expenseid, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var expenseObject = new JObject();
-            var expenseObjectpropCount = 0;
-            var amountObject = new JObject();
-            var amountObjectpropCount = 0;
-            if (bodyexpenseamountamount != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                amountObject["amount"] = ExpressionConverter.ConvertO(bodyexpenseamountamount);
-                amountObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(expenseid, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var expenseObject = new JObject();
+                var expenseObjectpropCount = 0;
+                var amountObject = new JObject();
+                var amountObjectpropCount = 0;
+                if (bodyexpenseamountamount != null)
+                {
+                    amountObject["amount"] = SourceExpressionConverter.ConvertToken(bodyexpenseamountamount);
+                    amountObjectpropCount++;
+                }
+
+                if (bodyexpenseamountcurrency != null)
+                {
+                    amountObject["code"] = SourceExpressionConverter.Convert(bodyexpenseamountcurrency);
+                    amountObjectpropCount++;
+                }
+
+                if (amountObjectpropCount > 0)
+                {
+                    expenseObject["amount"] = amountObject;
+                    expenseObjectpropCount++;
+                }
+
+                if (bodyexpensecategory != null)
+                {
+                    expenseObject["categoryid"] = SourceExpressionConverter.ConvertToken(bodyexpensecategory);
+                    expenseObjectpropCount++;
+                }
+
+                if (bodyexpensestaff != null)
+                {
+                    expenseObject["staffid"] = SourceExpressionConverter.ConvertToken(bodyexpensestaff);
+                    expenseObjectpropCount++;
+                }
+
+                if (bodyexpensedate != null)
+                {
+                    expenseObject["date"] = SourceExpressionConverter.ConvertToken(bodyexpensedate);
+                    expenseObjectpropCount++;
+                }
+
+                if (bodyexpensevendor != null)
+                {
+                    expenseObject["vendor"] = SourceExpressionConverter.ConvertToken(bodyexpensevendor);
+                    expenseObjectpropCount++;
+                }
+
+                if (bodyexpensenotes != null)
+                {
+                    expenseObject["notes"] = SourceExpressionConverter.ConvertToken(bodyexpensenotes);
+                    expenseObjectpropCount++;
+                }
+
+                if (expenseObjectpropCount > 0)
+                {
+                    body["expense"] = expenseObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyexpenseamountcurrency != null)
-            {
-                amountObject["code"] = ExpressionConverter.ConvertO(bodyexpenseamountcurrency);
-                amountObjectpropCount++;
-            }
-
-            if (amountObjectpropCount > 0)
-            {
-                expenseObject["amount"] = amountObject;
-                expenseObjectpropCount++;
-            }
-
-            if (bodyexpensecategory != null)
-            {
-                expenseObject["categoryid"] = ExpressionConverter.ConvertO(bodyexpensecategory);
-                expenseObjectpropCount++;
-            }
-
-            if (bodyexpensestaff != null)
-            {
-                expenseObject["staffid"] = ExpressionConverter.ConvertO(bodyexpensestaff);
-                expenseObjectpropCount++;
-            }
-
-            if (bodyexpensedate != null)
-            {
-                expenseObject["date"] = ExpressionConverter.ConvertO(bodyexpensedate);
-                expenseObjectpropCount++;
-            }
-
-            if (bodyexpensevendor != null)
-            {
-                expenseObject["vendor"] = ExpressionConverter.ConvertO(bodyexpensevendor);
-                expenseObjectpropCount++;
-            }
-
-            if (bodyexpensenotes != null)
-            {
-                expenseObject["notes"] = ExpressionConverter.ConvertO(bodyexpensenotes);
-                expenseObjectpropCount++;
-            }
-
-            if (expenseObjectpropCount > 0)
-            {
-                body["expense"] = expenseObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IWorkflowAction DeleteExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid)
+        public IWorkflowAction DeleteExpense([WorkflowExpression] Func<string> accountid, [WorkflowExpression] Func<string> expenseid)
         {
-            var apiCallPath = String.Format("/placeholder/accounting/account/{0}/expenses/expenses/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1), ExpressionConverter.ConvertWithUrlEncoding(expenseid, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var expenseObject = new JObject();
-            var expenseObjectpropCount = 0;
-            expenseObject["vis_state"] = 1;
-            expenseObjectpropCount++;
-            if (expenseObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["expense"] = expenseObject;
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/placeholder/accounting/account/{0}/expenses/expenses/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(expenseid, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var expenseObject = new JObject();
+                var expenseObjectpropCount = 0;
+                expenseObject["vis_state"] = 1;
+                expenseObjectpropCount++;
+                if (expenseObjectpropCount > 0)
+                {
+                    body["expense"] = expenseObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IBodyWorkflowAction<Client> AddClient(Expression<Func<string>> accountid, Expression<Func<string>> bodyclientfirstName = null, Expression<Func<string>> bodyclientlastName = null, Expression<Func<string>> bodyclientorganization = null, Expression<Func<string>> bodyclientemailAddress = null, Expression<Func<string>> bodyclientphoneNumber = null, Expression<Func<bodyclientcurrencyInput>> bodyclientcurrency = null, Expression<Func<string>> bodyclientstreetAddress1 = null, Expression<Func<string>> bodyclientstreetAddress2 = null, Expression<Func<string>> bodyclientcity = null, Expression<Func<string>> bodyclientpostalCode = null, Expression<Func<string>> bodyclientcountry = null, Expression<Func<string>> bodyclientprovince = null)
+        public IBodyWorkflowAction<Client> AddClient([WorkflowExpression] Func<string> accountid, [WorkflowExpression] Func<string> bodyclientfirstName = null, [WorkflowExpression] Func<string> bodyclientlastName = null, [WorkflowExpression] Func<string> bodyclientorganization = null, [WorkflowExpression] Func<string> bodyclientemailAddress = null, [WorkflowExpression] Func<string> bodyclientphoneNumber = null, [WorkflowExpression] Func<bodyclientcurrencyInput> bodyclientcurrency = null, [WorkflowExpression] Func<string> bodyclientstreetAddress1 = null, [WorkflowExpression] Func<string> bodyclientstreetAddress2 = null, [WorkflowExpression] Func<string> bodyclientcity = null, [WorkflowExpression] Func<string> bodyclientpostalCode = null, [WorkflowExpression] Func<string> bodyclientcountry = null, [WorkflowExpression] Func<string> bodyclientprovince = null)
         {
-            var apiCallPath = String.Format("/accounting/account/{0}/users/clients", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var clientObject = new JObject();
-            var clientObjectpropCount = 0;
-            if (bodyclientfirstName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                clientObject["fname"] = ExpressionConverter.ConvertO(bodyclientfirstName);
-                clientObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/users/clients", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var clientObject = new JObject();
+                var clientObjectpropCount = 0;
+                if (bodyclientfirstName != null)
+                {
+                    clientObject["fname"] = SourceExpressionConverter.ConvertToken(bodyclientfirstName);
+                    clientObjectpropCount++;
+                }
+
+                if (bodyclientlastName != null)
+                {
+                    clientObject["lname"] = SourceExpressionConverter.ConvertToken(bodyclientlastName);
+                    clientObjectpropCount++;
+                }
+
+                if (bodyclientorganization != null)
+                {
+                    clientObject["organization"] = SourceExpressionConverter.ConvertToken(bodyclientorganization);
+                    clientObjectpropCount++;
+                }
+
+                if (bodyclientemailAddress != null)
+                {
+                    clientObject["email"] = SourceExpressionConverter.ConvertToken(bodyclientemailAddress);
+                    clientObjectpropCount++;
+                }
+
+                if (bodyclientphoneNumber != null)
+                {
+                    clientObject["bus_phone"] = SourceExpressionConverter.ConvertToken(bodyclientphoneNumber);
+                    clientObjectpropCount++;
+                }
+
+                if (bodyclientcurrency != null)
+                {
+                    clientObject["currency_code"] = SourceExpressionConverter.Convert(bodyclientcurrency);
+                    clientObjectpropCount++;
+                }
+
+                if (bodyclientstreetAddress1 != null)
+                {
+                    clientObject["p_street"] = SourceExpressionConverter.ConvertToken(bodyclientstreetAddress1);
+                    clientObjectpropCount++;
+                }
+
+                if (bodyclientstreetAddress2 != null)
+                {
+                    clientObject["p_street2"] = SourceExpressionConverter.ConvertToken(bodyclientstreetAddress2);
+                    clientObjectpropCount++;
+                }
+
+                if (bodyclientcity != null)
+                {
+                    clientObject["p_city"] = SourceExpressionConverter.ConvertToken(bodyclientcity);
+                    clientObjectpropCount++;
+                }
+
+                if (bodyclientpostalCode != null)
+                {
+                    clientObject["p_code"] = SourceExpressionConverter.ConvertToken(bodyclientpostalCode);
+                    clientObjectpropCount++;
+                }
+
+                if (bodyclientcountry != null)
+                {
+                    clientObject["p_country"] = SourceExpressionConverter.ConvertToken(bodyclientcountry);
+                    clientObjectpropCount++;
+                }
+
+                if (bodyclientprovince != null)
+                {
+                    clientObject["p_province"] = SourceExpressionConverter.ConvertToken(bodyclientprovince);
+                    clientObjectpropCount++;
+                }
+
+                if (clientObjectpropCount > 0)
+                {
+                    body["client"] = clientObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyclientlastName != null)
-            {
-                clientObject["lname"] = ExpressionConverter.ConvertO(bodyclientlastName);
-                clientObjectpropCount++;
-            }
-
-            if (bodyclientorganization != null)
-            {
-                clientObject["organization"] = ExpressionConverter.ConvertO(bodyclientorganization);
-                clientObjectpropCount++;
-            }
-
-            if (bodyclientemailAddress != null)
-            {
-                clientObject["email"] = ExpressionConverter.ConvertO(bodyclientemailAddress);
-                clientObjectpropCount++;
-            }
-
-            if (bodyclientphoneNumber != null)
-            {
-                clientObject["bus_phone"] = ExpressionConverter.ConvertO(bodyclientphoneNumber);
-                clientObjectpropCount++;
-            }
-
-            if (bodyclientcurrency != null)
-            {
-                clientObject["currency_code"] = ExpressionConverter.ConvertO(bodyclientcurrency);
-                clientObjectpropCount++;
-            }
-
-            if (bodyclientstreetAddress1 != null)
-            {
-                clientObject["p_street"] = ExpressionConverter.ConvertO(bodyclientstreetAddress1);
-                clientObjectpropCount++;
-            }
-
-            if (bodyclientstreetAddress2 != null)
-            {
-                clientObject["p_street2"] = ExpressionConverter.ConvertO(bodyclientstreetAddress2);
-                clientObjectpropCount++;
-            }
-
-            if (bodyclientcity != null)
-            {
-                clientObject["p_city"] = ExpressionConverter.ConvertO(bodyclientcity);
-                clientObjectpropCount++;
-            }
-
-            if (bodyclientpostalCode != null)
-            {
-                clientObject["p_code"] = ExpressionConverter.ConvertO(bodyclientpostalCode);
-                clientObjectpropCount++;
-            }
-
-            if (bodyclientcountry != null)
-            {
-                clientObject["p_country"] = ExpressionConverter.ConvertO(bodyclientcountry);
-                clientObjectpropCount++;
-            }
-
-            if (bodyclientprovince != null)
-            {
-                clientObject["p_province"] = ExpressionConverter.ConvertO(bodyclientprovince);
-                clientObjectpropCount++;
-            }
-
-            if (clientObjectpropCount > 0)
-            {
-                body["client"] = clientObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Client>(callPayload);
+            return new ApiConnectionAction<Client>(BuildSourceInput);
         }
     }
 
     public class FreshbooksTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Invoice[]> TrigUpdatedInvoice(Expression<Func<string>> accountid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Invoice[]> TrigUpdatedInvoice([WorkflowExpression] Func<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/accounting/account/{0}/invoices/invoices", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["include[]"] = Convert.ToString("client");
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            return new ApiConnectionTrigger<Invoice[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/invoices/invoices", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["include[]"] = Convert.ToString("client");
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<Invoice[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<Expense[]> TrigUpdatedExpense(Expression<Func<string>> accountid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Expense[]> TrigUpdatedExpense([WorkflowExpression] Func<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            return new ApiConnectionTrigger<Expense[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/expenses/expenses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<Expense[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<Payment[]> TrigUpdatedPayment(Expression<Func<string>> accountid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Payment[]> TrigUpdatedPayment([WorkflowExpression] Func<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/accounting/account/{0}/payments/payments", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["include[]"] = Convert.ToString("client");
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            return new ApiConnectionTrigger<Payment[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/payments/payments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["include[]"] = Convert.ToString("client");
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<Payment[]>(BuildSourceInput, triggerName, recurrence);
         }
     }
 
@@ -489,7 +525,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         HRK,
         HTG,
         HUF,
-        IDR,
+        [EnumMember(Value = "IDR")]
+        IdR,
         ILS,
         INR,
         IQD,
@@ -764,7 +801,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         HRK,
         HTG,
         HUF,
-        IDR,
+        [EnumMember(Value = "IDR")]
+        IdR,
         ILS,
         INR,
         IQD,

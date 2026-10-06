@@ -12,1015 +12,1031 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicedeskpluscloud
     public class ServicedeskpluscloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<CreateRequestResponse> CreateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> bodyinputDatarequestsubject, Expression<Func<string>> bodyinputDatarequesttemplatename = null, Expression<Func<string>> bodyinputDatarequestrequestTypename = null, Expression<Func<string>> bodyinputDatarequestrequestername = null, Expression<Func<string>> bodyinputDatarequeststatusname = null, Expression<Func<string>> bodyinputDatarequesttechnicianemailId = null, Expression<Func<string>> bodyinputDatarequestsitename = null, Expression<Func<string>> bodyinputDatarequestgroupname = null, Expression<Func<string>> bodyinputDatarequestdescription = null, Expression<Func<string>> bodyinputDatarequestpriorityname = null, Expression<Func<string>> bodyinputDatarequesturgencyname = null, Expression<Func<string>> bodyinputDatarequestimpactname = null, Expression<Func<string>> bodyinputDatarequestmodename = null, Expression<Func<string>> bodyinputDatarequestcategoryname = null, Expression<Func<string>> bodyinputDatarequestsubcategoryname = null, Expression<Func<string>> bodyinputDatarequestitemname = null, Expression<Func<bodyinputDatarequestassetsInputItem[]>> bodyinputDatarequestassets = null, Expression<Func<string>> bodyinputDatarequestudfFields = null)
+        public IBodyWorkflowAction<CreateRequestResponse> CreateRequest([WorkflowExpression] Func<string> serviceDeskInstance, [WorkflowExpression] Func<string> bodyinputDatarequestsubject, [WorkflowExpression] Func<string> bodyinputDatarequesttemplatename = null, [WorkflowExpression] Func<string> bodyinputDatarequestrequestTypename = null, [WorkflowExpression] Func<string> bodyinputDatarequestrequestername = null, [WorkflowExpression] Func<string> bodyinputDatarequeststatusname = null, [WorkflowExpression] Func<string> bodyinputDatarequesttechnicianemailId = null, [WorkflowExpression] Func<string> bodyinputDatarequestsitename = null, [WorkflowExpression] Func<string> bodyinputDatarequestgroupname = null, [WorkflowExpression] Func<string> bodyinputDatarequestdescription = null, [WorkflowExpression] Func<string> bodyinputDatarequestpriorityname = null, [WorkflowExpression] Func<string> bodyinputDatarequesturgencyname = null, [WorkflowExpression] Func<string> bodyinputDatarequestimpactname = null, [WorkflowExpression] Func<string> bodyinputDatarequestmodename = null, [WorkflowExpression] Func<string> bodyinputDatarequestcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatarequestsubcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatarequestitemname = null, [WorkflowExpression] Func<bodyinputDatarequestassetsInputItem[]> bodyinputDatarequestassets = null, [WorkflowExpression] Func<string> bodyinputDatarequestudfFields = null)
         {
-            var apiCallPath = String.Format("/app/{0}/api/v3/requests", ExpressionConverter.ConvertWithUrlEncoding(serviceDeskInstance, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputDataObject = new JObject();
-            var inputDataObjectpropCount = 0;
-            var requestObject = new JObject();
-            var requestObjectpropCount = 0;
-            requestObjectpropCount++;
-            requestObject["subject"] = ExpressionConverter.ConvertO(bodyinputDatarequestsubject);
-            var templateObject = new JObject();
-            var templateObjectpropCount = 0;
-            if (bodyinputDatarequesttemplatename != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                templateObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequesttemplatename);
-                templateObjectpropCount++;
-            }
-
-            if (templateObjectpropCount > 0)
-            {
-                requestObject["template"] = templateObject;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceDeskInstance, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputDataObject = new JObject();
+                var inputDataObjectpropCount = 0;
+                var requestObject = new JObject();
+                var requestObjectpropCount = 0;
                 requestObjectpropCount++;
+                requestObject["subject"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestsubject);
+                var templateObject = new JObject();
+                var templateObjectpropCount = 0;
+                if (bodyinputDatarequesttemplatename != null)
+                {
+                    templateObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequesttemplatename);
+                    templateObjectpropCount++;
+                }
+
+                if (templateObjectpropCount > 0)
+                {
+                    requestObject["template"] = templateObject;
+                    requestObjectpropCount++;
+                }
+
+                var requestTypeObject = new JObject();
+                var requestTypeObjectpropCount = 0;
+                if (bodyinputDatarequestrequestTypename != null)
+                {
+                    requestTypeObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestrequestTypename);
+                    requestTypeObjectpropCount++;
+                }
+
+                if (requestTypeObjectpropCount > 0)
+                {
+                    requestObject["request_type"] = requestTypeObject;
+                    requestObjectpropCount++;
+                }
+
+                var requesterObject = new JObject();
+                var requesterObjectpropCount = 0;
+                if (bodyinputDatarequestrequestername != null)
+                {
+                    requesterObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestrequestername);
+                    requesterObjectpropCount++;
+                }
+
+                if (requesterObjectpropCount > 0)
+                {
+                    requestObject["requester"] = requesterObject;
+                    requestObjectpropCount++;
+                }
+
+                var statusObject = new JObject();
+                var statusObjectpropCount = 0;
+                if (bodyinputDatarequeststatusname != null)
+                {
+                    statusObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequeststatusname);
+                    statusObjectpropCount++;
+                }
+
+                if (statusObjectpropCount > 0)
+                {
+                    requestObject["status"] = statusObject;
+                    requestObjectpropCount++;
+                }
+
+                var technicianObject = new JObject();
+                var technicianObjectpropCount = 0;
+                if (bodyinputDatarequesttechnicianemailId != null)
+                {
+                    technicianObject["email_id"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequesttechnicianemailId);
+                    technicianObjectpropCount++;
+                }
+
+                if (technicianObjectpropCount > 0)
+                {
+                    requestObject["technician"] = technicianObject;
+                    requestObjectpropCount++;
+                }
+
+                var siteObject = new JObject();
+                var siteObjectpropCount = 0;
+                if (bodyinputDatarequestsitename != null)
+                {
+                    siteObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestsitename);
+                    siteObjectpropCount++;
+                }
+
+                if (siteObjectpropCount > 0)
+                {
+                    requestObject["site"] = siteObject;
+                    requestObjectpropCount++;
+                }
+
+                var groupObject = new JObject();
+                var groupObjectpropCount = 0;
+                if (bodyinputDatarequestgroupname != null)
+                {
+                    groupObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestgroupname);
+                    groupObjectpropCount++;
+                }
+
+                if (groupObjectpropCount > 0)
+                {
+                    requestObject["group"] = groupObject;
+                    requestObjectpropCount++;
+                }
+
+                if (bodyinputDatarequestdescription != null)
+                {
+                    requestObject["description"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestdescription);
+                    requestObjectpropCount++;
+                }
+
+                var priorityObject = new JObject();
+                var priorityObjectpropCount = 0;
+                if (bodyinputDatarequestpriorityname != null)
+                {
+                    priorityObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestpriorityname);
+                    priorityObjectpropCount++;
+                }
+
+                if (priorityObjectpropCount > 0)
+                {
+                    requestObject["priority"] = priorityObject;
+                    requestObjectpropCount++;
+                }
+
+                var urgencyObject = new JObject();
+                var urgencyObjectpropCount = 0;
+                if (bodyinputDatarequesturgencyname != null)
+                {
+                    urgencyObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequesturgencyname);
+                    urgencyObjectpropCount++;
+                }
+
+                if (urgencyObjectpropCount > 0)
+                {
+                    requestObject["urgency"] = urgencyObject;
+                    requestObjectpropCount++;
+                }
+
+                var impactObject = new JObject();
+                var impactObjectpropCount = 0;
+                if (bodyinputDatarequestimpactname != null)
+                {
+                    impactObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestimpactname);
+                    impactObjectpropCount++;
+                }
+
+                if (impactObjectpropCount > 0)
+                {
+                    requestObject["impact"] = impactObject;
+                    requestObjectpropCount++;
+                }
+
+                var modeObject = new JObject();
+                var modeObjectpropCount = 0;
+                if (bodyinputDatarequestmodename != null)
+                {
+                    modeObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestmodename);
+                    modeObjectpropCount++;
+                }
+
+                if (modeObjectpropCount > 0)
+                {
+                    requestObject["mode"] = modeObject;
+                    requestObjectpropCount++;
+                }
+
+                var categoryObject = new JObject();
+                var categoryObjectpropCount = 0;
+                if (bodyinputDatarequestcategoryname != null)
+                {
+                    categoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestcategoryname);
+                    categoryObjectpropCount++;
+                }
+
+                if (categoryObjectpropCount > 0)
+                {
+                    requestObject["category"] = categoryObject;
+                    requestObjectpropCount++;
+                }
+
+                var subcategoryObject = new JObject();
+                var subcategoryObjectpropCount = 0;
+                if (bodyinputDatarequestsubcategoryname != null)
+                {
+                    subcategoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestsubcategoryname);
+                    subcategoryObjectpropCount++;
+                }
+
+                if (subcategoryObjectpropCount > 0)
+                {
+                    requestObject["subcategory"] = subcategoryObject;
+                    requestObjectpropCount++;
+                }
+
+                var itemObject = new JObject();
+                var itemObjectpropCount = 0;
+                if (bodyinputDatarequestitemname != null)
+                {
+                    itemObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestitemname);
+                    itemObjectpropCount++;
+                }
+
+                if (itemObjectpropCount > 0)
+                {
+                    requestObject["item"] = itemObject;
+                    requestObjectpropCount++;
+                }
+
+                if (bodyinputDatarequestassets != null)
+                {
+                    requestObject["assets"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestassets);
+                    requestObjectpropCount++;
+                }
+
+                if (bodyinputDatarequestudfFields != null)
+                {
+                    requestObject["udf_fields"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestudfFields);
+                    requestObjectpropCount++;
+                }
+
+                if (requestObjectpropCount > 0)
+                {
+                    inputDataObject["request"] = requestObject;
+                    inputDataObjectpropCount++;
+                }
+
+                if (inputDataObjectpropCount > 0)
+                {
+                    body["input_data"] = inputDataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var requestTypeObject = new JObject();
-            var requestTypeObjectpropCount = 0;
-            if (bodyinputDatarequestrequestTypename != null)
-            {
-                requestTypeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestrequestTypename);
-                requestTypeObjectpropCount++;
-            }
-
-            if (requestTypeObjectpropCount > 0)
-            {
-                requestObject["request_type"] = requestTypeObject;
-                requestObjectpropCount++;
-            }
-
-            var requesterObject = new JObject();
-            var requesterObjectpropCount = 0;
-            if (bodyinputDatarequestrequestername != null)
-            {
-                requesterObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestrequestername);
-                requesterObjectpropCount++;
-            }
-
-            if (requesterObjectpropCount > 0)
-            {
-                requestObject["requester"] = requesterObject;
-                requestObjectpropCount++;
-            }
-
-            var statusObject = new JObject();
-            var statusObjectpropCount = 0;
-            if (bodyinputDatarequeststatusname != null)
-            {
-                statusObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequeststatusname);
-                statusObjectpropCount++;
-            }
-
-            if (statusObjectpropCount > 0)
-            {
-                requestObject["status"] = statusObject;
-                requestObjectpropCount++;
-            }
-
-            var technicianObject = new JObject();
-            var technicianObjectpropCount = 0;
-            if (bodyinputDatarequesttechnicianemailId != null)
-            {
-                technicianObject["email_id"] = ExpressionConverter.ConvertO(bodyinputDatarequesttechnicianemailId);
-                technicianObjectpropCount++;
-            }
-
-            if (technicianObjectpropCount > 0)
-            {
-                requestObject["technician"] = technicianObject;
-                requestObjectpropCount++;
-            }
-
-            var siteObject = new JObject();
-            var siteObjectpropCount = 0;
-            if (bodyinputDatarequestsitename != null)
-            {
-                siteObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestsitename);
-                siteObjectpropCount++;
-            }
-
-            if (siteObjectpropCount > 0)
-            {
-                requestObject["site"] = siteObject;
-                requestObjectpropCount++;
-            }
-
-            var groupObject = new JObject();
-            var groupObjectpropCount = 0;
-            if (bodyinputDatarequestgroupname != null)
-            {
-                groupObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestgroupname);
-                groupObjectpropCount++;
-            }
-
-            if (groupObjectpropCount > 0)
-            {
-                requestObject["group"] = groupObject;
-                requestObjectpropCount++;
-            }
-
-            if (bodyinputDatarequestdescription != null)
-            {
-                requestObject["description"] = ExpressionConverter.ConvertO(bodyinputDatarequestdescription);
-                requestObjectpropCount++;
-            }
-
-            var priorityObject = new JObject();
-            var priorityObjectpropCount = 0;
-            if (bodyinputDatarequestpriorityname != null)
-            {
-                priorityObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestpriorityname);
-                priorityObjectpropCount++;
-            }
-
-            if (priorityObjectpropCount > 0)
-            {
-                requestObject["priority"] = priorityObject;
-                requestObjectpropCount++;
-            }
-
-            var urgencyObject = new JObject();
-            var urgencyObjectpropCount = 0;
-            if (bodyinputDatarequesturgencyname != null)
-            {
-                urgencyObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequesturgencyname);
-                urgencyObjectpropCount++;
-            }
-
-            if (urgencyObjectpropCount > 0)
-            {
-                requestObject["urgency"] = urgencyObject;
-                requestObjectpropCount++;
-            }
-
-            var impactObject = new JObject();
-            var impactObjectpropCount = 0;
-            if (bodyinputDatarequestimpactname != null)
-            {
-                impactObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestimpactname);
-                impactObjectpropCount++;
-            }
-
-            if (impactObjectpropCount > 0)
-            {
-                requestObject["impact"] = impactObject;
-                requestObjectpropCount++;
-            }
-
-            var modeObject = new JObject();
-            var modeObjectpropCount = 0;
-            if (bodyinputDatarequestmodename != null)
-            {
-                modeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestmodename);
-                modeObjectpropCount++;
-            }
-
-            if (modeObjectpropCount > 0)
-            {
-                requestObject["mode"] = modeObject;
-                requestObjectpropCount++;
-            }
-
-            var categoryObject = new JObject();
-            var categoryObjectpropCount = 0;
-            if (bodyinputDatarequestcategoryname != null)
-            {
-                categoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestcategoryname);
-                categoryObjectpropCount++;
-            }
-
-            if (categoryObjectpropCount > 0)
-            {
-                requestObject["category"] = categoryObject;
-                requestObjectpropCount++;
-            }
-
-            var subcategoryObject = new JObject();
-            var subcategoryObjectpropCount = 0;
-            if (bodyinputDatarequestsubcategoryname != null)
-            {
-                subcategoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestsubcategoryname);
-                subcategoryObjectpropCount++;
-            }
-
-            if (subcategoryObjectpropCount > 0)
-            {
-                requestObject["subcategory"] = subcategoryObject;
-                requestObjectpropCount++;
-            }
-
-            var itemObject = new JObject();
-            var itemObjectpropCount = 0;
-            if (bodyinputDatarequestitemname != null)
-            {
-                itemObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestitemname);
-                itemObjectpropCount++;
-            }
-
-            if (itemObjectpropCount > 0)
-            {
-                requestObject["item"] = itemObject;
-                requestObjectpropCount++;
-            }
-
-            if (bodyinputDatarequestassets != null)
-            {
-                requestObject["assets"] = ExpressionConverter.ConvertO(bodyinputDatarequestassets);
-                requestObjectpropCount++;
-            }
-
-            if (bodyinputDatarequestudfFields != null)
-            {
-                requestObject["udf_fields"] = ExpressionConverter.ConvertO(bodyinputDatarequestudfFields);
-                requestObjectpropCount++;
-            }
-
-            if (requestObjectpropCount > 0)
-            {
-                inputDataObject["request"] = requestObject;
-                inputDataObjectpropCount++;
-            }
-
-            if (inputDataObjectpropCount > 0)
-            {
-                body["input_data"] = inputDataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateRequestResponse>(callPayload);
+            return new ApiConnectionAction<CreateRequestResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<UpdateRequestResponse> UpdateRequest(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<string>> bodyinputDatarequestsubject = null, Expression<Func<string>> bodyinputDatarequesttemplatename = null, Expression<Func<string>> bodyinputDatarequestrequestTypename = null, Expression<Func<string>> bodyinputDatarequestrequestername = null, Expression<Func<string>> bodyinputDatarequeststatusname = null, Expression<Func<string>> bodyinputDatarequesttechnicianemailId = null, Expression<Func<string>> bodyinputDatarequestsitename = null, Expression<Func<string>> bodyinputDatarequestgroupname = null, Expression<Func<string>> bodyinputDatarequestdescription = null, Expression<Func<string>> bodyinputDatarequestpriorityname = null, Expression<Func<string>> bodyinputDatarequesturgencyname = null, Expression<Func<string>> bodyinputDatarequestimpactname = null, Expression<Func<string>> bodyinputDatarequestmodename = null, Expression<Func<string>> bodyinputDatarequestcategoryname = null, Expression<Func<string>> bodyinputDatarequestsubcategoryname = null, Expression<Func<string>> bodyinputDatarequestitemname = null, Expression<Func<bodyinputDatarequestassetsInputItem[]>> bodyinputDatarequestassets = null, Expression<Func<string>> bodyinputDatarequestudfFields = null)
+        public IBodyWorkflowAction<UpdateRequestResponse> UpdateRequest([WorkflowExpression] Func<string> serviceDeskInstance, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyinputDatarequestsubject = null, [WorkflowExpression] Func<string> bodyinputDatarequesttemplatename = null, [WorkflowExpression] Func<string> bodyinputDatarequestrequestTypename = null, [WorkflowExpression] Func<string> bodyinputDatarequestrequestername = null, [WorkflowExpression] Func<string> bodyinputDatarequeststatusname = null, [WorkflowExpression] Func<string> bodyinputDatarequesttechnicianemailId = null, [WorkflowExpression] Func<string> bodyinputDatarequestsitename = null, [WorkflowExpression] Func<string> bodyinputDatarequestgroupname = null, [WorkflowExpression] Func<string> bodyinputDatarequestdescription = null, [WorkflowExpression] Func<string> bodyinputDatarequestpriorityname = null, [WorkflowExpression] Func<string> bodyinputDatarequesturgencyname = null, [WorkflowExpression] Func<string> bodyinputDatarequestimpactname = null, [WorkflowExpression] Func<string> bodyinputDatarequestmodename = null, [WorkflowExpression] Func<string> bodyinputDatarequestcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatarequestsubcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatarequestitemname = null, [WorkflowExpression] Func<bodyinputDatarequestassetsInputItem[]> bodyinputDatarequestassets = null, [WorkflowExpression] Func<string> bodyinputDatarequestudfFields = null)
         {
-            var apiCallPath = String.Format("/app/{0}/api/v3/requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(serviceDeskInstance, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputDataObject = new JObject();
-            var inputDataObjectpropCount = 0;
-            var requestObject = new JObject();
-            var requestObjectpropCount = 0;
-            if (bodyinputDatarequestsubject != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                requestObject["subject"] = ExpressionConverter.ConvertO(bodyinputDatarequestsubject);
-                requestObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/requests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceDeskInstance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputDataObject = new JObject();
+                var inputDataObjectpropCount = 0;
+                var requestObject = new JObject();
+                var requestObjectpropCount = 0;
+                if (bodyinputDatarequestsubject != null)
+                {
+                    requestObject["subject"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestsubject);
+                    requestObjectpropCount++;
+                }
+
+                var templateObject = new JObject();
+                var templateObjectpropCount = 0;
+                if (bodyinputDatarequesttemplatename != null)
+                {
+                    templateObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequesttemplatename);
+                    templateObjectpropCount++;
+                }
+
+                if (templateObjectpropCount > 0)
+                {
+                    requestObject["template"] = templateObject;
+                    requestObjectpropCount++;
+                }
+
+                var requestTypeObject = new JObject();
+                var requestTypeObjectpropCount = 0;
+                if (bodyinputDatarequestrequestTypename != null)
+                {
+                    requestTypeObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestrequestTypename);
+                    requestTypeObjectpropCount++;
+                }
+
+                if (requestTypeObjectpropCount > 0)
+                {
+                    requestObject["request_type"] = requestTypeObject;
+                    requestObjectpropCount++;
+                }
+
+                var requesterObject = new JObject();
+                var requesterObjectpropCount = 0;
+                if (bodyinputDatarequestrequestername != null)
+                {
+                    requesterObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestrequestername);
+                    requesterObjectpropCount++;
+                }
+
+                if (requesterObjectpropCount > 0)
+                {
+                    requestObject["requester"] = requesterObject;
+                    requestObjectpropCount++;
+                }
+
+                var statusObject = new JObject();
+                var statusObjectpropCount = 0;
+                if (bodyinputDatarequeststatusname != null)
+                {
+                    statusObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequeststatusname);
+                    statusObjectpropCount++;
+                }
+
+                if (statusObjectpropCount > 0)
+                {
+                    requestObject["status"] = statusObject;
+                    requestObjectpropCount++;
+                }
+
+                var technicianObject = new JObject();
+                var technicianObjectpropCount = 0;
+                if (bodyinputDatarequesttechnicianemailId != null)
+                {
+                    technicianObject["email_id"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequesttechnicianemailId);
+                    technicianObjectpropCount++;
+                }
+
+                if (technicianObjectpropCount > 0)
+                {
+                    requestObject["technician"] = technicianObject;
+                    requestObjectpropCount++;
+                }
+
+                var siteObject = new JObject();
+                var siteObjectpropCount = 0;
+                if (bodyinputDatarequestsitename != null)
+                {
+                    siteObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestsitename);
+                    siteObjectpropCount++;
+                }
+
+                if (siteObjectpropCount > 0)
+                {
+                    requestObject["site"] = siteObject;
+                    requestObjectpropCount++;
+                }
+
+                var groupObject = new JObject();
+                var groupObjectpropCount = 0;
+                if (bodyinputDatarequestgroupname != null)
+                {
+                    groupObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestgroupname);
+                    groupObjectpropCount++;
+                }
+
+                if (groupObjectpropCount > 0)
+                {
+                    requestObject["group"] = groupObject;
+                    requestObjectpropCount++;
+                }
+
+                if (bodyinputDatarequestdescription != null)
+                {
+                    requestObject["description"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestdescription);
+                    requestObjectpropCount++;
+                }
+
+                var priorityObject = new JObject();
+                var priorityObjectpropCount = 0;
+                if (bodyinputDatarequestpriorityname != null)
+                {
+                    priorityObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestpriorityname);
+                    priorityObjectpropCount++;
+                }
+
+                if (priorityObjectpropCount > 0)
+                {
+                    requestObject["priority"] = priorityObject;
+                    requestObjectpropCount++;
+                }
+
+                var urgencyObject = new JObject();
+                var urgencyObjectpropCount = 0;
+                if (bodyinputDatarequesturgencyname != null)
+                {
+                    urgencyObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequesturgencyname);
+                    urgencyObjectpropCount++;
+                }
+
+                if (urgencyObjectpropCount > 0)
+                {
+                    requestObject["urgency"] = urgencyObject;
+                    requestObjectpropCount++;
+                }
+
+                var impactObject = new JObject();
+                var impactObjectpropCount = 0;
+                if (bodyinputDatarequestimpactname != null)
+                {
+                    impactObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestimpactname);
+                    impactObjectpropCount++;
+                }
+
+                if (impactObjectpropCount > 0)
+                {
+                    requestObject["impact"] = impactObject;
+                    requestObjectpropCount++;
+                }
+
+                var modeObject = new JObject();
+                var modeObjectpropCount = 0;
+                if (bodyinputDatarequestmodename != null)
+                {
+                    modeObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestmodename);
+                    modeObjectpropCount++;
+                }
+
+                if (modeObjectpropCount > 0)
+                {
+                    requestObject["mode"] = modeObject;
+                    requestObjectpropCount++;
+                }
+
+                var categoryObject = new JObject();
+                var categoryObjectpropCount = 0;
+                if (bodyinputDatarequestcategoryname != null)
+                {
+                    categoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestcategoryname);
+                    categoryObjectpropCount++;
+                }
+
+                if (categoryObjectpropCount > 0)
+                {
+                    requestObject["category"] = categoryObject;
+                    requestObjectpropCount++;
+                }
+
+                var subcategoryObject = new JObject();
+                var subcategoryObjectpropCount = 0;
+                if (bodyinputDatarequestsubcategoryname != null)
+                {
+                    subcategoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestsubcategoryname);
+                    subcategoryObjectpropCount++;
+                }
+
+                if (subcategoryObjectpropCount > 0)
+                {
+                    requestObject["subcategory"] = subcategoryObject;
+                    requestObjectpropCount++;
+                }
+
+                var itemObject = new JObject();
+                var itemObjectpropCount = 0;
+                if (bodyinputDatarequestitemname != null)
+                {
+                    itemObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestitemname);
+                    itemObjectpropCount++;
+                }
+
+                if (itemObjectpropCount > 0)
+                {
+                    requestObject["item"] = itemObject;
+                    requestObjectpropCount++;
+                }
+
+                if (bodyinputDatarequestassets != null)
+                {
+                    requestObject["assets"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestassets);
+                    requestObjectpropCount++;
+                }
+
+                if (bodyinputDatarequestudfFields != null)
+                {
+                    requestObject["udf_fields"] = SourceExpressionConverter.ConvertToken(bodyinputDatarequestudfFields);
+                    requestObjectpropCount++;
+                }
+
+                if (requestObjectpropCount > 0)
+                {
+                    inputDataObject["request"] = requestObject;
+                    inputDataObjectpropCount++;
+                }
+
+                if (inputDataObjectpropCount > 0)
+                {
+                    body["input_data"] = inputDataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var templateObject = new JObject();
-            var templateObjectpropCount = 0;
-            if (bodyinputDatarequesttemplatename != null)
-            {
-                templateObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequesttemplatename);
-                templateObjectpropCount++;
-            }
-
-            if (templateObjectpropCount > 0)
-            {
-                requestObject["template"] = templateObject;
-                requestObjectpropCount++;
-            }
-
-            var requestTypeObject = new JObject();
-            var requestTypeObjectpropCount = 0;
-            if (bodyinputDatarequestrequestTypename != null)
-            {
-                requestTypeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestrequestTypename);
-                requestTypeObjectpropCount++;
-            }
-
-            if (requestTypeObjectpropCount > 0)
-            {
-                requestObject["request_type"] = requestTypeObject;
-                requestObjectpropCount++;
-            }
-
-            var requesterObject = new JObject();
-            var requesterObjectpropCount = 0;
-            if (bodyinputDatarequestrequestername != null)
-            {
-                requesterObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestrequestername);
-                requesterObjectpropCount++;
-            }
-
-            if (requesterObjectpropCount > 0)
-            {
-                requestObject["requester"] = requesterObject;
-                requestObjectpropCount++;
-            }
-
-            var statusObject = new JObject();
-            var statusObjectpropCount = 0;
-            if (bodyinputDatarequeststatusname != null)
-            {
-                statusObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequeststatusname);
-                statusObjectpropCount++;
-            }
-
-            if (statusObjectpropCount > 0)
-            {
-                requestObject["status"] = statusObject;
-                requestObjectpropCount++;
-            }
-
-            var technicianObject = new JObject();
-            var technicianObjectpropCount = 0;
-            if (bodyinputDatarequesttechnicianemailId != null)
-            {
-                technicianObject["email_id"] = ExpressionConverter.ConvertO(bodyinputDatarequesttechnicianemailId);
-                technicianObjectpropCount++;
-            }
-
-            if (technicianObjectpropCount > 0)
-            {
-                requestObject["technician"] = technicianObject;
-                requestObjectpropCount++;
-            }
-
-            var siteObject = new JObject();
-            var siteObjectpropCount = 0;
-            if (bodyinputDatarequestsitename != null)
-            {
-                siteObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestsitename);
-                siteObjectpropCount++;
-            }
-
-            if (siteObjectpropCount > 0)
-            {
-                requestObject["site"] = siteObject;
-                requestObjectpropCount++;
-            }
-
-            var groupObject = new JObject();
-            var groupObjectpropCount = 0;
-            if (bodyinputDatarequestgroupname != null)
-            {
-                groupObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestgroupname);
-                groupObjectpropCount++;
-            }
-
-            if (groupObjectpropCount > 0)
-            {
-                requestObject["group"] = groupObject;
-                requestObjectpropCount++;
-            }
-
-            if (bodyinputDatarequestdescription != null)
-            {
-                requestObject["description"] = ExpressionConverter.ConvertO(bodyinputDatarequestdescription);
-                requestObjectpropCount++;
-            }
-
-            var priorityObject = new JObject();
-            var priorityObjectpropCount = 0;
-            if (bodyinputDatarequestpriorityname != null)
-            {
-                priorityObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestpriorityname);
-                priorityObjectpropCount++;
-            }
-
-            if (priorityObjectpropCount > 0)
-            {
-                requestObject["priority"] = priorityObject;
-                requestObjectpropCount++;
-            }
-
-            var urgencyObject = new JObject();
-            var urgencyObjectpropCount = 0;
-            if (bodyinputDatarequesturgencyname != null)
-            {
-                urgencyObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequesturgencyname);
-                urgencyObjectpropCount++;
-            }
-
-            if (urgencyObjectpropCount > 0)
-            {
-                requestObject["urgency"] = urgencyObject;
-                requestObjectpropCount++;
-            }
-
-            var impactObject = new JObject();
-            var impactObjectpropCount = 0;
-            if (bodyinputDatarequestimpactname != null)
-            {
-                impactObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestimpactname);
-                impactObjectpropCount++;
-            }
-
-            if (impactObjectpropCount > 0)
-            {
-                requestObject["impact"] = impactObject;
-                requestObjectpropCount++;
-            }
-
-            var modeObject = new JObject();
-            var modeObjectpropCount = 0;
-            if (bodyinputDatarequestmodename != null)
-            {
-                modeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestmodename);
-                modeObjectpropCount++;
-            }
-
-            if (modeObjectpropCount > 0)
-            {
-                requestObject["mode"] = modeObject;
-                requestObjectpropCount++;
-            }
-
-            var categoryObject = new JObject();
-            var categoryObjectpropCount = 0;
-            if (bodyinputDatarequestcategoryname != null)
-            {
-                categoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestcategoryname);
-                categoryObjectpropCount++;
-            }
-
-            if (categoryObjectpropCount > 0)
-            {
-                requestObject["category"] = categoryObject;
-                requestObjectpropCount++;
-            }
-
-            var subcategoryObject = new JObject();
-            var subcategoryObjectpropCount = 0;
-            if (bodyinputDatarequestsubcategoryname != null)
-            {
-                subcategoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestsubcategoryname);
-                subcategoryObjectpropCount++;
-            }
-
-            if (subcategoryObjectpropCount > 0)
-            {
-                requestObject["subcategory"] = subcategoryObject;
-                requestObjectpropCount++;
-            }
-
-            var itemObject = new JObject();
-            var itemObjectpropCount = 0;
-            if (bodyinputDatarequestitemname != null)
-            {
-                itemObject["name"] = ExpressionConverter.ConvertO(bodyinputDatarequestitemname);
-                itemObjectpropCount++;
-            }
-
-            if (itemObjectpropCount > 0)
-            {
-                requestObject["item"] = itemObject;
-                requestObjectpropCount++;
-            }
-
-            if (bodyinputDatarequestassets != null)
-            {
-                requestObject["assets"] = ExpressionConverter.ConvertO(bodyinputDatarequestassets);
-                requestObjectpropCount++;
-            }
-
-            if (bodyinputDatarequestudfFields != null)
-            {
-                requestObject["udf_fields"] = ExpressionConverter.ConvertO(bodyinputDatarequestudfFields);
-                requestObjectpropCount++;
-            }
-
-            if (requestObjectpropCount > 0)
-            {
-                inputDataObject["request"] = requestObject;
-                inputDataObjectpropCount++;
-            }
-
-            if (inputDataObjectpropCount > 0)
-            {
-                body["input_data"] = inputDataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateRequestResponse>(callPayload);
+            return new ApiConnectionAction<UpdateRequestResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<CreateChangeResponse> CreateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> bodyinputDatachangetitle, Expression<Func<string>> bodyinputDatachangecomment = null, Expression<Func<string>> bodyinputDatachangetemplatename = null, Expression<Func<string>> bodyinputDatachangechangeRequestername = null, Expression<Func<string>> bodyinputDatachangesitename = null, Expression<Func<string>> bodyinputDatachangegroupname = null, Expression<Func<string>> bodyinputDatachangedescription = null, Expression<Func<string>> bodyinputDatachangechangeOwneremailId = null, Expression<Func<string>> bodyinputDatachangechangeTypename = null, Expression<Func<string>> bodyinputDatachangepriorityname = null, Expression<Func<string>> bodyinputDatachangeurgencyname = null, Expression<Func<string>> bodyinputDatachangeimpactname = null, Expression<Func<string>> bodyinputDatachangeriskname = null, Expression<Func<string>> bodyinputDatachangereasonForChangename = null, Expression<Func<string>> bodyinputDatachangecategoryname = null, Expression<Func<string>> bodyinputDatachangesubcategoryname = null, Expression<Func<string>> bodyinputDatachangeitemname = null, Expression<Func<bodyinputDatachangeassetsInputItem[]>> bodyinputDatachangeassets = null, Expression<Func<string>> bodyinputDatachangeudfFields = null)
+        public IBodyWorkflowAction<CreateChangeResponse> CreateChange([WorkflowExpression] Func<string> serviceDeskInstance, [WorkflowExpression] Func<string> bodyinputDatachangetitle, [WorkflowExpression] Func<string> bodyinputDatachangecomment = null, [WorkflowExpression] Func<string> bodyinputDatachangetemplatename = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeRequestername = null, [WorkflowExpression] Func<string> bodyinputDatachangesitename = null, [WorkflowExpression] Func<string> bodyinputDatachangegroupname = null, [WorkflowExpression] Func<string> bodyinputDatachangedescription = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeOwneremailId = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeTypename = null, [WorkflowExpression] Func<string> bodyinputDatachangepriorityname = null, [WorkflowExpression] Func<string> bodyinputDatachangeurgencyname = null, [WorkflowExpression] Func<string> bodyinputDatachangeimpactname = null, [WorkflowExpression] Func<string> bodyinputDatachangeriskname = null, [WorkflowExpression] Func<string> bodyinputDatachangereasonForChangename = null, [WorkflowExpression] Func<string> bodyinputDatachangecategoryname = null, [WorkflowExpression] Func<string> bodyinputDatachangesubcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatachangeitemname = null, [WorkflowExpression] Func<bodyinputDatachangeassetsInputItem[]> bodyinputDatachangeassets = null, [WorkflowExpression] Func<string> bodyinputDatachangeudfFields = null)
         {
-            var apiCallPath = String.Format("/app/{0}/api/v3/changes", ExpressionConverter.ConvertWithUrlEncoding(serviceDeskInstance, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputDataObject = new JObject();
-            var inputDataObjectpropCount = 0;
-            var changeObject = new JObject();
-            var changeObjectpropCount = 0;
-            changeObjectpropCount++;
-            changeObject["title"] = ExpressionConverter.ConvertO(bodyinputDatachangetitle);
-            if (bodyinputDatachangecomment != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                changeObject["comment"] = ExpressionConverter.ConvertO(bodyinputDatachangecomment);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/changes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceDeskInstance, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputDataObject = new JObject();
+                var inputDataObjectpropCount = 0;
+                var changeObject = new JObject();
+                var changeObjectpropCount = 0;
                 changeObjectpropCount++;
+                changeObject["title"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangetitle);
+                if (bodyinputDatachangecomment != null)
+                {
+                    changeObject["comment"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangecomment);
+                    changeObjectpropCount++;
+                }
+
+                var templateObject = new JObject();
+                var templateObjectpropCount = 0;
+                if (bodyinputDatachangetemplatename != null)
+                {
+                    templateObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangetemplatename);
+                    templateObjectpropCount++;
+                }
+
+                if (templateObjectpropCount > 0)
+                {
+                    changeObject["template"] = templateObject;
+                    changeObjectpropCount++;
+                }
+
+                var changeRequesterObject = new JObject();
+                var changeRequesterObjectpropCount = 0;
+                if (bodyinputDatachangechangeRequestername != null)
+                {
+                    changeRequesterObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangechangeRequestername);
+                    changeRequesterObjectpropCount++;
+                }
+
+                if (changeRequesterObjectpropCount > 0)
+                {
+                    changeObject["change_requester"] = changeRequesterObject;
+                    changeObjectpropCount++;
+                }
+
+                var siteObject = new JObject();
+                var siteObjectpropCount = 0;
+                if (bodyinputDatachangesitename != null)
+                {
+                    siteObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangesitename);
+                    siteObjectpropCount++;
+                }
+
+                if (siteObjectpropCount > 0)
+                {
+                    changeObject["site"] = siteObject;
+                    changeObjectpropCount++;
+                }
+
+                var groupObject = new JObject();
+                var groupObjectpropCount = 0;
+                if (bodyinputDatachangegroupname != null)
+                {
+                    groupObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangegroupname);
+                    groupObjectpropCount++;
+                }
+
+                if (groupObjectpropCount > 0)
+                {
+                    changeObject["group"] = groupObject;
+                    changeObjectpropCount++;
+                }
+
+                if (bodyinputDatachangedescription != null)
+                {
+                    changeObject["description"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangedescription);
+                    changeObjectpropCount++;
+                }
+
+                var changeOwnerObject = new JObject();
+                var changeOwnerObjectpropCount = 0;
+                if (bodyinputDatachangechangeOwneremailId != null)
+                {
+                    changeOwnerObject["email_id"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangechangeOwneremailId);
+                    changeOwnerObjectpropCount++;
+                }
+
+                if (changeOwnerObjectpropCount > 0)
+                {
+                    changeObject["change_owner"] = changeOwnerObject;
+                    changeObjectpropCount++;
+                }
+
+                var changeTypeObject = new JObject();
+                var changeTypeObjectpropCount = 0;
+                if (bodyinputDatachangechangeTypename != null)
+                {
+                    changeTypeObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangechangeTypename);
+                    changeTypeObjectpropCount++;
+                }
+
+                if (changeTypeObjectpropCount > 0)
+                {
+                    changeObject["change_type"] = changeTypeObject;
+                    changeObjectpropCount++;
+                }
+
+                var priorityObject = new JObject();
+                var priorityObjectpropCount = 0;
+                if (bodyinputDatachangepriorityname != null)
+                {
+                    priorityObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangepriorityname);
+                    priorityObjectpropCount++;
+                }
+
+                if (priorityObjectpropCount > 0)
+                {
+                    changeObject["priority"] = priorityObject;
+                    changeObjectpropCount++;
+                }
+
+                var urgencyObject = new JObject();
+                var urgencyObjectpropCount = 0;
+                if (bodyinputDatachangeurgencyname != null)
+                {
+                    urgencyObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangeurgencyname);
+                    urgencyObjectpropCount++;
+                }
+
+                if (urgencyObjectpropCount > 0)
+                {
+                    changeObject["urgency"] = urgencyObject;
+                    changeObjectpropCount++;
+                }
+
+                var impactObject = new JObject();
+                var impactObjectpropCount = 0;
+                if (bodyinputDatachangeimpactname != null)
+                {
+                    impactObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangeimpactname);
+                    impactObjectpropCount++;
+                }
+
+                if (impactObjectpropCount > 0)
+                {
+                    changeObject["impact"] = impactObject;
+                    changeObjectpropCount++;
+                }
+
+                var riskObject = new JObject();
+                var riskObjectpropCount = 0;
+                if (bodyinputDatachangeriskname != null)
+                {
+                    riskObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangeriskname);
+                    riskObjectpropCount++;
+                }
+
+                if (riskObjectpropCount > 0)
+                {
+                    changeObject["risk"] = riskObject;
+                    changeObjectpropCount++;
+                }
+
+                var reasonForChangeObject = new JObject();
+                var reasonForChangeObjectpropCount = 0;
+                if (bodyinputDatachangereasonForChangename != null)
+                {
+                    reasonForChangeObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangereasonForChangename);
+                    reasonForChangeObjectpropCount++;
+                }
+
+                if (reasonForChangeObjectpropCount > 0)
+                {
+                    changeObject["reason_for_change"] = reasonForChangeObject;
+                    changeObjectpropCount++;
+                }
+
+                var categoryObject = new JObject();
+                var categoryObjectpropCount = 0;
+                if (bodyinputDatachangecategoryname != null)
+                {
+                    categoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangecategoryname);
+                    categoryObjectpropCount++;
+                }
+
+                if (categoryObjectpropCount > 0)
+                {
+                    changeObject["category"] = categoryObject;
+                    changeObjectpropCount++;
+                }
+
+                var subcategoryObject = new JObject();
+                var subcategoryObjectpropCount = 0;
+                if (bodyinputDatachangesubcategoryname != null)
+                {
+                    subcategoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangesubcategoryname);
+                    subcategoryObjectpropCount++;
+                }
+
+                if (subcategoryObjectpropCount > 0)
+                {
+                    changeObject["subcategory"] = subcategoryObject;
+                    changeObjectpropCount++;
+                }
+
+                var itemObject = new JObject();
+                var itemObjectpropCount = 0;
+                if (bodyinputDatachangeitemname != null)
+                {
+                    itemObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangeitemname);
+                    itemObjectpropCount++;
+                }
+
+                if (itemObjectpropCount > 0)
+                {
+                    changeObject["item"] = itemObject;
+                    changeObjectpropCount++;
+                }
+
+                if (bodyinputDatachangeassets != null)
+                {
+                    changeObject["assets"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangeassets);
+                    changeObjectpropCount++;
+                }
+
+                if (bodyinputDatachangeudfFields != null)
+                {
+                    changeObject["udf_fields"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangeudfFields);
+                    changeObjectpropCount++;
+                }
+
+                if (changeObjectpropCount > 0)
+                {
+                    inputDataObject["change"] = changeObject;
+                    inputDataObjectpropCount++;
+                }
+
+                if (inputDataObjectpropCount > 0)
+                {
+                    body["input_data"] = inputDataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var templateObject = new JObject();
-            var templateObjectpropCount = 0;
-            if (bodyinputDatachangetemplatename != null)
-            {
-                templateObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangetemplatename);
-                templateObjectpropCount++;
-            }
-
-            if (templateObjectpropCount > 0)
-            {
-                changeObject["template"] = templateObject;
-                changeObjectpropCount++;
-            }
-
-            var changeRequesterObject = new JObject();
-            var changeRequesterObjectpropCount = 0;
-            if (bodyinputDatachangechangeRequestername != null)
-            {
-                changeRequesterObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeRequestername);
-                changeRequesterObjectpropCount++;
-            }
-
-            if (changeRequesterObjectpropCount > 0)
-            {
-                changeObject["change_requester"] = changeRequesterObject;
-                changeObjectpropCount++;
-            }
-
-            var siteObject = new JObject();
-            var siteObjectpropCount = 0;
-            if (bodyinputDatachangesitename != null)
-            {
-                siteObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangesitename);
-                siteObjectpropCount++;
-            }
-
-            if (siteObjectpropCount > 0)
-            {
-                changeObject["site"] = siteObject;
-                changeObjectpropCount++;
-            }
-
-            var groupObject = new JObject();
-            var groupObjectpropCount = 0;
-            if (bodyinputDatachangegroupname != null)
-            {
-                groupObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangegroupname);
-                groupObjectpropCount++;
-            }
-
-            if (groupObjectpropCount > 0)
-            {
-                changeObject["group"] = groupObject;
-                changeObjectpropCount++;
-            }
-
-            if (bodyinputDatachangedescription != null)
-            {
-                changeObject["description"] = ExpressionConverter.ConvertO(bodyinputDatachangedescription);
-                changeObjectpropCount++;
-            }
-
-            var changeOwnerObject = new JObject();
-            var changeOwnerObjectpropCount = 0;
-            if (bodyinputDatachangechangeOwneremailId != null)
-            {
-                changeOwnerObject["email_id"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeOwneremailId);
-                changeOwnerObjectpropCount++;
-            }
-
-            if (changeOwnerObjectpropCount > 0)
-            {
-                changeObject["change_owner"] = changeOwnerObject;
-                changeObjectpropCount++;
-            }
-
-            var changeTypeObject = new JObject();
-            var changeTypeObjectpropCount = 0;
-            if (bodyinputDatachangechangeTypename != null)
-            {
-                changeTypeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeTypename);
-                changeTypeObjectpropCount++;
-            }
-
-            if (changeTypeObjectpropCount > 0)
-            {
-                changeObject["change_type"] = changeTypeObject;
-                changeObjectpropCount++;
-            }
-
-            var priorityObject = new JObject();
-            var priorityObjectpropCount = 0;
-            if (bodyinputDatachangepriorityname != null)
-            {
-                priorityObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangepriorityname);
-                priorityObjectpropCount++;
-            }
-
-            if (priorityObjectpropCount > 0)
-            {
-                changeObject["priority"] = priorityObject;
-                changeObjectpropCount++;
-            }
-
-            var urgencyObject = new JObject();
-            var urgencyObjectpropCount = 0;
-            if (bodyinputDatachangeurgencyname != null)
-            {
-                urgencyObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeurgencyname);
-                urgencyObjectpropCount++;
-            }
-
-            if (urgencyObjectpropCount > 0)
-            {
-                changeObject["urgency"] = urgencyObject;
-                changeObjectpropCount++;
-            }
-
-            var impactObject = new JObject();
-            var impactObjectpropCount = 0;
-            if (bodyinputDatachangeimpactname != null)
-            {
-                impactObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeimpactname);
-                impactObjectpropCount++;
-            }
-
-            if (impactObjectpropCount > 0)
-            {
-                changeObject["impact"] = impactObject;
-                changeObjectpropCount++;
-            }
-
-            var riskObject = new JObject();
-            var riskObjectpropCount = 0;
-            if (bodyinputDatachangeriskname != null)
-            {
-                riskObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeriskname);
-                riskObjectpropCount++;
-            }
-
-            if (riskObjectpropCount > 0)
-            {
-                changeObject["risk"] = riskObject;
-                changeObjectpropCount++;
-            }
-
-            var reasonForChangeObject = new JObject();
-            var reasonForChangeObjectpropCount = 0;
-            if (bodyinputDatachangereasonForChangename != null)
-            {
-                reasonForChangeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangereasonForChangename);
-                reasonForChangeObjectpropCount++;
-            }
-
-            if (reasonForChangeObjectpropCount > 0)
-            {
-                changeObject["reason_for_change"] = reasonForChangeObject;
-                changeObjectpropCount++;
-            }
-
-            var categoryObject = new JObject();
-            var categoryObjectpropCount = 0;
-            if (bodyinputDatachangecategoryname != null)
-            {
-                categoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangecategoryname);
-                categoryObjectpropCount++;
-            }
-
-            if (categoryObjectpropCount > 0)
-            {
-                changeObject["category"] = categoryObject;
-                changeObjectpropCount++;
-            }
-
-            var subcategoryObject = new JObject();
-            var subcategoryObjectpropCount = 0;
-            if (bodyinputDatachangesubcategoryname != null)
-            {
-                subcategoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangesubcategoryname);
-                subcategoryObjectpropCount++;
-            }
-
-            if (subcategoryObjectpropCount > 0)
-            {
-                changeObject["subcategory"] = subcategoryObject;
-                changeObjectpropCount++;
-            }
-
-            var itemObject = new JObject();
-            var itemObjectpropCount = 0;
-            if (bodyinputDatachangeitemname != null)
-            {
-                itemObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeitemname);
-                itemObjectpropCount++;
-            }
-
-            if (itemObjectpropCount > 0)
-            {
-                changeObject["item"] = itemObject;
-                changeObjectpropCount++;
-            }
-
-            if (bodyinputDatachangeassets != null)
-            {
-                changeObject["assets"] = ExpressionConverter.ConvertO(bodyinputDatachangeassets);
-                changeObjectpropCount++;
-            }
-
-            if (bodyinputDatachangeudfFields != null)
-            {
-                changeObject["udf_fields"] = ExpressionConverter.ConvertO(bodyinputDatachangeudfFields);
-                changeObjectpropCount++;
-            }
-
-            if (changeObjectpropCount > 0)
-            {
-                inputDataObject["change"] = changeObject;
-                inputDataObjectpropCount++;
-            }
-
-            if (inputDataObjectpropCount > 0)
-            {
-                body["input_data"] = inputDataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateChangeResponse>(callPayload);
+            return new ApiConnectionAction<CreateChangeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicedeskpluscloud")]
-        public IBodyWorkflowAction<UpdateChangeResponse> UpdateChange(Expression<Func<string>> serviceDeskInstance, Expression<Func<string>> id, Expression<Func<string>> bodyinputDatachangetitle = null, Expression<Func<string>> bodyinputDatachangecomment = null, Expression<Func<string>> bodyinputDatachangetemplatename = null, Expression<Func<string>> bodyinputDatachangechangeRequestername = null, Expression<Func<string>> bodyinputDatachangesitename = null, Expression<Func<string>> bodyinputDatachangegroupname = null, Expression<Func<string>> bodyinputDatachangedescription = null, Expression<Func<string>> bodyinputDatachangechangeOwneremailId = null, Expression<Func<string>> bodyinputDatachangechangeTypename = null, Expression<Func<string>> bodyinputDatachangepriorityname = null, Expression<Func<string>> bodyinputDatachangeurgencyname = null, Expression<Func<string>> bodyinputDatachangeimpactname = null, Expression<Func<string>> bodyinputDatachangeriskname = null, Expression<Func<string>> bodyinputDatachangereasonForChangename = null, Expression<Func<string>> bodyinputDatachangecategoryname = null, Expression<Func<string>> bodyinputDatachangesubcategoryname = null, Expression<Func<string>> bodyinputDatachangeitemname = null, Expression<Func<bodyinputDatachangeassetsInputItem[]>> bodyinputDatachangeassets = null, Expression<Func<string>> bodyinputDatachangeudfFields = null)
+        public IBodyWorkflowAction<UpdateChangeResponse> UpdateChange([WorkflowExpression] Func<string> serviceDeskInstance, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyinputDatachangetitle = null, [WorkflowExpression] Func<string> bodyinputDatachangecomment = null, [WorkflowExpression] Func<string> bodyinputDatachangetemplatename = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeRequestername = null, [WorkflowExpression] Func<string> bodyinputDatachangesitename = null, [WorkflowExpression] Func<string> bodyinputDatachangegroupname = null, [WorkflowExpression] Func<string> bodyinputDatachangedescription = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeOwneremailId = null, [WorkflowExpression] Func<string> bodyinputDatachangechangeTypename = null, [WorkflowExpression] Func<string> bodyinputDatachangepriorityname = null, [WorkflowExpression] Func<string> bodyinputDatachangeurgencyname = null, [WorkflowExpression] Func<string> bodyinputDatachangeimpactname = null, [WorkflowExpression] Func<string> bodyinputDatachangeriskname = null, [WorkflowExpression] Func<string> bodyinputDatachangereasonForChangename = null, [WorkflowExpression] Func<string> bodyinputDatachangecategoryname = null, [WorkflowExpression] Func<string> bodyinputDatachangesubcategoryname = null, [WorkflowExpression] Func<string> bodyinputDatachangeitemname = null, [WorkflowExpression] Func<bodyinputDatachangeassetsInputItem[]> bodyinputDatachangeassets = null, [WorkflowExpression] Func<string> bodyinputDatachangeudfFields = null)
         {
-            var apiCallPath = String.Format("/app/{0}/api/v3/changes/{1}", ExpressionConverter.ConvertWithUrlEncoding(serviceDeskInstance, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputDataObject = new JObject();
-            var inputDataObjectpropCount = 0;
-            var changeObject = new JObject();
-            var changeObjectpropCount = 0;
-            if (bodyinputDatachangetitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                changeObject["title"] = ExpressionConverter.ConvertO(bodyinputDatachangetitle);
-                changeObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/{0}/api/v3/changes/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceDeskInstance, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputDataObject = new JObject();
+                var inputDataObjectpropCount = 0;
+                var changeObject = new JObject();
+                var changeObjectpropCount = 0;
+                if (bodyinputDatachangetitle != null)
+                {
+                    changeObject["title"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangetitle);
+                    changeObjectpropCount++;
+                }
+
+                if (bodyinputDatachangecomment != null)
+                {
+                    changeObject["comment"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangecomment);
+                    changeObjectpropCount++;
+                }
+
+                var templateObject = new JObject();
+                var templateObjectpropCount = 0;
+                if (bodyinputDatachangetemplatename != null)
+                {
+                    templateObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangetemplatename);
+                    templateObjectpropCount++;
+                }
+
+                if (templateObjectpropCount > 0)
+                {
+                    changeObject["template"] = templateObject;
+                    changeObjectpropCount++;
+                }
+
+                var changeRequesterObject = new JObject();
+                var changeRequesterObjectpropCount = 0;
+                if (bodyinputDatachangechangeRequestername != null)
+                {
+                    changeRequesterObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangechangeRequestername);
+                    changeRequesterObjectpropCount++;
+                }
+
+                if (changeRequesterObjectpropCount > 0)
+                {
+                    changeObject["change_requester"] = changeRequesterObject;
+                    changeObjectpropCount++;
+                }
+
+                var siteObject = new JObject();
+                var siteObjectpropCount = 0;
+                if (bodyinputDatachangesitename != null)
+                {
+                    siteObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangesitename);
+                    siteObjectpropCount++;
+                }
+
+                if (siteObjectpropCount > 0)
+                {
+                    changeObject["site"] = siteObject;
+                    changeObjectpropCount++;
+                }
+
+                var groupObject = new JObject();
+                var groupObjectpropCount = 0;
+                if (bodyinputDatachangegroupname != null)
+                {
+                    groupObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangegroupname);
+                    groupObjectpropCount++;
+                }
+
+                if (groupObjectpropCount > 0)
+                {
+                    changeObject["group"] = groupObject;
+                    changeObjectpropCount++;
+                }
+
+                if (bodyinputDatachangedescription != null)
+                {
+                    changeObject["description"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangedescription);
+                    changeObjectpropCount++;
+                }
+
+                var changeOwnerObject = new JObject();
+                var changeOwnerObjectpropCount = 0;
+                if (bodyinputDatachangechangeOwneremailId != null)
+                {
+                    changeOwnerObject["email_id"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangechangeOwneremailId);
+                    changeOwnerObjectpropCount++;
+                }
+
+                if (changeOwnerObjectpropCount > 0)
+                {
+                    changeObject["change_owner"] = changeOwnerObject;
+                    changeObjectpropCount++;
+                }
+
+                var changeTypeObject = new JObject();
+                var changeTypeObjectpropCount = 0;
+                if (bodyinputDatachangechangeTypename != null)
+                {
+                    changeTypeObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangechangeTypename);
+                    changeTypeObjectpropCount++;
+                }
+
+                if (changeTypeObjectpropCount > 0)
+                {
+                    changeObject["change_type"] = changeTypeObject;
+                    changeObjectpropCount++;
+                }
+
+                var priorityObject = new JObject();
+                var priorityObjectpropCount = 0;
+                if (bodyinputDatachangepriorityname != null)
+                {
+                    priorityObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangepriorityname);
+                    priorityObjectpropCount++;
+                }
+
+                if (priorityObjectpropCount > 0)
+                {
+                    changeObject["priority"] = priorityObject;
+                    changeObjectpropCount++;
+                }
+
+                var urgencyObject = new JObject();
+                var urgencyObjectpropCount = 0;
+                if (bodyinputDatachangeurgencyname != null)
+                {
+                    urgencyObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangeurgencyname);
+                    urgencyObjectpropCount++;
+                }
+
+                if (urgencyObjectpropCount > 0)
+                {
+                    changeObject["urgency"] = urgencyObject;
+                    changeObjectpropCount++;
+                }
+
+                var impactObject = new JObject();
+                var impactObjectpropCount = 0;
+                if (bodyinputDatachangeimpactname != null)
+                {
+                    impactObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangeimpactname);
+                    impactObjectpropCount++;
+                }
+
+                if (impactObjectpropCount > 0)
+                {
+                    changeObject["impact"] = impactObject;
+                    changeObjectpropCount++;
+                }
+
+                var riskObject = new JObject();
+                var riskObjectpropCount = 0;
+                if (bodyinputDatachangeriskname != null)
+                {
+                    riskObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangeriskname);
+                    riskObjectpropCount++;
+                }
+
+                if (riskObjectpropCount > 0)
+                {
+                    changeObject["risk"] = riskObject;
+                    changeObjectpropCount++;
+                }
+
+                var reasonForChangeObject = new JObject();
+                var reasonForChangeObjectpropCount = 0;
+                if (bodyinputDatachangereasonForChangename != null)
+                {
+                    reasonForChangeObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangereasonForChangename);
+                    reasonForChangeObjectpropCount++;
+                }
+
+                if (reasonForChangeObjectpropCount > 0)
+                {
+                    changeObject["reason_for_change"] = reasonForChangeObject;
+                    changeObjectpropCount++;
+                }
+
+                var categoryObject = new JObject();
+                var categoryObjectpropCount = 0;
+                if (bodyinputDatachangecategoryname != null)
+                {
+                    categoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangecategoryname);
+                    categoryObjectpropCount++;
+                }
+
+                if (categoryObjectpropCount > 0)
+                {
+                    changeObject["category"] = categoryObject;
+                    changeObjectpropCount++;
+                }
+
+                var subcategoryObject = new JObject();
+                var subcategoryObjectpropCount = 0;
+                if (bodyinputDatachangesubcategoryname != null)
+                {
+                    subcategoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangesubcategoryname);
+                    subcategoryObjectpropCount++;
+                }
+
+                if (subcategoryObjectpropCount > 0)
+                {
+                    changeObject["subcategory"] = subcategoryObject;
+                    changeObjectpropCount++;
+                }
+
+                var itemObject = new JObject();
+                var itemObjectpropCount = 0;
+                if (bodyinputDatachangeitemname != null)
+                {
+                    itemObject["name"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangeitemname);
+                    itemObjectpropCount++;
+                }
+
+                if (itemObjectpropCount > 0)
+                {
+                    changeObject["item"] = itemObject;
+                    changeObjectpropCount++;
+                }
+
+                if (bodyinputDatachangeassets != null)
+                {
+                    changeObject["assets"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangeassets);
+                    changeObjectpropCount++;
+                }
+
+                if (bodyinputDatachangeudfFields != null)
+                {
+                    changeObject["udf_fields"] = SourceExpressionConverter.ConvertToken(bodyinputDatachangeudfFields);
+                    changeObjectpropCount++;
+                }
+
+                if (changeObjectpropCount > 0)
+                {
+                    inputDataObject["change"] = changeObject;
+                    inputDataObjectpropCount++;
+                }
+
+                if (inputDataObjectpropCount > 0)
+                {
+                    body["input_data"] = inputDataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyinputDatachangecomment != null)
-            {
-                changeObject["comment"] = ExpressionConverter.ConvertO(bodyinputDatachangecomment);
-                changeObjectpropCount++;
-            }
-
-            var templateObject = new JObject();
-            var templateObjectpropCount = 0;
-            if (bodyinputDatachangetemplatename != null)
-            {
-                templateObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangetemplatename);
-                templateObjectpropCount++;
-            }
-
-            if (templateObjectpropCount > 0)
-            {
-                changeObject["template"] = templateObject;
-                changeObjectpropCount++;
-            }
-
-            var changeRequesterObject = new JObject();
-            var changeRequesterObjectpropCount = 0;
-            if (bodyinputDatachangechangeRequestername != null)
-            {
-                changeRequesterObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeRequestername);
-                changeRequesterObjectpropCount++;
-            }
-
-            if (changeRequesterObjectpropCount > 0)
-            {
-                changeObject["change_requester"] = changeRequesterObject;
-                changeObjectpropCount++;
-            }
-
-            var siteObject = new JObject();
-            var siteObjectpropCount = 0;
-            if (bodyinputDatachangesitename != null)
-            {
-                siteObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangesitename);
-                siteObjectpropCount++;
-            }
-
-            if (siteObjectpropCount > 0)
-            {
-                changeObject["site"] = siteObject;
-                changeObjectpropCount++;
-            }
-
-            var groupObject = new JObject();
-            var groupObjectpropCount = 0;
-            if (bodyinputDatachangegroupname != null)
-            {
-                groupObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangegroupname);
-                groupObjectpropCount++;
-            }
-
-            if (groupObjectpropCount > 0)
-            {
-                changeObject["group"] = groupObject;
-                changeObjectpropCount++;
-            }
-
-            if (bodyinputDatachangedescription != null)
-            {
-                changeObject["description"] = ExpressionConverter.ConvertO(bodyinputDatachangedescription);
-                changeObjectpropCount++;
-            }
-
-            var changeOwnerObject = new JObject();
-            var changeOwnerObjectpropCount = 0;
-            if (bodyinputDatachangechangeOwneremailId != null)
-            {
-                changeOwnerObject["email_id"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeOwneremailId);
-                changeOwnerObjectpropCount++;
-            }
-
-            if (changeOwnerObjectpropCount > 0)
-            {
-                changeObject["change_owner"] = changeOwnerObject;
-                changeObjectpropCount++;
-            }
-
-            var changeTypeObject = new JObject();
-            var changeTypeObjectpropCount = 0;
-            if (bodyinputDatachangechangeTypename != null)
-            {
-                changeTypeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangechangeTypename);
-                changeTypeObjectpropCount++;
-            }
-
-            if (changeTypeObjectpropCount > 0)
-            {
-                changeObject["change_type"] = changeTypeObject;
-                changeObjectpropCount++;
-            }
-
-            var priorityObject = new JObject();
-            var priorityObjectpropCount = 0;
-            if (bodyinputDatachangepriorityname != null)
-            {
-                priorityObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangepriorityname);
-                priorityObjectpropCount++;
-            }
-
-            if (priorityObjectpropCount > 0)
-            {
-                changeObject["priority"] = priorityObject;
-                changeObjectpropCount++;
-            }
-
-            var urgencyObject = new JObject();
-            var urgencyObjectpropCount = 0;
-            if (bodyinputDatachangeurgencyname != null)
-            {
-                urgencyObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeurgencyname);
-                urgencyObjectpropCount++;
-            }
-
-            if (urgencyObjectpropCount > 0)
-            {
-                changeObject["urgency"] = urgencyObject;
-                changeObjectpropCount++;
-            }
-
-            var impactObject = new JObject();
-            var impactObjectpropCount = 0;
-            if (bodyinputDatachangeimpactname != null)
-            {
-                impactObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeimpactname);
-                impactObjectpropCount++;
-            }
-
-            if (impactObjectpropCount > 0)
-            {
-                changeObject["impact"] = impactObject;
-                changeObjectpropCount++;
-            }
-
-            var riskObject = new JObject();
-            var riskObjectpropCount = 0;
-            if (bodyinputDatachangeriskname != null)
-            {
-                riskObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeriskname);
-                riskObjectpropCount++;
-            }
-
-            if (riskObjectpropCount > 0)
-            {
-                changeObject["risk"] = riskObject;
-                changeObjectpropCount++;
-            }
-
-            var reasonForChangeObject = new JObject();
-            var reasonForChangeObjectpropCount = 0;
-            if (bodyinputDatachangereasonForChangename != null)
-            {
-                reasonForChangeObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangereasonForChangename);
-                reasonForChangeObjectpropCount++;
-            }
-
-            if (reasonForChangeObjectpropCount > 0)
-            {
-                changeObject["reason_for_change"] = reasonForChangeObject;
-                changeObjectpropCount++;
-            }
-
-            var categoryObject = new JObject();
-            var categoryObjectpropCount = 0;
-            if (bodyinputDatachangecategoryname != null)
-            {
-                categoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangecategoryname);
-                categoryObjectpropCount++;
-            }
-
-            if (categoryObjectpropCount > 0)
-            {
-                changeObject["category"] = categoryObject;
-                changeObjectpropCount++;
-            }
-
-            var subcategoryObject = new JObject();
-            var subcategoryObjectpropCount = 0;
-            if (bodyinputDatachangesubcategoryname != null)
-            {
-                subcategoryObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangesubcategoryname);
-                subcategoryObjectpropCount++;
-            }
-
-            if (subcategoryObjectpropCount > 0)
-            {
-                changeObject["subcategory"] = subcategoryObject;
-                changeObjectpropCount++;
-            }
-
-            var itemObject = new JObject();
-            var itemObjectpropCount = 0;
-            if (bodyinputDatachangeitemname != null)
-            {
-                itemObject["name"] = ExpressionConverter.ConvertO(bodyinputDatachangeitemname);
-                itemObjectpropCount++;
-            }
-
-            if (itemObjectpropCount > 0)
-            {
-                changeObject["item"] = itemObject;
-                changeObjectpropCount++;
-            }
-
-            if (bodyinputDatachangeassets != null)
-            {
-                changeObject["assets"] = ExpressionConverter.ConvertO(bodyinputDatachangeassets);
-                changeObjectpropCount++;
-            }
-
-            if (bodyinputDatachangeudfFields != null)
-            {
-                changeObject["udf_fields"] = ExpressionConverter.ConvertO(bodyinputDatachangeudfFields);
-                changeObjectpropCount++;
-            }
-
-            if (changeObjectpropCount > 0)
-            {
-                inputDataObject["change"] = changeObject;
-                inputDataObjectpropCount++;
-            }
-
-            if (inputDataObjectpropCount > 0)
-            {
-                body["input_data"] = inputDataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateChangeResponse>(callPayload);
+            return new ApiConnectionAction<UpdateChangeResponse>(BuildSourceInput);
         }
     }
 

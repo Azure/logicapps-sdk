@@ -12,13 +12,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Service provider action input containing the details of the API call.
         /// </summary>
-        private readonly ServiceProviderOperationInput serviceProviderActionInput;
+        private readonly Func<ServiceProviderOperationInput> serviceProviderActionInput;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceProviderAction"/> class.
         /// </summary>
         /// <param name="serviceProviderActionInput">The service provider action input.</param>
-        internal ServiceProviderAction(ServiceProviderOperationInput serviceProviderActionInput)
+        internal ServiceProviderAction(Func<ServiceProviderOperationInput> serviceProviderActionInput)
         {
             this.serviceProviderActionInput = serviceProviderActionInput;
         }
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new FlowTemplateAction
             {
                 Type = FlowTemplateOperationType.ServiceProvider,
-                Inputs = this.serviceProviderActionInput.ToJToken(),
+                Inputs = this.serviceProviderActionInput().ToJToken(),
             };
         }
     }
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Initializes a new instance of the <see cref="ServiceProviderAction{T}"/> class.
         /// </summary>
         /// <param name="serviceProviderActionInput">The service provider action input.</param>
-        internal ServiceProviderAction(ServiceProviderOperationInput serviceProviderActionInput)
+        internal ServiceProviderAction(Func<ServiceProviderOperationInput> serviceProviderActionInput)
             : base(serviceProviderActionInput)
         {
         }
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Initializes a new instance of the <see cref="ServiceProviderOutputAction{T}"/> class.
         /// </summary>
         /// <param name="serviceProviderActionInput">The service provider action input.</param>
-        internal ServiceProviderOutputAction(ServiceProviderOperationInput serviceProviderActionInput)
+        internal ServiceProviderOutputAction(Func<ServiceProviderOperationInput> serviceProviderActionInput)
             : base(serviceProviderActionInput)
         {
         }

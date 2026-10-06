@@ -12,54 +12,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
     public class UnixtimestampipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
-        public IBodyWorkflowAction<Unix2UTCDateTimeResponse> Unix2UTCDateTime(Expression<Func<int>> unixtimestamp = null)
+        public IBodyWorkflowAction<Unix2UTCDateTimeResponse> Unix2UTCDateTime([WorkflowExpression] Func<int> unixtimestamp = null)
         {
-            var apiCallPath = "/fromunixtimestamp";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (unixtimestamp != null)
-                callPayload.Queries["unixtimestamp"] = ExpressionConverter.Convert(unixtimestamp);
-            return new ApiConnectionAction<Unix2UTCDateTimeResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/fromunixtimestamp";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (unixtimestamp != null)
+                    callPayload.Queries["unixtimestamp"] = SourceExpressionConverter.ConvertO(unixtimestamp);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Unix2UTCDateTimeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
-        public IBodyWorkflowAction<Unix2DateTimeTimezoneResponse> Unix2DateTimeTimezone(Expression<Func<string>> bodyunixTimeStamp = null, Expression<Func<string>> bodytimezone = null)
+        public IBodyWorkflowAction<Unix2DateTimeTimezoneResponse> Unix2DateTimeTimezone([WorkflowExpression] Func<string> bodyunixTimeStamp = null, [WorkflowExpression] Func<string> bodytimezone = null)
         {
-            var apiCallPath = "/fromunixtimestamp";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyunixTimeStamp != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["UnixTimeStamp"] = ExpressionConverter.ConvertO(bodyunixTimeStamp);
-                bodypropCount++;
+                var apiCallPath = "/fromunixtimestamp";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyunixTimeStamp != null)
+                {
+                    body["UnixTimeStamp"] = SourceExpressionConverter.ConvertToken(bodyunixTimeStamp);
+                    bodypropCount++;
+                }
+
+                if (bodytimezone != null)
+                {
+                    body["Timezone"] = SourceExpressionConverter.ConvertToken(bodytimezone);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytimezone != null)
-            {
-                body["Timezone"] = ExpressionConverter.ConvertO(bodytimezone);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Unix2DateTimeTimezoneResponse>(callPayload);
+            return new ApiConnectionAction<Unix2DateTimeTimezoneResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
-        public IBodyWorkflowAction<DateTime2UnixTimestampResponse> DateTime2UnixTimestamp(Expression<Func<string>> datetime = null)
+        public IBodyWorkflowAction<DateTime2UnixTimestampResponse> DateTime2UnixTimestamp([WorkflowExpression] Func<string> datetime = null)
         {
-            var apiCallPath = "/tounixtimestamp";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["datetime"] = Convert.ToString("now");
-            if (datetime != null)
-                callPayload.Queries["datetime"] = ExpressionConverter.Convert(datetime);
-            return new ApiConnectionAction<DateTime2UnixTimestampResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/tounixtimestamp";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["datetime"] = Convert.ToString("now");
+                if (datetime != null)
+                    callPayload.Queries["datetime"] = SourceExpressionConverter.ConvertO(datetime);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DateTime2UnixTimestampResponse>(BuildSourceInput);
         }
     }
 

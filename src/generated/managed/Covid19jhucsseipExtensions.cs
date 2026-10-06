@@ -14,82 +14,127 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         public IBodyWorkflowAction<GetCurrentV2CurrentGetResponse> GetCurrentV2CurrentGet()
         {
-            var apiCallPath = "/v2/current";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCurrentV2CurrentGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/current";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCurrentV2CurrentGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         public IBodyWorkflowAction<GetCurrentUsV2CurrentUSGetResponse> GetCurrentUsV2CurrentUSGet()
         {
-            var apiCallPath = "/v2/current/US";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCurrentUsV2CurrentUSGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/current/US";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCurrentUsV2CurrentUSGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         public IBodyWorkflowAction<GetTotalV2TotalGetResponse> GetTotalV2TotalGet()
         {
-            var apiCallPath = "/v2/total";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTotalV2TotalGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/total";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTotalV2TotalGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         public IBodyWorkflowAction<GetConfirmedV2ConfirmedGetResponse> GetConfirmedV2ConfirmedGet()
         {
-            var apiCallPath = "/v2/confirmed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetConfirmedV2ConfirmedGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/confirmed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetConfirmedV2ConfirmedGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         public IBodyWorkflowAction<GetDeathsV2DeathsGetResponse> GetDeathsV2DeathsGet()
         {
-            var apiCallPath = "/v2/deaths";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDeathsV2DeathsGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/deaths";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDeathsV2DeathsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         public IBodyWorkflowAction<GetRecoveredV2RecoveredGetResponse> GetRecoveredV2RecoveredGet()
         {
-            var apiCallPath = "/v2/recovered";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRecoveredV2RecoveredGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/recovered";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRecoveredV2RecoveredGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         public IBodyWorkflowAction<GetActiveV2ActiveGetResponse> GetActiveV2ActiveGet()
         {
-            var apiCallPath = "/v2/active";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetActiveV2ActiveGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/active";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetActiveV2ActiveGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
-        public IBodyWorkflowAction<GetCountryV2CountryCountryNameGetResponse> GetCountryV2CountryCountryNameGet(Expression<Func<string>> countryName)
+        public IBodyWorkflowAction<GetCountryV2CountryCountryNameGetResponse> GetCountryV2CountryCountryNameGet([WorkflowExpression] Func<string> countryName)
         {
-            var apiCallPath = String.Format("/v2/country/{0}", ExpressionConverter.ConvertWithUrlEncoding(countryName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCountryV2CountryCountryNameGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/country/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(countryName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCountryV2CountryCountryNameGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
-        public IBodyWorkflowAction<GetTimeSeriesV2TimeseriesCaseGetResponse> GetTimeSeriesV2TimeseriesCaseGet(Expression<Func<string>> @case)
+        public IBodyWorkflowAction<GetTimeSeriesV2TimeseriesCaseGetResponse> GetTimeSeriesV2TimeseriesCaseGet([WorkflowExpression] Func<string> @case)
         {
-            var apiCallPath = String.Format("/v2/timeseries/{0}", ExpressionConverter.ConvertWithUrlEncoding(@case, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTimeSeriesV2TimeseriesCaseGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/timeseries/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(@case, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTimeSeriesV2TimeseriesCaseGetResponse>(BuildSourceInput);
         }
     }
 

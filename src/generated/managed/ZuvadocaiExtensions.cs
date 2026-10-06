@@ -12,241 +12,320 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zuvadocai
     public class ZuvadocaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<SubmitFileResponse> SubmitFile(Expression<Func<string>> file = null)
+        public IBodyWorkflowAction<SubmitFileResponse> SubmitFile([WorkflowExpression] Func<string> @file = null)
         {
-            var apiCallPath = "/files";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(file);
-            return new ApiConnectionAction<SubmitFileResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<string> DeleteFile(Expression<Func<string>> fileId)
-        {
-            var apiCallPath = String.Format("/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateOcrRequestResponse> CreateOcrRequest(Expression<Func<string>> fileIdBodyfileID = null)
-        {
-            var apiCallPath = "/ocr";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var fileIdBody = new JObject();
-            var fileIdBodypropCount = 0;
-            if (fileIdBodyfileID != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                fileIdBody["file_id"] = ExpressionConverter.ConvertO(fileIdBodyfileID);
-                fileIdBodypropCount++;
+                var apiCallPath = "/files";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(@file);
+                return callPayload;
             }
 
-            if (fileIdBodypropCount > 0)
+            return new ApiConnectionAction<SubmitFileResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
+        public IBodyWorkflowAction<string> DeleteFile([WorkflowExpression] Func<string> fileId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = fileIdBody;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CreateOcrRequestResponse>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<GetOcrRequestStatusResponse> GetOcrRequestStatus(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<CreateOcrRequestResponse> CreateOcrRequest([WorkflowExpression] Func<string> fileIdBodyfileId = null)
         {
-            var apiCallPath = String.Format("/ocr/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetOcrRequestStatusResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/ocr";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var fileIdBody = new JObject();
+                var fileIdBodypropCount = 0;
+                if (fileIdBodyfileId != null)
+                {
+                    fileIdBody["file_id"] = SourceExpressionConverter.ConvertToken(fileIdBodyfileId);
+                    fileIdBodypropCount++;
+                }
+
+                if (fileIdBodypropCount > 0)
+                {
+                    callPayload.Body = fileIdBody;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateOcrRequestResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<GetOcrRequestTextResponse> GetOcrRequestText(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<GetOcrRequestStatusResponse> GetOcrRequestStatus([WorkflowExpression] Func<string> requestId)
         {
-            var apiCallPath = String.Format("/ocr/{0}/text", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetOcrRequestTextResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ocr/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetOcrRequestStatusResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<string> GetOcrRequestImages(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<GetOcrRequestTextResponse> GetOcrRequestText([WorkflowExpression] Func<string> requestId)
         {
-            var apiCallPath = String.Format("/ocr/{0}/images", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ocr/{0}/text", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetOcrRequestTextResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
+        public IBodyWorkflowAction<string> GetOcrRequestImages([WorkflowExpression] Func<string> requestId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ocr/{0}/images", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
         public IBodyWorkflowAction<GetFieldListResponseItem[]> GetFieldList()
         {
-            var apiCallPath = "/fields";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetFieldListResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/fields";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetFieldListResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateFieldExtractionRequestResponse> CreateFieldExtractionRequest(Expression<Func<string>> bodyfileID = null, Expression<Func<string[]>> bodyfieldIDs = null)
+        public IBodyWorkflowAction<CreateFieldExtractionRequestResponse> CreateFieldExtractionRequest([WorkflowExpression] Func<string> bodyfileId = null, [WorkflowExpression] Func<string[]> bodyfieldIDs = null)
         {
-            var apiCallPath = "/extraction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileID != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["file_id"] = ExpressionConverter.ConvertO(bodyfileID);
-                bodypropCount++;
+                var apiCallPath = "/extraction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileId != null)
+                {
+                    body["file_id"] = SourceExpressionConverter.ConvertToken(bodyfileId);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldIDs != null)
+                {
+                    body["field_ids"] = SourceExpressionConverter.ConvertToken(bodyfieldIDs);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldIDs != null)
-            {
-                body["field_ids"] = ExpressionConverter.ConvertO(bodyfieldIDs);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateFieldExtractionRequestResponse>(callPayload);
+            return new ApiConnectionAction<CreateFieldExtractionRequestResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<GetFieldExtractionRequestStatusResponse> GetFieldExtractionRequestStatus(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<GetFieldExtractionRequestStatusResponse> GetFieldExtractionRequestStatus([WorkflowExpression] Func<string> requestId)
         {
-            var apiCallPath = String.Format("/extraction/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetFieldExtractionRequestStatusResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/extraction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetFieldExtractionRequestStatusResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<GetFieldExtractionRequestResultsResponse> GetFieldExtractionRequestResults(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<GetFieldExtractionRequestResultsResponse> GetFieldExtractionRequestResults([WorkflowExpression] Func<string> requestId)
         {
-            var apiCallPath = String.Format("/extraction/{0}/results/text", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetFieldExtractionRequestResultsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/extraction/{0}/results/text", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetFieldExtractionRequestResultsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateDocumentClassificationRequestResponse> CreateDocumentClassificationRequest(Expression<Func<string>> fileIdBodyfileID = null)
+        public IBodyWorkflowAction<CreateDocumentClassificationRequestResponse> CreateDocumentClassificationRequest([WorkflowExpression] Func<string> fileIdBodyfileId = null)
         {
-            var apiCallPath = "/classification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var fileIdBody = new JObject();
-            var fileIdBodypropCount = 0;
-            if (fileIdBodyfileID != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                fileIdBody["file_id"] = ExpressionConverter.ConvertO(fileIdBodyfileID);
-                fileIdBodypropCount++;
+                var apiCallPath = "/classification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var fileIdBody = new JObject();
+                var fileIdBodypropCount = 0;
+                if (fileIdBodyfileId != null)
+                {
+                    fileIdBody["file_id"] = SourceExpressionConverter.ConvertToken(fileIdBodyfileId);
+                    fileIdBodypropCount++;
+                }
+
+                if (fileIdBodypropCount > 0)
+                {
+                    callPayload.Body = fileIdBody;
+                }
+                return callPayload;
             }
 
-            if (fileIdBodypropCount > 0)
-            {
-                callPayload.Body = fileIdBody;
-            }
-
-            return new ApiConnectionAction<CreateDocumentClassificationRequestResponse>(callPayload);
+            return new ApiConnectionAction<CreateDocumentClassificationRequestResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<GetDocumentClassificationRequestStatusResponse> GetDocumentClassificationRequestStatus(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<GetDocumentClassificationRequestStatusResponse> GetDocumentClassificationRequestStatus([WorkflowExpression] Func<string> requestId)
         {
-            var apiCallPath = String.Format("/classification/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDocumentClassificationRequestStatusResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/classification/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDocumentClassificationRequestStatusResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateLanguageClassificationRequestResponse> CreateLanguageClassificationRequest(Expression<Func<string>> fileIdBodyfileID = null)
+        public IBodyWorkflowAction<CreateLanguageClassificationRequestResponse> CreateLanguageClassificationRequest([WorkflowExpression] Func<string> fileIdBodyfileId = null)
         {
-            var apiCallPath = "/language";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var fileIdBody = new JObject();
-            var fileIdBodypropCount = 0;
-            if (fileIdBodyfileID != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                fileIdBody["file_id"] = ExpressionConverter.ConvertO(fileIdBodyfileID);
-                fileIdBodypropCount++;
+                var apiCallPath = "/language";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var fileIdBody = new JObject();
+                var fileIdBodypropCount = 0;
+                if (fileIdBodyfileId != null)
+                {
+                    fileIdBody["file_id"] = SourceExpressionConverter.ConvertToken(fileIdBodyfileId);
+                    fileIdBodypropCount++;
+                }
+
+                if (fileIdBodypropCount > 0)
+                {
+                    callPayload.Body = fileIdBody;
+                }
+                return callPayload;
             }
 
-            if (fileIdBodypropCount > 0)
-            {
-                callPayload.Body = fileIdBody;
-            }
-
-            return new ApiConnectionAction<CreateLanguageClassificationRequestResponse>(callPayload);
+            return new ApiConnectionAction<CreateLanguageClassificationRequestResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<GetLanguageClassificationRequestStatusResponse> GetLanguageClassificationRequestStatus(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<GetLanguageClassificationRequestStatusResponse> GetLanguageClassificationRequestStatus([WorkflowExpression] Func<string> requestId)
         {
-            var apiCallPath = String.Format("/language/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetLanguageClassificationRequestStatusResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/language/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetLanguageClassificationRequestStatusResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<CreateMlcRequestResponse> CreateMlcRequest(Expression<Func<string>> fileIdBodyfileID = null)
+        public IBodyWorkflowAction<CreateMlcRequestResponse> CreateMlcRequest([WorkflowExpression] Func<string> fileIdBodyfileId = null)
         {
-            var apiCallPath = "/mlc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var fileIdBody = new JObject();
-            var fileIdBodypropCount = 0;
-            if (fileIdBodyfileID != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                fileIdBody["file_id"] = ExpressionConverter.ConvertO(fileIdBodyfileID);
-                fileIdBodypropCount++;
+                var apiCallPath = "/mlc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var fileIdBody = new JObject();
+                var fileIdBodypropCount = 0;
+                if (fileIdBodyfileId != null)
+                {
+                    fileIdBody["file_id"] = SourceExpressionConverter.ConvertToken(fileIdBodyfileId);
+                    fileIdBodypropCount++;
+                }
+
+                if (fileIdBodypropCount > 0)
+                {
+                    callPayload.Body = fileIdBody;
+                }
+                return callPayload;
             }
 
-            if (fileIdBodypropCount > 0)
-            {
-                callPayload.Body = fileIdBody;
-            }
-
-            return new ApiConnectionAction<CreateMlcRequestResponse>(callPayload);
+            return new ApiConnectionAction<CreateMlcRequestResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<GetMlcRequestStatusResponse> GetMlcRequestStatus(Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<GetMlcRequestStatusResponse> GetMlcRequestStatus([WorkflowExpression] Func<string> requestId)
         {
-            var apiCallPath = String.Format("/mlc/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetMlcRequestStatusResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/mlc/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetMlcRequestStatusResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zuvadocai")]
-        public IBodyWorkflowAction<NormalizeDatesResponse> NormalizeDates(Expression<Func<string>> textBodytext = null)
+        public IBodyWorkflowAction<NormalizeDatesResponse> NormalizeDates([WorkflowExpression] Func<string> textBodytext = null)
         {
-            var apiCallPath = "/normalize/date";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var textBody = new JObject();
-            var textBodypropCount = 0;
-            if (textBodytext != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                textBody["text"] = ExpressionConverter.ConvertO(textBodytext);
-                textBodypropCount++;
+                var apiCallPath = "/normalize/date";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var textBody = new JObject();
+                var textBodypropCount = 0;
+                if (textBodytext != null)
+                {
+                    textBody["text"] = SourceExpressionConverter.ConvertToken(textBodytext);
+                    textBodypropCount++;
+                }
+
+                if (textBodypropCount > 0)
+                {
+                    callPayload.Body = textBody;
+                }
+                return callPayload;
             }
 
-            if (textBodypropCount > 0)
-            {
-                callPayload.Body = textBody;
-            }
-
-            return new ApiConnectionAction<NormalizeDatesResponse>(callPayload);
+            return new ApiConnectionAction<NormalizeDatesResponse>(BuildSourceInput);
         }
     }
 

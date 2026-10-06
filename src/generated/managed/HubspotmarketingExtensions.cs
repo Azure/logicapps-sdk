@@ -12,747 +12,812 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
     public class HubspotmarketingActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction FormsList(Expression<Func<int>> limit = null, Expression<Func<bool>> archived = null)
+        public IWorkflowAction FormsList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            var apiCallPath = "/marketing/v3/forms/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = Convert.ToString(20);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["archived"] = Convert.ToString(false);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/marketing/v3/forms/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = Convert.ToString(20);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Queries["archived"] = Convert.ToString(false);
+                if (archived != null)
+                    callPayload.Queries["archived"] = SourceExpressionConverter.ConvertO(archived);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction FormsCreate(Expression<Func<string>> dataformType = null, Expression<Func<string>> dataname = null, Expression<Func<string>> datacreatedAt = null, Expression<Func<string>> dataupdatedAt = null, Expression<Func<bool>> dataarchived = null, Expression<Func<string>> dataarchivedAt = null, Expression<Func<datafieldGroupsInputItem[]>> datafieldGroups = null, Expression<Func<string>> dataconfigurationlanguage = null, Expression<Func<bool>> dataconfigurationcloneable = null, Expression<Func<string>> dataconfigurationpostSubmitActiontype = null, Expression<Func<string>> dataconfigurationpostSubmitActionvalue = null, Expression<Func<bool>> dataconfigurationeditable = null, Expression<Func<bool>> dataconfigurationarchivable = null, Expression<Func<bool>> dataconfigurationrecaptchaEnabled = null, Expression<Func<bool>> dataconfigurationnotifyContactOwner = null, Expression<Func<string[]>> dataconfigurationnotifyRecipients = null, Expression<Func<bool>> dataconfigurationcreateNewContactForNewEmail = null, Expression<Func<bool>> dataconfigurationprePopulateKnownValues = null, Expression<Func<bool>> dataconfigurationallowLinkToResetKnownValues = null, Expression<Func<bool>> datadisplayOptionsrenderRawHtml = null, Expression<Func<string>> datadisplayOptionstheme = null, Expression<Func<string>> datadisplayOptionssubmitButtonText = null, Expression<Func<string>> datadisplayOptionsstylefontFamily = null, Expression<Func<string>> datadisplayOptionsstylebackgroundWidth = null, Expression<Func<string>> datadisplayOptionsstylelabelTextColor = null, Expression<Func<string>> datadisplayOptionsstylelabelTextSize = null, Expression<Func<string>> datadisplayOptionsstylehelpTextColor = null, Expression<Func<string>> datadisplayOptionsstylehelpTextSize = null, Expression<Func<string>> datadisplayOptionsstylelegalConsentTextColor = null, Expression<Func<string>> datadisplayOptionsstylelegalConsentTextSize = null, Expression<Func<string>> datadisplayOptionsstylesubmitColor = null, Expression<Func<string>> datadisplayOptionsstylesubmitAlignment = null, Expression<Func<string>> datadisplayOptionsstylesubmitFontColor = null, Expression<Func<string>> datadisplayOptionsstylesubmitSize = null, Expression<Func<string>> datadisplayOptionscssClass = null)
+        public IWorkflowAction FormsCreate([WorkflowExpression] Func<string> dataformType = null, [WorkflowExpression] Func<string> dataname = null, [WorkflowExpression] Func<string> datacreatedAt = null, [WorkflowExpression] Func<string> dataupdatedAt = null, [WorkflowExpression] Func<bool> dataarchived = null, [WorkflowExpression] Func<string> dataarchivedAt = null, [WorkflowExpression] Func<datafieldGroupsInputItem[]> datafieldGroups = null, [WorkflowExpression] Func<string> dataconfigurationlanguage = null, [WorkflowExpression] Func<bool> dataconfigurationcloneable = null, [WorkflowExpression] Func<string> dataconfigurationpostSubmitActiontype = null, [WorkflowExpression] Func<string> dataconfigurationpostSubmitActionvalue = null, [WorkflowExpression] Func<bool> dataconfigurationeditable = null, [WorkflowExpression] Func<bool> dataconfigurationarchivable = null, [WorkflowExpression] Func<bool> dataconfigurationrecaptchaEnabled = null, [WorkflowExpression] Func<bool> dataconfigurationnotifyContactOwner = null, [WorkflowExpression] Func<string[]> dataconfigurationnotifyRecipients = null, [WorkflowExpression] Func<bool> dataconfigurationcreateNewContactForNewEmail = null, [WorkflowExpression] Func<bool> dataconfigurationprePopulateKnownValues = null, [WorkflowExpression] Func<bool> dataconfigurationallowLinkToResetKnownValues = null, [WorkflowExpression] Func<bool> datadisplayOptionsrenderRawHtml = null, [WorkflowExpression] Func<string> datadisplayOptionstheme = null, [WorkflowExpression] Func<string> datadisplayOptionssubmitButtonText = null, [WorkflowExpression] Func<string> datadisplayOptionsstylefontFamily = null, [WorkflowExpression] Func<string> datadisplayOptionsstylebackgroundWidth = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelabelTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelabelTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylehelpTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylehelpTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelegalConsentTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelegalConsentTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitAlignment = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitFontColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitSize = null, [WorkflowExpression] Func<string> datadisplayOptionscssClass = null)
         {
-            var apiCallPath = "/marketing/v3/forms/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var data = new JObject();
-            var datapropCount = 0;
-            if (dataformType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/marketing/v3/forms/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var data = new JObject();
+                var datapropCount = 0;
                 if (dataformType != null)
                 {
-                    data["formType"] = ExpressionConverter.ConvertO(dataformType);
+                    if (dataformType != null)
+                    {
+                        data["formType"] = SourceExpressionConverter.ConvertToken(dataformType);
+                        datapropCount++;
+                    }
+
+                    datapropCount++;
+                }
+                else
+                {
+                    data["formType"] = "hubspot";
                     datapropCount++;
                 }
 
-                datapropCount++;
-            }
-            else
-            {
-                data["formType"] = "hubspot";
-                datapropCount++;
-            }
+                if (dataname != null)
+                {
+                    data["name"] = SourceExpressionConverter.ConvertToken(dataname);
+                    datapropCount++;
+                }
 
-            if (dataname != null)
-            {
-                data["name"] = ExpressionConverter.ConvertO(dataname);
-                datapropCount++;
-            }
+                if (datacreatedAt != null)
+                {
+                    data["createdAt"] = SourceExpressionConverter.ConvertToken(datacreatedAt);
+                    datapropCount++;
+                }
 
-            if (datacreatedAt != null)
-            {
-                data["createdAt"] = ExpressionConverter.ConvertO(datacreatedAt);
-                datapropCount++;
-            }
+                if (dataupdatedAt != null)
+                {
+                    data["updatedAt"] = SourceExpressionConverter.ConvertToken(dataupdatedAt);
+                    datapropCount++;
+                }
 
-            if (dataupdatedAt != null)
-            {
-                data["updatedAt"] = ExpressionConverter.ConvertO(dataupdatedAt);
-                datapropCount++;
-            }
-
-            if (dataarchived != null)
-            {
                 if (dataarchived != null)
                 {
-                    data["archived"] = ExpressionConverter.ConvertO(dataarchived);
+                    if (dataarchived != null)
+                    {
+                        data["archived"] = SourceExpressionConverter.ConvertToken(dataarchived);
+                        datapropCount++;
+                    }
+
+                    datapropCount++;
+                }
+                else
+                {
+                    data["archived"] = false;
+                    datapropCount++;
+                }
+
+                if (dataarchivedAt != null)
+                {
+                    data["archivedAt"] = SourceExpressionConverter.ConvertToken(dataarchivedAt);
+                    datapropCount++;
+                }
+
+                if (datafieldGroups != null)
+                {
+                    data["fieldGroups"] = SourceExpressionConverter.ConvertToken(datafieldGroups);
+                    datapropCount++;
+                }
+
+                var configurationObject = new JObject();
+                var configurationObjectpropCount = 0;
+                if (dataconfigurationlanguage != null)
+                {
+                    configurationObject["language"] = SourceExpressionConverter.ConvertToken(dataconfigurationlanguage);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationcloneable != null)
+                {
+                    configurationObject["cloneable"] = SourceExpressionConverter.ConvertToken(dataconfigurationcloneable);
+                    configurationObjectpropCount++;
+                }
+
+                var postSubmitActionObject = new JObject();
+                var postSubmitActionObjectpropCount = 0;
+                if (dataconfigurationpostSubmitActiontype != null)
+                {
+                    postSubmitActionObject["type"] = SourceExpressionConverter.ConvertToken(dataconfigurationpostSubmitActiontype);
+                    postSubmitActionObjectpropCount++;
+                }
+
+                if (dataconfigurationpostSubmitActionvalue != null)
+                {
+                    postSubmitActionObject["value"] = SourceExpressionConverter.ConvertToken(dataconfigurationpostSubmitActionvalue);
+                    postSubmitActionObjectpropCount++;
+                }
+
+                if (postSubmitActionObjectpropCount > 0)
+                {
+                    configurationObject["postSubmitAction"] = postSubmitActionObject;
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationeditable != null)
+                {
+                    configurationObject["editable"] = SourceExpressionConverter.ConvertToken(dataconfigurationeditable);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationarchivable != null)
+                {
+                    configurationObject["archivable"] = SourceExpressionConverter.ConvertToken(dataconfigurationarchivable);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationrecaptchaEnabled != null)
+                {
+                    configurationObject["recaptchaEnabled"] = SourceExpressionConverter.ConvertToken(dataconfigurationrecaptchaEnabled);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationnotifyContactOwner != null)
+                {
+                    configurationObject["notifyContactOwner"] = SourceExpressionConverter.ConvertToken(dataconfigurationnotifyContactOwner);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationnotifyRecipients != null)
+                {
+                    configurationObject["notifyRecipients"] = SourceExpressionConverter.ConvertToken(dataconfigurationnotifyRecipients);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationcreateNewContactForNewEmail != null)
+                {
+                    configurationObject["createNewContactForNewEmail"] = SourceExpressionConverter.ConvertToken(dataconfigurationcreateNewContactForNewEmail);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationprePopulateKnownValues != null)
+                {
+                    configurationObject["prePopulateKnownValues"] = SourceExpressionConverter.ConvertToken(dataconfigurationprePopulateKnownValues);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationallowLinkToResetKnownValues != null)
+                {
+                    configurationObject["allowLinkToResetKnownValues"] = SourceExpressionConverter.ConvertToken(dataconfigurationallowLinkToResetKnownValues);
+                    configurationObjectpropCount++;
+                }
+
+                if (configurationObjectpropCount > 0)
+                {
+                    data["configuration"] = configurationObject;
+                    datapropCount++;
+                }
+
+                var displayOptionsObject = new JObject();
+                var displayOptionsObjectpropCount = 0;
+                if (datadisplayOptionsrenderRawHtml != null)
+                {
+                    displayOptionsObject["renderRawHtml"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsrenderRawHtml);
+                    displayOptionsObjectpropCount++;
+                }
+
+                if (datadisplayOptionstheme != null)
+                {
+                    displayOptionsObject["theme"] = SourceExpressionConverter.ConvertToken(datadisplayOptionstheme);
+                    displayOptionsObjectpropCount++;
+                }
+
+                if (datadisplayOptionssubmitButtonText != null)
+                {
+                    displayOptionsObject["submitButtonText"] = SourceExpressionConverter.ConvertToken(datadisplayOptionssubmitButtonText);
+                    displayOptionsObjectpropCount++;
+                }
+
+                var styleObject = new JObject();
+                var styleObjectpropCount = 0;
+                if (datadisplayOptionsstylefontFamily != null)
+                {
+                    styleObject["fontFamily"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylefontFamily);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylebackgroundWidth != null)
+                {
+                    styleObject["backgroundWidth"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylebackgroundWidth);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylelabelTextColor != null)
+                {
+                    styleObject["labelTextColor"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylelabelTextColor);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylelabelTextSize != null)
+                {
+                    styleObject["labelTextSize"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylelabelTextSize);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylehelpTextColor != null)
+                {
+                    styleObject["helpTextColor"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylehelpTextColor);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylehelpTextSize != null)
+                {
+                    styleObject["helpTextSize"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylehelpTextSize);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylelegalConsentTextColor != null)
+                {
+                    styleObject["legalConsentTextColor"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylelegalConsentTextColor);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylelegalConsentTextSize != null)
+                {
+                    styleObject["legalConsentTextSize"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylelegalConsentTextSize);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylesubmitColor != null)
+                {
+                    styleObject["submitColor"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitColor);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylesubmitAlignment != null)
+                {
+                    styleObject["submitAlignment"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitAlignment);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylesubmitFontColor != null)
+                {
+                    styleObject["submitFontColor"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitFontColor);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylesubmitSize != null)
+                {
+                    styleObject["submitSize"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitSize);
+                    styleObjectpropCount++;
+                }
+
+                if (styleObjectpropCount > 0)
+                {
+                    displayOptionsObject["style"] = styleObject;
+                    displayOptionsObjectpropCount++;
+                }
+
+                if (datadisplayOptionscssClass != null)
+                {
+                    displayOptionsObject["cssClass"] = SourceExpressionConverter.ConvertToken(datadisplayOptionscssClass);
+                    displayOptionsObjectpropCount++;
+                }
+
+                if (displayOptionsObjectpropCount > 0)
+                {
+                    data["displayOptions"] = displayOptionsObject;
+                    datapropCount++;
+                }
+
+                if (datapropCount > 0)
+                {
+                    callPayload.Body = data;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
+        public IWorkflowAction FormsRead([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<bool> archived = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["archived"] = Convert.ToString(false);
+                if (archived != null)
+                    callPayload.Queries["archived"] = SourceExpressionConverter.ConvertO(archived);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
+        public IWorkflowAction FormsArchive([WorkflowExpression] Func<string> formId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
+        public IWorkflowAction FormsUpdate([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> dataformType, [WorkflowExpression] Func<string> dataid, [WorkflowExpression] Func<string> datacreatedAt, [WorkflowExpression] Func<string> dataupdatedAt, [WorkflowExpression] Func<bool> dataarchived, [WorkflowExpression] Func<string> dataname = null, [WorkflowExpression] Func<string> dataarchivedAt = null, [WorkflowExpression] Func<datafieldGroupsInputItem[]> datafieldGroups = null, [WorkflowExpression] Func<string> dataconfigurationlanguage = null, [WorkflowExpression] Func<bool> dataconfigurationcloneable = null, [WorkflowExpression] Func<string> dataconfigurationpostSubmitActiontype = null, [WorkflowExpression] Func<string> dataconfigurationpostSubmitActionvalue = null, [WorkflowExpression] Func<bool> dataconfigurationeditable = null, [WorkflowExpression] Func<bool> dataconfigurationarchivable = null, [WorkflowExpression] Func<bool> dataconfigurationrecaptchaEnabled = null, [WorkflowExpression] Func<bool> dataconfigurationnotifyContactOwner = null, [WorkflowExpression] Func<string[]> dataconfigurationnotifyRecipients = null, [WorkflowExpression] Func<bool> dataconfigurationcreateNewContactForNewEmail = null, [WorkflowExpression] Func<bool> dataconfigurationprePopulateKnownValues = null, [WorkflowExpression] Func<bool> dataconfigurationallowLinkToResetKnownValues = null, [WorkflowExpression] Func<bool> datadisplayOptionsrenderRawHtml = null, [WorkflowExpression] Func<string> datadisplayOptionstheme = null, [WorkflowExpression] Func<string> datadisplayOptionssubmitButtonText = null, [WorkflowExpression] Func<string> datadisplayOptionsstylefontFamily = null, [WorkflowExpression] Func<string> datadisplayOptionsstylebackgroundWidth = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelabelTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelabelTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylehelpTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylehelpTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelegalConsentTextColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylelegalConsentTextSize = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitAlignment = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitFontColor = null, [WorkflowExpression] Func<string> datadisplayOptionsstylesubmitSize = null, [WorkflowExpression] Func<string> datadisplayOptionscssClass = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing/v3/forms/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var data = new JObject();
+                var datapropCount = 0;
+                datapropCount++;
+                data["formType"] = SourceExpressionConverter.ConvertToken(dataformType);
+                datapropCount++;
+                data["id"] = SourceExpressionConverter.ConvertToken(dataid);
+                if (dataname != null)
+                {
+                    data["name"] = SourceExpressionConverter.ConvertToken(dataname);
                     datapropCount++;
                 }
 
                 datapropCount++;
-            }
-            else
-            {
-                data["archived"] = false;
+                data["createdAt"] = SourceExpressionConverter.ConvertToken(datacreatedAt);
                 datapropCount++;
-            }
-
-            if (dataarchivedAt != null)
-            {
-                data["archivedAt"] = ExpressionConverter.ConvertO(dataarchivedAt);
+                data["updatedAt"] = SourceExpressionConverter.ConvertToken(dataupdatedAt);
                 datapropCount++;
+                data["archived"] = SourceExpressionConverter.ConvertToken(dataarchived);
+                if (dataarchivedAt != null)
+                {
+                    data["archivedAt"] = SourceExpressionConverter.ConvertToken(dataarchivedAt);
+                    datapropCount++;
+                }
+
+                if (datafieldGroups != null)
+                {
+                    data["fieldGroups"] = SourceExpressionConverter.ConvertToken(datafieldGroups);
+                    datapropCount++;
+                }
+
+                var configurationObject = new JObject();
+                var configurationObjectpropCount = 0;
+                if (dataconfigurationlanguage != null)
+                {
+                    configurationObject["language"] = SourceExpressionConverter.ConvertToken(dataconfigurationlanguage);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationcloneable != null)
+                {
+                    configurationObject["cloneable"] = SourceExpressionConverter.ConvertToken(dataconfigurationcloneable);
+                    configurationObjectpropCount++;
+                }
+
+                var postSubmitActionObject = new JObject();
+                var postSubmitActionObjectpropCount = 0;
+                if (dataconfigurationpostSubmitActiontype != null)
+                {
+                    postSubmitActionObject["type"] = SourceExpressionConverter.ConvertToken(dataconfigurationpostSubmitActiontype);
+                    postSubmitActionObjectpropCount++;
+                }
+
+                if (dataconfigurationpostSubmitActionvalue != null)
+                {
+                    postSubmitActionObject["value"] = SourceExpressionConverter.ConvertToken(dataconfigurationpostSubmitActionvalue);
+                    postSubmitActionObjectpropCount++;
+                }
+
+                if (postSubmitActionObjectpropCount > 0)
+                {
+                    configurationObject["postSubmitAction"] = postSubmitActionObject;
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationeditable != null)
+                {
+                    configurationObject["editable"] = SourceExpressionConverter.ConvertToken(dataconfigurationeditable);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationarchivable != null)
+                {
+                    configurationObject["archivable"] = SourceExpressionConverter.ConvertToken(dataconfigurationarchivable);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationrecaptchaEnabled != null)
+                {
+                    configurationObject["recaptchaEnabled"] = SourceExpressionConverter.ConvertToken(dataconfigurationrecaptchaEnabled);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationnotifyContactOwner != null)
+                {
+                    configurationObject["notifyContactOwner"] = SourceExpressionConverter.ConvertToken(dataconfigurationnotifyContactOwner);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationnotifyRecipients != null)
+                {
+                    configurationObject["notifyRecipients"] = SourceExpressionConverter.ConvertToken(dataconfigurationnotifyRecipients);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationcreateNewContactForNewEmail != null)
+                {
+                    configurationObject["createNewContactForNewEmail"] = SourceExpressionConverter.ConvertToken(dataconfigurationcreateNewContactForNewEmail);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationprePopulateKnownValues != null)
+                {
+                    configurationObject["prePopulateKnownValues"] = SourceExpressionConverter.ConvertToken(dataconfigurationprePopulateKnownValues);
+                    configurationObjectpropCount++;
+                }
+
+                if (dataconfigurationallowLinkToResetKnownValues != null)
+                {
+                    configurationObject["allowLinkToResetKnownValues"] = SourceExpressionConverter.ConvertToken(dataconfigurationallowLinkToResetKnownValues);
+                    configurationObjectpropCount++;
+                }
+
+                if (configurationObjectpropCount > 0)
+                {
+                    data["configuration"] = configurationObject;
+                    datapropCount++;
+                }
+
+                var displayOptionsObject = new JObject();
+                var displayOptionsObjectpropCount = 0;
+                if (datadisplayOptionsrenderRawHtml != null)
+                {
+                    displayOptionsObject["renderRawHtml"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsrenderRawHtml);
+                    displayOptionsObjectpropCount++;
+                }
+
+                if (datadisplayOptionstheme != null)
+                {
+                    displayOptionsObject["theme"] = SourceExpressionConverter.ConvertToken(datadisplayOptionstheme);
+                    displayOptionsObjectpropCount++;
+                }
+
+                if (datadisplayOptionssubmitButtonText != null)
+                {
+                    displayOptionsObject["submitButtonText"] = SourceExpressionConverter.ConvertToken(datadisplayOptionssubmitButtonText);
+                    displayOptionsObjectpropCount++;
+                }
+
+                var styleObject = new JObject();
+                var styleObjectpropCount = 0;
+                if (datadisplayOptionsstylefontFamily != null)
+                {
+                    styleObject["fontFamily"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylefontFamily);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylebackgroundWidth != null)
+                {
+                    styleObject["backgroundWidth"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylebackgroundWidth);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylelabelTextColor != null)
+                {
+                    styleObject["labelTextColor"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylelabelTextColor);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylelabelTextSize != null)
+                {
+                    styleObject["labelTextSize"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylelabelTextSize);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylehelpTextColor != null)
+                {
+                    styleObject["helpTextColor"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylehelpTextColor);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylehelpTextSize != null)
+                {
+                    styleObject["helpTextSize"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylehelpTextSize);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylelegalConsentTextColor != null)
+                {
+                    styleObject["legalConsentTextColor"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylelegalConsentTextColor);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylelegalConsentTextSize != null)
+                {
+                    styleObject["legalConsentTextSize"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylelegalConsentTextSize);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylesubmitColor != null)
+                {
+                    styleObject["submitColor"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitColor);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylesubmitAlignment != null)
+                {
+                    styleObject["submitAlignment"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitAlignment);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylesubmitFontColor != null)
+                {
+                    styleObject["submitFontColor"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitFontColor);
+                    styleObjectpropCount++;
+                }
+
+                if (datadisplayOptionsstylesubmitSize != null)
+                {
+                    styleObject["submitSize"] = SourceExpressionConverter.ConvertToken(datadisplayOptionsstylesubmitSize);
+                    styleObjectpropCount++;
+                }
+
+                if (styleObjectpropCount > 0)
+                {
+                    displayOptionsObject["style"] = styleObject;
+                    displayOptionsObjectpropCount++;
+                }
+
+                if (datadisplayOptionscssClass != null)
+                {
+                    displayOptionsObject["cssClass"] = SourceExpressionConverter.ConvertToken(datadisplayOptionscssClass);
+                    displayOptionsObjectpropCount++;
+                }
+
+                if (displayOptionsObjectpropCount > 0)
+                {
+                    data["displayOptions"] = displayOptionsObject;
+                    datapropCount++;
+                }
+
+                if (datapropCount > 0)
+                {
+                    callPayload.Body = data;
+                }
+                return callPayload;
             }
 
-            if (datafieldGroups != null)
-            {
-                data["fieldGroups"] = ExpressionConverter.ConvertO(datafieldGroups);
-                datapropCount++;
-            }
-
-            var configurationObject = new JObject();
-            var configurationObjectpropCount = 0;
-            if (dataconfigurationlanguage != null)
-            {
-                configurationObject["language"] = ExpressionConverter.ConvertO(dataconfigurationlanguage);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationcloneable != null)
-            {
-                configurationObject["cloneable"] = ExpressionConverter.ConvertO(dataconfigurationcloneable);
-                configurationObjectpropCount++;
-            }
-
-            var postSubmitActionObject = new JObject();
-            var postSubmitActionObjectpropCount = 0;
-            if (dataconfigurationpostSubmitActiontype != null)
-            {
-                postSubmitActionObject["type"] = ExpressionConverter.ConvertO(dataconfigurationpostSubmitActiontype);
-                postSubmitActionObjectpropCount++;
-            }
-
-            if (dataconfigurationpostSubmitActionvalue != null)
-            {
-                postSubmitActionObject["value"] = ExpressionConverter.ConvertO(dataconfigurationpostSubmitActionvalue);
-                postSubmitActionObjectpropCount++;
-            }
-
-            if (postSubmitActionObjectpropCount > 0)
-            {
-                configurationObject["postSubmitAction"] = postSubmitActionObject;
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationeditable != null)
-            {
-                configurationObject["editable"] = ExpressionConverter.ConvertO(dataconfigurationeditable);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationarchivable != null)
-            {
-                configurationObject["archivable"] = ExpressionConverter.ConvertO(dataconfigurationarchivable);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationrecaptchaEnabled != null)
-            {
-                configurationObject["recaptchaEnabled"] = ExpressionConverter.ConvertO(dataconfigurationrecaptchaEnabled);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationnotifyContactOwner != null)
-            {
-                configurationObject["notifyContactOwner"] = ExpressionConverter.ConvertO(dataconfigurationnotifyContactOwner);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationnotifyRecipients != null)
-            {
-                configurationObject["notifyRecipients"] = ExpressionConverter.ConvertO(dataconfigurationnotifyRecipients);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationcreateNewContactForNewEmail != null)
-            {
-                configurationObject["createNewContactForNewEmail"] = ExpressionConverter.ConvertO(dataconfigurationcreateNewContactForNewEmail);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationprePopulateKnownValues != null)
-            {
-                configurationObject["prePopulateKnownValues"] = ExpressionConverter.ConvertO(dataconfigurationprePopulateKnownValues);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationallowLinkToResetKnownValues != null)
-            {
-                configurationObject["allowLinkToResetKnownValues"] = ExpressionConverter.ConvertO(dataconfigurationallowLinkToResetKnownValues);
-                configurationObjectpropCount++;
-            }
-
-            if (configurationObjectpropCount > 0)
-            {
-                data["configuration"] = configurationObject;
-                datapropCount++;
-            }
-
-            var displayOptionsObject = new JObject();
-            var displayOptionsObjectpropCount = 0;
-            if (datadisplayOptionsrenderRawHtml != null)
-            {
-                displayOptionsObject["renderRawHtml"] = ExpressionConverter.ConvertO(datadisplayOptionsrenderRawHtml);
-                displayOptionsObjectpropCount++;
-            }
-
-            if (datadisplayOptionstheme != null)
-            {
-                displayOptionsObject["theme"] = ExpressionConverter.ConvertO(datadisplayOptionstheme);
-                displayOptionsObjectpropCount++;
-            }
-
-            if (datadisplayOptionssubmitButtonText != null)
-            {
-                displayOptionsObject["submitButtonText"] = ExpressionConverter.ConvertO(datadisplayOptionssubmitButtonText);
-                displayOptionsObjectpropCount++;
-            }
-
-            var styleObject = new JObject();
-            var styleObjectpropCount = 0;
-            if (datadisplayOptionsstylefontFamily != null)
-            {
-                styleObject["fontFamily"] = ExpressionConverter.ConvertO(datadisplayOptionsstylefontFamily);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylebackgroundWidth != null)
-            {
-                styleObject["backgroundWidth"] = ExpressionConverter.ConvertO(datadisplayOptionsstylebackgroundWidth);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylelabelTextColor != null)
-            {
-                styleObject["labelTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelabelTextColor);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylelabelTextSize != null)
-            {
-                styleObject["labelTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelabelTextSize);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylehelpTextColor != null)
-            {
-                styleObject["helpTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylehelpTextColor);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylehelpTextSize != null)
-            {
-                styleObject["helpTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylehelpTextSize);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylelegalConsentTextColor != null)
-            {
-                styleObject["legalConsentTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelegalConsentTextColor);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylelegalConsentTextSize != null)
-            {
-                styleObject["legalConsentTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelegalConsentTextSize);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylesubmitColor != null)
-            {
-                styleObject["submitColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitColor);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylesubmitAlignment != null)
-            {
-                styleObject["submitAlignment"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitAlignment);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylesubmitFontColor != null)
-            {
-                styleObject["submitFontColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitFontColor);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylesubmitSize != null)
-            {
-                styleObject["submitSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitSize);
-                styleObjectpropCount++;
-            }
-
-            if (styleObjectpropCount > 0)
-            {
-                displayOptionsObject["style"] = styleObject;
-                displayOptionsObjectpropCount++;
-            }
-
-            if (datadisplayOptionscssClass != null)
-            {
-                displayOptionsObject["cssClass"] = ExpressionConverter.ConvertO(datadisplayOptionscssClass);
-                displayOptionsObjectpropCount++;
-            }
-
-            if (displayOptionsObjectpropCount > 0)
-            {
-                data["displayOptions"] = displayOptionsObject;
-                datapropCount++;
-            }
-
-            if (datapropCount > 0)
-            {
-                callPayload.Body = data;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction FormsRead(Expression<Func<string>> formId, Expression<Func<bool>> archived = null)
+        public IWorkflowAction MarketingEventRead([WorkflowExpression] Func<string> externalEventId, [WorkflowExpression] Func<string> externalAccountId)
         {
-            var apiCallPath = String.Format("/marketing/v3/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["archived"] = Convert.ToString(false);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalEventId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["externalAccountId"] = SourceExpressionConverter.ConvertO(externalAccountId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction FormsArchive(Expression<Func<string>> formId)
+        public IWorkflowAction MarketingEventsArchive([WorkflowExpression] Func<string> externalEventId, [WorkflowExpression] Func<string> externalAccountId)
         {
-            var apiCallPath = String.Format("/marketing/v3/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalEventId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["externalAccountId"] = SourceExpressionConverter.ConvertO(externalAccountId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction FormsUpdate(Expression<Func<string>> formId, Expression<Func<string>> dataformType, Expression<Func<string>> dataid, Expression<Func<string>> datacreatedAt, Expression<Func<string>> dataupdatedAt, Expression<Func<bool>> dataarchived, Expression<Func<string>> dataname = null, Expression<Func<string>> dataarchivedAt = null, Expression<Func<datafieldGroupsInputItem[]>> datafieldGroups = null, Expression<Func<string>> dataconfigurationlanguage = null, Expression<Func<bool>> dataconfigurationcloneable = null, Expression<Func<string>> dataconfigurationpostSubmitActiontype = null, Expression<Func<string>> dataconfigurationpostSubmitActionvalue = null, Expression<Func<bool>> dataconfigurationeditable = null, Expression<Func<bool>> dataconfigurationarchivable = null, Expression<Func<bool>> dataconfigurationrecaptchaEnabled = null, Expression<Func<bool>> dataconfigurationnotifyContactOwner = null, Expression<Func<string[]>> dataconfigurationnotifyRecipients = null, Expression<Func<bool>> dataconfigurationcreateNewContactForNewEmail = null, Expression<Func<bool>> dataconfigurationprePopulateKnownValues = null, Expression<Func<bool>> dataconfigurationallowLinkToResetKnownValues = null, Expression<Func<bool>> datadisplayOptionsrenderRawHtml = null, Expression<Func<string>> datadisplayOptionstheme = null, Expression<Func<string>> datadisplayOptionssubmitButtonText = null, Expression<Func<string>> datadisplayOptionsstylefontFamily = null, Expression<Func<string>> datadisplayOptionsstylebackgroundWidth = null, Expression<Func<string>> datadisplayOptionsstylelabelTextColor = null, Expression<Func<string>> datadisplayOptionsstylelabelTextSize = null, Expression<Func<string>> datadisplayOptionsstylehelpTextColor = null, Expression<Func<string>> datadisplayOptionsstylehelpTextSize = null, Expression<Func<string>> datadisplayOptionsstylelegalConsentTextColor = null, Expression<Func<string>> datadisplayOptionsstylelegalConsentTextSize = null, Expression<Func<string>> datadisplayOptionsstylesubmitColor = null, Expression<Func<string>> datadisplayOptionsstylesubmitAlignment = null, Expression<Func<string>> datadisplayOptionsstylesubmitFontColor = null, Expression<Func<string>> datadisplayOptionsstylesubmitSize = null, Expression<Func<string>> datadisplayOptionscssClass = null)
+        public IWorkflowAction MarketingEventsUpdateCreateOrUpdate([WorkflowExpression] Func<string> externalEventId, [WorkflowExpression] Func<string> dataeventName, [WorkflowExpression] Func<string> dataeventOrganizer, [WorkflowExpression] Func<string> dataexternalAccountId, [WorkflowExpression] Func<string> dataexternalEventId, [WorkflowExpression] Func<dataeventTypeInput> dataeventType = null, [WorkflowExpression] Func<string> datastartDateTime = null, [WorkflowExpression] Func<string> dataendDateTime = null, [WorkflowExpression] Func<string> dataeventDescription = null, [WorkflowExpression] Func<string> dataeventUrl = null, [WorkflowExpression] Func<bool> dataeventCancelled = null, [WorkflowExpression] Func<datacustomPropertiesInputItem[]> datacustomProperties = null)
         {
-            var apiCallPath = String.Format("/marketing/v3/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var data = new JObject();
-            var datapropCount = 0;
-            datapropCount++;
-            data["formType"] = ExpressionConverter.ConvertO(dataformType);
-            datapropCount++;
-            data["id"] = ExpressionConverter.ConvertO(dataid);
-            if (dataname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                data["name"] = ExpressionConverter.ConvertO(dataname);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing/v3/marketing-events-beta/events/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalEventId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var data = new JObject();
+                var datapropCount = 0;
                 datapropCount++;
-            }
+                data["eventName"] = SourceExpressionConverter.ConvertToken(dataeventName);
+                if (dataeventType != null)
+                {
+                    data["eventType"] = SourceExpressionConverter.Convert(dataeventType);
+                    datapropCount++;
+                }
 
-            datapropCount++;
-            data["createdAt"] = ExpressionConverter.ConvertO(datacreatedAt);
-            datapropCount++;
-            data["updatedAt"] = ExpressionConverter.ConvertO(dataupdatedAt);
-            datapropCount++;
-            data["archived"] = ExpressionConverter.ConvertO(dataarchived);
-            if (dataarchivedAt != null)
-            {
-                data["archivedAt"] = ExpressionConverter.ConvertO(dataarchivedAt);
+                if (datastartDateTime != null)
+                {
+                    data["startDateTime"] = SourceExpressionConverter.ConvertToken(datastartDateTime);
+                    datapropCount++;
+                }
+
+                if (dataendDateTime != null)
+                {
+                    data["endDateTime"] = SourceExpressionConverter.ConvertToken(dataendDateTime);
+                    datapropCount++;
+                }
+
                 datapropCount++;
-            }
+                data["eventOrganizer"] = SourceExpressionConverter.ConvertToken(dataeventOrganizer);
+                if (dataeventDescription != null)
+                {
+                    data["eventDescription"] = SourceExpressionConverter.ConvertToken(dataeventDescription);
+                    datapropCount++;
+                }
 
-            if (datafieldGroups != null)
-            {
-                data["fieldGroups"] = ExpressionConverter.ConvertO(datafieldGroups);
+                if (dataeventUrl != null)
+                {
+                    data["eventUrl"] = SourceExpressionConverter.ConvertToken(dataeventUrl);
+                    datapropCount++;
+                }
+
+                if (dataeventCancelled != null)
+                {
+                    data["eventCancelled"] = SourceExpressionConverter.ConvertToken(dataeventCancelled);
+                    datapropCount++;
+                }
+
+                if (datacustomProperties != null)
+                {
+                    data["customProperties"] = SourceExpressionConverter.ConvertToken(datacustomProperties);
+                    datapropCount++;
+                }
+
                 datapropCount++;
-            }
-
-            var configurationObject = new JObject();
-            var configurationObjectpropCount = 0;
-            if (dataconfigurationlanguage != null)
-            {
-                configurationObject["language"] = ExpressionConverter.ConvertO(dataconfigurationlanguage);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationcloneable != null)
-            {
-                configurationObject["cloneable"] = ExpressionConverter.ConvertO(dataconfigurationcloneable);
-                configurationObjectpropCount++;
-            }
-
-            var postSubmitActionObject = new JObject();
-            var postSubmitActionObjectpropCount = 0;
-            if (dataconfigurationpostSubmitActiontype != null)
-            {
-                postSubmitActionObject["type"] = ExpressionConverter.ConvertO(dataconfigurationpostSubmitActiontype);
-                postSubmitActionObjectpropCount++;
-            }
-
-            if (dataconfigurationpostSubmitActionvalue != null)
-            {
-                postSubmitActionObject["value"] = ExpressionConverter.ConvertO(dataconfigurationpostSubmitActionvalue);
-                postSubmitActionObjectpropCount++;
-            }
-
-            if (postSubmitActionObjectpropCount > 0)
-            {
-                configurationObject["postSubmitAction"] = postSubmitActionObject;
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationeditable != null)
-            {
-                configurationObject["editable"] = ExpressionConverter.ConvertO(dataconfigurationeditable);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationarchivable != null)
-            {
-                configurationObject["archivable"] = ExpressionConverter.ConvertO(dataconfigurationarchivable);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationrecaptchaEnabled != null)
-            {
-                configurationObject["recaptchaEnabled"] = ExpressionConverter.ConvertO(dataconfigurationrecaptchaEnabled);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationnotifyContactOwner != null)
-            {
-                configurationObject["notifyContactOwner"] = ExpressionConverter.ConvertO(dataconfigurationnotifyContactOwner);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationnotifyRecipients != null)
-            {
-                configurationObject["notifyRecipients"] = ExpressionConverter.ConvertO(dataconfigurationnotifyRecipients);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationcreateNewContactForNewEmail != null)
-            {
-                configurationObject["createNewContactForNewEmail"] = ExpressionConverter.ConvertO(dataconfigurationcreateNewContactForNewEmail);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationprePopulateKnownValues != null)
-            {
-                configurationObject["prePopulateKnownValues"] = ExpressionConverter.ConvertO(dataconfigurationprePopulateKnownValues);
-                configurationObjectpropCount++;
-            }
-
-            if (dataconfigurationallowLinkToResetKnownValues != null)
-            {
-                configurationObject["allowLinkToResetKnownValues"] = ExpressionConverter.ConvertO(dataconfigurationallowLinkToResetKnownValues);
-                configurationObjectpropCount++;
-            }
-
-            if (configurationObjectpropCount > 0)
-            {
-                data["configuration"] = configurationObject;
+                data["externalAccountId"] = SourceExpressionConverter.ConvertToken(dataexternalAccountId);
                 datapropCount++;
+                data["externalEventId"] = SourceExpressionConverter.ConvertToken(dataexternalEventId);
+                if (datapropCount > 0)
+                {
+                    callPayload.Body = data;
+                }
+                return callPayload;
             }
 
-            var displayOptionsObject = new JObject();
-            var displayOptionsObjectpropCount = 0;
-            if (datadisplayOptionsrenderRawHtml != null)
-            {
-                displayOptionsObject["renderRawHtml"] = ExpressionConverter.ConvertO(datadisplayOptionsrenderRawHtml);
-                displayOptionsObjectpropCount++;
-            }
-
-            if (datadisplayOptionstheme != null)
-            {
-                displayOptionsObject["theme"] = ExpressionConverter.ConvertO(datadisplayOptionstheme);
-                displayOptionsObjectpropCount++;
-            }
-
-            if (datadisplayOptionssubmitButtonText != null)
-            {
-                displayOptionsObject["submitButtonText"] = ExpressionConverter.ConvertO(datadisplayOptionssubmitButtonText);
-                displayOptionsObjectpropCount++;
-            }
-
-            var styleObject = new JObject();
-            var styleObjectpropCount = 0;
-            if (datadisplayOptionsstylefontFamily != null)
-            {
-                styleObject["fontFamily"] = ExpressionConverter.ConvertO(datadisplayOptionsstylefontFamily);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylebackgroundWidth != null)
-            {
-                styleObject["backgroundWidth"] = ExpressionConverter.ConvertO(datadisplayOptionsstylebackgroundWidth);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylelabelTextColor != null)
-            {
-                styleObject["labelTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelabelTextColor);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylelabelTextSize != null)
-            {
-                styleObject["labelTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelabelTextSize);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylehelpTextColor != null)
-            {
-                styleObject["helpTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylehelpTextColor);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylehelpTextSize != null)
-            {
-                styleObject["helpTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylehelpTextSize);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylelegalConsentTextColor != null)
-            {
-                styleObject["legalConsentTextColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelegalConsentTextColor);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylelegalConsentTextSize != null)
-            {
-                styleObject["legalConsentTextSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylelegalConsentTextSize);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylesubmitColor != null)
-            {
-                styleObject["submitColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitColor);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylesubmitAlignment != null)
-            {
-                styleObject["submitAlignment"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitAlignment);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylesubmitFontColor != null)
-            {
-                styleObject["submitFontColor"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitFontColor);
-                styleObjectpropCount++;
-            }
-
-            if (datadisplayOptionsstylesubmitSize != null)
-            {
-                styleObject["submitSize"] = ExpressionConverter.ConvertO(datadisplayOptionsstylesubmitSize);
-                styleObjectpropCount++;
-            }
-
-            if (styleObjectpropCount > 0)
-            {
-                displayOptionsObject["style"] = styleObject;
-                displayOptionsObjectpropCount++;
-            }
-
-            if (datadisplayOptionscssClass != null)
-            {
-                displayOptionsObject["cssClass"] = ExpressionConverter.ConvertO(datadisplayOptionscssClass);
-                displayOptionsObjectpropCount++;
-            }
-
-            if (displayOptionsObjectpropCount > 0)
-            {
-                data["displayOptions"] = displayOptionsObject;
-                datapropCount++;
-            }
-
-            if (datapropCount > 0)
-            {
-                callPayload.Body = data;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction MarketingEventRead(Expression<Func<string>> externalEventId, Expression<Func<string>> externalAccountId)
+        public IWorkflowAction MarketingEmailsList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> orderBy = null)
         {
-            var apiCallPath = String.Format("/marketing/v3/marketing-events-beta/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(externalEventId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["externalAccountId"] = ExpressionConverter.Convert(externalAccountId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/marketing-emails/v1/emails";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = Convert.ToString(10);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Queries["orderBy"] = Convert.ToString("created");
+                if (orderBy != null)
+                    callPayload.Queries["orderBy"] = SourceExpressionConverter.ConvertO(orderBy);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction MarketingEventsArchive(Expression<Func<string>> externalEventId, Expression<Func<string>> externalAccountId)
+        public IWorkflowAction MarketingEmailsRead([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/marketing/v3/marketing-events-beta/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(externalEventId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["externalAccountId"] = ExpressionConverter.Convert(externalAccountId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction MarketingEventsUpdateCreateOrUpdate(Expression<Func<string>> externalEventId, Expression<Func<string>> dataeventName, Expression<Func<string>> dataeventOrganizer, Expression<Func<string>> dataexternalAccountId, Expression<Func<string>> dataexternalEventId, Expression<Func<dataeventTypeInput>> dataeventType = null, Expression<Func<string>> datastartDateTime = null, Expression<Func<string>> dataendDateTime = null, Expression<Func<string>> dataeventDescription = null, Expression<Func<string>> dataeventUrl = null, Expression<Func<bool>> dataeventCancelled = null, Expression<Func<datacustomPropertiesInputItem[]>> datacustomProperties = null)
+        public IWorkflowAction MarketingEmailsArchive([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/marketing/v3/marketing-events-beta/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(externalEventId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var data = new JObject();
-            var datapropCount = 0;
-            datapropCount++;
-            data["eventName"] = ExpressionConverter.ConvertO(dataeventName);
-            if (dataeventType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                data["eventType"] = ExpressionConverter.ConvertO(dataeventType);
-                datapropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (datastartDateTime != null)
-            {
-                data["startDateTime"] = ExpressionConverter.ConvertO(datastartDateTime);
-                datapropCount++;
-            }
-
-            if (dataendDateTime != null)
-            {
-                data["endDateTime"] = ExpressionConverter.ConvertO(dataendDateTime);
-                datapropCount++;
-            }
-
-            datapropCount++;
-            data["eventOrganizer"] = ExpressionConverter.ConvertO(dataeventOrganizer);
-            if (dataeventDescription != null)
-            {
-                data["eventDescription"] = ExpressionConverter.ConvertO(dataeventDescription);
-                datapropCount++;
-            }
-
-            if (dataeventUrl != null)
-            {
-                data["eventUrl"] = ExpressionConverter.ConvertO(dataeventUrl);
-                datapropCount++;
-            }
-
-            if (dataeventCancelled != null)
-            {
-                data["eventCancelled"] = ExpressionConverter.ConvertO(dataeventCancelled);
-                datapropCount++;
-            }
-
-            if (datacustomProperties != null)
-            {
-                data["customProperties"] = ExpressionConverter.ConvertO(datacustomProperties);
-                datapropCount++;
-            }
-
-            datapropCount++;
-            data["externalAccountId"] = ExpressionConverter.ConvertO(dataexternalAccountId);
-            datapropCount++;
-            data["externalEventId"] = ExpressionConverter.ConvertO(dataexternalEventId);
-            if (datapropCount > 0)
-            {
-                callPayload.Body = data;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction MarketingEmailsList(Expression<Func<int>> limit = null, Expression<Func<string>> orderBy = null)
+        public IWorkflowAction MarketingEmailsUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfromName = null, [WorkflowExpression] Func<string> bodyreplyTo = null, [WorkflowExpression] Func<string> bodysubject = null)
         {
-            var apiCallPath = "/marketing-emails/v1/emails";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = Convert.ToString(10);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["orderBy"] = Convert.ToString("created");
-            if (orderBy != null)
-                callPayload.Queries["orderBy"] = ExpressionConverter.Convert(orderBy);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction MarketingEmailsRead(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/marketing-emails/v1/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction MarketingEmailsArchive(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/marketing-emails/v1/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction MarketingEmailsUpdate(Expression<Func<string>> id, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodysubject = null)
-        {
-            var apiCallPath = String.Format("/marketing-emails/v1/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfromName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fromName"] = ExpressionConverter.ConvertO(bodyfromName);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/marketing-emails/v1/emails/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfromName != null)
+                {
+                    body["fromName"] = SourceExpressionConverter.ConvertToken(bodyfromName);
+                    bodypropCount++;
+                }
+
+                if (bodyreplyTo != null)
+                {
+                    body["replyTo"] = SourceExpressionConverter.ConvertToken(bodyreplyTo);
+                    bodypropCount++;
+                }
+
+                if (bodysubject != null)
+                {
+                    body["subject"] = SourceExpressionConverter.ConvertToken(bodysubject);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
+        public IWorkflowAction MarketingEmailsCampaignRead([WorkflowExpression] Func<string> campaignId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/email/public/v1/campaigns/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
+        public IWorkflowAction MarketingEmailsCreate([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodysubject = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/marketing-emails/v1/emails/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodysubject != null)
+                {
+                    body["subject"] = SourceExpressionConverter.ConvertToken(bodysubject);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyreplyTo != null)
-            {
-                body["replyTo"] = ExpressionConverter.ConvertO(bodyreplyTo);
-                bodypropCount++;
-            }
-
-            if (bodysubject != null)
-            {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction MarketingEmailsCampaignRead(Expression<Func<string>> campaignId)
-        {
-            var apiCallPath = String.Format("/email/public/v1/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotmarketing")]
-        public IWorkflowAction MarketingEmailsCreate(Expression<Func<string>> bodyname, Expression<Func<string>> bodysubject = null)
-        {
-            var apiCallPath = "/marketing-emails/v1/emails/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodysubject != null)
-            {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

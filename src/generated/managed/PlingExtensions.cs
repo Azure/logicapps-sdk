@@ -12,53 +12,67 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
     public class PlingActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
-        public IWorkflowAction SendNotification(Expression<Func<string>> profileId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodycontent, Expression<Func<string[]>> bodyaudienceUsers)
+        public IWorkflowAction SendNotification([WorkflowExpression] Func<string> profileId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodycontent, [WorkflowExpression] Func<string[]> bodyaudienceUsers)
         {
-            var apiCallPath = String.Format("/profiles/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            bodypropCount++;
-            body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
-            bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
-            bodypropCount++;
-            body["audienceUsers"] = ExpressionConverter.ConvertO(bodyaudienceUsers);
-            var additionalTemplateDataObject = new JObject();
-            var additionalTemplateDataObjectpropCount = 0;
-            if (additionalTemplateDataObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["additionalTemplateData"] = additionalTemplateDataObject;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/profiles/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(profileId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                bodypropCount++;
+                body["templateId"] = SourceExpressionConverter.ConvertToken(bodytemplateId);
+                bodypropCount++;
+                body["content"] = SourceExpressionConverter.ConvertToken(bodycontent);
+                bodypropCount++;
+                body["audienceUsers"] = SourceExpressionConverter.ConvertToken(bodyaudienceUsers);
+                var additionalTemplateDataObject = new JObject();
+                var additionalTemplateDataObjectpropCount = 0;
+                if (additionalTemplateDataObjectpropCount > 0)
+                {
+                    body["additionalTemplateData"] = additionalTemplateDataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
         public IBodyWorkflowAction<GetProfilesResponseItem[]> GetProfiles()
         {
-            var apiCallPath = "/profiles";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetProfilesResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/profiles";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetProfilesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
-        public IBodyWorkflowAction<GetTemplatesResponseItem[]> GetTemplates(Expression<Func<string>> profileId)
+        public IBodyWorkflowAction<GetTemplatesResponseItem[]> GetTemplates([WorkflowExpression] Func<string> profileId)
         {
-            var apiCallPath = String.Format("/profiles/{0}/templates", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTemplatesResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/profiles/{0}/templates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(profileId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTemplatesResponseItem[]>(BuildSourceInput);
         }
     }
 

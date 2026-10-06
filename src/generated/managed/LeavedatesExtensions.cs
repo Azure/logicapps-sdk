@@ -14,415 +14,480 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<GetAllCompaniesAuthenticatedUserResponseItem[]> GetAllCompaniesAuthenticatedUser()
         {
-            var apiCallPath = "/companies";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllCompaniesAuthenticatedUserResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/companies";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAllCompaniesAuthenticatedUserResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<GetDepartmentsResponseItem[]> GetDepartments(Expression<Func<string>> company)
+        public IBodyWorkflowAction<GetDepartmentsResponseItem[]> GetDepartments([WorkflowExpression] Func<string> company)
         {
-            var apiCallPath = "/departments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            return new ApiConnectionAction<GetDepartmentsResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/departments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDepartmentsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<GetLeaveTypesResponseItem[]> GetLeaveTypes(Expression<Func<string>> company)
+        public IBodyWorkflowAction<GetLeaveTypesResponseItem[]> GetLeaveTypes([WorkflowExpression] Func<string> company)
         {
-            var apiCallPath = "/leave-types";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            return new ApiConnectionAction<GetLeaveTypesResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/leave-types";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetLeaveTypesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<GetAllowanceSummaryResponse> GetAllowanceSummary(Expression<Func<string>> company, Expression<Func<string>> date, Expression<Func<int>> page, Expression<Func<string>> employee = null, Expression<Func<string>> department = null, Expression<Func<string>> allowanceType = null)
+        public IBodyWorkflowAction<GetAllowanceSummaryResponse> GetAllowanceSummary([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<int> page, [WorkflowExpression] Func<string> employee = null, [WorkflowExpression] Func<string> department = null, [WorkflowExpression] Func<string> allowanceType = null)
         {
-            var apiCallPath = "/reports/summary-allowances";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (employee != null)
-                callPayload.Queries["employee"] = ExpressionConverter.Convert(employee);
-            if (department != null)
-                callPayload.Queries["department"] = ExpressionConverter.Convert(department);
-            if (allowanceType != null)
-                callPayload.Queries["allowance_type"] = ExpressionConverter.Convert(allowanceType);
-            return new ApiConnectionAction<GetAllowanceSummaryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/reports/summary-allowances";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
+                callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (employee != null)
+                    callPayload.Queries["employee"] = SourceExpressionConverter.ConvertO(employee);
+                if (department != null)
+                    callPayload.Queries["department"] = SourceExpressionConverter.ConvertO(department);
+                if (allowanceType != null)
+                    callPayload.Queries["allowance_type"] = SourceExpressionConverter.ConvertO(allowanceType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAllowanceSummaryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<GetEmployeesResponseItem[]> GetEmployees(Expression<Func<string>> company, Expression<Func<string>> departmentId = null)
+        public IBodyWorkflowAction<GetEmployeesResponseItem[]> GetEmployees([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> departmentId = null)
         {
-            var apiCallPath = "/employments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            if (departmentId != null)
-                callPayload.Queries["department_id"] = ExpressionConverter.Convert(departmentId);
-            return new ApiConnectionAction<GetEmployeesResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/employments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
+                if (departmentId != null)
+                    callPayload.Queries["department_id"] = SourceExpressionConverter.ConvertO(departmentId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetEmployeesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<AddEmploymentResponse> AddEmployment(Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyapproverId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodyemployeeCode = null, Expression<Func<bool>> bodyisAdmin = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyholidayLocation = null, Expression<Func<string>> bodyallowanceUnitIsDays = null, Expression<Func<string>> bodyminutesPerWorkingDay = null)
+        public IBodyWorkflowAction<AddEmploymentResponse> AddEmployment([WorkflowExpression] Func<string> bodyfullName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodycompanyId, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<string> bodyapproverId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodyemployeeCode = null, [WorkflowExpression] Func<bool> bodyisAdmin = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyholidayLocation = null, [WorkflowExpression] Func<string> bodyallowanceUnitIsDays = null, [WorkflowExpression] Func<string> bodyminutesPerWorkingDay = null)
         {
-            var apiCallPath = "/employments";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyjobTitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["job_title"] = ExpressionConverter.ConvertO(bodyjobTitle);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["full_name"] = ExpressionConverter.ConvertO(bodyfullName);
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodytimezone != null)
-            {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["company_id"] = ExpressionConverter.ConvertO(bodycompanyId);
-            if (bodyapproverId != null)
-            {
-                body["approver_id"] = ExpressionConverter.ConvertO(bodyapproverId);
-                bodypropCount++;
-            }
-
-            if (bodydepartmentId != null)
-            {
-                body["department_id"] = ExpressionConverter.ConvertO(bodydepartmentId);
-                bodypropCount++;
-            }
-
-            if (bodyemployeeCode != null)
-            {
-                body["employee_code"] = ExpressionConverter.ConvertO(bodyemployeeCode);
-                bodypropCount++;
-            }
-
-            if (bodyisAdmin != null)
-            {
-                if (bodyisAdmin != null)
+                var apiCallPath = "/employments";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyjobTitle != null)
                 {
-                    body["is_admin"] = ExpressionConverter.ConvertO(bodyisAdmin);
+                    body["job_title"] = SourceExpressionConverter.ConvertToken(bodyjobTitle);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["is_admin"] = false;
+                body["full_name"] = SourceExpressionConverter.ConvertToken(bodyfullName);
                 bodypropCount++;
-            }
-
-            if (bodystartDate != null)
-            {
-                body["start_date"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
-
-            if (bodyendDate != null)
-            {
-                body["end_date"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
-
-            if (bodyholidayLocation != null)
-            {
-                body["holiday_location"] = ExpressionConverter.ConvertO(bodyholidayLocation);
-                bodypropCount++;
-            }
-
-            if (bodyallowanceUnitIsDays != null)
-            {
-                body["allowance_unit_is_days"] = ExpressionConverter.ConvertO(bodyallowanceUnitIsDays);
-                bodypropCount++;
-            }
-
-            if (bodyminutesPerWorkingDay != null)
-            {
-                body["minutes_per_working_day"] = ExpressionConverter.ConvertO(bodyminutesPerWorkingDay);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddEmploymentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<GetDetailsEmployeeResponse> GetDetailsEmployee(Expression<Func<string>> id, Expression<Func<string>> company)
-        {
-            var apiCallPath = String.Format("/employments/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            return new ApiConnectionAction<GetDetailsEmployeeResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<JToken> DeleteEmployment(Expression<Func<string>> id, Expression<Func<string>> bodycompanyId)
-        {
-            var apiCallPath = String.Format("/employments/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["company_id"] = ExpressionConverter.ConvertO(bodycompanyId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<UpdateEmploymentResponse> UpdateEmployment(Expression<Func<string>> id, Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyapproverId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodyemployeeCode = null, Expression<Func<bool>> bodyisAdmin = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyholidayLocation = null, Expression<Func<string>> bodyallowanceUnitIsDays = null, Expression<Func<string>> bodyminutesPerWorkingDay = null)
-        {
-            var apiCallPath = String.Format("/employments/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyjobTitle != null)
-            {
-                body["job_title"] = ExpressionConverter.ConvertO(bodyjobTitle);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["full_name"] = ExpressionConverter.ConvertO(bodyfullName);
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodytimezone != null)
-            {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["company_id"] = ExpressionConverter.ConvertO(bodycompanyId);
-            if (bodyapproverId != null)
-            {
-                body["approver_id"] = ExpressionConverter.ConvertO(bodyapproverId);
-                bodypropCount++;
-            }
-
-            if (bodydepartmentId != null)
-            {
-                body["department_id"] = ExpressionConverter.ConvertO(bodydepartmentId);
-                bodypropCount++;
-            }
-
-            if (bodyemployeeCode != null)
-            {
-                body["employee_code"] = ExpressionConverter.ConvertO(bodyemployeeCode);
-                bodypropCount++;
-            }
-
-            if (bodyisAdmin != null)
-            {
-                if (bodyisAdmin != null)
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodytimezone != null)
                 {
-                    body["is_admin"] = ExpressionConverter.ConvertO(bodyisAdmin);
+                    body["timezone"] = SourceExpressionConverter.ConvertToken(bodytimezone);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["is_admin"] = false;
-                bodypropCount++;
+                body["company_id"] = SourceExpressionConverter.ConvertToken(bodycompanyId);
+                if (bodyapproverId != null)
+                {
+                    body["approver_id"] = SourceExpressionConverter.ConvertToken(bodyapproverId);
+                    bodypropCount++;
+                }
+
+                if (bodydepartmentId != null)
+                {
+                    body["department_id"] = SourceExpressionConverter.ConvertToken(bodydepartmentId);
+                    bodypropCount++;
+                }
+
+                if (bodyemployeeCode != null)
+                {
+                    body["employee_code"] = SourceExpressionConverter.ConvertToken(bodyemployeeCode);
+                    bodypropCount++;
+                }
+
+                if (bodyisAdmin != null)
+                {
+                    if (bodyisAdmin != null)
+                    {
+                        body["is_admin"] = SourceExpressionConverter.ConvertToken(bodyisAdmin);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["is_admin"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodystartDate != null)
+                {
+                    body["start_date"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodyendDate != null)
+                {
+                    body["end_date"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                    bodypropCount++;
+                }
+
+                if (bodyholidayLocation != null)
+                {
+                    body["holiday_location"] = SourceExpressionConverter.ConvertToken(bodyholidayLocation);
+                    bodypropCount++;
+                }
+
+                if (bodyallowanceUnitIsDays != null)
+                {
+                    body["allowance_unit_is_days"] = SourceExpressionConverter.ConvertToken(bodyallowanceUnitIsDays);
+                    bodypropCount++;
+                }
+
+                if (bodyminutesPerWorkingDay != null)
+                {
+                    body["minutes_per_working_day"] = SourceExpressionConverter.ConvertToken(bodyminutesPerWorkingDay);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodystartDate != null)
-            {
-                body["start_date"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
-
-            if (bodyendDate != null)
-            {
-                body["end_date"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
-
-            if (bodyholidayLocation != null)
-            {
-                body["holiday_location"] = ExpressionConverter.ConvertO(bodyholidayLocation);
-                bodypropCount++;
-            }
-
-            if (bodyallowanceUnitIsDays != null)
-            {
-                body["allowance_unit_is_days"] = ExpressionConverter.ConvertO(bodyallowanceUnitIsDays);
-                bodypropCount++;
-            }
-
-            if (bodyminutesPerWorkingDay != null)
-            {
-                body["minutes_per_working_day"] = ExpressionConverter.ConvertO(bodyminutesPerWorkingDay);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateEmploymentResponse>(callPayload);
+            return new ApiConnectionAction<AddEmploymentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<GetLeaveDetailsResponse> GetLeaveDetails(Expression<Func<string>> id, Expression<Func<string>> company)
+        public IBodyWorkflowAction<GetDetailsEmployeeResponse> GetDetailsEmployee([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> company)
         {
-            var apiCallPath = String.Format("/leaves/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            return new ApiConnectionAction<GetLeaveDetailsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/employments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDetailsEmployeeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<string[]> UpdateLeave(Expression<Func<string>> id, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodytypeId, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyreason = null, Expression<Func<bodyleaveBreakdownsInputItem[]>> bodyleaveBreakdowns = null)
+        public IBodyWorkflowAction<JToken> DeleteEmployment([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycompanyId)
         {
-            var apiCallPath = String.Format("/leaves/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["company_id"] = ExpressionConverter.ConvertO(bodycompanyId);
-            if (bodyfrom != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/employments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["company_id"] = SourceExpressionConverter.ConvertToken(bodycompanyId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["type_id"] = ExpressionConverter.ConvertO(bodytypeId);
-            if (bodyreason != null)
-            {
-                body["reason"] = ExpressionConverter.ConvertO(bodyreason);
-                bodypropCount++;
-            }
-
-            if (bodyleaveBreakdowns != null)
-            {
-                body["leave_breakdowns"] = ExpressionConverter.ConvertO(bodyleaveBreakdowns);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IBodyWorkflowAction<string[]> RequestLeave(Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodytypeId, Expression<Func<string>> bodyreason = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<bodyleaveBreakdownsInputItem2[]>> bodyleaveBreakdowns = null)
+        public IBodyWorkflowAction<UpdateEmploymentResponse> UpdateEmployment([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfullName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodycompanyId, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<string> bodyapproverId = null, [WorkflowExpression] Func<string> bodydepartmentId = null, [WorkflowExpression] Func<string> bodyemployeeCode = null, [WorkflowExpression] Func<bool> bodyisAdmin = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyholidayLocation = null, [WorkflowExpression] Func<string> bodyallowanceUnitIsDays = null, [WorkflowExpression] Func<string> bodyminutesPerWorkingDay = null)
         {
-            var apiCallPath = "/leaves";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["company_id"] = ExpressionConverter.ConvertO(bodycompanyId);
-            bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-            bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["type_id"] = ExpressionConverter.ConvertO(bodytypeId);
-            if (bodyreason != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["reason"] = ExpressionConverter.ConvertO(bodyreason);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/employments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyjobTitle != null)
+                {
+                    body["job_title"] = SourceExpressionConverter.ConvertToken(bodyjobTitle);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["full_name"] = SourceExpressionConverter.ConvertToken(bodyfullName);
+                bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodytimezone != null)
+                {
+                    body["timezone"] = SourceExpressionConverter.ConvertToken(bodytimezone);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["company_id"] = SourceExpressionConverter.ConvertToken(bodycompanyId);
+                if (bodyapproverId != null)
+                {
+                    body["approver_id"] = SourceExpressionConverter.ConvertToken(bodyapproverId);
+                    bodypropCount++;
+                }
+
+                if (bodydepartmentId != null)
+                {
+                    body["department_id"] = SourceExpressionConverter.ConvertToken(bodydepartmentId);
+                    bodypropCount++;
+                }
+
+                if (bodyemployeeCode != null)
+                {
+                    body["employee_code"] = SourceExpressionConverter.ConvertToken(bodyemployeeCode);
+                    bodypropCount++;
+                }
+
+                if (bodyisAdmin != null)
+                {
+                    if (bodyisAdmin != null)
+                    {
+                        body["is_admin"] = SourceExpressionConverter.ConvertToken(bodyisAdmin);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["is_admin"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodystartDate != null)
+                {
+                    body["start_date"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodyendDate != null)
+                {
+                    body["end_date"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                    bodypropCount++;
+                }
+
+                if (bodyholidayLocation != null)
+                {
+                    body["holiday_location"] = SourceExpressionConverter.ConvertToken(bodyholidayLocation);
+                    bodypropCount++;
+                }
+
+                if (bodyallowanceUnitIsDays != null)
+                {
+                    body["allowance_unit_is_days"] = SourceExpressionConverter.ConvertToken(bodyallowanceUnitIsDays);
+                    bodypropCount++;
+                }
+
+                if (bodyminutesPerWorkingDay != null)
+                {
+                    body["minutes_per_working_day"] = SourceExpressionConverter.ConvertToken(bodyminutesPerWorkingDay);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyisPrivate != null)
+            return new ApiConnectionAction<UpdateEmploymentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
+        public IBodyWorkflowAction<GetLeaveDetailsResponse> GetLeaveDetails([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> company)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/leaves/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetLeaveDetailsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
+        public IBodyWorkflowAction<string[]> UpdateLeave([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycompanyId, [WorkflowExpression] Func<string> bodytypeId, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodyreason = null, [WorkflowExpression] Func<bodyleaveBreakdownsInputItem[]> bodyleaveBreakdowns = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/leaves/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["company_id"] = SourceExpressionConverter.ConvertToken(bodycompanyId);
+                if (bodyfrom != null)
+                {
+                    body["from"] = SourceExpressionConverter.ConvertToken(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = SourceExpressionConverter.ConvertToken(bodyto);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["type_id"] = SourceExpressionConverter.ConvertToken(bodytypeId);
+                if (bodyreason != null)
+                {
+                    body["reason"] = SourceExpressionConverter.ConvertToken(bodyreason);
+                    bodypropCount++;
+                }
+
+                if (bodyleaveBreakdowns != null)
+                {
+                    body["leave_breakdowns"] = SourceExpressionConverter.ConvertToken(bodyleaveBreakdowns);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
+        public IBodyWorkflowAction<string[]> RequestLeave([WorkflowExpression] Func<string> bodycompanyId, [WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodytypeId, [WorkflowExpression] Func<string> bodyreason = null, [WorkflowExpression] Func<bool> bodyisPrivate = null, [WorkflowExpression] Func<bodyleaveBreakdownsInputItem2[]> bodyleaveBreakdowns = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/leaves";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["company_id"] = SourceExpressionConverter.ConvertToken(bodycompanyId);
+                bodypropCount++;
+                body["from"] = SourceExpressionConverter.ConvertToken(bodyfrom);
+                bodypropCount++;
+                body["to"] = SourceExpressionConverter.ConvertToken(bodyto);
+                bodypropCount++;
+                body["type_id"] = SourceExpressionConverter.ConvertToken(bodytypeId);
+                if (bodyreason != null)
+                {
+                    body["reason"] = SourceExpressionConverter.ConvertToken(bodyreason);
+                    bodypropCount++;
+                }
+
                 if (bodyisPrivate != null)
                 {
-                    body["is_private"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                    if (bodyisPrivate != null)
+                    {
+                        body["is_private"] = SourceExpressionConverter.ConvertToken(bodyisPrivate);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["is_private"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["is_private"] = false;
-                bodypropCount++;
+                if (bodyleaveBreakdowns != null)
+                {
+                    body["leave_breakdowns"] = SourceExpressionConverter.ConvertToken(bodyleaveBreakdowns);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyleaveBreakdowns != null)
-            {
-                body["leave_breakdowns"] = ExpressionConverter.ConvertO(bodyleaveBreakdowns);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new ApiConnectionAction<string[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IWorkflowAction ApproveLeave(Expression<Func<string>> id, Expression<Func<string>> company)
+        public IWorkflowAction ApproveLeave([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> company)
         {
-            var apiCallPath = String.Format("/leaves/{0}/approve", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/leaves/{0}/approve", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
-        public IWorkflowAction CancelLeave(Expression<Func<string>> id, Expression<Func<string>> company)
+        public IWorkflowAction CancelLeave([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> company)
         {
-            var apiCallPath = String.Format("/leaves/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/leaves/{0}/cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

@@ -12,25 +12,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dbftoxmlconverter
     public class DbftoxmlconverterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dbftoxmlconverter")]
-        public IWorkflowAction Dbf2XmlConvert(Expression<Func<string>> bodycontenType, Expression<Func<bodyencodingInput>> bodyencoding)
+        public IWorkflowAction Dbf2XmlConvert([WorkflowExpression] Func<string> bodycontenType, [WorkflowExpression] Func<bodyencodingInput> bodyencoding)
         {
-            var apiCallPath = "/api/DBF2XML";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["code"] = Convert.ToString("ZeBVvhUSY/fpGA2uJTOKvIRTYkNXNQEl2TaHJO9Wq39wQB8ZXdYPWA==");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["conten_type"] = ExpressionConverter.ConvertO(bodycontenType);
-            bodypropCount++;
-            body["encoding"] = ExpressionConverter.ConvertO(bodyencoding);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/DBF2XML";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["code"] = Convert.ToString("ZeBVvhUSY/fpGA2uJTOKvIRTYkNXNQEl2TaHJO9Wq39wQB8ZXdYPWA==");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["conten_type"] = SourceExpressionConverter.ConvertToken(bodycontenType);
+                bodypropCount++;
+                body["encoding"] = SourceExpressionConverter.Convert(bodyencoding);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

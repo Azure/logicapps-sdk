@@ -12,226 +12,261 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
     public class AfricastalkingpaymentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<MobileB2BResponse> MobileB2B(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyproductName, Expression<Func<bodyproviderInput>> bodyprovider, Expression<Func<bodytransferTypeInput>> bodytransferType, Expression<Func<bodycurrencyCodeInput>> bodycurrencyCode, Expression<Func<double>> bodyamount, Expression<Func<string>> bodydestinationChannel, Expression<Func<string>> bodydestinationAccount)
+        public IBodyWorkflowAction<MobileB2BResponse> MobileB2B([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodyproductName, [WorkflowExpression] Func<bodyproviderInput> bodyprovider, [WorkflowExpression] Func<bodytransferTypeInput> bodytransferType, [WorkflowExpression] Func<bodycurrencyCodeInput> bodycurrencyCode, [WorkflowExpression] Func<double> bodyamount, [WorkflowExpression] Func<string> bodydestinationChannel, [WorkflowExpression] Func<string> bodydestinationAccount)
         {
-            var apiCallPath = "/mobile/b2b/request";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
-            bodypropCount++;
-            body["productName"] = ExpressionConverter.ConvertO(bodyproductName);
-            bodypropCount++;
-            body["provider"] = ExpressionConverter.ConvertO(bodyprovider);
-            bodypropCount++;
-            body["transferType"] = ExpressionConverter.ConvertO(bodytransferType);
-            bodypropCount++;
-            body["currencyCode"] = ExpressionConverter.ConvertO(bodycurrencyCode);
-            bodypropCount++;
-            body["amount"] = ExpressionConverter.ConvertO(bodyamount);
-            bodypropCount++;
-            body["destinationChannel"] = ExpressionConverter.ConvertO(bodydestinationChannel);
-            bodypropCount++;
-            body["destinationAccount"] = ExpressionConverter.ConvertO(bodydestinationAccount);
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["metadata"] = metadataObject;
+                var apiCallPath = "/mobile/b2b/request";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MobileB2BResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<FetchWalletBalanceResponse> FetchWalletBalance(Expression<Func<string>> username)
-        {
-            var apiCallPath = "/query/wallet/balance";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
-            return new ApiConnectionAction<FetchWalletBalanceResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<WalletTransferResponse> WalletTransfer(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyproductName, Expression<Func<int>> bodytargetProductCode, Expression<Func<bodycurrencyCodeInput>> bodycurrencyCode, Expression<Func<double>> bodyamount)
-        {
-            var apiCallPath = "/transfer/wallet";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
-            bodypropCount++;
-            body["productName"] = ExpressionConverter.ConvertO(bodyproductName);
-            bodypropCount++;
-            body["targetProductCode"] = ExpressionConverter.ConvertO(bodytargetProductCode);
-            bodypropCount++;
-            body["currencyCode"] = ExpressionConverter.ConvertO(bodycurrencyCode);
-            bodypropCount++;
-            body["amount"] = ExpressionConverter.ConvertO(bodyamount);
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
-            {
-                body["metadata"] = metadataObject;
+                body["username"] = SourceExpressionConverter.ConvertToken(bodyusername);
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WalletTransferResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<FetchWalletTransactionsResponse> FetchWalletTransactions(Expression<Func<string>> username, Expression<Func<int>> pageNumber, Expression<Func<int>> count, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
-        {
-            var apiCallPath = "/query/wallet/fetch";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
-            callPayload.Queries["pageNumber"] = ExpressionConverter.Convert(pageNumber);
-            callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            return new ApiConnectionAction<FetchWalletTransactionsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<TopUpStashResponse> TopUpStash(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyproductName, Expression<Func<bodycurrencyCodeInput>> bodycurrencyCode, Expression<Func<double>> bodyamount)
-        {
-            var apiCallPath = "/topup/stash";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
-            bodypropCount++;
-            body["productName"] = ExpressionConverter.ConvertO(bodyproductName);
-            bodypropCount++;
-            body["currencyCode"] = ExpressionConverter.ConvertO(bodycurrencyCode);
-            bodypropCount++;
-            body["amount"] = ExpressionConverter.ConvertO(bodyamount);
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
-            {
-                body["metadata"] = metadataObject;
+                body["productName"] = SourceExpressionConverter.ConvertToken(bodyproductName);
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TopUpStashResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<FetchProductTransactionsResponse> FetchProductTransactions(Expression<Func<string>> username, Expression<Func<string>> productName, Expression<Func<int>> pageNumber, Expression<Func<int>> count, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<categoryInput>> category = null, Expression<Func<providerInput>> provider = null, Expression<Func<statusInput>> status = null, Expression<Func<sourceInput>> source = null, Expression<Func<destinationInput>> destination = null, Expression<Func<string>> providerChannel = null)
-        {
-            var apiCallPath = "/query/transaction/fetch";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["username"] = ExpressionConverter.Convert(username);
-            callPayload.Queries["productName"] = ExpressionConverter.Convert(productName);
-            callPayload.Queries["pageNumber"] = ExpressionConverter.Convert(pageNumber);
-            callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (provider != null)
-                callPayload.Queries["provider"] = ExpressionConverter.Convert(provider);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            if (destination != null)
-                callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
-            if (providerChannel != null)
-                callPayload.Queries["providerChannel"] = ExpressionConverter.Convert(providerChannel);
-            return new ApiConnectionAction<FetchProductTransactionsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<MobileCheckoutResponse> MobileCheckout(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyproductName, Expression<Func<string>> bodyphoneNumber, Expression<Func<bodycurrencyCodeInput>> bodycurrencyCode, Expression<Func<double>> bodyamount, Expression<Func<string>> bodyproviderChannel = null)
-        {
-            var apiCallPath = "/mobile/checkout/request";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
-            bodypropCount++;
-            body["productName"] = ExpressionConverter.ConvertO(bodyproductName);
-            if (bodyproviderChannel != null)
-            {
-                body["providerChannel"] = ExpressionConverter.ConvertO(bodyproviderChannel);
+                body["provider"] = SourceExpressionConverter.Convert(bodyprovider);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["phoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
-            bodypropCount++;
-            body["currencyCode"] = ExpressionConverter.ConvertO(bodycurrencyCode);
-            bodypropCount++;
-            body["amount"] = ExpressionConverter.ConvertO(bodyamount);
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
-            {
-                body["metadata"] = metadataObject;
+                body["transferType"] = SourceExpressionConverter.Convert(bodytransferType);
                 bodypropCount++;
+                body["currencyCode"] = SourceExpressionConverter.Convert(bodycurrencyCode);
+                bodypropCount++;
+                body["amount"] = SourceExpressionConverter.ConvertToken(bodyamount);
+                bodypropCount++;
+                body["destinationChannel"] = SourceExpressionConverter.ConvertToken(bodydestinationChannel);
+                bodypropCount++;
+                body["destinationAccount"] = SourceExpressionConverter.ConvertToken(bodydestinationAccount);
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MobileCheckoutResponse>(callPayload);
+            return new ApiConnectionAction<MobileB2BResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
-        public IBodyWorkflowAction<MobileB2CResponse> MobileB2C(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyproductName, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients)
+        public IBodyWorkflowAction<FetchWalletBalanceResponse> FetchWalletBalance([WorkflowExpression] Func<string> username)
         {
-            var apiCallPath = "/mobile/b2c/request";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
-            bodypropCount++;
-            body["productName"] = ExpressionConverter.ConvertO(bodyproductName);
-            bodypropCount++;
-            body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/query/wallet/balance";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["username"] = SourceExpressionConverter.ConvertO(username);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<MobileB2CResponse>(callPayload);
+            return new ApiConnectionAction<FetchWalletBalanceResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
+        public IBodyWorkflowAction<WalletTransferResponse> WalletTransfer([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodyproductName, [WorkflowExpression] Func<int> bodytargetProductCode, [WorkflowExpression] Func<bodycurrencyCodeInput> bodycurrencyCode, [WorkflowExpression] Func<double> bodyamount)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/transfer/wallet";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["username"] = SourceExpressionConverter.ConvertToken(bodyusername);
+                bodypropCount++;
+                body["productName"] = SourceExpressionConverter.ConvertToken(bodyproductName);
+                bodypropCount++;
+                body["targetProductCode"] = SourceExpressionConverter.ConvertToken(bodytargetProductCode);
+                bodypropCount++;
+                body["currencyCode"] = SourceExpressionConverter.Convert(bodycurrencyCode);
+                bodypropCount++;
+                body["amount"] = SourceExpressionConverter.ConvertToken(bodyamount);
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WalletTransferResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
+        public IBodyWorkflowAction<FetchWalletTransactionsResponse> FetchWalletTransactions([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<int> count, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/query/wallet/fetch";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["username"] = SourceExpressionConverter.ConvertO(username);
+                callPayload.Queries["pageNumber"] = SourceExpressionConverter.ConvertO(pageNumber);
+                callPayload.Queries["count"] = SourceExpressionConverter.ConvertO(count);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FetchWalletTransactionsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
+        public IBodyWorkflowAction<TopUpStashResponse> TopUpStash([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodyproductName, [WorkflowExpression] Func<bodycurrencyCodeInput> bodycurrencyCode, [WorkflowExpression] Func<double> bodyamount)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/topup/stash";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["username"] = SourceExpressionConverter.ConvertToken(bodyusername);
+                bodypropCount++;
+                body["productName"] = SourceExpressionConverter.ConvertToken(bodyproductName);
+                bodypropCount++;
+                body["currencyCode"] = SourceExpressionConverter.Convert(bodycurrencyCode);
+                bodypropCount++;
+                body["amount"] = SourceExpressionConverter.ConvertToken(bodyamount);
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TopUpStashResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
+        public IBodyWorkflowAction<FetchProductTransactionsResponse> FetchProductTransactions([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> productName, [WorkflowExpression] Func<int> pageNumber, [WorkflowExpression] Func<int> count, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<categoryInput> category = null, [WorkflowExpression] Func<providerInput> provider = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<sourceInput> source = null, [WorkflowExpression] Func<destinationInput> destination = null, [WorkflowExpression] Func<string> providerChannel = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/query/transaction/fetch";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["username"] = SourceExpressionConverter.ConvertO(username);
+                callPayload.Queries["productName"] = SourceExpressionConverter.ConvertO(productName);
+                callPayload.Queries["pageNumber"] = SourceExpressionConverter.ConvertO(pageNumber);
+                callPayload.Queries["count"] = SourceExpressionConverter.ConvertO(count);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                if (category != null)
+                    callPayload.Queries["category"] = SourceExpressionConverter.Convert(category);
+                if (provider != null)
+                    callPayload.Queries["provider"] = SourceExpressionConverter.Convert(provider);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.Convert(status);
+                if (source != null)
+                    callPayload.Queries["source"] = SourceExpressionConverter.Convert(source);
+                if (destination != null)
+                    callPayload.Queries["destination"] = SourceExpressionConverter.Convert(destination);
+                if (providerChannel != null)
+                    callPayload.Queries["providerChannel"] = SourceExpressionConverter.ConvertO(providerChannel);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FetchProductTransactionsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
+        public IBodyWorkflowAction<MobileCheckoutResponse> MobileCheckout([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodyproductName, [WorkflowExpression] Func<string> bodyphoneNumber, [WorkflowExpression] Func<bodycurrencyCodeInput> bodycurrencyCode, [WorkflowExpression] Func<double> bodyamount, [WorkflowExpression] Func<string> bodyproviderChannel = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/mobile/checkout/request";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["username"] = SourceExpressionConverter.ConvertToken(bodyusername);
+                bodypropCount++;
+                body["productName"] = SourceExpressionConverter.ConvertToken(bodyproductName);
+                if (bodyproviderChannel != null)
+                {
+                    body["providerChannel"] = SourceExpressionConverter.ConvertToken(bodyproviderChannel);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["phoneNumber"] = SourceExpressionConverter.ConvertToken(bodyphoneNumber);
+                bodypropCount++;
+                body["currencyCode"] = SourceExpressionConverter.Convert(bodycurrencyCode);
+                bodypropCount++;
+                body["amount"] = SourceExpressionConverter.ConvertToken(bodyamount);
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MobileCheckoutResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
+        public IBodyWorkflowAction<MobileB2CResponse> MobileB2C([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodyproductName, [WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/mobile/b2c/request";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["username"] = SourceExpressionConverter.ConvertToken(bodyusername);
+                bodypropCount++;
+                body["productName"] = SourceExpressionConverter.ConvertToken(bodyproductName);
+                bodypropCount++;
+                body["recipients"] = SourceExpressionConverter.ConvertToken(bodyrecipients);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MobileB2CResponse>(BuildSourceInput);
         }
     }
 

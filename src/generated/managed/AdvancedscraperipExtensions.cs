@@ -12,40 +12,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
     public class AdvancedscraperipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
-        public IBodyWorkflowAction<ScrapeResponse> Scrape(Expression<Func<string>> url, Expression<Func<string>> country = null, Expression<Func<bool>> render = null, Expression<Func<string>> selector = null, Expression<Func<int>> timeout = null)
+        public IBodyWorkflowAction<ScrapeResponse> Scrape([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<bool> render = null, [WorkflowExpression] Func<string> selector = null, [WorkflowExpression] Func<int> timeout = null)
         {
-            var apiCallPath = "/scraper";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            if (render != null)
-                callPayload.Queries["render"] = ExpressionConverter.Convert(render);
-            if (selector != null)
-                callPayload.Queries["selector"] = ExpressionConverter.Convert(selector);
-            if (timeout != null)
-                callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
-            return new ApiConnectionAction<ScrapeResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/scraper";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = SourceExpressionConverter.ConvertO(url);
+                if (country != null)
+                    callPayload.Queries["country"] = SourceExpressionConverter.ConvertO(country);
+                if (render != null)
+                    callPayload.Queries["render"] = SourceExpressionConverter.ConvertO(render);
+                if (selector != null)
+                    callPayload.Queries["selector"] = SourceExpressionConverter.ConvertO(selector);
+                if (timeout != null)
+                    callPayload.Queries["timeout"] = SourceExpressionConverter.ConvertO(timeout);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ScrapeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
-        public IBodyWorkflowAction<ScrapeFormResponse> ScrapeForm(Expression<Func<string>> url, Expression<Func<string>> country = null, Expression<Func<bool>> render = null, Expression<Func<string>> selector = null, Expression<Func<int>> timeout = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<ScrapeFormResponse> ScrapeForm([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<bool> render = null, [WorkflowExpression] Func<string> selector = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/scraper";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            if (render != null)
-                callPayload.Queries["render"] = ExpressionConverter.Convert(render);
-            if (selector != null)
-                callPayload.Queries["selector"] = ExpressionConverter.Convert(selector);
-            if (timeout != null)
-                callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<ScrapeFormResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/scraper";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = SourceExpressionConverter.ConvertO(url);
+                if (country != null)
+                    callPayload.Queries["country"] = SourceExpressionConverter.ConvertO(country);
+                if (render != null)
+                    callPayload.Queries["render"] = SourceExpressionConverter.ConvertO(render);
+                if (selector != null)
+                    callPayload.Queries["selector"] = SourceExpressionConverter.ConvertO(selector);
+                if (timeout != null)
+                    callPayload.Queries["timeout"] = SourceExpressionConverter.ConvertO(timeout);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ScrapeFormResponse>(BuildSourceInput);
         }
     }
 

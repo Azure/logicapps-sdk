@@ -12,56 +12,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
     public class IbmwatsontexttospeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        public IBodyWorkflowAction<SynthesizeResponse> Synthesize(Expression<Func<string>> bodytext, Expression<Func<voiceInput>> voice = null)
+        public IBodyWorkflowAction<SynthesizeResponse> Synthesize([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<voiceInput> voice = null)
         {
-            var apiCallPath = "/v1/synthesize";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
-            if (voice != null)
-                callPayload.Queries["voice"] = ExpressionConverter.Convert(voice);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v1/synthesize";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
+                if (voice != null)
+                    callPayload.Queries["voice"] = SourceExpressionConverter.Convert(voice);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SynthesizeResponse>(callPayload);
+            return new ApiConnectionAction<SynthesizeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
         public IBodyWorkflowAction<ListVoicesResponse> ListVoices()
         {
-            var apiCallPath = "/v1/voices";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListVoicesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/voices";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListVoicesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        public IBodyWorkflowAction<PronunciationResponse> Pronunciation(Expression<Func<voiceInput>> voice = null, Expression<Func<string>> text = null)
+        public IBodyWorkflowAction<PronunciationResponse> Pronunciation([WorkflowExpression] Func<voiceInput> voice = null, [WorkflowExpression] Func<string> text = null)
         {
-            var apiCallPath = "/v1/pronunciation";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
-            if (voice != null)
-                callPayload.Queries["voice"] = ExpressionConverter.Convert(voice);
-            if (text != null)
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
-            return new ApiConnectionAction<PronunciationResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/pronunciation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
+                if (voice != null)
+                    callPayload.Queries["voice"] = SourceExpressionConverter.Convert(voice);
+                if (text != null)
+                    callPayload.Queries["text"] = SourceExpressionConverter.ConvertO(text);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PronunciationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        public IBodyWorkflowAction<GetVoiceResponse> GetVoice(Expression<Func<string>> voice)
+        public IBodyWorkflowAction<GetVoiceResponse> GetVoice([WorkflowExpression] Func<string> voice)
         {
-            var apiCallPath = String.Format("/v1/voices/{0}", ExpressionConverter.ConvertWithUrlEncoding(voice, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetVoiceResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/voices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(voice, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetVoiceResponse>(BuildSourceInput);
         }
     }
 

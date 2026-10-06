@@ -12,30 +12,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
     public class RijksoverheidipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
-        public IBodyWorkflowAction<SchoolHolidaysResponseItem[]> SchoolHolidays(Expression<Func<int>> rows = null, Expression<Func<string>> output = null)
+        public IBodyWorkflowAction<SchoolHolidaysResponseItem[]> SchoolHolidays([WorkflowExpression] Func<int> rows = null, [WorkflowExpression] Func<string> output = null)
         {
-            var apiCallPath = "/v1/sources/rijksoverheid/infotypes/schoolholidays/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["rows"] = Convert.ToString(200);
-            if (rows != null)
-                callPayload.Queries["rows"] = ExpressionConverter.Convert(rows);
-            callPayload.Queries["output"] = Convert.ToString("json");
-            if (output != null)
-                callPayload.Queries["output"] = ExpressionConverter.Convert(output);
-            return new ApiConnectionAction<SchoolHolidaysResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/sources/rijksoverheid/infotypes/schoolholidays/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["rows"] = Convert.ToString(200);
+                if (rows != null)
+                    callPayload.Queries["rows"] = SourceExpressionConverter.ConvertO(rows);
+                callPayload.Queries["output"] = Convert.ToString("json");
+                if (output != null)
+                    callPayload.Queries["output"] = SourceExpressionConverter.ConvertO(output);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SchoolHolidaysResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
-        public IBodyWorkflowAction<SchoolHolidaysPerSchoolYearResponse> SchoolHolidaysPerSchoolYear(Expression<Func<string>> schoolyear, Expression<Func<string>> output = null)
+        public IBodyWorkflowAction<SchoolHolidaysPerSchoolYearResponse> SchoolHolidaysPerSchoolYear([WorkflowExpression] Func<string> schoolyear, [WorkflowExpression] Func<string> output = null)
         {
-            var apiCallPath = String.Format("/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/{0}", ExpressionConverter.ConvertWithUrlEncoding(schoolyear, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["output"] = Convert.ToString("json");
-            if (output != null)
-                callPayload.Queries["output"] = ExpressionConverter.Convert(output);
-            return new ApiConnectionAction<SchoolHolidaysPerSchoolYearResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(schoolyear, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["output"] = Convert.ToString("json");
+                if (output != null)
+                    callPayload.Queries["output"] = SourceExpressionConverter.ConvertO(output);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SchoolHolidaysPerSchoolYearResponse>(BuildSourceInput);
         }
     }
 

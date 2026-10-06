@@ -12,39 +12,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mimeautomationip
     public class MimeautomationipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mimeautomationip")]
-        public IBodyWorkflowAction<Attachment[]> ExtractFiles(Expression<Func<string>> bodycontent)
+        public IBodyWorkflowAction<Attachment[]> ExtractFiles([WorkflowExpression] Func<string> bodycontent)
         {
-            var apiCallPath = "/MimeAutomation/ExtractFiles";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/MimeAutomation/ExtractFiles";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["content"] = SourceExpressionConverter.ConvertToken(bodycontent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<Attachment[]>(callPayload);
+            return new ApiConnectionAction<Attachment[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mimeautomationip")]
-        public IBodyWorkflowAction<MimeAttachment[]> ExtractFilesFromEml(Expression<Func<string>> bodycontent)
+        public IBodyWorkflowAction<MimeAttachment[]> ExtractFilesFromEml([WorkflowExpression] Func<string> bodycontent)
         {
-            var apiCallPath = "/MimeAutomation/ExtractFilesFromEml";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/MimeAutomation/ExtractFilesFromEml";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["content"] = SourceExpressionConverter.ConvertToken(bodycontent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<MimeAttachment[]>(callPayload);
+            return new ApiConnectionAction<MimeAttachment[]>(BuildSourceInput);
         }
     }
 

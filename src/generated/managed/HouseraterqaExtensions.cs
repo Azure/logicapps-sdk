@@ -12,87 +12,91 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houseraterqa
     public class HouseraterqaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houseraterqa")]
-        public IBodyWorkflowAction<JToken> UpdateInspection(Expression<Func<string>> bodyinspectionTemplateId, Expression<Func<string>> bodybuilderId, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string[]>> bodyprograms = null, Expression<Func<string[]>> bodyraters = null, Expression<Func<string>> bodysharePointSubscriberId = null, Expression<Func<string>> bodyoutlookEventId = null, Expression<Func<string>> bodyaddress1 = null, Expression<Func<string>> bodyaddress2 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyzip = null, Expression<Func<string>> bodytimeZone = null)
+        public IBodyWorkflowAction<JToken> UpdateInspection([WorkflowExpression] Func<string> bodyinspectionTemplateId, [WorkflowExpression] Func<string> bodybuilderId, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<string[]> bodyprograms = null, [WorkflowExpression] Func<string[]> bodyraters = null, [WorkflowExpression] Func<string> bodysharePointSubscriberId = null, [WorkflowExpression] Func<string> bodyoutlookEventId = null, [WorkflowExpression] Func<string> bodyaddress1 = null, [WorkflowExpression] Func<string> bodyaddress2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyzip = null, [WorkflowExpression] Func<string> bodytimeZone = null)
         {
-            var apiCallPath = "/updateInspection";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["inspectionTemplateId"] = ExpressionConverter.ConvertO(bodyinspectionTemplateId);
-            bodypropCount++;
-            body["builderId"] = ExpressionConverter.ConvertO(bodybuilderId);
-            if (bodyprograms != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["programs"] = ExpressionConverter.ConvertO(bodyprograms);
+                var apiCallPath = "/updateInspection";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyraters != null)
-            {
-                body["raters"] = ExpressionConverter.ConvertO(bodyraters);
+                body["inspectionTemplateId"] = SourceExpressionConverter.ConvertToken(bodyinspectionTemplateId);
                 bodypropCount++;
-            }
+                body["builderId"] = SourceExpressionConverter.ConvertToken(bodybuilderId);
+                if (bodyprograms != null)
+                {
+                    body["programs"] = SourceExpressionConverter.ConvertToken(bodyprograms);
+                    bodypropCount++;
+                }
 
-            if (bodysharePointSubscriberId != null)
-            {
-                body["sharePointSubscriberId"] = ExpressionConverter.ConvertO(bodysharePointSubscriberId);
+                if (bodyraters != null)
+                {
+                    body["raters"] = SourceExpressionConverter.ConvertToken(bodyraters);
+                    bodypropCount++;
+                }
+
+                if (bodysharePointSubscriberId != null)
+                {
+                    body["sharePointSubscriberId"] = SourceExpressionConverter.ConvertToken(bodysharePointSubscriberId);
+                    bodypropCount++;
+                }
+
+                if (bodyoutlookEventId != null)
+                {
+                    body["outlookEventId"] = SourceExpressionConverter.ConvertToken(bodyoutlookEventId);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress1 != null)
+                {
+                    body["address1"] = SourceExpressionConverter.ConvertToken(bodyaddress1);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress2 != null)
+                {
+                    body["address2"] = SourceExpressionConverter.ConvertToken(bodyaddress2);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["city"] = SourceExpressionConverter.ConvertToken(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodystate != null)
+                {
+                    body["state"] = SourceExpressionConverter.ConvertToken(bodystate);
+                    bodypropCount++;
+                }
+
+                if (bodyzip != null)
+                {
+                    body["zip"] = SourceExpressionConverter.ConvertToken(bodyzip);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodyoutlookEventId != null)
-            {
-                body["outlookEventId"] = ExpressionConverter.ConvertO(bodyoutlookEventId);
+                body["startTime"] = SourceExpressionConverter.ConvertToken(bodystartTime);
                 bodypropCount++;
+                body["endTime"] = SourceExpressionConverter.ConvertToken(bodyendTime);
+                if (bodytimeZone != null)
+                {
+                    body["timeZone"] = SourceExpressionConverter.ConvertToken(bodytimeZone);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyaddress1 != null)
-            {
-                body["address1"] = ExpressionConverter.ConvertO(bodyaddress1);
-                bodypropCount++;
-            }
-
-            if (bodyaddress2 != null)
-            {
-                body["address2"] = ExpressionConverter.ConvertO(bodyaddress2);
-                bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodystate != null)
-            {
-                body["state"] = ExpressionConverter.ConvertO(bodystate);
-                bodypropCount++;
-            }
-
-            if (bodyzip != null)
-            {
-                body["zip"] = ExpressionConverter.ConvertO(bodyzip);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-            bodypropCount++;
-            body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-            if (bodytimeZone != null)
-            {
-                body["timeZone"] = ExpressionConverter.ConvertO(bodytimeZone);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 
@@ -100,19 +104,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houseraterqa
     {
         public IWorkflowTrigger InspectionStatusChange(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/createWebhook/onSVStatusChange";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackURL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/createWebhook/onSVStatusChange";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackURL"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

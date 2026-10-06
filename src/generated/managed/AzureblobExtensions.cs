@@ -12,281 +12,360 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
     public class AzureblobActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<BlobMetadata> CopyFile(Expression<Func<string>> dataset, Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<BlobMetadata> CopyFile([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
         {
-            var apiCallPath = String.Format("/v2/datasets/{0}/copyFile", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
-            callPayload.Queries["overwrite"] = Convert.ToString(false);
-            if (overwrite != null)
-                callPayload.Queries["overwrite"] = ExpressionConverter.Convert(overwrite);
-            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-            callPayload.Headers["ReadFileMetadataFromServer"] = Convert.ToString(true);
-            return new ApiConnectionAction<BlobMetadata>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IWorkflowAction CreateBlockBlob(Expression<Func<string>> storageAccountName, Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
-        {
-            var apiCallPath = String.Format("/v2/codeless/datasets/{0}/CreateBlockBlob", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<BlobMetadata> CreateFile(Expression<Func<string>> dataset, Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
-        {
-            var apiCallPath = String.Format("/v2/datasets/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["ReadFileMetadataFromServer"] = Convert.ToString(true);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<BlobMetadata>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<SharedAccessSignature> CreateShareLinkByPath(Expression<Func<string>> storageAccountName, Expression<Func<string>> path, Expression<Func<string>> policygroupPolicyIdentifier = null, Expression<Func<policypermissionsInput>> policypermissions = null, Expression<Func<string>> policystartTime = null, Expression<Func<string>> policyexpiryTime = null, Expression<Func<policysharedAccessProtocolInput>> policysharedAccessProtocol = null, Expression<Func<string>> policyiPAddressOrIPAddressRange = null)
-        {
-            var apiCallPath = String.Format("/v2/datasets/{0}/CreateSharedLinkByPath", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            var policy = new JObject();
-            var policypropCount = 0;
-            if (policygroupPolicyIdentifier != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                policy["GroupPolicyIdentifier"] = ExpressionConverter.ConvertO(policygroupPolicyIdentifier);
-                policypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/copyFile", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["source"] = SourceExpressionConverter.ConvertO(source);
+                callPayload.Queries["destination"] = SourceExpressionConverter.ConvertO(destination);
+                callPayload.Queries["overwrite"] = Convert.ToString(false);
+                if (overwrite != null)
+                    callPayload.Queries["overwrite"] = SourceExpressionConverter.ConvertO(overwrite);
+                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
+                callPayload.Headers["ReadFileMetadataFromServer"] = Convert.ToString(true);
+                return callPayload;
             }
 
-            if (policypermissions != null)
+            return new ApiConnectionAction<BlobMetadata>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
+        public IWorkflowAction CreateBlockBlob([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                if (policypermissions != null)
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/codeless/datasets/{0}/CreateBlockBlob", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folderPath"] = SourceExpressionConverter.ConvertO(folderPath);
+                callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
+        public IBodyWorkflowAction<BlobMetadata> CreateFile([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/files", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folderPath"] = SourceExpressionConverter.ConvertO(folderPath);
+                callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Headers["ReadFileMetadataFromServer"] = Convert.ToString(true);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BlobMetadata>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
+        public IBodyWorkflowAction<SharedAccessSignature> CreateShareLinkByPath([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> path, [WorkflowExpression] Func<string> policygroupPolicyIdentifier = null, [WorkflowExpression] Func<policypermissionsInput> policypermissions = null, [WorkflowExpression] Func<string> policystartTime = null, [WorkflowExpression] Func<string> policyexpiryTime = null, [WorkflowExpression] Func<policysharedAccessProtocolInput> policysharedAccessProtocol = null, [WorkflowExpression] Func<string> policyiPAddressOrIPAddressRange = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/CreateSharedLinkByPath", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = SourceExpressionConverter.ConvertO(path);
+                var policy = new JObject();
+                var policypropCount = 0;
+                if (policygroupPolicyIdentifier != null)
                 {
-                    policy["Permissions"] = ExpressionConverter.ConvertO(policypermissions);
+                    policy["GroupPolicyIdentifier"] = SourceExpressionConverter.ConvertToken(policygroupPolicyIdentifier);
                     policypropCount++;
                 }
 
-                policypropCount++;
+                if (policypermissions != null)
+                {
+                    if (policypermissions != null)
+                    {
+                        policy["Permissions"] = SourceExpressionConverter.Convert(policypermissions);
+                        policypropCount++;
+                    }
+
+                    policypropCount++;
+                }
+                else
+                {
+                    policy["Permissions"] = "Read";
+                    policypropCount++;
+                }
+
+                if (policystartTime != null)
+                {
+                    policy["StartTime"] = SourceExpressionConverter.ConvertToken(policystartTime);
+                    policypropCount++;
+                }
+
+                if (policyexpiryTime != null)
+                {
+                    policy["ExpiryTime"] = SourceExpressionConverter.ConvertToken(policyexpiryTime);
+                    policypropCount++;
+                }
+
+                if (policysharedAccessProtocol != null)
+                {
+                    policy["AccessProtocol"] = SourceExpressionConverter.Convert(policysharedAccessProtocol);
+                    policypropCount++;
+                }
+
+                if (policyiPAddressOrIPAddressRange != null)
+                {
+                    policy["IpAddressOrRange"] = SourceExpressionConverter.ConvertToken(policyiPAddressOrIPAddressRange);
+                    policypropCount++;
+                }
+
+                if (policypropCount > 0)
+                {
+                    callPayload.Body = policy;
+                }
+                return callPayload;
             }
-            else
+
+            return new ApiConnectionAction<SharedAccessSignature>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
+        public IWorkflowAction DeleteFile([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> id)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                policy["Permissions"] = "Read";
-                policypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/files/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["SkipDeleteIfFileNotFoundOnServer"] = Convert.ToString(false);
+                return callPayload;
             }
 
-            if (policystartTime != null)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
+        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                policy["StartTime"] = ExpressionConverter.ConvertO(policystartTime);
-                policypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/extractFolderV2", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["source"] = SourceExpressionConverter.ConvertO(source);
+                callPayload.Queries["destination"] = SourceExpressionConverter.ConvertO(destination);
+                callPayload.Queries["overwrite"] = Convert.ToString(false);
+                if (overwrite != null)
+                    callPayload.Queries["overwrite"] = SourceExpressionConverter.ConvertO(overwrite);
+                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
+                return callPayload;
             }
 
-            if (policyexpiryTime != null)
+            return new ApiConnectionAction<BlobMetadata[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
+        public IBodyWorkflowAction<SharedAccessSignatureBlobPolicy[]> GetAccessPolicies([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> path)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                policy["ExpiryTime"] = ExpressionConverter.ConvertO(policyexpiryTime);
-                policypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/policies", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = SourceExpressionConverter.ConvertO(path);
+                return callPayload;
             }
 
-            if (policysharedAccessProtocol != null)
+            return new ApiConnectionAction<SharedAccessSignatureBlobPolicy[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
+        public IBodyWorkflowAction<string> GetFileContent([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> inferContentType = null, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<string> purviewAccountName = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                policy["AccessProtocol"] = ExpressionConverter.ConvertO(policysharedAccessProtocol);
-                policypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/files/{1}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["inferContentType"] = Convert.ToString(true);
+                if (inferContentType != null)
+                    callPayload.Queries["inferContentType"] = SourceExpressionConverter.ConvertO(inferContentType);
+                if (extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = SourceExpressionConverter.ConvertO(extractSensitivityLabel);
+                if (purviewAccountName != null)
+                    callPayload.Queries["purviewAccountName"] = SourceExpressionConverter.ConvertO(purviewAccountName);
+                return callPayload;
             }
 
-            if (policyiPAddressOrIPAddressRange != null)
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
+        public IBodyWorkflowAction<string> GetFileContentByPath([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> path, [WorkflowExpression] Func<bool> inferContentType = null, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<string> purviewAccountName = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                policy["IpAddressOrRange"] = ExpressionConverter.ConvertO(policyiPAddressOrIPAddressRange);
-                policypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/GetFileContentByPath", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = SourceExpressionConverter.ConvertO(path);
+                callPayload.Queries["inferContentType"] = Convert.ToString(true);
+                if (inferContentType != null)
+                    callPayload.Queries["inferContentType"] = SourceExpressionConverter.ConvertO(inferContentType);
+                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
+                if (extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = SourceExpressionConverter.ConvertO(extractSensitivityLabel);
+                if (purviewAccountName != null)
+                    callPayload.Queries["purviewAccountName"] = SourceExpressionConverter.ConvertO(purviewAccountName);
+                return callPayload;
             }
 
-            if (policypropCount > 0)
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
+        public IBodyWorkflowAction<DataWithSensitivityLabelInfo> GetFileMetadata([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<string> purviewAccountName = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = policy;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/files/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = SourceExpressionConverter.ConvertO(extractSensitivityLabel);
+                if (purviewAccountName != null)
+                    callPayload.Queries["purviewAccountName"] = SourceExpressionConverter.ConvertO(purviewAccountName);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SharedAccessSignature>(callPayload);
+            return new ApiConnectionAction<DataWithSensitivityLabelInfo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IWorkflowAction DeleteFile(Expression<Func<string>> dataset, Expression<Func<string>> id)
+        public IBodyWorkflowAction<DataWithSensitivityLabelInfo> GetFileMetadataByPath([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> path, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<string> purviewAccountName = null)
         {
-            var apiCallPath = String.Format("/v2/datasets/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["SkipDeleteIfFileNotFoundOnServer"] = Convert.ToString(false);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/GetFileByPath", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = SourceExpressionConverter.ConvertO(path);
+                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
+                if (extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = SourceExpressionConverter.ConvertO(extractSensitivityLabel);
+                if (purviewAccountName != null)
+                    callPayload.Queries["purviewAccountName"] = SourceExpressionConverter.ConvertO(purviewAccountName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DataWithSensitivityLabelInfo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder(Expression<Func<string>> dataset, Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<ListOfBlobsWithSensitivityLabels> ListFolder([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> nextPageMarker = null, [WorkflowExpression] Func<bool> useFlatListing = null, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<string> purviewAccountName = null)
         {
-            var apiCallPath = String.Format("/v2/datasets/{0}/extractFolderV2", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            callPayload.Queries["destination"] = ExpressionConverter.Convert(destination);
-            callPayload.Queries["overwrite"] = Convert.ToString(false);
-            if (overwrite != null)
-                callPayload.Queries["overwrite"] = ExpressionConverter.Convert(overwrite);
-            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-            return new ApiConnectionAction<BlobMetadata[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/foldersV2/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["nextPageMarker"] = Convert.ToString("");
+                if (nextPageMarker != null)
+                    callPayload.Queries["nextPageMarker"] = SourceExpressionConverter.ConvertO(nextPageMarker);
+                callPayload.Queries["useFlatListing"] = Convert.ToString(false);
+                if (useFlatListing != null)
+                    callPayload.Queries["useFlatListing"] = SourceExpressionConverter.ConvertO(useFlatListing);
+                if (extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = SourceExpressionConverter.ConvertO(extractSensitivityLabel);
+                if (purviewAccountName != null)
+                    callPayload.Queries["purviewAccountName"] = SourceExpressionConverter.ConvertO(purviewAccountName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListOfBlobsWithSensitivityLabels>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<SharedAccessSignatureBlobPolicy[]> GetAccessPolicies(Expression<Func<string>> storageAccountName, Expression<Func<string>> path)
+        public IBodyWorkflowAction<BlobMetadataPage> ListRootFolder([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> nextPageMarker = null)
         {
-            var apiCallPath = String.Format("/v2/datasets/{0}/policies", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            return new ApiConnectionAction<SharedAccessSignatureBlobPolicy[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/foldersV2", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["nextPageMarker"] = Convert.ToString("");
+                if (nextPageMarker != null)
+                    callPayload.Queries["nextPageMarker"] = SourceExpressionConverter.ConvertO(nextPageMarker);
+                callPayload.Queries["useFlatListing"] = Convert.ToString(false);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BlobMetadataPage>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<bool>> inferContentType = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
+        public IWorkflowAction SetBlobTierByPath([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> path, [WorkflowExpression] Func<newTierInput> newTier)
         {
-            var apiCallPath = String.Format("/v2/datasets/{0}/files/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["inferContentType"] = Convert.ToString(true);
-            if (inferContentType != null)
-                callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(inferContentType);
-            if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
-            if (purviewAccountName != null)
-                callPayload.Queries["purviewAccountName"] = ExpressionConverter.Convert(purviewAccountName);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/SetBlobTierByPath", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageAccountName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = SourceExpressionConverter.ConvertO(path);
+                callPayload.Queries["newTier"] = SourceExpressionConverter.Convert(newTier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<string> GetFileContentByPath(Expression<Func<string>> dataset, Expression<Func<string>> path, Expression<Func<bool>> inferContentType = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
+        public IBodyWorkflowAction<BlobMetadata> UpdateFile([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            var apiCallPath = String.Format("/v2/datasets/{0}/GetFileContentByPath", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            callPayload.Queries["inferContentType"] = Convert.ToString(true);
-            if (inferContentType != null)
-                callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(inferContentType);
-            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-            if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
-            if (purviewAccountName != null)
-                callPayload.Queries["purviewAccountName"] = ExpressionConverter.Convert(purviewAccountName);
-            return new ApiConnectionAction<string>(callPayload);
-        }
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/files/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Headers["ReadFileMetadataFromServer"] = Convert.ToString(true);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<DataWithSensitivityLabelInfo> GetFileMetadata(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
-        {
-            var apiCallPath = String.Format("/v2/datasets/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
-            if (purviewAccountName != null)
-                callPayload.Queries["purviewAccountName"] = ExpressionConverter.Convert(purviewAccountName);
-            return new ApiConnectionAction<DataWithSensitivityLabelInfo>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<DataWithSensitivityLabelInfo> GetFileMetadataByPath(Expression<Func<string>> dataset, Expression<Func<string>> path, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
-        {
-            var apiCallPath = String.Format("/v2/datasets/{0}/GetFileByPath", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-            if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
-            if (purviewAccountName != null)
-                callPayload.Queries["purviewAccountName"] = ExpressionConverter.Convert(purviewAccountName);
-            return new ApiConnectionAction<DataWithSensitivityLabelInfo>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<ListOfBlobsWithSensitivityLabels> ListFolder(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<string>> nextPageMarker = null, Expression<Func<bool>> useFlatListing = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
-        {
-            var apiCallPath = String.Format("/v2/datasets/{0}/foldersV2/{1}", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["nextPageMarker"] = Convert.ToString("");
-            if (nextPageMarker != null)
-                callPayload.Queries["nextPageMarker"] = ExpressionConverter.Convert(nextPageMarker);
-            callPayload.Queries["useFlatListing"] = Convert.ToString(false);
-            if (useFlatListing != null)
-                callPayload.Queries["useFlatListing"] = ExpressionConverter.Convert(useFlatListing);
-            if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
-            if (purviewAccountName != null)
-                callPayload.Queries["purviewAccountName"] = ExpressionConverter.Convert(purviewAccountName);
-            return new ApiConnectionAction<ListOfBlobsWithSensitivityLabels>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<BlobMetadataPage> ListRootFolder(Expression<Func<string>> dataset, Expression<Func<string>> nextPageMarker = null)
-        {
-            var apiCallPath = String.Format("/v2/datasets/{0}/foldersV2", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["nextPageMarker"] = Convert.ToString("");
-            if (nextPageMarker != null)
-                callPayload.Queries["nextPageMarker"] = ExpressionConverter.Convert(nextPageMarker);
-            callPayload.Queries["useFlatListing"] = Convert.ToString(false);
-            return new ApiConnectionAction<BlobMetadataPage>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IWorkflowAction SetBlobTierByPath(Expression<Func<string>> storageAccountName, Expression<Func<string>> path, Expression<Func<newTierInput>> newTier)
-        {
-            var apiCallPath = String.Format("/v2/datasets/{0}/SetBlobTierByPath", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            callPayload.Queries["newTier"] = ExpressionConverter.Convert(newTier);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureblob")]
-        public IBodyWorkflowAction<BlobMetadata> UpdateFile(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
-        {
-            var apiCallPath = String.Format("/v2/datasets/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["ReadFileMetadataFromServer"] = Convert.ToString(true);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<BlobMetadata>(callPayload);
+            return new ApiConnectionAction<BlobMetadata>(BuildSourceInput);
         }
     }
 
     public class AzureblobTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<int>> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<int> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/datasets/{0}/triggers/batch/onupdatedfile", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderId"] = ExpressionConverter.Convert(folderId);
-            callPayload.Queries["maxFileCount"] = Convert.ToString(10);
-            if (maxFileCount != null)
-                callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(maxFileCount);
-            callPayload.Queries["checkBothCreatedAndModifiedDateTime"] = Convert.ToString(false);
-            return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/triggers/batch/onupdatedfile", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folderId"] = SourceExpressionConverter.ConvertO(folderId);
+                callPayload.Queries["maxFileCount"] = Convert.ToString(10);
+                if (maxFileCount != null)
+                    callPayload.Queries["maxFileCount"] = SourceExpressionConverter.ConvertO(maxFileCount);
+                callPayload.Queries["checkBothCreatedAndModifiedDateTime"] = Convert.ToString(false);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<BlobMetadata[]>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -12,975 +12,1065 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
     public class PipelinercrmActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<AccountsDeleteResponse> AccountsDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<AccountsDeleteResponse> AccountsDelete([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            return new ApiConnectionAction<AccountsDeleteResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AccountsDeleteResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<AccountsGetResponse> AccountsGet(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<AccountsGetResponse> AccountsGet([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            return new ApiConnectionAction<AccountsGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AccountsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<AccountsUpdateResponse> AccountsUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyaccountTypeId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<bodyaccountClassInput>> bodyaccountClass = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyhomePage = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodystateProvince = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<AccountsUpdateResponse> AccountsUpdate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyaccountTypeId = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<bodyaccountClassInput> bodyaccountClass = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyhomePage = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodystateProvince = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyownerId != null)
+                {
+                    body["owner_id"] = SourceExpressionConverter.ConvertToken(bodyownerId);
+                    bodypropCount++;
+                }
+
+                if (bodyaccountTypeId != null)
+                {
+                    body["account_type_id"] = SourceExpressionConverter.ConvertToken(bodyaccountTypeId);
+                    bodypropCount++;
+                }
+
+                if (bodyunitId != null)
+                {
+                    body["unit_id"] = SourceExpressionConverter.ConvertToken(bodyunitId);
+                    bodypropCount++;
+                }
+
+                if (bodyaccountClass != null)
+                {
+                    body["account_class"] = SourceExpressionConverter.Convert(bodyaccountClass);
+                    bodypropCount++;
+                }
+
+                if (bodyemail1 != null)
+                {
+                    body["email1"] = SourceExpressionConverter.ConvertToken(bodyemail1);
+                    bodypropCount++;
+                }
+
+                if (bodyphone1 != null)
+                {
+                    body["phone1"] = SourceExpressionConverter.ConvertToken(bodyphone1);
+                    bodypropCount++;
+                }
+
+                if (bodyhomePage != null)
+                {
+                    body["home_page"] = SourceExpressionConverter.ConvertToken(bodyhomePage);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["city"] = SourceExpressionConverter.ConvertToken(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodycountry != null)
+                {
+                    body["country"] = SourceExpressionConverter.ConvertToken(bodycountry);
+                    bodypropCount++;
+                }
+
+                if (bodystateProvince != null)
+                {
+                    body["state_province"] = SourceExpressionConverter.ConvertToken(bodystateProvince);
+                    bodypropCount++;
+                }
+
+                if (bodyzipCode != null)
+                {
+                    body["zip_code"] = SourceExpressionConverter.ConvertToken(bodyzipCode);
+                    bodypropCount++;
+                }
+
+                if (bodycomments != null)
+                {
+                    body["comments"] = SourceExpressionConverter.ConvertToken(bodycomments);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyownerId != null)
-            {
-                body["owner_id"] = ExpressionConverter.ConvertO(bodyownerId);
-                bodypropCount++;
-            }
-
-            if (bodyaccountTypeId != null)
-            {
-                body["account_type_id"] = ExpressionConverter.ConvertO(bodyaccountTypeId);
-                bodypropCount++;
-            }
-
-            if (bodyunitId != null)
-            {
-                body["unit_id"] = ExpressionConverter.ConvertO(bodyunitId);
-                bodypropCount++;
-            }
-
-            if (bodyaccountClass != null)
-            {
-                body["account_class"] = ExpressionConverter.ConvertO(bodyaccountClass);
-                bodypropCount++;
-            }
-
-            if (bodyemail1 != null)
-            {
-                body["email1"] = ExpressionConverter.ConvertO(bodyemail1);
-                bodypropCount++;
-            }
-
-            if (bodyphone1 != null)
-            {
-                body["phone1"] = ExpressionConverter.ConvertO(bodyphone1);
-                bodypropCount++;
-            }
-
-            if (bodyhomePage != null)
-            {
-                body["home_page"] = ExpressionConverter.ConvertO(bodyhomePage);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodycountry != null)
-            {
-                body["country"] = ExpressionConverter.ConvertO(bodycountry);
-                bodypropCount++;
-            }
-
-            if (bodystateProvince != null)
-            {
-                body["state_province"] = ExpressionConverter.ConvertO(bodystateProvince);
-                bodypropCount++;
-            }
-
-            if (bodyzipCode != null)
-            {
-                body["zip_code"] = ExpressionConverter.ConvertO(bodyzipCode);
-                bodypropCount++;
-            }
-
-            if (bodycomments != null)
-            {
-                body["comments"] = ExpressionConverter.ConvertO(bodycomments);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AccountsUpdateResponse>(callPayload);
+            return new ApiConnectionAction<AccountsUpdateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<AccountsCreateResponse> AccountsCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyownerId, Expression<Func<string>> bodyaccountTypeId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<bodyaccountClassInput>> bodyaccountClass = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyhomePage = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodystateProvince = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<AccountsCreateResponse> AccountsCreate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyownerId, [WorkflowExpression] Func<string> bodyaccountTypeId = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<bodyaccountClassInput> bodyaccountClass = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyhomePage = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodystateProvince = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Accounts", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["owner_id"] = ExpressionConverter.ConvertO(bodyownerId);
-            if (bodyaccountTypeId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["account_type_id"] = ExpressionConverter.ConvertO(bodyaccountTypeId);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Accounts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyunitId != null)
-            {
-                body["unit_id"] = ExpressionConverter.ConvertO(bodyunitId);
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
+                body["owner_id"] = SourceExpressionConverter.ConvertToken(bodyownerId);
+                if (bodyaccountTypeId != null)
+                {
+                    body["account_type_id"] = SourceExpressionConverter.ConvertToken(bodyaccountTypeId);
+                    bodypropCount++;
+                }
+
+                if (bodyunitId != null)
+                {
+                    body["unit_id"] = SourceExpressionConverter.ConvertToken(bodyunitId);
+                    bodypropCount++;
+                }
+
+                if (bodyaccountClass != null)
+                {
+                    body["account_class"] = SourceExpressionConverter.Convert(bodyaccountClass);
+                    bodypropCount++;
+                }
+
+                if (bodyemail1 != null)
+                {
+                    body["email1"] = SourceExpressionConverter.ConvertToken(bodyemail1);
+                    bodypropCount++;
+                }
+
+                if (bodyphone1 != null)
+                {
+                    body["phone1"] = SourceExpressionConverter.ConvertToken(bodyphone1);
+                    bodypropCount++;
+                }
+
+                if (bodyhomePage != null)
+                {
+                    body["home_page"] = SourceExpressionConverter.ConvertToken(bodyhomePage);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["city"] = SourceExpressionConverter.ConvertToken(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodycountry != null)
+                {
+                    body["country"] = SourceExpressionConverter.ConvertToken(bodycountry);
+                    bodypropCount++;
+                }
+
+                if (bodystateProvince != null)
+                {
+                    body["state_province"] = SourceExpressionConverter.ConvertToken(bodystateProvince);
+                    bodypropCount++;
+                }
+
+                if (bodyzipCode != null)
+                {
+                    body["zip_code"] = SourceExpressionConverter.ConvertToken(bodyzipCode);
+                    bodypropCount++;
+                }
+
+                if (bodycomments != null)
+                {
+                    body["comments"] = SourceExpressionConverter.ConvertToken(bodycomments);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyaccountClass != null)
-            {
-                body["account_class"] = ExpressionConverter.ConvertO(bodyaccountClass);
-                bodypropCount++;
-            }
-
-            if (bodyemail1 != null)
-            {
-                body["email1"] = ExpressionConverter.ConvertO(bodyemail1);
-                bodypropCount++;
-            }
-
-            if (bodyphone1 != null)
-            {
-                body["phone1"] = ExpressionConverter.ConvertO(bodyphone1);
-                bodypropCount++;
-            }
-
-            if (bodyhomePage != null)
-            {
-                body["home_page"] = ExpressionConverter.ConvertO(bodyhomePage);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodycountry != null)
-            {
-                body["country"] = ExpressionConverter.ConvertO(bodycountry);
-                bodypropCount++;
-            }
-
-            if (bodystateProvince != null)
-            {
-                body["state_province"] = ExpressionConverter.ConvertO(bodystateProvince);
-                bodypropCount++;
-            }
-
-            if (bodyzipCode != null)
-            {
-                body["zip_code"] = ExpressionConverter.ConvertO(bodyzipCode);
-                bodypropCount++;
-            }
-
-            if (bodycomments != null)
-            {
-                body["comments"] = ExpressionConverter.ConvertO(bodycomments);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AccountsCreateResponse>(callPayload);
+            return new ApiConnectionAction<AccountsCreateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<ContactsCreateResponse> ContactsCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodylastName, Expression<Func<string>> bodyownerId, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<bodygenderInput>> bodygender = null, Expression<Func<string>> bodycontactTypeId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystateProvince = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<bodyaccountRelationsInputItem[]>> bodyaccountRelations = null, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<ContactsCreateResponse> ContactsCreate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> bodylastName, [WorkflowExpression] Func<string> bodyownerId, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<bodygenderInput> bodygender = null, [WorkflowExpression] Func<string> bodycontactTypeId = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystateProvince = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<bodyaccountRelationsInputItem[]> bodyaccountRelations = null, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Contacts", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodymiddleName != null)
+                {
+                    body["middle_name"] = SourceExpressionConverter.ConvertToken(bodymiddleName);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                if (bodygender != null)
+                {
+                    body["gender"] = SourceExpressionConverter.Convert(bodygender);
+                    bodypropCount++;
+                }
 
-            if (bodyfirstName != null)
-            {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                if (bodycontactTypeId != null)
+                {
+                    body["contact_type_id"] = SourceExpressionConverter.ConvertToken(bodycontactTypeId);
+                    bodypropCount++;
+                }
+
+                if (bodyunitId != null)
+                {
+                    body["unit_id"] = SourceExpressionConverter.ConvertToken(bodyunitId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["owner_id"] = SourceExpressionConverter.ConvertToken(bodyownerId);
+                if (bodyemail1 != null)
+                {
+                    body["email1"] = SourceExpressionConverter.ConvertToken(bodyemail1);
+                    bodypropCount++;
+                }
+
+                if (bodyphone1 != null)
+                {
+                    body["phone1"] = SourceExpressionConverter.ConvertToken(bodyphone1);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["city"] = SourceExpressionConverter.ConvertToken(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodystateProvince != null)
+                {
+                    body["state_province"] = SourceExpressionConverter.ConvertToken(bodystateProvince);
+                    bodypropCount++;
+                }
+
+                if (bodyzipCode != null)
+                {
+                    body["zip_code"] = SourceExpressionConverter.ConvertToken(bodyzipCode);
+                    bodypropCount++;
+                }
+
+                if (bodycountry != null)
+                {
+                    body["country"] = SourceExpressionConverter.ConvertToken(bodycountry);
+                    bodypropCount++;
+                }
+
+                if (bodyaccountRelations != null)
+                {
+                    body["account_relations"] = SourceExpressionConverter.ConvertToken(bodyaccountRelations);
+                    bodypropCount++;
+                }
+
+                if (bodycomments != null)
+                {
+                    body["comments"] = SourceExpressionConverter.ConvertToken(bodycomments);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymiddleName != null)
-            {
-                body["middle_name"] = ExpressionConverter.ConvertO(bodymiddleName);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
-            if (bodygender != null)
-            {
-                body["gender"] = ExpressionConverter.ConvertO(bodygender);
-                bodypropCount++;
-            }
-
-            if (bodycontactTypeId != null)
-            {
-                body["contact_type_id"] = ExpressionConverter.ConvertO(bodycontactTypeId);
-                bodypropCount++;
-            }
-
-            if (bodyunitId != null)
-            {
-                body["unit_id"] = ExpressionConverter.ConvertO(bodyunitId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["owner_id"] = ExpressionConverter.ConvertO(bodyownerId);
-            if (bodyemail1 != null)
-            {
-                body["email1"] = ExpressionConverter.ConvertO(bodyemail1);
-                bodypropCount++;
-            }
-
-            if (bodyphone1 != null)
-            {
-                body["phone1"] = ExpressionConverter.ConvertO(bodyphone1);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodystateProvince != null)
-            {
-                body["state_province"] = ExpressionConverter.ConvertO(bodystateProvince);
-                bodypropCount++;
-            }
-
-            if (bodyzipCode != null)
-            {
-                body["zip_code"] = ExpressionConverter.ConvertO(bodyzipCode);
-                bodypropCount++;
-            }
-
-            if (bodycountry != null)
-            {
-                body["country"] = ExpressionConverter.ConvertO(bodycountry);
-                bodypropCount++;
-            }
-
-            if (bodyaccountRelations != null)
-            {
-                body["account_relations"] = ExpressionConverter.ConvertO(bodyaccountRelations);
-                bodypropCount++;
-            }
-
-            if (bodycomments != null)
-            {
-                body["comments"] = ExpressionConverter.ConvertO(bodycomments);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ContactsCreateResponse>(callPayload);
+            return new ApiConnectionAction<ContactsCreateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<ContactsDeleteResponse> ContactsDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<ContactsDeleteResponse> ContactsDelete([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            return new ApiConnectionAction<ContactsDeleteResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ContactsDeleteResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<ContactsGetResponse> ContactsGet(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<ContactsGetResponse> ContactsGet([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            return new ApiConnectionAction<ContactsGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ContactsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<ContactsUpdateResponse> ContactsUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bodygenderInput>> bodygender = null, Expression<Func<string>> bodycontactTypeId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyemail1 = null, Expression<Func<string>> bodyphone1 = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystateProvince = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodycomments = null)
+        public IBodyWorkflowAction<ContactsUpdateResponse> ContactsUpdate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<bodygenderInput> bodygender = null, [WorkflowExpression] Func<string> bodycontactTypeId = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyemail1 = null, [WorkflowExpression] Func<string> bodyphone1 = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystateProvince = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<string> bodycomments = null)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Contacts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodymiddleName != null)
+                {
+                    body["middle_name"] = SourceExpressionConverter.ConvertToken(bodymiddleName);
+                    bodypropCount++;
+                }
+
+                if (bodylastName != null)
+                {
+                    body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodygender != null)
+                {
+                    body["gender"] = SourceExpressionConverter.Convert(bodygender);
+                    bodypropCount++;
+                }
+
+                if (bodycontactTypeId != null)
+                {
+                    body["contact_type_id"] = SourceExpressionConverter.ConvertToken(bodycontactTypeId);
+                    bodypropCount++;
+                }
+
+                if (bodyunitId != null)
+                {
+                    body["unit_id"] = SourceExpressionConverter.ConvertToken(bodyunitId);
+                    bodypropCount++;
+                }
+
+                if (bodyownerId != null)
+                {
+                    body["owner_id"] = SourceExpressionConverter.ConvertToken(bodyownerId);
+                    bodypropCount++;
+                }
+
+                if (bodyemail1 != null)
+                {
+                    body["email1"] = SourceExpressionConverter.ConvertToken(bodyemail1);
+                    bodypropCount++;
+                }
+
+                if (bodyphone1 != null)
+                {
+                    body["phone1"] = SourceExpressionConverter.ConvertToken(bodyphone1);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["city"] = SourceExpressionConverter.ConvertToken(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodystateProvince != null)
+                {
+                    body["state_province"] = SourceExpressionConverter.ConvertToken(bodystateProvince);
+                    bodypropCount++;
+                }
+
+                if (bodyzipCode != null)
+                {
+                    body["zip_code"] = SourceExpressionConverter.ConvertToken(bodyzipCode);
+                    bodypropCount++;
+                }
+
+                if (bodycountry != null)
+                {
+                    body["country"] = SourceExpressionConverter.ConvertToken(bodycountry);
+                    bodypropCount++;
+                }
+
+                if (bodycomments != null)
+                {
+                    body["comments"] = SourceExpressionConverter.ConvertToken(bodycomments);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfirstName != null)
-            {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
-
-            if (bodymiddleName != null)
-            {
-                body["middle_name"] = ExpressionConverter.ConvertO(bodymiddleName);
-                bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
-                bodypropCount++;
-            }
-
-            if (bodygender != null)
-            {
-                body["gender"] = ExpressionConverter.ConvertO(bodygender);
-                bodypropCount++;
-            }
-
-            if (bodycontactTypeId != null)
-            {
-                body["contact_type_id"] = ExpressionConverter.ConvertO(bodycontactTypeId);
-                bodypropCount++;
-            }
-
-            if (bodyunitId != null)
-            {
-                body["unit_id"] = ExpressionConverter.ConvertO(bodyunitId);
-                bodypropCount++;
-            }
-
-            if (bodyownerId != null)
-            {
-                body["owner_id"] = ExpressionConverter.ConvertO(bodyownerId);
-                bodypropCount++;
-            }
-
-            if (bodyemail1 != null)
-            {
-                body["email1"] = ExpressionConverter.ConvertO(bodyemail1);
-                bodypropCount++;
-            }
-
-            if (bodyphone1 != null)
-            {
-                body["phone1"] = ExpressionConverter.ConvertO(bodyphone1);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodystateProvince != null)
-            {
-                body["state_province"] = ExpressionConverter.ConvertO(bodystateProvince);
-                bodypropCount++;
-            }
-
-            if (bodyzipCode != null)
-            {
-                body["zip_code"] = ExpressionConverter.ConvertO(bodyzipCode);
-                bodypropCount++;
-            }
-
-            if (bodycountry != null)
-            {
-                body["country"] = ExpressionConverter.ConvertO(bodycountry);
-                bodypropCount++;
-            }
-
-            if (bodycomments != null)
-            {
-                body["comments"] = ExpressionConverter.ConvertO(bodycomments);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ContactsUpdateResponse>(callPayload);
+            return new ApiConnectionAction<ContactsUpdateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<LeadsCreateResponse> LeadsCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyownerId, Expression<Func<string>> bodyunitId, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyranking = null, Expression<Func<string>> bodyleadTypeId = null, Expression<Func<string>> bodystepId = null, Expression<Func<bodycontactRelationsInputItem[]>> bodycontactRelations = null, Expression<Func<bodyaccountRelationsInputItem[]>> bodyaccountRelations = null)
+        public IBodyWorkflowAction<LeadsCreateResponse> LeadsCreate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyownerId, [WorkflowExpression] Func<string> bodyunitId, [WorkflowExpression] Func<string> bodycreated = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodyranking = null, [WorkflowExpression] Func<string> bodyleadTypeId = null, [WorkflowExpression] Func<string> bodystepId = null, [WorkflowExpression] Func<bodycontactRelationsInputItem[]> bodycontactRelations = null, [WorkflowExpression] Func<bodyaccountRelationsInputItem[]> bodyaccountRelations = null)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Leads", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycreated != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["created"] = ExpressionConverter.ConvertO(bodycreated);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycreated != null)
+                {
+                    body["created"] = SourceExpressionConverter.ConvertToken(bodycreated);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyranking != null)
+                {
+                    body["ranking"] = SourceExpressionConverter.ConvertToken(bodyranking);
+                    bodypropCount++;
+                }
+
+                if (bodyleadTypeId != null)
+                {
+                    body["lead_type_id"] = SourceExpressionConverter.ConvertToken(bodyleadTypeId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
-            }
+                body["owner_id"] = SourceExpressionConverter.ConvertToken(bodyownerId);
+                if (bodystepId != null)
+                {
+                    body["step_id"] = SourceExpressionConverter.ConvertToken(bodystepId);
+                    bodypropCount++;
+                }
 
-            if (bodyranking != null)
-            {
-                body["ranking"] = ExpressionConverter.ConvertO(bodyranking);
                 bodypropCount++;
+                body["unit_id"] = SourceExpressionConverter.ConvertToken(bodyunitId);
+                if (bodycontactRelations != null)
+                {
+                    body["contact_relations"] = SourceExpressionConverter.ConvertToken(bodycontactRelations);
+                    bodypropCount++;
+                }
+
+                if (bodyaccountRelations != null)
+                {
+                    body["account_relations"] = SourceExpressionConverter.ConvertToken(bodyaccountRelations);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyleadTypeId != null)
-            {
-                body["lead_type_id"] = ExpressionConverter.ConvertO(bodyleadTypeId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["owner_id"] = ExpressionConverter.ConvertO(bodyownerId);
-            if (bodystepId != null)
-            {
-                body["step_id"] = ExpressionConverter.ConvertO(bodystepId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["unit_id"] = ExpressionConverter.ConvertO(bodyunitId);
-            if (bodycontactRelations != null)
-            {
-                body["contact_relations"] = ExpressionConverter.ConvertO(bodycontactRelations);
-                bodypropCount++;
-            }
-
-            if (bodyaccountRelations != null)
-            {
-                body["account_relations"] = ExpressionConverter.ConvertO(bodyaccountRelations);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LeadsCreateResponse>(callPayload);
+            return new ApiConnectionAction<LeadsCreateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<LeadsDeleteResponse> LeadsDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<LeadsDeleteResponse> LeadsDelete([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Leads/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            return new ApiConnectionAction<LeadsDeleteResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LeadsDeleteResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<LeadsGetResponse> LeadsGet(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<LeadsGetResponse> LeadsGet([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Leads/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            return new ApiConnectionAction<LeadsGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LeadsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<LeadsUpdateResponse> LeadsUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyranking = null, Expression<Func<string>> bodyleadTypeId = null, Expression<Func<string>> bodystepId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<string>> bodyownerId = null)
+        public IBodyWorkflowAction<LeadsUpdateResponse> LeadsUpdate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycreated = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodyranking = null, [WorkflowExpression] Func<string> bodyleadTypeId = null, [WorkflowExpression] Func<string> bodystepId = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<string> bodyownerId = null)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Leads/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycreated != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["created"] = ExpressionConverter.ConvertO(bodycreated);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Leads/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycreated != null)
+                {
+                    body["created"] = SourceExpressionConverter.ConvertToken(bodycreated);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyranking != null)
+                {
+                    body["ranking"] = SourceExpressionConverter.ConvertToken(bodyranking);
+                    bodypropCount++;
+                }
+
+                if (bodyleadTypeId != null)
+                {
+                    body["lead_type_id"] = SourceExpressionConverter.ConvertToken(bodyleadTypeId);
+                    bodypropCount++;
+                }
+
+                if (bodystepId != null)
+                {
+                    body["step_id"] = SourceExpressionConverter.ConvertToken(bodystepId);
+                    bodypropCount++;
+                }
+
+                if (bodyunitId != null)
+                {
+                    body["unit_id"] = SourceExpressionConverter.ConvertToken(bodyunitId);
+                    bodypropCount++;
+                }
+
+                if (bodyownerId != null)
+                {
+                    body["owner_id"] = SourceExpressionConverter.ConvertToken(bodyownerId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodyranking != null)
-            {
-                body["ranking"] = ExpressionConverter.ConvertO(bodyranking);
-                bodypropCount++;
-            }
-
-            if (bodyleadTypeId != null)
-            {
-                body["lead_type_id"] = ExpressionConverter.ConvertO(bodyleadTypeId);
-                bodypropCount++;
-            }
-
-            if (bodystepId != null)
-            {
-                body["step_id"] = ExpressionConverter.ConvertO(bodystepId);
-                bodypropCount++;
-            }
-
-            if (bodyunitId != null)
-            {
-                body["unit_id"] = ExpressionConverter.ConvertO(bodyunitId);
-                bodypropCount++;
-            }
-
-            if (bodyownerId != null)
-            {
-                body["owner_id"] = ExpressionConverter.ConvertO(bodyownerId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LeadsUpdateResponse>(callPayload);
+            return new ApiConnectionAction<LeadsUpdateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<TasksCreateResponse> TasksCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodysubject, Expression<Func<string>> bodyunitId, Expression<Func<string>> bodyownerId, Expression<Func<string>> bodyactivityTypeId = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<bodyaccountRelationsInputItem2[]>> bodyaccountRelations = null, Expression<Func<bodycontactRelationsInputItem2[]>> bodycontactRelations = null, Expression<Func<bodyleadRelationsInputItem[]>> bodyleadRelations = null, Expression<Func<bodyopportunityRelationsInputItem[]>> bodyopportunityRelations = null)
+        public IBodyWorkflowAction<TasksCreateResponse> TasksCreate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodyunitId, [WorkflowExpression] Func<string> bodyownerId, [WorkflowExpression] Func<string> bodyactivityTypeId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<bodyaccountRelationsInputItem2[]> bodyaccountRelations = null, [WorkflowExpression] Func<bodycontactRelationsInputItem2[]> bodycontactRelations = null, [WorkflowExpression] Func<bodyleadRelationsInputItem[]> bodyleadRelations = null, [WorkflowExpression] Func<bodyopportunityRelationsInputItem[]> bodyopportunityRelations = null)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Tasks", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-            if (bodyactivityTypeId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["activity_type_id"] = ExpressionConverter.ConvertO(bodyactivityTypeId);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["subject"] = SourceExpressionConverter.ConvertToken(bodysubject);
+                if (bodyactivityTypeId != null)
+                {
+                    body["activity_type_id"] = SourceExpressionConverter.ConvertToken(bodyactivityTypeId);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["unit_id"] = ExpressionConverter.ConvertO(bodyunitId);
-            bodypropCount++;
-            body["owner_id"] = ExpressionConverter.ConvertO(bodyownerId);
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
-            }
-
-            if (bodydueDate != null)
-            {
-                body["due_date"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["unit_id"] = SourceExpressionConverter.ConvertToken(bodyunitId);
                 bodypropCount++;
+                body["owner_id"] = SourceExpressionConverter.ConvertToken(bodyownerId);
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodydueDate != null)
+                {
+                    body["due_date"] = SourceExpressionConverter.ConvertToken(bodydueDate);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["priority"] = SourceExpressionConverter.Convert(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.Convert(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyaccountRelations != null)
+                {
+                    body["account_relations"] = SourceExpressionConverter.ConvertToken(bodyaccountRelations);
+                    bodypropCount++;
+                }
+
+                if (bodycontactRelations != null)
+                {
+                    body["contact_relations"] = SourceExpressionConverter.ConvertToken(bodycontactRelations);
+                    bodypropCount++;
+                }
+
+                if (bodyleadRelations != null)
+                {
+                    body["lead_relations"] = SourceExpressionConverter.ConvertToken(bodyleadRelations);
+                    bodypropCount++;
+                }
+
+                if (bodyopportunityRelations != null)
+                {
+                    body["opportunity_relations"] = SourceExpressionConverter.ConvertToken(bodyopportunityRelations);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypriority != null)
-            {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyaccountRelations != null)
-            {
-                body["account_relations"] = ExpressionConverter.ConvertO(bodyaccountRelations);
-                bodypropCount++;
-            }
-
-            if (bodycontactRelations != null)
-            {
-                body["contact_relations"] = ExpressionConverter.ConvertO(bodycontactRelations);
-                bodypropCount++;
-            }
-
-            if (bodyleadRelations != null)
-            {
-                body["lead_relations"] = ExpressionConverter.ConvertO(bodyleadRelations);
-                bodypropCount++;
-            }
-
-            if (bodyopportunityRelations != null)
-            {
-                body["opportunity_relations"] = ExpressionConverter.ConvertO(bodyopportunityRelations);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TasksCreateResponse>(callPayload);
+            return new ApiConnectionAction<TasksCreateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<TasksDeleteResponse> TasksDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<TasksDeleteResponse> TasksDelete([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            return new ApiConnectionAction<TasksDeleteResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TasksDeleteResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<TasksGetResponse> TasksGet(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<TasksGetResponse> TasksGet([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            return new ApiConnectionAction<TasksGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TasksGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<TasksUpdateResponse> TasksUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyactivityTypeId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<bodystatusInput>> bodystatus = null)
+        public IBodyWorkflowAction<TasksUpdateResponse> TasksUpdate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodyactivityTypeId = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysubject != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysubject != null)
+                {
+                    body["subject"] = SourceExpressionConverter.ConvertToken(bodysubject);
+                    bodypropCount++;
+                }
+
+                if (bodyactivityTypeId != null)
+                {
+                    body["activity_type_id"] = SourceExpressionConverter.ConvertToken(bodyactivityTypeId);
+                    bodypropCount++;
+                }
+
+                if (bodyunitId != null)
+                {
+                    body["unit_id"] = SourceExpressionConverter.ConvertToken(bodyunitId);
+                    bodypropCount++;
+                }
+
+                if (bodyownerId != null)
+                {
+                    body["owner_id"] = SourceExpressionConverter.ConvertToken(bodyownerId);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodydueDate != null)
+                {
+                    body["due_date"] = SourceExpressionConverter.ConvertToken(bodydueDate);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["priority"] = SourceExpressionConverter.Convert(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.Convert(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyactivityTypeId != null)
-            {
-                body["activity_type_id"] = ExpressionConverter.ConvertO(bodyactivityTypeId);
-                bodypropCount++;
-            }
-
-            if (bodyunitId != null)
-            {
-                body["unit_id"] = ExpressionConverter.ConvertO(bodyunitId);
-                bodypropCount++;
-            }
-
-            if (bodyownerId != null)
-            {
-                body["owner_id"] = ExpressionConverter.ConvertO(bodyownerId);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodydueDate != null)
-            {
-                body["due_date"] = ExpressionConverter.ConvertO(bodydueDate);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TasksUpdateResponse>(callPayload);
+            return new ApiConnectionAction<TasksUpdateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<OpportunitiesCreateResponse> OpportunitiesCreate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyclosingDate, Expression<Func<string>> bodyopptyTypeId, Expression<Func<string>> bodystepId, Expression<Func<string>> bodyownerId, Expression<Func<bodyaccountRelationsInputItem[]>> bodyaccountRelations, Expression<Func<string>> bodycreated = null, Expression<Func<double>> bodyvaluebaseValue = null, Expression<Func<string>> bodyvaluecurrencyId = null, Expression<Func<double>> bodyvaluevalueForeign = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyranking = null, Expression<Func<string>> bodyunitId = null, Expression<Func<bodycontactRelationsInputItem[]>> bodycontactRelations = null)
+        public IBodyWorkflowAction<OpportunitiesCreateResponse> OpportunitiesCreate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyclosingDate, [WorkflowExpression] Func<string> bodyopptyTypeId, [WorkflowExpression] Func<string> bodystepId, [WorkflowExpression] Func<string> bodyownerId, [WorkflowExpression] Func<bodyaccountRelationsInputItem[]> bodyaccountRelations, [WorkflowExpression] Func<string> bodycreated = null, [WorkflowExpression] Func<double> bodyvaluebaseValue = null, [WorkflowExpression] Func<string> bodyvaluecurrencyId = null, [WorkflowExpression] Func<double> bodyvaluevalueForeign = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodyranking = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<bodycontactRelationsInputItem[]> bodycontactRelations = null)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Opportunities", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodycreated != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["created"] = ExpressionConverter.ConvertO(bodycreated);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodycreated != null)
+                {
+                    body["created"] = SourceExpressionConverter.ConvertToken(bodycreated);
+                    bodypropCount++;
+                }
 
-            var valueObject = new JObject();
-            var valueObjectpropCount = 0;
-            if (bodyvaluebaseValue != null)
-            {
-                valueObject["base_value"] = ExpressionConverter.ConvertO(bodyvaluebaseValue);
-                valueObjectpropCount++;
-            }
+                var valueObject = new JObject();
+                var valueObjectpropCount = 0;
+                if (bodyvaluebaseValue != null)
+                {
+                    valueObject["base_value"] = SourceExpressionConverter.ConvertToken(bodyvaluebaseValue);
+                    valueObjectpropCount++;
+                }
 
-            if (bodyvaluecurrencyId != null)
-            {
-                valueObject["currency_id"] = ExpressionConverter.ConvertO(bodyvaluecurrencyId);
-                valueObjectpropCount++;
-            }
+                if (bodyvaluecurrencyId != null)
+                {
+                    valueObject["currency_id"] = SourceExpressionConverter.ConvertToken(bodyvaluecurrencyId);
+                    valueObjectpropCount++;
+                }
 
-            if (bodyvaluevalueForeign != null)
-            {
-                valueObject["value_foreign"] = ExpressionConverter.ConvertO(bodyvaluevalueForeign);
-                valueObjectpropCount++;
-            }
+                if (bodyvaluevalueForeign != null)
+                {
+                    valueObject["value_foreign"] = SourceExpressionConverter.ConvertToken(bodyvaluevalueForeign);
+                    valueObjectpropCount++;
+                }
 
-            if (valueObjectpropCount > 0)
-            {
-                body["value"] = valueObject;
+                if (valueObjectpropCount > 0)
+                {
+                    body["value"] = valueObject;
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["closing_date"] = SourceExpressionConverter.ConvertToken(bodyclosingDate);
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["closing_date"] = ExpressionConverter.ConvertO(bodyclosingDate);
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                if (bodyranking != null)
+                {
+                    body["ranking"] = SourceExpressionConverter.ConvertToken(bodyranking);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodyranking != null)
-            {
-                body["ranking"] = ExpressionConverter.ConvertO(bodyranking);
+                body["oppty_type_id"] = SourceExpressionConverter.ConvertToken(bodyopptyTypeId);
                 bodypropCount++;
-            }
+                body["step_id"] = SourceExpressionConverter.ConvertToken(bodystepId);
+                if (bodyunitId != null)
+                {
+                    body["unit_id"] = SourceExpressionConverter.ConvertToken(bodyunitId);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["oppty_type_id"] = ExpressionConverter.ConvertO(bodyopptyTypeId);
-            bodypropCount++;
-            body["step_id"] = ExpressionConverter.ConvertO(bodystepId);
-            if (bodyunitId != null)
-            {
-                body["unit_id"] = ExpressionConverter.ConvertO(bodyunitId);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["owner_id"] = ExpressionConverter.ConvertO(bodyownerId);
-            bodypropCount++;
-            body["account_relations"] = ExpressionConverter.ConvertO(bodyaccountRelations);
-            if (bodycontactRelations != null)
-            {
-                body["contact_relations"] = ExpressionConverter.ConvertO(bodycontactRelations);
+                body["owner_id"] = SourceExpressionConverter.ConvertToken(bodyownerId);
                 bodypropCount++;
+                body["account_relations"] = SourceExpressionConverter.ConvertToken(bodyaccountRelations);
+                if (bodycontactRelations != null)
+                {
+                    body["contact_relations"] = SourceExpressionConverter.ConvertToken(bodycontactRelations);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<OpportunitiesCreateResponse>(callPayload);
+            return new ApiConnectionAction<OpportunitiesCreateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<OpportunitiesDeleteResponse> OpportunitiesDelete(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<OpportunitiesDeleteResponse> OpportunitiesDelete([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            return new ApiConnectionAction<OpportunitiesDeleteResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OpportunitiesDeleteResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<OpportunitiesGetResponse> OpportunitiesGet(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<OpportunitiesGetResponse> OpportunitiesGet([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            return new ApiConnectionAction<OpportunitiesGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OpportunitiesGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pipelinercrm")]
-        public IBodyWorkflowAction<OpportunitiesUpdateResponse> OpportunitiesUpdate(Expression<Func<string>> serviceUrl, Expression<Func<string>> spaceId, Expression<Func<string>> id, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodyname = null, Expression<Func<double>> bodyvaluebaseValue = null, Expression<Func<string>> bodyvaluecurrencyId = null, Expression<Func<double>> bodyvaluevalueForeign = null, Expression<Func<string>> bodyclosingDate = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyranking = null, Expression<Func<string>> bodyopptyTypeId = null, Expression<Func<string>> bodystepId = null, Expression<Func<string>> bodyunitId = null, Expression<Func<string>> bodyownerId = null)
+        public IBodyWorkflowAction<OpportunitiesUpdateResponse> OpportunitiesUpdate([WorkflowExpression] Func<string> serviceUrl, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycreated = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<double> bodyvaluebaseValue = null, [WorkflowExpression] Func<string> bodyvaluecurrencyId = null, [WorkflowExpression] Func<double> bodyvaluevalueForeign = null, [WorkflowExpression] Func<string> bodyclosingDate = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodyranking = null, [WorkflowExpression] Func<string> bodyopptyTypeId = null, [WorkflowExpression] Func<string> bodystepId = null, [WorkflowExpression] Func<string> bodyunitId = null, [WorkflowExpression] Func<string> bodyownerId = null)
         {
-            var apiCallPath = String.Format("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["service_url"] = ExpressionConverter.Convert(serviceUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycreated != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["created"] = ExpressionConverter.ConvertO(bodycreated);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v100/rest/spaces/{0}/entities/Opportunities/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["service_url"] = SourceExpressionConverter.ConvertO(serviceUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycreated != null)
+                {
+                    body["created"] = SourceExpressionConverter.ConvertToken(bodycreated);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                var valueObject = new JObject();
+                var valueObjectpropCount = 0;
+                if (bodyvaluebaseValue != null)
+                {
+                    valueObject["base_value"] = SourceExpressionConverter.ConvertToken(bodyvaluebaseValue);
+                    valueObjectpropCount++;
+                }
+
+                if (bodyvaluecurrencyId != null)
+                {
+                    valueObject["currency_id"] = SourceExpressionConverter.ConvertToken(bodyvaluecurrencyId);
+                    valueObjectpropCount++;
+                }
+
+                if (bodyvaluevalueForeign != null)
+                {
+                    valueObject["value_foreign"] = SourceExpressionConverter.ConvertToken(bodyvaluevalueForeign);
+                    valueObjectpropCount++;
+                }
+
+                if (valueObjectpropCount > 0)
+                {
+                    body["value"] = valueObject;
+                    bodypropCount++;
+                }
+
+                if (bodyclosingDate != null)
+                {
+                    body["closing_date"] = SourceExpressionConverter.ConvertToken(bodyclosingDate);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyranking != null)
+                {
+                    body["ranking"] = SourceExpressionConverter.ConvertToken(bodyranking);
+                    bodypropCount++;
+                }
+
+                if (bodyopptyTypeId != null)
+                {
+                    body["oppty_type_id"] = SourceExpressionConverter.ConvertToken(bodyopptyTypeId);
+                    bodypropCount++;
+                }
+
+                if (bodystepId != null)
+                {
+                    body["step_id"] = SourceExpressionConverter.ConvertToken(bodystepId);
+                    bodypropCount++;
+                }
+
+                if (bodyunitId != null)
+                {
+                    body["unit_id"] = SourceExpressionConverter.ConvertToken(bodyunitId);
+                    bodypropCount++;
+                }
+
+                if (bodyownerId != null)
+                {
+                    body["owner_id"] = SourceExpressionConverter.ConvertToken(bodyownerId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            var valueObject = new JObject();
-            var valueObjectpropCount = 0;
-            if (bodyvaluebaseValue != null)
-            {
-                valueObject["base_value"] = ExpressionConverter.ConvertO(bodyvaluebaseValue);
-                valueObjectpropCount++;
-            }
-
-            if (bodyvaluecurrencyId != null)
-            {
-                valueObject["currency_id"] = ExpressionConverter.ConvertO(bodyvaluecurrencyId);
-                valueObjectpropCount++;
-            }
-
-            if (bodyvaluevalueForeign != null)
-            {
-                valueObject["value_foreign"] = ExpressionConverter.ConvertO(bodyvaluevalueForeign);
-                valueObjectpropCount++;
-            }
-
-            if (valueObjectpropCount > 0)
-            {
-                body["value"] = valueObject;
-                bodypropCount++;
-            }
-
-            if (bodyclosingDate != null)
-            {
-                body["closing_date"] = ExpressionConverter.ConvertO(bodyclosingDate);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodyranking != null)
-            {
-                body["ranking"] = ExpressionConverter.ConvertO(bodyranking);
-                bodypropCount++;
-            }
-
-            if (bodyopptyTypeId != null)
-            {
-                body["oppty_type_id"] = ExpressionConverter.ConvertO(bodyopptyTypeId);
-                bodypropCount++;
-            }
-
-            if (bodystepId != null)
-            {
-                body["step_id"] = ExpressionConverter.ConvertO(bodystepId);
-                bodypropCount++;
-            }
-
-            if (bodyunitId != null)
-            {
-                body["unit_id"] = ExpressionConverter.ConvertO(bodyunitId);
-                bodypropCount++;
-            }
-
-            if (bodyownerId != null)
-            {
-                body["owner_id"] = ExpressionConverter.ConvertO(bodyownerId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<OpportunitiesUpdateResponse>(callPayload);
+            return new ApiConnectionAction<OpportunitiesUpdateResponse>(BuildSourceInput);
         }
     }
 
@@ -1353,16 +1443,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
     public enum bodyaccountClassInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5
     }
 
     public class AccountsCreateResponse
@@ -1715,14 +1800,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
     public enum bodygenderInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public class bodyaccountRelationsInputItem
@@ -2684,26 +2765,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
 
     public enum bodypriorityInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public enum bodystatusInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5
     }
 
     public class bodyaccountRelationsInputItem2

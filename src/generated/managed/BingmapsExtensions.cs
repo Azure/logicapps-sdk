@@ -12,101 +12,121 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
     public class BingmapsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
-        public IBodyWorkflowAction<GetLocationResponse> GetLocationByPoint(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<string>> includeEntityTypes = null, Expression<Func<bool>> includeNeighborhood = null, Expression<Func<bool>> include = null)
+        public IBodyWorkflowAction<GetLocationResponse> GetLocationByPoint([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<string> includeEntityTypes = null, [WorkflowExpression] Func<bool> includeNeighborhood = null, [WorkflowExpression] Func<bool> include = null)
         {
-            var apiCallPath = "/REST/v1/Locations/pointPlaceHolder";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
-            if (includeEntityTypes != null)
-                callPayload.Queries["includeEntityTypes"] = ExpressionConverter.Convert(includeEntityTypes);
-            callPayload.Queries["includeNeighborhood"] = Convert.ToString(true);
-            if (includeNeighborhood != null)
-                callPayload.Queries["includeNeighborhood"] = ExpressionConverter.Convert(includeNeighborhood);
-            callPayload.Queries["include"] = Convert.ToString(true);
-            if (include != null)
-                callPayload.Queries["include"] = ExpressionConverter.Convert(include);
-            return new ApiConnectionAction<GetLocationResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/REST/v1/Locations/pointPlaceHolder";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["latitude"] = SourceExpressionConverter.ConvertO(latitude);
+                callPayload.Queries["longitude"] = SourceExpressionConverter.ConvertO(longitude);
+                if (includeEntityTypes != null)
+                    callPayload.Queries["includeEntityTypes"] = SourceExpressionConverter.ConvertO(includeEntityTypes);
+                callPayload.Queries["includeNeighborhood"] = Convert.ToString(true);
+                if (includeNeighborhood != null)
+                    callPayload.Queries["includeNeighborhood"] = SourceExpressionConverter.ConvertO(includeNeighborhood);
+                callPayload.Queries["include"] = Convert.ToString(true);
+                if (include != null)
+                    callPayload.Queries["include"] = SourceExpressionConverter.ConvertO(include);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetLocationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
-        public IBodyWorkflowAction<GetLocationResponse> GetLocationByAddress(Expression<Func<string>> addressLine = null, Expression<Func<string>> locality = null, Expression<Func<string>> adminDistrict = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> countryRegion = null)
+        public IBodyWorkflowAction<GetLocationResponse> GetLocationByAddress([WorkflowExpression] Func<string> addressLine = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<string> adminDistrict = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> countryRegion = null)
         {
-            var apiCallPath = "/REST/v1/Locations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (addressLine != null)
-                callPayload.Queries["addressLine"] = ExpressionConverter.Convert(addressLine);
-            if (locality != null)
-                callPayload.Queries["locality"] = ExpressionConverter.Convert(locality);
-            if (adminDistrict != null)
-                callPayload.Queries["adminDistrict"] = ExpressionConverter.Convert(adminDistrict);
-            if (postalCode != null)
-                callPayload.Queries["postalCode"] = ExpressionConverter.Convert(postalCode);
-            if (countryRegion != null)
-                callPayload.Queries["countryRegion"] = ExpressionConverter.Convert(countryRegion);
-            return new ApiConnectionAction<GetLocationResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/REST/v1/Locations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (addressLine != null)
+                    callPayload.Queries["addressLine"] = SourceExpressionConverter.ConvertO(addressLine);
+                if (locality != null)
+                    callPayload.Queries["locality"] = SourceExpressionConverter.ConvertO(locality);
+                if (adminDistrict != null)
+                    callPayload.Queries["adminDistrict"] = SourceExpressionConverter.ConvertO(adminDistrict);
+                if (postalCode != null)
+                    callPayload.Queries["postalCode"] = SourceExpressionConverter.ConvertO(postalCode);
+                if (countryRegion != null)
+                    callPayload.Queries["countryRegion"] = SourceExpressionConverter.ConvertO(countryRegion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetLocationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
-        public IBodyWorkflowAction<string> GetMap(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<imagerySetInput>> imagerySet, Expression<Func<string>> zoomLevel, Expression<Func<formatInput>> format = null, Expression<Func<string>> mapSize = null, Expression<Func<double>> pushpinLatitude = null, Expression<Func<double>> pushpinLongitude = null, Expression<Func<int>> pushpinIconStyle = null, Expression<Func<string>> pushpinLabel = null)
+        public IBodyWorkflowAction<string> GetMap([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<imagerySetInput> imagerySet, [WorkflowExpression] Func<string> zoomLevel, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<string> mapSize = null, [WorkflowExpression] Func<double> pushpinLatitude = null, [WorkflowExpression] Func<double> pushpinLongitude = null, [WorkflowExpression] Func<int> pushpinIconStyle = null, [WorkflowExpression] Func<string> pushpinLabel = null)
         {
-            var apiCallPath = String.Format("/V2/REST/v1/Imagery/Map/{0}/pointPlaceHolder/{1}", ExpressionConverter.ConvertWithUrlEncoding(imagerySet, 1), ExpressionConverter.ConvertWithUrlEncoding(zoomLevel, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (mapSize != null)
-                callPayload.Queries["mapSize"] = ExpressionConverter.Convert(mapSize);
-            if (pushpinLatitude != null)
-                callPayload.Queries["pushpinLatitude"] = ExpressionConverter.Convert(pushpinLatitude);
-            if (pushpinLongitude != null)
-                callPayload.Queries["pushpinLongitude"] = ExpressionConverter.Convert(pushpinLongitude);
-            if (pushpinIconStyle != null)
-                callPayload.Queries["pushpinIconStyle"] = ExpressionConverter.Convert(pushpinIconStyle);
-            if (pushpinLabel != null)
-                callPayload.Queries["pushpinLabel"] = ExpressionConverter.Convert(pushpinLabel);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/V2/REST/v1/Imagery/Map/{0}/pointPlaceHolder/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(imagerySet, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(zoomLevel, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["latitude"] = SourceExpressionConverter.ConvertO(latitude);
+                callPayload.Queries["longitude"] = SourceExpressionConverter.ConvertO(longitude);
+                if (format != null)
+                    callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                if (mapSize != null)
+                    callPayload.Queries["mapSize"] = SourceExpressionConverter.ConvertO(mapSize);
+                if (pushpinLatitude != null)
+                    callPayload.Queries["pushpinLatitude"] = SourceExpressionConverter.ConvertO(pushpinLatitude);
+                if (pushpinLongitude != null)
+                    callPayload.Queries["pushpinLongitude"] = SourceExpressionConverter.ConvertO(pushpinLongitude);
+                if (pushpinIconStyle != null)
+                    callPayload.Queries["pushpinIconStyle"] = SourceExpressionConverter.ConvertO(pushpinIconStyle);
+                if (pushpinLabel != null)
+                    callPayload.Queries["pushpinLabel"] = SourceExpressionConverter.ConvertO(pushpinLabel);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
-        public IBodyWorkflowAction<GetRouteResponse> GetRoute(Expression<Func<string>> wp0, Expression<Func<string>> wp1, Expression<Func<travelModeInput>> travelMode, Expression<Func<bool>> avoidHighways = null, Expression<Func<bool>> avoidTolls = null, Expression<Func<bool>> avoidFerry = null, Expression<Func<bool>> avoidMinimizeHighways = null, Expression<Func<bool>> avoidMinimizeTolls = null, Expression<Func<bool>> avoidBorderCrossing = null, Expression<Func<optimizeInput>> optimize = null, Expression<Func<distanceUnitInput>> distanceUnit = null, Expression<Func<string>> dateTime = null, Expression<Func<timeTypeInput>> timeType = null)
+        public IBodyWorkflowAction<GetRouteResponse> GetRoute([WorkflowExpression] Func<string> wp0, [WorkflowExpression] Func<string> wp1, [WorkflowExpression] Func<travelModeInput> travelMode, [WorkflowExpression] Func<bool> avoidHighways = null, [WorkflowExpression] Func<bool> avoidTolls = null, [WorkflowExpression] Func<bool> avoidFerry = null, [WorkflowExpression] Func<bool> avoidMinimizeHighways = null, [WorkflowExpression] Func<bool> avoidMinimizeTolls = null, [WorkflowExpression] Func<bool> avoidBorderCrossing = null, [WorkflowExpression] Func<optimizeInput> optimize = null, [WorkflowExpression] Func<distanceUnitInput> distanceUnit = null, [WorkflowExpression] Func<string> dateTime = null, [WorkflowExpression] Func<timeTypeInput> timeType = null)
         {
-            var apiCallPath = String.Format("/V3/REST/V1/Routes/{0}", ExpressionConverter.ConvertWithUrlEncoding(travelMode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["wp.0"] = ExpressionConverter.Convert(wp0);
-            callPayload.Queries["wp.1"] = ExpressionConverter.Convert(wp1);
-            callPayload.Queries["avoid_highways"] = Convert.ToString(false);
-            if (avoidHighways != null)
-                callPayload.Queries["avoid_highways"] = ExpressionConverter.Convert(avoidHighways);
-            callPayload.Queries["avoid_tolls"] = Convert.ToString(false);
-            if (avoidTolls != null)
-                callPayload.Queries["avoid_tolls"] = ExpressionConverter.Convert(avoidTolls);
-            callPayload.Queries["avoid_ferry"] = Convert.ToString(false);
-            if (avoidFerry != null)
-                callPayload.Queries["avoid_ferry"] = ExpressionConverter.Convert(avoidFerry);
-            callPayload.Queries["avoid_minimizeHighways"] = Convert.ToString(false);
-            if (avoidMinimizeHighways != null)
-                callPayload.Queries["avoid_minimizeHighways"] = ExpressionConverter.Convert(avoidMinimizeHighways);
-            callPayload.Queries["avoid_minimizeTolls"] = Convert.ToString(false);
-            if (avoidMinimizeTolls != null)
-                callPayload.Queries["avoid_minimizeTolls"] = ExpressionConverter.Convert(avoidMinimizeTolls);
-            callPayload.Queries["avoid_borderCrossing"] = Convert.ToString(false);
-            if (avoidBorderCrossing != null)
-                callPayload.Queries["avoid_borderCrossing"] = ExpressionConverter.Convert(avoidBorderCrossing);
-            if (optimize != null)
-                callPayload.Queries["optimize"] = ExpressionConverter.Convert(optimize);
-            if (distanceUnit != null)
-                callPayload.Queries["distanceUnit"] = ExpressionConverter.Convert(distanceUnit);
-            if (dateTime != null)
-                callPayload.Queries["dateTime"] = ExpressionConverter.Convert(dateTime);
-            if (timeType != null)
-                callPayload.Queries["timeType"] = ExpressionConverter.Convert(timeType);
-            return new ApiConnectionAction<GetRouteResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/V3/REST/V1/Routes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(travelMode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["wp.0"] = SourceExpressionConverter.ConvertO(wp0);
+                callPayload.Queries["wp.1"] = SourceExpressionConverter.ConvertO(wp1);
+                callPayload.Queries["avoid_highways"] = Convert.ToString(false);
+                if (avoidHighways != null)
+                    callPayload.Queries["avoid_highways"] = SourceExpressionConverter.ConvertO(avoidHighways);
+                callPayload.Queries["avoid_tolls"] = Convert.ToString(false);
+                if (avoidTolls != null)
+                    callPayload.Queries["avoid_tolls"] = SourceExpressionConverter.ConvertO(avoidTolls);
+                callPayload.Queries["avoid_ferry"] = Convert.ToString(false);
+                if (avoidFerry != null)
+                    callPayload.Queries["avoid_ferry"] = SourceExpressionConverter.ConvertO(avoidFerry);
+                callPayload.Queries["avoid_minimizeHighways"] = Convert.ToString(false);
+                if (avoidMinimizeHighways != null)
+                    callPayload.Queries["avoid_minimizeHighways"] = SourceExpressionConverter.ConvertO(avoidMinimizeHighways);
+                callPayload.Queries["avoid_minimizeTolls"] = Convert.ToString(false);
+                if (avoidMinimizeTolls != null)
+                    callPayload.Queries["avoid_minimizeTolls"] = SourceExpressionConverter.ConvertO(avoidMinimizeTolls);
+                callPayload.Queries["avoid_borderCrossing"] = Convert.ToString(false);
+                if (avoidBorderCrossing != null)
+                    callPayload.Queries["avoid_borderCrossing"] = SourceExpressionConverter.ConvertO(avoidBorderCrossing);
+                if (optimize != null)
+                    callPayload.Queries["optimize"] = SourceExpressionConverter.Convert(optimize);
+                if (distanceUnit != null)
+                    callPayload.Queries["distanceUnit"] = SourceExpressionConverter.Convert(distanceUnit);
+                if (dateTime != null)
+                    callPayload.Queries["dateTime"] = SourceExpressionConverter.ConvertO(dateTime);
+                if (timeType != null)
+                    callPayload.Queries["timeType"] = SourceExpressionConverter.Convert(timeType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRouteResponse>(BuildSourceInput);
         }
     }
 

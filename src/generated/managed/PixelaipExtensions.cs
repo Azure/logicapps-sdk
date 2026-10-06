@@ -14,501 +14,598 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<UserDeleteResponse> UserDelete()
         {
-            var apiCallPath = "/v1/users/";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserDeleteResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/users/";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserDeleteResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<UserPostResponse> User(Expression<Func<string>> bodytoken = null, Expression<Func<string>> bodyusername = null, Expression<Func<bodyagreeTermsOfServiceInput>> bodyagreeTermsOfService = null, Expression<Func<bodynotMinorInput>> bodynotMinor = null, Expression<Func<string>> bodythanksCode = null)
+        public IBodyWorkflowAction<UserPostResponse> User([WorkflowExpression] Func<string> bodytoken = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<bodyagreeTermsOfServiceInput> bodyagreeTermsOfService = null, [WorkflowExpression] Func<bodynotMinorInput> bodynotMinor = null, [WorkflowExpression] Func<string> bodythanksCode = null)
         {
-            var apiCallPath = "/v1/users/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytoken != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["token"] = ExpressionConverter.ConvertO(bodytoken);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v1/users/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytoken != null)
+                {
+                    body["token"] = SourceExpressionConverter.ConvertToken(bodytoken);
+                    bodypropCount++;
+                }
 
-            if (bodyusername != null)
-            {
-                body["username"] = ExpressionConverter.ConvertO(bodyusername);
-                bodypropCount++;
-            }
+                if (bodyusername != null)
+                {
+                    body["username"] = SourceExpressionConverter.ConvertToken(bodyusername);
+                    bodypropCount++;
+                }
 
-            if (bodyagreeTermsOfService != null)
-            {
                 if (bodyagreeTermsOfService != null)
                 {
-                    body["agreeTermsOfService"] = ExpressionConverter.ConvertO(bodyagreeTermsOfService);
+                    if (bodyagreeTermsOfService != null)
+                    {
+                        body["agreeTermsOfService"] = SourceExpressionConverter.Convert(bodyagreeTermsOfService);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["agreeTermsOfService"] = "yes";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["agreeTermsOfService"] = "yes";
-                bodypropCount++;
-            }
-
-            if (bodynotMinor != null)
-            {
                 if (bodynotMinor != null)
                 {
-                    body["notMinor"] = ExpressionConverter.ConvertO(bodynotMinor);
+                    if (bodynotMinor != null)
+                    {
+                        body["notMinor"] = SourceExpressionConverter.Convert(bodynotMinor);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["notMinor"] = "yes";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["notMinor"] = "yes";
-                bodypropCount++;
+                if (bodythanksCode != null)
+                {
+                    body["thanksCode"] = SourceExpressionConverter.ConvertToken(bodythanksCode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodythanksCode != null)
-            {
-                body["thanksCode"] = ExpressionConverter.ConvertO(bodythanksCode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserPostResponse>(callPayload);
+            return new ApiConnectionAction<UserPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<TokenPutResponse> TokenPut(Expression<Func<string>> bodynewToken, Expression<Func<string>> bodythanksCode = null)
+        public IBodyWorkflowAction<TokenPutResponse> TokenPut([WorkflowExpression] Func<string> bodynewToken, [WorkflowExpression] Func<string> bodythanksCode = null)
         {
-            var apiCallPath = "/v1/users/";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["newToken"] = ExpressionConverter.ConvertO(bodynewToken);
-            if (bodythanksCode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["thanksCode"] = ExpressionConverter.ConvertO(bodythanksCode);
+                var apiCallPath = "/v1/users/";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["newToken"] = SourceExpressionConverter.ConvertToken(bodynewToken);
+                if (bodythanksCode != null)
+                {
+                    body["thanksCode"] = SourceExpressionConverter.ConvertToken(bodythanksCode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TokenPutResponse>(callPayload);
+            return new ApiConnectionAction<TokenPutResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<ProfilePutResponse> ProfilePut(Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodygravatarIconEmail = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyaboutURL = null, Expression<Func<string[]>> bodycontributeURLs = null, Expression<Func<string>> bodypinnedGraphID = null)
+        public IBodyWorkflowAction<ProfilePutResponse> ProfilePut([WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodygravatarIconEmail = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<string> bodyaboutURL = null, [WorkflowExpression] Func<string[]> bodycontributeURLs = null, [WorkflowExpression] Func<string> bodypinnedGraphId = null)
         {
-            var apiCallPath = "/@";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydisplayName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-                bodypropCount++;
+                var apiCallPath = "/@";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydisplayName != null)
+                {
+                    body["displayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
+                    bodypropCount++;
+                }
+
+                if (bodygravatarIconEmail != null)
+                {
+                    body["gravatarIconEmail"] = SourceExpressionConverter.ConvertToken(bodygravatarIconEmail);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodytimezone != null)
+                {
+                    body["timezone"] = SourceExpressionConverter.ConvertToken(bodytimezone);
+                    bodypropCount++;
+                }
+
+                if (bodyaboutURL != null)
+                {
+                    body["aboutURL"] = SourceExpressionConverter.ConvertToken(bodyaboutURL);
+                    bodypropCount++;
+                }
+
+                if (bodycontributeURLs != null)
+                {
+                    body["contributeURLs"] = SourceExpressionConverter.ConvertToken(bodycontributeURLs);
+                    bodypropCount++;
+                }
+
+                if (bodypinnedGraphId != null)
+                {
+                    body["pinnedGraphID"] = SourceExpressionConverter.ConvertToken(bodypinnedGraphId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodygravatarIconEmail != null)
-            {
-                body["gravatarIconEmail"] = ExpressionConverter.ConvertO(bodygravatarIconEmail);
-                bodypropCount++;
-            }
-
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodytimezone != null)
-            {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
-                bodypropCount++;
-            }
-
-            if (bodyaboutURL != null)
-            {
-                body["aboutURL"] = ExpressionConverter.ConvertO(bodyaboutURL);
-                bodypropCount++;
-            }
-
-            if (bodycontributeURLs != null)
-            {
-                body["contributeURLs"] = ExpressionConverter.ConvertO(bodycontributeURLs);
-                bodypropCount++;
-            }
-
-            if (bodypinnedGraphID != null)
-            {
-                body["pinnedGraphID"] = ExpressionConverter.ConvertO(bodypinnedGraphID);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ProfilePutResponse>(callPayload);
+            return new ApiConnectionAction<ProfilePutResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
         public IBodyWorkflowAction<GraphsGetResponse> GraphsGet()
         {
-            var apiCallPath = "/v1/users/graphs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GraphsGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/users/graphs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GraphsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphDeleteResponse> GraphDelete(Expression<Func<string>> graphID)
+        public IBodyWorkflowAction<GraphDeleteResponse> GraphDelete([WorkflowExpression] Func<string> graphId)
         {
-            var apiCallPath = "/v1/users/graphs";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            return new ApiConnectionAction<GraphDeleteResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/users/graphs";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["graphID"] = SourceExpressionConverter.ConvertO(graphId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GraphDeleteResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphPostResponse> Graph(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname, Expression<Func<string>> bodyunit, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyselfSufficient = null, Expression<Func<bool>> bodyisSecret = null, Expression<Func<bool>> bodypublishOptionalData = null)
+        public IBodyWorkflowAction<GraphPostResponse> Graph([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyunit, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<bodycolorInput> bodycolor, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<string> bodyselfSufficient = null, [WorkflowExpression] Func<bool> bodyisSecret = null, [WorkflowExpression] Func<bool> bodypublishOptionalData = null)
         {
-            var apiCallPath = "/v1/users/graphs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["unit"] = ExpressionConverter.ConvertO(bodyunit);
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            bodypropCount++;
-            body["color"] = ExpressionConverter.ConvertO(bodycolor);
-            if (bodytimezone != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                var apiCallPath = "/v1/users/graphs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyselfSufficient != null)
-            {
-                body["selfSufficient"] = ExpressionConverter.ConvertO(bodyselfSufficient);
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
-            }
-
-            if (bodyisSecret != null)
-            {
-                body["isSecret"] = ExpressionConverter.ConvertO(bodyisSecret);
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
-            }
-
-            if (bodypublishOptionalData != null)
-            {
-                body["publishOptionalData"] = ExpressionConverter.ConvertO(bodypublishOptionalData);
+                body["unit"] = SourceExpressionConverter.ConvertToken(bodyunit);
                 bodypropCount++;
+                body["type"] = SourceExpressionConverter.Convert(bodytype);
+                bodypropCount++;
+                body["color"] = SourceExpressionConverter.Convert(bodycolor);
+                if (bodytimezone != null)
+                {
+                    body["timezone"] = SourceExpressionConverter.ConvertToken(bodytimezone);
+                    bodypropCount++;
+                }
+
+                if (bodyselfSufficient != null)
+                {
+                    body["selfSufficient"] = SourceExpressionConverter.ConvertToken(bodyselfSufficient);
+                    bodypropCount++;
+                }
+
+                if (bodyisSecret != null)
+                {
+                    body["isSecret"] = SourceExpressionConverter.ConvertToken(bodyisSecret);
+                    bodypropCount++;
+                }
+
+                if (bodypublishOptionalData != null)
+                {
+                    body["publishOptionalData"] = SourceExpressionConverter.ConvertToken(bodypublishOptionalData);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GraphPostResponse>(callPayload);
+            return new ApiConnectionAction<GraphPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphPutResponse> GraphPut(Expression<Func<string>> graphID, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyunit = null, Expression<Func<bodycolorInput>> bodycolor = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyselfSufficient = null, Expression<Func<bool>> bodyisSecret = null, Expression<Func<bool>> bodypublishOptionalData = null)
+        public IBodyWorkflowAction<GraphPutResponse> GraphPut([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyunit = null, [WorkflowExpression] Func<bodycolorInput> bodycolor = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<string> bodyselfSufficient = null, [WorkflowExpression] Func<bool> bodyisSecret = null, [WorkflowExpression] Func<bool> bodypublishOptionalData = null)
         {
-            var apiCallPath = "/v1/users/graphs";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v1/users/graphs";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["graphID"] = SourceExpressionConverter.ConvertO(graphId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodyunit != null)
-            {
                 if (bodyunit != null)
                 {
-                    body["unit"] = ExpressionConverter.ConvertO(bodyunit);
+                    if (bodyunit != null)
+                    {
+                        body["unit"] = SourceExpressionConverter.ConvertToken(bodyunit);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["unit"] = "commit";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["unit"] = "commit";
-                bodypropCount++;
-            }
-
-            if (bodycolor != null)
-            {
                 if (bodycolor != null)
                 {
-                    body["color"] = ExpressionConverter.ConvertO(bodycolor);
+                    if (bodycolor != null)
+                    {
+                        body["color"] = SourceExpressionConverter.Convert(bodycolor);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["color"] = "shibafu";
                     bodypropCount++;
                 }
 
+                if (bodytimezone != null)
+                {
+                    body["timezone"] = SourceExpressionConverter.ConvertToken(bodytimezone);
+                    bodypropCount++;
+                }
+
+                if (bodyselfSufficient != null)
+                {
+                    body["selfSufficient"] = SourceExpressionConverter.ConvertToken(bodyselfSufficient);
+                    bodypropCount++;
+                }
+
+                if (bodyisSecret != null)
+                {
+                    body["isSecret"] = SourceExpressionConverter.ConvertToken(bodyisSecret);
+                    bodypropCount++;
+                }
+
+                if (bodypublishOptionalData != null)
+                {
+                    body["publishOptionalData"] = SourceExpressionConverter.ConvertToken(bodypublishOptionalData);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GraphPutResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
+        public IBodyWorkflowAction<GraphGetResponse> GraphGet([WorkflowExpression] Func<string> graphId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/users/graphs/graph-def";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["graphID"] = SourceExpressionConverter.ConvertO(graphId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GraphGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
+        public IBodyWorkflowAction<GraphSVGGetResponse> GraphSVGGet([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<modeInput> mode = null, [WorkflowExpression] Func<appearanceInput> appearance = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/users/graphs/graphSVG";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["graphID"] = SourceExpressionConverter.ConvertO(graphId);
+                if (date != null)
+                    callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                if (mode != null)
+                    callPayload.Queries["mode"] = SourceExpressionConverter.Convert(mode);
+                if (appearance != null)
+                    callPayload.Queries["appearance"] = SourceExpressionConverter.Convert(appearance);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GraphSVGGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
+        public IBodyWorkflowAction<PixelsGetResponse> PixelsGet([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<bool> withBody = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/users/graphs/pixels";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["graphID"] = SourceExpressionConverter.ConvertO(graphId);
+                if (from != null)
+                    callPayload.Queries["from"] = SourceExpressionConverter.ConvertO(from);
+                if (to != null)
+                    callPayload.Queries["to"] = SourceExpressionConverter.ConvertO(to);
+                if (withBody != null)
+                    callPayload.Queries["withBody"] = SourceExpressionConverter.ConvertO(withBody);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PixelsGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
+        public IBodyWorkflowAction<StatsGetResponse> StatsGet([WorkflowExpression] Func<string> graphId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/users/graphs/stats";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["graphID"] = SourceExpressionConverter.ConvertO(graphId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StatsGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
+        public IBodyWorkflowAction<PixelPostResponse> Pixel([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<string> bodyquantity)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/users/graphs/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["graphID"] = SourceExpressionConverter.ConvertO(graphId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-            else
-            {
-                body["color"] = "shibafu";
+                body["date"] = SourceExpressionConverter.ConvertToken(bodydate);
                 bodypropCount++;
+                body["quantity"] = SourceExpressionConverter.ConvertToken(bodyquantity);
+                var optionalDataObject = new JObject();
+                var optionalDataObjectpropCount = 0;
+                if (optionalDataObjectpropCount > 0)
+                {
+                    body["optionalData"] = optionalDataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytimezone != null)
+            return new ApiConnectionAction<PixelPostResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
+        public IBodyWorkflowAction<PixelGetResponse> PixelGet([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> yyyyMMdd)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
-                bodypropCount++;
+                var apiCallPath = "/v1/users/graphs/pixel";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["graphID"] = SourceExpressionConverter.ConvertO(graphId);
+                callPayload.Queries["yyyyMMdd"] = SourceExpressionConverter.ConvertO(yyyyMMdd);
+                return callPayload;
             }
 
-            if (bodyselfSufficient != null)
+            return new ApiConnectionAction<PixelGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
+        public IBodyWorkflowAction<PixelDeleteResponse> PixelDelete([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> yyyyMMdd)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["selfSufficient"] = ExpressionConverter.ConvertO(bodyselfSufficient);
-                bodypropCount++;
+                var apiCallPath = "/v1/users/graphs/pixel";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["graphID"] = SourceExpressionConverter.ConvertO(graphId);
+                callPayload.Queries["yyyyMMdd"] = SourceExpressionConverter.ConvertO(yyyyMMdd);
+                return callPayload;
             }
 
-            if (bodyisSecret != null)
+            return new ApiConnectionAction<PixelDeleteResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
+        public IBodyWorkflowAction<PixelPutResponse> PixelPut([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> yyyyMMdd)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["isSecret"] = ExpressionConverter.ConvertO(bodyisSecret);
-                bodypropCount++;
+                var apiCallPath = "/v1/users/graphs/pixel";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["graphID"] = SourceExpressionConverter.ConvertO(graphId);
+                callPayload.Queries["yyyyMMdd"] = SourceExpressionConverter.ConvertO(yyyyMMdd);
+                return callPayload;
             }
 
-            if (bodypublishOptionalData != null)
+            return new ApiConnectionAction<PixelPutResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
+        public IBodyWorkflowAction<PixelRetinaGetResponse> PixelRetinaGet([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<string> yyyyMMdd)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["publishOptionalData"] = ExpressionConverter.ConvertO(bodypublishOptionalData);
-                bodypropCount++;
+                var apiCallPath = "/v1/users/graphs/pixel/retina";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["graphID"] = SourceExpressionConverter.ConvertO(graphId);
+                callPayload.Queries["yyyyMMdd"] = SourceExpressionConverter.ConvertO(yyyyMMdd);
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<PixelRetinaGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
+        public IBodyWorkflowAction<PixelIncrementPutResponse> PixelIncrementPut([WorkflowExpression] Func<string> graphId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v1/users/graphs/increment";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (graphId != null)
+                    callPayload.Queries["graphID"] = SourceExpressionConverter.ConvertO(graphId);
+                callPayload.Headers["Content-Length"] = Convert.ToString(0);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GraphPutResponse>(callPayload);
+            return new ApiConnectionAction<PixelIncrementPutResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphGetResponse> GraphGet(Expression<Func<string>> graphID)
+        public IBodyWorkflowAction<PixelDecrementPutResponse> PixelDecrementPut([WorkflowExpression] Func<string> graphId = null)
         {
-            var apiCallPath = "/v1/users/graphs/graph-def";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            return new ApiConnectionAction<GraphGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<GraphSVGGetResponse> GraphSVGGet(Expression<Func<string>> graphID, Expression<Func<string>> date = null, Expression<Func<modeInput>> mode = null, Expression<Func<appearanceInput>> appearance = null)
-        {
-            var apiCallPath = "/v1/users/graphs/graphSVG";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            if (mode != null)
-                callPayload.Queries["mode"] = ExpressionConverter.Convert(mode);
-            if (appearance != null)
-                callPayload.Queries["appearance"] = ExpressionConverter.Convert(appearance);
-            return new ApiConnectionAction<GraphSVGGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelsGetResponse> PixelsGet(Expression<Func<string>> graphID, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<bool>> withBody = null)
-        {
-            var apiCallPath = "/v1/users/graphs/pixels";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            if (withBody != null)
-                callPayload.Queries["withBody"] = ExpressionConverter.Convert(withBody);
-            return new ApiConnectionAction<PixelsGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<StatsGetResponse> StatsGet(Expression<Func<string>> graphID)
-        {
-            var apiCallPath = "/v1/users/graphs/stats";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            return new ApiConnectionAction<StatsGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelPostResponse> Pixel(Expression<Func<string>> graphID, Expression<Func<string>> bodydate, Expression<Func<string>> bodyquantity)
-        {
-            var apiCallPath = "/v1/users/graphs/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["date"] = ExpressionConverter.ConvertO(bodydate);
-            bodypropCount++;
-            body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
-            var optionalDataObject = new JObject();
-            var optionalDataObjectpropCount = 0;
-            if (optionalDataObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["optionalData"] = optionalDataObject;
-                bodypropCount++;
+                var apiCallPath = "/v1/users/graphs/decrement";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (graphId != null)
+                    callPayload.Queries["graphID"] = SourceExpressionConverter.ConvertO(graphId);
+                callPayload.Headers["Content-Length"] = Convert.ToString(0);
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<PixelDecrementPutResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
+        public IBodyWorkflowAction<PixelAddPutResponse> PixelAddPut([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<int> bodyquantity = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v1/users/graphs/add";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["graphID"] = SourceExpressionConverter.ConvertO(graphId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyquantity != null)
+                {
+                    body["quantity"] = SourceExpressionConverter.ConvertToken(bodyquantity);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<PixelPostResponse>(callPayload);
+            return new ApiConnectionAction<PixelAddPutResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelGetResponse> PixelGet(Expression<Func<string>> graphID, Expression<Func<string>> yyyyMMdd)
+        public IBodyWorkflowAction<PixelSubtractPutResponse> PixelSubtractPut([WorkflowExpression] Func<string> graphId, [WorkflowExpression] Func<int> bodyquantity = null)
         {
-            var apiCallPath = "/v1/users/graphs/pixel";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            callPayload.Queries["yyyyMMdd"] = ExpressionConverter.Convert(yyyyMMdd);
-            return new ApiConnectionAction<PixelGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelDeleteResponse> PixelDelete(Expression<Func<string>> graphID, Expression<Func<string>> yyyyMMdd)
-        {
-            var apiCallPath = "/v1/users/graphs/pixel";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            callPayload.Queries["yyyyMMdd"] = ExpressionConverter.Convert(yyyyMMdd);
-            return new ApiConnectionAction<PixelDeleteResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelPutResponse> PixelPut(Expression<Func<string>> graphID, Expression<Func<string>> yyyyMMdd)
-        {
-            var apiCallPath = "/v1/users/graphs/pixel";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            callPayload.Queries["yyyyMMdd"] = ExpressionConverter.Convert(yyyyMMdd);
-            return new ApiConnectionAction<PixelPutResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelRetinaGetResponse> PixelRetinaGet(Expression<Func<string>> graphID, Expression<Func<string>> yyyyMMdd)
-        {
-            var apiCallPath = "/v1/users/graphs/pixel/retina";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            callPayload.Queries["yyyyMMdd"] = ExpressionConverter.Convert(yyyyMMdd);
-            return new ApiConnectionAction<PixelRetinaGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelIncrementPutResponse> PixelIncrementPut(Expression<Func<string>> graphID = null)
-        {
-            var apiCallPath = "/v1/users/graphs/increment";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (graphID != null)
-                callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            callPayload.Headers["Content-Length"] = Convert.ToString(0);
-            return new ApiConnectionAction<PixelIncrementPutResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelDecrementPutResponse> PixelDecrementPut(Expression<Func<string>> graphID = null)
-        {
-            var apiCallPath = "/v1/users/graphs/decrement";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (graphID != null)
-                callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            callPayload.Headers["Content-Length"] = Convert.ToString(0);
-            return new ApiConnectionAction<PixelDecrementPutResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelAddPutResponse> PixelAddPut(Expression<Func<string>> graphID, Expression<Func<int>> bodyquantity = null)
-        {
-            var apiCallPath = "/v1/users/graphs/add";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyquantity != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
-                bodypropCount++;
+                var apiCallPath = "/v1/users/graphs/subtract";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["graphID"] = SourceExpressionConverter.ConvertO(graphId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyquantity != null)
+                {
+                    body["quantity"] = SourceExpressionConverter.ConvertToken(bodyquantity);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PixelAddPutResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelaip")]
-        public IBodyWorkflowAction<PixelSubtractPutResponse> PixelSubtractPut(Expression<Func<string>> graphID, Expression<Func<int>> bodyquantity = null)
-        {
-            var apiCallPath = "/v1/users/graphs/subtract";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["graphID"] = ExpressionConverter.Convert(graphID);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyquantity != null)
-            {
-                body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PixelSubtractPutResponse>(callPayload);
+            return new ApiConnectionAction<PixelSubtractPutResponse>(BuildSourceInput);
         }
     }
 

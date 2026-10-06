@@ -12,120 +12,185 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
     public class CompanieshouseipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<CompanyByNumberResponse> CompanyByNumber(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<CompanyByNumberResponse> CompanyByNumber([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CompanyByNumberResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CompanyByNumberResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ListPscResponse> ListPsc(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<ListPscResponse> ListPsc([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/persons-with-significant-control-statements", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListPscResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control-statements", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListPscResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ListStatementsPscResponse> ListStatementsPsc(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<ListStatementsPscResponse> ListStatementsPsc([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/persons-with-significant-control", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListStatementsPscResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListStatementsPscResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<IndividualPscResponse> IndividualPsc(Expression<Func<string>> companyNumber, Expression<Func<string>> pCSId)
+        public IBodyWorkflowAction<IndividualPscResponse> IndividualPsc([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> pCSId)
         {
-            var apiCallPath = String.Format("/company/{0}/persons-with-significant-control/individual/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(pCSId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IndividualPscResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control/individual/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pCSId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IndividualPscResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<UKEstablishmentsResponse> UKEstablishments(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<UKEstablishmentsResponse> UKEstablishments([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/uk-establishments", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UKEstablishmentsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/uk-establishments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UKEstablishmentsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse> OfficerAppointmentByOfficerId(Expression<Func<string>> officerId)
+        public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse> OfficerAppointmentByOfficerId([WorkflowExpression] Func<string> officerId)
         {
-            var apiCallPath = String.Format("/officers/{0}/appointments", ExpressionConverter.ConvertWithUrlEncoding(officerId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<OfficerAppointmentByOfficerIdResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/officers/{0}/appointments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(officerId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OfficerAppointmentByOfficerIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse> FilingHistoryByNumberAndId(Expression<Func<string>> companyNumber, Expression<Func<string>> transactionId)
+        public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse> FilingHistoryByNumberAndId([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> transactionId)
         {
-            var apiCallPath = String.Format("/company/{0}/filing-history/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FilingHistoryByNumberAndIdResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FilingHistoryByNumberAndIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ChargesByNumberResponse> ChargesByNumber(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<ChargesByNumberResponse> ChargesByNumber([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/charges", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChargesByNumberResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/charges", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ChargesByNumberResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse> ChargesByNumberAndChargeId(Expression<Func<string>> companyNumber, Expression<Func<string>> chargeId)
+        public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse> ChargesByNumberAndChargeId([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> chargeId)
         {
-            var apiCallPath = String.Format("/company/{0}/charges/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(chargeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChargesByNumberAndChargeIdResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/charges/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(chargeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ChargesByNumberAndChargeIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<AddressByNumberResponse> AddressByNumber(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<AddressByNumberResponse> AddressByNumber([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/registered-office-address", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AddressByNumberResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/registered-office-address", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AddressByNumberResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<CompanyOfficersByNumberResponse> CompanyOfficersByNumber(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<CompanyOfficersByNumberResponse> CompanyOfficersByNumber([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/officers", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CompanyOfficersByNumberResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/officers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CompanyOfficersByNumberResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse> CompanyOfficersByNumberAndAppointmentId(Expression<Func<string>> companyNumber, Expression<Func<string>> appointmentId)
+        public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse> CompanyOfficersByNumberAndAppointmentId([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> appointmentId)
         {
-            var apiCallPath = String.Format("/company/{0}/appointments/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(appointmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CompanyOfficersByNumberAndAppointmentIdResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/appointments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appointmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CompanyOfficersByNumberAndAppointmentIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<FilingHistoryByCompNumberResponse> FilingHistoryByCompNumber(Expression<Func<string>> companyNumber)
+        public IBodyWorkflowAction<FilingHistoryByCompNumberResponse> FilingHistoryByCompNumber([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/filing-history", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FilingHistoryByCompNumberResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FilingHistoryByCompNumberResponse>(BuildSourceInput);
         }
     }
 

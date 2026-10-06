@@ -12,35 +12,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentmerge
     public class DocumentmergeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentmerge")]
-        public IBodyWorkflowAction<ValuesDocumentMergeResponse> ValuesDocumentMerge(Expression<Func<string>> linkToItem, Expression<Func<string>> preConfigTemplate = null, Expression<Func<string>> source = null, Expression<Func<string>> destination = null, Expression<Func<bool>> saveAsPDF = null, Expression<Func<bool>> saveAsPDFOnly = null, Expression<Func<bool>> saveAsPDFA = null, Expression<Func<bool>> displayImage = null, Expression<Func<string>> outputFileName = null, Expression<Func<bool>> overWrite = null, Expression<Func<bool>> sendMail = null, Expression<Func<string>> mailTemplate = null)
+        public IBodyWorkflowAction<ValuesDocumentMergeResponse> ValuesDocumentMerge([WorkflowExpression] Func<string> linkToItem, [WorkflowExpression] Func<string> preConfigTemplate = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> destination = null, [WorkflowExpression] Func<bool> saveAsPDF = null, [WorkflowExpression] Func<bool> saveAsPDFOnly = null, [WorkflowExpression] Func<bool> saveAsPDFA = null, [WorkflowExpression] Func<bool> displayImage = null, [WorkflowExpression] Func<string> outputFileName = null, [WorkflowExpression] Func<bool> overWrite = null, [WorkflowExpression] Func<bool> sendMail = null, [WorkflowExpression] Func<string> mailTemplate = null)
         {
-            var apiCallPath = "/api/Values";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["LinkToItem"] = ExpressionConverter.Convert(linkToItem);
-            if (preConfigTemplate != null)
-                callPayload.Queries["PreConfigTemplate"] = ExpressionConverter.Convert(preConfigTemplate);
-            if (source != null)
-                callPayload.Queries["Source"] = ExpressionConverter.Convert(source);
-            if (destination != null)
-                callPayload.Queries["Destination"] = ExpressionConverter.Convert(destination);
-            if (saveAsPDF != null)
-                callPayload.Queries["SaveAsPDF"] = ExpressionConverter.Convert(saveAsPDF);
-            if (saveAsPDFOnly != null)
-                callPayload.Queries["SaveAsPDFOnly"] = ExpressionConverter.Convert(saveAsPDFOnly);
-            if (saveAsPDFA != null)
-                callPayload.Queries["SaveAsPDFA"] = ExpressionConverter.Convert(saveAsPDFA);
-            if (displayImage != null)
-                callPayload.Queries["DisplayImage"] = ExpressionConverter.Convert(displayImage);
-            if (outputFileName != null)
-                callPayload.Queries["OutputFileName"] = ExpressionConverter.Convert(outputFileName);
-            if (overWrite != null)
-                callPayload.Queries["OverWrite"] = ExpressionConverter.Convert(overWrite);
-            if (sendMail != null)
-                callPayload.Queries["SendMail"] = ExpressionConverter.Convert(sendMail);
-            if (mailTemplate != null)
-                callPayload.Queries["MailTemplate"] = ExpressionConverter.Convert(mailTemplate);
-            return new ApiConnectionAction<ValuesDocumentMergeResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Values";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["LinkToItem"] = SourceExpressionConverter.ConvertO(linkToItem);
+                if (preConfigTemplate != null)
+                    callPayload.Queries["PreConfigTemplate"] = SourceExpressionConverter.ConvertO(preConfigTemplate);
+                if (source != null)
+                    callPayload.Queries["Source"] = SourceExpressionConverter.ConvertO(source);
+                if (destination != null)
+                    callPayload.Queries["Destination"] = SourceExpressionConverter.ConvertO(destination);
+                if (saveAsPDF != null)
+                    callPayload.Queries["SaveAsPDF"] = SourceExpressionConverter.ConvertO(saveAsPDF);
+                if (saveAsPDFOnly != null)
+                    callPayload.Queries["SaveAsPDFOnly"] = SourceExpressionConverter.ConvertO(saveAsPDFOnly);
+                if (saveAsPDFA != null)
+                    callPayload.Queries["SaveAsPDFA"] = SourceExpressionConverter.ConvertO(saveAsPDFA);
+                if (displayImage != null)
+                    callPayload.Queries["DisplayImage"] = SourceExpressionConverter.ConvertO(displayImage);
+                if (outputFileName != null)
+                    callPayload.Queries["OutputFileName"] = SourceExpressionConverter.ConvertO(outputFileName);
+                if (overWrite != null)
+                    callPayload.Queries["OverWrite"] = SourceExpressionConverter.ConvertO(overWrite);
+                if (sendMail != null)
+                    callPayload.Queries["SendMail"] = SourceExpressionConverter.ConvertO(sendMail);
+                if (mailTemplate != null)
+                    callPayload.Queries["MailTemplate"] = SourceExpressionConverter.ConvertO(mailTemplate);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ValuesDocumentMergeResponse>(BuildSourceInput);
         }
     }
 

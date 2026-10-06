@@ -12,907 +12,1016 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
     public class ExpensyaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<string> GetExpenseImage(Expression<Func<string>> expenseId)
+        public IBodyWorkflowAction<string> GetExpenseImage([WorkflowExpression] Func<string> expenseId)
         {
-            var apiCallPath = String.Format("/api/expense/{0}/image", ExpressionConverter.ConvertWithUrlEncoding(expenseId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultExportResponse> ExportExpenses(Expression<Func<string>> exportId, Expression<Func<string>> reportId = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> expenseName = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> expenseStates = null, Expression<Func<string>> reportStates = null, Expression<Func<string>> userIds = null, Expression<Func<string>> userMail = null, Expression<Func<string>> reportIds = null, Expression<Func<string>> expenseIds = null, Expression<Func<string>> reportName = null, Expression<Func<string>> reportIdShort = null, Expression<Func<int>> dateFilterType = null, Expression<Func<string>> payId = null, Expression<Func<string>> payId2 = null, Expression<Func<string>> payId3 = null, Expression<Func<string>> accountingPeriod = null, Expression<Func<bool>> includeReceipts = null, Expression<Func<int>> expenseUseTypes = null, Expression<Func<string>> archiveExpenses = null)
-        {
-            var apiCallPath = String.Format("/api/export/expenses/{0}/", ExpressionConverter.ConvertWithUrlEncoding(exportId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (reportId != null)
-                callPayload.Queries["reportId"] = ExpressionConverter.Convert(reportId);
-            if (categoryId != null)
-                callPayload.Queries["categoryId"] = ExpressionConverter.Convert(categoryId);
-            if (expenseName != null)
-                callPayload.Queries["expenseName"] = ExpressionConverter.Convert(expenseName);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (expenseStates != null)
-                callPayload.Queries["expenseStates"] = ExpressionConverter.Convert(expenseStates);
-            if (reportStates != null)
-                callPayload.Queries["reportStates"] = ExpressionConverter.Convert(reportStates);
-            if (userIds != null)
-                callPayload.Queries["userIds"] = ExpressionConverter.Convert(userIds);
-            if (userMail != null)
-                callPayload.Queries["userMail"] = ExpressionConverter.Convert(userMail);
-            if (reportIds != null)
-                callPayload.Queries["reportIds"] = ExpressionConverter.Convert(reportIds);
-            if (expenseIds != null)
-                callPayload.Queries["expenseIds"] = ExpressionConverter.Convert(expenseIds);
-            if (reportName != null)
-                callPayload.Queries["reportName"] = ExpressionConverter.Convert(reportName);
-            if (reportIdShort != null)
-                callPayload.Queries["reportIdShort"] = ExpressionConverter.Convert(reportIdShort);
-            if (dateFilterType != null)
-                callPayload.Queries["dateFilterType"] = ExpressionConverter.Convert(dateFilterType);
-            if (payId != null)
-                callPayload.Queries["payId"] = ExpressionConverter.Convert(payId);
-            if (payId2 != null)
-                callPayload.Queries["payId2"] = ExpressionConverter.Convert(payId2);
-            if (payId3 != null)
-                callPayload.Queries["payId3"] = ExpressionConverter.Convert(payId3);
-            if (accountingPeriod != null)
-                callPayload.Queries["accountingPeriod"] = ExpressionConverter.Convert(accountingPeriod);
-            if (includeReceipts != null)
-                callPayload.Queries["includeReceipts"] = ExpressionConverter.Convert(includeReceipts);
-            if (expenseUseTypes != null)
-                callPayload.Queries["expenseUseTypes"] = ExpressionConverter.Convert(expenseUseTypes);
-            if (archiveExpenses != null)
-                callPayload.Queries["archiveExpenses"] = ExpressionConverter.Convert(archiveExpenses);
-            return new ApiConnectionAction<BaseResultExportResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultExportResponse> PrintMission(Expression<Func<string>> reportId)
-        {
-            var apiCallPath = String.Format("/api/export/report/{0}/pdf/", ExpressionConverter.ConvertWithUrlEncoding(reportId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BaseResultExportResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultListExportFormatResponse> ExportFormats(Expression<Func<bool>> isForExpenses = null, Expression<Func<int>> exportType = null)
-        {
-            var apiCallPath = "/api/exports/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (isForExpenses != null)
-                callPayload.Queries["isForExpenses"] = ExpressionConverter.Convert(isForExpenses);
-            if (exportType != null)
-                callPayload.Queries["exportType"] = ExpressionConverter.Convert(exportType);
-            return new ApiConnectionAction<BaseResultListExportFormatResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> AddProjects(Expression<Func<AddOrUpdateProjectInput[]>> addOrUpdateProjectInputArray = null)
-        {
-            var apiCallPath = "/api/projects/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(addOrUpdateProjectInputArray);
-            return new ApiConnectionAction<BaseResultListAddOrUpdateEntityResult>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> UpdateProjects(Expression<Func<AddOrUpdateProjectInput[]>> addOrUpdateProjectInputArray = null)
-        {
-            var apiCallPath = "/api/projects/";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(addOrUpdateProjectInputArray);
-            return new ApiConnectionAction<BaseResultListAddOrUpdateEntityResult>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> AddReciept(Expression<Func<string>> addReceiptInputuserId, Expression<Func<string>> addReceiptInputreceiptContent, Expression<Func<string>> addReceiptInputreceiptName)
-        {
-            var apiCallPath = "/api/receipt/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var addReceiptInput = new JObject();
-            var addReceiptInputpropCount = 0;
-            addReceiptInputpropCount++;
-            addReceiptInput["UserId"] = ExpressionConverter.ConvertO(addReceiptInputuserId);
-            addReceiptInputpropCount++;
-            addReceiptInput["ReceiptContent"] = ExpressionConverter.ConvertO(addReceiptInputreceiptContent);
-            addReceiptInputpropCount++;
-            addReceiptInput["ReceiptName"] = ExpressionConverter.ConvertO(addReceiptInputreceiptName);
-            if (addReceiptInputpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = addReceiptInput;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/expense/{0}/image", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(expenseId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<BaseResult>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
+        public IBodyWorkflowAction<BaseResultExportResponse> ExportExpenses([WorkflowExpression] Func<string> exportId, [WorkflowExpression] Func<string> reportId = null, [WorkflowExpression] Func<string> categoryId = null, [WorkflowExpression] Func<string> expenseName = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> expenseStates = null, [WorkflowExpression] Func<string> reportStates = null, [WorkflowExpression] Func<string> userIds = null, [WorkflowExpression] Func<string> userMail = null, [WorkflowExpression] Func<string> reportIds = null, [WorkflowExpression] Func<string> expenseIds = null, [WorkflowExpression] Func<string> reportName = null, [WorkflowExpression] Func<string> reportIdShort = null, [WorkflowExpression] Func<int> dateFilterType = null, [WorkflowExpression] Func<string> payId = null, [WorkflowExpression] Func<string> payId2 = null, [WorkflowExpression] Func<string> payId3 = null, [WorkflowExpression] Func<string> accountingPeriod = null, [WorkflowExpression] Func<bool> includeReceipts = null, [WorkflowExpression] Func<int> expenseUseTypes = null, [WorkflowExpression] Func<string> archiveExpenses = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/export/expenses/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(exportId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (reportId != null)
+                    callPayload.Queries["reportId"] = SourceExpressionConverter.ConvertO(reportId);
+                if (categoryId != null)
+                    callPayload.Queries["categoryId"] = SourceExpressionConverter.ConvertO(categoryId);
+                if (expenseName != null)
+                    callPayload.Queries["expenseName"] = SourceExpressionConverter.ConvertO(expenseName);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                if (expenseStates != null)
+                    callPayload.Queries["expenseStates"] = SourceExpressionConverter.ConvertO(expenseStates);
+                if (reportStates != null)
+                    callPayload.Queries["reportStates"] = SourceExpressionConverter.ConvertO(reportStates);
+                if (userIds != null)
+                    callPayload.Queries["userIds"] = SourceExpressionConverter.ConvertO(userIds);
+                if (userMail != null)
+                    callPayload.Queries["userMail"] = SourceExpressionConverter.ConvertO(userMail);
+                if (reportIds != null)
+                    callPayload.Queries["reportIds"] = SourceExpressionConverter.ConvertO(reportIds);
+                if (expenseIds != null)
+                    callPayload.Queries["expenseIds"] = SourceExpressionConverter.ConvertO(expenseIds);
+                if (reportName != null)
+                    callPayload.Queries["reportName"] = SourceExpressionConverter.ConvertO(reportName);
+                if (reportIdShort != null)
+                    callPayload.Queries["reportIdShort"] = SourceExpressionConverter.ConvertO(reportIdShort);
+                if (dateFilterType != null)
+                    callPayload.Queries["dateFilterType"] = SourceExpressionConverter.ConvertO(dateFilterType);
+                if (payId != null)
+                    callPayload.Queries["payId"] = SourceExpressionConverter.ConvertO(payId);
+                if (payId2 != null)
+                    callPayload.Queries["payId2"] = SourceExpressionConverter.ConvertO(payId2);
+                if (payId3 != null)
+                    callPayload.Queries["payId3"] = SourceExpressionConverter.ConvertO(payId3);
+                if (accountingPeriod != null)
+                    callPayload.Queries["accountingPeriod"] = SourceExpressionConverter.ConvertO(accountingPeriod);
+                if (includeReceipts != null)
+                    callPayload.Queries["includeReceipts"] = SourceExpressionConverter.ConvertO(includeReceipts);
+                if (expenseUseTypes != null)
+                    callPayload.Queries["expenseUseTypes"] = SourceExpressionConverter.ConvertO(expenseUseTypes);
+                if (archiveExpenses != null)
+                    callPayload.Queries["archiveExpenses"] = SourceExpressionConverter.ConvertO(archiveExpenses);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BaseResultExportResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
+        public IBodyWorkflowAction<BaseResultExportResponse> PrintMission([WorkflowExpression] Func<string> reportId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/export/report/{0}/pdf/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BaseResultExportResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
+        public IBodyWorkflowAction<BaseResultListExportFormatResponse> ExportFormats([WorkflowExpression] Func<bool> isForExpenses = null, [WorkflowExpression] Func<int> exportType = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/exports/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (isForExpenses != null)
+                    callPayload.Queries["isForExpenses"] = SourceExpressionConverter.ConvertO(isForExpenses);
+                if (exportType != null)
+                    callPayload.Queries["exportType"] = SourceExpressionConverter.ConvertO(exportType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BaseResultListExportFormatResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
+        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> AddProjects([WorkflowExpression] Func<AddOrUpdateProjectInput[]> addOrUpdateProjectInputArray = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/projects/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(addOrUpdateProjectInputArray);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BaseResultListAddOrUpdateEntityResult>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
+        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> UpdateProjects([WorkflowExpression] Func<AddOrUpdateProjectInput[]> addOrUpdateProjectInputArray = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/projects/";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(addOrUpdateProjectInputArray);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BaseResultListAddOrUpdateEntityResult>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
+        public IBodyWorkflowAction<BaseResult> AddReciept([WorkflowExpression] Func<string> addReceiptInputuserId, [WorkflowExpression] Func<string> addReceiptInputreceiptContent, [WorkflowExpression] Func<string> addReceiptInputreceiptName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/receipt/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var addReceiptInput = new JObject();
+                var addReceiptInputpropCount = 0;
+                addReceiptInputpropCount++;
+                addReceiptInput["UserId"] = SourceExpressionConverter.ConvertToken(addReceiptInputuserId);
+                addReceiptInputpropCount++;
+                addReceiptInput["ReceiptContent"] = SourceExpressionConverter.ConvertToken(addReceiptInputreceiptContent);
+                addReceiptInputpropCount++;
+                addReceiptInput["ReceiptName"] = SourceExpressionConverter.ConvertToken(addReceiptInputreceiptName);
+                if (addReceiptInputpropCount > 0)
+                {
+                    callPayload.Body = addReceiptInput;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BaseResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResult> RevokeUserToken()
         {
-            var apiCallPath = "/api/revokeUserToken/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BaseResult>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<ListAndPagesCountResultReportResponse> ValidatorReports(Expression<Func<string>> validatorMail, Expression<Func<string>> reportName = null, Expression<Func<string>> reportStartDate = null, Expression<Func<string>> reportEndDate = null, Expression<Func<string>> reportStates = null, Expression<Func<string>> reportIdShort = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> ownerPayId2 = null, Expression<Func<string>> projectId = null, Expression<Func<int>> dateFilterType = null, Expression<Func<int>> sortBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<bool>> isDesc = null)
-        {
-            var apiCallPath = String.Format("/api/v2/{0}/reports/", ExpressionConverter.ConvertWithUrlEncoding(validatorMail, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (reportName != null)
-                callPayload.Queries["reportName"] = ExpressionConverter.Convert(reportName);
-            if (reportStartDate != null)
-                callPayload.Queries["reportStartDate"] = ExpressionConverter.Convert(reportStartDate);
-            if (reportEndDate != null)
-                callPayload.Queries["reportEndDate"] = ExpressionConverter.Convert(reportEndDate);
-            if (reportStates != null)
-                callPayload.Queries["reportStates"] = ExpressionConverter.Convert(reportStates);
-            if (reportIdShort != null)
-                callPayload.Queries["reportIdShort"] = ExpressionConverter.Convert(reportIdShort);
-            if (ownerId != null)
-                callPayload.Queries["ownerId"] = ExpressionConverter.Convert(ownerId);
-            if (ownerPayId2 != null)
-                callPayload.Queries["ownerPayId2"] = ExpressionConverter.Convert(ownerPayId2);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            if (dateFilterType != null)
-                callPayload.Queries["dateFilterType"] = ExpressionConverter.Convert(dateFilterType);
-            if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (isDesc != null)
-                callPayload.Queries["isDesc"] = ExpressionConverter.Convert(isDesc);
-            return new ApiConnectionAction<ListAndPagesCountResultReportResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> UpdateReportStatus(Expression<Func<string>> reportId, Expression<Func<reportUpdateStatusInputoperationInput>> reportUpdateStatusInputoperation, Expression<Func<string>> reportUpdateStatusInputmessage, Expression<Func<string[]>> reportUpdateStatusInputinvoiceIdsToReject = null, Expression<Func<string>> reportUpdateStatusInputaccountingPeriod = null)
-        {
-            var apiCallPath = String.Format("/api/v2/report/{0}/updateStatus/", ExpressionConverter.ConvertWithUrlEncoding(reportId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reportUpdateStatusInput = new JObject();
-            var reportUpdateStatusInputpropCount = 0;
-            reportUpdateStatusInputpropCount++;
-            reportUpdateStatusInput["Operation"] = ExpressionConverter.ConvertO(reportUpdateStatusInputoperation);
-            reportUpdateStatusInputpropCount++;
-            reportUpdateStatusInput["Message"] = ExpressionConverter.ConvertO(reportUpdateStatusInputmessage);
-            if (reportUpdateStatusInputinvoiceIdsToReject != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                reportUpdateStatusInput["InvoiceIdsToReject"] = ExpressionConverter.ConvertO(reportUpdateStatusInputinvoiceIdsToReject);
+                var apiCallPath = "/api/revokeUserToken/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BaseResult>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
+        public IBodyWorkflowAction<ListAndPagesCountResultReportResponse> ValidatorReports([WorkflowExpression] Func<string> validatorMail, [WorkflowExpression] Func<string> reportName = null, [WorkflowExpression] Func<string> reportStartDate = null, [WorkflowExpression] Func<string> reportEndDate = null, [WorkflowExpression] Func<string> reportStates = null, [WorkflowExpression] Func<string> reportIdShort = null, [WorkflowExpression] Func<string> ownerId = null, [WorkflowExpression] Func<string> ownerPayId2 = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<int> dateFilterType = null, [WorkflowExpression] Func<int> sortBy = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<bool> isDesc = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/{0}/reports/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(validatorMail, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (reportName != null)
+                    callPayload.Queries["reportName"] = SourceExpressionConverter.ConvertO(reportName);
+                if (reportStartDate != null)
+                    callPayload.Queries["reportStartDate"] = SourceExpressionConverter.ConvertO(reportStartDate);
+                if (reportEndDate != null)
+                    callPayload.Queries["reportEndDate"] = SourceExpressionConverter.ConvertO(reportEndDate);
+                if (reportStates != null)
+                    callPayload.Queries["reportStates"] = SourceExpressionConverter.ConvertO(reportStates);
+                if (reportIdShort != null)
+                    callPayload.Queries["reportIdShort"] = SourceExpressionConverter.ConvertO(reportIdShort);
+                if (ownerId != null)
+                    callPayload.Queries["ownerId"] = SourceExpressionConverter.ConvertO(ownerId);
+                if (ownerPayId2 != null)
+                    callPayload.Queries["ownerPayId2"] = SourceExpressionConverter.ConvertO(ownerPayId2);
+                if (projectId != null)
+                    callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                if (dateFilterType != null)
+                    callPayload.Queries["dateFilterType"] = SourceExpressionConverter.ConvertO(dateFilterType);
+                if (sortBy != null)
+                    callPayload.Queries["sortBy"] = SourceExpressionConverter.ConvertO(sortBy);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (isDesc != null)
+                    callPayload.Queries["isDesc"] = SourceExpressionConverter.ConvertO(isDesc);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAndPagesCountResultReportResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
+        public IBodyWorkflowAction<BaseResult> UpdateReportStatus([WorkflowExpression] Func<string> reportId, [WorkflowExpression] Func<reportUpdateStatusInputoperationInput> reportUpdateStatusInputoperation, [WorkflowExpression] Func<string> reportUpdateStatusInputmessage, [WorkflowExpression] Func<string[]> reportUpdateStatusInputinvoiceIdsToReject = null, [WorkflowExpression] Func<string> reportUpdateStatusInputaccountingPeriod = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/report/{0}/updateStatus/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reportUpdateStatusInput = new JObject();
+                var reportUpdateStatusInputpropCount = 0;
                 reportUpdateStatusInputpropCount++;
-            }
-
-            if (reportUpdateStatusInputaccountingPeriod != null)
-            {
-                reportUpdateStatusInput["AccountingPeriod"] = ExpressionConverter.ConvertO(reportUpdateStatusInputaccountingPeriod);
+                reportUpdateStatusInput["Operation"] = SourceExpressionConverter.Convert(reportUpdateStatusInputoperation);
                 reportUpdateStatusInputpropCount++;
+                reportUpdateStatusInput["Message"] = SourceExpressionConverter.ConvertToken(reportUpdateStatusInputmessage);
+                if (reportUpdateStatusInputinvoiceIdsToReject != null)
+                {
+                    reportUpdateStatusInput["InvoiceIdsToReject"] = SourceExpressionConverter.ConvertToken(reportUpdateStatusInputinvoiceIdsToReject);
+                    reportUpdateStatusInputpropCount++;
+                }
+
+                if (reportUpdateStatusInputaccountingPeriod != null)
+                {
+                    reportUpdateStatusInput["AccountingPeriod"] = SourceExpressionConverter.ConvertToken(reportUpdateStatusInputaccountingPeriod);
+                    reportUpdateStatusInputpropCount++;
+                }
+
+                if (reportUpdateStatusInputpropCount > 0)
+                {
+                    callPayload.Body = reportUpdateStatusInput;
+                }
+                return callPayload;
             }
 
-            if (reportUpdateStatusInputpropCount > 0)
-            {
-                callPayload.Body = reportUpdateStatusInput;
-            }
-
-            return new ApiConnectionAction<BaseResult>(callPayload);
+            return new ApiConnectionAction<BaseResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<ListAndPagesCountResultReportResponse> CompanyReports(Expression<Func<string>> reportName = null, Expression<Func<string>> reportStartDate = null, Expression<Func<string>> reportEndDate = null, Expression<Func<string>> reportStates = null, Expression<Func<string>> reportIdShort = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> ownerPayId2 = null, Expression<Func<string>> projectId = null, Expression<Func<string>> tagsNames = null, Expression<Func<int>> dateFilterType = null, Expression<Func<int>> sortBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<bool>> isDesc = null)
+        public IBodyWorkflowAction<ListAndPagesCountResultReportResponse> CompanyReports([WorkflowExpression] Func<string> reportName = null, [WorkflowExpression] Func<string> reportStartDate = null, [WorkflowExpression] Func<string> reportEndDate = null, [WorkflowExpression] Func<string> reportStates = null, [WorkflowExpression] Func<string> reportIdShort = null, [WorkflowExpression] Func<string> ownerId = null, [WorkflowExpression] Func<string> ownerPayId2 = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> tagsNames = null, [WorkflowExpression] Func<int> dateFilterType = null, [WorkflowExpression] Func<int> sortBy = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<bool> isDesc = null)
         {
-            var apiCallPath = "/api/v2/reports/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (reportName != null)
-                callPayload.Queries["reportName"] = ExpressionConverter.Convert(reportName);
-            if (reportStartDate != null)
-                callPayload.Queries["reportStartDate"] = ExpressionConverter.Convert(reportStartDate);
-            if (reportEndDate != null)
-                callPayload.Queries["reportEndDate"] = ExpressionConverter.Convert(reportEndDate);
-            if (reportStates != null)
-                callPayload.Queries["reportStates"] = ExpressionConverter.Convert(reportStates);
-            if (reportIdShort != null)
-                callPayload.Queries["reportIdShort"] = ExpressionConverter.Convert(reportIdShort);
-            if (ownerId != null)
-                callPayload.Queries["ownerId"] = ExpressionConverter.Convert(ownerId);
-            if (ownerPayId2 != null)
-                callPayload.Queries["ownerPayId2"] = ExpressionConverter.Convert(ownerPayId2);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            if (tagsNames != null)
-                callPayload.Queries["tagsNames"] = ExpressionConverter.Convert(tagsNames);
-            if (dateFilterType != null)
-                callPayload.Queries["dateFilterType"] = ExpressionConverter.Convert(dateFilterType);
-            if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (isDesc != null)
-                callPayload.Queries["isDesc"] = ExpressionConverter.Convert(isDesc);
-            return new ApiConnectionAction<ListAndPagesCountResultReportResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v2/reports/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (reportName != null)
+                    callPayload.Queries["reportName"] = SourceExpressionConverter.ConvertO(reportName);
+                if (reportStartDate != null)
+                    callPayload.Queries["reportStartDate"] = SourceExpressionConverter.ConvertO(reportStartDate);
+                if (reportEndDate != null)
+                    callPayload.Queries["reportEndDate"] = SourceExpressionConverter.ConvertO(reportEndDate);
+                if (reportStates != null)
+                    callPayload.Queries["reportStates"] = SourceExpressionConverter.ConvertO(reportStates);
+                if (reportIdShort != null)
+                    callPayload.Queries["reportIdShort"] = SourceExpressionConverter.ConvertO(reportIdShort);
+                if (ownerId != null)
+                    callPayload.Queries["ownerId"] = SourceExpressionConverter.ConvertO(ownerId);
+                if (ownerPayId2 != null)
+                    callPayload.Queries["ownerPayId2"] = SourceExpressionConverter.ConvertO(ownerPayId2);
+                if (projectId != null)
+                    callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                if (tagsNames != null)
+                    callPayload.Queries["tagsNames"] = SourceExpressionConverter.ConvertO(tagsNames);
+                if (dateFilterType != null)
+                    callPayload.Queries["dateFilterType"] = SourceExpressionConverter.ConvertO(dateFilterType);
+                if (sortBy != null)
+                    callPayload.Queries["sortBy"] = SourceExpressionConverter.ConvertO(sortBy);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (isDesc != null)
+                    callPayload.Queries["isDesc"] = SourceExpressionConverter.ConvertO(isDesc);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAndPagesCountResultReportResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<ListAndPagesCountResultUserResponse> CompanyUsers(Expression<Func<string>> id = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> mail = null, Expression<Func<string>> payId = null, Expression<Func<string>> mailOrNameOrPayId = null, Expression<Func<int>> type = null, Expression<Func<int>> state = null, Expression<Func<string>> reviewerId = null, Expression<Func<string>> reviewerName = null, Expression<Func<string>> managerId = null, Expression<Func<string>> managerName = null, Expression<Func<string>> userIds = null, Expression<Func<string>> userMails = null, Expression<Func<string>> tagsNames = null, Expression<Func<string>> simpleTagsNames = null, Expression<Func<int>> sortBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<bool>> isDesc = null)
+        public IBodyWorkflowAction<ListAndPagesCountResultUserResponse> CompanyUsers([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> mail = null, [WorkflowExpression] Func<string> payId = null, [WorkflowExpression] Func<string> mailOrNameOrPayId = null, [WorkflowExpression] Func<int> type = null, [WorkflowExpression] Func<int> state = null, [WorkflowExpression] Func<string> reviewerId = null, [WorkflowExpression] Func<string> reviewerName = null, [WorkflowExpression] Func<string> managerId = null, [WorkflowExpression] Func<string> managerName = null, [WorkflowExpression] Func<string> userIds = null, [WorkflowExpression] Func<string> userMails = null, [WorkflowExpression] Func<string> tagsNames = null, [WorkflowExpression] Func<string> simpleTagsNames = null, [WorkflowExpression] Func<int> sortBy = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<bool> isDesc = null)
         {
-            var apiCallPath = "/api/v2/users/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (firstName != null)
-                callPayload.Queries["firstName"] = ExpressionConverter.Convert(firstName);
-            if (lastName != null)
-                callPayload.Queries["lastName"] = ExpressionConverter.Convert(lastName);
-            if (mail != null)
-                callPayload.Queries["mail"] = ExpressionConverter.Convert(mail);
-            if (payId != null)
-                callPayload.Queries["payId"] = ExpressionConverter.Convert(payId);
-            if (mailOrNameOrPayId != null)
-                callPayload.Queries["mailOrNameOrPayId"] = ExpressionConverter.Convert(mailOrNameOrPayId);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
-            if (reviewerId != null)
-                callPayload.Queries["reviewerId"] = ExpressionConverter.Convert(reviewerId);
-            if (reviewerName != null)
-                callPayload.Queries["reviewerName"] = ExpressionConverter.Convert(reviewerName);
-            if (managerId != null)
-                callPayload.Queries["managerId"] = ExpressionConverter.Convert(managerId);
-            if (managerName != null)
-                callPayload.Queries["managerName"] = ExpressionConverter.Convert(managerName);
-            if (userIds != null)
-                callPayload.Queries["userIds"] = ExpressionConverter.Convert(userIds);
-            if (userMails != null)
-                callPayload.Queries["userMails"] = ExpressionConverter.Convert(userMails);
-            if (tagsNames != null)
-                callPayload.Queries["tagsNames"] = ExpressionConverter.Convert(tagsNames);
-            if (simpleTagsNames != null)
-                callPayload.Queries["simpleTagsNames"] = ExpressionConverter.Convert(simpleTagsNames);
-            if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (isDesc != null)
-                callPayload.Queries["isDesc"] = ExpressionConverter.Convert(isDesc);
-            return new ApiConnectionAction<ListAndPagesCountResultUserResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v2/users/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (id != null)
+                    callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                if (firstName != null)
+                    callPayload.Queries["firstName"] = SourceExpressionConverter.ConvertO(firstName);
+                if (lastName != null)
+                    callPayload.Queries["lastName"] = SourceExpressionConverter.ConvertO(lastName);
+                if (mail != null)
+                    callPayload.Queries["mail"] = SourceExpressionConverter.ConvertO(mail);
+                if (payId != null)
+                    callPayload.Queries["payId"] = SourceExpressionConverter.ConvertO(payId);
+                if (mailOrNameOrPayId != null)
+                    callPayload.Queries["mailOrNameOrPayId"] = SourceExpressionConverter.ConvertO(mailOrNameOrPayId);
+                if (type != null)
+                    callPayload.Queries["type"] = SourceExpressionConverter.ConvertO(type);
+                if (state != null)
+                    callPayload.Queries["state"] = SourceExpressionConverter.ConvertO(state);
+                if (reviewerId != null)
+                    callPayload.Queries["reviewerId"] = SourceExpressionConverter.ConvertO(reviewerId);
+                if (reviewerName != null)
+                    callPayload.Queries["reviewerName"] = SourceExpressionConverter.ConvertO(reviewerName);
+                if (managerId != null)
+                    callPayload.Queries["managerId"] = SourceExpressionConverter.ConvertO(managerId);
+                if (managerName != null)
+                    callPayload.Queries["managerName"] = SourceExpressionConverter.ConvertO(managerName);
+                if (userIds != null)
+                    callPayload.Queries["userIds"] = SourceExpressionConverter.ConvertO(userIds);
+                if (userMails != null)
+                    callPayload.Queries["userMails"] = SourceExpressionConverter.ConvertO(userMails);
+                if (tagsNames != null)
+                    callPayload.Queries["tagsNames"] = SourceExpressionConverter.ConvertO(tagsNames);
+                if (simpleTagsNames != null)
+                    callPayload.Queries["simpleTagsNames"] = SourceExpressionConverter.ConvertO(simpleTagsNames);
+                if (sortBy != null)
+                    callPayload.Queries["sortBy"] = SourceExpressionConverter.ConvertO(sortBy);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (isDesc != null)
+                    callPayload.Queries["isDesc"] = SourceExpressionConverter.ConvertO(isDesc);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAndPagesCountResultUserResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> AddQuickExpense(Expression<Func<string>> userId, Expression<Func<string>> quickExpenseInputfileToSend, Expression<Func<string>> quickExpenseInputtitle = null, Expression<Func<double>> quickExpenseInputtransactionAmount = null, Expression<Func<string>> quickExpenseInputvatRates = null, Expression<Func<string>> quickExpenseInputvatAmounts = null, Expression<Func<string>> quickExpenseInputcurrencyCode = null, Expression<Func<string>> quickExpenseInputtransactionDate = null, Expression<Func<string>> quickExpenseInputmerchantName = null, Expression<Func<string>> quickExpenseInputlocationCountry = null, Expression<Func<string>> quickExpenseInputlocationCity = null, Expression<Func<string>> quickExpenseInputcomment = null, Expression<Func<string>> quickExpenseInputmerchantExpenseId = null, Expression<Func<bool>> quickExpenseInputisEncrypted = null, Expression<Func<quickExpenseInputexpenseUseTypeInput>> quickExpenseInputexpenseUseType = null, Expression<Func<string>> quickExpenseInputpaymentTypeCode = null, Expression<Func<string>> quickExpenseInputexpenseTypeCode = null, Expression<Func<string>> quickExpenseInputfileType = null)
+        public IBodyWorkflowAction<BaseResult> AddQuickExpense([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> quickExpenseInputfileToSend, [WorkflowExpression] Func<string> quickExpenseInputtitle = null, [WorkflowExpression] Func<double> quickExpenseInputtransactionAmount = null, [WorkflowExpression] Func<string> quickExpenseInputvatRates = null, [WorkflowExpression] Func<string> quickExpenseInputvatAmounts = null, [WorkflowExpression] Func<string> quickExpenseInputcurrencyCode = null, [WorkflowExpression] Func<string> quickExpenseInputtransactionDate = null, [WorkflowExpression] Func<string> quickExpenseInputmerchantName = null, [WorkflowExpression] Func<string> quickExpenseInputlocationCountry = null, [WorkflowExpression] Func<string> quickExpenseInputlocationCity = null, [WorkflowExpression] Func<string> quickExpenseInputcomment = null, [WorkflowExpression] Func<string> quickExpenseInputmerchantExpenseId = null, [WorkflowExpression] Func<bool> quickExpenseInputisEncrypted = null, [WorkflowExpression] Func<quickExpenseInputexpenseUseTypeInput> quickExpenseInputexpenseUseType = null, [WorkflowExpression] Func<string> quickExpenseInputpaymentTypeCode = null, [WorkflowExpression] Func<string> quickExpenseInputexpenseTypeCode = null, [WorkflowExpression] Func<string> quickExpenseInputfileType = null)
         {
-            var apiCallPath = String.Format("/api/v2/quickexpense/{0}/", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var quickExpenseInput = new JObject();
-            var quickExpenseInputpropCount = 0;
-            quickExpenseInputpropCount++;
-            quickExpenseInput["FileToSend"] = ExpressionConverter.ConvertO(quickExpenseInputfileToSend);
-            if (quickExpenseInputtitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                quickExpenseInput["Title"] = ExpressionConverter.ConvertO(quickExpenseInputtitle);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/quickexpense/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var quickExpenseInput = new JObject();
+                var quickExpenseInputpropCount = 0;
                 quickExpenseInputpropCount++;
+                quickExpenseInput["FileToSend"] = SourceExpressionConverter.ConvertToken(quickExpenseInputfileToSend);
+                if (quickExpenseInputtitle != null)
+                {
+                    quickExpenseInput["Title"] = SourceExpressionConverter.ConvertToken(quickExpenseInputtitle);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputtransactionAmount != null)
+                {
+                    quickExpenseInput["TransactionAmount"] = SourceExpressionConverter.ConvertToken(quickExpenseInputtransactionAmount);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputvatRates != null)
+                {
+                    quickExpenseInput["VatRates"] = SourceExpressionConverter.ConvertToken(quickExpenseInputvatRates);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputvatAmounts != null)
+                {
+                    quickExpenseInput["VatAmounts"] = SourceExpressionConverter.ConvertToken(quickExpenseInputvatAmounts);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputcurrencyCode != null)
+                {
+                    quickExpenseInput["CurrencyCode"] = SourceExpressionConverter.ConvertToken(quickExpenseInputcurrencyCode);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputtransactionDate != null)
+                {
+                    quickExpenseInput["TransactionDate"] = SourceExpressionConverter.ConvertToken(quickExpenseInputtransactionDate);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputmerchantName != null)
+                {
+                    quickExpenseInput["MerchantName"] = SourceExpressionConverter.ConvertToken(quickExpenseInputmerchantName);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputlocationCountry != null)
+                {
+                    quickExpenseInput["LocationCountry"] = SourceExpressionConverter.ConvertToken(quickExpenseInputlocationCountry);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputlocationCity != null)
+                {
+                    quickExpenseInput["LocationCity"] = SourceExpressionConverter.ConvertToken(quickExpenseInputlocationCity);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputcomment != null)
+                {
+                    quickExpenseInput["Comment"] = SourceExpressionConverter.ConvertToken(quickExpenseInputcomment);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputmerchantExpenseId != null)
+                {
+                    quickExpenseInput["MerchantExpenseId"] = SourceExpressionConverter.ConvertToken(quickExpenseInputmerchantExpenseId);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputisEncrypted != null)
+                {
+                    quickExpenseInput["IsEncrypted"] = SourceExpressionConverter.ConvertToken(quickExpenseInputisEncrypted);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputexpenseUseType != null)
+                {
+                    quickExpenseInput["ExpenseUseType"] = SourceExpressionConverter.Convert(quickExpenseInputexpenseUseType);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputpaymentTypeCode != null)
+                {
+                    quickExpenseInput["PaymentTypeCode"] = SourceExpressionConverter.ConvertToken(quickExpenseInputpaymentTypeCode);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputexpenseTypeCode != null)
+                {
+                    quickExpenseInput["ExpenseTypeCode"] = SourceExpressionConverter.ConvertToken(quickExpenseInputexpenseTypeCode);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputfileType != null)
+                {
+                    quickExpenseInput["FileType"] = SourceExpressionConverter.ConvertToken(quickExpenseInputfileType);
+                    quickExpenseInputpropCount++;
+                }
+
+                if (quickExpenseInputpropCount > 0)
+                {
+                    callPayload.Body = quickExpenseInput;
+                }
+                return callPayload;
             }
 
-            if (quickExpenseInputtransactionAmount != null)
-            {
-                quickExpenseInput["TransactionAmount"] = ExpressionConverter.ConvertO(quickExpenseInputtransactionAmount);
-                quickExpenseInputpropCount++;
-            }
-
-            if (quickExpenseInputvatRates != null)
-            {
-                quickExpenseInput["VatRates"] = ExpressionConverter.ConvertO(quickExpenseInputvatRates);
-                quickExpenseInputpropCount++;
-            }
-
-            if (quickExpenseInputvatAmounts != null)
-            {
-                quickExpenseInput["VatAmounts"] = ExpressionConverter.ConvertO(quickExpenseInputvatAmounts);
-                quickExpenseInputpropCount++;
-            }
-
-            if (quickExpenseInputcurrencyCode != null)
-            {
-                quickExpenseInput["CurrencyCode"] = ExpressionConverter.ConvertO(quickExpenseInputcurrencyCode);
-                quickExpenseInputpropCount++;
-            }
-
-            if (quickExpenseInputtransactionDate != null)
-            {
-                quickExpenseInput["TransactionDate"] = ExpressionConverter.ConvertO(quickExpenseInputtransactionDate);
-                quickExpenseInputpropCount++;
-            }
-
-            if (quickExpenseInputmerchantName != null)
-            {
-                quickExpenseInput["MerchantName"] = ExpressionConverter.ConvertO(quickExpenseInputmerchantName);
-                quickExpenseInputpropCount++;
-            }
-
-            if (quickExpenseInputlocationCountry != null)
-            {
-                quickExpenseInput["LocationCountry"] = ExpressionConverter.ConvertO(quickExpenseInputlocationCountry);
-                quickExpenseInputpropCount++;
-            }
-
-            if (quickExpenseInputlocationCity != null)
-            {
-                quickExpenseInput["LocationCity"] = ExpressionConverter.ConvertO(quickExpenseInputlocationCity);
-                quickExpenseInputpropCount++;
-            }
-
-            if (quickExpenseInputcomment != null)
-            {
-                quickExpenseInput["Comment"] = ExpressionConverter.ConvertO(quickExpenseInputcomment);
-                quickExpenseInputpropCount++;
-            }
-
-            if (quickExpenseInputmerchantExpenseId != null)
-            {
-                quickExpenseInput["MerchantExpenseId"] = ExpressionConverter.ConvertO(quickExpenseInputmerchantExpenseId);
-                quickExpenseInputpropCount++;
-            }
-
-            if (quickExpenseInputisEncrypted != null)
-            {
-                quickExpenseInput["IsEncrypted"] = ExpressionConverter.ConvertO(quickExpenseInputisEncrypted);
-                quickExpenseInputpropCount++;
-            }
-
-            if (quickExpenseInputexpenseUseType != null)
-            {
-                quickExpenseInput["ExpenseUseType"] = ExpressionConverter.ConvertO(quickExpenseInputexpenseUseType);
-                quickExpenseInputpropCount++;
-            }
-
-            if (quickExpenseInputpaymentTypeCode != null)
-            {
-                quickExpenseInput["PaymentTypeCode"] = ExpressionConverter.ConvertO(quickExpenseInputpaymentTypeCode);
-                quickExpenseInputpropCount++;
-            }
-
-            if (quickExpenseInputexpenseTypeCode != null)
-            {
-                quickExpenseInput["ExpenseTypeCode"] = ExpressionConverter.ConvertO(quickExpenseInputexpenseTypeCode);
-                quickExpenseInputpropCount++;
-            }
-
-            if (quickExpenseInputfileType != null)
-            {
-                quickExpenseInput["FileType"] = ExpressionConverter.ConvertO(quickExpenseInputfileType);
-                quickExpenseInputpropCount++;
-            }
-
-            if (quickExpenseInputpropCount > 0)
-            {
-                callPayload.Body = quickExpenseInput;
-            }
-
-            return new ApiConnectionAction<BaseResult>(callPayload);
+            return new ApiConnectionAction<BaseResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<ListAndPagesCountResultCategoryResponse> GetCategories(Expression<Func<string>> id = null, Expression<Func<string>> categoryName = null, Expression<Func<string>> costAccount = null, Expression<Func<string>> vatAccount = null, Expression<Func<bool>> isActive = null, Expression<Func<string>> tagsNames = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> sortBy = null, Expression<Func<bool>> isDesc = null)
+        public IBodyWorkflowAction<ListAndPagesCountResultCategoryResponse> GetCategories([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> categoryName = null, [WorkflowExpression] Func<string> costAccount = null, [WorkflowExpression] Func<string> vatAccount = null, [WorkflowExpression] Func<bool> isActive = null, [WorkflowExpression] Func<string> tagsNames = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> sortBy = null, [WorkflowExpression] Func<bool> isDesc = null)
         {
-            var apiCallPath = "/api/v2/categories/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (categoryName != null)
-                callPayload.Queries["categoryName"] = ExpressionConverter.Convert(categoryName);
-            if (costAccount != null)
-                callPayload.Queries["costAccount"] = ExpressionConverter.Convert(costAccount);
-            if (vatAccount != null)
-                callPayload.Queries["vatAccount"] = ExpressionConverter.Convert(vatAccount);
-            if (isActive != null)
-                callPayload.Queries["isActive"] = ExpressionConverter.Convert(isActive);
-            if (tagsNames != null)
-                callPayload.Queries["tagsNames"] = ExpressionConverter.Convert(tagsNames);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
-            if (isDesc != null)
-                callPayload.Queries["isDesc"] = ExpressionConverter.Convert(isDesc);
-            return new ApiConnectionAction<ListAndPagesCountResultCategoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v2/categories/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (id != null)
+                    callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                if (categoryName != null)
+                    callPayload.Queries["categoryName"] = SourceExpressionConverter.ConvertO(categoryName);
+                if (costAccount != null)
+                    callPayload.Queries["costAccount"] = SourceExpressionConverter.ConvertO(costAccount);
+                if (vatAccount != null)
+                    callPayload.Queries["vatAccount"] = SourceExpressionConverter.ConvertO(vatAccount);
+                if (isActive != null)
+                    callPayload.Queries["isActive"] = SourceExpressionConverter.ConvertO(isActive);
+                if (tagsNames != null)
+                    callPayload.Queries["tagsNames"] = SourceExpressionConverter.ConvertO(tagsNames);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortBy != null)
+                    callPayload.Queries["sortBy"] = SourceExpressionConverter.ConvertO(sortBy);
+                if (isDesc != null)
+                    callPayload.Queries["isDesc"] = SourceExpressionConverter.ConvertO(isDesc);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAndPagesCountResultCategoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<ListAndPagesCountResultExpenseResponse> GetExpensesWithPaging(Expression<Func<string>> reportId = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> expenseName = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> reportState = null, Expression<Func<string>> expenseStates = null, Expression<Func<bool>> isReimbusable = null, Expression<Func<double>> valueInCurrency = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> ownerMail = null, Expression<Func<string>> ownerPayId = null, Expression<Func<string>> ownerPayId2 = null, Expression<Func<string>> ownerPayId3 = null, Expression<Func<string>> ownerPayId4 = null, Expression<Func<string>> ownerPayId5 = null, Expression<Func<string>> ownerPayId6 = null, Expression<Func<string>> projectId = null, Expression<Func<bool>> isBillable = null, Expression<Func<int>> dateFilterType = null, Expression<Func<string>> merchantCountries = null, Expression<Func<string>> currencies = null, Expression<Func<string>> fileType = null, Expression<Func<string>> reportIdShort = null, Expression<Func<string>> expenseUseTypes = null, Expression<Func<string>> supplierId = null, Expression<Func<string>> expenseIds = null, Expression<Func<string>> merchantName = null, Expression<Func<string>> vatCode = null, Expression<Func<double>> valueHTInExpenseCurrency = null, Expression<Func<double>> vatRate = null, Expression<Func<double>> vatValue = null, Expression<Func<string>> reportsIds = null, Expression<Func<int>> dateTimeOffset = null, Expression<Func<string>> tagsNames = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> sortBy = null, Expression<Func<bool>> isDesc = null)
+        public IBodyWorkflowAction<ListAndPagesCountResultExpenseResponse> GetExpensesWithPaging([WorkflowExpression] Func<string> reportId = null, [WorkflowExpression] Func<string> categoryId = null, [WorkflowExpression] Func<string> expenseName = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> reportState = null, [WorkflowExpression] Func<string> expenseStates = null, [WorkflowExpression] Func<bool> isReimbusable = null, [WorkflowExpression] Func<double> valueInCurrency = null, [WorkflowExpression] Func<string> ownerId = null, [WorkflowExpression] Func<string> ownerMail = null, [WorkflowExpression] Func<string> ownerPayId = null, [WorkflowExpression] Func<string> ownerPayId2 = null, [WorkflowExpression] Func<string> ownerPayId3 = null, [WorkflowExpression] Func<string> ownerPayId4 = null, [WorkflowExpression] Func<string> ownerPayId5 = null, [WorkflowExpression] Func<string> ownerPayId6 = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<bool> isBillable = null, [WorkflowExpression] Func<int> dateFilterType = null, [WorkflowExpression] Func<string> merchantCountries = null, [WorkflowExpression] Func<string> currencies = null, [WorkflowExpression] Func<string> fileType = null, [WorkflowExpression] Func<string> reportIdShort = null, [WorkflowExpression] Func<string> expenseUseTypes = null, [WorkflowExpression] Func<string> supplierId = null, [WorkflowExpression] Func<string> expenseIds = null, [WorkflowExpression] Func<string> merchantName = null, [WorkflowExpression] Func<string> vatCode = null, [WorkflowExpression] Func<double> valueHTInExpenseCurrency = null, [WorkflowExpression] Func<double> vatRate = null, [WorkflowExpression] Func<double> vatValue = null, [WorkflowExpression] Func<string> reportsIds = null, [WorkflowExpression] Func<int> dateTimeOffset = null, [WorkflowExpression] Func<string> tagsNames = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> sortBy = null, [WorkflowExpression] Func<bool> isDesc = null)
         {
-            var apiCallPath = "/api/v2/expenses/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (reportId != null)
-                callPayload.Queries["reportId"] = ExpressionConverter.Convert(reportId);
-            if (categoryId != null)
-                callPayload.Queries["categoryId"] = ExpressionConverter.Convert(categoryId);
-            if (expenseName != null)
-                callPayload.Queries["expenseName"] = ExpressionConverter.Convert(expenseName);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (reportState != null)
-                callPayload.Queries["reportState"] = ExpressionConverter.Convert(reportState);
-            if (expenseStates != null)
-                callPayload.Queries["expenseStates"] = ExpressionConverter.Convert(expenseStates);
-            if (isReimbusable != null)
-                callPayload.Queries["isReimbusable"] = ExpressionConverter.Convert(isReimbusable);
-            if (valueInCurrency != null)
-                callPayload.Queries["valueInCurrency"] = ExpressionConverter.Convert(valueInCurrency);
-            if (ownerId != null)
-                callPayload.Queries["ownerId"] = ExpressionConverter.Convert(ownerId);
-            if (ownerMail != null)
-                callPayload.Queries["ownerMail"] = ExpressionConverter.Convert(ownerMail);
-            if (ownerPayId != null)
-                callPayload.Queries["ownerPayId"] = ExpressionConverter.Convert(ownerPayId);
-            if (ownerPayId2 != null)
-                callPayload.Queries["ownerPayId2"] = ExpressionConverter.Convert(ownerPayId2);
-            if (ownerPayId3 != null)
-                callPayload.Queries["ownerPayId3"] = ExpressionConverter.Convert(ownerPayId3);
-            if (ownerPayId4 != null)
-                callPayload.Queries["ownerPayId4"] = ExpressionConverter.Convert(ownerPayId4);
-            if (ownerPayId5 != null)
-                callPayload.Queries["ownerPayId5"] = ExpressionConverter.Convert(ownerPayId5);
-            if (ownerPayId6 != null)
-                callPayload.Queries["ownerPayId6"] = ExpressionConverter.Convert(ownerPayId6);
-            if (projectId != null)
-                callPayload.Queries["projectId"] = ExpressionConverter.Convert(projectId);
-            if (isBillable != null)
-                callPayload.Queries["isBillable"] = ExpressionConverter.Convert(isBillable);
-            if (dateFilterType != null)
-                callPayload.Queries["dateFilterType"] = ExpressionConverter.Convert(dateFilterType);
-            if (merchantCountries != null)
-                callPayload.Queries["merchantCountries"] = ExpressionConverter.Convert(merchantCountries);
-            if (currencies != null)
-                callPayload.Queries["currencies"] = ExpressionConverter.Convert(currencies);
-            if (fileType != null)
-                callPayload.Queries["fileType"] = ExpressionConverter.Convert(fileType);
-            if (reportIdShort != null)
-                callPayload.Queries["reportIdShort"] = ExpressionConverter.Convert(reportIdShort);
-            if (expenseUseTypes != null)
-                callPayload.Queries["expenseUseTypes"] = ExpressionConverter.Convert(expenseUseTypes);
-            if (supplierId != null)
-                callPayload.Queries["supplierId"] = ExpressionConverter.Convert(supplierId);
-            if (expenseIds != null)
-                callPayload.Queries["expenseIds"] = ExpressionConverter.Convert(expenseIds);
-            if (merchantName != null)
-                callPayload.Queries["merchantName"] = ExpressionConverter.Convert(merchantName);
-            if (vatCode != null)
-                callPayload.Queries["vatCode"] = ExpressionConverter.Convert(vatCode);
-            if (valueHTInExpenseCurrency != null)
-                callPayload.Queries["valueHTInExpenseCurrency"] = ExpressionConverter.Convert(valueHTInExpenseCurrency);
-            if (vatRate != null)
-                callPayload.Queries["vatRate"] = ExpressionConverter.Convert(vatRate);
-            if (vatValue != null)
-                callPayload.Queries["vatValue"] = ExpressionConverter.Convert(vatValue);
-            if (reportsIds != null)
-                callPayload.Queries["reportsIds"] = ExpressionConverter.Convert(reportsIds);
-            if (dateTimeOffset != null)
-                callPayload.Queries["dateTimeOffset"] = ExpressionConverter.Convert(dateTimeOffset);
-            if (tagsNames != null)
-                callPayload.Queries["tagsNames"] = ExpressionConverter.Convert(tagsNames);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
-            if (isDesc != null)
-                callPayload.Queries["isDesc"] = ExpressionConverter.Convert(isDesc);
-            return new ApiConnectionAction<ListAndPagesCountResultExpenseResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v2/expenses/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (reportId != null)
+                    callPayload.Queries["reportId"] = SourceExpressionConverter.ConvertO(reportId);
+                if (categoryId != null)
+                    callPayload.Queries["categoryId"] = SourceExpressionConverter.ConvertO(categoryId);
+                if (expenseName != null)
+                    callPayload.Queries["expenseName"] = SourceExpressionConverter.ConvertO(expenseName);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                if (reportState != null)
+                    callPayload.Queries["reportState"] = SourceExpressionConverter.ConvertO(reportState);
+                if (expenseStates != null)
+                    callPayload.Queries["expenseStates"] = SourceExpressionConverter.ConvertO(expenseStates);
+                if (isReimbusable != null)
+                    callPayload.Queries["isReimbusable"] = SourceExpressionConverter.ConvertO(isReimbusable);
+                if (valueInCurrency != null)
+                    callPayload.Queries["valueInCurrency"] = SourceExpressionConverter.ConvertO(valueInCurrency);
+                if (ownerId != null)
+                    callPayload.Queries["ownerId"] = SourceExpressionConverter.ConvertO(ownerId);
+                if (ownerMail != null)
+                    callPayload.Queries["ownerMail"] = SourceExpressionConverter.ConvertO(ownerMail);
+                if (ownerPayId != null)
+                    callPayload.Queries["ownerPayId"] = SourceExpressionConverter.ConvertO(ownerPayId);
+                if (ownerPayId2 != null)
+                    callPayload.Queries["ownerPayId2"] = SourceExpressionConverter.ConvertO(ownerPayId2);
+                if (ownerPayId3 != null)
+                    callPayload.Queries["ownerPayId3"] = SourceExpressionConverter.ConvertO(ownerPayId3);
+                if (ownerPayId4 != null)
+                    callPayload.Queries["ownerPayId4"] = SourceExpressionConverter.ConvertO(ownerPayId4);
+                if (ownerPayId5 != null)
+                    callPayload.Queries["ownerPayId5"] = SourceExpressionConverter.ConvertO(ownerPayId5);
+                if (ownerPayId6 != null)
+                    callPayload.Queries["ownerPayId6"] = SourceExpressionConverter.ConvertO(ownerPayId6);
+                if (projectId != null)
+                    callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                if (isBillable != null)
+                    callPayload.Queries["isBillable"] = SourceExpressionConverter.ConvertO(isBillable);
+                if (dateFilterType != null)
+                    callPayload.Queries["dateFilterType"] = SourceExpressionConverter.ConvertO(dateFilterType);
+                if (merchantCountries != null)
+                    callPayload.Queries["merchantCountries"] = SourceExpressionConverter.ConvertO(merchantCountries);
+                if (currencies != null)
+                    callPayload.Queries["currencies"] = SourceExpressionConverter.ConvertO(currencies);
+                if (fileType != null)
+                    callPayload.Queries["fileType"] = SourceExpressionConverter.ConvertO(fileType);
+                if (reportIdShort != null)
+                    callPayload.Queries["reportIdShort"] = SourceExpressionConverter.ConvertO(reportIdShort);
+                if (expenseUseTypes != null)
+                    callPayload.Queries["expenseUseTypes"] = SourceExpressionConverter.ConvertO(expenseUseTypes);
+                if (supplierId != null)
+                    callPayload.Queries["supplierId"] = SourceExpressionConverter.ConvertO(supplierId);
+                if (expenseIds != null)
+                    callPayload.Queries["expenseIds"] = SourceExpressionConverter.ConvertO(expenseIds);
+                if (merchantName != null)
+                    callPayload.Queries["merchantName"] = SourceExpressionConverter.ConvertO(merchantName);
+                if (vatCode != null)
+                    callPayload.Queries["vatCode"] = SourceExpressionConverter.ConvertO(vatCode);
+                if (valueHTInExpenseCurrency != null)
+                    callPayload.Queries["valueHTInExpenseCurrency"] = SourceExpressionConverter.ConvertO(valueHTInExpenseCurrency);
+                if (vatRate != null)
+                    callPayload.Queries["vatRate"] = SourceExpressionConverter.ConvertO(vatRate);
+                if (vatValue != null)
+                    callPayload.Queries["vatValue"] = SourceExpressionConverter.ConvertO(vatValue);
+                if (reportsIds != null)
+                    callPayload.Queries["reportsIds"] = SourceExpressionConverter.ConvertO(reportsIds);
+                if (dateTimeOffset != null)
+                    callPayload.Queries["dateTimeOffset"] = SourceExpressionConverter.ConvertO(dateTimeOffset);
+                if (tagsNames != null)
+                    callPayload.Queries["tagsNames"] = SourceExpressionConverter.ConvertO(tagsNames);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortBy != null)
+                    callPayload.Queries["sortBy"] = SourceExpressionConverter.ConvertO(sortBy);
+                if (isDesc != null)
+                    callPayload.Queries["isDesc"] = SourceExpressionConverter.ConvertO(isDesc);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAndPagesCountResultExpenseResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultProjectResponse> GetProjectDetails(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<BaseResultProjectResponse> GetProjectDetails([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = String.Format("/api/v2/project/{0}/", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BaseResultProjectResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/project/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BaseResultProjectResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<ListAndPagesCountResultProjectResponse> GetProjects(Expression<Func<string>> projectName = null, Expression<Func<string>> projectIds = null, Expression<Func<string>> validatorName = null, Expression<Func<string>> projectReferenceOrExternalId = null, Expression<Func<bool>> bringAllProjects = null, Expression<Func<int>> projectUseType = null, Expression<Func<bool>> isActive = null, Expression<Func<string>> tagsNames = null, Expression<Func<string>> customFieldsIds = null, Expression<Func<string>> expenseDate = null, Expression<Func<string>> userId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> sortBy = null, Expression<Func<bool>> isDesc = null)
+        public IBodyWorkflowAction<ListAndPagesCountResultProjectResponse> GetProjects([WorkflowExpression] Func<string> projectName = null, [WorkflowExpression] Func<string> projectIds = null, [WorkflowExpression] Func<string> validatorName = null, [WorkflowExpression] Func<string> projectReferenceOrExternalId = null, [WorkflowExpression] Func<bool> bringAllProjects = null, [WorkflowExpression] Func<int> projectUseType = null, [WorkflowExpression] Func<bool> isActive = null, [WorkflowExpression] Func<string> tagsNames = null, [WorkflowExpression] Func<string> customFieldsIds = null, [WorkflowExpression] Func<string> expenseDate = null, [WorkflowExpression] Func<string> userId = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> sortBy = null, [WorkflowExpression] Func<bool> isDesc = null)
         {
-            var apiCallPath = "/api/v2/projects/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (projectName != null)
-                callPayload.Queries["projectName"] = ExpressionConverter.Convert(projectName);
-            if (projectIds != null)
-                callPayload.Queries["projectIds"] = ExpressionConverter.Convert(projectIds);
-            if (validatorName != null)
-                callPayload.Queries["validatorName"] = ExpressionConverter.Convert(validatorName);
-            if (projectReferenceOrExternalId != null)
-                callPayload.Queries["projectReferenceOrExternalId"] = ExpressionConverter.Convert(projectReferenceOrExternalId);
-            if (bringAllProjects != null)
-                callPayload.Queries["bringAllProjects"] = ExpressionConverter.Convert(bringAllProjects);
-            if (projectUseType != null)
-                callPayload.Queries["projectUseType"] = ExpressionConverter.Convert(projectUseType);
-            if (isActive != null)
-                callPayload.Queries["isActive"] = ExpressionConverter.Convert(isActive);
-            if (tagsNames != null)
-                callPayload.Queries["tagsNames"] = ExpressionConverter.Convert(tagsNames);
-            if (customFieldsIds != null)
-                callPayload.Queries["customFieldsIds"] = ExpressionConverter.Convert(customFieldsIds);
-            if (expenseDate != null)
-                callPayload.Queries["expenseDate"] = ExpressionConverter.Convert(expenseDate);
-            if (userId != null)
-                callPayload.Queries["userId"] = ExpressionConverter.Convert(userId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
-            if (isDesc != null)
-                callPayload.Queries["isDesc"] = ExpressionConverter.Convert(isDesc);
-            return new ApiConnectionAction<ListAndPagesCountResultProjectResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v2/projects/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (projectName != null)
+                    callPayload.Queries["projectName"] = SourceExpressionConverter.ConvertO(projectName);
+                if (projectIds != null)
+                    callPayload.Queries["projectIds"] = SourceExpressionConverter.ConvertO(projectIds);
+                if (validatorName != null)
+                    callPayload.Queries["validatorName"] = SourceExpressionConverter.ConvertO(validatorName);
+                if (projectReferenceOrExternalId != null)
+                    callPayload.Queries["projectReferenceOrExternalId"] = SourceExpressionConverter.ConvertO(projectReferenceOrExternalId);
+                if (bringAllProjects != null)
+                    callPayload.Queries["bringAllProjects"] = SourceExpressionConverter.ConvertO(bringAllProjects);
+                if (projectUseType != null)
+                    callPayload.Queries["projectUseType"] = SourceExpressionConverter.ConvertO(projectUseType);
+                if (isActive != null)
+                    callPayload.Queries["isActive"] = SourceExpressionConverter.ConvertO(isActive);
+                if (tagsNames != null)
+                    callPayload.Queries["tagsNames"] = SourceExpressionConverter.ConvertO(tagsNames);
+                if (customFieldsIds != null)
+                    callPayload.Queries["customFieldsIds"] = SourceExpressionConverter.ConvertO(customFieldsIds);
+                if (expenseDate != null)
+                    callPayload.Queries["expenseDate"] = SourceExpressionConverter.ConvertO(expenseDate);
+                if (userId != null)
+                    callPayload.Queries["userId"] = SourceExpressionConverter.ConvertO(userId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortBy != null)
+                    callPayload.Queries["sortBy"] = SourceExpressionConverter.ConvertO(sortBy);
+                if (isDesc != null)
+                    callPayload.Queries["isDesc"] = SourceExpressionConverter.ConvertO(isDesc);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAndPagesCountResultProjectResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultListEventResponse> GetReportHistory(Expression<Func<string>> reportId)
+        public IBodyWorkflowAction<BaseResultListEventResponse> GetReportHistory([WorkflowExpression] Func<string> reportId)
         {
-            var apiCallPath = "/api/v2/report/history/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["reportId"] = ExpressionConverter.Convert(reportId);
-            return new ApiConnectionAction<BaseResultListEventResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v2/report/history/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["reportId"] = SourceExpressionConverter.ConvertO(reportId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BaseResultListEventResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> InviteUser(Expression<Func<string>> userInviteInputlastName, Expression<Func<string>> userInviteInputfirstName, Expression<Func<string>> userInviteInputmail, Expression<Func<string>> userInviteInputlanguage, Expression<Func<userInviteInputuserTypeInput>> userInviteInputuserType, Expression<Func<userInviteInputuserRoleInput>> userInviteInputuserRole, Expression<Func<string>> userInviteInputmailAlias = null, Expression<Func<string>> userInviteInputpayId = null, Expression<Func<string>> userInviteInputpayId2 = null, Expression<Func<string>> userInviteInputpayId3 = null, Expression<Func<string>> userInviteInputpayId4 = null, Expression<Func<string>> userInviteInputpayId5 = null, Expression<Func<string>> userInviteInputpayId6 = null, Expression<Func<string>> userInviteInputlocalCurrency = null, Expression<Func<string>> userInviteInputlocalCountry = null, Expression<Func<string>> userInviteInputmanagerId = null, Expression<Func<string>> userInviteInputreviewerId = null, Expression<Func<string>> userInviteInputvendor = null, Expression<Func<string>> userInviteInputdefaultProjectId = null, Expression<Func<string>> userInviteInputiKRatesId = null, Expression<Func<ValidatorInput[]>> userInviteInputadditionalValidators = null, Expression<Func<string[]>> userInviteInputtagsToAssign = null)
+        public IBodyWorkflowAction<BaseResult> InviteUser([WorkflowExpression] Func<string> userInviteInputlastName, [WorkflowExpression] Func<string> userInviteInputfirstName, [WorkflowExpression] Func<string> userInviteInputmail, [WorkflowExpression] Func<string> userInviteInputlanguage, [WorkflowExpression] Func<userInviteInputuserTypeInput> userInviteInputuserType, [WorkflowExpression] Func<userInviteInputuserRoleInput> userInviteInputuserRole, [WorkflowExpression] Func<string> userInviteInputmailAlias = null, [WorkflowExpression] Func<string> userInviteInputpayId = null, [WorkflowExpression] Func<string> userInviteInputpayId2 = null, [WorkflowExpression] Func<string> userInviteInputpayId3 = null, [WorkflowExpression] Func<string> userInviteInputpayId4 = null, [WorkflowExpression] Func<string> userInviteInputpayId5 = null, [WorkflowExpression] Func<string> userInviteInputpayId6 = null, [WorkflowExpression] Func<string> userInviteInputlocalCurrency = null, [WorkflowExpression] Func<string> userInviteInputlocalCountry = null, [WorkflowExpression] Func<string> userInviteInputmanagerId = null, [WorkflowExpression] Func<string> userInviteInputreviewerId = null, [WorkflowExpression] Func<string> userInviteInputvendor = null, [WorkflowExpression] Func<string> userInviteInputdefaultProjectId = null, [WorkflowExpression] Func<string> userInviteInputiKRatesId = null, [WorkflowExpression] Func<ValidatorInput[]> userInviteInputadditionalValidators = null, [WorkflowExpression] Func<string[]> userInviteInputtagsToAssign = null)
         {
-            var apiCallPath = "/api/v2/user/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var userInviteInput = new JObject();
-            var userInviteInputpropCount = 0;
-            userInviteInputpropCount++;
-            userInviteInput["LastName"] = ExpressionConverter.ConvertO(userInviteInputlastName);
-            userInviteInputpropCount++;
-            userInviteInput["FirstName"] = ExpressionConverter.ConvertO(userInviteInputfirstName);
-            userInviteInputpropCount++;
-            userInviteInput["Mail"] = ExpressionConverter.ConvertO(userInviteInputmail);
-            if (userInviteInputmailAlias != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                userInviteInput["MailAlias"] = ExpressionConverter.ConvertO(userInviteInputmailAlias);
+                var apiCallPath = "/api/v2/user/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var userInviteInput = new JObject();
+                var userInviteInputpropCount = 0;
                 userInviteInputpropCount++;
-            }
-
-            if (userInviteInputpayId != null)
-            {
-                userInviteInput["PayId"] = ExpressionConverter.ConvertO(userInviteInputpayId);
+                userInviteInput["LastName"] = SourceExpressionConverter.ConvertToken(userInviteInputlastName);
                 userInviteInputpropCount++;
-            }
-
-            if (userInviteInputpayId2 != null)
-            {
-                userInviteInput["PayId2"] = ExpressionConverter.ConvertO(userInviteInputpayId2);
+                userInviteInput["FirstName"] = SourceExpressionConverter.ConvertToken(userInviteInputfirstName);
                 userInviteInputpropCount++;
-            }
+                userInviteInput["Mail"] = SourceExpressionConverter.ConvertToken(userInviteInputmail);
+                if (userInviteInputmailAlias != null)
+                {
+                    userInviteInput["MailAlias"] = SourceExpressionConverter.ConvertToken(userInviteInputmailAlias);
+                    userInviteInputpropCount++;
+                }
 
-            if (userInviteInputpayId3 != null)
-            {
-                userInviteInput["PayId3"] = ExpressionConverter.ConvertO(userInviteInputpayId3);
+                if (userInviteInputpayId != null)
+                {
+                    userInviteInput["PayId"] = SourceExpressionConverter.ConvertToken(userInviteInputpayId);
+                    userInviteInputpropCount++;
+                }
+
+                if (userInviteInputpayId2 != null)
+                {
+                    userInviteInput["PayId2"] = SourceExpressionConverter.ConvertToken(userInviteInputpayId2);
+                    userInviteInputpropCount++;
+                }
+
+                if (userInviteInputpayId3 != null)
+                {
+                    userInviteInput["PayId3"] = SourceExpressionConverter.ConvertToken(userInviteInputpayId3);
+                    userInviteInputpropCount++;
+                }
+
+                if (userInviteInputpayId4 != null)
+                {
+                    userInviteInput["PayId4"] = SourceExpressionConverter.ConvertToken(userInviteInputpayId4);
+                    userInviteInputpropCount++;
+                }
+
+                if (userInviteInputpayId5 != null)
+                {
+                    userInviteInput["PayId5"] = SourceExpressionConverter.ConvertToken(userInviteInputpayId5);
+                    userInviteInputpropCount++;
+                }
+
+                if (userInviteInputpayId6 != null)
+                {
+                    userInviteInput["PayId6"] = SourceExpressionConverter.ConvertToken(userInviteInputpayId6);
+                    userInviteInputpropCount++;
+                }
+
                 userInviteInputpropCount++;
-            }
+                userInviteInput["Language"] = SourceExpressionConverter.ConvertToken(userInviteInputlanguage);
+                if (userInviteInputlocalCurrency != null)
+                {
+                    userInviteInput["LocalCurrency"] = SourceExpressionConverter.ConvertToken(userInviteInputlocalCurrency);
+                    userInviteInputpropCount++;
+                }
 
-            if (userInviteInputpayId4 != null)
-            {
-                userInviteInput["PayId4"] = ExpressionConverter.ConvertO(userInviteInputpayId4);
+                if (userInviteInputlocalCountry != null)
+                {
+                    userInviteInput["LocalCountry"] = SourceExpressionConverter.ConvertToken(userInviteInputlocalCountry);
+                    userInviteInputpropCount++;
+                }
+
+                if (userInviteInputmanagerId != null)
+                {
+                    userInviteInput["ManagerId"] = SourceExpressionConverter.ConvertToken(userInviteInputmanagerId);
+                    userInviteInputpropCount++;
+                }
+
+                if (userInviteInputreviewerId != null)
+                {
+                    userInviteInput["ReviewerId"] = SourceExpressionConverter.ConvertToken(userInviteInputreviewerId);
+                    userInviteInputpropCount++;
+                }
+
                 userInviteInputpropCount++;
-            }
+                userInviteInput["UserType"] = SourceExpressionConverter.Convert(userInviteInputuserType);
+                if (userInviteInputvendor != null)
+                {
+                    userInviteInput["Vendor"] = SourceExpressionConverter.ConvertToken(userInviteInputvendor);
+                    userInviteInputpropCount++;
+                }
 
-            if (userInviteInputpayId5 != null)
-            {
-                userInviteInput["PayId5"] = ExpressionConverter.ConvertO(userInviteInputpayId5);
                 userInviteInputpropCount++;
+                userInviteInput["UserRole"] = SourceExpressionConverter.Convert(userInviteInputuserRole);
+                if (userInviteInputdefaultProjectId != null)
+                {
+                    userInviteInput["DefaultProjectId"] = SourceExpressionConverter.ConvertToken(userInviteInputdefaultProjectId);
+                    userInviteInputpropCount++;
+                }
+
+                if (userInviteInputiKRatesId != null)
+                {
+                    userInviteInput["IKRatesId"] = SourceExpressionConverter.ConvertToken(userInviteInputiKRatesId);
+                    userInviteInputpropCount++;
+                }
+
+                if (userInviteInputadditionalValidators != null)
+                {
+                    userInviteInput["AdditionalValidators"] = SourceExpressionConverter.ConvertToken(userInviteInputadditionalValidators);
+                    userInviteInputpropCount++;
+                }
+
+                if (userInviteInputtagsToAssign != null)
+                {
+                    userInviteInput["TagsToAssign"] = SourceExpressionConverter.ConvertToken(userInviteInputtagsToAssign);
+                    userInviteInputpropCount++;
+                }
+
+                if (userInviteInputpropCount > 0)
+                {
+                    callPayload.Body = userInviteInput;
+                }
+                return callPayload;
             }
 
-            if (userInviteInputpayId6 != null)
-            {
-                userInviteInput["PayId6"] = ExpressionConverter.ConvertO(userInviteInputpayId6);
-                userInviteInputpropCount++;
-            }
-
-            userInviteInputpropCount++;
-            userInviteInput["Language"] = ExpressionConverter.ConvertO(userInviteInputlanguage);
-            if (userInviteInputlocalCurrency != null)
-            {
-                userInviteInput["LocalCurrency"] = ExpressionConverter.ConvertO(userInviteInputlocalCurrency);
-                userInviteInputpropCount++;
-            }
-
-            if (userInviteInputlocalCountry != null)
-            {
-                userInviteInput["LocalCountry"] = ExpressionConverter.ConvertO(userInviteInputlocalCountry);
-                userInviteInputpropCount++;
-            }
-
-            if (userInviteInputmanagerId != null)
-            {
-                userInviteInput["ManagerId"] = ExpressionConverter.ConvertO(userInviteInputmanagerId);
-                userInviteInputpropCount++;
-            }
-
-            if (userInviteInputreviewerId != null)
-            {
-                userInviteInput["ReviewerId"] = ExpressionConverter.ConvertO(userInviteInputreviewerId);
-                userInviteInputpropCount++;
-            }
-
-            userInviteInputpropCount++;
-            userInviteInput["UserType"] = ExpressionConverter.ConvertO(userInviteInputuserType);
-            if (userInviteInputvendor != null)
-            {
-                userInviteInput["Vendor"] = ExpressionConverter.ConvertO(userInviteInputvendor);
-                userInviteInputpropCount++;
-            }
-
-            userInviteInputpropCount++;
-            userInviteInput["UserRole"] = ExpressionConverter.ConvertO(userInviteInputuserRole);
-            if (userInviteInputdefaultProjectId != null)
-            {
-                userInviteInput["DefaultProjectId"] = ExpressionConverter.ConvertO(userInviteInputdefaultProjectId);
-                userInviteInputpropCount++;
-            }
-
-            if (userInviteInputiKRatesId != null)
-            {
-                userInviteInput["IKRatesId"] = ExpressionConverter.ConvertO(userInviteInputiKRatesId);
-                userInviteInputpropCount++;
-            }
-
-            if (userInviteInputadditionalValidators != null)
-            {
-                userInviteInput["AdditionalValidators"] = ExpressionConverter.ConvertO(userInviteInputadditionalValidators);
-                userInviteInputpropCount++;
-            }
-
-            if (userInviteInputtagsToAssign != null)
-            {
-                userInviteInput["TagsToAssign"] = ExpressionConverter.ConvertO(userInviteInputtagsToAssign);
-                userInviteInputpropCount++;
-            }
-
-            if (userInviteInputpropCount > 0)
-            {
-                callPayload.Body = userInviteInput;
-            }
-
-            return new ApiConnectionAction<BaseResult>(callPayload);
+            return new ApiConnectionAction<BaseResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<LoginResponse> RefreshUserToken()
         {
-            var apiCallPath = "/api/v2/refreshUserToken/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LoginResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v2/refreshUserToken/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LoginResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResult> UpateUser(Expression<Func<string>> userId, Expression<Func<bool>> shouldUpdateValidators, Expression<Func<string>> userUpdateInputlastName = null, Expression<Func<string>> userUpdateInputfirstName = null, Expression<Func<string>> userUpdateInputmail = null, Expression<Func<string>> userUpdateInputmailAlias = null, Expression<Func<string>> userUpdateInputpayId = null, Expression<Func<string>> userUpdateInputpayId2 = null, Expression<Func<string>> userUpdateInputpayId3 = null, Expression<Func<string>> userUpdateInputpayId4 = null, Expression<Func<string>> userUpdateInputpayId5 = null, Expression<Func<string>> userUpdateInputpayId6 = null, Expression<Func<string>> userUpdateInputlanguage = null, Expression<Func<string>> userUpdateInputlocalCurrency = null, Expression<Func<string>> userUpdateInputlocalCountry = null, Expression<Func<string>> userUpdateInputmanagerId = null, Expression<Func<string>> userUpdateInputreviewerId = null, Expression<Func<userUpdateInputuserTypeInput>> userUpdateInputuserType = null, Expression<Func<string>> userUpdateInputvendor = null, Expression<Func<userUpdateInputuserRoleInput>> userUpdateInputuserRole = null, Expression<Func<string>> userUpdateInputjobTitle = null, Expression<Func<bool>> userUpdateInputcanAddPurchase = null, Expression<Func<string>> userUpdateInputdefaultProjectId = null, Expression<Func<string>> userUpdateInputiKRatesId = null, Expression<Func<ValidatorInput[]>> userUpdateInputadditionalValidators = null, Expression<Func<string[]>> userUpdateInputtagsToAssign = null, Expression<Func<string[]>> userUpdateInputtagsToUnassign = null)
+        public IBodyWorkflowAction<BaseResult> UpateUser([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<bool> shouldUpdateValidators, [WorkflowExpression] Func<string> userUpdateInputlastName = null, [WorkflowExpression] Func<string> userUpdateInputfirstName = null, [WorkflowExpression] Func<string> userUpdateInputmail = null, [WorkflowExpression] Func<string> userUpdateInputmailAlias = null, [WorkflowExpression] Func<string> userUpdateInputpayId = null, [WorkflowExpression] Func<string> userUpdateInputpayId2 = null, [WorkflowExpression] Func<string> userUpdateInputpayId3 = null, [WorkflowExpression] Func<string> userUpdateInputpayId4 = null, [WorkflowExpression] Func<string> userUpdateInputpayId5 = null, [WorkflowExpression] Func<string> userUpdateInputpayId6 = null, [WorkflowExpression] Func<string> userUpdateInputlanguage = null, [WorkflowExpression] Func<string> userUpdateInputlocalCurrency = null, [WorkflowExpression] Func<string> userUpdateInputlocalCountry = null, [WorkflowExpression] Func<string> userUpdateInputmanagerId = null, [WorkflowExpression] Func<string> userUpdateInputreviewerId = null, [WorkflowExpression] Func<userUpdateInputuserTypeInput> userUpdateInputuserType = null, [WorkflowExpression] Func<string> userUpdateInputvendor = null, [WorkflowExpression] Func<userUpdateInputuserRoleInput> userUpdateInputuserRole = null, [WorkflowExpression] Func<string> userUpdateInputjobTitle = null, [WorkflowExpression] Func<bool> userUpdateInputcanAddPurchase = null, [WorkflowExpression] Func<string> userUpdateInputdefaultProjectId = null, [WorkflowExpression] Func<string> userUpdateInputiKRatesId = null, [WorkflowExpression] Func<ValidatorInput[]> userUpdateInputadditionalValidators = null, [WorkflowExpression] Func<string[]> userUpdateInputtagsToAssign = null, [WorkflowExpression] Func<string[]> userUpdateInputtagsToUnassign = null)
         {
-            var apiCallPath = String.Format("/api/v2/user/{0}/", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["shouldUpdateValidators"] = ExpressionConverter.Convert(shouldUpdateValidators);
-            var userUpdateInput = new JObject();
-            var userUpdateInputpropCount = 0;
-            if (userUpdateInputlastName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                userUpdateInput["LastName"] = ExpressionConverter.ConvertO(userUpdateInputlastName);
-                userUpdateInputpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/user/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["shouldUpdateValidators"] = SourceExpressionConverter.ConvertO(shouldUpdateValidators);
+                var userUpdateInput = new JObject();
+                var userUpdateInputpropCount = 0;
+                if (userUpdateInputlastName != null)
+                {
+                    userUpdateInput["LastName"] = SourceExpressionConverter.ConvertToken(userUpdateInputlastName);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputfirstName != null)
+                {
+                    userUpdateInput["FirstName"] = SourceExpressionConverter.ConvertToken(userUpdateInputfirstName);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputmail != null)
+                {
+                    userUpdateInput["Mail"] = SourceExpressionConverter.ConvertToken(userUpdateInputmail);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputmailAlias != null)
+                {
+                    userUpdateInput["MailAlias"] = SourceExpressionConverter.ConvertToken(userUpdateInputmailAlias);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputpayId != null)
+                {
+                    userUpdateInput["PayId"] = SourceExpressionConverter.ConvertToken(userUpdateInputpayId);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputpayId2 != null)
+                {
+                    userUpdateInput["PayId2"] = SourceExpressionConverter.ConvertToken(userUpdateInputpayId2);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputpayId3 != null)
+                {
+                    userUpdateInput["PayId3"] = SourceExpressionConverter.ConvertToken(userUpdateInputpayId3);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputpayId4 != null)
+                {
+                    userUpdateInput["PayId4"] = SourceExpressionConverter.ConvertToken(userUpdateInputpayId4);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputpayId5 != null)
+                {
+                    userUpdateInput["PayId5"] = SourceExpressionConverter.ConvertToken(userUpdateInputpayId5);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputpayId6 != null)
+                {
+                    userUpdateInput["PayId6"] = SourceExpressionConverter.ConvertToken(userUpdateInputpayId6);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputlanguage != null)
+                {
+                    userUpdateInput["Language"] = SourceExpressionConverter.ConvertToken(userUpdateInputlanguage);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputlocalCurrency != null)
+                {
+                    userUpdateInput["LocalCurrency"] = SourceExpressionConverter.ConvertToken(userUpdateInputlocalCurrency);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputlocalCountry != null)
+                {
+                    userUpdateInput["LocalCountry"] = SourceExpressionConverter.ConvertToken(userUpdateInputlocalCountry);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputmanagerId != null)
+                {
+                    userUpdateInput["Manager_Id"] = SourceExpressionConverter.ConvertToken(userUpdateInputmanagerId);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputreviewerId != null)
+                {
+                    userUpdateInput["Reviewer_Id"] = SourceExpressionConverter.ConvertToken(userUpdateInputreviewerId);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputuserType != null)
+                {
+                    userUpdateInput["UserType"] = SourceExpressionConverter.Convert(userUpdateInputuserType);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputvendor != null)
+                {
+                    userUpdateInput["Vendor"] = SourceExpressionConverter.ConvertToken(userUpdateInputvendor);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputuserRole != null)
+                {
+                    userUpdateInput["UserRole"] = SourceExpressionConverter.Convert(userUpdateInputuserRole);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputjobTitle != null)
+                {
+                    userUpdateInput["JobTitle"] = SourceExpressionConverter.ConvertToken(userUpdateInputjobTitle);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputcanAddPurchase != null)
+                {
+                    userUpdateInput["CanAddPurchase"] = SourceExpressionConverter.ConvertToken(userUpdateInputcanAddPurchase);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputdefaultProjectId != null)
+                {
+                    userUpdateInput["DefaultProjectId"] = SourceExpressionConverter.ConvertToken(userUpdateInputdefaultProjectId);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputiKRatesId != null)
+                {
+                    userUpdateInput["IKRates_Id"] = SourceExpressionConverter.ConvertToken(userUpdateInputiKRatesId);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputadditionalValidators != null)
+                {
+                    userUpdateInput["AdditionalValidators"] = SourceExpressionConverter.ConvertToken(userUpdateInputadditionalValidators);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputtagsToAssign != null)
+                {
+                    userUpdateInput["TagsToAssign"] = SourceExpressionConverter.ConvertToken(userUpdateInputtagsToAssign);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputtagsToUnassign != null)
+                {
+                    userUpdateInput["TagsToUnassign"] = SourceExpressionConverter.ConvertToken(userUpdateInputtagsToUnassign);
+                    userUpdateInputpropCount++;
+                }
+
+                if (userUpdateInputpropCount > 0)
+                {
+                    callPayload.Body = userUpdateInput;
+                }
+                return callPayload;
             }
 
-            if (userUpdateInputfirstName != null)
-            {
-                userUpdateInput["FirstName"] = ExpressionConverter.ConvertO(userUpdateInputfirstName);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputmail != null)
-            {
-                userUpdateInput["Mail"] = ExpressionConverter.ConvertO(userUpdateInputmail);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputmailAlias != null)
-            {
-                userUpdateInput["MailAlias"] = ExpressionConverter.ConvertO(userUpdateInputmailAlias);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputpayId != null)
-            {
-                userUpdateInput["PayId"] = ExpressionConverter.ConvertO(userUpdateInputpayId);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputpayId2 != null)
-            {
-                userUpdateInput["PayId2"] = ExpressionConverter.ConvertO(userUpdateInputpayId2);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputpayId3 != null)
-            {
-                userUpdateInput["PayId3"] = ExpressionConverter.ConvertO(userUpdateInputpayId3);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputpayId4 != null)
-            {
-                userUpdateInput["PayId4"] = ExpressionConverter.ConvertO(userUpdateInputpayId4);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputpayId5 != null)
-            {
-                userUpdateInput["PayId5"] = ExpressionConverter.ConvertO(userUpdateInputpayId5);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputpayId6 != null)
-            {
-                userUpdateInput["PayId6"] = ExpressionConverter.ConvertO(userUpdateInputpayId6);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputlanguage != null)
-            {
-                userUpdateInput["Language"] = ExpressionConverter.ConvertO(userUpdateInputlanguage);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputlocalCurrency != null)
-            {
-                userUpdateInput["LocalCurrency"] = ExpressionConverter.ConvertO(userUpdateInputlocalCurrency);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputlocalCountry != null)
-            {
-                userUpdateInput["LocalCountry"] = ExpressionConverter.ConvertO(userUpdateInputlocalCountry);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputmanagerId != null)
-            {
-                userUpdateInput["Manager_Id"] = ExpressionConverter.ConvertO(userUpdateInputmanagerId);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputreviewerId != null)
-            {
-                userUpdateInput["Reviewer_Id"] = ExpressionConverter.ConvertO(userUpdateInputreviewerId);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputuserType != null)
-            {
-                userUpdateInput["UserType"] = ExpressionConverter.ConvertO(userUpdateInputuserType);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputvendor != null)
-            {
-                userUpdateInput["Vendor"] = ExpressionConverter.ConvertO(userUpdateInputvendor);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputuserRole != null)
-            {
-                userUpdateInput["UserRole"] = ExpressionConverter.ConvertO(userUpdateInputuserRole);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputjobTitle != null)
-            {
-                userUpdateInput["JobTitle"] = ExpressionConverter.ConvertO(userUpdateInputjobTitle);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputcanAddPurchase != null)
-            {
-                userUpdateInput["CanAddPurchase"] = ExpressionConverter.ConvertO(userUpdateInputcanAddPurchase);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputdefaultProjectId != null)
-            {
-                userUpdateInput["DefaultProjectId"] = ExpressionConverter.ConvertO(userUpdateInputdefaultProjectId);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputiKRatesId != null)
-            {
-                userUpdateInput["IKRates_Id"] = ExpressionConverter.ConvertO(userUpdateInputiKRatesId);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputadditionalValidators != null)
-            {
-                userUpdateInput["AdditionalValidators"] = ExpressionConverter.ConvertO(userUpdateInputadditionalValidators);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputtagsToAssign != null)
-            {
-                userUpdateInput["TagsToAssign"] = ExpressionConverter.ConvertO(userUpdateInputtagsToAssign);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputtagsToUnassign != null)
-            {
-                userUpdateInput["TagsToUnassign"] = ExpressionConverter.ConvertO(userUpdateInputtagsToUnassign);
-                userUpdateInputpropCount++;
-            }
-
-            if (userUpdateInputpropCount > 0)
-            {
-                callPayload.Body = userUpdateInput;
-            }
-
-            return new ApiConnectionAction<BaseResult>(callPayload);
+            return new ApiConnectionAction<BaseResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> UpdateProjectState(Expression<Func<string[]>> updateProjectStateInputitemIds, Expression<Func<bool>> updateProjectStateInputprojectState)
+        public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> UpdateProjectState([WorkflowExpression] Func<string[]> updateProjectStateInputitemIds, [WorkflowExpression] Func<bool> updateProjectStateInputprojectState)
         {
-            var apiCallPath = "/api/v2/projects/states/";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var updateProjectStateInput = new JObject();
-            var updateProjectStateInputpropCount = 0;
-            updateProjectStateInputpropCount++;
-            updateProjectStateInput["ItemIds"] = ExpressionConverter.ConvertO(updateProjectStateInputitemIds);
-            updateProjectStateInputpropCount++;
-            updateProjectStateInput["ProjectState"] = ExpressionConverter.ConvertO(updateProjectStateInputprojectState);
-            if (updateProjectStateInputpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = updateProjectStateInput;
+                var apiCallPath = "/api/v2/projects/states/";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var updateProjectStateInput = new JObject();
+                var updateProjectStateInputpropCount = 0;
+                updateProjectStateInputpropCount++;
+                updateProjectStateInput["ItemIds"] = SourceExpressionConverter.ConvertToken(updateProjectStateInputitemIds);
+                updateProjectStateInputpropCount++;
+                updateProjectStateInput["ProjectState"] = SourceExpressionConverter.ConvertToken(updateProjectStateInputprojectState);
+                if (updateProjectStateInputpropCount > 0)
+                {
+                    callPayload.Body = updateProjectStateInput;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<BaseResultListAddOrUpdateEntityResult>(callPayload);
+            return new ApiConnectionAction<BaseResultListAddOrUpdateEntityResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
-        public IBodyWorkflowAction<BaseResultListUpdateUserResult> UpdateUsersState(Expression<Func<UpdateUserStateInput[]>> updateUserStateInputArray = null)
+        public IBodyWorkflowAction<BaseResultListUpdateUserResult> UpdateUsersState([WorkflowExpression] Func<UpdateUserStateInput[]> updateUserStateInputArray = null)
         {
-            var apiCallPath = "/api/v2/users/state/";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(updateUserStateInputArray);
-            return new ApiConnectionAction<BaseResultListUpdateUserResult>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v2/users/state/";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(updateUserStateInputArray);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BaseResultListUpdateUserResult>(BuildSourceInput);
         }
     }
 
@@ -936,102 +1045,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum BaseResultExportResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class BaseResultListExportFormatResponse
@@ -1055,102 +1116,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum BaseResultListExportFormatResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class BaseResultListAddOrUpdateEntityResult
@@ -1170,202 +1183,106 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum AddOrUpdateEntityResultResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public enum BaseResultListAddOrUpdateEntityResultResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class AddOrUpdateProjectInput
@@ -1402,22 +1319,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum AddOrUpdateProjectInputProjectUseTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128
     }
 
     public class BaseResult
@@ -1428,102 +1337,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum BaseResultResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class ListAndPagesCountResultReportResponse
@@ -1576,24 +1437,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum ReportResponseStateType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "50")]
-        _50
+        _0 = 0,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _8 = 8,
+        _50 = 50
     }
 
     public class TagResponse
@@ -1610,154 +1462,86 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum TagResponseTagTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _1 = 1,
+        _2 = 2
     }
 
     public enum TagResponseUseTypeType
     {
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128
     }
 
     public enum ListAndPagesCountResultReportResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public enum reportUpdateStatusInputoperationInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "9")]
-        _9,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11
+        _0 = 0,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _8 = 8,
+        _9 = 9,
+        _10 = 10,
+        _11 = 11
     }
 
     public class ListAndPagesCountResultUserResponse
@@ -1830,110 +1614,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum UserResponseUserTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "56")]
-        _56
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _56 = 56
     }
 
     public enum UserResponseUserStateType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public enum UserResponseManagerUserStateType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public enum UserResponseReviewerUserStateType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public enum UserResponseUserRoleType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128,
-        [EnumMember(Value = "256")]
-        _256,
-        [EnumMember(Value = "512")]
-        _512,
-        [EnumMember(Value = "1024")]
-        _1024,
-        [EnumMember(Value = "2048")]
-        _2048,
-        [EnumMember(Value = "4096")]
-        _4096,
-        [EnumMember(Value = "8192")]
-        _8192,
-        [EnumMember(Value = "16384")]
-        _16384,
-        [EnumMember(Value = "32768")]
-        _32768,
-        [EnumMember(Value = "65536")]
-        _65536,
-        [EnumMember(Value = "131072")]
-        _131072,
-        [EnumMember(Value = "262144")]
-        _262144,
-        [EnumMember(Value = "524288")]
-        _524288,
-        [EnumMember(Value = "1048576")]
-        _1048576,
-        [EnumMember(Value = "2097152")]
-        _2097152,
-        [EnumMember(Value = "4194304")]
-        _4194304,
-        [EnumMember(Value = "8388608")]
-        _8388608,
-        [EnumMember(Value = "16777216")]
-        _16777216,
-        [EnumMember(Value = "33554432")]
-        _33554432,
-        [EnumMember(Value = "67108864")]
-        _67108864
+        _0 = 0,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128,
+        _256 = 256,
+        _512 = 512,
+        _1024 = 1024,
+        _2048 = 2048,
+        _4096 = 4096,
+        _8192 = 8192,
+        _16384 = 16384,
+        _32768 = 32768,
+        _65536 = 65536,
+        _131072 = 131072,
+        _262144 = 262144,
+        _524288 = 524288,
+        _1048576 = 1048576,
+        _2097152 = 2097152,
+        _4194304 = 4194304,
+        _8388608 = 8388608,
+        _16777216 = 16777216,
+        _33554432 = 33554432,
+        _67108864 = 67108864
     }
 
     public class ValidatorResponse
@@ -1946,116 +1686,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum ListAndPagesCountResultUserResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public enum quickExpenseInputexpenseUseTypeInput
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16
     }
 
     public class ListAndPagesCountResultCategoryResponse
@@ -2094,112 +1781,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum CategoryResponseCategoryUseTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4
+        _1 = 1,
+        _2 = 2,
+        _4 = 4
     }
 
     public enum ListAndPagesCountResultCategoryResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class ListAndPagesCountResultExpenseResponse
@@ -2277,32 +1913,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum ExpenseResponseUseTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16
     }
 
     public enum ExpenseResponseStateType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "99")]
-        _99
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _99 = 99
     }
 
     public class VATResponse
@@ -2357,22 +1982,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum ProjectResponseProjectUseTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128
     }
 
     public class PaymentInstrumentResponse
@@ -2391,32 +2008,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum PaymentInstrumentResponseInstrumentTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "99")]
-        _99
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _99 = 99
     }
 
     public enum PaymentInstrumentResponseAccountTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public class VehicleResponse
@@ -2446,68 +2052,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum VehicleResponseVehicleTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5
     }
 
     public enum VehicleResponseInternalVehicleTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public enum VehicleResponseStateType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "-1")]
-        Negative1
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        Negative1 = -1
     }
 
     public enum VehicleResponseCreationTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 
     public enum ExpenseResponsePerdiemCalculationPeriodTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 
     public enum ExpenseResponsePerDiemTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public class BrokenRuleResponse
@@ -2529,36 +2114,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum BrokenRuleResponseRuleTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public enum BrokenRuleResponseRuleElementTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 
     public enum BrokenRuleResponseIntervalTypeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4
     }
 
     public class TupleStringDecimal
@@ -2577,128 +2151,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum ExpenseResponseSubStatusType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128,
-        [EnumMember(Value = "256")]
-        _256,
-        [EnumMember(Value = "512")]
-        _512,
-        [EnumMember(Value = "1024")]
-        _1024
+        _0 = 0,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128,
+        _256 = 256,
+        _512 = 512,
+        _1024 = 1024
     }
 
     public enum ListAndPagesCountResultExpenseResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class BaseResultProjectResponse
@@ -2710,102 +2225,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum BaseResultProjectResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class ListAndPagesCountResultProjectResponse
@@ -2819,102 +2286,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum ListAndPagesCountResultProjectResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class BaseResultListEventResponse
@@ -2937,334 +2356,176 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum EventResponseEventTypeType
     {
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "9")]
-        _9,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "13")]
-        _13,
-        [EnumMember(Value = "14")]
-        _14,
-        [EnumMember(Value = "15")]
-        _15,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "17")]
-        _17,
-        [EnumMember(Value = "18")]
-        _18,
-        [EnumMember(Value = "19")]
-        _19,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "21")]
-        _21,
-        [EnumMember(Value = "22")]
-        _22,
-        [EnumMember(Value = "23")]
-        _23,
-        [EnumMember(Value = "24")]
-        _24,
-        [EnumMember(Value = "25")]
-        _25,
-        [EnumMember(Value = "26")]
-        _26,
-        [EnumMember(Value = "27")]
-        _27,
-        [EnumMember(Value = "28")]
-        _28,
-        [EnumMember(Value = "29")]
-        _29,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "31")]
-        _31,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "33")]
-        _33,
-        [EnumMember(Value = "34")]
-        _34,
-        [EnumMember(Value = "35")]
-        _35,
-        [EnumMember(Value = "36")]
-        _36,
-        [EnumMember(Value = "37")]
-        _37,
-        [EnumMember(Value = "38")]
-        _38,
-        [EnumMember(Value = "39")]
-        _39,
-        [EnumMember(Value = "41")]
-        _41,
-        [EnumMember(Value = "42")]
-        _42,
-        [EnumMember(Value = "43")]
-        _43,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "102")]
-        _102,
-        [EnumMember(Value = "103")]
-        _103,
-        [EnumMember(Value = "104")]
-        _104,
-        [EnumMember(Value = "105")]
-        _105,
-        [EnumMember(Value = "106")]
-        _106,
-        [EnumMember(Value = "107")]
-        _107,
-        [EnumMember(Value = "108")]
-        _108,
-        [EnumMember(Value = "109")]
-        _109,
-        [EnumMember(Value = "110")]
-        _110,
-        [EnumMember(Value = "111")]
-        _111,
-        [EnumMember(Value = "112")]
-        _112,
-        [EnumMember(Value = "113")]
-        _113,
-        [EnumMember(Value = "114")]
-        _114,
-        [EnumMember(Value = "115")]
-        _115,
-        [EnumMember(Value = "116")]
-        _116,
-        [EnumMember(Value = "117")]
-        _117,
-        [EnumMember(Value = "118")]
-        _118,
-        [EnumMember(Value = "119")]
-        _119,
-        [EnumMember(Value = "120")]
-        _120,
-        [EnumMember(Value = "121")]
-        _121,
-        [EnumMember(Value = "122")]
-        _122,
-        [EnumMember(Value = "123")]
-        _123,
-        [EnumMember(Value = "124")]
-        _124,
-        [EnumMember(Value = "125")]
-        _125,
-        [EnumMember(Value = "126")]
-        _126,
-        [EnumMember(Value = "127")]
-        _127,
-        [EnumMember(Value = "128")]
-        _128,
-        [EnumMember(Value = "129")]
-        _129
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _8 = 8,
+        _9 = 9,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _13 = 13,
+        _14 = 14,
+        _15 = 15,
+        _16 = 16,
+        _17 = 17,
+        _18 = 18,
+        _19 = 19,
+        _20 = 20,
+        _21 = 21,
+        _22 = 22,
+        _23 = 23,
+        _24 = 24,
+        _25 = 25,
+        _26 = 26,
+        _27 = 27,
+        _28 = 28,
+        _29 = 29,
+        _30 = 30,
+        _31 = 31,
+        _32 = 32,
+        _33 = 33,
+        _34 = 34,
+        _35 = 35,
+        _36 = 36,
+        _37 = 37,
+        _38 = 38,
+        _39 = 39,
+        _41 = 41,
+        _42 = 42,
+        _43 = 43,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _102 = 102,
+        _103 = 103,
+        _104 = 104,
+        _105 = 105,
+        _106 = 106,
+        _107 = 107,
+        _108 = 108,
+        _109 = 109,
+        _110 = 110,
+        _111 = 111,
+        _112 = 112,
+        _113 = 113,
+        _114 = 114,
+        _115 = 115,
+        _116 = 116,
+        _117 = 117,
+        _118 = 118,
+        _119 = 119,
+        _120 = 120,
+        _121 = 121,
+        _122 = 122,
+        _123 = 123,
+        _124 = 124,
+        _125 = 125,
+        _126 = 126,
+        _127 = 127,
+        _128 = 128,
+        _129 = 129
     }
 
     public enum BaseResultListEventResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public enum userInviteInputuserTypeInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "56")]
-        _56
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _56 = 56
     }
 
     public enum userInviteInputuserRoleInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128,
-        [EnumMember(Value = "256")]
-        _256,
-        [EnumMember(Value = "512")]
-        _512,
-        [EnumMember(Value = "1024")]
-        _1024,
-        [EnumMember(Value = "2048")]
-        _2048,
-        [EnumMember(Value = "4096")]
-        _4096,
-        [EnumMember(Value = "8192")]
-        _8192,
-        [EnumMember(Value = "16384")]
-        _16384,
-        [EnumMember(Value = "32768")]
-        _32768,
-        [EnumMember(Value = "65536")]
-        _65536,
-        [EnumMember(Value = "131072")]
-        _131072,
-        [EnumMember(Value = "262144")]
-        _262144,
-        [EnumMember(Value = "524288")]
-        _524288,
-        [EnumMember(Value = "1048576")]
-        _1048576,
-        [EnumMember(Value = "2097152")]
-        _2097152,
-        [EnumMember(Value = "4194304")]
-        _4194304,
-        [EnumMember(Value = "8388608")]
-        _8388608,
-        [EnumMember(Value = "16777216")]
-        _16777216,
-        [EnumMember(Value = "33554432")]
-        _33554432,
-        [EnumMember(Value = "67108864")]
-        _67108864
+        _0 = 0,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128,
+        _256 = 256,
+        _512 = 512,
+        _1024 = 1024,
+        _2048 = 2048,
+        _4096 = 4096,
+        _8192 = 8192,
+        _16384 = 16384,
+        _32768 = 32768,
+        _65536 = 65536,
+        _131072 = 131072,
+        _262144 = 262144,
+        _524288 = 524288,
+        _1048576 = 1048576,
+        _2097152 = 2097152,
+        _4194304 = 4194304,
+        _8388608 = 8388608,
+        _16777216 = 16777216,
+        _33554432 = 33554432,
+        _67108864 = 67108864
     }
 
     public class ValidatorInput
@@ -3309,180 +2570,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum LoginResponseResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public enum userUpdateInputuserTypeInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "56")]
-        _56
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _56 = 56
     }
 
     public enum userUpdateInputuserRoleInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "8")]
-        _8,
-        [EnumMember(Value = "16")]
-        _16,
-        [EnumMember(Value = "32")]
-        _32,
-        [EnumMember(Value = "64")]
-        _64,
-        [EnumMember(Value = "128")]
-        _128,
-        [EnumMember(Value = "256")]
-        _256,
-        [EnumMember(Value = "512")]
-        _512,
-        [EnumMember(Value = "1024")]
-        _1024,
-        [EnumMember(Value = "2048")]
-        _2048,
-        [EnumMember(Value = "4096")]
-        _4096,
-        [EnumMember(Value = "8192")]
-        _8192,
-        [EnumMember(Value = "16384")]
-        _16384,
-        [EnumMember(Value = "32768")]
-        _32768,
-        [EnumMember(Value = "65536")]
-        _65536,
-        [EnumMember(Value = "131072")]
-        _131072,
-        [EnumMember(Value = "262144")]
-        _262144,
-        [EnumMember(Value = "524288")]
-        _524288,
-        [EnumMember(Value = "1048576")]
-        _1048576,
-        [EnumMember(Value = "2097152")]
-        _2097152,
-        [EnumMember(Value = "4194304")]
-        _4194304,
-        [EnumMember(Value = "8388608")]
-        _8388608,
-        [EnumMember(Value = "16777216")]
-        _16777216,
-        [EnumMember(Value = "33554432")]
-        _33554432,
-        [EnumMember(Value = "67108864")]
-        _67108864
+        _0 = 0,
+        _2 = 2,
+        _4 = 4,
+        _8 = 8,
+        _16 = 16,
+        _32 = 32,
+        _64 = 64,
+        _128 = 128,
+        _256 = 256,
+        _512 = 512,
+        _1024 = 1024,
+        _2048 = 2048,
+        _4096 = 4096,
+        _8192 = 8192,
+        _16384 = 16384,
+        _32768 = 32768,
+        _65536 = 65536,
+        _131072 = 131072,
+        _262144 = 262144,
+        _524288 = 524288,
+        _1048576 = 1048576,
+        _2097152 = 2097152,
+        _4194304 = 4194304,
+        _8388608 = 8388608,
+        _16777216 = 16777216,
+        _33554432 = 33554432,
+        _67108864 = 67108864
     }
 
     public class BaseResultListUpdateUserResult
@@ -3501,202 +2679,106 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum UpdateUserResultResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public enum BaseResultListUpdateUserResultResultCodeType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "5")]
-        _5,
-        [EnumMember(Value = "6")]
-        _6,
-        [EnumMember(Value = "7")]
-        _7,
-        [EnumMember(Value = "10")]
-        _10,
-        [EnumMember(Value = "11")]
-        _11,
-        [EnumMember(Value = "12")]
-        _12,
-        [EnumMember(Value = "20")]
-        _20,
-        [EnumMember(Value = "30")]
-        _30,
-        [EnumMember(Value = "50")]
-        _50,
-        [EnumMember(Value = "60")]
-        _60,
-        [EnumMember(Value = "70")]
-        _70,
-        [EnumMember(Value = "71")]
-        _71,
-        [EnumMember(Value = "80")]
-        _80,
-        [EnumMember(Value = "90")]
-        _90,
-        [EnumMember(Value = "91")]
-        _91,
-        [EnumMember(Value = "92")]
-        _92,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "97")]
-        _97,
-        [EnumMember(Value = "98")]
-        _98,
-        [EnumMember(Value = "99")]
-        _99,
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "901")]
-        _901,
-        [EnumMember(Value = "902")]
-        _902,
-        [EnumMember(Value = "903")]
-        _903,
-        [EnumMember(Value = "910")]
-        _910,
-        [EnumMember(Value = "913")]
-        _913,
-        [EnumMember(Value = "1001")]
-        _1001,
-        [EnumMember(Value = "1004")]
-        _1004,
-        [EnumMember(Value = "1005")]
-        _1005,
-        [EnumMember(Value = "1006")]
-        _1006,
-        [EnumMember(Value = "2000")]
-        _2000,
-        [EnumMember(Value = "2001")]
-        _2001,
-        [EnumMember(Value = "2002")]
-        _2002,
-        [EnumMember(Value = "2003")]
-        _2003,
-        [EnumMember(Value = "2004")]
-        _2004,
-        [EnumMember(Value = "2005")]
-        _2005,
-        [EnumMember(Value = "2007")]
-        _2007,
-        [EnumMember(Value = "2008")]
-        _2008
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3,
+        _4 = 4,
+        _5 = 5,
+        _6 = 6,
+        _7 = 7,
+        _10 = 10,
+        _11 = 11,
+        _12 = 12,
+        _20 = 20,
+        _30 = 30,
+        _50 = 50,
+        _60 = 60,
+        _70 = 70,
+        _71 = 71,
+        _80 = 80,
+        _90 = 90,
+        _91 = 91,
+        _92 = 92,
+        _96 = 96,
+        _97 = 97,
+        _98 = 98,
+        _99 = 99,
+        _100 = 100,
+        _101 = 101,
+        _303 = 303,
+        _400 = 400,
+        _401 = 401,
+        _404 = 404,
+        _901 = 901,
+        _902 = 902,
+        _903 = 903,
+        _910 = 910,
+        _913 = 913,
+        _1001 = 1001,
+        _1004 = 1004,
+        _1005 = 1005,
+        _1006 = 1006,
+        _2000 = 2000,
+        _2001 = 2001,
+        _2002 = 2002,
+        _2003 = 2003,
+        _2004 = 2004,
+        _2005 = 2005,
+        _2007 = 2007,
+        _2008 = 2008
     }
 
     public class UpdateUserStateInput
@@ -3707,12 +2789,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
 
     public enum UpdateUserStateInputOperationType
     {
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3,
-        [EnumMember(Value = "4")]
-        _4
+        _2 = 2,
+        _3 = 3,
+        _4 = 4
     }
 }
 

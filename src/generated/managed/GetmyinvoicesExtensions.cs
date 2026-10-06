@@ -12,23 +12,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Getmyinvoices
     public class GetmyinvoicesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "getmyinvoices")]
-        public IBodyWorkflowAction<GetInvoiceFromGetMyInvoicesResponse> GetInvoiceFromGetMyInvoices(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyapiKey)
+        public IBodyWorkflowAction<GetInvoiceFromGetMyInvoicesResponse> GetInvoiceFromGetMyInvoices([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodyapiKey)
         {
-            var apiCallPath = "/accounts/v2/sendDocumentsToPowerAutomate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["api_key"] = ExpressionConverter.ConvertO(bodyapiKey);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/accounts/v2/sendDocumentsToPowerAutomate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["api_key"] = SourceExpressionConverter.ConvertToken(bodyapiKey);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GetInvoiceFromGetMyInvoicesResponse>(callPayload);
+            return new ApiConnectionAction<GetInvoiceFromGetMyInvoicesResponse>(BuildSourceInput);
         }
     }
 

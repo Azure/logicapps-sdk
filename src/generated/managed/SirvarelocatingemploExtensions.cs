@@ -14,51 +14,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         public IBodyWorkflowAction<GetRelocationsResponse> GetRelocations()
         {
-            var apiCallPath = "/relocation";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRelocationsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        public IBodyWorkflowAction<GetRelocationPackageResponse> GetRelocationPackage(Expression<Func<string>> relocationId)
-        {
-            var apiCallPath = String.Format("/package/{0}", ExpressionConverter.ConvertWithUrlEncoding(relocationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRelocationPackageResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        public IBodyWorkflowAction<GetCounselorContactInformationResponse> GetCounselorContactInformation(Expression<Func<bool>> includePicture, Expression<Func<string>> relocationId)
-        {
-            var apiCallPath = String.Format("/relocation/counselor/{0}", ExpressionConverter.ConvertWithUrlEncoding(relocationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["IncludePicture"] = ExpressionConverter.Convert(includePicture);
-            return new ApiConnectionAction<GetCounselorContactInformationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse> AskSirvaBotAboutTopic(Expression<Func<string>> bodyrelocationId, Expression<Func<string>> bodyquery, Expression<Func<bodytopicInput>> bodytopic)
-        {
-            var apiCallPath = "/chat/topic";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["RelocationId"] = ExpressionConverter.ConvertO(bodyrelocationId);
-            bodypropCount++;
-            body["Query"] = ExpressionConverter.ConvertO(bodyquery);
-            bodypropCount++;
-            body["Topic"] = ExpressionConverter.ConvertO(bodytopic);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/relocation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<AskSirvaBotAboutTopicResponse>(callPayload);
+            return new ApiConnectionAction<GetRelocationsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
+        public IBodyWorkflowAction<GetRelocationPackageResponse> GetRelocationPackage([WorkflowExpression] Func<string> relocationId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/package/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(relocationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRelocationPackageResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
+        public IBodyWorkflowAction<GetCounselorContactInformationResponse> GetCounselorContactInformation([WorkflowExpression] Func<bool> includePicture, [WorkflowExpression] Func<string> relocationId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/relocation/counselor/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(relocationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["IncludePicture"] = SourceExpressionConverter.ConvertO(includePicture);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCounselorContactInformationResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
+        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse> AskSirvaBotAboutTopic([WorkflowExpression] Func<string> bodyrelocationId, [WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<bodytopicInput> bodytopic)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/chat/topic";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["RelocationId"] = SourceExpressionConverter.ConvertToken(bodyrelocationId);
+                bodypropCount++;
+                body["Query"] = SourceExpressionConverter.ConvertToken(bodyquery);
+                bodypropCount++;
+                body["Topic"] = SourceExpressionConverter.Convert(bodytopic);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AskSirvaBotAboutTopicResponse>(BuildSourceInput);
         }
     }
 

@@ -12,41 +12,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
     public class TelesignsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telesignsms")]
-        public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> bodyphoneNumber, Expression<Func<string>> bodymessageText, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodymessageType = null, Expression<Func<string>> bodysenderId = null)
+        public IBodyWorkflowAction<SendSMSResponse> SendSMS([WorkflowExpression] Func<string> bodyphoneNumber, [WorkflowExpression] Func<string> bodymessageText, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodymessageType = null, [WorkflowExpression] Func<string> bodysenderId = null)
         {
-            var apiCallPath = "/api/SMS";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
-            if (bodyexternalId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ExternalId"] = ExpressionConverter.ConvertO(bodyexternalId);
+                var apiCallPath = "/api/SMS";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["PhoneNumber"] = SourceExpressionConverter.ConvertToken(bodyphoneNumber);
+                if (bodyexternalId != null)
+                {
+                    body["ExternalId"] = SourceExpressionConverter.ConvertToken(bodyexternalId);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["MessageText"] = ExpressionConverter.ConvertO(bodymessageText);
-            if (bodymessageType != null)
-            {
-                body["MessageType"] = ExpressionConverter.ConvertO(bodymessageType);
                 bodypropCount++;
+                body["MessageText"] = SourceExpressionConverter.ConvertToken(bodymessageText);
+                if (bodymessageType != null)
+                {
+                    body["MessageType"] = SourceExpressionConverter.ConvertToken(bodymessageType);
+                    bodypropCount++;
+                }
+
+                if (bodysenderId != null)
+                {
+                    body["SenderId"] = SourceExpressionConverter.ConvertToken(bodysenderId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysenderId != null)
-            {
-                body["SenderId"] = ExpressionConverter.ConvertO(bodysenderId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendSMSResponse>(callPayload);
+            return new ApiConnectionAction<SendSMSResponse>(BuildSourceInput);
         }
     }
 

@@ -17,7 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// The tools for the agent action.
         /// </summary>
-        private Dictionary<string, FlowTemplateActionToolBranch> Tools = new Dictionary<string, FlowTemplateActionToolBranch>();
+        private readonly Dictionary<string, Func<string, FlowKind?, FlowTemplateActionToolBranch>> Tools =
+            new Dictionary<string, Func<string, FlowKind?, FlowTemplateActionToolBranch>>();
+        private readonly Func<AgentPromptMessage[]> sourceMessages;
 
         /// <summary>
         /// Gets or sets the agent model type.
@@ -63,13 +65,13 @@ namespace Microsoft.Azure.Workflows.Sdk
             string deploymentId,
             AgentModelSettings agentModelSettings,
             string connectionName,
-            AgentPromptMessage[] messages)
+            Func<AgentPromptMessage[]> messages)
         {
             this.AgentModelType = agentModelType;
             this.DeploymentId = deploymentId;
             this.AgentModelSettings = agentModelSettings;
             this.ConnectionName = connectionName;
-            this.Messages = messages;
+            this.sourceMessages = messages;
         }
 
         /// <summary>
@@ -89,8 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 ?? throw new InvalidOperationException("The tool definition callback must return an action.");
 
             var toolName = "Tool" + (this.Tools.Count + 1);
-            var toolBranch = AgentAction.BuildToolBranch(rootAction, description, parameters);
-            this.Tools.Add(toolName, toolBranch);
+            this.Tools.Add(toolName, (flowName, flowKind) => AgentAction.BuildToolBranch(rootAction, description, parameters, flowName, flowKind));
 
             return this;
         }
@@ -113,8 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var rootAction = toolChain.GetRootOperation() as IWorkflowAction ?? throw new InvalidOperationException("The first operation in a tool definition must be an action, not a trigger.");
 
             var toolName = "Tool" + (this.Tools.Count + 1);
-            var toolBranch = AgentAction.BuildToolBranch(rootAction, description, parameters);
-            this.Tools.Add(toolName, toolBranch);
+            this.Tools.Add(toolName, (flowName, flowKind) => AgentAction.BuildToolBranch(rootAction, description, parameters, flowName, flowKind));
 
             return this;
         }
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new FlowTemplateAction
             {
                 Type = FlowTemplateOperationType.Agent,
-                Tools = this.Tools,
+                Tools = this.Tools.ToDictionary(pair => pair.Key, pair => pair.Value(flowName, flowKind)),
                 Inputs = new AgentActionInput
                 {
                     Parameters = new AgentActionInputParameters
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                         AgentModelSettings = this.AgentModelSettings,
                         AgentModelType = this.AgentModelType,
                         DeploymentId = this.DeploymentId,
-                        Messages = this.Messages,
+                        Messages = this.Messages ?? this.sourceMessages?.Invoke(),
                     },
                     ModelConfigurations = new Dictionary<string, AgentModelConfiguration>
                     {
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Builds a FlowTemplateActionToolBranch by walking the action node graph.
         /// </summary>
-        private static FlowTemplateActionToolBranch BuildToolBranch<T>(IWorkflowAction rootAction, string description, T parameters) where T : class
+        private static FlowTemplateActionToolBranch BuildToolBranch<T>(IWorkflowAction rootAction, string description, T parameters, string flowName, FlowKind? flowKind) where T : class
         {
             var actions = new Dictionary<string, FlowTemplateAction>();
             var visited = new Dictionary<string, IWorkflowAction>();
@@ -180,8 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
                 visited.Add(node.Name, node);
 
-                // TODO(aeldridge): flow name/kind should be declared before workflow chain creation so they are available here
-                var definition = node.GetActionDefinition(flowName: null);
+                var definition = node.GetActionDefinition(flowName, flowKind);
 
                 if (node.RunAfterConfig.Count > 0)
                 {

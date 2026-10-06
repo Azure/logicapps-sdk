@@ -12,21 +12,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
     public class MavimintelligentxforActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimintelligentxfor")]
-        public IBodyWorkflowAction<AuditLog[]> GetTopicAuditTrailLogs(Expression<Func<string>> repositoryId, Expression<Func<string>> topicId, Expression<Func<int>> logId = null, Expression<Func<int>> range = null, Expression<Func<dataLanguageInput>> dataLanguage = null)
+        public IBodyWorkflowAction<AuditLog[]> GetTopicAuditTrailLogs([WorkflowExpression] Func<string> repositoryId, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<int> logId = null, [WorkflowExpression] Func<int> range = null, [WorkflowExpression] Func<dataLanguageInput> dataLanguage = null)
         {
-            var apiCallPath = String.Format("/insights/v2/activities/repositories/{0}/system-logs/topics/{1}", ExpressionConverter.ConvertWithUrlEncoding(repositoryId, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["logId"] = Convert.ToString(0);
-            if (logId != null)
-                callPayload.Queries["logId"] = ExpressionConverter.Convert(logId);
-            callPayload.Queries["range"] = Convert.ToString(0);
-            if (range != null)
-                callPayload.Queries["range"] = ExpressionConverter.Convert(range);
-            callPayload.Queries["dataLanguage"] = Convert.ToString("en");
-            if (dataLanguage != null)
-                callPayload.Queries["dataLanguage"] = ExpressionConverter.Convert(dataLanguage);
-            return new ApiConnectionAction<AuditLog[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/insights/v2/activities/repositories/{0}/system-logs/topics/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(repositoryId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["logId"] = Convert.ToString(0);
+                if (logId != null)
+                    callPayload.Queries["logId"] = SourceExpressionConverter.ConvertO(logId);
+                callPayload.Queries["range"] = Convert.ToString(0);
+                if (range != null)
+                    callPayload.Queries["range"] = SourceExpressionConverter.ConvertO(range);
+                callPayload.Queries["data-language"] = Convert.ToString("en");
+                if (dataLanguage != null)
+                    callPayload.Queries["data-language"] = SourceExpressionConverter.Convert(dataLanguage);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AuditLog[]>(BuildSourceInput);
         }
     }
 

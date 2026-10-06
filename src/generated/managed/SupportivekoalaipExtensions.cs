@@ -12,117 +12,145 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
     public class SupportivekoalaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<ImagesPostResponse> Images(Expression<Func<string>> bodytemplate, Expression<Func<bodyformatInput>> bodyformat = null)
+        public IBodyWorkflowAction<ImagesPostResponse> Images([WorkflowExpression] Func<string> bodytemplate, [WorkflowExpression] Func<bodyformatInput> bodyformat = null)
         {
-            var apiCallPath = "/images/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["template"] = ExpressionConverter.ConvertO(bodytemplate);
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["params"] = @paramsObject;
+                var apiCallPath = "/images/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyformat != null)
-            {
-                if (bodyformat != null)
+                body["template"] = SourceExpressionConverter.ConvertToken(bodytemplate);
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
                 {
-                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    body["params"] = @paramsObject;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["format"] = "png";
-                bodypropCount++;
+                if (bodyformat != null)
+                {
+                    if (bodyformat != null)
+                    {
+                        body["format"] = SourceExpressionConverter.Convert(bodyformat);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["format"] = "png";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ImagesPostResponse>(callPayload);
+            return new ApiConnectionAction<ImagesPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ImageGetResponse> ImageGet([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/images/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ImageGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/images/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ImageGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         public IBodyWorkflowAction<ImagesGetResponseItem[]> ImagesGet()
         {
-            var apiCallPath = "/images";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ImagesGetResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/images";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ImagesGetResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<TemplatePostResponse> Template(Expression<Func<string>> bodyname, Expression<Func<string>> bodyParams = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
+        public IBodyWorkflowAction<TemplatePostResponse> Template([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyParams = null, [WorkflowExpression] Func<int> bodywidth = null, [WorkflowExpression] Func<int> bodyheight = null)
         {
-            var apiCallPath = "/templates/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodyParams != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["params"] = ExpressionConverter.ConvertO(bodyParams);
+                var apiCallPath = "/templates/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodyParams != null)
+                {
+                    body["params"] = SourceExpressionConverter.ConvertToken(bodyParams);
+                    bodypropCount++;
+                }
+
+                if (bodywidth != null)
+                {
+                    body["width"] = SourceExpressionConverter.ConvertToken(bodywidth);
+                    bodypropCount++;
+                }
+
+                if (bodyheight != null)
+                {
+                    body["height"] = SourceExpressionConverter.ConvertToken(bodyheight);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodywidth != null)
-            {
-                body["width"] = ExpressionConverter.ConvertO(bodywidth);
-                bodypropCount++;
-            }
-
-            if (bodyheight != null)
-            {
-                body["height"] = ExpressionConverter.ConvertO(bodyheight);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TemplatePostResponse>(callPayload);
+            return new ApiConnectionAction<TemplatePostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
-        public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<TemplateGetResponse> TemplateGet([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TemplateGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TemplateGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         public IBodyWorkflowAction<TemplatesGetResponseItem[]> TemplatesGet()
         {
-            var apiCallPath = "/templates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TemplatesGetResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/templates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TemplatesGetResponseItem[]>(BuildSourceInput);
         }
     }
 

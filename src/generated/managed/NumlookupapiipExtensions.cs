@@ -12,23 +12,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Numlookupapiip
     public class NumlookupapiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "numlookupapiip")]
-        public IBodyWorkflowAction<NumberGetResponse> NumberGet(Expression<Func<string>> phoneNumber, Expression<Func<string>> countryCode = null)
+        public IBodyWorkflowAction<NumberGetResponse> NumberGet([WorkflowExpression] Func<string> phoneNumber, [WorkflowExpression] Func<string> countryCode = null)
         {
-            var apiCallPath = String.Format("/validate/{0}", ExpressionConverter.ConvertWithUrlEncoding(phoneNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (countryCode != null)
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            return new ApiConnectionAction<NumberGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/validate/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(phoneNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (countryCode != null)
+                    callPayload.Queries["country_code"] = SourceExpressionConverter.ConvertO(countryCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NumberGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "numlookupapiip")]
         public IBodyWorkflowAction<StatusGetResponse> StatusGet()
         {
-            var apiCallPath = "/status";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StatusGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/status";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StatusGetResponse>(BuildSourceInput);
         }
     }
 

@@ -12,3192 +12,3525 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
     public class FhirbaseActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentResponse> GETAppointment(Expression<Func<string>> patient = null, Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null)
+        public IBodyWorkflowAction<GETAppointmentResponse> GETAppointment([WorkflowExpression] Func<string> patient = null, [WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null)
         {
-            var apiCallPath = "/Appointment";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
-            if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
-            if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
-            return new ApiConnectionAction<GETAppointmentResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Appointment";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (patient != null)
+                    callPayload.Queries["patient"] = SourceExpressionConverter.ConvertO(patient);
+                if (Count != null)
+                    callPayload.Queries["_count"] = SourceExpressionConverter.ConvertO(Count);
+                if (Sort != null)
+                    callPayload.Queries["_sort"] = SourceExpressionConverter.ConvertO(Sort);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETAppointmentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTAppointmentResponse> POSTAppointment(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodyserviceCategoryInputItem[]>> bodyserviceCategory = null, Expression<Func<bodyserviceTypeInputItem[]>> bodyserviceType = null, Expression<Func<bodyspecialtyInputItem[]>> bodyspecialty = null, Expression<Func<bodyappointmentTypecodingInputItem[]>> bodyappointmentTypecoding = null, Expression<Func<bodyreasonReferenceInputItem[]>> bodyreasonReference = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodycreated = null, Expression<Func<string>> bodycomment = null, Expression<Func<bodybasedOnInputItem[]>> bodybasedOn = null, Expression<Func<bodyparticipantInputItem[]>> bodyparticipant = null)
+        public IBodyWorkflowAction<POSTAppointmentResponse> POSTAppointment([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodyserviceCategoryInputItem[]> bodyserviceCategory = null, [WorkflowExpression] Func<bodyserviceTypeInputItem[]> bodyserviceType = null, [WorkflowExpression] Func<bodyspecialtyInputItem[]> bodyspecialty = null, [WorkflowExpression] Func<bodyappointmentTypecodingInputItem[]> bodyappointmentTypecoding = null, [WorkflowExpression] Func<bodyreasonReferenceInputItem[]> bodyreasonReference = null, [WorkflowExpression] Func<int> bodypriority = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystart = null, [WorkflowExpression] Func<string> bodyend = null, [WorkflowExpression] Func<string> bodycreated = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<bodybasedOnInputItem[]> bodybasedOn = null, [WorkflowExpression] Func<bodyparticipantInputItem[]> bodyparticipant = null)
         {
-            var apiCallPath = "/Appointment";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = "/Appointment";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                if (bodytextstatus != null)
+                {
+                    textObject["status"] = SourceExpressionConverter.ConvertToken(bodytextstatus);
+                    textObjectpropCount++;
+                }
+
+                if (bodytextdiv != null)
+                {
+                    textObject["div"] = SourceExpressionConverter.ConvertToken(bodytextdiv);
+                    textObjectpropCount++;
+                }
+
+                if (textObjectpropCount > 0)
+                {
+                    body["text"] = textObject;
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyserviceCategory != null)
+                {
+                    body["serviceCategory"] = SourceExpressionConverter.ConvertToken(bodyserviceCategory);
+                    bodypropCount++;
+                }
+
+                if (bodyserviceType != null)
+                {
+                    body["serviceType"] = SourceExpressionConverter.ConvertToken(bodyserviceType);
+                    bodypropCount++;
+                }
+
+                if (bodyspecialty != null)
+                {
+                    body["specialty"] = SourceExpressionConverter.ConvertToken(bodyspecialty);
+                    bodypropCount++;
+                }
+
+                var appointmentTypeObject = new JObject();
+                var appointmentTypeObjectpropCount = 0;
+                if (bodyappointmentTypecoding != null)
+                {
+                    appointmentTypeObject["coding"] = SourceExpressionConverter.ConvertToken(bodyappointmentTypecoding);
+                    appointmentTypeObjectpropCount++;
+                }
+
+                if (appointmentTypeObjectpropCount > 0)
+                {
+                    body["appointmentType"] = appointmentTypeObject;
+                    bodypropCount++;
+                }
+
+                if (bodyreasonReference != null)
+                {
+                    body["reasonReference"] = SourceExpressionConverter.ConvertToken(bodyreasonReference);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodystart != null)
+                {
+                    body["start"] = SourceExpressionConverter.ConvertToken(bodystart);
+                    bodypropCount++;
+                }
+
+                if (bodyend != null)
+                {
+                    body["end"] = SourceExpressionConverter.ConvertToken(bodyend);
+                    bodypropCount++;
+                }
+
+                if (bodycreated != null)
+                {
+                    body["created"] = SourceExpressionConverter.ConvertToken(bodycreated);
+                    bodypropCount++;
+                }
+
+                if (bodycomment != null)
+                {
+                    body["comment"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodybasedOn != null)
+                {
+                    body["basedOn"] = SourceExpressionConverter.ConvertToken(bodybasedOn);
+                    bodypropCount++;
+                }
+
+                if (bodyparticipant != null)
+                {
+                    body["participant"] = SourceExpressionConverter.ConvertToken(bodyparticipant);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            if (bodytextstatus != null)
-            {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
-                textObjectpropCount++;
-            }
-
-            if (bodytextdiv != null)
-            {
-                textObject["div"] = ExpressionConverter.ConvertO(bodytextdiv);
-                textObjectpropCount++;
-            }
-
-            if (textObjectpropCount > 0)
-            {
-                body["text"] = textObject;
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyserviceCategory != null)
-            {
-                body["serviceCategory"] = ExpressionConverter.ConvertO(bodyserviceCategory);
-                bodypropCount++;
-            }
-
-            if (bodyserviceType != null)
-            {
-                body["serviceType"] = ExpressionConverter.ConvertO(bodyserviceType);
-                bodypropCount++;
-            }
-
-            if (bodyspecialty != null)
-            {
-                body["specialty"] = ExpressionConverter.ConvertO(bodyspecialty);
-                bodypropCount++;
-            }
-
-            var appointmentTypeObject = new JObject();
-            var appointmentTypeObjectpropCount = 0;
-            if (bodyappointmentTypecoding != null)
-            {
-                appointmentTypeObject["coding"] = ExpressionConverter.ConvertO(bodyappointmentTypecoding);
-                appointmentTypeObjectpropCount++;
-            }
-
-            if (appointmentTypeObjectpropCount > 0)
-            {
-                body["appointmentType"] = appointmentTypeObject;
-                bodypropCount++;
-            }
-
-            if (bodyreasonReference != null)
-            {
-                body["reasonReference"] = ExpressionConverter.ConvertO(bodyreasonReference);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodystart != null)
-            {
-                body["start"] = ExpressionConverter.ConvertO(bodystart);
-                bodypropCount++;
-            }
-
-            if (bodyend != null)
-            {
-                body["end"] = ExpressionConverter.ConvertO(bodyend);
-                bodypropCount++;
-            }
-
-            if (bodycreated != null)
-            {
-                body["created"] = ExpressionConverter.ConvertO(bodycreated);
-                bodypropCount++;
-            }
-
-            if (bodycomment != null)
-            {
-                body["comment"] = ExpressionConverter.ConvertO(bodycomment);
-                bodypropCount++;
-            }
-
-            if (bodybasedOn != null)
-            {
-                body["basedOn"] = ExpressionConverter.ConvertO(bodybasedOn);
-                bodypropCount++;
-            }
-
-            if (bodyparticipant != null)
-            {
-                body["participant"] = ExpressionConverter.ConvertO(bodyparticipant);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<POSTAppointmentResponse>(callPayload);
+            return new ApiConnectionAction<POSTAppointmentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentIDResponse> GETAppointmentID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETAppointmentIdResponse> GETAppointmentId([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Appointment/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETAppointmentIDResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Appointment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETAppointmentIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEAppointmentIDResponse> DELETEAppointmentID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodyparticipantInputItem[]>> bodyparticipant = null)
+        public IBodyWorkflowAction<DELETEAppointmentIdResponse> DELETEAppointmentId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodyparticipantInputItem[]> bodyparticipant = null)
         {
-            var apiCallPath = String.Format("/Appointment/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Appointment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                if (bodymetaversionId != null)
+                {
+                    metaObject["versionId"] = SourceExpressionConverter.ConvertToken(bodymetaversionId);
+                    metaObjectpropCount++;
+                }
+
+                if (bodymetalastUpdated != null)
+                {
+                    metaObject["lastUpdated"] = SourceExpressionConverter.ConvertToken(bodymetalastUpdated);
+                    metaObjectpropCount++;
+                }
+
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
+
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                if (bodytextstatus != null)
+                {
+                    textObject["status"] = SourceExpressionConverter.ConvertToken(bodytextstatus);
+                    textObjectpropCount++;
+                }
+
+                if (bodytextdiv != null)
+                {
+                    textObject["div"] = SourceExpressionConverter.ConvertToken(bodytextdiv);
+                    textObjectpropCount++;
+                }
+
+                if (textObjectpropCount > 0)
+                {
+                    body["text"] = textObject;
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyparticipant != null)
+                {
+                    body["participant"] = SourceExpressionConverter.ConvertToken(bodyparticipant);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            if (bodymetaversionId != null)
-            {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
-                metaObjectpropCount++;
-            }
-
-            if (bodymetalastUpdated != null)
-            {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
-                metaObjectpropCount++;
-            }
-
-            if (metaObjectpropCount > 0)
-            {
-                body["meta"] = metaObject;
-                bodypropCount++;
-            }
-
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            if (bodytextstatus != null)
-            {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
-                textObjectpropCount++;
-            }
-
-            if (bodytextdiv != null)
-            {
-                textObject["div"] = ExpressionConverter.ConvertO(bodytextdiv);
-                textObjectpropCount++;
-            }
-
-            if (textObjectpropCount > 0)
-            {
-                body["text"] = textObject;
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyparticipant != null)
-            {
-                body["participant"] = ExpressionConverter.ConvertO(bodyparticipant);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DELETEAppointmentIDResponse>(callPayload);
+            return new ApiConnectionAction<DELETEAppointmentIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTAppointmentIDResponse> PUTAppointmentID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodyparticipantInputItem[]>> bodyparticipant = null)
+        public IBodyWorkflowAction<PUTAppointmentIdResponse> PUTAppointmentId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodyparticipantInputItem[]> bodyparticipant = null)
         {
-            var apiCallPath = String.Format("/Appointment/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Appointment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                if (bodymetaversionId != null)
+                {
+                    metaObject["versionId"] = SourceExpressionConverter.ConvertToken(bodymetaversionId);
+                    metaObjectpropCount++;
+                }
+
+                if (bodymetalastUpdated != null)
+                {
+                    metaObject["lastUpdated"] = SourceExpressionConverter.ConvertToken(bodymetalastUpdated);
+                    metaObjectpropCount++;
+                }
+
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
+
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                if (bodytextstatus != null)
+                {
+                    textObject["status"] = SourceExpressionConverter.ConvertToken(bodytextstatus);
+                    textObjectpropCount++;
+                }
+
+                if (bodytextdiv != null)
+                {
+                    textObject["div"] = SourceExpressionConverter.ConvertToken(bodytextdiv);
+                    textObjectpropCount++;
+                }
+
+                if (textObjectpropCount > 0)
+                {
+                    body["text"] = textObject;
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyparticipant != null)
+                {
+                    body["participant"] = SourceExpressionConverter.ConvertToken(bodyparticipant);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            if (bodymetaversionId != null)
-            {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
-                metaObjectpropCount++;
-            }
-
-            if (bodymetalastUpdated != null)
-            {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
-                metaObjectpropCount++;
-            }
-
-            if (metaObjectpropCount > 0)
-            {
-                body["meta"] = metaObject;
-                bodypropCount++;
-            }
-
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            if (bodytextstatus != null)
-            {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
-                textObjectpropCount++;
-            }
-
-            if (bodytextdiv != null)
-            {
-                textObject["div"] = ExpressionConverter.ConvertO(bodytextdiv);
-                textObjectpropCount++;
-            }
-
-            if (textObjectpropCount > 0)
-            {
-                body["text"] = textObject;
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyparticipant != null)
-            {
-                body["participant"] = ExpressionConverter.ConvertO(bodyparticipant);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PUTAppointmentIDResponse>(callPayload);
+            return new ApiConnectionAction<PUTAppointmentIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentIDVERSIONResponse> GETAppointmentIDVERSION(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETAppointmentIdVERSIONResponse> GETAppointmentIdVERSION([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            var apiCallPath = String.Format("/Appointment/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(vid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETAppointmentIDVERSIONResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Appointment/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETAppointmentIdVERSIONResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentIDHistoryResponse> GETAppointmentIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETAppointmentIdHistoryResponse> GETAppointmentIdHistory([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Appointment/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETAppointmentIDHistoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Appointment/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETAppointmentIdHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentHistoryResponse> GETAppointmentHistory(Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETAppointmentHistoryResponse> GETAppointmentHistory([WorkflowExpression] Func<string> patient = null)
         {
-            var apiCallPath = "/Appointment/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
-            return new ApiConnectionAction<GETAppointmentHistoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Appointment/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (patient != null)
+                    callPayload.Queries["patient"] = SourceExpressionConverter.ConvertO(patient);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETAppointmentHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentResponseResponse> GETAppointmentResponse(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETAppointmentResponseResponse> GETAppointmentResponse([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            var apiCallPath = "/AppointmentResponse";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
-            if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
-            if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
-            return new ApiConnectionAction<GETAppointmentResponseResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/AppointmentResponse";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (Count != null)
+                    callPayload.Queries["_count"] = SourceExpressionConverter.ConvertO(Count);
+                if (Sort != null)
+                    callPayload.Queries["_sort"] = SourceExpressionConverter.ConvertO(Sort);
+                if (patient != null)
+                    callPayload.Queries["patient"] = SourceExpressionConverter.ConvertO(patient);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETAppointmentResponseResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTAppointmentResponseResponse> POSTAppointmentResponse(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodyappointmentreference = null, Expression<Func<string>> bodyappointmentdisplay = null, Expression<Func<string>> bodyactorreference = null, Expression<Func<string>> bodyactordisplay = null, Expression<Func<string>> bodyparticipantStatus = null)
+        public IBodyWorkflowAction<POSTAppointmentResponseResponse> POSTAppointmentResponse([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodyappointmentreference = null, [WorkflowExpression] Func<string> bodyappointmentdisplay = null, [WorkflowExpression] Func<string> bodyactorreference = null, [WorkflowExpression] Func<string> bodyactordisplay = null, [WorkflowExpression] Func<string> bodyparticipantStatus = null)
         {
-            var apiCallPath = "/AppointmentResponse";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = "/AppointmentResponse";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                if (bodytextstatus != null)
+                {
+                    textObject["status"] = SourceExpressionConverter.ConvertToken(bodytextstatus);
+                    textObjectpropCount++;
+                }
+
+                if (bodytextdiv != null)
+                {
+                    textObject["div"] = SourceExpressionConverter.ConvertToken(bodytextdiv);
+                    textObjectpropCount++;
+                }
+
+                if (textObjectpropCount > 0)
+                {
+                    body["text"] = textObject;
+                    bodypropCount++;
+                }
+
+                var appointmentObject = new JObject();
+                var appointmentObjectpropCount = 0;
+                if (bodyappointmentreference != null)
+                {
+                    appointmentObject["reference"] = SourceExpressionConverter.ConvertToken(bodyappointmentreference);
+                    appointmentObjectpropCount++;
+                }
+
+                if (bodyappointmentdisplay != null)
+                {
+                    appointmentObject["display"] = SourceExpressionConverter.ConvertToken(bodyappointmentdisplay);
+                    appointmentObjectpropCount++;
+                }
+
+                if (appointmentObjectpropCount > 0)
+                {
+                    body["appointment"] = appointmentObject;
+                    bodypropCount++;
+                }
+
+                var actorObject = new JObject();
+                var actorObjectpropCount = 0;
+                if (bodyactorreference != null)
+                {
+                    actorObject["reference"] = SourceExpressionConverter.ConvertToken(bodyactorreference);
+                    actorObjectpropCount++;
+                }
+
+                if (bodyactordisplay != null)
+                {
+                    actorObject["display"] = SourceExpressionConverter.ConvertToken(bodyactordisplay);
+                    actorObjectpropCount++;
+                }
+
+                if (actorObjectpropCount > 0)
+                {
+                    body["actor"] = actorObject;
+                    bodypropCount++;
+                }
+
+                if (bodyparticipantStatus != null)
+                {
+                    body["participantStatus"] = SourceExpressionConverter.ConvertToken(bodyparticipantStatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            if (bodytextstatus != null)
-            {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
-                textObjectpropCount++;
-            }
-
-            if (bodytextdiv != null)
-            {
-                textObject["div"] = ExpressionConverter.ConvertO(bodytextdiv);
-                textObjectpropCount++;
-            }
-
-            if (textObjectpropCount > 0)
-            {
-                body["text"] = textObject;
-                bodypropCount++;
-            }
-
-            var appointmentObject = new JObject();
-            var appointmentObjectpropCount = 0;
-            if (bodyappointmentreference != null)
-            {
-                appointmentObject["reference"] = ExpressionConverter.ConvertO(bodyappointmentreference);
-                appointmentObjectpropCount++;
-            }
-
-            if (bodyappointmentdisplay != null)
-            {
-                appointmentObject["display"] = ExpressionConverter.ConvertO(bodyappointmentdisplay);
-                appointmentObjectpropCount++;
-            }
-
-            if (appointmentObjectpropCount > 0)
-            {
-                body["appointment"] = appointmentObject;
-                bodypropCount++;
-            }
-
-            var actorObject = new JObject();
-            var actorObjectpropCount = 0;
-            if (bodyactorreference != null)
-            {
-                actorObject["reference"] = ExpressionConverter.ConvertO(bodyactorreference);
-                actorObjectpropCount++;
-            }
-
-            if (bodyactordisplay != null)
-            {
-                actorObject["display"] = ExpressionConverter.ConvertO(bodyactordisplay);
-                actorObjectpropCount++;
-            }
-
-            if (actorObjectpropCount > 0)
-            {
-                body["actor"] = actorObject;
-                bodypropCount++;
-            }
-
-            if (bodyparticipantStatus != null)
-            {
-                body["participantStatus"] = ExpressionConverter.ConvertO(bodyparticipantStatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<POSTAppointmentResponseResponse>(callPayload);
+            return new ApiConnectionAction<POSTAppointmentResponseResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentResponseIDResponse> GETAppointmentResponseID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETAppointmentResponseIdResponse> GETAppointmentResponseId([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/AppointmentResponse/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETAppointmentResponseIDResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AppointmentResponse/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETAppointmentResponseIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEAppointmentResponseIDResponse> DELETEAppointmentResponseID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodyappointmentreference = null, Expression<Func<string>> bodyappointmentdisplay = null, Expression<Func<string>> bodyactorreference = null, Expression<Func<string>> bodyactordisplay = null, Expression<Func<string>> bodyparticipantStatus = null)
+        public IBodyWorkflowAction<DELETEAppointmentResponseIdResponse> DELETEAppointmentResponseId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodyappointmentreference = null, [WorkflowExpression] Func<string> bodyappointmentdisplay = null, [WorkflowExpression] Func<string> bodyactorreference = null, [WorkflowExpression] Func<string> bodyactordisplay = null, [WorkflowExpression] Func<string> bodyparticipantStatus = null)
         {
-            var apiCallPath = String.Format("/AppointmentResponse/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AppointmentResponse/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                if (bodymetaversionId != null)
+                {
+                    metaObject["versionId"] = SourceExpressionConverter.ConvertToken(bodymetaversionId);
+                    metaObjectpropCount++;
+                }
+
+                if (bodymetalastUpdated != null)
+                {
+                    metaObject["lastUpdated"] = SourceExpressionConverter.ConvertToken(bodymetalastUpdated);
+                    metaObjectpropCount++;
+                }
+
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
+
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                if (bodytextstatus != null)
+                {
+                    textObject["status"] = SourceExpressionConverter.ConvertToken(bodytextstatus);
+                    textObjectpropCount++;
+                }
+
+                if (bodytextdiv != null)
+                {
+                    textObject["div"] = SourceExpressionConverter.ConvertToken(bodytextdiv);
+                    textObjectpropCount++;
+                }
+
+                if (textObjectpropCount > 0)
+                {
+                    body["text"] = textObject;
+                    bodypropCount++;
+                }
+
+                var appointmentObject = new JObject();
+                var appointmentObjectpropCount = 0;
+                if (bodyappointmentreference != null)
+                {
+                    appointmentObject["reference"] = SourceExpressionConverter.ConvertToken(bodyappointmentreference);
+                    appointmentObjectpropCount++;
+                }
+
+                if (bodyappointmentdisplay != null)
+                {
+                    appointmentObject["display"] = SourceExpressionConverter.ConvertToken(bodyappointmentdisplay);
+                    appointmentObjectpropCount++;
+                }
+
+                if (appointmentObjectpropCount > 0)
+                {
+                    body["appointment"] = appointmentObject;
+                    bodypropCount++;
+                }
+
+                var actorObject = new JObject();
+                var actorObjectpropCount = 0;
+                if (bodyactorreference != null)
+                {
+                    actorObject["reference"] = SourceExpressionConverter.ConvertToken(bodyactorreference);
+                    actorObjectpropCount++;
+                }
+
+                if (bodyactordisplay != null)
+                {
+                    actorObject["display"] = SourceExpressionConverter.ConvertToken(bodyactordisplay);
+                    actorObjectpropCount++;
+                }
+
+                if (actorObjectpropCount > 0)
+                {
+                    body["actor"] = actorObject;
+                    bodypropCount++;
+                }
+
+                if (bodyparticipantStatus != null)
+                {
+                    body["participantStatus"] = SourceExpressionConverter.ConvertToken(bodyparticipantStatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            if (bodymetaversionId != null)
-            {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
-                metaObjectpropCount++;
-            }
-
-            if (bodymetalastUpdated != null)
-            {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
-                metaObjectpropCount++;
-            }
-
-            if (metaObjectpropCount > 0)
-            {
-                body["meta"] = metaObject;
-                bodypropCount++;
-            }
-
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            if (bodytextstatus != null)
-            {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
-                textObjectpropCount++;
-            }
-
-            if (bodytextdiv != null)
-            {
-                textObject["div"] = ExpressionConverter.ConvertO(bodytextdiv);
-                textObjectpropCount++;
-            }
-
-            if (textObjectpropCount > 0)
-            {
-                body["text"] = textObject;
-                bodypropCount++;
-            }
-
-            var appointmentObject = new JObject();
-            var appointmentObjectpropCount = 0;
-            if (bodyappointmentreference != null)
-            {
-                appointmentObject["reference"] = ExpressionConverter.ConvertO(bodyappointmentreference);
-                appointmentObjectpropCount++;
-            }
-
-            if (bodyappointmentdisplay != null)
-            {
-                appointmentObject["display"] = ExpressionConverter.ConvertO(bodyappointmentdisplay);
-                appointmentObjectpropCount++;
-            }
-
-            if (appointmentObjectpropCount > 0)
-            {
-                body["appointment"] = appointmentObject;
-                bodypropCount++;
-            }
-
-            var actorObject = new JObject();
-            var actorObjectpropCount = 0;
-            if (bodyactorreference != null)
-            {
-                actorObject["reference"] = ExpressionConverter.ConvertO(bodyactorreference);
-                actorObjectpropCount++;
-            }
-
-            if (bodyactordisplay != null)
-            {
-                actorObject["display"] = ExpressionConverter.ConvertO(bodyactordisplay);
-                actorObjectpropCount++;
-            }
-
-            if (actorObjectpropCount > 0)
-            {
-                body["actor"] = actorObject;
-                bodypropCount++;
-            }
-
-            if (bodyparticipantStatus != null)
-            {
-                body["participantStatus"] = ExpressionConverter.ConvertO(bodyparticipantStatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DELETEAppointmentResponseIDResponse>(callPayload);
+            return new ApiConnectionAction<DELETEAppointmentResponseIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTAppointmentResponseIDResponse> PUTAppointmentResponseID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodyappointmentreference = null, Expression<Func<string>> bodyappointmentdisplay = null, Expression<Func<string>> bodyactorreference = null, Expression<Func<string>> bodyactordisplay = null, Expression<Func<string>> bodyparticipantStatus = null)
+        public IBodyWorkflowAction<PUTAppointmentResponseIdResponse> PUTAppointmentResponseId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodyappointmentreference = null, [WorkflowExpression] Func<string> bodyappointmentdisplay = null, [WorkflowExpression] Func<string> bodyactorreference = null, [WorkflowExpression] Func<string> bodyactordisplay = null, [WorkflowExpression] Func<string> bodyparticipantStatus = null)
         {
-            var apiCallPath = String.Format("/AppointmentResponse/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AppointmentResponse/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                if (bodymetaversionId != null)
+                {
+                    metaObject["versionId"] = SourceExpressionConverter.ConvertToken(bodymetaversionId);
+                    metaObjectpropCount++;
+                }
+
+                if (bodymetalastUpdated != null)
+                {
+                    metaObject["lastUpdated"] = SourceExpressionConverter.ConvertToken(bodymetalastUpdated);
+                    metaObjectpropCount++;
+                }
+
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
+
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                if (bodytextstatus != null)
+                {
+                    textObject["status"] = SourceExpressionConverter.ConvertToken(bodytextstatus);
+                    textObjectpropCount++;
+                }
+
+                if (bodytextdiv != null)
+                {
+                    textObject["div"] = SourceExpressionConverter.ConvertToken(bodytextdiv);
+                    textObjectpropCount++;
+                }
+
+                if (textObjectpropCount > 0)
+                {
+                    body["text"] = textObject;
+                    bodypropCount++;
+                }
+
+                var appointmentObject = new JObject();
+                var appointmentObjectpropCount = 0;
+                if (bodyappointmentreference != null)
+                {
+                    appointmentObject["reference"] = SourceExpressionConverter.ConvertToken(bodyappointmentreference);
+                    appointmentObjectpropCount++;
+                }
+
+                if (bodyappointmentdisplay != null)
+                {
+                    appointmentObject["display"] = SourceExpressionConverter.ConvertToken(bodyappointmentdisplay);
+                    appointmentObjectpropCount++;
+                }
+
+                if (appointmentObjectpropCount > 0)
+                {
+                    body["appointment"] = appointmentObject;
+                    bodypropCount++;
+                }
+
+                var actorObject = new JObject();
+                var actorObjectpropCount = 0;
+                if (bodyactorreference != null)
+                {
+                    actorObject["reference"] = SourceExpressionConverter.ConvertToken(bodyactorreference);
+                    actorObjectpropCount++;
+                }
+
+                if (bodyactordisplay != null)
+                {
+                    actorObject["display"] = SourceExpressionConverter.ConvertToken(bodyactordisplay);
+                    actorObjectpropCount++;
+                }
+
+                if (actorObjectpropCount > 0)
+                {
+                    body["actor"] = actorObject;
+                    bodypropCount++;
+                }
+
+                if (bodyparticipantStatus != null)
+                {
+                    body["participantStatus"] = SourceExpressionConverter.ConvertToken(bodyparticipantStatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            if (bodymetaversionId != null)
-            {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
-                metaObjectpropCount++;
-            }
-
-            if (bodymetalastUpdated != null)
-            {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
-                metaObjectpropCount++;
-            }
-
-            if (metaObjectpropCount > 0)
-            {
-                body["meta"] = metaObject;
-                bodypropCount++;
-            }
-
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            if (bodytextstatus != null)
-            {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
-                textObjectpropCount++;
-            }
-
-            if (bodytextdiv != null)
-            {
-                textObject["div"] = ExpressionConverter.ConvertO(bodytextdiv);
-                textObjectpropCount++;
-            }
-
-            if (textObjectpropCount > 0)
-            {
-                body["text"] = textObject;
-                bodypropCount++;
-            }
-
-            var appointmentObject = new JObject();
-            var appointmentObjectpropCount = 0;
-            if (bodyappointmentreference != null)
-            {
-                appointmentObject["reference"] = ExpressionConverter.ConvertO(bodyappointmentreference);
-                appointmentObjectpropCount++;
-            }
-
-            if (bodyappointmentdisplay != null)
-            {
-                appointmentObject["display"] = ExpressionConverter.ConvertO(bodyappointmentdisplay);
-                appointmentObjectpropCount++;
-            }
-
-            if (appointmentObjectpropCount > 0)
-            {
-                body["appointment"] = appointmentObject;
-                bodypropCount++;
-            }
-
-            var actorObject = new JObject();
-            var actorObjectpropCount = 0;
-            if (bodyactorreference != null)
-            {
-                actorObject["reference"] = ExpressionConverter.ConvertO(bodyactorreference);
-                actorObjectpropCount++;
-            }
-
-            if (bodyactordisplay != null)
-            {
-                actorObject["display"] = ExpressionConverter.ConvertO(bodyactordisplay);
-                actorObjectpropCount++;
-            }
-
-            if (actorObjectpropCount > 0)
-            {
-                body["actor"] = actorObject;
-                bodypropCount++;
-            }
-
-            if (bodyparticipantStatus != null)
-            {
-                body["participantStatus"] = ExpressionConverter.ConvertO(bodyparticipantStatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PUTAppointmentResponseIDResponse>(callPayload);
+            return new ApiConnectionAction<PUTAppointmentResponseIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentResponseIDVersionResponse> GETAppointmentResponseIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETAppointmentResponseIdVersionResponse> GETAppointmentResponseIdVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            var apiCallPath = String.Format("/AppointmentResponse/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(vid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETAppointmentResponseIDVersionResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AppointmentResponse/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETAppointmentResponseIdVersionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETAppointmentResponseIDHistoryResponse> GETAppointmentResponseIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETAppointmentResponseIdHistoryResponse> GETAppointmentResponseIdHistory([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/AppointmentResponse/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETAppointmentResponseIDHistoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/AppointmentResponse/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETAppointmentResponseIdHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETAppointmentResponseHistoryResponse> GETAppointmentResponseHistory()
         {
-            var apiCallPath = "/AppointmentResponse/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETAppointmentResponseHistoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/AppointmentResponse/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETAppointmentResponseHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETDeviceResponse> GETDevice(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETDeviceResponse> GETDevice([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            var apiCallPath = "/Device";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
-            if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
-            if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
-            return new ApiConnectionAction<GETDeviceResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Device";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (Count != null)
+                    callPayload.Queries["_count"] = SourceExpressionConverter.ConvertO(Count);
+                if (Sort != null)
+                    callPayload.Queries["_sort"] = SourceExpressionConverter.ConvertO(Sort);
+                if (patient != null)
+                    callPayload.Queries["patient"] = SourceExpressionConverter.ConvertO(patient);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETDeviceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTDeviceResponse> POSTDevice(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyudiCarrierInputItem[]>> bodyudiCarrier = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodydistinctIdentifier = null, Expression<Func<string>> bodymanufactureDate = null, Expression<Func<string>> bodyexpirationDate = null, Expression<Func<string>> bodylotNumber = null, Expression<Func<string>> bodyserialNumber = null, Expression<Func<bodydeviceNameInputItem[]>> bodydeviceName = null, Expression<Func<bodytypecodingInputItem[]>> bodytypecoding = null, Expression<Func<string>> bodytypetext = null, Expression<Func<string>> bodypatientreference = null)
+        public IBodyWorkflowAction<POSTDeviceResponse> POSTDevice([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<bodyudiCarrierInputItem[]> bodyudiCarrier = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodydistinctIdentifier = null, [WorkflowExpression] Func<string> bodymanufactureDate = null, [WorkflowExpression] Func<string> bodyexpirationDate = null, [WorkflowExpression] Func<string> bodylotNumber = null, [WorkflowExpression] Func<string> bodyserialNumber = null, [WorkflowExpression] Func<bodydeviceNameInputItem[]> bodydeviceName = null, [WorkflowExpression] Func<bodytypecodingInputItem[]> bodytypecoding = null, [WorkflowExpression] Func<string> bodytypetext = null, [WorkflowExpression] Func<string> bodypatientreference = null)
         {
-            var apiCallPath = "/Device";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = "/Device";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                if (bodymetaversionId != null)
+                {
+                    metaObject["versionId"] = SourceExpressionConverter.ConvertToken(bodymetaversionId);
+                    metaObjectpropCount++;
+                }
+
+                if (bodymetalastUpdated != null)
+                {
+                    metaObject["lastUpdated"] = SourceExpressionConverter.ConvertToken(bodymetalastUpdated);
+                    metaObjectpropCount++;
+                }
+
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
+
+                if (bodyudiCarrier != null)
+                {
+                    body["udiCarrier"] = SourceExpressionConverter.ConvertToken(bodyudiCarrier);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodydistinctIdentifier != null)
+                {
+                    body["distinctIdentifier"] = SourceExpressionConverter.ConvertToken(bodydistinctIdentifier);
+                    bodypropCount++;
+                }
+
+                if (bodymanufactureDate != null)
+                {
+                    body["manufactureDate"] = SourceExpressionConverter.ConvertToken(bodymanufactureDate);
+                    bodypropCount++;
+                }
+
+                if (bodyexpirationDate != null)
+                {
+                    body["expirationDate"] = SourceExpressionConverter.ConvertToken(bodyexpirationDate);
+                    bodypropCount++;
+                }
+
+                if (bodylotNumber != null)
+                {
+                    body["lotNumber"] = SourceExpressionConverter.ConvertToken(bodylotNumber);
+                    bodypropCount++;
+                }
+
+                if (bodyserialNumber != null)
+                {
+                    body["serialNumber"] = SourceExpressionConverter.ConvertToken(bodyserialNumber);
+                    bodypropCount++;
+                }
+
+                if (bodydeviceName != null)
+                {
+                    body["deviceName"] = SourceExpressionConverter.ConvertToken(bodydeviceName);
+                    bodypropCount++;
+                }
+
+                var typeObject = new JObject();
+                var typeObjectpropCount = 0;
+                if (bodytypecoding != null)
+                {
+                    typeObject["coding"] = SourceExpressionConverter.ConvertToken(bodytypecoding);
+                    typeObjectpropCount++;
+                }
+
+                if (bodytypetext != null)
+                {
+                    typeObject["text"] = SourceExpressionConverter.ConvertToken(bodytypetext);
+                    typeObjectpropCount++;
+                }
+
+                if (typeObjectpropCount > 0)
+                {
+                    body["type"] = typeObject;
+                    bodypropCount++;
+                }
+
+                var patientObject = new JObject();
+                var patientObjectpropCount = 0;
+                if (bodypatientreference != null)
+                {
+                    patientObject["reference"] = SourceExpressionConverter.ConvertToken(bodypatientreference);
+                    patientObjectpropCount++;
+                }
+
+                if (patientObjectpropCount > 0)
+                {
+                    body["patient"] = patientObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            if (bodymetaversionId != null)
-            {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
-                metaObjectpropCount++;
-            }
-
-            if (bodymetalastUpdated != null)
-            {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
-                metaObjectpropCount++;
-            }
-
-            if (metaObjectpropCount > 0)
-            {
-                body["meta"] = metaObject;
-                bodypropCount++;
-            }
-
-            if (bodyudiCarrier != null)
-            {
-                body["udiCarrier"] = ExpressionConverter.ConvertO(bodyudiCarrier);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodydistinctIdentifier != null)
-            {
-                body["distinctIdentifier"] = ExpressionConverter.ConvertO(bodydistinctIdentifier);
-                bodypropCount++;
-            }
-
-            if (bodymanufactureDate != null)
-            {
-                body["manufactureDate"] = ExpressionConverter.ConvertO(bodymanufactureDate);
-                bodypropCount++;
-            }
-
-            if (bodyexpirationDate != null)
-            {
-                body["expirationDate"] = ExpressionConverter.ConvertO(bodyexpirationDate);
-                bodypropCount++;
-            }
-
-            if (bodylotNumber != null)
-            {
-                body["lotNumber"] = ExpressionConverter.ConvertO(bodylotNumber);
-                bodypropCount++;
-            }
-
-            if (bodyserialNumber != null)
-            {
-                body["serialNumber"] = ExpressionConverter.ConvertO(bodyserialNumber);
-                bodypropCount++;
-            }
-
-            if (bodydeviceName != null)
-            {
-                body["deviceName"] = ExpressionConverter.ConvertO(bodydeviceName);
-                bodypropCount++;
-            }
-
-            var typeObject = new JObject();
-            var typeObjectpropCount = 0;
-            if (bodytypecoding != null)
-            {
-                typeObject["coding"] = ExpressionConverter.ConvertO(bodytypecoding);
-                typeObjectpropCount++;
-            }
-
-            if (bodytypetext != null)
-            {
-                typeObject["text"] = ExpressionConverter.ConvertO(bodytypetext);
-                typeObjectpropCount++;
-            }
-
-            if (typeObjectpropCount > 0)
-            {
-                body["type"] = typeObject;
-                bodypropCount++;
-            }
-
-            var patientObject = new JObject();
-            var patientObjectpropCount = 0;
-            if (bodypatientreference != null)
-            {
-                patientObject["reference"] = ExpressionConverter.ConvertO(bodypatientreference);
-                patientObjectpropCount++;
-            }
-
-            if (patientObjectpropCount > 0)
-            {
-                body["patient"] = patientObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<POSTDeviceResponse>(callPayload);
+            return new ApiConnectionAction<POSTDeviceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETDeviceIDResponse> GETDeviceID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETDeviceIdResponse> GETDeviceId([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Device/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETDeviceIDResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Device/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETDeviceIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEDeviceIDResponse> DELETEDeviceID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null)
+        public IBodyWorkflowAction<DELETEDeviceIdResponse> DELETEDeviceId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null)
         {
-            var apiCallPath = String.Format("/Device/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Device/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                if (bodymetaversionId != null)
+                {
+                    metaObject["versionId"] = SourceExpressionConverter.ConvertToken(bodymetaversionId);
+                    metaObjectpropCount++;
+                }
+
+                if (bodymetalastUpdated != null)
+                {
+                    metaObject["lastUpdated"] = SourceExpressionConverter.ConvertToken(bodymetalastUpdated);
+                    metaObjectpropCount++;
+                }
+
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
+
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                if (bodytextstatus != null)
+                {
+                    textObject["status"] = SourceExpressionConverter.ConvertToken(bodytextstatus);
+                    textObjectpropCount++;
+                }
+
+                if (bodytextdiv != null)
+                {
+                    textObject["div"] = SourceExpressionConverter.ConvertToken(bodytextdiv);
+                    textObjectpropCount++;
+                }
+
+                if (textObjectpropCount > 0)
+                {
+                    body["text"] = textObject;
+                    bodypropCount++;
+                }
+
+                if (bodyidentifier != null)
+                {
+                    body["identifier"] = SourceExpressionConverter.ConvertToken(bodyidentifier);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            if (bodymetaversionId != null)
-            {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
-                metaObjectpropCount++;
-            }
-
-            if (bodymetalastUpdated != null)
-            {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
-                metaObjectpropCount++;
-            }
-
-            if (metaObjectpropCount > 0)
-            {
-                body["meta"] = metaObject;
-                bodypropCount++;
-            }
-
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            if (bodytextstatus != null)
-            {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
-                textObjectpropCount++;
-            }
-
-            if (bodytextdiv != null)
-            {
-                textObject["div"] = ExpressionConverter.ConvertO(bodytextdiv);
-                textObjectpropCount++;
-            }
-
-            if (textObjectpropCount > 0)
-            {
-                body["text"] = textObject;
-                bodypropCount++;
-            }
-
-            if (bodyidentifier != null)
-            {
-                body["identifier"] = ExpressionConverter.ConvertO(bodyidentifier);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DELETEDeviceIDResponse>(callPayload);
+            return new ApiConnectionAction<DELETEDeviceIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTDeviceIDResponse> PUTDeviceID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null)
+        public IBodyWorkflowAction<PUTDeviceIdResponse> PUTDeviceId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null)
         {
-            var apiCallPath = String.Format("/Device/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Device/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                if (bodymetaversionId != null)
+                {
+                    metaObject["versionId"] = SourceExpressionConverter.ConvertToken(bodymetaversionId);
+                    metaObjectpropCount++;
+                }
+
+                if (bodymetalastUpdated != null)
+                {
+                    metaObject["lastUpdated"] = SourceExpressionConverter.ConvertToken(bodymetalastUpdated);
+                    metaObjectpropCount++;
+                }
+
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
+
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                if (bodytextstatus != null)
+                {
+                    textObject["status"] = SourceExpressionConverter.ConvertToken(bodytextstatus);
+                    textObjectpropCount++;
+                }
+
+                if (bodytextdiv != null)
+                {
+                    textObject["div"] = SourceExpressionConverter.ConvertToken(bodytextdiv);
+                    textObjectpropCount++;
+                }
+
+                if (textObjectpropCount > 0)
+                {
+                    body["text"] = textObject;
+                    bodypropCount++;
+                }
+
+                if (bodyidentifier != null)
+                {
+                    body["identifier"] = SourceExpressionConverter.ConvertToken(bodyidentifier);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            if (bodymetaversionId != null)
-            {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
-                metaObjectpropCount++;
-            }
-
-            if (bodymetalastUpdated != null)
-            {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
-                metaObjectpropCount++;
-            }
-
-            if (metaObjectpropCount > 0)
-            {
-                body["meta"] = metaObject;
-                bodypropCount++;
-            }
-
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            if (bodytextstatus != null)
-            {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
-                textObjectpropCount++;
-            }
-
-            if (bodytextdiv != null)
-            {
-                textObject["div"] = ExpressionConverter.ConvertO(bodytextdiv);
-                textObjectpropCount++;
-            }
-
-            if (textObjectpropCount > 0)
-            {
-                body["text"] = textObject;
-                bodypropCount++;
-            }
-
-            if (bodyidentifier != null)
-            {
-                body["identifier"] = ExpressionConverter.ConvertO(bodyidentifier);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PUTDeviceIDResponse>(callPayload);
+            return new ApiConnectionAction<PUTDeviceIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETDeviceIDVERSIONResponse> GETDeviceIDVERSION(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETDeviceIdVERSIONResponse> GETDeviceIdVERSION([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            var apiCallPath = String.Format("/Device/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(vid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETDeviceIDVERSIONResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Device/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETDeviceIdVERSIONResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETDeviceIDHISTORYResponse> GETDeviceIDHISTORY(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETDeviceIdHISTORYResponse> GETDeviceIdHISTORY([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Device/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETDeviceIDHISTORYResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Device/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETDeviceIdHISTORYResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETDeviceHISTORYResponse> GETDeviceHISTORY()
         {
-            var apiCallPath = "/Device/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETDeviceHISTORYResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Device/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETDeviceHISTORYResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETEncounterResponse> GETEncounter(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETEncounterResponse> GETEncounter([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            var apiCallPath = "/Encounter";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
-            if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
-            if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
-            return new ApiConnectionAction<GETEncounterResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Encounter";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (Count != null)
+                    callPayload.Queries["_count"] = SourceExpressionConverter.ConvertO(Count);
+                if (Sort != null)
+                    callPayload.Queries["_sort"] = SourceExpressionConverter.ConvertO(Sort);
+                if (patient != null)
+                    callPayload.Queries["patient"] = SourceExpressionConverter.ConvertO(patient);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETEncounterResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTEncounterResponse> POSTEncounter(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
+        public IBodyWorkflowAction<POSTEncounterResponse> POSTEncounter([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyClasssystem = null, [WorkflowExpression] Func<string> bodyClasscode = null, [WorkflowExpression] Func<bodytypeInputItem[]> bodytype = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<bodyparticipantInputItem2[]> bodyparticipant = null, [WorkflowExpression] Func<string> bodyperiodstart = null, [WorkflowExpression] Func<string> bodyperiodend = null, [WorkflowExpression] Func<string> bodyserviceProviderreference = null, [WorkflowExpression] Func<string> bodyserviceProviderdisplay = null)
         {
-            var apiCallPath = "/Encounter";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = "/Encounter";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                if (bodymetaversionId != null)
+                {
+                    metaObject["versionId"] = SourceExpressionConverter.ConvertToken(bodymetaversionId);
+                    metaObjectpropCount++;
+                }
+
+                if (bodymetalastUpdated != null)
+                {
+                    metaObject["lastUpdated"] = SourceExpressionConverter.ConvertToken(bodymetalastUpdated);
+                    metaObjectpropCount++;
+                }
+
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                var @classObject = new JObject();
+                var @classObjectpropCount = 0;
+                if (bodyClasssystem != null)
+                {
+                    @classObject["system"] = SourceExpressionConverter.ConvertToken(bodyClasssystem);
+                    @classObjectpropCount++;
+                }
+
+                if (bodyClasscode != null)
+                {
+                    @classObject["code"] = SourceExpressionConverter.ConvertToken(bodyClasscode);
+                    @classObjectpropCount++;
+                }
+
+                if (@classObjectpropCount > 0)
+                {
+                    body["class"] = @classObject;
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                var subjectObject = new JObject();
+                var subjectObjectpropCount = 0;
+                if (bodysubjectreference != null)
+                {
+                    subjectObject["reference"] = SourceExpressionConverter.ConvertToken(bodysubjectreference);
+                    subjectObjectpropCount++;
+                }
+
+                if (bodysubjectdisplay != null)
+                {
+                    subjectObject["display"] = SourceExpressionConverter.ConvertToken(bodysubjectdisplay);
+                    subjectObjectpropCount++;
+                }
+
+                if (subjectObjectpropCount > 0)
+                {
+                    body["subject"] = subjectObject;
+                    bodypropCount++;
+                }
+
+                if (bodyparticipant != null)
+                {
+                    body["participant"] = SourceExpressionConverter.ConvertToken(bodyparticipant);
+                    bodypropCount++;
+                }
+
+                var periodObject = new JObject();
+                var periodObjectpropCount = 0;
+                if (bodyperiodstart != null)
+                {
+                    periodObject["start"] = SourceExpressionConverter.ConvertToken(bodyperiodstart);
+                    periodObjectpropCount++;
+                }
+
+                if (bodyperiodend != null)
+                {
+                    periodObject["end"] = SourceExpressionConverter.ConvertToken(bodyperiodend);
+                    periodObjectpropCount++;
+                }
+
+                if (periodObjectpropCount > 0)
+                {
+                    body["period"] = periodObject;
+                    bodypropCount++;
+                }
+
+                var serviceProviderObject = new JObject();
+                var serviceProviderObjectpropCount = 0;
+                if (bodyserviceProviderreference != null)
+                {
+                    serviceProviderObject["reference"] = SourceExpressionConverter.ConvertToken(bodyserviceProviderreference);
+                    serviceProviderObjectpropCount++;
+                }
+
+                if (bodyserviceProviderdisplay != null)
+                {
+                    serviceProviderObject["display"] = SourceExpressionConverter.ConvertToken(bodyserviceProviderdisplay);
+                    serviceProviderObjectpropCount++;
+                }
+
+                if (serviceProviderObjectpropCount > 0)
+                {
+                    body["serviceProvider"] = serviceProviderObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            if (bodymetaversionId != null)
-            {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
-                metaObjectpropCount++;
-            }
-
-            if (bodymetalastUpdated != null)
-            {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
-                metaObjectpropCount++;
-            }
-
-            if (metaObjectpropCount > 0)
-            {
-                body["meta"] = metaObject;
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            var @classObject = new JObject();
-            var @classObjectpropCount = 0;
-            if (bodyClasssystem != null)
-            {
-                @classObject["system"] = ExpressionConverter.ConvertO(bodyClasssystem);
-                @classObjectpropCount++;
-            }
-
-            if (bodyClasscode != null)
-            {
-                @classObject["code"] = ExpressionConverter.ConvertO(bodyClasscode);
-                @classObjectpropCount++;
-            }
-
-            if (@classObjectpropCount > 0)
-            {
-                body["class"] = @classObject;
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
-
-            var subjectObject = new JObject();
-            var subjectObjectpropCount = 0;
-            if (bodysubjectreference != null)
-            {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
-                subjectObjectpropCount++;
-            }
-
-            if (bodysubjectdisplay != null)
-            {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
-                subjectObjectpropCount++;
-            }
-
-            if (subjectObjectpropCount > 0)
-            {
-                body["subject"] = subjectObject;
-                bodypropCount++;
-            }
-
-            if (bodyparticipant != null)
-            {
-                body["participant"] = ExpressionConverter.ConvertO(bodyparticipant);
-                bodypropCount++;
-            }
-
-            var periodObject = new JObject();
-            var periodObjectpropCount = 0;
-            if (bodyperiodstart != null)
-            {
-                periodObject["start"] = ExpressionConverter.ConvertO(bodyperiodstart);
-                periodObjectpropCount++;
-            }
-
-            if (bodyperiodend != null)
-            {
-                periodObject["end"] = ExpressionConverter.ConvertO(bodyperiodend);
-                periodObjectpropCount++;
-            }
-
-            if (periodObjectpropCount > 0)
-            {
-                body["period"] = periodObject;
-                bodypropCount++;
-            }
-
-            var serviceProviderObject = new JObject();
-            var serviceProviderObjectpropCount = 0;
-            if (bodyserviceProviderreference != null)
-            {
-                serviceProviderObject["reference"] = ExpressionConverter.ConvertO(bodyserviceProviderreference);
-                serviceProviderObjectpropCount++;
-            }
-
-            if (bodyserviceProviderdisplay != null)
-            {
-                serviceProviderObject["display"] = ExpressionConverter.ConvertO(bodyserviceProviderdisplay);
-                serviceProviderObjectpropCount++;
-            }
-
-            if (serviceProviderObjectpropCount > 0)
-            {
-                body["serviceProvider"] = serviceProviderObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<POSTEncounterResponse>(callPayload);
+            return new ApiConnectionAction<POSTEncounterResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETEncounterIDResponse> GETEncounterID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETEncounterIdResponse> GETEncounterId([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Encounter/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETEncounterIDResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Encounter/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETEncounterIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEEncounterIDResponse> DELETEEncounterID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
+        public IBodyWorkflowAction<DELETEEncounterIdResponse> DELETEEncounterId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyClasssystem = null, [WorkflowExpression] Func<string> bodyClasscode = null, [WorkflowExpression] Func<bodytypeInputItem[]> bodytype = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<bodyparticipantInputItem2[]> bodyparticipant = null, [WorkflowExpression] Func<string> bodyperiodstart = null, [WorkflowExpression] Func<string> bodyperiodend = null, [WorkflowExpression] Func<string> bodyserviceProviderreference = null, [WorkflowExpression] Func<string> bodyserviceProviderdisplay = null)
         {
-            var apiCallPath = String.Format("/Encounter/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Encounter/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                if (bodymetaversionId != null)
+                {
+                    metaObject["versionId"] = SourceExpressionConverter.ConvertToken(bodymetaversionId);
+                    metaObjectpropCount++;
+                }
+
+                if (bodymetalastUpdated != null)
+                {
+                    metaObject["lastUpdated"] = SourceExpressionConverter.ConvertToken(bodymetalastUpdated);
+                    metaObjectpropCount++;
+                }
+
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                var @classObject = new JObject();
+                var @classObjectpropCount = 0;
+                if (bodyClasssystem != null)
+                {
+                    @classObject["system"] = SourceExpressionConverter.ConvertToken(bodyClasssystem);
+                    @classObjectpropCount++;
+                }
+
+                if (bodyClasscode != null)
+                {
+                    @classObject["code"] = SourceExpressionConverter.ConvertToken(bodyClasscode);
+                    @classObjectpropCount++;
+                }
+
+                if (@classObjectpropCount > 0)
+                {
+                    body["class"] = @classObject;
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                var subjectObject = new JObject();
+                var subjectObjectpropCount = 0;
+                if (bodysubjectreference != null)
+                {
+                    subjectObject["reference"] = SourceExpressionConverter.ConvertToken(bodysubjectreference);
+                    subjectObjectpropCount++;
+                }
+
+                if (bodysubjectdisplay != null)
+                {
+                    subjectObject["display"] = SourceExpressionConverter.ConvertToken(bodysubjectdisplay);
+                    subjectObjectpropCount++;
+                }
+
+                if (subjectObjectpropCount > 0)
+                {
+                    body["subject"] = subjectObject;
+                    bodypropCount++;
+                }
+
+                if (bodyparticipant != null)
+                {
+                    body["participant"] = SourceExpressionConverter.ConvertToken(bodyparticipant);
+                    bodypropCount++;
+                }
+
+                var periodObject = new JObject();
+                var periodObjectpropCount = 0;
+                if (bodyperiodstart != null)
+                {
+                    periodObject["start"] = SourceExpressionConverter.ConvertToken(bodyperiodstart);
+                    periodObjectpropCount++;
+                }
+
+                if (bodyperiodend != null)
+                {
+                    periodObject["end"] = SourceExpressionConverter.ConvertToken(bodyperiodend);
+                    periodObjectpropCount++;
+                }
+
+                if (periodObjectpropCount > 0)
+                {
+                    body["period"] = periodObject;
+                    bodypropCount++;
+                }
+
+                var serviceProviderObject = new JObject();
+                var serviceProviderObjectpropCount = 0;
+                if (bodyserviceProviderreference != null)
+                {
+                    serviceProviderObject["reference"] = SourceExpressionConverter.ConvertToken(bodyserviceProviderreference);
+                    serviceProviderObjectpropCount++;
+                }
+
+                if (bodyserviceProviderdisplay != null)
+                {
+                    serviceProviderObject["display"] = SourceExpressionConverter.ConvertToken(bodyserviceProviderdisplay);
+                    serviceProviderObjectpropCount++;
+                }
+
+                if (serviceProviderObjectpropCount > 0)
+                {
+                    body["serviceProvider"] = serviceProviderObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            if (bodymetaversionId != null)
-            {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
-                metaObjectpropCount++;
-            }
-
-            if (bodymetalastUpdated != null)
-            {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
-                metaObjectpropCount++;
-            }
-
-            if (metaObjectpropCount > 0)
-            {
-                body["meta"] = metaObject;
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            var @classObject = new JObject();
-            var @classObjectpropCount = 0;
-            if (bodyClasssystem != null)
-            {
-                @classObject["system"] = ExpressionConverter.ConvertO(bodyClasssystem);
-                @classObjectpropCount++;
-            }
-
-            if (bodyClasscode != null)
-            {
-                @classObject["code"] = ExpressionConverter.ConvertO(bodyClasscode);
-                @classObjectpropCount++;
-            }
-
-            if (@classObjectpropCount > 0)
-            {
-                body["class"] = @classObject;
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
-
-            var subjectObject = new JObject();
-            var subjectObjectpropCount = 0;
-            if (bodysubjectreference != null)
-            {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
-                subjectObjectpropCount++;
-            }
-
-            if (bodysubjectdisplay != null)
-            {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
-                subjectObjectpropCount++;
-            }
-
-            if (subjectObjectpropCount > 0)
-            {
-                body["subject"] = subjectObject;
-                bodypropCount++;
-            }
-
-            if (bodyparticipant != null)
-            {
-                body["participant"] = ExpressionConverter.ConvertO(bodyparticipant);
-                bodypropCount++;
-            }
-
-            var periodObject = new JObject();
-            var periodObjectpropCount = 0;
-            if (bodyperiodstart != null)
-            {
-                periodObject["start"] = ExpressionConverter.ConvertO(bodyperiodstart);
-                periodObjectpropCount++;
-            }
-
-            if (bodyperiodend != null)
-            {
-                periodObject["end"] = ExpressionConverter.ConvertO(bodyperiodend);
-                periodObjectpropCount++;
-            }
-
-            if (periodObjectpropCount > 0)
-            {
-                body["period"] = periodObject;
-                bodypropCount++;
-            }
-
-            var serviceProviderObject = new JObject();
-            var serviceProviderObjectpropCount = 0;
-            if (bodyserviceProviderreference != null)
-            {
-                serviceProviderObject["reference"] = ExpressionConverter.ConvertO(bodyserviceProviderreference);
-                serviceProviderObjectpropCount++;
-            }
-
-            if (bodyserviceProviderdisplay != null)
-            {
-                serviceProviderObject["display"] = ExpressionConverter.ConvertO(bodyserviceProviderdisplay);
-                serviceProviderObjectpropCount++;
-            }
-
-            if (serviceProviderObjectpropCount > 0)
-            {
-                body["serviceProvider"] = serviceProviderObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DELETEEncounterIDResponse>(callPayload);
+            return new ApiConnectionAction<DELETEEncounterIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTEncounterIDResponse> PUTEncounterID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyClasssystem = null, Expression<Func<string>> bodyClasscode = null, Expression<Func<bodytypeInputItem[]>> bodytype = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<bodyparticipantInputItem2[]>> bodyparticipant = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyserviceProviderreference = null, Expression<Func<string>> bodyserviceProviderdisplay = null)
+        public IBodyWorkflowAction<PUTEncounterIdResponse> PUTEncounterId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyClasssystem = null, [WorkflowExpression] Func<string> bodyClasscode = null, [WorkflowExpression] Func<bodytypeInputItem[]> bodytype = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<bodyparticipantInputItem2[]> bodyparticipant = null, [WorkflowExpression] Func<string> bodyperiodstart = null, [WorkflowExpression] Func<string> bodyperiodend = null, [WorkflowExpression] Func<string> bodyserviceProviderreference = null, [WorkflowExpression] Func<string> bodyserviceProviderdisplay = null)
         {
-            var apiCallPath = String.Format("/Encounter/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Encounter/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                if (bodymetaversionId != null)
+                {
+                    metaObject["versionId"] = SourceExpressionConverter.ConvertToken(bodymetaversionId);
+                    metaObjectpropCount++;
+                }
+
+                if (bodymetalastUpdated != null)
+                {
+                    metaObject["lastUpdated"] = SourceExpressionConverter.ConvertToken(bodymetalastUpdated);
+                    metaObjectpropCount++;
+                }
+
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                var @classObject = new JObject();
+                var @classObjectpropCount = 0;
+                if (bodyClasssystem != null)
+                {
+                    @classObject["system"] = SourceExpressionConverter.ConvertToken(bodyClasssystem);
+                    @classObjectpropCount++;
+                }
+
+                if (bodyClasscode != null)
+                {
+                    @classObject["code"] = SourceExpressionConverter.ConvertToken(bodyClasscode);
+                    @classObjectpropCount++;
+                }
+
+                if (@classObjectpropCount > 0)
+                {
+                    body["class"] = @classObject;
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                var subjectObject = new JObject();
+                var subjectObjectpropCount = 0;
+                if (bodysubjectreference != null)
+                {
+                    subjectObject["reference"] = SourceExpressionConverter.ConvertToken(bodysubjectreference);
+                    subjectObjectpropCount++;
+                }
+
+                if (bodysubjectdisplay != null)
+                {
+                    subjectObject["display"] = SourceExpressionConverter.ConvertToken(bodysubjectdisplay);
+                    subjectObjectpropCount++;
+                }
+
+                if (subjectObjectpropCount > 0)
+                {
+                    body["subject"] = subjectObject;
+                    bodypropCount++;
+                }
+
+                if (bodyparticipant != null)
+                {
+                    body["participant"] = SourceExpressionConverter.ConvertToken(bodyparticipant);
+                    bodypropCount++;
+                }
+
+                var periodObject = new JObject();
+                var periodObjectpropCount = 0;
+                if (bodyperiodstart != null)
+                {
+                    periodObject["start"] = SourceExpressionConverter.ConvertToken(bodyperiodstart);
+                    periodObjectpropCount++;
+                }
+
+                if (bodyperiodend != null)
+                {
+                    periodObject["end"] = SourceExpressionConverter.ConvertToken(bodyperiodend);
+                    periodObjectpropCount++;
+                }
+
+                if (periodObjectpropCount > 0)
+                {
+                    body["period"] = periodObject;
+                    bodypropCount++;
+                }
+
+                var serviceProviderObject = new JObject();
+                var serviceProviderObjectpropCount = 0;
+                if (bodyserviceProviderreference != null)
+                {
+                    serviceProviderObject["reference"] = SourceExpressionConverter.ConvertToken(bodyserviceProviderreference);
+                    serviceProviderObjectpropCount++;
+                }
+
+                if (bodyserviceProviderdisplay != null)
+                {
+                    serviceProviderObject["display"] = SourceExpressionConverter.ConvertToken(bodyserviceProviderdisplay);
+                    serviceProviderObjectpropCount++;
+                }
+
+                if (serviceProviderObjectpropCount > 0)
+                {
+                    body["serviceProvider"] = serviceProviderObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            if (bodymetaversionId != null)
-            {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
-                metaObjectpropCount++;
-            }
-
-            if (bodymetalastUpdated != null)
-            {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
-                metaObjectpropCount++;
-            }
-
-            if (metaObjectpropCount > 0)
-            {
-                body["meta"] = metaObject;
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            var @classObject = new JObject();
-            var @classObjectpropCount = 0;
-            if (bodyClasssystem != null)
-            {
-                @classObject["system"] = ExpressionConverter.ConvertO(bodyClasssystem);
-                @classObjectpropCount++;
-            }
-
-            if (bodyClasscode != null)
-            {
-                @classObject["code"] = ExpressionConverter.ConvertO(bodyClasscode);
-                @classObjectpropCount++;
-            }
-
-            if (@classObjectpropCount > 0)
-            {
-                body["class"] = @classObject;
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
-
-            var subjectObject = new JObject();
-            var subjectObjectpropCount = 0;
-            if (bodysubjectreference != null)
-            {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
-                subjectObjectpropCount++;
-            }
-
-            if (bodysubjectdisplay != null)
-            {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
-                subjectObjectpropCount++;
-            }
-
-            if (subjectObjectpropCount > 0)
-            {
-                body["subject"] = subjectObject;
-                bodypropCount++;
-            }
-
-            if (bodyparticipant != null)
-            {
-                body["participant"] = ExpressionConverter.ConvertO(bodyparticipant);
-                bodypropCount++;
-            }
-
-            var periodObject = new JObject();
-            var periodObjectpropCount = 0;
-            if (bodyperiodstart != null)
-            {
-                periodObject["start"] = ExpressionConverter.ConvertO(bodyperiodstart);
-                periodObjectpropCount++;
-            }
-
-            if (bodyperiodend != null)
-            {
-                periodObject["end"] = ExpressionConverter.ConvertO(bodyperiodend);
-                periodObjectpropCount++;
-            }
-
-            if (periodObjectpropCount > 0)
-            {
-                body["period"] = periodObject;
-                bodypropCount++;
-            }
-
-            var serviceProviderObject = new JObject();
-            var serviceProviderObjectpropCount = 0;
-            if (bodyserviceProviderreference != null)
-            {
-                serviceProviderObject["reference"] = ExpressionConverter.ConvertO(bodyserviceProviderreference);
-                serviceProviderObjectpropCount++;
-            }
-
-            if (bodyserviceProviderdisplay != null)
-            {
-                serviceProviderObject["display"] = ExpressionConverter.ConvertO(bodyserviceProviderdisplay);
-                serviceProviderObjectpropCount++;
-            }
-
-            if (serviceProviderObjectpropCount > 0)
-            {
-                body["serviceProvider"] = serviceProviderObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PUTEncounterIDResponse>(callPayload);
+            return new ApiConnectionAction<PUTEncounterIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETEncounterIDVersionResponse> GETEncounterIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETEncounterIdVersionResponse> GETEncounterIdVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            var apiCallPath = String.Format("/Encounter/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(vid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETEncounterIDVersionResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Encounter/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETEncounterIdVersionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETEncounterIDHISTORYResponse> GETEncounterIDHISTORY(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETEncounterIdHISTORYResponse> GETEncounterIdHISTORY([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Encounter/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETEncounterIDHISTORYResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Encounter/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETEncounterIdHISTORYResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETEncounterHISTORYResponse> GETEncounterHISTORY()
         {
-            var apiCallPath = "/Encounter/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETEncounterHISTORYResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Encounter/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETEncounterHISTORYResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETFlagResponse> GETFlag(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETFlagResponse> GETFlag([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            var apiCallPath = "/Flag";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
-            if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
-            if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
-            return new ApiConnectionAction<GETFlagResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Flag";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (Count != null)
+                    callPayload.Queries["_count"] = SourceExpressionConverter.ConvertO(Count);
+                if (Sort != null)
+                    callPayload.Queries["_sort"] = SourceExpressionConverter.ConvertO(Sort);
+                if (patient != null)
+                    callPayload.Queries["patient"] = SourceExpressionConverter.ConvertO(patient);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETFlagResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTFLAGResponse> POSTFLAG(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem2[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyauthorreference = null, Expression<Func<string>> bodyauthordisplay = null)
+        public IBodyWorkflowAction<POSTFLAGResponse> POSTFLAG([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<bodyidentifierInputItem2[]> bodyidentifier = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyperiodstart = null, [WorkflowExpression] Func<string> bodyperiodend = null, [WorkflowExpression] Func<string> bodyauthorreference = null, [WorkflowExpression] Func<string> bodyauthordisplay = null)
         {
-            var apiCallPath = "/Flag";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = "/Flag";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                if (bodytextstatus != null)
+                {
+                    textObject["status"] = SourceExpressionConverter.ConvertToken(bodytextstatus);
+                    textObjectpropCount++;
+                }
+
+                if (bodytextdiv != null)
+                {
+                    textObject["div"] = SourceExpressionConverter.ConvertToken(bodytextdiv);
+                    textObjectpropCount++;
+                }
+
+                if (textObjectpropCount > 0)
+                {
+                    body["text"] = textObject;
+                    bodypropCount++;
+                }
+
+                if (bodyidentifier != null)
+                {
+                    body["identifier"] = SourceExpressionConverter.ConvertToken(bodyidentifier);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodycategory != null)
+                {
+                    body["category"] = SourceExpressionConverter.ConvertToken(bodycategory);
+                    bodypropCount++;
+                }
+
+                var codeObject = new JObject();
+                var codeObjectpropCount = 0;
+                if (bodycodecoding != null)
+                {
+                    codeObject["coding"] = SourceExpressionConverter.ConvertToken(bodycodecoding);
+                    codeObjectpropCount++;
+                }
+
+                if (bodycodetext != null)
+                {
+                    codeObject["text"] = SourceExpressionConverter.ConvertToken(bodycodetext);
+                    codeObjectpropCount++;
+                }
+
+                if (codeObjectpropCount > 0)
+                {
+                    body["code"] = codeObject;
+                    bodypropCount++;
+                }
+
+                var subjectObject = new JObject();
+                var subjectObjectpropCount = 0;
+                if (bodysubjectreference != null)
+                {
+                    subjectObject["reference"] = SourceExpressionConverter.ConvertToken(bodysubjectreference);
+                    subjectObjectpropCount++;
+                }
+
+                if (bodysubjectdisplay != null)
+                {
+                    subjectObject["display"] = SourceExpressionConverter.ConvertToken(bodysubjectdisplay);
+                    subjectObjectpropCount++;
+                }
+
+                if (subjectObjectpropCount > 0)
+                {
+                    body["subject"] = subjectObject;
+                    bodypropCount++;
+                }
+
+                var periodObject = new JObject();
+                var periodObjectpropCount = 0;
+                if (bodyperiodstart != null)
+                {
+                    periodObject["start"] = SourceExpressionConverter.ConvertToken(bodyperiodstart);
+                    periodObjectpropCount++;
+                }
+
+                if (bodyperiodend != null)
+                {
+                    periodObject["end"] = SourceExpressionConverter.ConvertToken(bodyperiodend);
+                    periodObjectpropCount++;
+                }
+
+                if (periodObjectpropCount > 0)
+                {
+                    body["period"] = periodObject;
+                    bodypropCount++;
+                }
+
+                var authorObject = new JObject();
+                var authorObjectpropCount = 0;
+                if (bodyauthorreference != null)
+                {
+                    authorObject["reference"] = SourceExpressionConverter.ConvertToken(bodyauthorreference);
+                    authorObjectpropCount++;
+                }
+
+                if (bodyauthordisplay != null)
+                {
+                    authorObject["display"] = SourceExpressionConverter.ConvertToken(bodyauthordisplay);
+                    authorObjectpropCount++;
+                }
+
+                if (authorObjectpropCount > 0)
+                {
+                    body["author"] = authorObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            if (bodytextstatus != null)
-            {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
-                textObjectpropCount++;
-            }
-
-            if (bodytextdiv != null)
-            {
-                textObject["div"] = ExpressionConverter.ConvertO(bodytextdiv);
-                textObjectpropCount++;
-            }
-
-            if (textObjectpropCount > 0)
-            {
-                body["text"] = textObject;
-                bodypropCount++;
-            }
-
-            if (bodyidentifier != null)
-            {
-                body["identifier"] = ExpressionConverter.ConvertO(bodyidentifier);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodycategory != null)
-            {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
-                bodypropCount++;
-            }
-
-            var codeObject = new JObject();
-            var codeObjectpropCount = 0;
-            if (bodycodecoding != null)
-            {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
-                codeObjectpropCount++;
-            }
-
-            if (bodycodetext != null)
-            {
-                codeObject["text"] = ExpressionConverter.ConvertO(bodycodetext);
-                codeObjectpropCount++;
-            }
-
-            if (codeObjectpropCount > 0)
-            {
-                body["code"] = codeObject;
-                bodypropCount++;
-            }
-
-            var subjectObject = new JObject();
-            var subjectObjectpropCount = 0;
-            if (bodysubjectreference != null)
-            {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
-                subjectObjectpropCount++;
-            }
-
-            if (bodysubjectdisplay != null)
-            {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
-                subjectObjectpropCount++;
-            }
-
-            if (subjectObjectpropCount > 0)
-            {
-                body["subject"] = subjectObject;
-                bodypropCount++;
-            }
-
-            var periodObject = new JObject();
-            var periodObjectpropCount = 0;
-            if (bodyperiodstart != null)
-            {
-                periodObject["start"] = ExpressionConverter.ConvertO(bodyperiodstart);
-                periodObjectpropCount++;
-            }
-
-            if (bodyperiodend != null)
-            {
-                periodObject["end"] = ExpressionConverter.ConvertO(bodyperiodend);
-                periodObjectpropCount++;
-            }
-
-            if (periodObjectpropCount > 0)
-            {
-                body["period"] = periodObject;
-                bodypropCount++;
-            }
-
-            var authorObject = new JObject();
-            var authorObjectpropCount = 0;
-            if (bodyauthorreference != null)
-            {
-                authorObject["reference"] = ExpressionConverter.ConvertO(bodyauthorreference);
-                authorObjectpropCount++;
-            }
-
-            if (bodyauthordisplay != null)
-            {
-                authorObject["display"] = ExpressionConverter.ConvertO(bodyauthordisplay);
-                authorObjectpropCount++;
-            }
-
-            if (authorObjectpropCount > 0)
-            {
-                body["author"] = authorObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<POSTFLAGResponse>(callPayload);
+            return new ApiConnectionAction<POSTFLAGResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETFlagIDResponse> GETFlagID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETFlagIdResponse> GETFlagId([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Flag/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETFlagIDResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Flag/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETFlagIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEFlagIDResponse> DELETEFlagID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem2[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyauthorreference = null, Expression<Func<string>> bodyauthordisplay = null)
+        public IBodyWorkflowAction<DELETEFlagIdResponse> DELETEFlagId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<bodyidentifierInputItem2[]> bodyidentifier = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyperiodstart = null, [WorkflowExpression] Func<string> bodyperiodend = null, [WorkflowExpression] Func<string> bodyauthorreference = null, [WorkflowExpression] Func<string> bodyauthordisplay = null)
         {
-            var apiCallPath = String.Format("/Flag/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Flag/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                if (bodytextstatus != null)
+                {
+                    textObject["status"] = SourceExpressionConverter.ConvertToken(bodytextstatus);
+                    textObjectpropCount++;
+                }
+
+                if (bodytextdiv != null)
+                {
+                    textObject["div"] = SourceExpressionConverter.ConvertToken(bodytextdiv);
+                    textObjectpropCount++;
+                }
+
+                if (textObjectpropCount > 0)
+                {
+                    body["text"] = textObject;
+                    bodypropCount++;
+                }
+
+                if (bodyidentifier != null)
+                {
+                    body["identifier"] = SourceExpressionConverter.ConvertToken(bodyidentifier);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodycategory != null)
+                {
+                    body["category"] = SourceExpressionConverter.ConvertToken(bodycategory);
+                    bodypropCount++;
+                }
+
+                var codeObject = new JObject();
+                var codeObjectpropCount = 0;
+                if (bodycodecoding != null)
+                {
+                    codeObject["coding"] = SourceExpressionConverter.ConvertToken(bodycodecoding);
+                    codeObjectpropCount++;
+                }
+
+                if (bodycodetext != null)
+                {
+                    codeObject["text"] = SourceExpressionConverter.ConvertToken(bodycodetext);
+                    codeObjectpropCount++;
+                }
+
+                if (codeObjectpropCount > 0)
+                {
+                    body["code"] = codeObject;
+                    bodypropCount++;
+                }
+
+                var subjectObject = new JObject();
+                var subjectObjectpropCount = 0;
+                if (bodysubjectreference != null)
+                {
+                    subjectObject["reference"] = SourceExpressionConverter.ConvertToken(bodysubjectreference);
+                    subjectObjectpropCount++;
+                }
+
+                if (bodysubjectdisplay != null)
+                {
+                    subjectObject["display"] = SourceExpressionConverter.ConvertToken(bodysubjectdisplay);
+                    subjectObjectpropCount++;
+                }
+
+                if (subjectObjectpropCount > 0)
+                {
+                    body["subject"] = subjectObject;
+                    bodypropCount++;
+                }
+
+                var periodObject = new JObject();
+                var periodObjectpropCount = 0;
+                if (bodyperiodstart != null)
+                {
+                    periodObject["start"] = SourceExpressionConverter.ConvertToken(bodyperiodstart);
+                    periodObjectpropCount++;
+                }
+
+                if (bodyperiodend != null)
+                {
+                    periodObject["end"] = SourceExpressionConverter.ConvertToken(bodyperiodend);
+                    periodObjectpropCount++;
+                }
+
+                if (periodObjectpropCount > 0)
+                {
+                    body["period"] = periodObject;
+                    bodypropCount++;
+                }
+
+                var authorObject = new JObject();
+                var authorObjectpropCount = 0;
+                if (bodyauthorreference != null)
+                {
+                    authorObject["reference"] = SourceExpressionConverter.ConvertToken(bodyauthorreference);
+                    authorObjectpropCount++;
+                }
+
+                if (bodyauthordisplay != null)
+                {
+                    authorObject["display"] = SourceExpressionConverter.ConvertToken(bodyauthordisplay);
+                    authorObjectpropCount++;
+                }
+
+                if (authorObjectpropCount > 0)
+                {
+                    body["author"] = authorObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            if (bodytextstatus != null)
-            {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
-                textObjectpropCount++;
-            }
-
-            if (bodytextdiv != null)
-            {
-                textObject["div"] = ExpressionConverter.ConvertO(bodytextdiv);
-                textObjectpropCount++;
-            }
-
-            if (textObjectpropCount > 0)
-            {
-                body["text"] = textObject;
-                bodypropCount++;
-            }
-
-            if (bodyidentifier != null)
-            {
-                body["identifier"] = ExpressionConverter.ConvertO(bodyidentifier);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodycategory != null)
-            {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
-                bodypropCount++;
-            }
-
-            var codeObject = new JObject();
-            var codeObjectpropCount = 0;
-            if (bodycodecoding != null)
-            {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
-                codeObjectpropCount++;
-            }
-
-            if (bodycodetext != null)
-            {
-                codeObject["text"] = ExpressionConverter.ConvertO(bodycodetext);
-                codeObjectpropCount++;
-            }
-
-            if (codeObjectpropCount > 0)
-            {
-                body["code"] = codeObject;
-                bodypropCount++;
-            }
-
-            var subjectObject = new JObject();
-            var subjectObjectpropCount = 0;
-            if (bodysubjectreference != null)
-            {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
-                subjectObjectpropCount++;
-            }
-
-            if (bodysubjectdisplay != null)
-            {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
-                subjectObjectpropCount++;
-            }
-
-            if (subjectObjectpropCount > 0)
-            {
-                body["subject"] = subjectObject;
-                bodypropCount++;
-            }
-
-            var periodObject = new JObject();
-            var periodObjectpropCount = 0;
-            if (bodyperiodstart != null)
-            {
-                periodObject["start"] = ExpressionConverter.ConvertO(bodyperiodstart);
-                periodObjectpropCount++;
-            }
-
-            if (bodyperiodend != null)
-            {
-                periodObject["end"] = ExpressionConverter.ConvertO(bodyperiodend);
-                periodObjectpropCount++;
-            }
-
-            if (periodObjectpropCount > 0)
-            {
-                body["period"] = periodObject;
-                bodypropCount++;
-            }
-
-            var authorObject = new JObject();
-            var authorObjectpropCount = 0;
-            if (bodyauthorreference != null)
-            {
-                authorObject["reference"] = ExpressionConverter.ConvertO(bodyauthorreference);
-                authorObjectpropCount++;
-            }
-
-            if (bodyauthordisplay != null)
-            {
-                authorObject["display"] = ExpressionConverter.ConvertO(bodyauthordisplay);
-                authorObjectpropCount++;
-            }
-
-            if (authorObjectpropCount > 0)
-            {
-                body["author"] = authorObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DELETEFlagIDResponse>(callPayload);
+            return new ApiConnectionAction<DELETEFlagIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTFlagIDResponse> PUTFlagID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<bodyidentifierInputItem2[]>> bodyidentifier = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodycategoryInputItem[]>> bodycategory = null, Expression<Func<bodycodecodingInputItem[]>> bodycodecoding = null, Expression<Func<string>> bodycodetext = null, Expression<Func<string>> bodysubjectreference = null, Expression<Func<string>> bodysubjectdisplay = null, Expression<Func<string>> bodyperiodstart = null, Expression<Func<string>> bodyperiodend = null, Expression<Func<string>> bodyauthorreference = null, Expression<Func<string>> bodyauthordisplay = null)
+        public IBodyWorkflowAction<PUTFlagIdResponse> PUTFlagId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<bodyidentifierInputItem2[]> bodyidentifier = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodycategoryInputItem[]> bodycategory = null, [WorkflowExpression] Func<bodycodecodingInputItem[]> bodycodecoding = null, [WorkflowExpression] Func<string> bodycodetext = null, [WorkflowExpression] Func<string> bodysubjectreference = null, [WorkflowExpression] Func<string> bodysubjectdisplay = null, [WorkflowExpression] Func<string> bodyperiodstart = null, [WorkflowExpression] Func<string> bodyperiodend = null, [WorkflowExpression] Func<string> bodyauthorreference = null, [WorkflowExpression] Func<string> bodyauthordisplay = null)
         {
-            var apiCallPath = String.Format("/Flag/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Flag/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                if (bodytextstatus != null)
+                {
+                    textObject["status"] = SourceExpressionConverter.ConvertToken(bodytextstatus);
+                    textObjectpropCount++;
+                }
+
+                if (bodytextdiv != null)
+                {
+                    textObject["div"] = SourceExpressionConverter.ConvertToken(bodytextdiv);
+                    textObjectpropCount++;
+                }
+
+                if (textObjectpropCount > 0)
+                {
+                    body["text"] = textObject;
+                    bodypropCount++;
+                }
+
+                if (bodyidentifier != null)
+                {
+                    body["identifier"] = SourceExpressionConverter.ConvertToken(bodyidentifier);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodycategory != null)
+                {
+                    body["category"] = SourceExpressionConverter.ConvertToken(bodycategory);
+                    bodypropCount++;
+                }
+
+                var codeObject = new JObject();
+                var codeObjectpropCount = 0;
+                if (bodycodecoding != null)
+                {
+                    codeObject["coding"] = SourceExpressionConverter.ConvertToken(bodycodecoding);
+                    codeObjectpropCount++;
+                }
+
+                if (bodycodetext != null)
+                {
+                    codeObject["text"] = SourceExpressionConverter.ConvertToken(bodycodetext);
+                    codeObjectpropCount++;
+                }
+
+                if (codeObjectpropCount > 0)
+                {
+                    body["code"] = codeObject;
+                    bodypropCount++;
+                }
+
+                var subjectObject = new JObject();
+                var subjectObjectpropCount = 0;
+                if (bodysubjectreference != null)
+                {
+                    subjectObject["reference"] = SourceExpressionConverter.ConvertToken(bodysubjectreference);
+                    subjectObjectpropCount++;
+                }
+
+                if (bodysubjectdisplay != null)
+                {
+                    subjectObject["display"] = SourceExpressionConverter.ConvertToken(bodysubjectdisplay);
+                    subjectObjectpropCount++;
+                }
+
+                if (subjectObjectpropCount > 0)
+                {
+                    body["subject"] = subjectObject;
+                    bodypropCount++;
+                }
+
+                var periodObject = new JObject();
+                var periodObjectpropCount = 0;
+                if (bodyperiodstart != null)
+                {
+                    periodObject["start"] = SourceExpressionConverter.ConvertToken(bodyperiodstart);
+                    periodObjectpropCount++;
+                }
+
+                if (bodyperiodend != null)
+                {
+                    periodObject["end"] = SourceExpressionConverter.ConvertToken(bodyperiodend);
+                    periodObjectpropCount++;
+                }
+
+                if (periodObjectpropCount > 0)
+                {
+                    body["period"] = periodObject;
+                    bodypropCount++;
+                }
+
+                var authorObject = new JObject();
+                var authorObjectpropCount = 0;
+                if (bodyauthorreference != null)
+                {
+                    authorObject["reference"] = SourceExpressionConverter.ConvertToken(bodyauthorreference);
+                    authorObjectpropCount++;
+                }
+
+                if (bodyauthordisplay != null)
+                {
+                    authorObject["display"] = SourceExpressionConverter.ConvertToken(bodyauthordisplay);
+                    authorObjectpropCount++;
+                }
+
+                if (authorObjectpropCount > 0)
+                {
+                    body["author"] = authorObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            if (bodytextstatus != null)
-            {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
-                textObjectpropCount++;
-            }
-
-            if (bodytextdiv != null)
-            {
-                textObject["div"] = ExpressionConverter.ConvertO(bodytextdiv);
-                textObjectpropCount++;
-            }
-
-            if (textObjectpropCount > 0)
-            {
-                body["text"] = textObject;
-                bodypropCount++;
-            }
-
-            if (bodyidentifier != null)
-            {
-                body["identifier"] = ExpressionConverter.ConvertO(bodyidentifier);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodycategory != null)
-            {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
-                bodypropCount++;
-            }
-
-            var codeObject = new JObject();
-            var codeObjectpropCount = 0;
-            if (bodycodecoding != null)
-            {
-                codeObject["coding"] = ExpressionConverter.ConvertO(bodycodecoding);
-                codeObjectpropCount++;
-            }
-
-            if (bodycodetext != null)
-            {
-                codeObject["text"] = ExpressionConverter.ConvertO(bodycodetext);
-                codeObjectpropCount++;
-            }
-
-            if (codeObjectpropCount > 0)
-            {
-                body["code"] = codeObject;
-                bodypropCount++;
-            }
-
-            var subjectObject = new JObject();
-            var subjectObjectpropCount = 0;
-            if (bodysubjectreference != null)
-            {
-                subjectObject["reference"] = ExpressionConverter.ConvertO(bodysubjectreference);
-                subjectObjectpropCount++;
-            }
-
-            if (bodysubjectdisplay != null)
-            {
-                subjectObject["display"] = ExpressionConverter.ConvertO(bodysubjectdisplay);
-                subjectObjectpropCount++;
-            }
-
-            if (subjectObjectpropCount > 0)
-            {
-                body["subject"] = subjectObject;
-                bodypropCount++;
-            }
-
-            var periodObject = new JObject();
-            var periodObjectpropCount = 0;
-            if (bodyperiodstart != null)
-            {
-                periodObject["start"] = ExpressionConverter.ConvertO(bodyperiodstart);
-                periodObjectpropCount++;
-            }
-
-            if (bodyperiodend != null)
-            {
-                periodObject["end"] = ExpressionConverter.ConvertO(bodyperiodend);
-                periodObjectpropCount++;
-            }
-
-            if (periodObjectpropCount > 0)
-            {
-                body["period"] = periodObject;
-                bodypropCount++;
-            }
-
-            var authorObject = new JObject();
-            var authorObjectpropCount = 0;
-            if (bodyauthorreference != null)
-            {
-                authorObject["reference"] = ExpressionConverter.ConvertO(bodyauthorreference);
-                authorObjectpropCount++;
-            }
-
-            if (bodyauthordisplay != null)
-            {
-                authorObject["display"] = ExpressionConverter.ConvertO(bodyauthordisplay);
-                authorObjectpropCount++;
-            }
-
-            if (authorObjectpropCount > 0)
-            {
-                body["author"] = authorObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PUTFlagIDResponse>(callPayload);
+            return new ApiConnectionAction<PUTFlagIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETFlagIDVersionResponse> GETFlagIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETFlagIdVersionResponse> GETFlagIdVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            var apiCallPath = String.Format("/Flag/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(vid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETFlagIDVersionResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Flag/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETFlagIdVersionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETFlagIDHistoryResponse> GETFlagIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETFlagIdHistoryResponse> GETFlagIdHistory([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Flag/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETFlagIDHistoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Flag/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETFlagIdHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETFlagHISTORYResponse> GETFlagHISTORY()
         {
-            var apiCallPath = "/Flag/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETFlagHISTORYResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Flag/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETFlagHISTORYResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETLocationResponse> GETLocation(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETLocationResponse> GETLocation([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            var apiCallPath = "/Location";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
-            if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
-            if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
-            return new ApiConnectionAction<GETLocationResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Location";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (Count != null)
+                    callPayload.Queries["_count"] = SourceExpressionConverter.ConvertO(Count);
+                if (Sort != null)
+                    callPayload.Queries["_sort"] = SourceExpressionConverter.ConvertO(Sort);
+                if (patient != null)
+                    callPayload.Queries["patient"] = SourceExpressionConverter.ConvertO(patient);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETLocationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTLocationResponse> POSTLocation(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodypartOfreference = null, Expression<Func<string>> bodypartOfdisplay = null)
+        public IBodyWorkflowAction<POSTLocationResponse> POSTLocation([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodymode = null, [WorkflowExpression] Func<string> bodypartOfreference = null, [WorkflowExpression] Func<string> bodypartOfdisplay = null)
         {
-            var apiCallPath = "/Location";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = "/Location";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                if (bodytextstatus != null)
+                {
+                    textObject["status"] = SourceExpressionConverter.ConvertToken(bodytextstatus);
+                    textObjectpropCount++;
+                }
+
+                if (bodytextdiv != null)
+                {
+                    textObject["div"] = SourceExpressionConverter.ConvertToken(bodytextdiv);
+                    textObjectpropCount++;
+                }
+
+                if (textObjectpropCount > 0)
+                {
+                    body["text"] = textObject;
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodymode != null)
+                {
+                    body["mode"] = SourceExpressionConverter.ConvertToken(bodymode);
+                    bodypropCount++;
+                }
+
+                var partOfObject = new JObject();
+                var partOfObjectpropCount = 0;
+                if (bodypartOfreference != null)
+                {
+                    partOfObject["reference"] = SourceExpressionConverter.ConvertToken(bodypartOfreference);
+                    partOfObjectpropCount++;
+                }
+
+                if (bodypartOfdisplay != null)
+                {
+                    partOfObject["display"] = SourceExpressionConverter.ConvertToken(bodypartOfdisplay);
+                    partOfObjectpropCount++;
+                }
+
+                if (partOfObjectpropCount > 0)
+                {
+                    body["partOf"] = partOfObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            if (bodytextstatus != null)
-            {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
-                textObjectpropCount++;
-            }
-
-            if (bodytextdiv != null)
-            {
-                textObject["div"] = ExpressionConverter.ConvertO(bodytextdiv);
-                textObjectpropCount++;
-            }
-
-            if (textObjectpropCount > 0)
-            {
-                body["text"] = textObject;
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodymode != null)
-            {
-                body["mode"] = ExpressionConverter.ConvertO(bodymode);
-                bodypropCount++;
-            }
-
-            var partOfObject = new JObject();
-            var partOfObjectpropCount = 0;
-            if (bodypartOfreference != null)
-            {
-                partOfObject["reference"] = ExpressionConverter.ConvertO(bodypartOfreference);
-                partOfObjectpropCount++;
-            }
-
-            if (bodypartOfdisplay != null)
-            {
-                partOfObject["display"] = ExpressionConverter.ConvertO(bodypartOfdisplay);
-                partOfObjectpropCount++;
-            }
-
-            if (partOfObjectpropCount > 0)
-            {
-                body["partOf"] = partOfObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<POSTLocationResponse>(callPayload);
+            return new ApiConnectionAction<POSTLocationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETLocationIDResponse> GETLocationID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETLocationIdResponse> GETLocationId([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Location/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETLocationIDResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Location/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETLocationIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETELocationIDResponse> DELETELocationID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodypartOfreference = null, Expression<Func<string>> bodypartOfdisplay = null)
+        public IBodyWorkflowAction<DELETELocationIdResponse> DELETELocationId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodymode = null, [WorkflowExpression] Func<string> bodypartOfreference = null, [WorkflowExpression] Func<string> bodypartOfdisplay = null)
         {
-            var apiCallPath = String.Format("/Location/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Location/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                if (bodytextstatus != null)
+                {
+                    textObject["status"] = SourceExpressionConverter.ConvertToken(bodytextstatus);
+                    textObjectpropCount++;
+                }
+
+                if (bodytextdiv != null)
+                {
+                    textObject["div"] = SourceExpressionConverter.ConvertToken(bodytextdiv);
+                    textObjectpropCount++;
+                }
+
+                if (textObjectpropCount > 0)
+                {
+                    body["text"] = textObject;
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodymode != null)
+                {
+                    body["mode"] = SourceExpressionConverter.ConvertToken(bodymode);
+                    bodypropCount++;
+                }
+
+                var partOfObject = new JObject();
+                var partOfObjectpropCount = 0;
+                if (bodypartOfreference != null)
+                {
+                    partOfObject["reference"] = SourceExpressionConverter.ConvertToken(bodypartOfreference);
+                    partOfObjectpropCount++;
+                }
+
+                if (bodypartOfdisplay != null)
+                {
+                    partOfObject["display"] = SourceExpressionConverter.ConvertToken(bodypartOfdisplay);
+                    partOfObjectpropCount++;
+                }
+
+                if (partOfObjectpropCount > 0)
+                {
+                    body["partOf"] = partOfObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            if (bodytextstatus != null)
-            {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
-                textObjectpropCount++;
-            }
-
-            if (bodytextdiv != null)
-            {
-                textObject["div"] = ExpressionConverter.ConvertO(bodytextdiv);
-                textObjectpropCount++;
-            }
-
-            if (textObjectpropCount > 0)
-            {
-                body["text"] = textObject;
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodymode != null)
-            {
-                body["mode"] = ExpressionConverter.ConvertO(bodymode);
-                bodypropCount++;
-            }
-
-            var partOfObject = new JObject();
-            var partOfObjectpropCount = 0;
-            if (bodypartOfreference != null)
-            {
-                partOfObject["reference"] = ExpressionConverter.ConvertO(bodypartOfreference);
-                partOfObjectpropCount++;
-            }
-
-            if (bodypartOfdisplay != null)
-            {
-                partOfObject["display"] = ExpressionConverter.ConvertO(bodypartOfdisplay);
-                partOfObjectpropCount++;
-            }
-
-            if (partOfObjectpropCount > 0)
-            {
-                body["partOf"] = partOfObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DELETELocationIDResponse>(callPayload);
+            return new ApiConnectionAction<DELETELocationIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTLocationIDResponse> PUTLocationID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytextstatus = null, Expression<Func<string>> bodytextdiv = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymode = null, Expression<Func<string>> bodypartOfreference = null, Expression<Func<string>> bodypartOfdisplay = null)
+        public IBodyWorkflowAction<PUTLocationIdResponse> PUTLocationId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytextstatus = null, [WorkflowExpression] Func<string> bodytextdiv = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodymode = null, [WorkflowExpression] Func<string> bodypartOfreference = null, [WorkflowExpression] Func<string> bodypartOfdisplay = null)
         {
-            var apiCallPath = String.Format("/Location/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Location/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                if (bodytextstatus != null)
+                {
+                    textObject["status"] = SourceExpressionConverter.ConvertToken(bodytextstatus);
+                    textObjectpropCount++;
+                }
+
+                if (bodytextdiv != null)
+                {
+                    textObject["div"] = SourceExpressionConverter.ConvertToken(bodytextdiv);
+                    textObjectpropCount++;
+                }
+
+                if (textObjectpropCount > 0)
+                {
+                    body["text"] = textObject;
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodymode != null)
+                {
+                    body["mode"] = SourceExpressionConverter.ConvertToken(bodymode);
+                    bodypropCount++;
+                }
+
+                var partOfObject = new JObject();
+                var partOfObjectpropCount = 0;
+                if (bodypartOfreference != null)
+                {
+                    partOfObject["reference"] = SourceExpressionConverter.ConvertToken(bodypartOfreference);
+                    partOfObjectpropCount++;
+                }
+
+                if (bodypartOfdisplay != null)
+                {
+                    partOfObject["display"] = SourceExpressionConverter.ConvertToken(bodypartOfdisplay);
+                    partOfObjectpropCount++;
+                }
+
+                if (partOfObjectpropCount > 0)
+                {
+                    body["partOf"] = partOfObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            if (bodytextstatus != null)
-            {
-                textObject["status"] = ExpressionConverter.ConvertO(bodytextstatus);
-                textObjectpropCount++;
-            }
-
-            if (bodytextdiv != null)
-            {
-                textObject["div"] = ExpressionConverter.ConvertO(bodytextdiv);
-                textObjectpropCount++;
-            }
-
-            if (textObjectpropCount > 0)
-            {
-                body["text"] = textObject;
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodymode != null)
-            {
-                body["mode"] = ExpressionConverter.ConvertO(bodymode);
-                bodypropCount++;
-            }
-
-            var partOfObject = new JObject();
-            var partOfObjectpropCount = 0;
-            if (bodypartOfreference != null)
-            {
-                partOfObject["reference"] = ExpressionConverter.ConvertO(bodypartOfreference);
-                partOfObjectpropCount++;
-            }
-
-            if (bodypartOfdisplay != null)
-            {
-                partOfObject["display"] = ExpressionConverter.ConvertO(bodypartOfdisplay);
-                partOfObjectpropCount++;
-            }
-
-            if (partOfObjectpropCount > 0)
-            {
-                body["partOf"] = partOfObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PUTLocationIDResponse>(callPayload);
+            return new ApiConnectionAction<PUTLocationIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETLocationIDVersionResponse> GETLocationIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETLocationIdVersionResponse> GETLocationIdVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            var apiCallPath = String.Format("/Location/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(vid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETLocationIDVersionResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Location/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETLocationIdVersionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETLocationIDHistoryResponse> GETLocationIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETLocationIdHistoryResponse> GETLocationIdHistory([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Location/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETLocationIDHistoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Location/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETLocationIdHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETLocationHistoryResponse> GETLocationHistory()
         {
-            var apiCallPath = "/Location/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETLocationHistoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Location/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETLocationHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPatientResponse> GETPatient(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETPatientResponse> GETPatient([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            var apiCallPath = "/Patient";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
-            if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
-            if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
-            return new ApiConnectionAction<GETPatientResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Patient";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (Count != null)
+                    callPayload.Queries["_count"] = SourceExpressionConverter.ConvertO(Count);
+                if (Sort != null)
+                    callPayload.Queries["_sort"] = SourceExpressionConverter.ConvertO(Sort);
+                if (patient != null)
+                    callPayload.Queries["patient"] = SourceExpressionConverter.ConvertO(patient);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETPatientResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTPatientResponse> POSTPatient(Expression<Func<string>> bodyresourceType = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bool>> bodydeceasedBoolean = null, Expression<Func<bodyaddressInputItem[]>> bodyaddress = null)
+        public IBodyWorkflowAction<POSTPatientResponse> POSTPatient([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodynameInputItem[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem[]> bodytelecom = null, [WorkflowExpression] Func<string> bodygender = null, [WorkflowExpression] Func<string> bodybirthDate = null, [WorkflowExpression] Func<bool> bodydeceasedBoolean = null, [WorkflowExpression] Func<bodyaddressInputItem[]> bodyaddress = null)
         {
-            var apiCallPath = "/Patient";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = "/Patient";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyactive != null)
+                {
+                    body["active"] = SourceExpressionConverter.ConvertToken(bodyactive);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodytelecom != null)
+                {
+                    body["telecom"] = SourceExpressionConverter.ConvertToken(bodytelecom);
+                    bodypropCount++;
+                }
+
+                if (bodygender != null)
+                {
+                    body["gender"] = SourceExpressionConverter.ConvertToken(bodygender);
+                    bodypropCount++;
+                }
+
+                if (bodybirthDate != null)
+                {
+                    body["birthDate"] = SourceExpressionConverter.ConvertToken(bodybirthDate);
+                    bodypropCount++;
+                }
+
+                if (bodydeceasedBoolean != null)
+                {
+                    body["deceasedBoolean"] = SourceExpressionConverter.ConvertToken(bodydeceasedBoolean);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyactive != null)
-            {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodytelecom != null)
-            {
-                body["telecom"] = ExpressionConverter.ConvertO(bodytelecom);
-                bodypropCount++;
-            }
-
-            if (bodygender != null)
-            {
-                body["gender"] = ExpressionConverter.ConvertO(bodygender);
-                bodypropCount++;
-            }
-
-            if (bodybirthDate != null)
-            {
-                body["birthDate"] = ExpressionConverter.ConvertO(bodybirthDate);
-                bodypropCount++;
-            }
-
-            if (bodydeceasedBoolean != null)
-            {
-                body["deceasedBoolean"] = ExpressionConverter.ConvertO(bodydeceasedBoolean);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<POSTPatientResponse>(callPayload);
+            return new ApiConnectionAction<POSTPatientResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPatientIDResponse> GETPatientID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPatientIdResponse> GETPatientId([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Patient/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETPatientIDResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Patient/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETPatientIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEPatientIDResponse> DELETEPatientID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bool>> bodydeceasedBoolean = null, Expression<Func<bodyaddressInputItem[]>> bodyaddress = null)
+        public IBodyWorkflowAction<DELETEPatientIdResponse> DELETEPatientId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodynameInputItem[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem[]> bodytelecom = null, [WorkflowExpression] Func<string> bodygender = null, [WorkflowExpression] Func<string> bodybirthDate = null, [WorkflowExpression] Func<bool> bodydeceasedBoolean = null, [WorkflowExpression] Func<bodyaddressInputItem[]> bodyaddress = null)
         {
-            var apiCallPath = String.Format("/Patient/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Patient/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodyactive != null)
+                {
+                    body["active"] = SourceExpressionConverter.ConvertToken(bodyactive);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodytelecom != null)
+                {
+                    body["telecom"] = SourceExpressionConverter.ConvertToken(bodytelecom);
+                    bodypropCount++;
+                }
+
+                if (bodygender != null)
+                {
+                    body["gender"] = SourceExpressionConverter.ConvertToken(bodygender);
+                    bodypropCount++;
+                }
+
+                if (bodybirthDate != null)
+                {
+                    body["birthDate"] = SourceExpressionConverter.ConvertToken(bodybirthDate);
+                    bodypropCount++;
+                }
+
+                if (bodydeceasedBoolean != null)
+                {
+                    body["deceasedBoolean"] = SourceExpressionConverter.ConvertToken(bodydeceasedBoolean);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            if (bodyactive != null)
-            {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodytelecom != null)
-            {
-                body["telecom"] = ExpressionConverter.ConvertO(bodytelecom);
-                bodypropCount++;
-            }
-
-            if (bodygender != null)
-            {
-                body["gender"] = ExpressionConverter.ConvertO(bodygender);
-                bodypropCount++;
-            }
-
-            if (bodybirthDate != null)
-            {
-                body["birthDate"] = ExpressionConverter.ConvertO(bodybirthDate);
-                bodypropCount++;
-            }
-
-            if (bodydeceasedBoolean != null)
-            {
-                body["deceasedBoolean"] = ExpressionConverter.ConvertO(bodydeceasedBoolean);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DELETEPatientIDResponse>(callPayload);
+            return new ApiConnectionAction<DELETEPatientIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTPatientIDResponse> PUTPatientID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bool>> bodydeceasedBoolean = null, Expression<Func<bodyaddressInputItem[]>> bodyaddress = null)
+        public IBodyWorkflowAction<PUTPatientIdResponse> PUTPatientId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodynameInputItem[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem[]> bodytelecom = null, [WorkflowExpression] Func<string> bodygender = null, [WorkflowExpression] Func<string> bodybirthDate = null, [WorkflowExpression] Func<bool> bodydeceasedBoolean = null, [WorkflowExpression] Func<bodyaddressInputItem[]> bodyaddress = null)
         {
-            var apiCallPath = String.Format("/Patient/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Patient/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodyactive != null)
+                {
+                    body["active"] = SourceExpressionConverter.ConvertToken(bodyactive);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodytelecom != null)
+                {
+                    body["telecom"] = SourceExpressionConverter.ConvertToken(bodytelecom);
+                    bodypropCount++;
+                }
+
+                if (bodygender != null)
+                {
+                    body["gender"] = SourceExpressionConverter.ConvertToken(bodygender);
+                    bodypropCount++;
+                }
+
+                if (bodybirthDate != null)
+                {
+                    body["birthDate"] = SourceExpressionConverter.ConvertToken(bodybirthDate);
+                    bodypropCount++;
+                }
+
+                if (bodydeceasedBoolean != null)
+                {
+                    body["deceasedBoolean"] = SourceExpressionConverter.ConvertToken(bodydeceasedBoolean);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            if (bodyactive != null)
-            {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodytelecom != null)
-            {
-                body["telecom"] = ExpressionConverter.ConvertO(bodytelecom);
-                bodypropCount++;
-            }
-
-            if (bodygender != null)
-            {
-                body["gender"] = ExpressionConverter.ConvertO(bodygender);
-                bodypropCount++;
-            }
-
-            if (bodybirthDate != null)
-            {
-                body["birthDate"] = ExpressionConverter.ConvertO(bodybirthDate);
-                bodypropCount++;
-            }
-
-            if (bodydeceasedBoolean != null)
-            {
-                body["deceasedBoolean"] = ExpressionConverter.ConvertO(bodydeceasedBoolean);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PUTPatientIDResponse>(callPayload);
+            return new ApiConnectionAction<PUTPatientIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPatientIDVersionResponse> GETPatientIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETPatientIdVersionResponse> GETPatientIdVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            var apiCallPath = String.Format("/Patient/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(vid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETPatientIDVersionResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Patient/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETPatientIdVersionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPatientIDHistoryResponse> GETPatientIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPatientIdHistoryResponse> GETPatientIdHistory([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Patient/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETPatientIDHistoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Patient/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETPatientIdHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPatientHistoryResponse> GETPatientHistory()
         {
-            var apiCallPath = "/Patient/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETPatientHistoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Patient/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETPatientHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPersonResponse> GETPerson(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETPersonResponse> GETPerson([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            var apiCallPath = "/Person";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
-            if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
-            if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
-            return new ApiConnectionAction<GETPersonResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Person";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (Count != null)
+                    callPayload.Queries["_count"] = SourceExpressionConverter.ConvertO(Count);
+                if (Sort != null)
+                    callPayload.Queries["_sort"] = SourceExpressionConverter.ConvertO(Sort);
+                if (patient != null)
+                    callPayload.Queries["patient"] = SourceExpressionConverter.ConvertO(patient);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETPersonResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTPersonResponse> POSTPerson(Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bodyaddressInputItem2[]>> bodyaddress = null, Expression<Func<string>> bodymanagingOrganizationreference = null, Expression<Func<string>> bodymanagingOrganizationdisplay = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodylinkInputItem[]>> bodylink = null)
+        public IBodyWorkflowAction<POSTPersonResponse> POSTPerson([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bodynameInputItem[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem2[]> bodytelecom = null, [WorkflowExpression] Func<string> bodygender = null, [WorkflowExpression] Func<string> bodybirthDate = null, [WorkflowExpression] Func<bodyaddressInputItem2[]> bodyaddress = null, [WorkflowExpression] Func<string> bodymanagingOrganizationreference = null, [WorkflowExpression] Func<string> bodymanagingOrganizationdisplay = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodylinkInputItem[]> bodylink = null)
         {
-            var apiCallPath = "/Person";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = "/Person";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodytelecom != null)
+                {
+                    body["telecom"] = SourceExpressionConverter.ConvertToken(bodytelecom);
+                    bodypropCount++;
+                }
+
+                if (bodygender != null)
+                {
+                    body["gender"] = SourceExpressionConverter.ConvertToken(bodygender);
+                    bodypropCount++;
+                }
+
+                if (bodybirthDate != null)
+                {
+                    body["birthDate"] = SourceExpressionConverter.ConvertToken(bodybirthDate);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                var managingOrganizationObject = new JObject();
+                var managingOrganizationObjectpropCount = 0;
+                if (bodymanagingOrganizationreference != null)
+                {
+                    managingOrganizationObject["reference"] = SourceExpressionConverter.ConvertToken(bodymanagingOrganizationreference);
+                    managingOrganizationObjectpropCount++;
+                }
+
+                if (bodymanagingOrganizationdisplay != null)
+                {
+                    managingOrganizationObject["display"] = SourceExpressionConverter.ConvertToken(bodymanagingOrganizationdisplay);
+                    managingOrganizationObjectpropCount++;
+                }
+
+                if (managingOrganizationObjectpropCount > 0)
+                {
+                    body["managingOrganization"] = managingOrganizationObject;
+                    bodypropCount++;
+                }
+
+                if (bodyactive != null)
+                {
+                    body["active"] = SourceExpressionConverter.ConvertToken(bodyactive);
+                    bodypropCount++;
+                }
+
+                if (bodylink != null)
+                {
+                    body["link"] = SourceExpressionConverter.ConvertToken(bodylink);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodytelecom != null)
-            {
-                body["telecom"] = ExpressionConverter.ConvertO(bodytelecom);
-                bodypropCount++;
-            }
-
-            if (bodygender != null)
-            {
-                body["gender"] = ExpressionConverter.ConvertO(bodygender);
-                bodypropCount++;
-            }
-
-            if (bodybirthDate != null)
-            {
-                body["birthDate"] = ExpressionConverter.ConvertO(bodybirthDate);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            var managingOrganizationObject = new JObject();
-            var managingOrganizationObjectpropCount = 0;
-            if (bodymanagingOrganizationreference != null)
-            {
-                managingOrganizationObject["reference"] = ExpressionConverter.ConvertO(bodymanagingOrganizationreference);
-                managingOrganizationObjectpropCount++;
-            }
-
-            if (bodymanagingOrganizationdisplay != null)
-            {
-                managingOrganizationObject["display"] = ExpressionConverter.ConvertO(bodymanagingOrganizationdisplay);
-                managingOrganizationObjectpropCount++;
-            }
-
-            if (managingOrganizationObjectpropCount > 0)
-            {
-                body["managingOrganization"] = managingOrganizationObject;
-                bodypropCount++;
-            }
-
-            if (bodyactive != null)
-            {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
-                bodypropCount++;
-            }
-
-            if (bodylink != null)
-            {
-                body["link"] = ExpressionConverter.ConvertO(bodylink);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<POSTPersonResponse>(callPayload);
+            return new ApiConnectionAction<POSTPersonResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPersonIDResponse> GETPersonID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPersonIdResponse> GETPersonId([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Person/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETPersonIDResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Person/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETPersonIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEPersonIDResponse> DELETEPersonID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bodyaddressInputItem2[]>> bodyaddress = null, Expression<Func<string>> bodymanagingOrganizationreference = null, Expression<Func<string>> bodymanagingOrganizationdisplay = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodylinkInputItem[]>> bodylink = null)
+        public IBodyWorkflowAction<DELETEPersonIdResponse> DELETEPersonId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bodynameInputItem[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem2[]> bodytelecom = null, [WorkflowExpression] Func<string> bodygender = null, [WorkflowExpression] Func<string> bodybirthDate = null, [WorkflowExpression] Func<bodyaddressInputItem2[]> bodyaddress = null, [WorkflowExpression] Func<string> bodymanagingOrganizationreference = null, [WorkflowExpression] Func<string> bodymanagingOrganizationdisplay = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodylinkInputItem[]> bodylink = null)
         {
-            var apiCallPath = String.Format("/Person/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Person/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodytelecom != null)
+                {
+                    body["telecom"] = SourceExpressionConverter.ConvertToken(bodytelecom);
+                    bodypropCount++;
+                }
+
+                if (bodygender != null)
+                {
+                    body["gender"] = SourceExpressionConverter.ConvertToken(bodygender);
+                    bodypropCount++;
+                }
+
+                if (bodybirthDate != null)
+                {
+                    body["birthDate"] = SourceExpressionConverter.ConvertToken(bodybirthDate);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                var managingOrganizationObject = new JObject();
+                var managingOrganizationObjectpropCount = 0;
+                if (bodymanagingOrganizationreference != null)
+                {
+                    managingOrganizationObject["reference"] = SourceExpressionConverter.ConvertToken(bodymanagingOrganizationreference);
+                    managingOrganizationObjectpropCount++;
+                }
+
+                if (bodymanagingOrganizationdisplay != null)
+                {
+                    managingOrganizationObject["display"] = SourceExpressionConverter.ConvertToken(bodymanagingOrganizationdisplay);
+                    managingOrganizationObjectpropCount++;
+                }
+
+                if (managingOrganizationObjectpropCount > 0)
+                {
+                    body["managingOrganization"] = managingOrganizationObject;
+                    bodypropCount++;
+                }
+
+                if (bodyactive != null)
+                {
+                    body["active"] = SourceExpressionConverter.ConvertToken(bodyactive);
+                    bodypropCount++;
+                }
+
+                if (bodylink != null)
+                {
+                    body["link"] = SourceExpressionConverter.ConvertToken(bodylink);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodytelecom != null)
-            {
-                body["telecom"] = ExpressionConverter.ConvertO(bodytelecom);
-                bodypropCount++;
-            }
-
-            if (bodygender != null)
-            {
-                body["gender"] = ExpressionConverter.ConvertO(bodygender);
-                bodypropCount++;
-            }
-
-            if (bodybirthDate != null)
-            {
-                body["birthDate"] = ExpressionConverter.ConvertO(bodybirthDate);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            var managingOrganizationObject = new JObject();
-            var managingOrganizationObjectpropCount = 0;
-            if (bodymanagingOrganizationreference != null)
-            {
-                managingOrganizationObject["reference"] = ExpressionConverter.ConvertO(bodymanagingOrganizationreference);
-                managingOrganizationObjectpropCount++;
-            }
-
-            if (bodymanagingOrganizationdisplay != null)
-            {
-                managingOrganizationObject["display"] = ExpressionConverter.ConvertO(bodymanagingOrganizationdisplay);
-                managingOrganizationObjectpropCount++;
-            }
-
-            if (managingOrganizationObjectpropCount > 0)
-            {
-                body["managingOrganization"] = managingOrganizationObject;
-                bodypropCount++;
-            }
-
-            if (bodyactive != null)
-            {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
-                bodypropCount++;
-            }
-
-            if (bodylink != null)
-            {
-                body["link"] = ExpressionConverter.ConvertO(bodylink);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DELETEPersonIDResponse>(callPayload);
+            return new ApiConnectionAction<DELETEPersonIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTPersonIDResponse> PUTPersonID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<bodynameInputItem[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<string>> bodygender = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<bodyaddressInputItem2[]>> bodyaddress = null, Expression<Func<string>> bodymanagingOrganizationreference = null, Expression<Func<string>> bodymanagingOrganizationdisplay = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodylinkInputItem[]>> bodylink = null)
+        public IBodyWorkflowAction<PUTPersonIdResponse> PUTPersonId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bodynameInputItem[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem2[]> bodytelecom = null, [WorkflowExpression] Func<string> bodygender = null, [WorkflowExpression] Func<string> bodybirthDate = null, [WorkflowExpression] Func<bodyaddressInputItem2[]> bodyaddress = null, [WorkflowExpression] Func<string> bodymanagingOrganizationreference = null, [WorkflowExpression] Func<string> bodymanagingOrganizationdisplay = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodylinkInputItem[]> bodylink = null)
         {
-            var apiCallPath = String.Format("/Person/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Person/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodytelecom != null)
+                {
+                    body["telecom"] = SourceExpressionConverter.ConvertToken(bodytelecom);
+                    bodypropCount++;
+                }
+
+                if (bodygender != null)
+                {
+                    body["gender"] = SourceExpressionConverter.ConvertToken(bodygender);
+                    bodypropCount++;
+                }
+
+                if (bodybirthDate != null)
+                {
+                    body["birthDate"] = SourceExpressionConverter.ConvertToken(bodybirthDate);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                var managingOrganizationObject = new JObject();
+                var managingOrganizationObjectpropCount = 0;
+                if (bodymanagingOrganizationreference != null)
+                {
+                    managingOrganizationObject["reference"] = SourceExpressionConverter.ConvertToken(bodymanagingOrganizationreference);
+                    managingOrganizationObjectpropCount++;
+                }
+
+                if (bodymanagingOrganizationdisplay != null)
+                {
+                    managingOrganizationObject["display"] = SourceExpressionConverter.ConvertToken(bodymanagingOrganizationdisplay);
+                    managingOrganizationObjectpropCount++;
+                }
+
+                if (managingOrganizationObjectpropCount > 0)
+                {
+                    body["managingOrganization"] = managingOrganizationObject;
+                    bodypropCount++;
+                }
+
+                if (bodyactive != null)
+                {
+                    body["active"] = SourceExpressionConverter.ConvertToken(bodyactive);
+                    bodypropCount++;
+                }
+
+                if (bodylink != null)
+                {
+                    body["link"] = SourceExpressionConverter.ConvertToken(bodylink);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodytelecom != null)
-            {
-                body["telecom"] = ExpressionConverter.ConvertO(bodytelecom);
-                bodypropCount++;
-            }
-
-            if (bodygender != null)
-            {
-                body["gender"] = ExpressionConverter.ConvertO(bodygender);
-                bodypropCount++;
-            }
-
-            if (bodybirthDate != null)
-            {
-                body["birthDate"] = ExpressionConverter.ConvertO(bodybirthDate);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            var managingOrganizationObject = new JObject();
-            var managingOrganizationObjectpropCount = 0;
-            if (bodymanagingOrganizationreference != null)
-            {
-                managingOrganizationObject["reference"] = ExpressionConverter.ConvertO(bodymanagingOrganizationreference);
-                managingOrganizationObjectpropCount++;
-            }
-
-            if (bodymanagingOrganizationdisplay != null)
-            {
-                managingOrganizationObject["display"] = ExpressionConverter.ConvertO(bodymanagingOrganizationdisplay);
-                managingOrganizationObjectpropCount++;
-            }
-
-            if (managingOrganizationObjectpropCount > 0)
-            {
-                body["managingOrganization"] = managingOrganizationObject;
-                bodypropCount++;
-            }
-
-            if (bodyactive != null)
-            {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
-                bodypropCount++;
-            }
-
-            if (bodylink != null)
-            {
-                body["link"] = ExpressionConverter.ConvertO(bodylink);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PUTPersonIDResponse>(callPayload);
+            return new ApiConnectionAction<PUTPersonIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPersonIDVersionResponse> GETPersonIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETPersonIdVersionResponse> GETPersonIdVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            var apiCallPath = String.Format("/Person/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(vid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETPersonIDVersionResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Person/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETPersonIdVersionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPersonIDHistoryResponse> GETPersonIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPersonIdHistoryResponse> GETPersonIdHistory([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Person/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETPersonIDHistoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Person/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETPersonIdHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPersonHistoryResponse> GETPersonHistory()
         {
-            var apiCallPath = "/Person/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETPersonHistoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Person/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETPersonHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPractitionerResponse> GETPractitioner(Expression<Func<string>> Count = null, Expression<Func<string>> Sort = null, Expression<Func<string>> patient = null)
+        public IBodyWorkflowAction<GETPractitionerResponse> GETPractitioner([WorkflowExpression] Func<string> Count = null, [WorkflowExpression] Func<string> Sort = null, [WorkflowExpression] Func<string> patient = null)
         {
-            var apiCallPath = "/Practitioner";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
-            if (Sort != null)
-                callPayload.Queries["_sort"] = ExpressionConverter.Convert(Sort);
-            if (patient != null)
-                callPayload.Queries["patient"] = ExpressionConverter.Convert(patient);
-            return new ApiConnectionAction<GETPractitionerResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Practitioner";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (Count != null)
+                    callPayload.Queries["_count"] = SourceExpressionConverter.ConvertO(Count);
+                if (Sort != null)
+                    callPayload.Queries["_sort"] = SourceExpressionConverter.ConvertO(Sort);
+                if (patient != null)
+                    callPayload.Queries["patient"] = SourceExpressionConverter.ConvertO(patient);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETPractitionerResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<POSTPractitionerResponse> POSTPractitioner(Expression<Func<string>> bodyresourceType = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem2[]>> bodyname = null, Expression<Func<bodyaddressInputItem22[]>> bodyaddress = null, Expression<Func<bodyqualificationInputItem[]>> bodyqualification = null)
+        public IBodyWorkflowAction<POSTPractitionerResponse> POSTPractitioner([WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodynameInputItem2[]> bodyname = null, [WorkflowExpression] Func<bodyaddressInputItem22[]> bodyaddress = null, [WorkflowExpression] Func<bodyqualificationInputItem[]> bodyqualification = null)
         {
-            var apiCallPath = "/Practitioner";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = "/Practitioner";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyidentifier != null)
+                {
+                    body["identifier"] = SourceExpressionConverter.ConvertToken(bodyidentifier);
+                    bodypropCount++;
+                }
+
+                if (bodyactive != null)
+                {
+                    body["active"] = SourceExpressionConverter.ConvertToken(bodyactive);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodyqualification != null)
+                {
+                    body["qualification"] = SourceExpressionConverter.ConvertToken(bodyqualification);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyidentifier != null)
-            {
-                body["identifier"] = ExpressionConverter.ConvertO(bodyidentifier);
-                bodypropCount++;
-            }
-
-            if (bodyactive != null)
-            {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodyqualification != null)
-            {
-                body["qualification"] = ExpressionConverter.ConvertO(bodyqualification);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<POSTPractitionerResponse>(callPayload);
+            return new ApiConnectionAction<POSTPractitionerResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPractitionerIDResponse> GETPractitionerID(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPractitionerIdResponse> GETPractitionerId([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Practitioner/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETPractitionerIDResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETPractitionerIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<DELETEPractitionerIDResponse> DELETEPractitionerID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem2[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<bodyaddressInputItem222[]>> bodyaddress = null, Expression<Func<string>> bodygender = null)
+        public IBodyWorkflowAction<DELETEPractitionerIdResponse> DELETEPractitionerId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodynameInputItem2[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem2[]> bodytelecom = null, [WorkflowExpression] Func<bodyaddressInputItem222[]> bodyaddress = null, [WorkflowExpression] Func<string> bodygender = null)
         {
-            var apiCallPath = String.Format("/Practitioner/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                if (bodymetaversionId != null)
+                {
+                    metaObject["versionId"] = SourceExpressionConverter.ConvertToken(bodymetaversionId);
+                    metaObjectpropCount++;
+                }
+
+                if (bodymetalastUpdated != null)
+                {
+                    metaObject["lastUpdated"] = SourceExpressionConverter.ConvertToken(bodymetalastUpdated);
+                    metaObjectpropCount++;
+                }
+
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
+
+                if (bodyidentifier != null)
+                {
+                    body["identifier"] = SourceExpressionConverter.ConvertToken(bodyidentifier);
+                    bodypropCount++;
+                }
+
+                if (bodyactive != null)
+                {
+                    body["active"] = SourceExpressionConverter.ConvertToken(bodyactive);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodytelecom != null)
+                {
+                    body["telecom"] = SourceExpressionConverter.ConvertToken(bodytelecom);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodygender != null)
+                {
+                    body["gender"] = SourceExpressionConverter.ConvertToken(bodygender);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            if (bodymetaversionId != null)
-            {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
-                metaObjectpropCount++;
-            }
-
-            if (bodymetalastUpdated != null)
-            {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
-                metaObjectpropCount++;
-            }
-
-            if (metaObjectpropCount > 0)
-            {
-                body["meta"] = metaObject;
-                bodypropCount++;
-            }
-
-            if (bodyidentifier != null)
-            {
-                body["identifier"] = ExpressionConverter.ConvertO(bodyidentifier);
-                bodypropCount++;
-            }
-
-            if (bodyactive != null)
-            {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodytelecom != null)
-            {
-                body["telecom"] = ExpressionConverter.ConvertO(bodytelecom);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodygender != null)
-            {
-                body["gender"] = ExpressionConverter.ConvertO(bodygender);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DELETEPractitionerIDResponse>(callPayload);
+            return new ApiConnectionAction<DELETEPractitionerIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<PUTPractitionerIDResponse> PUTPractitionerID(Expression<Func<string>> id, Expression<Func<string>> bodyresourceType = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodymetaversionId = null, Expression<Func<string>> bodymetalastUpdated = null, Expression<Func<bodyidentifierInputItem[]>> bodyidentifier = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bodynameInputItem2[]>> bodyname = null, Expression<Func<bodytelecomInputItem2[]>> bodytelecom = null, Expression<Func<bodyaddressInputItem222[]>> bodyaddress = null, Expression<Func<string>> bodygender = null)
+        public IBodyWorkflowAction<PUTPractitionerIdResponse> PUTPractitionerId([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyresourceType = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodymetaversionId = null, [WorkflowExpression] Func<string> bodymetalastUpdated = null, [WorkflowExpression] Func<bodyidentifierInputItem[]> bodyidentifier = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bodynameInputItem2[]> bodyname = null, [WorkflowExpression] Func<bodytelecomInputItem2[]> bodytelecom = null, [WorkflowExpression] Func<bodyaddressInputItem222[]> bodyaddress = null, [WorkflowExpression] Func<string> bodygender = null)
         {
-            var apiCallPath = String.Format("/Practitioner/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyresourceType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["resourceType"] = ExpressionConverter.ConvertO(bodyresourceType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyresourceType != null)
+                {
+                    body["resourceType"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                if (bodymetaversionId != null)
+                {
+                    metaObject["versionId"] = SourceExpressionConverter.ConvertToken(bodymetaversionId);
+                    metaObjectpropCount++;
+                }
+
+                if (bodymetalastUpdated != null)
+                {
+                    metaObject["lastUpdated"] = SourceExpressionConverter.ConvertToken(bodymetalastUpdated);
+                    metaObjectpropCount++;
+                }
+
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
+
+                if (bodyidentifier != null)
+                {
+                    body["identifier"] = SourceExpressionConverter.ConvertToken(bodyidentifier);
+                    bodypropCount++;
+                }
+
+                if (bodyactive != null)
+                {
+                    body["active"] = SourceExpressionConverter.ConvertToken(bodyactive);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodytelecom != null)
+                {
+                    body["telecom"] = SourceExpressionConverter.ConvertToken(bodytelecom);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodygender != null)
+                {
+                    body["gender"] = SourceExpressionConverter.ConvertToken(bodygender);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            if (bodymetaversionId != null)
-            {
-                metaObject["versionId"] = ExpressionConverter.ConvertO(bodymetaversionId);
-                metaObjectpropCount++;
-            }
-
-            if (bodymetalastUpdated != null)
-            {
-                metaObject["lastUpdated"] = ExpressionConverter.ConvertO(bodymetalastUpdated);
-                metaObjectpropCount++;
-            }
-
-            if (metaObjectpropCount > 0)
-            {
-                body["meta"] = metaObject;
-                bodypropCount++;
-            }
-
-            if (bodyidentifier != null)
-            {
-                body["identifier"] = ExpressionConverter.ConvertO(bodyidentifier);
-                bodypropCount++;
-            }
-
-            if (bodyactive != null)
-            {
-                body["active"] = ExpressionConverter.ConvertO(bodyactive);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodytelecom != null)
-            {
-                body["telecom"] = ExpressionConverter.ConvertO(bodytelecom);
-                bodypropCount++;
-            }
-
-            if (bodyaddress != null)
-            {
-                body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodygender != null)
-            {
-                body["gender"] = ExpressionConverter.ConvertO(bodygender);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PUTPractitionerIDResponse>(callPayload);
+            return new ApiConnectionAction<PUTPractitionerIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPractitionerIDVersionResponse> GETPractitionerIDVersion(Expression<Func<string>> id, Expression<Func<string>> vid)
+        public IBodyWorkflowAction<GETPractitionerIdVersionResponse> GETPractitionerIdVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> vid)
         {
-            var apiCallPath = String.Format("/Practitioner/{0}/_history/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(vid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETPractitionerIDVersionResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}/_history/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(vid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETPractitionerIdVersionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
-        public IBodyWorkflowAction<GETPractitionerIDHistoryResponse> GETPractitionerIDHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GETPractitionerIdHistoryResponse> GETPractitionerIdHistory([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/Practitioner/{0}/_history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETPractitionerIDHistoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}/_history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETPractitionerIdHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fhirbase")]
         public IBodyWorkflowAction<GETPractitionerHistoryResponse> GETPractitionerHistory()
         {
-            var apiCallPath = "/Practitioner/_history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GETPractitionerHistoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Practitioner/_history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GETPractitionerHistoryResponse>(BuildSourceInput);
         }
     }
 
@@ -3652,7 +3985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class GETAppointmentIDResponse
+    public class GETAppointmentIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3661,19 +3994,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAppointmentIDResponseMetaType Meta { get; set; }
+        public GETAppointmentIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETAppointmentIDResponseTextType Text { get; set; }
+        public GETAppointmentIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("participant")]
-        public GETAppointmentIDResponseParticipantTypeItem[] Participant { get; set; }
+        public GETAppointmentIdResponseParticipantTypeItem[] Participant { get; set; }
     }
 
-    public class GETAppointmentIDResponseMetaType
+    public class GETAppointmentIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -3682,7 +4015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETAppointmentIDResponseTextType
+    public class GETAppointmentIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3691,10 +4024,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETAppointmentIDResponseParticipantTypeItem
+    public class GETAppointmentIdResponseParticipantTypeItem
     {
         [JsonProperty("actor")]
-        public GETAppointmentIDResponseParticipantTypeItemActorType Actor { get; set; }
+        public GETAppointmentIdResponseParticipantTypeItemActorType Actor { get; set; }
 
         [JsonProperty("required")]
         public string Required { get; set; }
@@ -3703,10 +4036,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Status { get; set; }
 
         [JsonProperty("type")]
-        public GETAppointmentIDResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
+        public GETAppointmentIdResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
     }
 
-    public class GETAppointmentIDResponseParticipantTypeItemActorType
+    public class GETAppointmentIdResponseParticipantTypeItemActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3715,13 +4048,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentIDResponseParticipantTypeItemTypeTypeItem
+    public class GETAppointmentIdResponseParticipantTypeItemTypeTypeItem
     {
         [JsonProperty("coding")]
-        public GETAppointmentIDResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETAppointmentIdResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAppointmentIDResponseParticipantTypeItemTypeTypeItemCodingTypeItem
+    public class GETAppointmentIdResponseParticipantTypeItemTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3730,7 +4063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class DELETEAppointmentIDResponse
+    public class DELETEAppointmentIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3739,19 +4072,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEAppointmentIDResponseMetaType Meta { get; set; }
+        public DELETEAppointmentIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEAppointmentIDResponseTextType Text { get; set; }
+        public DELETEAppointmentIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("participant")]
-        public DELETEAppointmentIDResponseParticipantTypeItem[] Participant { get; set; }
+        public DELETEAppointmentIdResponseParticipantTypeItem[] Participant { get; set; }
     }
 
-    public class DELETEAppointmentIDResponseMetaType
+    public class DELETEAppointmentIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -3760,7 +4093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEAppointmentIDResponseTextType
+    public class DELETEAppointmentIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3769,10 +4102,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class DELETEAppointmentIDResponseParticipantTypeItem
+    public class DELETEAppointmentIdResponseParticipantTypeItem
     {
         [JsonProperty("actor")]
-        public DELETEAppointmentIDResponseParticipantTypeItemActorType Actor { get; set; }
+        public DELETEAppointmentIdResponseParticipantTypeItemActorType Actor { get; set; }
 
         [JsonProperty("required")]
         public string Required { get; set; }
@@ -3781,10 +4114,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Status { get; set; }
 
         [JsonProperty("type")]
-        public DELETEAppointmentIDResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
+        public DELETEAppointmentIdResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
     }
 
-    public class DELETEAppointmentIDResponseParticipantTypeItemActorType
+    public class DELETEAppointmentIdResponseParticipantTypeItemActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3793,13 +4126,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEAppointmentIDResponseParticipantTypeItemTypeTypeItem
+    public class DELETEAppointmentIdResponseParticipantTypeItemTypeTypeItem
     {
         [JsonProperty("coding")]
-        public DELETEAppointmentIDResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public DELETEAppointmentIdResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class DELETEAppointmentIDResponseParticipantTypeItemTypeTypeItemCodingTypeItem
+    public class DELETEAppointmentIdResponseParticipantTypeItemTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3808,7 +4141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class PUTAppointmentIDResponse
+    public class PUTAppointmentIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3817,19 +4150,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTAppointmentIDResponseMetaType Meta { get; set; }
+        public PUTAppointmentIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public PUTAppointmentIDResponseTextType Text { get; set; }
+        public PUTAppointmentIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("participant")]
-        public PUTAppointmentIDResponseParticipantTypeItem[] Participant { get; set; }
+        public PUTAppointmentIdResponseParticipantTypeItem[] Participant { get; set; }
     }
 
-    public class PUTAppointmentIDResponseMetaType
+    public class PUTAppointmentIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -3838,7 +4171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class PUTAppointmentIDResponseTextType
+    public class PUTAppointmentIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3847,10 +4180,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class PUTAppointmentIDResponseParticipantTypeItem
+    public class PUTAppointmentIdResponseParticipantTypeItem
     {
         [JsonProperty("actor")]
-        public PUTAppointmentIDResponseParticipantTypeItemActorType Actor { get; set; }
+        public PUTAppointmentIdResponseParticipantTypeItemActorType Actor { get; set; }
 
         [JsonProperty("required")]
         public string Required { get; set; }
@@ -3859,10 +4192,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Status { get; set; }
 
         [JsonProperty("type")]
-        public PUTAppointmentIDResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
+        public PUTAppointmentIdResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
     }
 
-    public class PUTAppointmentIDResponseParticipantTypeItemActorType
+    public class PUTAppointmentIdResponseParticipantTypeItemActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3871,13 +4204,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTAppointmentIDResponseParticipantTypeItemTypeTypeItem
+    public class PUTAppointmentIdResponseParticipantTypeItemTypeTypeItem
     {
         [JsonProperty("coding")]
-        public PUTAppointmentIDResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public PUTAppointmentIdResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class PUTAppointmentIDResponseParticipantTypeItemTypeTypeItemCodingTypeItem
+    public class PUTAppointmentIdResponseParticipantTypeItemTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3886,7 +4219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class GETAppointmentIDVERSIONResponse
+    public class GETAppointmentIdVERSIONResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3895,19 +4228,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAppointmentIDVERSIONResponseMetaType Meta { get; set; }
+        public GETAppointmentIdVERSIONResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETAppointmentIDVERSIONResponseTextType Text { get; set; }
+        public GETAppointmentIdVERSIONResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("participant")]
-        public GETAppointmentIDVERSIONResponseParticipantTypeItem[] Participant { get; set; }
+        public GETAppointmentIdVERSIONResponseParticipantTypeItem[] Participant { get; set; }
     }
 
-    public class GETAppointmentIDVERSIONResponseMetaType
+    public class GETAppointmentIdVERSIONResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -3916,7 +4249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETAppointmentIDVERSIONResponseTextType
+    public class GETAppointmentIdVERSIONResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -3925,10 +4258,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETAppointmentIDVERSIONResponseParticipantTypeItem
+    public class GETAppointmentIdVERSIONResponseParticipantTypeItem
     {
         [JsonProperty("actor")]
-        public GETAppointmentIDVERSIONResponseParticipantTypeItemActorType Actor { get; set; }
+        public GETAppointmentIdVERSIONResponseParticipantTypeItemActorType Actor { get; set; }
 
         [JsonProperty("required")]
         public string Required { get; set; }
@@ -3937,10 +4270,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Status { get; set; }
 
         [JsonProperty("type")]
-        public GETAppointmentIDVERSIONResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
+        public GETAppointmentIdVERSIONResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
     }
 
-    public class GETAppointmentIDVERSIONResponseParticipantTypeItemActorType
+    public class GETAppointmentIdVERSIONResponseParticipantTypeItemActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -3949,13 +4282,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentIDVERSIONResponseParticipantTypeItemTypeTypeItem
+    public class GETAppointmentIdVERSIONResponseParticipantTypeItemTypeTypeItem
     {
         [JsonProperty("coding")]
-        public GETAppointmentIDVERSIONResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETAppointmentIdVERSIONResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAppointmentIDVERSIONResponseParticipantTypeItemTypeTypeItemCodingTypeItem
+    public class GETAppointmentIdVERSIONResponseParticipantTypeItemTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -3964,7 +4297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class GETAppointmentIDHistoryResponse
+    public class GETAppointmentIdHistoryResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -3973,19 +4306,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAppointmentIDHistoryResponseMetaType Meta { get; set; }
+        public GETAppointmentIdHistoryResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETAppointmentIDHistoryResponseTextType Text { get; set; }
+        public GETAppointmentIdHistoryResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("participant")]
-        public GETAppointmentIDHistoryResponseParticipantTypeItem[] Participant { get; set; }
+        public GETAppointmentIdHistoryResponseParticipantTypeItem[] Participant { get; set; }
     }
 
-    public class GETAppointmentIDHistoryResponseMetaType
+    public class GETAppointmentIdHistoryResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -3994,7 +4327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETAppointmentIDHistoryResponseTextType
+    public class GETAppointmentIdHistoryResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4003,10 +4336,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETAppointmentIDHistoryResponseParticipantTypeItem
+    public class GETAppointmentIdHistoryResponseParticipantTypeItem
     {
         [JsonProperty("actor")]
-        public GETAppointmentIDHistoryResponseParticipantTypeItemActorType Actor { get; set; }
+        public GETAppointmentIdHistoryResponseParticipantTypeItemActorType Actor { get; set; }
 
         [JsonProperty("required")]
         public string Required { get; set; }
@@ -4015,10 +4348,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Status { get; set; }
 
         [JsonProperty("type")]
-        public GETAppointmentIDHistoryResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
+        public GETAppointmentIdHistoryResponseParticipantTypeItemTypeTypeItem[] Type { get; set; }
     }
 
-    public class GETAppointmentIDHistoryResponseParticipantTypeItemActorType
+    public class GETAppointmentIdHistoryResponseParticipantTypeItemActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4027,13 +4360,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentIDHistoryResponseParticipantTypeItemTypeTypeItem
+    public class GETAppointmentIdHistoryResponseParticipantTypeItemTypeTypeItem
     {
         [JsonProperty("coding")]
-        public GETAppointmentIDHistoryResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETAppointmentIdHistoryResponseParticipantTypeItemTypeTypeItemCodingTypeItem[] Coding { get; set; }
     }
 
-    public class GETAppointmentIDHistoryResponseParticipantTypeItemTypeTypeItemCodingTypeItem
+    public class GETAppointmentIdHistoryResponseParticipantTypeItemTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4213,7 +4546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentResponseIDResponse
+    public class GETAppointmentResponseIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4222,22 +4555,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAppointmentResponseIDResponseMetaType Meta { get; set; }
+        public GETAppointmentResponseIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETAppointmentResponseIDResponseTextType Text { get; set; }
+        public GETAppointmentResponseIdResponseTextType Text { get; set; }
 
         [JsonProperty("appointment")]
-        public GETAppointmentResponseIDResponseAppointmentType Appointment { get; set; }
+        public GETAppointmentResponseIdResponseAppointmentType Appointment { get; set; }
 
         [JsonProperty("actor")]
-        public GETAppointmentResponseIDResponseActorType Actor { get; set; }
+        public GETAppointmentResponseIdResponseActorType Actor { get; set; }
 
         [JsonProperty("participantStatus")]
         public string ParticipantStatus { get; set; }
     }
 
-    public class GETAppointmentResponseIDResponseMetaType
+    public class GETAppointmentResponseIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4246,7 +4579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETAppointmentResponseIDResponseTextType
+    public class GETAppointmentResponseIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4255,7 +4588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETAppointmentResponseIDResponseAppointmentType
+    public class GETAppointmentResponseIdResponseAppointmentType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4264,7 +4597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentResponseIDResponseActorType
+    public class GETAppointmentResponseIdResponseActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4273,7 +4606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEAppointmentResponseIDResponse
+    public class DELETEAppointmentResponseIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4282,22 +4615,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEAppointmentResponseIDResponseMetaType Meta { get; set; }
+        public DELETEAppointmentResponseIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEAppointmentResponseIDResponseTextType Text { get; set; }
+        public DELETEAppointmentResponseIdResponseTextType Text { get; set; }
 
         [JsonProperty("appointment")]
-        public DELETEAppointmentResponseIDResponseAppointmentType Appointment { get; set; }
+        public DELETEAppointmentResponseIdResponseAppointmentType Appointment { get; set; }
 
         [JsonProperty("actor")]
-        public DELETEAppointmentResponseIDResponseActorType Actor { get; set; }
+        public DELETEAppointmentResponseIdResponseActorType Actor { get; set; }
 
         [JsonProperty("participantStatus")]
         public string ParticipantStatus { get; set; }
     }
 
-    public class DELETEAppointmentResponseIDResponseMetaType
+    public class DELETEAppointmentResponseIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4306,7 +4639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEAppointmentResponseIDResponseTextType
+    public class DELETEAppointmentResponseIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4315,7 +4648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class DELETEAppointmentResponseIDResponseAppointmentType
+    public class DELETEAppointmentResponseIdResponseAppointmentType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4324,7 +4657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEAppointmentResponseIDResponseActorType
+    public class DELETEAppointmentResponseIdResponseActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4333,7 +4666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTAppointmentResponseIDResponse
+    public class PUTAppointmentResponseIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4342,22 +4675,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTAppointmentResponseIDResponseMetaType Meta { get; set; }
+        public PUTAppointmentResponseIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public PUTAppointmentResponseIDResponseTextType Text { get; set; }
+        public PUTAppointmentResponseIdResponseTextType Text { get; set; }
 
         [JsonProperty("appointment")]
-        public PUTAppointmentResponseIDResponseAppointmentType Appointment { get; set; }
+        public PUTAppointmentResponseIdResponseAppointmentType Appointment { get; set; }
 
         [JsonProperty("actor")]
-        public PUTAppointmentResponseIDResponseActorType Actor { get; set; }
+        public PUTAppointmentResponseIdResponseActorType Actor { get; set; }
 
         [JsonProperty("participantStatus")]
         public string ParticipantStatus { get; set; }
     }
 
-    public class PUTAppointmentResponseIDResponseMetaType
+    public class PUTAppointmentResponseIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4366,7 +4699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class PUTAppointmentResponseIDResponseTextType
+    public class PUTAppointmentResponseIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4375,7 +4708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class PUTAppointmentResponseIDResponseAppointmentType
+    public class PUTAppointmentResponseIdResponseAppointmentType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4384,7 +4717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTAppointmentResponseIDResponseActorType
+    public class PUTAppointmentResponseIdResponseActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4393,7 +4726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentResponseIDVersionResponse
+    public class GETAppointmentResponseIdVersionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4402,22 +4735,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAppointmentResponseIDVersionResponseMetaType Meta { get; set; }
+        public GETAppointmentResponseIdVersionResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETAppointmentResponseIDVersionResponseTextType Text { get; set; }
+        public GETAppointmentResponseIdVersionResponseTextType Text { get; set; }
 
         [JsonProperty("appointment")]
-        public GETAppointmentResponseIDVersionResponseAppointmentType Appointment { get; set; }
+        public GETAppointmentResponseIdVersionResponseAppointmentType Appointment { get; set; }
 
         [JsonProperty("actor")]
-        public GETAppointmentResponseIDVersionResponseActorType Actor { get; set; }
+        public GETAppointmentResponseIdVersionResponseActorType Actor { get; set; }
 
         [JsonProperty("participantStatus")]
         public string ParticipantStatus { get; set; }
     }
 
-    public class GETAppointmentResponseIDVersionResponseMetaType
+    public class GETAppointmentResponseIdVersionResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4426,7 +4759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETAppointmentResponseIDVersionResponseTextType
+    public class GETAppointmentResponseIdVersionResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4435,7 +4768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETAppointmentResponseIDVersionResponseAppointmentType
+    public class GETAppointmentResponseIdVersionResponseAppointmentType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4444,7 +4777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentResponseIDVersionResponseActorType
+    public class GETAppointmentResponseIdVersionResponseActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4453,7 +4786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentResponseIDHistoryResponse
+    public class GETAppointmentResponseIdHistoryResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4462,22 +4795,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETAppointmentResponseIDHistoryResponseMetaType Meta { get; set; }
+        public GETAppointmentResponseIdHistoryResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETAppointmentResponseIDHistoryResponseTextType Text { get; set; }
+        public GETAppointmentResponseIdHistoryResponseTextType Text { get; set; }
 
         [JsonProperty("appointment")]
-        public GETAppointmentResponseIDHistoryResponseAppointmentType Appointment { get; set; }
+        public GETAppointmentResponseIdHistoryResponseAppointmentType Appointment { get; set; }
 
         [JsonProperty("actor")]
-        public GETAppointmentResponseIDHistoryResponseActorType Actor { get; set; }
+        public GETAppointmentResponseIdHistoryResponseActorType Actor { get; set; }
 
         [JsonProperty("participantStatus")]
         public string ParticipantStatus { get; set; }
     }
 
-    public class GETAppointmentResponseIDHistoryResponseMetaType
+    public class GETAppointmentResponseIdHistoryResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4486,7 +4819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETAppointmentResponseIDHistoryResponseTextType
+    public class GETAppointmentResponseIdHistoryResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4495,7 +4828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETAppointmentResponseIDHistoryResponseAppointmentType
+    public class GETAppointmentResponseIdHistoryResponseAppointmentType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4504,7 +4837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETAppointmentResponseIDHistoryResponseActorType
+    public class GETAppointmentResponseIdHistoryResponseActorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -4873,7 +5206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETDeviceIDResponse
+    public class GETDeviceIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4882,10 +5215,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETDeviceIDResponseMetaType Meta { get; set; }
+        public GETDeviceIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("udiCarrier")]
-        public GETDeviceIDResponseUdiCarrierTypeItem[] UdiCarrier { get; set; }
+        public GETDeviceIdResponseUdiCarrierTypeItem[] UdiCarrier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -4906,16 +5239,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string SerialNumber { get; set; }
 
         [JsonProperty("deviceName")]
-        public GETDeviceIDResponseDeviceNameTypeItem[] DeviceName { get; set; }
+        public GETDeviceIdResponseDeviceNameTypeItem[] DeviceName { get; set; }
 
         [JsonProperty("type")]
-        public GETDeviceIDResponseTypeType Type { get; set; }
+        public GETDeviceIdResponseTypeType Type { get; set; }
 
         [JsonProperty("patient")]
-        public GETDeviceIDResponsePatientType Patient { get; set; }
+        public GETDeviceIdResponsePatientType Patient { get; set; }
     }
 
-    public class GETDeviceIDResponseMetaType
+    public class GETDeviceIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4924,7 +5257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETDeviceIDResponseUdiCarrierTypeItem
+    public class GETDeviceIdResponseUdiCarrierTypeItem
     {
         [JsonProperty("deviceIdentifier")]
         public string DeviceIdentifier { get; set; }
@@ -4933,7 +5266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string CarrierHRF { get; set; }
     }
 
-    public class GETDeviceIDResponseDeviceNameTypeItem
+    public class GETDeviceIdResponseDeviceNameTypeItem
     {
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -4942,16 +5275,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Type { get; set; }
     }
 
-    public class GETDeviceIDResponseTypeType
+    public class GETDeviceIdResponseTypeType
     {
         [JsonProperty("coding")]
-        public GETDeviceIDResponseTypeTypeCodingTypeItem[] Coding { get; set; }
+        public GETDeviceIdResponseTypeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETDeviceIDResponseTypeTypeCodingTypeItem
+    public class GETDeviceIdResponseTypeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -4963,13 +5296,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETDeviceIDResponsePatientType
+    public class GETDeviceIdResponsePatientType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
     }
 
-    public class DELETEDeviceIDResponse
+    public class DELETEDeviceIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -4978,16 +5311,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEDeviceIDResponseMetaType Meta { get; set; }
+        public DELETEDeviceIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public DELETEDeviceIDResponseTextType Text { get; set; }
+        public DELETEDeviceIdResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public DELETEDeviceIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public DELETEDeviceIdResponseIdentifierTypeItem[] Identifier { get; set; }
     }
 
-    public class DELETEDeviceIDResponseMetaType
+    public class DELETEDeviceIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -4996,7 +5329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEDeviceIDResponseTextType
+    public class DELETEDeviceIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -5005,7 +5338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class DELETEDeviceIDResponseIdentifierTypeItem
+    public class DELETEDeviceIdResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5023,7 +5356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class PUTDeviceIDResponse
+    public class PUTDeviceIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5032,16 +5365,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTDeviceIDResponseMetaType Meta { get; set; }
+        public PUTDeviceIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public PUTDeviceIDResponseTextType Text { get; set; }
+        public PUTDeviceIdResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public PUTDeviceIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public PUTDeviceIdResponseIdentifierTypeItem[] Identifier { get; set; }
     }
 
-    public class PUTDeviceIDResponseMetaType
+    public class PUTDeviceIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5050,7 +5383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class PUTDeviceIDResponseTextType
+    public class PUTDeviceIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -5059,7 +5392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class PUTDeviceIDResponseIdentifierTypeItem
+    public class PUTDeviceIdResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5068,7 +5401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETDeviceIDVERSIONResponse
+    public class GETDeviceIdVERSIONResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5077,16 +5410,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETDeviceIDVERSIONResponseMetaType Meta { get; set; }
+        public GETDeviceIdVERSIONResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETDeviceIDVERSIONResponseTextType Text { get; set; }
+        public GETDeviceIdVERSIONResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public GETDeviceIDVERSIONResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETDeviceIdVERSIONResponseIdentifierTypeItem[] Identifier { get; set; }
     }
 
-    public class GETDeviceIDVERSIONResponseMetaType
+    public class GETDeviceIdVERSIONResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5095,7 +5428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETDeviceIDVERSIONResponseTextType
+    public class GETDeviceIdVERSIONResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -5104,7 +5437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETDeviceIDVERSIONResponseIdentifierTypeItem
+    public class GETDeviceIdVERSIONResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5113,7 +5446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETDeviceIDHISTORYResponse
+    public class GETDeviceIdHISTORYResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5122,16 +5455,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETDeviceIDHISTORYResponseMetaType Meta { get; set; }
+        public GETDeviceIdHISTORYResponseMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETDeviceIDHISTORYResponseTextType Text { get; set; }
+        public GETDeviceIdHISTORYResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public GETDeviceIDHISTORYResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETDeviceIdHISTORYResponseIdentifierTypeItem[] Identifier { get; set; }
     }
 
-    public class GETDeviceIDHISTORYResponseMetaType
+    public class GETDeviceIdHISTORYResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5140,7 +5473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETDeviceIDHISTORYResponseTextType
+    public class GETDeviceIdHISTORYResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -5149,7 +5482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETDeviceIDHISTORYResponseIdentifierTypeItem
+    public class GETDeviceIdHISTORYResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5542,7 +5875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDResponse
+    public class GETEncounterIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5551,31 +5884,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETEncounterIDResponseMetaType Meta { get; set; }
+        public GETEncounterIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("class")]
-        public GETEncounterIDResponseClassType Class { get; set; }
+        public GETEncounterIdResponseClassType Class { get; set; }
 
         [JsonProperty("type")]
-        public GETEncounterIDResponseTypeTypeItem[] Type { get; set; }
+        public GETEncounterIdResponseTypeTypeItem[] Type { get; set; }
 
         [JsonProperty("subject")]
-        public GETEncounterIDResponseSubjectType Subject { get; set; }
+        public GETEncounterIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public GETEncounterIDResponseParticipantTypeItem[] Participant { get; set; }
+        public GETEncounterIdResponseParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("period")]
-        public GETEncounterIDResponsePeriodType Period { get; set; }
+        public GETEncounterIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("serviceProvider")]
-        public GETEncounterIDResponseServiceProviderType ServiceProvider { get; set; }
+        public GETEncounterIdResponseServiceProviderType ServiceProvider { get; set; }
     }
 
-    public class GETEncounterIDResponseMetaType
+    public class GETEncounterIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5584,7 +5917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETEncounterIDResponseClassType
+    public class GETEncounterIdResponseClassType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5593,16 +5926,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class GETEncounterIDResponseTypeTypeItem
+    public class GETEncounterIdResponseTypeTypeItem
     {
         [JsonProperty("coding")]
-        public GETEncounterIDResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETEncounterIdResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETEncounterIDResponseTypeTypeItemCodingTypeItem
+    public class GETEncounterIdResponseTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5614,7 +5947,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDResponseSubjectType
+    public class GETEncounterIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5623,13 +5956,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDResponseParticipantTypeItem
+    public class GETEncounterIdResponseParticipantTypeItem
     {
         [JsonProperty("individual")]
-        public GETEncounterIDResponseParticipantTypeItemIndividualType Individual { get; set; }
+        public GETEncounterIdResponseParticipantTypeItemIndividualType Individual { get; set; }
     }
 
-    public class GETEncounterIDResponseParticipantTypeItemIndividualType
+    public class GETEncounterIdResponseParticipantTypeItemIndividualType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5638,7 +5971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDResponsePeriodType
+    public class GETEncounterIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -5647,7 +5980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class GETEncounterIDResponseServiceProviderType
+    public class GETEncounterIdResponseServiceProviderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5656,7 +5989,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEEncounterIDResponse
+    public class DELETEEncounterIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5665,31 +5998,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public DELETEEncounterIDResponseMetaType Meta { get; set; }
+        public DELETEEncounterIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("class")]
-        public DELETEEncounterIDResponseClassType Class { get; set; }
+        public DELETEEncounterIdResponseClassType Class { get; set; }
 
         [JsonProperty("type")]
-        public DELETEEncounterIDResponseTypeTypeItem[] Type { get; set; }
+        public DELETEEncounterIdResponseTypeTypeItem[] Type { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEEncounterIDResponseSubjectType Subject { get; set; }
+        public DELETEEncounterIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public DELETEEncounterIDResponseParticipantTypeItem[] Participant { get; set; }
+        public DELETEEncounterIdResponseParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("period")]
-        public DELETEEncounterIDResponsePeriodType Period { get; set; }
+        public DELETEEncounterIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("serviceProvider")]
-        public DELETEEncounterIDResponseServiceProviderType ServiceProvider { get; set; }
+        public DELETEEncounterIdResponseServiceProviderType ServiceProvider { get; set; }
     }
 
-    public class DELETEEncounterIDResponseMetaType
+    public class DELETEEncounterIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5698,7 +6031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class DELETEEncounterIDResponseClassType
+    public class DELETEEncounterIdResponseClassType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5707,16 +6040,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class DELETEEncounterIDResponseTypeTypeItem
+    public class DELETEEncounterIdResponseTypeTypeItem
     {
         [JsonProperty("coding")]
-        public DELETEEncounterIDResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public DELETEEncounterIdResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEEncounterIDResponseTypeTypeItemCodingTypeItem
+    public class DELETEEncounterIdResponseTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5728,7 +6061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEEncounterIDResponseSubjectType
+    public class DELETEEncounterIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5737,13 +6070,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEEncounterIDResponseParticipantTypeItem
+    public class DELETEEncounterIdResponseParticipantTypeItem
     {
         [JsonProperty("individual")]
-        public DELETEEncounterIDResponseParticipantTypeItemIndividualType Individual { get; set; }
+        public DELETEEncounterIdResponseParticipantTypeItemIndividualType Individual { get; set; }
     }
 
-    public class DELETEEncounterIDResponseParticipantTypeItemIndividualType
+    public class DELETEEncounterIdResponseParticipantTypeItemIndividualType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5752,7 +6085,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEEncounterIDResponsePeriodType
+    public class DELETEEncounterIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -5761,7 +6094,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class DELETEEncounterIDResponseServiceProviderType
+    public class DELETEEncounterIdResponseServiceProviderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5770,7 +6103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTEncounterIDResponse
+    public class PUTEncounterIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5779,31 +6112,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTEncounterIDResponseMetaType Meta { get; set; }
+        public PUTEncounterIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("class")]
-        public PUTEncounterIDResponseClassType Class { get; set; }
+        public PUTEncounterIdResponseClassType Class { get; set; }
 
         [JsonProperty("type")]
-        public PUTEncounterIDResponseTypeTypeItem[] Type { get; set; }
+        public PUTEncounterIdResponseTypeTypeItem[] Type { get; set; }
 
         [JsonProperty("subject")]
-        public PUTEncounterIDResponseSubjectType Subject { get; set; }
+        public PUTEncounterIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public PUTEncounterIDResponseParticipantTypeItem[] Participant { get; set; }
+        public PUTEncounterIdResponseParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("period")]
-        public PUTEncounterIDResponsePeriodType Period { get; set; }
+        public PUTEncounterIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("serviceProvider")]
-        public PUTEncounterIDResponseServiceProviderType ServiceProvider { get; set; }
+        public PUTEncounterIdResponseServiceProviderType ServiceProvider { get; set; }
     }
 
-    public class PUTEncounterIDResponseMetaType
+    public class PUTEncounterIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5812,7 +6145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class PUTEncounterIDResponseClassType
+    public class PUTEncounterIdResponseClassType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5821,16 +6154,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class PUTEncounterIDResponseTypeTypeItem
+    public class PUTEncounterIdResponseTypeTypeItem
     {
         [JsonProperty("coding")]
-        public PUTEncounterIDResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public PUTEncounterIdResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTEncounterIDResponseTypeTypeItemCodingTypeItem
+    public class PUTEncounterIdResponseTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5842,7 +6175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTEncounterIDResponseSubjectType
+    public class PUTEncounterIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5851,13 +6184,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTEncounterIDResponseParticipantTypeItem
+    public class PUTEncounterIdResponseParticipantTypeItem
     {
         [JsonProperty("individual")]
-        public PUTEncounterIDResponseParticipantTypeItemIndividualType Individual { get; set; }
+        public PUTEncounterIdResponseParticipantTypeItemIndividualType Individual { get; set; }
     }
 
-    public class PUTEncounterIDResponseParticipantTypeItemIndividualType
+    public class PUTEncounterIdResponseParticipantTypeItemIndividualType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5866,7 +6199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTEncounterIDResponsePeriodType
+    public class PUTEncounterIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -5875,7 +6208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class PUTEncounterIDResponseServiceProviderType
+    public class PUTEncounterIdResponseServiceProviderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5884,7 +6217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDVersionResponse
+    public class GETEncounterIdVersionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -5893,31 +6226,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETEncounterIDVersionResponseMetaType Meta { get; set; }
+        public GETEncounterIdVersionResponseMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("class")]
-        public GETEncounterIDVersionResponseClassType Class { get; set; }
+        public GETEncounterIdVersionResponseClassType Class { get; set; }
 
         [JsonProperty("type")]
-        public GETEncounterIDVersionResponseTypeTypeItem[] Type { get; set; }
+        public GETEncounterIdVersionResponseTypeTypeItem[] Type { get; set; }
 
         [JsonProperty("subject")]
-        public GETEncounterIDVersionResponseSubjectType Subject { get; set; }
+        public GETEncounterIdVersionResponseSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public GETEncounterIDVersionResponseParticipantTypeItem[] Participant { get; set; }
+        public GETEncounterIdVersionResponseParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("period")]
-        public GETEncounterIDVersionResponsePeriodType Period { get; set; }
+        public GETEncounterIdVersionResponsePeriodType Period { get; set; }
 
         [JsonProperty("serviceProvider")]
-        public GETEncounterIDVersionResponseServiceProviderType ServiceProvider { get; set; }
+        public GETEncounterIdVersionResponseServiceProviderType ServiceProvider { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseMetaType
+    public class GETEncounterIdVersionResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -5926,7 +6259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseClassType
+    public class GETEncounterIdVersionResponseClassType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5935,16 +6268,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseTypeTypeItem
+    public class GETEncounterIdVersionResponseTypeTypeItem
     {
         [JsonProperty("coding")]
-        public GETEncounterIDVersionResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETEncounterIdVersionResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseTypeTypeItemCodingTypeItem
+    public class GETEncounterIdVersionResponseTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -5956,7 +6289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseSubjectType
+    public class GETEncounterIdVersionResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5965,13 +6298,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseParticipantTypeItem
+    public class GETEncounterIdVersionResponseParticipantTypeItem
     {
         [JsonProperty("individual")]
-        public GETEncounterIDVersionResponseParticipantTypeItemIndividualType Individual { get; set; }
+        public GETEncounterIdVersionResponseParticipantTypeItemIndividualType Individual { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseParticipantTypeItemIndividualType
+    public class GETEncounterIdVersionResponseParticipantTypeItemIndividualType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5980,7 +6313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDVersionResponsePeriodType
+    public class GETEncounterIdVersionResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -5989,7 +6322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class GETEncounterIDVersionResponseServiceProviderType
+    public class GETEncounterIdVersionResponseServiceProviderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -5998,7 +6331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponse
+    public class GETEncounterIdHISTORYResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6007,31 +6340,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETEncounterIDHISTORYResponseMetaType Meta { get; set; }
+        public GETEncounterIdHISTORYResponseMetaType Meta { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("class")]
-        public GETEncounterIDHISTORYResponseClassType Class { get; set; }
+        public GETEncounterIdHISTORYResponseClassType Class { get; set; }
 
         [JsonProperty("type")]
-        public GETEncounterIDHISTORYResponseTypeTypeItem[] Type { get; set; }
+        public GETEncounterIdHISTORYResponseTypeTypeItem[] Type { get; set; }
 
         [JsonProperty("subject")]
-        public GETEncounterIDHISTORYResponseSubjectType Subject { get; set; }
+        public GETEncounterIdHISTORYResponseSubjectType Subject { get; set; }
 
         [JsonProperty("participant")]
-        public GETEncounterIDHISTORYResponseParticipantTypeItem[] Participant { get; set; }
+        public GETEncounterIdHISTORYResponseParticipantTypeItem[] Participant { get; set; }
 
         [JsonProperty("period")]
-        public GETEncounterIDHISTORYResponsePeriodType Period { get; set; }
+        public GETEncounterIdHISTORYResponsePeriodType Period { get; set; }
 
         [JsonProperty("serviceProvider")]
-        public GETEncounterIDHISTORYResponseServiceProviderType ServiceProvider { get; set; }
+        public GETEncounterIdHISTORYResponseServiceProviderType ServiceProvider { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseMetaType
+    public class GETEncounterIdHISTORYResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -6040,7 +6373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseClassType
+    public class GETEncounterIdHISTORYResponseClassType
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6049,16 +6382,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Code { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseTypeTypeItem
+    public class GETEncounterIdHISTORYResponseTypeTypeItem
     {
         [JsonProperty("coding")]
-        public GETEncounterIDHISTORYResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETEncounterIdHISTORYResponseTypeTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseTypeTypeItemCodingTypeItem
+    public class GETEncounterIdHISTORYResponseTypeTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6070,7 +6403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseSubjectType
+    public class GETEncounterIdHISTORYResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6079,13 +6412,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseParticipantTypeItem
+    public class GETEncounterIdHISTORYResponseParticipantTypeItem
     {
         [JsonProperty("individual")]
-        public GETEncounterIDHISTORYResponseParticipantTypeItemIndividualType Individual { get; set; }
+        public GETEncounterIdHISTORYResponseParticipantTypeItemIndividualType Individual { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseParticipantTypeItemIndividualType
+    public class GETEncounterIdHISTORYResponseParticipantTypeItemIndividualType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6094,7 +6427,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponsePeriodType
+    public class GETEncounterIdHISTORYResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -6103,7 +6436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class GETEncounterIDHISTORYResponseServiceProviderType
+    public class GETEncounterIdHISTORYResponseServiceProviderType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6499,7 +6832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDResponse
+    public class GETFlagIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6508,31 +6841,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public GETFlagIDResponseTextType Text { get; set; }
+        public GETFlagIdResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public GETFlagIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETFlagIdResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public GETFlagIDResponseCategoryTypeItem[] Category { get; set; }
+        public GETFlagIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public GETFlagIDResponseCodeType Code { get; set; }
+        public GETFlagIdResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public GETFlagIDResponseSubjectType Subject { get; set; }
+        public GETFlagIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public GETFlagIDResponsePeriodType Period { get; set; }
+        public GETFlagIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("author")]
-        public GETFlagIDResponseAuthorType Author { get; set; }
+        public GETFlagIdResponseAuthorType Author { get; set; }
     }
 
-    public class GETFlagIDResponseTextType
+    public class GETFlagIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -6541,22 +6874,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETFlagIDResponseIdentifierTypeItem
+    public class GETFlagIdResponseIdentifierTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class GETFlagIDResponseCategoryTypeItem
+    public class GETFlagIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public GETFlagIDResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETFlagIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETFlagIDResponseCategoryTypeItemCodingTypeItem
+    public class GETFlagIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6568,16 +6901,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDResponseCodeType
+    public class GETFlagIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public GETFlagIDResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GETFlagIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETFlagIDResponseCodeTypeCodingTypeItem
+    public class GETFlagIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6589,7 +6922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDResponseSubjectType
+    public class GETFlagIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6598,7 +6931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDResponsePeriodType
+    public class GETFlagIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -6607,7 +6940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class GETFlagIDResponseAuthorType
+    public class GETFlagIdResponseAuthorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6616,7 +6949,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEFlagIDResponse
+    public class DELETEFlagIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6625,31 +6958,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETEFlagIDResponseTextType Text { get; set; }
+        public DELETEFlagIdResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public DELETEFlagIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public DELETEFlagIdResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public DELETEFlagIDResponseCategoryTypeItem[] Category { get; set; }
+        public DELETEFlagIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public DELETEFlagIDResponseCodeType Code { get; set; }
+        public DELETEFlagIdResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public DELETEFlagIDResponseSubjectType Subject { get; set; }
+        public DELETEFlagIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public DELETEFlagIDResponsePeriodType Period { get; set; }
+        public DELETEFlagIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("author")]
-        public DELETEFlagIDResponseAuthorType Author { get; set; }
+        public DELETEFlagIdResponseAuthorType Author { get; set; }
     }
 
-    public class DELETEFlagIDResponseTextType
+    public class DELETEFlagIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -6658,22 +6991,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class DELETEFlagIDResponseIdentifierTypeItem
+    public class DELETEFlagIdResponseIdentifierTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class DELETEFlagIDResponseCategoryTypeItem
+    public class DELETEFlagIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public DELETEFlagIDResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public DELETEFlagIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEFlagIDResponseCategoryTypeItemCodingTypeItem
+    public class DELETEFlagIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6685,16 +7018,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEFlagIDResponseCodeType
+    public class DELETEFlagIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public DELETEFlagIDResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public DELETEFlagIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEFlagIDResponseCodeTypeCodingTypeItem
+    public class DELETEFlagIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6706,7 +7039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEFlagIDResponseSubjectType
+    public class DELETEFlagIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6715,7 +7048,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEFlagIDResponsePeriodType
+    public class DELETEFlagIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -6724,7 +7057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class DELETEFlagIDResponseAuthorType
+    public class DELETEFlagIdResponseAuthorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6733,7 +7066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTFlagIDResponse
+    public class PUTFlagIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6742,31 +7075,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public PUTFlagIDResponseTextType Text { get; set; }
+        public PUTFlagIdResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public PUTFlagIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public PUTFlagIdResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public PUTFlagIDResponseCategoryTypeItem[] Category { get; set; }
+        public PUTFlagIdResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public PUTFlagIDResponseCodeType Code { get; set; }
+        public PUTFlagIdResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public PUTFlagIDResponseSubjectType Subject { get; set; }
+        public PUTFlagIdResponseSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public PUTFlagIDResponsePeriodType Period { get; set; }
+        public PUTFlagIdResponsePeriodType Period { get; set; }
 
         [JsonProperty("author")]
-        public PUTFlagIDResponseAuthorType Author { get; set; }
+        public PUTFlagIdResponseAuthorType Author { get; set; }
     }
 
-    public class PUTFlagIDResponseTextType
+    public class PUTFlagIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -6775,22 +7108,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class PUTFlagIDResponseIdentifierTypeItem
+    public class PUTFlagIdResponseIdentifierTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class PUTFlagIDResponseCategoryTypeItem
+    public class PUTFlagIdResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public PUTFlagIDResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public PUTFlagIdResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTFlagIDResponseCategoryTypeItemCodingTypeItem
+    public class PUTFlagIdResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6802,16 +7135,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTFlagIDResponseCodeType
+    public class PUTFlagIdResponseCodeType
     {
         [JsonProperty("coding")]
-        public PUTFlagIDResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public PUTFlagIdResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class PUTFlagIDResponseCodeTypeCodingTypeItem
+    public class PUTFlagIdResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6823,7 +7156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTFlagIDResponseSubjectType
+    public class PUTFlagIdResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6832,7 +7165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTFlagIDResponsePeriodType
+    public class PUTFlagIdResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -6841,7 +7174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class PUTFlagIDResponseAuthorType
+    public class PUTFlagIdResponseAuthorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6850,7 +7183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDVersionResponse
+    public class GETFlagIdVersionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6859,31 +7192,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public GETFlagIDVersionResponseTextType Text { get; set; }
+        public GETFlagIdVersionResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public GETFlagIDVersionResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETFlagIdVersionResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public GETFlagIDVersionResponseCategoryTypeItem[] Category { get; set; }
+        public GETFlagIdVersionResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public GETFlagIDVersionResponseCodeType Code { get; set; }
+        public GETFlagIdVersionResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public GETFlagIDVersionResponseSubjectType Subject { get; set; }
+        public GETFlagIdVersionResponseSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public GETFlagIDVersionResponsePeriodType Period { get; set; }
+        public GETFlagIdVersionResponsePeriodType Period { get; set; }
 
         [JsonProperty("author")]
-        public GETFlagIDVersionResponseAuthorType Author { get; set; }
+        public GETFlagIdVersionResponseAuthorType Author { get; set; }
     }
 
-    public class GETFlagIDVersionResponseTextType
+    public class GETFlagIdVersionResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -6892,22 +7225,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETFlagIDVersionResponseIdentifierTypeItem
+    public class GETFlagIdVersionResponseIdentifierTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class GETFlagIDVersionResponseCategoryTypeItem
+    public class GETFlagIdVersionResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public GETFlagIDVersionResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETFlagIdVersionResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETFlagIDVersionResponseCategoryTypeItemCodingTypeItem
+    public class GETFlagIdVersionResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6919,16 +7252,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDVersionResponseCodeType
+    public class GETFlagIdVersionResponseCodeType
     {
         [JsonProperty("coding")]
-        public GETFlagIDVersionResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GETFlagIdVersionResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETFlagIDVersionResponseCodeTypeCodingTypeItem
+    public class GETFlagIdVersionResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -6940,7 +7273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDVersionResponseSubjectType
+    public class GETFlagIdVersionResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6949,7 +7282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDVersionResponsePeriodType
+    public class GETFlagIdVersionResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -6958,7 +7291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class GETFlagIDVersionResponseAuthorType
+    public class GETFlagIdVersionResponseAuthorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -6967,7 +7300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDHistoryResponse
+    public class GETFlagIdHistoryResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -6976,31 +7309,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public GETFlagIDHistoryResponseTextType Text { get; set; }
+        public GETFlagIdHistoryResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public GETFlagIDHistoryResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETFlagIdHistoryResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
 
         [JsonProperty("category")]
-        public GETFlagIDHistoryResponseCategoryTypeItem[] Category { get; set; }
+        public GETFlagIdHistoryResponseCategoryTypeItem[] Category { get; set; }
 
         [JsonProperty("code")]
-        public GETFlagIDHistoryResponseCodeType Code { get; set; }
+        public GETFlagIdHistoryResponseCodeType Code { get; set; }
 
         [JsonProperty("subject")]
-        public GETFlagIDHistoryResponseSubjectType Subject { get; set; }
+        public GETFlagIdHistoryResponseSubjectType Subject { get; set; }
 
         [JsonProperty("period")]
-        public GETFlagIDHistoryResponsePeriodType Period { get; set; }
+        public GETFlagIdHistoryResponsePeriodType Period { get; set; }
 
         [JsonProperty("author")]
-        public GETFlagIDHistoryResponseAuthorType Author { get; set; }
+        public GETFlagIdHistoryResponseAuthorType Author { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseTextType
+    public class GETFlagIdHistoryResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7009,22 +7342,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseIdentifierTypeItem
+    public class GETFlagIdHistoryResponseIdentifierTypeItem
     {
         [JsonProperty("value")]
         public string Value { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseCategoryTypeItem
+    public class GETFlagIdHistoryResponseCategoryTypeItem
     {
         [JsonProperty("coding")]
-        public GETFlagIDHistoryResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
+        public GETFlagIdHistoryResponseCategoryTypeItemCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseCategoryTypeItemCodingTypeItem
+    public class GETFlagIdHistoryResponseCategoryTypeItemCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7036,16 +7369,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseCodeType
+    public class GETFlagIdHistoryResponseCodeType
     {
         [JsonProperty("coding")]
-        public GETFlagIDHistoryResponseCodeTypeCodingTypeItem[] Coding { get; set; }
+        public GETFlagIdHistoryResponseCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseCodeTypeCodingTypeItem
+    public class GETFlagIdHistoryResponseCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -7057,7 +7390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseSubjectType
+    public class GETFlagIdHistoryResponseSubjectType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7066,7 +7399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETFlagIDHistoryResponsePeriodType
+    public class GETFlagIdHistoryResponsePeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
@@ -7075,7 +7408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string End { get; set; }
     }
 
-    public class GETFlagIDHistoryResponseAuthorType
+    public class GETFlagIdHistoryResponseAuthorType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7285,7 +7618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETLocationIDResponse
+    public class GETLocationIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7294,7 +7627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public GETLocationIDResponseTextType Text { get; set; }
+        public GETLocationIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7306,10 +7639,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Mode { get; set; }
 
         [JsonProperty("partOf")]
-        public GETLocationIDResponsePartOfType PartOf { get; set; }
+        public GETLocationIdResponsePartOfType PartOf { get; set; }
     }
 
-    public class GETLocationIDResponseTextType
+    public class GETLocationIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7318,7 +7651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETLocationIDResponsePartOfType
+    public class GETLocationIdResponsePartOfType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7327,7 +7660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETELocationIDResponse
+    public class DELETELocationIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7336,7 +7669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETELocationIDResponseTextType Text { get; set; }
+        public DELETELocationIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7348,10 +7681,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Mode { get; set; }
 
         [JsonProperty("partOf")]
-        public DELETELocationIDResponsePartOfType PartOf { get; set; }
+        public DELETELocationIdResponsePartOfType PartOf { get; set; }
     }
 
-    public class DELETELocationIDResponseTextType
+    public class DELETELocationIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7360,7 +7693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class DELETELocationIDResponsePartOfType
+    public class DELETELocationIdResponsePartOfType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7369,7 +7702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTLocationIDResponse
+    public class PUTLocationIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7378,7 +7711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public PUTLocationIDResponseTextType Text { get; set; }
+        public PUTLocationIdResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7390,10 +7723,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Mode { get; set; }
 
         [JsonProperty("partOf")]
-        public PUTLocationIDResponsePartOfType PartOf { get; set; }
+        public PUTLocationIdResponsePartOfType PartOf { get; set; }
     }
 
-    public class PUTLocationIDResponseTextType
+    public class PUTLocationIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7402,7 +7735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class PUTLocationIDResponsePartOfType
+    public class PUTLocationIdResponsePartOfType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7411,7 +7744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETLocationIDVersionResponse
+    public class GETLocationIdVersionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7420,7 +7753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public GETLocationIDVersionResponseTextType Text { get; set; }
+        public GETLocationIdVersionResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7432,10 +7765,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Mode { get; set; }
 
         [JsonProperty("partOf")]
-        public GETLocationIDVersionResponsePartOfType PartOf { get; set; }
+        public GETLocationIdVersionResponsePartOfType PartOf { get; set; }
     }
 
-    public class GETLocationIDVersionResponseTextType
+    public class GETLocationIdVersionResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7444,7 +7777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETLocationIDVersionResponsePartOfType
+    public class GETLocationIdVersionResponsePartOfType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7453,7 +7786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETLocationIDHistoryResponse
+    public class GETLocationIdHistoryResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7462,7 +7795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public GETLocationIDHistoryResponseTextType Text { get; set; }
+        public GETLocationIdHistoryResponseTextType Text { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7474,10 +7807,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Mode { get; set; }
 
         [JsonProperty("partOf")]
-        public GETLocationIDHistoryResponsePartOfType PartOf { get; set; }
+        public GETLocationIdHistoryResponsePartOfType PartOf { get; set; }
     }
 
-    public class GETLocationIDHistoryResponseTextType
+    public class GETLocationIdHistoryResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7486,7 +7819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETLocationIDHistoryResponsePartOfType
+    public class GETLocationIdHistoryResponsePartOfType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -7891,7 +8224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Start { get; set; }
     }
 
-    public class GETPatientIDResponse
+    public class GETPatientIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7900,25 +8233,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPatientIDResponseMetaType Meta { get; set; }
+        public GETPatientIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETPatientIDResponseLinkTypeItem[] Link { get; set; }
+        public GETPatientIdResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETPatientIDResponseEntryTypeItem[] Entry { get; set; }
+        public GETPatientIdResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETPatientIDResponseMetaType
+    public class GETPatientIdResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETPatientIDResponseLinkTypeItem
+    public class GETPatientIdResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -7927,19 +8260,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Url { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItem
+    public class GETPatientIdResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETPatientIDResponseEntryTypeItemResourceType Resource { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETPatientIDResponseEntryTypeItemSearchType Search { get; set; }
+        public GETPatientIdResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceType
+    public class GETPatientIdResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -7948,22 +8281,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeTextType Text { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeTextType Text { get; set; }
 
         [JsonProperty("extension")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeExtensionTypeItem[] Extension { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeExtensionTypeItem[] Extension { get; set; }
 
         [JsonProperty("identifier")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("name")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeNameTypeItem[] Name { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeTelecomTypeItem[] Telecom { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -7972,10 +8305,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeAddressTypeItem[] Address { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeAddressTypeItem[] Address { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeMetaType
+    public class GETPatientIdResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -7984,7 +8317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeTextType
+    public class GETPatientIdResponseEntryTypeItemResourceTypeTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -7993,28 +8326,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeExtensionTypeItem
+    public class GETPatientIdResponseEntryTypeItemResourceTypeExtensionTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
 
         [JsonProperty("valueCodeableConcept")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType ValueCodeableConcept { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType ValueCodeableConcept { get; set; }
 
         [JsonProperty("valueCode")]
         public string ValueCode { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType
+    public class GETPatientIdResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType
     {
         [JsonProperty("coding")]
-        public GETPatientIDResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public GETPatientIdResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem
+    public class GETPatientIdResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8026,7 +8359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeIdentifierTypeItem
+    public class GETPatientIdResponseEntryTypeItemResourceTypeIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8035,7 +8368,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeNameTypeItem
+    public class GETPatientIdResponseEntryTypeItemResourceTypeNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8050,7 +8383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeTelecomTypeItem
+    public class GETPatientIdResponseEntryTypeItemResourceTypeTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8062,7 +8395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemResourceTypeAddressTypeItem
+    public class GETPatientIdResponseEntryTypeItemResourceTypeAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8083,13 +8416,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Country { get; set; }
     }
 
-    public class GETPatientIDResponseEntryTypeItemSearchType
+    public class GETPatientIdResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class DELETEPatientIDResponse
+    public class DELETEPatientIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8101,10 +8434,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public bool Active { get; set; }
 
         [JsonProperty("name")]
-        public DELETEPatientIDResponseNameTypeItem[] Name { get; set; }
+        public DELETEPatientIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public DELETEPatientIDResponseTelecomTypeItem[] Telecom { get; set; }
+        public DELETEPatientIdResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -8116,10 +8449,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public bool DeceasedBoolean { get; set; }
 
         [JsonProperty("address")]
-        public DELETEPatientIDResponseAddressTypeItem[] Address { get; set; }
+        public DELETEPatientIdResponseAddressTypeItem[] Address { get; set; }
     }
 
-    public class DELETEPatientIDResponseNameTypeItem
+    public class DELETEPatientIdResponseNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8131,7 +8464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class DELETEPatientIDResponseTelecomTypeItem
+    public class DELETEPatientIdResponseTelecomTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8146,7 +8479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public int Rank { get; set; }
     }
 
-    public class DELETEPatientIDResponseAddressTypeItem
+    public class DELETEPatientIdResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8173,16 +8506,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string PostalCode { get; set; }
 
         [JsonProperty("period")]
-        public DELETEPatientIDResponseAddressTypeItemPeriodType Period { get; set; }
+        public DELETEPatientIdResponseAddressTypeItemPeriodType Period { get; set; }
     }
 
-    public class DELETEPatientIDResponseAddressTypeItemPeriodType
+    public class DELETEPatientIdResponseAddressTypeItemPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
     }
 
-    public class PUTPatientIDResponse
+    public class PUTPatientIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8194,10 +8527,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public bool Active { get; set; }
 
         [JsonProperty("name")]
-        public PUTPatientIDResponseNameTypeItem[] Name { get; set; }
+        public PUTPatientIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public PUTPatientIDResponseTelecomTypeItem[] Telecom { get; set; }
+        public PUTPatientIdResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -8209,10 +8542,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public bool DeceasedBoolean { get; set; }
 
         [JsonProperty("address")]
-        public PUTPatientIDResponseAddressTypeItem[] Address { get; set; }
+        public PUTPatientIdResponseAddressTypeItem[] Address { get; set; }
     }
 
-    public class PUTPatientIDResponseNameTypeItem
+    public class PUTPatientIdResponseNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8224,7 +8557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class PUTPatientIDResponseTelecomTypeItem
+    public class PUTPatientIdResponseTelecomTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8239,7 +8572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public int Rank { get; set; }
     }
 
-    public class PUTPatientIDResponseAddressTypeItem
+    public class PUTPatientIdResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8266,16 +8599,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string PostalCode { get; set; }
 
         [JsonProperty("period")]
-        public PUTPatientIDResponseAddressTypeItemPeriodType Period { get; set; }
+        public PUTPatientIdResponseAddressTypeItemPeriodType Period { get; set; }
     }
 
-    public class PUTPatientIDResponseAddressTypeItemPeriodType
+    public class PUTPatientIdResponseAddressTypeItemPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
     }
 
-    public class GETPatientIDVersionResponse
+    public class GETPatientIdVersionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8284,25 +8617,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPatientIDVersionResponseMetaType Meta { get; set; }
+        public GETPatientIdVersionResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETPatientIDVersionResponseLinkTypeItem[] Link { get; set; }
+        public GETPatientIdVersionResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETPatientIDVersionResponseEntryTypeItem[] Entry { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETPatientIDVersionResponseMetaType
+    public class GETPatientIdVersionResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETPatientIDVersionResponseLinkTypeItem
+    public class GETPatientIdVersionResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -8311,19 +8644,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Url { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItem
+    public class GETPatientIdVersionResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceType Resource { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETPatientIDVersionResponseEntryTypeItemSearchType Search { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceType
+    public class GETPatientIdVersionResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8332,22 +8665,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeTextType Text { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeTextType Text { get; set; }
 
         [JsonProperty("extension")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeExtensionTypeItem[] Extension { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeExtensionTypeItem[] Extension { get; set; }
 
         [JsonProperty("identifier")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("name")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeNameTypeItem[] Name { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeTelecomTypeItem[] Telecom { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -8356,10 +8689,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeAddressTypeItem[] Address { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeAddressTypeItem[] Address { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeMetaType
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -8368,7 +8701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeTextType
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -8377,28 +8710,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeExtensionTypeItem
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeExtensionTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
 
         [JsonProperty("valueCodeableConcept")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType ValueCodeableConcept { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType ValueCodeableConcept { get; set; }
 
         [JsonProperty("valueCode")]
         public string ValueCode { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType
     {
         [JsonProperty("coding")]
-        public GETPatientIDVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public GETPatientIdVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8410,7 +8743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeIdentifierTypeItem
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8419,7 +8752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeNameTypeItem
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8434,7 +8767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeTelecomTypeItem
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8446,7 +8779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemResourceTypeAddressTypeItem
+    public class GETPatientIdVersionResponseEntryTypeItemResourceTypeAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8467,13 +8800,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Country { get; set; }
     }
 
-    public class GETPatientIDVersionResponseEntryTypeItemSearchType
+    public class GETPatientIdVersionResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
 
-    public class GETPatientIDHistoryResponse
+    public class GETPatientIdHistoryResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8482,25 +8815,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPatientIDHistoryResponseMetaType Meta { get; set; }
+        public GETPatientIdHistoryResponseMetaType Meta { get; set; }
 
         [JsonProperty("type")]
         public string Type { get; set; }
 
         [JsonProperty("link")]
-        public GETPatientIDHistoryResponseLinkTypeItem[] Link { get; set; }
+        public GETPatientIdHistoryResponseLinkTypeItem[] Link { get; set; }
 
         [JsonProperty("entry")]
-        public GETPatientIDHistoryResponseEntryTypeItem[] Entry { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItem[] Entry { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseMetaType
+    public class GETPatientIdHistoryResponseMetaType
     {
         [JsonProperty("lastUpdated")]
         public string LastUpdated { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseLinkTypeItem
+    public class GETPatientIdHistoryResponseLinkTypeItem
     {
         [JsonProperty("relation")]
         public string Relation { get; set; }
@@ -8509,19 +8842,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Url { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItem
+    public class GETPatientIdHistoryResponseEntryTypeItem
     {
         [JsonProperty("fullUrl")]
         public string FullUrl { get; set; }
 
         [JsonProperty("resource")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceType Resource { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceType Resource { get; set; }
 
         [JsonProperty("search")]
-        public GETPatientIDHistoryResponseEntryTypeItemSearchType Search { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemSearchType Search { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceType
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceType
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -8530,22 +8863,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeMetaType Meta { get; set; }
 
         [JsonProperty("text")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeTextType Text { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeTextType Text { get; set; }
 
         [JsonProperty("extension")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeExtensionTypeItem[] Extension { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeExtensionTypeItem[] Extension { get; set; }
 
         [JsonProperty("identifier")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("name")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeNameTypeItem[] Name { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeTelecomTypeItem[] Telecom { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -8554,10 +8887,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeAddressTypeItem[] Address { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeAddressTypeItem[] Address { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeMetaType
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -8566,7 +8899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeTextType
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -8575,28 +8908,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeExtensionTypeItem
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeExtensionTypeItem
     {
         [JsonProperty("url")]
         public string Url { get; set; }
 
         [JsonProperty("valueCodeableConcept")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType ValueCodeableConcept { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType ValueCodeableConcept { get; set; }
 
         [JsonProperty("valueCode")]
         public string ValueCode { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptType
     {
         [JsonProperty("coding")]
-        public GETPatientIDHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
+        public GETPatientIdHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeExtensionTypeItemValueCodeableConceptTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8608,7 +8941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeIdentifierTypeItem
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8617,7 +8950,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeNameTypeItem
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8632,7 +8965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeTelecomTypeItem
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -8644,7 +8977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemResourceTypeAddressTypeItem
+    public class GETPatientIdHistoryResponseEntryTypeItemResourceTypeAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -8665,7 +8998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Country { get; set; }
     }
 
-    public class GETPatientIDHistoryResponseEntryTypeItemSearchType
+    public class GETPatientIdHistoryResponseEntryTypeItemSearchType
     {
         [JsonProperty("mode")]
         public string Mode { get; set; }
@@ -9112,7 +9445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPersonIDResponse
+    public class GETPersonIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9121,10 +9454,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("name")]
-        public GETPersonIDResponseNameTypeItem[] Name { get; set; }
+        public GETPersonIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPersonIDResponseTelecomTypeItem[] Telecom { get; set; }
+        public GETPersonIdResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -9133,19 +9466,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public GETPersonIDResponseAddressTypeItem[] Address { get; set; }
+        public GETPersonIdResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("managingOrganization")]
-        public GETPersonIDResponseManagingOrganizationType ManagingOrganization { get; set; }
+        public GETPersonIdResponseManagingOrganizationType ManagingOrganization { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("link")]
-        public GETPersonIDResponseLinkTypeItem[] Link { get; set; }
+        public GETPersonIdResponseLinkTypeItem[] Link { get; set; }
     }
 
-    public class GETPersonIDResponseNameTypeItem
+    public class GETPersonIdResponseNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9157,7 +9490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class GETPersonIDResponseTelecomTypeItem
+    public class GETPersonIdResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9169,7 +9502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPersonIDResponseAddressTypeItem
+    public class GETPersonIdResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9184,7 +9517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string State { get; set; }
     }
 
-    public class GETPersonIDResponseManagingOrganizationType
+    public class GETPersonIdResponseManagingOrganizationType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9193,16 +9526,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPersonIDResponseLinkTypeItem
+    public class GETPersonIdResponseLinkTypeItem
     {
         [JsonProperty("target")]
-        public GETPersonIDResponseLinkTypeItemTargetType Target { get; set; }
+        public GETPersonIdResponseLinkTypeItemTargetType Target { get; set; }
 
         [JsonProperty("assurance")]
         public string Assurance { get; set; }
     }
 
-    public class GETPersonIDResponseLinkTypeItemTargetType
+    public class GETPersonIdResponseLinkTypeItemTargetType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9211,7 +9544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEPersonIDResponse
+    public class DELETEPersonIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9220,10 +9553,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("name")]
-        public DELETEPersonIDResponseNameTypeItem[] Name { get; set; }
+        public DELETEPersonIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public DELETEPersonIDResponseTelecomTypeItem[] Telecom { get; set; }
+        public DELETEPersonIdResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -9232,19 +9565,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public DELETEPersonIDResponseAddressTypeItem[] Address { get; set; }
+        public DELETEPersonIdResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("managingOrganization")]
-        public DELETEPersonIDResponseManagingOrganizationType ManagingOrganization { get; set; }
+        public DELETEPersonIdResponseManagingOrganizationType ManagingOrganization { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("link")]
-        public DELETEPersonIDResponseLinkTypeItem[] Link { get; set; }
+        public DELETEPersonIdResponseLinkTypeItem[] Link { get; set; }
     }
 
-    public class DELETEPersonIDResponseNameTypeItem
+    public class DELETEPersonIdResponseNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9256,7 +9589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class DELETEPersonIDResponseTelecomTypeItem
+    public class DELETEPersonIdResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9268,7 +9601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class DELETEPersonIDResponseAddressTypeItem
+    public class DELETEPersonIdResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9283,7 +9616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string State { get; set; }
     }
 
-    public class DELETEPersonIDResponseManagingOrganizationType
+    public class DELETEPersonIdResponseManagingOrganizationType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9292,16 +9625,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEPersonIDResponseLinkTypeItem
+    public class DELETEPersonIdResponseLinkTypeItem
     {
         [JsonProperty("target")]
-        public DELETEPersonIDResponseLinkTypeItemTargetType Target { get; set; }
+        public DELETEPersonIdResponseLinkTypeItemTargetType Target { get; set; }
 
         [JsonProperty("assurance")]
         public string Assurance { get; set; }
     }
 
-    public class DELETEPersonIDResponseLinkTypeItemTargetType
+    public class DELETEPersonIdResponseLinkTypeItemTargetType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9310,7 +9643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTPersonIDResponse
+    public class PUTPersonIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9319,10 +9652,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("name")]
-        public PUTPersonIDResponseNameTypeItem[] Name { get; set; }
+        public PUTPersonIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public PUTPersonIDResponseTelecomTypeItem[] Telecom { get; set; }
+        public PUTPersonIdResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -9331,19 +9664,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public PUTPersonIDResponseAddressTypeItem[] Address { get; set; }
+        public PUTPersonIdResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("managingOrganization")]
-        public PUTPersonIDResponseManagingOrganizationType ManagingOrganization { get; set; }
+        public PUTPersonIdResponseManagingOrganizationType ManagingOrganization { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("link")]
-        public PUTPersonIDResponseLinkTypeItem[] Link { get; set; }
+        public PUTPersonIdResponseLinkTypeItem[] Link { get; set; }
     }
 
-    public class PUTPersonIDResponseNameTypeItem
+    public class PUTPersonIdResponseNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9355,7 +9688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class PUTPersonIDResponseTelecomTypeItem
+    public class PUTPersonIdResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9367,7 +9700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class PUTPersonIDResponseAddressTypeItem
+    public class PUTPersonIdResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9382,7 +9715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string State { get; set; }
     }
 
-    public class PUTPersonIDResponseManagingOrganizationType
+    public class PUTPersonIdResponseManagingOrganizationType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9391,16 +9724,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class PUTPersonIDResponseLinkTypeItem
+    public class PUTPersonIdResponseLinkTypeItem
     {
         [JsonProperty("target")]
-        public PUTPersonIDResponseLinkTypeItemTargetType Target { get; set; }
+        public PUTPersonIdResponseLinkTypeItemTargetType Target { get; set; }
 
         [JsonProperty("assurance")]
         public string Assurance { get; set; }
     }
 
-    public class PUTPersonIDResponseLinkTypeItemTargetType
+    public class PUTPersonIdResponseLinkTypeItemTargetType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9409,7 +9742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPersonIDVersionResponse
+    public class GETPersonIdVersionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9418,10 +9751,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("name")]
-        public GETPersonIDVersionResponseNameTypeItem[] Name { get; set; }
+        public GETPersonIdVersionResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPersonIDVersionResponseTelecomTypeItem[] Telecom { get; set; }
+        public GETPersonIdVersionResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -9430,19 +9763,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public GETPersonIDVersionResponseAddressTypeItem[] Address { get; set; }
+        public GETPersonIdVersionResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("managingOrganization")]
-        public GETPersonIDVersionResponseManagingOrganizationType ManagingOrganization { get; set; }
+        public GETPersonIdVersionResponseManagingOrganizationType ManagingOrganization { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("link")]
-        public GETPersonIDVersionResponseLinkTypeItem[] Link { get; set; }
+        public GETPersonIdVersionResponseLinkTypeItem[] Link { get; set; }
     }
 
-    public class GETPersonIDVersionResponseNameTypeItem
+    public class GETPersonIdVersionResponseNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9454,7 +9787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class GETPersonIDVersionResponseTelecomTypeItem
+    public class GETPersonIdVersionResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9466,7 +9799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPersonIDVersionResponseAddressTypeItem
+    public class GETPersonIdVersionResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9481,7 +9814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string State { get; set; }
     }
 
-    public class GETPersonIDVersionResponseManagingOrganizationType
+    public class GETPersonIdVersionResponseManagingOrganizationType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9490,16 +9823,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPersonIDVersionResponseLinkTypeItem
+    public class GETPersonIdVersionResponseLinkTypeItem
     {
         [JsonProperty("target")]
-        public GETPersonIDVersionResponseLinkTypeItemTargetType Target { get; set; }
+        public GETPersonIdVersionResponseLinkTypeItemTargetType Target { get; set; }
 
         [JsonProperty("assurance")]
         public string Assurance { get; set; }
     }
 
-    public class GETPersonIDVersionResponseLinkTypeItemTargetType
+    public class GETPersonIdVersionResponseLinkTypeItemTargetType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9508,7 +9841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPersonIDHistoryResponse
+    public class GETPersonIdHistoryResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -9517,10 +9850,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("name")]
-        public GETPersonIDHistoryResponseNameTypeItem[] Name { get; set; }
+        public GETPersonIdHistoryResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPersonIDHistoryResponseTelecomTypeItem[] Telecom { get; set; }
+        public GETPersonIdHistoryResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -9529,19 +9862,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string BirthDate { get; set; }
 
         [JsonProperty("address")]
-        public GETPersonIDHistoryResponseAddressTypeItem[] Address { get; set; }
+        public GETPersonIdHistoryResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("managingOrganization")]
-        public GETPersonIDHistoryResponseManagingOrganizationType ManagingOrganization { get; set; }
+        public GETPersonIdHistoryResponseManagingOrganizationType ManagingOrganization { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("link")]
-        public GETPersonIDHistoryResponseLinkTypeItem[] Link { get; set; }
+        public GETPersonIdHistoryResponseLinkTypeItem[] Link { get; set; }
     }
 
-    public class GETPersonIDHistoryResponseNameTypeItem
+    public class GETPersonIdHistoryResponseNameTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9553,7 +9886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Given { get; set; }
     }
 
-    public class GETPersonIDHistoryResponseTelecomTypeItem
+    public class GETPersonIdHistoryResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -9565,7 +9898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPersonIDHistoryResponseAddressTypeItem
+    public class GETPersonIdHistoryResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -9580,7 +9913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string State { get; set; }
     }
 
-    public class GETPersonIDHistoryResponseManagingOrganizationType
+    public class GETPersonIdHistoryResponseManagingOrganizationType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -9589,16 +9922,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPersonIDHistoryResponseLinkTypeItem
+    public class GETPersonIdHistoryResponseLinkTypeItem
     {
         [JsonProperty("target")]
-        public GETPersonIDHistoryResponseLinkTypeItemTargetType Target { get; set; }
+        public GETPersonIdHistoryResponseLinkTypeItemTargetType Target { get; set; }
 
         [JsonProperty("assurance")]
         public string Assurance { get; set; }
     }
 
-    public class GETPersonIDHistoryResponseLinkTypeItemTargetType
+    public class GETPersonIdHistoryResponseLinkTypeItemTargetType
     {
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -10027,7 +10360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class GETPractitionerIDResponse
+    public class GETPractitionerIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10036,28 +10369,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPractitionerIDResponseMetaType Meta { get; set; }
+        public GETPractitionerIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("identifier")]
-        public GETPractitionerIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETPractitionerIdResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("name")]
-        public GETPractitionerIDResponseNameTypeItem[] Name { get; set; }
+        public GETPractitionerIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPractitionerIDResponseTelecomTypeItem[] Telecom { get; set; }
+        public GETPractitionerIdResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("address")]
-        public GETPractitionerIDResponseAddressTypeItem[] Address { get; set; }
+        public GETPractitionerIdResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
     }
 
-    public class GETPractitionerIDResponseMetaType
+    public class GETPractitionerIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -10066,7 +10399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETPractitionerIDResponseIdentifierTypeItem
+    public class GETPractitionerIdResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10075,7 +10408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETPractitionerIDResponseNameTypeItem
+    public class GETPractitionerIdResponseNameTypeItem
     {
         [JsonProperty("family")]
         public string Family { get; set; }
@@ -10087,7 +10420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Prefix { get; set; }
     }
 
-    public class GETPractitionerIDResponseTelecomTypeItem
+    public class GETPractitionerIdResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10099,7 +10432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPractitionerIDResponseAddressTypeItem
+    public class GETPractitionerIdResponseAddressTypeItem
     {
         [JsonProperty("line")]
         public string[] Line { get; set; }
@@ -10117,7 +10450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Country { get; set; }
     }
 
-    public class DELETEPractitionerIDResponse
+    public class DELETEPractitionerIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10126,25 +10459,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("text")]
-        public DELETEPractitionerIDResponseTextType Text { get; set; }
+        public DELETEPractitionerIdResponseTextType Text { get; set; }
 
         [JsonProperty("identifier")]
-        public DELETEPractitionerIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public DELETEPractitionerIdResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("name")]
-        public DELETEPractitionerIDResponseNameTypeItem[] Name { get; set; }
+        public DELETEPractitionerIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("address")]
-        public DELETEPractitionerIDResponseAddressTypeItem[] Address { get; set; }
+        public DELETEPractitionerIdResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("qualification")]
-        public DELETEPractitionerIDResponseQualificationTypeItem[] Qualification { get; set; }
+        public DELETEPractitionerIdResponseQualificationTypeItem[] Qualification { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseTextType
+    public class DELETEPractitionerIdResponseTextType
     {
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -10153,7 +10486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Div { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseIdentifierTypeItem
+    public class DELETEPractitionerIdResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10162,7 +10495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseNameTypeItem
+    public class DELETEPractitionerIdResponseNameTypeItem
     {
         [JsonProperty("family")]
         public string Family { get; set; }
@@ -10174,7 +10507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Prefix { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseAddressTypeItem
+    public class DELETEPractitionerIdResponseAddressTypeItem
     {
         [JsonProperty("use")]
         public string Use { get; set; }
@@ -10192,22 +10525,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string PostalCode { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseQualificationTypeItem
+    public class DELETEPractitionerIdResponseQualificationTypeItem
     {
         [JsonProperty("identifier")]
-        public DELETEPractitionerIDResponseQualificationTypeItemIdentifierTypeItem[] Identifier { get; set; }
+        public DELETEPractitionerIdResponseQualificationTypeItemIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("code")]
-        public DELETEPractitionerIDResponseQualificationTypeItemCodeType Code { get; set; }
+        public DELETEPractitionerIdResponseQualificationTypeItemCodeType Code { get; set; }
 
         [JsonProperty("period")]
-        public DELETEPractitionerIDResponseQualificationTypeItemPeriodType Period { get; set; }
+        public DELETEPractitionerIdResponseQualificationTypeItemPeriodType Period { get; set; }
 
         [JsonProperty("issuer")]
-        public DELETEPractitionerIDResponseQualificationTypeItemIssuerType Issuer { get; set; }
+        public DELETEPractitionerIdResponseQualificationTypeItemIssuerType Issuer { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseQualificationTypeItemIdentifierTypeItem
+    public class DELETEPractitionerIdResponseQualificationTypeItemIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10216,16 +10549,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseQualificationTypeItemCodeType
+    public class DELETEPractitionerIdResponseQualificationTypeItemCodeType
     {
         [JsonProperty("coding")]
-        public DELETEPractitionerIDResponseQualificationTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
+        public DELETEPractitionerIdResponseQualificationTypeItemCodeTypeCodingTypeItem[] Coding { get; set; }
 
         [JsonProperty("text")]
         public string Text { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseQualificationTypeItemCodeTypeCodingTypeItem
+    public class DELETEPractitionerIdResponseQualificationTypeItemCodeTypeCodingTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10237,13 +10570,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Display { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseQualificationTypeItemPeriodType
+    public class DELETEPractitionerIdResponseQualificationTypeItemPeriodType
     {
         [JsonProperty("start")]
         public string Start { get; set; }
     }
 
-    public class DELETEPractitionerIDResponseQualificationTypeItemIssuerType
+    public class DELETEPractitionerIdResponseQualificationTypeItemIssuerType
     {
         [JsonProperty("display")]
         public string Display { get; set; }
@@ -10267,7 +10600,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Country { get; set; }
     }
 
-    public class PUTPractitionerIDResponse
+    public class PUTPractitionerIdResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10276,28 +10609,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public PUTPractitionerIDResponseMetaType Meta { get; set; }
+        public PUTPractitionerIdResponseMetaType Meta { get; set; }
 
         [JsonProperty("identifier")]
-        public PUTPractitionerIDResponseIdentifierTypeItem[] Identifier { get; set; }
+        public PUTPractitionerIdResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("name")]
-        public PUTPractitionerIDResponseNameTypeItem[] Name { get; set; }
+        public PUTPractitionerIdResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public PUTPractitionerIDResponseTelecomTypeItem[] Telecom { get; set; }
+        public PUTPractitionerIdResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("address")]
-        public PUTPractitionerIDResponseAddressTypeItem[] Address { get; set; }
+        public PUTPractitionerIdResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
     }
 
-    public class PUTPractitionerIDResponseMetaType
+    public class PUTPractitionerIdResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -10306,7 +10639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class PUTPractitionerIDResponseIdentifierTypeItem
+    public class PUTPractitionerIdResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10315,7 +10648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class PUTPractitionerIDResponseNameTypeItem
+    public class PUTPractitionerIdResponseNameTypeItem
     {
         [JsonProperty("family")]
         public string Family { get; set; }
@@ -10327,7 +10660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Prefix { get; set; }
     }
 
-    public class PUTPractitionerIDResponseTelecomTypeItem
+    public class PUTPractitionerIdResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10339,7 +10672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class PUTPractitionerIDResponseAddressTypeItem
+    public class PUTPractitionerIdResponseAddressTypeItem
     {
         [JsonProperty("line")]
         public string[] Line { get; set; }
@@ -10357,7 +10690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Country { get; set; }
     }
 
-    public class GETPractitionerIDVersionResponse
+    public class GETPractitionerIdVersionResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10366,28 +10699,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPractitionerIDVersionResponseMetaType Meta { get; set; }
+        public GETPractitionerIdVersionResponseMetaType Meta { get; set; }
 
         [JsonProperty("identifier")]
-        public GETPractitionerIDVersionResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETPractitionerIdVersionResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("name")]
-        public GETPractitionerIDVersionResponseNameTypeItem[] Name { get; set; }
+        public GETPractitionerIdVersionResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPractitionerIDVersionResponseTelecomTypeItem[] Telecom { get; set; }
+        public GETPractitionerIdVersionResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("address")]
-        public GETPractitionerIDVersionResponseAddressTypeItem[] Address { get; set; }
+        public GETPractitionerIdVersionResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
     }
 
-    public class GETPractitionerIDVersionResponseMetaType
+    public class GETPractitionerIdVersionResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -10396,7 +10729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETPractitionerIDVersionResponseIdentifierTypeItem
+    public class GETPractitionerIdVersionResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10405,7 +10738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETPractitionerIDVersionResponseNameTypeItem
+    public class GETPractitionerIdVersionResponseNameTypeItem
     {
         [JsonProperty("family")]
         public string Family { get; set; }
@@ -10417,7 +10750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Prefix { get; set; }
     }
 
-    public class GETPractitionerIDVersionResponseTelecomTypeItem
+    public class GETPractitionerIdVersionResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10429,7 +10762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPractitionerIDVersionResponseAddressTypeItem
+    public class GETPractitionerIdVersionResponseAddressTypeItem
     {
         [JsonProperty("line")]
         public string[] Line { get; set; }
@@ -10447,7 +10780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Country { get; set; }
     }
 
-    public class GETPractitionerIDHistoryResponse
+    public class GETPractitionerIdHistoryResponse
     {
         [JsonProperty("resourceType")]
         public string ResourceType { get; set; }
@@ -10456,28 +10789,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Id { get; set; }
 
         [JsonProperty("meta")]
-        public GETPractitionerIDHistoryResponseMetaType Meta { get; set; }
+        public GETPractitionerIdHistoryResponseMetaType Meta { get; set; }
 
         [JsonProperty("identifier")]
-        public GETPractitionerIDHistoryResponseIdentifierTypeItem[] Identifier { get; set; }
+        public GETPractitionerIdHistoryResponseIdentifierTypeItem[] Identifier { get; set; }
 
         [JsonProperty("active")]
         public bool Active { get; set; }
 
         [JsonProperty("name")]
-        public GETPractitionerIDHistoryResponseNameTypeItem[] Name { get; set; }
+        public GETPractitionerIdHistoryResponseNameTypeItem[] Name { get; set; }
 
         [JsonProperty("telecom")]
-        public GETPractitionerIDHistoryResponseTelecomTypeItem[] Telecom { get; set; }
+        public GETPractitionerIdHistoryResponseTelecomTypeItem[] Telecom { get; set; }
 
         [JsonProperty("address")]
-        public GETPractitionerIDHistoryResponseAddressTypeItem[] Address { get; set; }
+        public GETPractitionerIdHistoryResponseAddressTypeItem[] Address { get; set; }
 
         [JsonProperty("gender")]
         public string Gender { get; set; }
     }
 
-    public class GETPractitionerIDHistoryResponseMetaType
+    public class GETPractitionerIdHistoryResponseMetaType
     {
         [JsonProperty("versionId")]
         public string VersionId { get; set; }
@@ -10486,7 +10819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string LastUpdated { get; set; }
     }
 
-    public class GETPractitionerIDHistoryResponseIdentifierTypeItem
+    public class GETPractitionerIdHistoryResponseIdentifierTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10495,7 +10828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Value { get; set; }
     }
 
-    public class GETPractitionerIDHistoryResponseNameTypeItem
+    public class GETPractitionerIdHistoryResponseNameTypeItem
     {
         [JsonProperty("family")]
         public string Family { get; set; }
@@ -10507,7 +10840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string[] Prefix { get; set; }
     }
 
-    public class GETPractitionerIDHistoryResponseTelecomTypeItem
+    public class GETPractitionerIdHistoryResponseTelecomTypeItem
     {
         [JsonProperty("system")]
         public string System { get; set; }
@@ -10519,7 +10852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fhirbase
         public string Use { get; set; }
     }
 
-    public class GETPractitionerIDHistoryResponseAddressTypeItem
+    public class GETPractitionerIdHistoryResponseAddressTypeItem
     {
         [JsonProperty("line")]
         public string[] Line { get; set; }

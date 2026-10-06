@@ -12,51 +12,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaifoundryinference
     public class AzureaifoundryinferenceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaifoundryinference")]
-        public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion(Expression<Func<string>> apiVersion = null, Expression<Func<bodymessagesInputItem[]>> bodymessages = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<string>> bodymodel = null)
+        public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion([WorkflowExpression] Func<string> apiVersion = null, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodytopP = null, [WorkflowExpression] Func<int> bodymaxTokens = null, [WorkflowExpression] Func<string> bodymodel = null)
         {
-            var apiCallPath = "/chat/completions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (apiVersion != null)
-                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymessages != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
-                bodypropCount++;
+                var apiCallPath = "/chat/completions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (apiVersion != null)
+                    callPayload.Queries["api-version"] = SourceExpressionConverter.ConvertO(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodymessages != null)
+                {
+                    body["messages"] = SourceExpressionConverter.ConvertToken(bodymessages);
+                    bodypropCount++;
+                }
+
+                if (bodytemperature != null)
+                {
+                    body["temperature"] = SourceExpressionConverter.ConvertToken(bodytemperature);
+                    bodypropCount++;
+                }
+
+                if (bodytopP != null)
+                {
+                    body["top_p"] = SourceExpressionConverter.ConvertToken(bodytopP);
+                    bodypropCount++;
+                }
+
+                if (bodymaxTokens != null)
+                {
+                    body["max_tokens"] = SourceExpressionConverter.ConvertToken(bodymaxTokens);
+                    bodypropCount++;
+                }
+
+                if (bodymodel != null)
+                {
+                    body["model"] = SourceExpressionConverter.ConvertToken(bodymodel);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytemperature != null)
-            {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
-                bodypropCount++;
-            }
-
-            if (bodytopP != null)
-            {
-                body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
-                bodypropCount++;
-            }
-
-            if (bodymaxTokens != null)
-            {
-                body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
-                bodypropCount++;
-            }
-
-            if (bodymodel != null)
-            {
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
+            return new ApiConnectionAction<ChatCompletionResponse>(BuildSourceInput);
         }
     }
 

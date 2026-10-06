@@ -14,149 +14,201 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<MeGetResponse> MeGet()
         {
-            var apiCallPath = "/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MeGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MeGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<ListsGetResponse> ListsGet()
         {
-            var apiCallPath = "/lists";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListsGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ListPostResponse> List(Expression<Func<string>> bodyname)
-        {
-            var apiCallPath = "/lists";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/lists";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ListPostResponse>(callPayload);
+            return new ApiConnectionAction<ListsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ListGetResponse> ListGet(Expression<Func<string>> listId)
+        public IBodyWorkflowAction<ListPostResponse> List([WorkflowExpression] Func<string> bodyname)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/lists";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ListContactDeleteResponse> ListContactDelete(Expression<Func<string>> listId, Expression<Func<string>> contactId)
+        public IBodyWorkflowAction<ListGetResponse> ListGet([WorkflowExpression] Func<string> listId)
         {
-            var apiCallPath = String.Format("/lists/{0}/contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1), ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListContactDeleteResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
+        public IBodyWorkflowAction<ListContactDeleteResponse> ListContactDelete([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> contactId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/contacts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListContactDeleteResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<ContactsGetResponse> ContactsGet()
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ContactsGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ContactsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ContactPostResponse> Contact(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string[]>> bodylists = null)
+        public IBodyWorkflowAction<ContactPostResponse> Contact([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string[]> bodylists = null)
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyemail != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyemail != null)
+                {
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodylastName != null)
+                {
+                    body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodylists != null)
+                {
+                    body["lists"] = SourceExpressionConverter.ConvertToken(bodylists);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfirstName != null)
-            {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
-                bodypropCount++;
-            }
-
-            if (bodylists != null)
-            {
-                body["lists"] = ExpressionConverter.ConvertO(bodylists);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ContactPostResponse>(callPayload);
+            return new ApiConnectionAction<ContactPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<ContactGetResponse> ContactGet(Expression<Func<string>> contactId)
+        public IBodyWorkflowAction<ContactGetResponse> ContactGet([WorkflowExpression] Func<string> contactId)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ContactGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ContactGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<UnsubscribePatchResponse> UnsubscribePatch(Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<UnsubscribePatchResponse> UnsubscribePatch([WorkflowExpression] Func<string> bodyemail)
         {
-            var apiCallPath = "/unsubscribe";
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/unsubscribe";
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<UnsubscribePatchResponse>(callPayload);
+            return new ApiConnectionAction<UnsubscribePatchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<CampaignsGetResponse> CampaignsGet()
         {
-            var apiCallPath = "/campaigns";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CampaignsGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/campaigns";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CampaignsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
-        public IBodyWorkflowAction<CampaignGetResponse> CampaignGet(Expression<Func<string>> campaignId)
+        public IBodyWorkflowAction<CampaignGetResponse> CampaignGet([WorkflowExpression] Func<string> campaignId)
         {
-            var apiCallPath = String.Format("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(campaignId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CampaignGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CampaignGetResponse>(BuildSourceInput);
         }
     }
 

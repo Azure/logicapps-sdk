@@ -12,33 +12,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
     public class RssActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rss")]
-        public IBodyWorkflowAction<FeedItem[]> ListFeedItems(Expression<Func<string>> feedUrl, Expression<Func<string>> since = null, Expression<Func<sincePropertyInput>> sinceProperty = null)
+        public IBodyWorkflowAction<FeedItem[]> ListFeedItems([WorkflowExpression] Func<string> feedUrl, [WorkflowExpression] Func<string> since = null, [WorkflowExpression] Func<sincePropertyInput> sinceProperty = null)
         {
-            var apiCallPath = "/ListFeedItems";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["feedUrl"] = ExpressionConverter.Convert(feedUrl);
-            if (since != null)
-                callPayload.Queries["since"] = ExpressionConverter.Convert(since);
-            callPayload.Queries["sinceProperty"] = Convert.ToString("PublishDate");
-            if (sinceProperty != null)
-                callPayload.Queries["sinceProperty"] = ExpressionConverter.Convert(sinceProperty);
-            return new ApiConnectionAction<FeedItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/ListFeedItems";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["feedUrl"] = SourceExpressionConverter.ConvertO(feedUrl);
+                if (since != null)
+                    callPayload.Queries["since"] = SourceExpressionConverter.ConvertO(since);
+                callPayload.Queries["sinceProperty"] = Convert.ToString("PublishDate");
+                if (sinceProperty != null)
+                    callPayload.Queries["sinceProperty"] = SourceExpressionConverter.Convert(sinceProperty);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FeedItem[]>(BuildSourceInput);
         }
     }
 
     public class RssTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerBatchResponseFeedItem> OnNewFeed(Expression<Func<string>> feedUrl, Expression<Func<sincePropertyInput>> sinceProperty = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseFeedItem> OnNewFeed([WorkflowExpression] Func<string> feedUrl, [WorkflowExpression] Func<sincePropertyInput> sinceProperty = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/OnNewFeed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["feedUrl"] = ExpressionConverter.Convert(feedUrl);
-            callPayload.Queries["sinceProperty"] = Convert.ToString("PublishDate");
-            if (sinceProperty != null)
-                callPayload.Queries["sinceProperty"] = ExpressionConverter.Convert(sinceProperty);
-            return new ApiConnectionTrigger<TriggerBatchResponseFeedItem>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/OnNewFeed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["feedUrl"] = SourceExpressionConverter.ConvertO(feedUrl);
+                callPayload.Queries["sinceProperty"] = Convert.ToString("PublishDate");
+                if (sinceProperty != null)
+                    callPayload.Queries["sinceProperty"] = SourceExpressionConverter.Convert(sinceProperty);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<TriggerBatchResponseFeedItem>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

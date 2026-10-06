@@ -1,0 +1,287 @@
+<Project>
+  <Import Project="$(MSBuildThisFileDirectory)Microsoft.Azure.Workflows.Sdk.BuildTasks.targets" />
+  <PropertyGroup>
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludeWorkflowExpressionRequirementsInPackage</TargetsForTfmSpecificContentInPackage>
+  </PropertyGroup>
+  <ItemGroup>
+    <UpToDateCheckInput Include="@(WorkflowExpressionSchema)" />
+  </ItemGroup>
+
+
+  <UsingTask TaskName="ValidateWorkflowAnalyzers" TaskFactory="RoslynCodeTaskFactory"
+             AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <Analyzers ParameterType="Microsoft.Build.Framework.ITaskItem[]" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System" />
+      <Using Namespace="System.Collections" />
+      <Using Namespace="System.Collections.Generic" />
+      <Using Namespace="System.IO" />
+      <Using Namespace="System.Linq" />
+      <Using Namespace="System.Reflection" />
+      <Using Namespace="System.Security.Cryptography" />
+      <Code Type="Fragment" Language="cs"><![CDATA[
+        // Read metadata without loading or executing third-party analyzer assemblies.
+        var metadataAssembly = Assembly.Load("System.Reflection.Metadata");
+        var peType = metadataAssembly.GetType("System.Reflection.PortableExecutable.PEReader", true);
+        var extensionsType = metadataAssembly.GetType("System.Reflection.Metadata.PEReaderExtensions", true);
+        var getReader = extensionsType.GetMethod("GetMetadataReader", new[] { peType });
+        var verifiedGenerators = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+        {
+            { "Microsoft.Azure.Functions.Worker.Sdk.Generators/1.2.1/Microsoft.Azure.Functions.Worker.Sdk.Generators.dll", "C5C2999D6F46E92E59CB5DFE635446D1DFDEAAF55F721F3A797B43FD547206EF" },
+            { "Microsoft.AspNetCore.App.Ref/8.0.31/Microsoft.Extensions.Logging.Generators.dll", "51973A1E173C2C73203FECD78336F6A68EB53D7AD8D7FE69269D6FA67D3CFF6B" },
+            { "Microsoft.AspNetCore.App.Ref/8.0.31/Microsoft.Extensions.Options.SourceGeneration.dll", "9C0798194284218FB1E14BBB41E1575336ABFD22294C773475E837B9521E8204" },
+        };
+        foreach (var analyzer in Analyzers ?? new Microsoft.Build.Framework.ITaskItem[0])
+        {
+            try
+            {
+                var key = analyzer.GetMetadata("NuGetPackageId") + "/" +
+                    analyzer.GetMetadata("NuGetPackageVersion") + "/" + Path.GetFileName(analyzer.ItemSpec);
+                string expectedHash;
+                if (verifiedGenerators.TryGetValue(key, out expectedHash))
+                {
+                    using (var hash = SHA256.Create())
+                    using (var stream = File.OpenRead(analyzer.GetMetadata("FullPath")))
+                    {
+                        var actualHash = BitConverter.ToString(hash.ComputeHash(stream)).Replace("-", "");
+                        if (actualHash != expectedHash)
+                            Log.LogError("WFSDK1002: The source generator '{0}' does not match its verified package fingerprint.", analyzer.ItemSpec);
+                    }
+                    continue;
+                }
+                using (var stream = File.OpenRead(analyzer.GetMetadata("FullPath")))
+                using (var pe = (IDisposable)Activator.CreateInstance(peType, new object[] { stream }))
+                {
+                    var metadata = getReader.Invoke(null, new object[] { pe });
+                    var readerType = metadata.GetType();
+                    var getReference = readerType.GetMethod("GetTypeReference");
+                    var getString = readerType.GetMethods().Single(method =>
+                        method.Name == "GetString" && method.GetParameters()[0].ParameterType.Name == "StringHandle");
+                    var handles = (IEnumerable)readerType.GetProperty("TypeReferences").GetValue(metadata);
+                    foreach (var handle in handles)
+                    {
+                        var reference = getReference.Invoke(metadata, new[] { handle });
+                        var referenceType = reference.GetType();
+                        var name = (string)getString.Invoke(metadata, new[] { referenceType.GetProperty("Name").GetValue(reference) });
+                        var ns = (string)getString.Invoke(metadata, new[] { referenceType.GetProperty("Namespace").GetValue(reference) });
+                        if (ns == "Microsoft.CodeAnalysis" &&
+                            (name == "GeneratorAttribute" || name == "ISourceGenerator" || name == "IIncrementalGenerator"))
+                        {
+                            Log.LogError("WFSDK1002: Unsupported source-generator metadata in '{0}'. Generated workflow calls cannot yet be transformed before CoreCompile. Move workflow authoring into a library without this generator.", analyzer.ItemSpec);
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                Log.LogError("WFSDK1002: Cannot inspect analyzer '{0}' for unsupported source generators: {1}", analyzer.ItemSpec, error.GetBaseException().Message);
+            }
+        }
+        if (Log.HasLoggedErrors) return false;
+      ]]></Code>
+    </Task>
+  </UsingTask>
+
+
+
+  <Target Name="WorkflowSourceDesignTimeNotice" BeforeTargets="CoreCompile"
+          Condition="'$(DesignTimeBuild)' == 'true' and '$(WorkflowSourceTransformEnabled)' == 'true'">
+    <Message Importance="high" Text="WFSDK1004: Workflow source transformation is deferred during design-time builds. Original sources and delegate APIs are retained; source-only rewrites and their diagnostics require a normal build. This is not full IDE diagnostic parity." />
+  </Target>
+
+  <Target Name="ResolveWorkflowExpressionRequirementPaths">
+    <PropertyGroup>
+      <_WorkflowSourceRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', '$(IntermediateOutputPath)', 'workflow-source', '$(Configuration)', '$(TargetFramework)'))</_WorkflowSourceRoot>
+      <_WorkflowCompiledAssemblyName>$(TargetName)</_WorkflowCompiledAssemblyName>
+      <_WorkflowCompiledAssemblyName Condition="'$(_WorkflowCompiledAssemblyName)' == ''">$(AssemblyName)</_WorkflowCompiledAssemblyName>
+      <_WorkflowDependencySource>$(_WorkflowSourceRoot)expression-dependencies.json</_WorkflowDependencySource>
+      <_WorkflowDependencyFileName>$(_WorkflowCompiledAssemblyName).workflow-expressions.json</_WorkflowDependencyFileName>
+      <_WorkflowDotNetHost Condition="'$(DotNetHostPath)' != ''">$(DotNetHostPath)</_WorkflowDotNetHost>
+      <_WorkflowDotNetHost Condition="'$(_WorkflowDotNetHost)' == ''">dotnet</_WorkflowDotNetHost>
+    </PropertyGroup>
+  </Target>
+
+  <Target Name="TransformWorkflowSources" BeforeTargets="CoreCompile"
+          DependsOnTargets="ResolveWorkflowExpressionRequirementPaths"
+          Condition="'$(DesignTimeBuild)' != 'true' and '$(WorkflowSourceTransformEnabled)' == 'true' and '$(IsCrossTargetingBuild)' != 'true' and '@(Compile)' != ''">
+    <PropertyGroup>
+      <_WorkflowManifest>$(_WorkflowSourceRoot)build-manifest.json</_WorkflowManifest>
+      <_WorkflowAllowUnsafe Condition="'$(AllowUnsafeBlocks)' != ''">$(AllowUnsafeBlocks)</_WorkflowAllowUnsafe>
+      <_WorkflowAllowUnsafe Condition="'$(_WorkflowAllowUnsafe)' == ''">false</_WorkflowAllowUnsafe>
+      <_WorkflowCheckOverflow Condition="'$(CheckForOverflowUnderflow)' != ''">$(CheckForOverflowUnderflow)</_WorkflowCheckOverflow>
+      <_WorkflowCheckOverflow Condition="'$(_WorkflowCheckOverflow)' == ''">false</_WorkflowCheckOverflow>
+      <_WorkflowPlatform>$(PlatformTarget)</_WorkflowPlatform>
+      <_WorkflowPlatform Condition="'$(_WorkflowPlatform)' == ''">AnyCpu</_WorkflowPlatform>
+      <_WorkflowPlatform Condition="'$(Prefer32Bit)' == 'true' and ('$(_WorkflowPlatform)' == 'AnyCPU' or '$(_WorkflowPlatform)' == 'AnyCpu') and ('$(OutputType)' == 'Exe' or '$(OutputType)' == 'WinExe')">AnyCpu32BitPreferred</_WorkflowPlatform>
+      <_WorkflowSignAssembly>false</_WorkflowSignAssembly>
+      <_WorkflowSignAssembly Condition="'$(SignAssembly)' == 'true'">true</_WorkflowSignAssembly>
+      <_WorkflowDelaySign>false</_WorkflowDelaySign>
+      <_WorkflowDelaySign Condition="'$(DelaySign)' == 'true'">true</_WorkflowDelaySign>
+      <_WorkflowPublicSign>false</_WorkflowPublicSign>
+      <_WorkflowPublicSign Condition="'$(PublicSign)' == 'true'">true</_WorkflowPublicSign>
+      <_WorkflowHasSchemas>false</_WorkflowHasSchemas>
+      <_WorkflowHasSchemas Condition="'@(WorkflowExpressionSchema)' != ''">true</_WorkflowHasSchemas>
+      <_WorkflowKeyFile />
+      <_WorkflowKeyFile Condition="'$(KeyOriginatorFile)' != ''">$([MSBuild]::NormalizePath('$(MSBuildProjectDirectory)', '$(KeyOriginatorFile)'))</_WorkflowKeyFile>
+      <_WorkflowKeyFile Condition="'$(_WorkflowKeyFile)' == '' and '$(AssemblyOriginatorKeyFile)' != ''">$([MSBuild]::NormalizePath('$(MSBuildProjectDirectory)', '$(AssemblyOriginatorKeyFile)'))</_WorkflowKeyFile>
+    </PropertyGroup>
+    <Error Condition="'$(MSBuildRuntimeType)' != 'Core'" Code="WFSDK1000"
+           Text="Workflow source compilation requires dotnet build with .NET SDK 9 or later and the .NET 9 runtime. Full-framework MSBuild is not supported." />
+    <Error Condition="!Exists('$(WorkflowBuildToolPath)')" Code="WFSDK1001"
+           Text="The packaged workflow compiler is missing: $(WorkflowBuildToolPath). Restore the Microsoft.Azure.Workflows.Sdk package; source transformation cannot be skipped on a normal build." />
+    <Error Condition="'@(WorkflowExpressionSchema)' != '' and !Exists('%(WorkflowExpressionSchema.FullPath)')" Code="WFSDK1014"
+           Text="A declared WorkflowExpressionSchema file is missing: %(WorkflowExpressionSchema.FullPath)." />
+    <ItemGroup>
+      <_WorkflowOriginalCompile Include="@(Compile)" />
+      <_WorkflowReferences Include="@(ReferencePathWithRefAssemblies)" />
+      <_WorkflowReferences Include="@(ReferencePath)" Condition="'@(_WorkflowReferences)' == ''" />
+      <_WorkflowPlatformAnalyzers Include="@(Analyzer)"
+          Condition="('%(Analyzer.Filename)' == 'Microsoft.CodeAnalysis.CSharp.NetAnalyzers' or '%(Analyzer.Filename)' == 'Microsoft.CodeAnalysis.NetAnalyzers' or '%(Analyzer.Filename)' == 'Microsoft.Interop.ComInterfaceGenerator' or '%(Analyzer.Filename)' == 'Microsoft.Interop.JavaScript.JSImportGenerator' or '%(Analyzer.Filename)' == 'Microsoft.Interop.LibraryImportGenerator' or '%(Analyzer.Filename)' == 'Microsoft.Interop.SourceGeneration' or '%(Analyzer.Filename)' == 'System.Text.Json.SourceGeneration' or '%(Analyzer.Filename)' == 'System.Text.RegularExpressions.Generator') and ($([System.String]::Copy('%(Analyzer.FullPath)').StartsWith('$(MSBuildSDKsPath)\')) or ('$(NetCoreTargetingPackRoot)' != '' and $([System.String]::Copy('%(Analyzer.FullPath)').StartsWith('$(NetCoreTargetingPackRoot)'))))" />
+      <_WorkflowLoggingAnalyzers Include="@(Analyzer)"
+          Condition="'%(Analyzer.Filename)' == 'Microsoft.Extensions.Logging.Generators' and '%(Analyzer.NuGetPackageId)' == 'Microsoft.Extensions.Logging.Abstractions' and '%(Analyzer.NuGetPackageVersion)' == '6.0.0'" />
+      <_WorkflowUnclassifiedAnalyzers Include="@(Analyzer)" Exclude="@(_WorkflowPlatformAnalyzers);@(_WorkflowLoggingAnalyzers)" />
+    </ItemGroup>
+    <ValidateWorkflowAnalyzers Analyzers="@(_WorkflowUnclassifiedAnalyzers)" />
+    <RemoveDuplicates Inputs="@(_WorkflowOriginalCompile)">
+      <Output TaskParameter="Filtered" ItemName="_WorkflowCompilerSources" />
+    </RemoveDuplicates>
+    <RemoveDir Directories="$(_WorkflowSourceRoot)" />
+    <MakeDir Directories="$(_WorkflowSourceRoot)" />
+    <WriteWorkflowBuildManifest Sources="@(_WorkflowCompilerSources)" References="@(_WorkflowReferences)" SchemaFiles="@(WorkflowExpressionSchema)"
+                                Defines="$(DefineConstants)" LanguageVersion="$(LangVersion)" Nullable="$(Nullable)"
+                                AllowUnsafe="$(_WorkflowAllowUnsafe)" CheckOverflow="$(_WorkflowCheckOverflow)"
+                                OutputKind="$(OutputType)" AssemblyName="$(_WorkflowCompiledAssemblyName)"
+                                Platform="$(_WorkflowPlatform)" StartupObject="$(StartupObject)"
+                                SignAssembly="$(_WorkflowSignAssembly)" DelaySign="$(_WorkflowDelaySign)"
+                                PublicSign="$(_WorkflowPublicSign)" KeyFile="$(_WorkflowKeyFile)"
+                                KeyContainer="$(KeyContainerName)" ManifestPath="$(_WorkflowManifest)" />
+    <Message Condition="'$(_WorkflowSignAssembly)' == 'true'" Importance="high"
+             Text="WFSDK1007: Workflow analysis manifest includes the caller's signing identity (DelaySign=$(_WorkflowDelaySign), PublicSign=$(_WorkflowPublicSign)); key file/container metadata is preserved." />
+    <Delete Files="$(_WorkflowSourceRoot)compiled-files.txt" />
+    <Exec Command="&quot;$(_WorkflowDotNetHost)&quot; &quot;$(WorkflowBuildToolPath)&quot; &quot;$(_WorkflowManifest)&quot; &quot;$(_WorkflowSourceRoot).&quot;" />
+    <Error Condition="!Exists('$(_WorkflowDependencySource)')" Code="WFSDK1009"
+           Text="The workflow compiler did not produce expression-dependencies.json. Restore matching runtime/build-tool assets; dependency requirements cannot be silently omitted." />
+    <ReadWorkflowCompiledFiles Sources="@(_WorkflowCompilerSources)" ListPath="$(_WorkflowSourceRoot)compiled-files.txt"
+                               AllowGeneratedFiles="$(_WorkflowHasSchemas)">
+      <Output TaskParameter="CompiledFiles" ItemName="_WorkflowTransformedCompile" />
+    </ReadWorkflowCompiledFiles>
+    <ItemGroup>
+      <Compile Remove="@(_WorkflowOriginalCompile)" />
+      <Compile Include="@(_WorkflowTransformedCompile)" />
+      <FileWrites Include="$(_WorkflowSourceRoot)**\*" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="RestoreWorkflowOriginalCompileItems" AfterTargets="CoreCompile"
+          Condition="'@(_WorkflowOriginalCompile)' != ''">
+    <ItemGroup>
+      <Compile Remove="@(_WorkflowTransformedCompile)" />
+      <Compile Include="@(_WorkflowOriginalCompile)" />
+      <_WorkflowOriginalCompile Remove="@(_WorkflowOriginalCompile)" />
+      <_WorkflowCompilerSources Remove="@(_WorkflowCompilerSources)" />
+      <_WorkflowTransformedCompile Remove="@(_WorkflowTransformedCompile)" />
+      <_WorkflowReferences Remove="@(_WorkflowReferences)" />
+      <_WorkflowUnclassifiedAnalyzers Remove="@(_WorkflowUnclassifiedAnalyzers)" />
+      <_WorkflowPlatformAnalyzers Remove="@(_WorkflowPlatformAnalyzers)" />
+      <_WorkflowLoggingAnalyzers Remove="@(_WorkflowLoggingAnalyzers)" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="CollectWorkflowExpressionRequirements" DependsOnTargets="ResolveWorkflowExpressionRequirementPaths">
+    <ItemGroup>
+      <_WorkflowDependencyCopy Remove="@(_WorkflowDependencyCopy)" />
+      <_WorkflowDependencyReferences Remove="@(_WorkflowDependencyReferences)" />
+      <_WorkflowUniqueDependencyCopy Remove="@(_WorkflowUniqueDependencyCopy)" />
+      <_WorkflowDependencyCopy Include="$(_WorkflowDependencySource)"
+                               Condition="'$(WorkflowSourceTransformEnabled)' == 'true' and Exists('$(_WorkflowDependencySource)')">
+        <TargetPath>$(_WorkflowDependencyFileName)</TargetPath>
+      </_WorkflowDependencyCopy>
+      <_WorkflowDependencyReferences Include="@(ReferenceCopyLocalPaths->'%(RootDir)%(Directory)%(Filename).workflow-expressions.json')"
+                                     Condition="'%(ReferenceCopyLocalPaths.Extension)' == '.dll'" />
+      <_WorkflowDependencyCopy Include="@(_WorkflowDependencyReferences)"
+                               Condition="Exists('%(_WorkflowDependencyReferences.Identity)')">
+        <TargetPath>%(_WorkflowDependencyReferences.Filename)%(_WorkflowDependencyReferences.Extension)</TargetPath>
+      </_WorkflowDependencyCopy>
+    </ItemGroup>
+    <RemoveDuplicates Inputs="@(_WorkflowDependencyCopy)">
+      <Output TaskParameter="Filtered" ItemName="_WorkflowUniqueDependencyCopy" />
+    </RemoveDuplicates>
+  </Target>
+
+  <Target Name="CopyWorkflowExpressionRequirementsToOutput" AfterTargets="CopyFilesToOutputDirectory"
+          DependsOnTargets="CollectWorkflowExpressionRequirements"
+          Condition="'$(DesignTimeBuild)' != 'true' and '$(IsCrossTargetingBuild)' != 'true'">
+    <Error Condition="'$(TargetDir)' == ''" Code="WFSDK1012" Text="Workflow requirements need a resolved TargetDir." />
+    <Error Condition="'$(WorkflowSourceTransformEnabled)' == 'true' and !Exists('$(_WorkflowDependencySource)')"
+           Code="WFSDK1009" Text="Workflow dependency requirements are missing for $(_WorkflowCompiledAssemblyName). Rebuild with source transformation enabled." />
+    <Delete Files="$(TargetDir)$(_WorkflowDependencyFileName)" Condition="'$(WorkflowSourceTransformEnabled)' != 'true'" />
+    <Copy SourceFiles="@(_WorkflowUniqueDependencyCopy)"
+          DestinationFiles="@(_WorkflowUniqueDependencyCopy->'$(TargetDir)%(TargetPath)')" SkipUnchangedFiles="true" />
+    <ItemGroup>
+      <FileWrites Include="@(_WorkflowUniqueDependencyCopy->'$(TargetDir)%(TargetPath)')" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="IncludeWorkflowExpressionRequirementsInPackage" DependsOnTargets="ResolveWorkflowExpressionRequirementPaths"
+          Condition="'$(WorkflowSourceTransformEnabled)' == 'true' and '$(IsCrossTargetingBuild)' != 'true'">
+    <Error Condition="!Exists('$(TargetDir)$(_WorkflowDependencyFileName)')" Code="WFSDK1009"
+           Text="Workflow dependency requirements are missing for packing $(_WorkflowCompiledAssemblyName). Build the library before using --no-build." />
+    <ItemGroup>
+      <TfmSpecificPackageFile Include="$(TargetDir)$(_WorkflowDependencyFileName)">
+        <PackagePath>lib\$(TargetFramework)\$(_WorkflowDependencyFileName)</PackagePath>
+      </TfmSpecificPackageFile>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="CopyWorkflowExpressionRequirementsToPublish" DependsOnTargets="CollectWorkflowExpressionRequirements"
+          Condition="'$(DesignTimeBuild)' != 'true' and '$(IsCrossTargetingBuild)' != 'true'">
+    <Error Condition="'$(PublishDir)' == ''" Code="WFSDK1012" Text="Workflow requirements need a resolved PublishDir." />
+    <PropertyGroup>
+      <_WorkflowPublishRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', '$(PublishDir)'))</_WorkflowPublishRoot>
+    </PropertyGroup>
+    <ItemGroup>
+      <_WorkflowPublishDependencyCopy Remove="@(_WorkflowPublishDependencyCopy)" />
+      <_WorkflowPublishDependencyCopy Include="@(_WorkflowUniqueDependencyCopy)"
+                                      Condition="'%(_WorkflowUniqueDependencyCopy.TargetPath)' != '$(_WorkflowDependencyFileName)'" />
+      <_WorkflowPublishDependencyCopy Include="$(TargetDir)$(_WorkflowDependencyFileName)"
+                                      Condition="Exists('$(TargetDir)$(_WorkflowDependencyFileName)')">
+        <TargetPath>$(_WorkflowDependencyFileName)</TargetPath>
+      </_WorkflowPublishDependencyCopy>
+    </ItemGroup>
+    <Copy SourceFiles="@(_WorkflowPublishDependencyCopy)"
+          DestinationFiles="@(_WorkflowPublishDependencyCopy->'$(_WorkflowPublishRoot)%(TargetPath)')" SkipUnchangedFiles="true" />
+    <ItemGroup>
+      <FileWrites Include="@(_WorkflowPublishDependencyCopy->'$(_WorkflowPublishRoot)%(TargetPath)')" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="ValidateWorkflowExpressionDeployment" AfterTargets="Publish"
+          DependsOnTargets="CopyWorkflowExpressionRequirementsToPublish;$(WorkflowExpressionPublishValidationDependsOn)"
+          Condition="'$(DesignTimeBuild)' != 'true' and '$(IsCrossTargetingBuild)' != 'true'">
+    <ItemGroup>
+      <_WorkflowPublishedDefinitions Remove="@(_WorkflowPublishedDefinitions)" />
+      <_WorkflowPublishedDefinitions Include="$(_WorkflowPublishRoot)**\workflow.json" />
+    </ItemGroup>
+    <Message Condition="'@(_WorkflowPublishedDefinitions)' == ''" Importance="high"
+             Text="WFSDK1008: No workflow.json artifacts were published. Workflow deployment validation was not performed; library/non-workflow publication is not host certification." />
+    <Error Condition="'@(_WorkflowPublishedDefinitions)' != '' and (!Exists('$(TargetDir)$(_WorkflowDependencyFileName)') or !Exists('$(_WorkflowPublishRoot)$(_WorkflowDependencyFileName)'))"
+           Code="WFSDK1009" Text="Published workflows require current assembly-specific dependency requirements in both build and publish output. Rebuild before publishing." />
+    <Error Condition="'@(_WorkflowPublishedDefinitions)' != '' and !Exists('$(WorkflowBuildToolPath)')"
+           Code="WFSDK1001" Text="The workflow deployment validator is missing: $(WorkflowBuildToolPath). Restore the SDK build tools; published workflows cannot skip validation." />
+    <PropertyGroup>
+      <_WorkflowHostProfile />
+      <_WorkflowHostProfile Condition="'$(WorkflowExpressionHostProfile)' != ''">$([MSBuild]::NormalizePath('$(MSBuildProjectDirectory)', '$(WorkflowExpressionHostProfile)'))</_WorkflowHostProfile>
+    </PropertyGroup>
+    <Error Condition="'@(_WorkflowPublishedDefinitions)' != '' and '$(_WorkflowHostProfile)' != '' and !Exists('$(_WorkflowHostProfile)')"
+           Code="WFSDK1010" Text="WorkflowExpressionHostProfile does not exist: $(_WorkflowHostProfile)." />
+    <Exec Condition="'@(_WorkflowPublishedDefinitions)' != '' and '$(_WorkflowHostProfile)' == ''"
+          Command="&quot;$(_WorkflowDotNetHost)&quot; &quot;$(WorkflowBuildToolPath)&quot; validate-deployment &quot;$(_WorkflowPublishRoot).&quot; &quot;$(_WorkflowPublishRoot).&quot;" />
+    <Exec Condition="'@(_WorkflowPublishedDefinitions)' != '' and '$(_WorkflowHostProfile)' != ''"
+          Command="&quot;$(_WorkflowDotNetHost)&quot; &quot;$(WorkflowBuildToolPath)&quot; validate-deployment &quot;$(_WorkflowPublishRoot).&quot; &quot;$(_WorkflowPublishRoot).&quot; &quot;$(_WorkflowHostProfile)&quot;" />
+    <Message Condition="'@(_WorkflowPublishedDefinitions)' != ''" Importance="high"
+             Text="WFSDK1013: Published workflow artifacts passed dependency/capability-profile checks. This is not execution-host certification." />
+  </Target>
+</Project>

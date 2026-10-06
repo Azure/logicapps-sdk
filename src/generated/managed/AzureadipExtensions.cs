@@ -12,74 +12,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
     public class AzureadipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IBodyWorkflowAction<GetRiskUserResult> GetRiskUser(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetRiskUserResult> GetRiskUser([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/beta/riskyUsers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRiskUserResult>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/riskyUsers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRiskUserResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IWorkflowAction ConfirmRiskUser(Expression<Func<string[]>> bodyuserIds = null)
+        public IWorkflowAction ConfirmRiskUser([WorkflowExpression] Func<string[]> bodyuserIds = null)
         {
-            var apiCallPath = "/beta/riskyUsers/confirmCompromised";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserIds != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["userIds"] = ExpressionConverter.ConvertO(bodyuserIds);
-                bodypropCount++;
+                var apiCallPath = "/beta/riskyUsers/confirmCompromised";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserIds != null)
+                {
+                    body["userIds"] = SourceExpressionConverter.ConvertToken(bodyuserIds);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IBodyWorkflowAction<GetRiskDetection> RiskDetections(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetRiskDetection> RiskDetections([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/beta/riskDetections/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRiskDetection>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/riskDetections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRiskDetection>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IWorkflowAction DismissRiskUser(Expression<Func<string[]>> bodyuserIds = null)
+        public IWorkflowAction DismissRiskUser([WorkflowExpression] Func<string[]> bodyuserIds = null)
         {
-            var apiCallPath = "/beta/riskyUsers/dismiss";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserIds != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["userIds"] = ExpressionConverter.ConvertO(bodyuserIds);
-                bodypropCount++;
+                var apiCallPath = "/beta/riskyUsers/dismiss";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserIds != null)
+                {
+                    body["userIds"] = SourceExpressionConverter.ConvertToken(bodyuserIds);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IBodyWorkflowAction<GetRiskHistory> GetRiskUserHistory(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetRiskHistory> GetRiskUserHistory([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/beta/riskyUsers/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRiskHistory>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/riskyUsers/{0}/history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRiskHistory>(BuildSourceInput);
         }
     }
 

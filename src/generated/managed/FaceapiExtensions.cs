@@ -12,202 +12,250 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
     public class FaceapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<GetFaceListResponse> GetFaceList(Expression<Func<string>> faceListId)
+        public IBodyWorkflowAction<AddPersonFaceResponse> AddFaceToFaceList([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> faceListId, [WorkflowExpression] Func<string> bodyimageUrl = null, [WorkflowExpression] Func<string> targetFace = null, [WorkflowExpression] Func<string> userData = null)
         {
-            var apiCallPath = String.Format("/face/v1.0/facelists/{0}/", ExpressionConverter.ConvertWithUrlEncoding(faceListId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetFaceListResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/facelists/{1}/persistedFaces", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(faceListId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (targetFace != null)
+                    callPayload.Queries["targetFace"] = SourceExpressionConverter.ConvertO(targetFace);
+                if (userData != null)
+                    callPayload.Queries["userData"] = SourceExpressionConverter.ConvertO(userData);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyimageUrl != null)
+                {
+                    body["url"] = SourceExpressionConverter.ConvertToken(bodyimageUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AddPersonFaceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IWorkflowAction CreateFaceList(Expression<Func<string>> faceListId, Expression<Func<string>> bodyfaceListName, Expression<Func<string>> bodyuserData = null)
+        public IBodyWorkflowAction<AddPersonFaceResponse> AddPersonFace([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> personGroupId, [WorkflowExpression] Func<string> personId, [WorkflowExpression] Func<string> bodyimageUrl, [WorkflowExpression] Func<string> targetFace = null, [WorkflowExpression] Func<string> userData = null)
         {
-            var apiCallPath = String.Format("/face/v1.0/facelists/{0}/", ExpressionConverter.ConvertWithUrlEncoding(faceListId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyfaceListName);
-            if (bodyuserData != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["userData"] = ExpressionConverter.ConvertO(bodyuserData);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/persongroups/{1}/persons/{2}/persistedFaces", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personGroupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (targetFace != null)
+                    callPayload.Queries["targetFace"] = SourceExpressionConverter.ConvertO(targetFace);
+                if (userData != null)
+                    callPayload.Queries["userData"] = SourceExpressionConverter.ConvertO(userData);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["url"] = SourceExpressionConverter.ConvertToken(bodyimageUrl);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<AddPersonFaceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<DetectResponseItem[]> Detect(Expression<Func<string>> bodyimageUrl)
+        public IWorkflowAction CreateFaceList([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> faceListId, [WorkflowExpression] Func<string> bodyfaceListName, [WorkflowExpression] Func<string> bodyuserData = null)
         {
-            var apiCallPath = "/face/v1.0/detect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["returnFaceId"] = Convert.ToString("true");
-            callPayload.Queries["returnFaceAttributes"] = Convert.ToString("headPose,glasses");
-            callPayload.Queries["returnFaceLandmarks"] = Convert.ToString("true");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyimageUrl);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DetectResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<AddPersonFaceResponse> AddPersonFace(Expression<Func<string>> personGroupId, Expression<Func<string>> personId, Expression<Func<string>> bodyimageUrl, Expression<Func<string>> targetFace = null, Expression<Func<string>> userData = null)
-        {
-            var apiCallPath = String.Format("/face/v1.0/persongroups/{0}/persons/{1}/persistedFaces", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (targetFace != null)
-                callPayload.Queries["targetFace"] = ExpressionConverter.Convert(targetFace);
-            if (userData != null)
-                callPayload.Queries["userData"] = ExpressionConverter.Convert(userData);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyimageUrl);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddPersonFaceResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<AddPersonFaceResponse> AddFaceToFaceList(Expression<Func<string>> faceListId, Expression<Func<string>> bodyimageUrl = null, Expression<Func<string>> targetFace = null, Expression<Func<string>> userData = null)
-        {
-            var apiCallPath = String.Format("/face/v1.0/facelists/{0}/persistedFaces", ExpressionConverter.ConvertWithUrlEncoding(faceListId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (targetFace != null)
-                callPayload.Queries["targetFace"] = ExpressionConverter.Convert(targetFace);
-            if (userData != null)
-                callPayload.Queries["userData"] = ExpressionConverter.Convert(userData);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyimageUrl != null)
-            {
-                body["url"] = ExpressionConverter.ConvertO(bodyimageUrl);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/facelists/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(faceListId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyfaceListName);
+                if (bodyuserData != null)
+                {
+                    body["userData"] = SourceExpressionConverter.ConvertToken(bodyuserData);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddPersonFaceResponse>(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<GetPersonGroupResponse> GetPersonGroup(Expression<Func<string>> personGroupId)
+        public IBodyWorkflowAction<CreatePersonResponse> CreatePerson([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> personGroupId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyuserData = null)
         {
-            var apiCallPath = String.Format("/face/v1.0/persongroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPersonGroupResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IWorkflowAction CreatePersonGroup(Expression<Func<string>> personGroupId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyuserData = null)
-        {
-            var apiCallPath = String.Format("/face/v1.0/persongroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodyuserData != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["userData"] = ExpressionConverter.ConvertO(bodyuserData);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/persongroups/{1}/persons", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personGroupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodyuserData != null)
+                {
+                    body["userData"] = SourceExpressionConverter.ConvertToken(bodyuserData);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<CreatePersonResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<VerifyResponse> Verify(Expression<Func<string>> bodyfaceId, Expression<Func<string>> bodypersonGroupId, Expression<Func<string>> bodypersonId)
+        public IWorkflowAction CreatePersonGroup([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> personGroupId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyuserData = null)
         {
-            var apiCallPath = "/face/v1.0/verify";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["faceId"] = ExpressionConverter.ConvertO(bodyfaceId);
-            bodypropCount++;
-            body["personGroupId"] = ExpressionConverter.ConvertO(bodypersonGroupId);
-            bodypropCount++;
-            body["personId"] = ExpressionConverter.ConvertO(bodypersonId);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<VerifyResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<GetPersonFaceResponse> GetPersonFace(Expression<Func<string>> personGroupId, Expression<Func<string>> personId, Expression<Func<string>> persistedFaceId)
-        {
-            var apiCallPath = String.Format("/face/v1.0/persongroups/{0}/persons/{1}/persistedFaces/{2}", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(personId, 1), ExpressionConverter.ConvertWithUrlEncoding(persistedFaceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPersonFaceResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<CreatePersonResponse> CreatePerson(Expression<Func<string>> personGroupId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyuserData = null)
-        {
-            var apiCallPath = String.Format("/face/v1.0/persongroups/{0}/persons", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodyuserData != null)
-            {
-                body["userData"] = ExpressionConverter.ConvertO(bodyuserData);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/persongroups/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personGroupId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodyuserData != null)
+                {
+                    body["userData"] = SourceExpressionConverter.ConvertToken(bodyuserData);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreatePersonResponse>(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
-        public IBodyWorkflowAction<GetPersonResponse> GetPerson(Expression<Func<string>> personGroupId, Expression<Func<string>> personId)
+        public IBodyWorkflowAction<DetectResponseItem[]> Detect([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> bodyimageUrl)
         {
-            var apiCallPath = String.Format("/face/v1.0/persongroups/{0}/persons/{1}/", ExpressionConverter.ConvertWithUrlEncoding(personGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(personId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPersonResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/detect", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["returnFaceId"] = Convert.ToString("true");
+                callPayload.Queries["returnFaceAttributes"] = Convert.ToString("headPose,glasses");
+                callPayload.Queries["returnFaceLandmarks"] = Convert.ToString("true");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["url"] = SourceExpressionConverter.ConvertToken(bodyimageUrl);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DetectResponseItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
+        public IBodyWorkflowAction<GetFaceListResponse> GetFaceList([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> faceListId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/facelists/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(faceListId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetFaceListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
+        public IBodyWorkflowAction<GetPersonResponse> GetPerson([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> personGroupId, [WorkflowExpression] Func<string> personId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/persongroups/{1}/persons/{2}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personGroupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetPersonResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
+        public IBodyWorkflowAction<GetPersonFaceResponse> GetPersonFace([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> personGroupId, [WorkflowExpression] Func<string> personId, [WorkflowExpression] Func<string> persistedFaceId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/persongroups/{1}/persons/{2}/persistedFaces/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personGroupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(persistedFaceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetPersonFaceResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
+        public IBodyWorkflowAction<GetPersonGroupResponse> GetPersonGroup([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> personGroupId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/persongroups/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personGroupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetPersonGroupResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faceapi")]
+        public IBodyWorkflowAction<VerifyResponse> Verify([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> bodyfaceId, [WorkflowExpression] Func<string> bodypersonGroupId, [WorkflowExpression] Func<string> bodypersonId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/subdomain/{0}/face/v1.0/verify", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subdomain, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["faceId"] = SourceExpressionConverter.ConvertToken(bodyfaceId);
+                bodypropCount++;
+                body["personGroupId"] = SourceExpressionConverter.ConvertToken(bodypersonGroupId);
+                bodypropCount++;
+                body["personId"] = SourceExpressionConverter.ConvertToken(bodypersonId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<VerifyResponse>(BuildSourceInput);
         }
     }
 
@@ -215,28 +263,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
     {
     }
 
-    public class GetFaceListResponse
-    {
-        [JsonProperty("persistedFaces")]
-        public GetFaceListResponsePersistedFacesTypeItem[] PersistedFaces { get; set; }
-
-        [JsonProperty("faceListId")]
-        public string FaceListId { get; set; }
-
-        [JsonProperty("name")]
-        public string Name { get; set; }
-
-        [JsonProperty("userData")]
-        public string UserData { get; set; }
-    }
-
-    public class GetFaceListResponsePersistedFacesTypeItem
+    public class AddPersonFaceResponse
     {
         [JsonProperty("persistedFaceId")]
         public string PersistedFaceId { get; set; }
+    }
 
-        [JsonProperty("userData")]
-        public string UserData { get; set; }
+    public class CreatePersonResponse
+    {
+        [JsonProperty("personId")]
+        public string PersonId { get; set; }
     }
 
     public class DetectResponseItem
@@ -617,16 +653,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         public double HeadPoseYaw { get; set; }
     }
 
-    public class AddPersonFaceResponse
+    public class GetFaceListResponse
     {
-        [JsonProperty("persistedFaceId")]
-        public string PersistedFaceId { get; set; }
-    }
+        [JsonProperty("persistedFaces")]
+        public GetFaceListResponsePersistedFacesTypeItem[] PersistedFaces { get; set; }
 
-    public class GetPersonGroupResponse
-    {
-        [JsonProperty("personGroupId")]
-        public string PersonGroupId { get; set; }
+        [JsonProperty("faceListId")]
+        public string FaceListId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -635,28 +668,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
         public string UserData { get; set; }
     }
 
-    public class VerifyResponse
-    {
-        [JsonProperty("isIdentical")]
-        public bool IsIdentical { get; set; }
-
-        [JsonProperty("confidence")]
-        public double Confidence { get; set; }
-    }
-
-    public class GetPersonFaceResponse
+    public class GetFaceListResponsePersistedFacesTypeItem
     {
         [JsonProperty("persistedFaceId")]
         public string PersistedFaceId { get; set; }
 
         [JsonProperty("userData")]
         public string UserData { get; set; }
-    }
-
-    public class CreatePersonResponse
-    {
-        [JsonProperty("personId")]
-        public string PersonId { get; set; }
     }
 
     public class GetPersonResponse
@@ -678,6 +696,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faceapi
     {
         [JsonProperty("persistedFaceId")]
         public string PersistedFaceId { get; set; }
+    }
+
+    public class GetPersonFaceResponse
+    {
+        [JsonProperty("persistedFaceId")]
+        public string PersistedFaceId { get; set; }
+
+        [JsonProperty("userData")]
+        public string UserData { get; set; }
+    }
+
+    public class GetPersonGroupResponse
+    {
+        [JsonProperty("personGroupId")]
+        public string PersonGroupId { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        [JsonProperty("userData")]
+        public string UserData { get; set; }
+    }
+
+    public class VerifyResponse
+    {
+        [JsonProperty("isIdentical")]
+        public bool IsIdentical { get; set; }
+
+        [JsonProperty("confidence")]
+        public double Confidence { get; set; }
     }
 }
 

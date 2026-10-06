@@ -12,44 +12,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
     public class AzureadapplicationsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
-        public IBodyWorkflowAction<ApplicationListDefinition> ListApplications(Expression<Func<string>> select = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<countInput>> count = null, Expression<Func<string>> expand = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<ApplicationListDefinition> ListApplications([WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<countInput> count = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = "/v1.0/applications";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (search != null)
-                callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            callPayload.Queries["$count"] = Convert.ToString("true");
-            if (count != null)
-                callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
-            callPayload.Queries["$expand"] = Convert.ToString("Owners");
-            if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<ApplicationListDefinition>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1.0/applications";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (search != null)
+                    callPayload.Queries["$search"] = SourceExpressionConverter.ConvertO(search);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                callPayload.Queries["$count"] = Convert.ToString("true");
+                if (count != null)
+                    callPayload.Queries["$count"] = SourceExpressionConverter.Convert(count);
+                callPayload.Queries["$expand"] = Convert.ToString("Owners");
+                if (expand != null)
+                    callPayload.Queries["$expand"] = SourceExpressionConverter.ConvertO(expand);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ApplicationListDefinition>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
-        public IBodyWorkflowAction<ApplicationDefinition> GetApplication(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ApplicationDefinition> GetApplication([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/v1.0/applications/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ApplicationDefinition>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/applications/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ApplicationDefinition>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
-        public IBodyWorkflowAction<ApplicationOwnersDefinition> GetAppOwners(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ApplicationOwnersDefinition> GetAppOwners([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/v1.0/applications/{0}/owners", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ApplicationOwnersDefinition>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/applications/{0}/owners", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ApplicationOwnersDefinition>(BuildSourceInput);
         }
     }
 

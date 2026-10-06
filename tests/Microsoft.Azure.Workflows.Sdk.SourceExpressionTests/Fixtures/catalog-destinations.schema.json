@@ -1,0 +1,272 @@
+{
+  "version": 1,
+  "namespace": "Catalog.Generated",
+  "className": "CatalogDestinations",
+  "models": [
+    {
+      "name": "PayloadModel",
+      "schema": {
+        "version": 1, "destination": "PayloadModel", "kind": "object", "nullable": false, "optional": false, "transforms": [],
+        "properties": {
+          "display_name": {
+            "version": 1, "destination": "PayloadModel.display_name", "kind": "text", "nullable": true, "optional": true, "transforms": [],
+            "clrName": "Name", "clrType": "string"
+          },
+          "enabled": {
+            "version": 1, "destination": "PayloadModel.enabled", "kind": "boolean", "nullable": false, "optional": true, "transforms": [],
+            "clrName": "Enabled", "clrType": "bool", "default": true
+          }
+        }
+      }
+    }
+  ],
+  "operations": [
+    {
+      "name": "EncodeText", "mode": "value",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "content", "kind": "text", "nullable": true, "optional": true, "transforms": ["base64"],
+          "inputEncoding": "raw", "allowAlreadyEncoded": false
+        } }
+      ]
+    },
+    {
+      "name": "EncodeValue", "mode": "value",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "content", "kind": "any", "nullable": true, "optional": true, "transforms": ["base64"],
+          "inputEncoding": "raw", "allowAlreadyEncoded": false, "serializerProfile": "compact-json-v1"
+        } }
+      ]
+    },
+    {
+      "name": "EncodeJson", "mode": "value",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "content", "kind": "json", "nullable": true, "optional": true, "transforms": ["base64"],
+          "inputEncoding": "raw", "allowAlreadyEncoded": false, "serializerProfile": "compact-json-v1"
+        } }
+      ]
+    },
+    {
+      "name": "EncodeUri", "mode": "value",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "content", "kind": "uri", "nullable": true, "optional": true, "transforms": ["base64"],
+          "inputEncoding": "raw", "allowAlreadyEncoded": false
+        } }
+      ]
+    },
+    {
+      "name": "EncodeMethod", "mode": "value",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "content", "kind": "httpMethod", "nullable": true, "optional": true, "transforms": ["base64"],
+          "inputEncoding": "raw", "allowAlreadyEncoded": false
+        } }
+      ]
+    },
+    {
+      "name": "EncodeEnum", "mode": "value",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "content", "kind": "enum", "nullable": true, "optional": true, "transforms": ["base64"],
+          "enumPolicy": "open", "inputEncoding": "raw", "allowAlreadyEncoded": false
+        } }
+      ]
+    },
+    {
+      "name": "ClosedEnum", "mode": "value",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "content", "kind": "enum", "nullable": false, "optional": false, "transforms": [],
+          "enumPolicy": "closed", "enumValues": ["first /+", "second", "Unannotated", "Read", "Write"]
+        } }
+      ]
+    },
+    {
+      "name": "ClosedEncodeEnum", "mode": "value",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "content", "kind": "enum", "nullable": false, "optional": false, "transforms": ["base64"],
+          "enumPolicy": "closed", "enumValues": ["first /+", "second", "Unannotated", "Read", "Write"],
+          "inputEncoding": "raw", "allowAlreadyEncoded": false
+        } }
+      ]
+    },
+    {
+      "name": "RequiredEnum", "mode": "value",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "content", "kind": "enum", "nullable": false, "optional": false, "transforms": [],
+          "enumPolicy": "open"
+        } }
+      ]
+    },
+    {
+      "name": "AlreadyEncoded", "mode": "value",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "content", "kind": "text", "nullable": true, "optional": true, "transforms": ["base64"],
+          "inputEncoding": "base64", "allowAlreadyEncoded": true
+        } }
+      ]
+    },
+    {
+      "name": "RequiredContent", "mode": "object",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "content", "kind": "text", "nullable": false, "optional": false, "transforms": ["base64"],
+          "inputEncoding": "raw", "allowAlreadyEncoded": false
+        } }
+      ]
+    },
+    {
+      "name": "OptionalContent", "mode": "object",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "content", "kind": "text", "nullable": true, "optional": true, "transforms": ["base64"],
+          "inputEncoding": "raw", "allowAlreadyEncoded": false
+        } }
+      ]
+    },
+    {
+      "name": "Fields", "mode": "object",
+      "parameters": [
+        { "name": "name", "type": "object", "schema": {
+          "version": 1, "destination": "name", "kind": "text", "nullable": true, "optional": true, "transforms": []
+        } },
+        { "name": "count", "type": "object", "schema": {
+          "version": 1, "destination": "count", "kind": "number", "nullable": true, "optional": true, "transforms": []
+        } },
+        { "name": "label", "type": "object", "schema": {
+          "version": 1, "destination": "label", "kind": "text", "nullable": true, "optional": true, "transforms": []
+        } }
+      ]
+    },
+    {
+      "name": "EncodedFields", "mode": "object",
+      "parameters": [
+        { "name": "ContentData", "type": "object", "schema": {
+          "version": 1, "destination": "ContentData", "kind": "text", "nullable": true, "optional": true, "transforms": ["base64"],
+          "inputEncoding": "raw", "allowAlreadyEncoded": false
+        } },
+        { "name": "ContentType", "type": "object", "schema": {
+          "version": 1, "destination": "ContentType", "kind": "text", "nullable": true, "optional": true, "transforms": []
+        } },
+        { "name": "Label", "type": "object", "schema": {
+          "version": 1, "destination": "Label", "kind": "text", "nullable": true, "optional": true, "transforms": []
+        } }
+      ]
+    },
+    {
+      "name": "Nested", "mode": "value",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "payload", "kind": "object", "nullable": false, "optional": false, "transforms": [],
+          "properties": {
+            "items": {
+              "version": 1, "destination": "items", "kind": "array", "nullable": false, "optional": false, "transforms": [],
+              "items": {
+                "version": 1, "destination": "items[*]", "kind": "object", "nullable": false, "optional": false, "transforms": [],
+                "properties": {
+                  "content": {
+                    "version": 1, "destination": "items[*].content", "kind": "text", "nullable": true, "optional": true, "transforms": ["base64"],
+                    "inputEncoding": "raw", "allowAlreadyEncoded": false
+                  },
+                  "label": {
+                    "version": 1, "destination": "items[*].label", "kind": "text", "nullable": true, "optional": true, "transforms": []
+                  }
+                }
+              }
+            },
+            "enabled": {
+              "version": 1, "destination": "enabled", "kind": "boolean", "nullable": false, "optional": false, "transforms": []
+            }
+          }
+        } }
+      ]
+    },
+    {
+      "name": "Path", "mode": "path", "path": "/items/{0}/{1}",
+      "parameters": [
+        { "name": "first", "type": "object", "schema": {
+          "version": 1, "destination": "path.first", "kind": "text", "nullable": false, "optional": false, "transforms": ["url"]
+        } },
+        { "name": "second", "type": "object", "schema": {
+          "version": 1, "destination": "path.second", "kind": "text", "nullable": false, "optional": false, "transforms": ["url"]
+        } }
+      ]
+    },
+    {
+      "name": "SinglePath", "mode": "path", "path": "/items/{0}",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "path.content", "kind": "text", "nullable": false, "optional": false, "transforms": ["url"]
+        } }
+      ]
+    },
+    {
+      "name": "Base64Path", "mode": "path", "path": "/items/{0}",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "path.content", "kind": "text", "nullable": false, "optional": false, "transforms": ["base64", "url"],
+          "inputEncoding": "raw", "allowAlreadyEncoded": false
+        } }
+      ]
+    },
+    {
+      "name": "EnumPath", "mode": "path", "path": "/items/{0}",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "path.content", "kind": "enum", "nullable": false, "optional": false, "transforms": ["url"],
+          "enumPolicy": "open"
+        } }
+      ]
+    },
+    {
+      "name": "DoubleEnumPath", "mode": "path", "path": "/items/{0}",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "path.content", "kind": "enum", "nullable": false, "optional": false, "transforms": ["url", "url"],
+          "enumPolicy": "open"
+        } }
+      ]
+    },
+    {
+      "name": "ClosedEnumPath", "mode": "path", "path": "/items/{0}",
+      "parameters": [
+        { "name": "content", "type": "object", "schema": {
+          "version": 1, "destination": "path.content", "kind": "enum", "nullable": false, "optional": false, "transforms": ["url"],
+          "enumPolicy": "closed", "enumValues": ["first /+", "second", "Unannotated", "Read", "Write"]
+        } }
+      ]
+    },
+    {
+      "name": "Headers", "mode": "value",
+      "parameters": [
+        { "name": "headers", "type": "object", "schema": {
+          "version": 1, "destination": "headers", "kind": "object", "nullable": true, "optional": true, "transforms": [],
+          "runtimeObject": true, "properties": {}, "additionalProperties": true
+        } }
+      ]
+    },
+    {
+      "name": "Payload", "mode": "value",
+      "parameters": [
+        { "name": "content", "type": "PayloadModel", "schema": {
+          "version": 1, "destination": "payload", "kind": "object", "nullable": false, "optional": false, "transforms": [],
+          "properties": {
+            "display_name": {
+              "version": 1, "destination": "payload.display_name", "kind": "text", "nullable": true, "optional": true, "transforms": []
+            },
+            "enabled": {
+              "version": 1, "destination": "payload.enabled", "kind": "boolean", "nullable": false, "optional": true, "transforms": [],
+              "default": true
+            }
+          }
+        } }
+      ]
+    }
+  ]
+}

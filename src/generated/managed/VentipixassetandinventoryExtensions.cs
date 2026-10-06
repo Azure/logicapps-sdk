@@ -12,25 +12,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ventipixassetandinventory
     public class VentipixassetandinventoryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
-        public IBodyWorkflowAction<JToken> GetListItems(Expression<Func<string>> listIDDynamic, Expression<Func<string>> barcodeValue, Expression<Func<string>> location = null)
+        public IBodyWorkflowAction<JToken> GetListItems([WorkflowExpression] Func<string> listIdDynamic, [WorkflowExpression] Func<string> barcodeValue, [WorkflowExpression] Func<string> location = null)
         {
-            var apiCallPath = String.Format("/app/flow/fetchsert/{0}", ExpressionConverter.ConvertWithUrlEncoding(listIDDynamic, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["barcode_value"] = ExpressionConverter.Convert(barcodeValue);
-            if (location != null)
-                callPayload.Queries["location"] = ExpressionConverter.Convert(location);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listIdDynamic, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["barcode_value"] = SourceExpressionConverter.ConvertO(barcodeValue);
+                if (location != null)
+                    callPayload.Queries["location"] = SourceExpressionConverter.ConvertO(location);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
-        public IWorkflowAction CreateListItem(Expression<Func<string>> listIDDynamic, Expression<Func<object>> dynamicListSchema = null)
+        public IWorkflowAction CreateListItem([WorkflowExpression] Func<string> listIdDynamic, [WorkflowExpression] Func<object> dynamicListSchema = null)
         {
-            var apiCallPath = String.Format("/app/flow/fetchsert/{0}", ExpressionConverter.ConvertWithUrlEncoding(listIDDynamic, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicListSchema);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(listIdDynamic, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(dynamicListSchema);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

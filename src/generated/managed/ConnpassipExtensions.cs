@@ -12,36 +12,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connpassip
     public class ConnpassipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connpassip")]
-        public IBodyWorkflowAction<SearchEventResponse> SearchEvent(Expression<Func<string>> keyword = null, Expression<Func<string>> eventId = null, Expression<Func<string>> keywordOr = null, Expression<Func<string>> ym = null, Expression<Func<string>> ymd = null, Expression<Func<string>> nickname = null, Expression<Func<string>> ownerNickname = null, Expression<Func<string>> seriesId = null, Expression<Func<string>> start = null, Expression<Func<string>> order = null, Expression<Func<string>> count = null)
+        public IBodyWorkflowAction<SearchEventResponse> SearchEvent([WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> eventId = null, [WorkflowExpression] Func<string> keywordOr = null, [WorkflowExpression] Func<string> ym = null, [WorkflowExpression] Func<string> ymd = null, [WorkflowExpression] Func<string> nickname = null, [WorkflowExpression] Func<string> ownerNickname = null, [WorkflowExpression] Func<string> seriesId = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> count = null)
         {
-            var apiCallPath = "/api/v1/event/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (keyword != null)
-                callPayload.Queries["keyword"] = ExpressionConverter.Convert(keyword);
-            if (eventId != null)
-                callPayload.Queries["event_id"] = ExpressionConverter.Convert(eventId);
-            if (keywordOr != null)
-                callPayload.Queries["keyword_or"] = ExpressionConverter.Convert(keywordOr);
-            if (ym != null)
-                callPayload.Queries["ym"] = ExpressionConverter.Convert(ym);
-            if (ymd != null)
-                callPayload.Queries["ymd"] = ExpressionConverter.Convert(ymd);
-            if (nickname != null)
-                callPayload.Queries["nickname"] = ExpressionConverter.Convert(nickname);
-            if (ownerNickname != null)
-                callPayload.Queries["owner_nickname"] = ExpressionConverter.Convert(ownerNickname);
-            if (seriesId != null)
-                callPayload.Queries["series_id"] = ExpressionConverter.Convert(seriesId);
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<SearchEventResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/event/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (keyword != null)
+                    callPayload.Queries["keyword"] = SourceExpressionConverter.ConvertO(keyword);
+                if (eventId != null)
+                    callPayload.Queries["event_id"] = SourceExpressionConverter.ConvertO(eventId);
+                if (keywordOr != null)
+                    callPayload.Queries["keyword_or"] = SourceExpressionConverter.ConvertO(keywordOr);
+                if (ym != null)
+                    callPayload.Queries["ym"] = SourceExpressionConverter.ConvertO(ym);
+                if (ymd != null)
+                    callPayload.Queries["ymd"] = SourceExpressionConverter.ConvertO(ymd);
+                if (nickname != null)
+                    callPayload.Queries["nickname"] = SourceExpressionConverter.ConvertO(nickname);
+                if (ownerNickname != null)
+                    callPayload.Queries["owner_nickname"] = SourceExpressionConverter.ConvertO(ownerNickname);
+                if (seriesId != null)
+                    callPayload.Queries["series_id"] = SourceExpressionConverter.ConvertO(seriesId);
+                if (start != null)
+                    callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                if (order != null)
+                    callPayload.Queries["order"] = SourceExpressionConverter.ConvertO(order);
+                if (count != null)
+                    callPayload.Queries["count"] = SourceExpressionConverter.ConvertO(count);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchEventResponse>(BuildSourceInput);
         }
     }
 

@@ -12,99 +12,90 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
     public class InqubajourneyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
-        public IBodyWorkflowAction<AcquireAccessTokenResponse> AcquireAccessToken(Expression<Func<string>> tenantName, Expression<Func<string>> hostURL, Expression<Func<string>> username, Expression<Func<string>> password, Expression<Func<string>> clientId, Expression<Func<string>> clientSecret)
+        public IBodyWorkflowAction<string> PublishEvent([WorkflowExpression] Func<string> tenantName, [WorkflowExpression] Func<string> authorizationToken, [WorkflowExpression] Func<string> bodyeventDefinitionCode = null, [WorkflowExpression] Func<bool> bodyisTest = null, [WorkflowExpression] Func<bodyattributesInputItem[]> bodyattributes = null)
         {
-            var apiCallPath = String.Format("/{0}/connect/token", ExpressionConverter.ConvertWithUrlEncoding(tenantName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/x-www-form-urlencoded");
-            callPayload.Headers["HostURL"] = ExpressionConverter.Convert(hostURL);
-            return new ApiConnectionAction<AcquireAccessTokenResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/cems/api/Events";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["TenantName"] = SourceExpressionConverter.ConvertO(tenantName);
+                callPayload.Headers["AuthorizationToken"] = SourceExpressionConverter.ConvertO(authorizationToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyeventDefinitionCode != null)
+                {
+                    body["eventDefinitionCode"] = SourceExpressionConverter.ConvertToken(bodyeventDefinitionCode);
+                    bodypropCount++;
+                }
+
+                if (bodyisTest != null)
+                {
+                    body["isTest"] = SourceExpressionConverter.ConvertToken(bodyisTest);
+                    bodypropCount++;
+                }
+
+                if (bodyattributes != null)
+                {
+                    body["attributes"] = SourceExpressionConverter.ConvertToken(bodyattributes);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
-        public IBodyWorkflowAction<string> PublishEvent(Expression<Func<string>> tenantName, Expression<Func<string>> authorizationToken, Expression<Func<string>> bodyeventDefinitionCode = null, Expression<Func<bool>> bodyisTest = null, Expression<Func<bodyattributesInputItem[]>> bodyattributes = null)
+        public IBodyWorkflowAction<string> PublishTransaction([WorkflowExpression] Func<string> tenantName, [WorkflowExpression] Func<string> authorizationToken, [WorkflowExpression] Func<string> bodytransactionDefinitionCode = null, [WorkflowExpression] Func<bool> bodyisTest = null, [WorkflowExpression] Func<bodyattributesInputItem[]> bodyattributes = null)
         {
-            var apiCallPath = "/cems/api/Events";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["TenantName"] = ExpressionConverter.Convert(tenantName);
-            callPayload.Headers["AuthorizationToken"] = ExpressionConverter.Convert(authorizationToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyeventDefinitionCode != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["eventDefinitionCode"] = ExpressionConverter.ConvertO(bodyeventDefinitionCode);
-                bodypropCount++;
+                var apiCallPath = "/cems/api/Transactions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["TenantName"] = SourceExpressionConverter.ConvertO(tenantName);
+                callPayload.Headers["AuthorizationToken"] = SourceExpressionConverter.ConvertO(authorizationToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytransactionDefinitionCode != null)
+                {
+                    body["transactionDefinitionCode"] = SourceExpressionConverter.ConvertToken(bodytransactionDefinitionCode);
+                    bodypropCount++;
+                }
+
+                if (bodyisTest != null)
+                {
+                    body["isTest"] = SourceExpressionConverter.ConvertToken(bodyisTest);
+                    bodypropCount++;
+                }
+
+                if (bodyattributes != null)
+                {
+                    body["attributes"] = SourceExpressionConverter.ConvertToken(bodyattributes);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyisTest != null)
-            {
-                body["isTest"] = ExpressionConverter.ConvertO(bodyisTest);
-                bodypropCount++;
-            }
-
-            if (bodyattributes != null)
-            {
-                body["attributes"] = ExpressionConverter.ConvertO(bodyattributes);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
-        public IBodyWorkflowAction<string> PublishTransaction(Expression<Func<string>> tenantName, Expression<Func<string>> authorizationToken, Expression<Func<string>> bodytransactionDefinitionCode = null, Expression<Func<bool>> bodyisTest = null, Expression<Func<bodyattributesInputItem[]>> bodyattributes = null)
-        {
-            var apiCallPath = "/cems/api/Transactions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["TenantName"] = ExpressionConverter.Convert(tenantName);
-            callPayload.Headers["AuthorizationToken"] = ExpressionConverter.Convert(authorizationToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytransactionDefinitionCode != null)
-            {
-                body["transactionDefinitionCode"] = ExpressionConverter.ConvertO(bodytransactionDefinitionCode);
-                bodypropCount++;
-            }
-
-            if (bodyisTest != null)
-            {
-                body["isTest"] = ExpressionConverter.ConvertO(bodyisTest);
-                bodypropCount++;
-            }
-
-            if (bodyattributes != null)
-            {
-                body["attributes"] = ExpressionConverter.ConvertO(bodyattributes);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 
     public class InqubajourneyTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class AcquireAccessTokenResponse
-    {
-        [JsonProperty("access_token")]
-        public string AccessToken { get; set; }
     }
 
     public class bodyattributesInputItem

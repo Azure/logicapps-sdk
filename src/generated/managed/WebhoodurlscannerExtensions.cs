@@ -12,33 +12,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
     public class WebhoodurlscannerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
-        public IBodyWorkflowAction<Scan[]> GetScans(Expression<Func<statusInput>> status = null)
+        public IBodyWorkflowAction<Scan[]> GetScans([WorkflowExpression] Func<statusInput> status = null)
         {
-            var apiCallPath = "/beta/scans";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["status"] = Convert.ToString("done");
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<Scan[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/beta/scans";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["status"] = Convert.ToString("done");
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.Convert(status);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Scan[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
-        public IBodyWorkflowAction<Scan> GetScanById(Expression<Func<string>> scanId)
+        public IBodyWorkflowAction<Scan> GetScanById([WorkflowExpression] Func<string> scanId)
         {
-            var apiCallPath = String.Format("/beta/scans/{0}", ExpressionConverter.ConvertWithUrlEncoding(scanId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Scan>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/scans/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scanId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Scan>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
-        public IWorkflowAction GetScreenshotByScanId(Expression<Func<string>> scanId)
+        public IWorkflowAction GetScreenshotByScanId([WorkflowExpression] Func<string> scanId)
         {
-            var apiCallPath = String.Format("/beta/scans/{0}/screenshot", ExpressionConverter.ConvertWithUrlEncoding(scanId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/beta/scans/{0}/screenshot", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scanId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

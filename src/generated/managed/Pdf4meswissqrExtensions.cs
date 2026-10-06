@@ -12,315 +12,327 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
     public class Pdf4meswissqrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
-        public IBodyWorkflowAction<string> CreateSwissQrBill(Expression<Func<bodycrAddressTypeInput>> bodycrAddressType, Expression<Func<string>> bodycrName, Expression<Func<string>> bodydocContent, Expression<Func<string>> bodyiban, Expression<Func<string>> bodyamount = null, Expression<Func<string>> bodyav1Parameters = null, Expression<Func<string>> bodyav2Parameters = null, Expression<Func<string>> bodybillingInfo = null, Expression<Func<string>> bodycrCity = null, Expression<Func<string>> bodycrPostalCode = null, Expression<Func<string>> bodycrStreetOrAddressLine1 = null, Expression<Func<string>> bodycrStreetOrAddressLine2 = null, Expression<Func<bodycurrencyInput>> bodycurrency = null, Expression<Func<string>> bodydocumentname = null, Expression<Func<bodylanguageTypeInput>> bodylanguageType = null, Expression<Func<string>> bodyreference = null, Expression<Func<bodyreferenceTypeInput>> bodyreferenceType = null, Expression<Func<bodyseperatorLineInput>> bodyseperatorLine = null, Expression<Func<bodyudAddressTypeInput>> bodyudAddressType = null, Expression<Func<string>> bodyudCity = null, Expression<Func<string>> bodyudName = null, Expression<Func<string>> bodyudPostalCode = null, Expression<Func<string>> bodyudStreetOrAddressLine1 = null, Expression<Func<string>> bodyudStreetOrAddressLine2 = null, Expression<Func<string>> bodyunstructuredMessage = null)
+        public IBodyWorkflowAction<string> CreateSwissQrBill([WorkflowExpression] Func<bodycrAddressTypeInput> bodycrAddressType, [WorkflowExpression] Func<string> bodycrName, [WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodyiban, [WorkflowExpression] Func<string> bodyamount = null, [WorkflowExpression] Func<string> bodyav1Parameters = null, [WorkflowExpression] Func<string> bodyav2Parameters = null, [WorkflowExpression] Func<string> bodybillingInfo = null, [WorkflowExpression] Func<string> bodycrCity = null, [WorkflowExpression] Func<string> bodycrPostalCode = null, [WorkflowExpression] Func<string> bodycrStreetOrAddressLine1 = null, [WorkflowExpression] Func<string> bodycrStreetOrAddressLine2 = null, [WorkflowExpression] Func<bodycurrencyInput> bodycurrency = null, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<bodylanguageTypeInput> bodylanguageType = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<bodyreferenceTypeInput> bodyreferenceType = null, [WorkflowExpression] Func<bodyseperatorLineInput> bodyseperatorLine = null, [WorkflowExpression] Func<bodyudAddressTypeInput> bodyudAddressType = null, [WorkflowExpression] Func<string> bodyudCity = null, [WorkflowExpression] Func<string> bodyudName = null, [WorkflowExpression] Func<string> bodyudPostalCode = null, [WorkflowExpression] Func<string> bodyudStreetOrAddressLine1 = null, [WorkflowExpression] Func<string> bodyudStreetOrAddressLine2 = null, [WorkflowExpression] Func<string> bodyunstructuredMessage = null)
         {
-            var apiCallPath = "/v2/FlowV2/CreateSwissQrBill";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyamount != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["amount"] = ExpressionConverter.ConvertO(bodyamount);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v2/FlowV2/CreateSwissQrBill";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyamount != null)
+                {
+                    body["amount"] = SourceExpressionConverter.ConvertToken(bodyamount);
+                    bodypropCount++;
+                }
 
-            if (bodyav1Parameters != null)
-            {
-                body["av1Parameters"] = ExpressionConverter.ConvertO(bodyav1Parameters);
-                bodypropCount++;
-            }
+                if (bodyav1Parameters != null)
+                {
+                    body["av1Parameters"] = SourceExpressionConverter.ConvertToken(bodyav1Parameters);
+                    bodypropCount++;
+                }
 
-            if (bodyav2Parameters != null)
-            {
-                body["av2Parameters"] = ExpressionConverter.ConvertO(bodyav2Parameters);
-                bodypropCount++;
-            }
+                if (bodyav2Parameters != null)
+                {
+                    body["av2Parameters"] = SourceExpressionConverter.ConvertToken(bodyav2Parameters);
+                    bodypropCount++;
+                }
 
-            if (bodybillingInfo != null)
-            {
-                body["billingInfo"] = ExpressionConverter.ConvertO(bodybillingInfo);
-                bodypropCount++;
-            }
+                if (bodybillingInfo != null)
+                {
+                    body["billingInfo"] = SourceExpressionConverter.ConvertToken(bodybillingInfo);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["crAddressType"] = ExpressionConverter.ConvertO(bodycrAddressType);
-            if (bodycrCity != null)
-            {
-                body["crCity"] = ExpressionConverter.ConvertO(bodycrCity);
                 bodypropCount++;
-            }
+                body["crAddressType"] = SourceExpressionConverter.Convert(bodycrAddressType);
+                if (bodycrCity != null)
+                {
+                    body["crCity"] = SourceExpressionConverter.ConvertToken(bodycrCity);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["crName"] = ExpressionConverter.ConvertO(bodycrName);
-            if (bodycrPostalCode != null)
-            {
-                body["crPostalCode"] = ExpressionConverter.ConvertO(bodycrPostalCode);
                 bodypropCount++;
-            }
+                body["crName"] = SourceExpressionConverter.ConvertToken(bodycrName);
+                if (bodycrPostalCode != null)
+                {
+                    body["crPostalCode"] = SourceExpressionConverter.ConvertToken(bodycrPostalCode);
+                    bodypropCount++;
+                }
 
-            if (bodycrStreetOrAddressLine1 != null)
-            {
-                body["crStreetOrAddressLine1"] = ExpressionConverter.ConvertO(bodycrStreetOrAddressLine1);
-                bodypropCount++;
-            }
+                if (bodycrStreetOrAddressLine1 != null)
+                {
+                    body["crStreetOrAddressLine1"] = SourceExpressionConverter.ConvertToken(bodycrStreetOrAddressLine1);
+                    bodypropCount++;
+                }
 
-            if (bodycrStreetOrAddressLine2 != null)
-            {
-                body["crStreetOrAddressLine2"] = ExpressionConverter.ConvertO(bodycrStreetOrAddressLine2);
-                bodypropCount++;
-            }
+                if (bodycrStreetOrAddressLine2 != null)
+                {
+                    body["crStreetOrAddressLine2"] = SourceExpressionConverter.ConvertToken(bodycrStreetOrAddressLine2);
+                    bodypropCount++;
+                }
 
-            if (bodycurrency != null)
-            {
                 if (bodycurrency != null)
                 {
-                    body["currency"] = ExpressionConverter.ConvertO(bodycurrency);
+                    if (bodycurrency != null)
+                    {
+                        body["currency"] = SourceExpressionConverter.Convert(bodycurrency);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["currency"] = "CHF";
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["currency"] = "CHF";
+                body["docContent"] = SourceExpressionConverter.ConvertToken(bodydocContent);
+                var documentObject = new JObject();
+                var documentObjectpropCount = 0;
+                if (bodydocumentname != null)
+                {
+                    documentObject["Name"] = SourceExpressionConverter.ConvertToken(bodydocumentname);
+                    documentObjectpropCount++;
+                }
+
+                if (documentObjectpropCount > 0)
+                {
+                    body["document"] = documentObject;
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (bodydocumentname != null)
-            {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
-                documentObjectpropCount++;
-            }
-
-            if (documentObjectpropCount > 0)
-            {
-                body["document"] = documentObject;
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["iban"] = ExpressionConverter.ConvertO(bodyiban);
-            if (bodylanguageType != null)
-            {
+                body["iban"] = SourceExpressionConverter.ConvertToken(bodyiban);
                 if (bodylanguageType != null)
                 {
-                    body["languageType"] = ExpressionConverter.ConvertO(bodylanguageType);
+                    if (bodylanguageType != null)
+                    {
+                        body["languageType"] = SourceExpressionConverter.Convert(bodylanguageType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["languageType"] = "English";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["languageType"] = "English";
-                bodypropCount++;
-            }
+                if (bodyreference != null)
+                {
+                    body["reference"] = SourceExpressionConverter.ConvertToken(bodyreference);
+                    bodypropCount++;
+                }
 
-            if (bodyreference != null)
-            {
-                body["reference"] = ExpressionConverter.ConvertO(bodyreference);
-                bodypropCount++;
-            }
-
-            if (bodyreferenceType != null)
-            {
                 if (bodyreferenceType != null)
                 {
-                    body["referenceType"] = ExpressionConverter.ConvertO(bodyreferenceType);
+                    if (bodyreferenceType != null)
+                    {
+                        body["referenceType"] = SourceExpressionConverter.Convert(bodyreferenceType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["referenceType"] = "QRR";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["referenceType"] = "QRR";
-                bodypropCount++;
-            }
-
-            if (bodyseperatorLine != null)
-            {
                 if (bodyseperatorLine != null)
                 {
-                    body["seperatorLine"] = ExpressionConverter.ConvertO(bodyseperatorLine);
+                    if (bodyseperatorLine != null)
+                    {
+                        body["seperatorLine"] = SourceExpressionConverter.Convert(bodyseperatorLine);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["seperatorLine"] = "LineWithScissor";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["seperatorLine"] = "LineWithScissor";
-                bodypropCount++;
-            }
-
-            if (bodyudAddressType != null)
-            {
                 if (bodyudAddressType != null)
                 {
-                    body["udAddressType"] = ExpressionConverter.ConvertO(bodyudAddressType);
+                    if (bodyudAddressType != null)
+                    {
+                        body["udAddressType"] = SourceExpressionConverter.Convert(bodyudAddressType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["udAddressType"] = "S";
+                    bodypropCount++;
+                }
+
+                if (bodyudCity != null)
+                {
+                    body["udCity"] = SourceExpressionConverter.ConvertToken(bodyudCity);
+                    bodypropCount++;
+                }
+
+                if (bodyudName != null)
+                {
+                    body["udName"] = SourceExpressionConverter.ConvertToken(bodyudName);
+                    bodypropCount++;
+                }
+
+                if (bodyudPostalCode != null)
+                {
+                    body["udPostalCode"] = SourceExpressionConverter.ConvertToken(bodyudPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodyudStreetOrAddressLine1 != null)
+                {
+                    body["udStreetOrAddressLine1"] = SourceExpressionConverter.ConvertToken(bodyudStreetOrAddressLine1);
+                    bodypropCount++;
+                }
+
+                if (bodyudStreetOrAddressLine2 != null)
+                {
+                    body["udStreetOrAddressLine2"] = SourceExpressionConverter.ConvertToken(bodyudStreetOrAddressLine2);
+                    bodypropCount++;
+                }
+
+                if (bodyunstructuredMessage != null)
+                {
+                    body["unstructuredMessage"] = SourceExpressionConverter.ConvertToken(bodyunstructuredMessage);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
+        public IBodyWorkflowAction<string> ReadSwissQrBill([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<string> bodydocumentname = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/FlowV2/ReadSwissQrBill";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["docContent"] = SourceExpressionConverter.ConvertToken(bodydocContent);
+                var documentObject = new JObject();
+                var documentObjectpropCount = 0;
+                if (bodydocumentname != null)
+                {
+                    documentObject["Name"] = SourceExpressionConverter.ConvertToken(bodydocumentname);
+                    documentObjectpropCount++;
+                }
+
+                if (documentObjectpropCount > 0)
+                {
+                    body["document"] = documentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
+        public IBodyWorkflowAction<SplitDocBySwissQrCodeV1Response> SplitDocBySwissQrCode([WorkflowExpression] Func<string> bodydocContent, [WorkflowExpression] Func<bodysplitBarcodePageInput> bodysplitBarcodePage, [WorkflowExpression] Func<string> bodydocumentname = null, [WorkflowExpression] Func<bool> bodycombinePagesWithSameConsecutiveBarcodes = null, [WorkflowExpression] Func<string> bodypdfRenderDpi = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/FlowV2/SplitPdfByBarcode";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["barcodeFilter"] = "startsWith";
+                bodypropCount++;
+                body["barcodeString"] = "SPC";
+                bodypropCount++;
+                body["barcodeType"] = "qrcode";
+                bodypropCount++;
+                bodypropCount++;
+                body["docContent"] = SourceExpressionConverter.ConvertToken(bodydocContent);
+                var documentObject = new JObject();
+                var documentObjectpropCount = 0;
+                if (bodydocumentname != null)
+                {
+                    documentObject["Name"] = SourceExpressionConverter.ConvertToken(bodydocumentname);
+                    documentObjectpropCount++;
+                }
+
+                if (documentObjectpropCount > 0)
+                {
+                    body["document"] = documentObject;
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["udAddressType"] = "S";
-                bodypropCount++;
-            }
-
-            if (bodyudCity != null)
-            {
-                body["udCity"] = ExpressionConverter.ConvertO(bodyudCity);
-                bodypropCount++;
-            }
-
-            if (bodyudName != null)
-            {
-                body["udName"] = ExpressionConverter.ConvertO(bodyudName);
-                bodypropCount++;
-            }
-
-            if (bodyudPostalCode != null)
-            {
-                body["udPostalCode"] = ExpressionConverter.ConvertO(bodyudPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodyudStreetOrAddressLine1 != null)
-            {
-                body["udStreetOrAddressLine1"] = ExpressionConverter.ConvertO(bodyudStreetOrAddressLine1);
-                bodypropCount++;
-            }
-
-            if (bodyudStreetOrAddressLine2 != null)
-            {
-                body["udStreetOrAddressLine2"] = ExpressionConverter.ConvertO(bodyudStreetOrAddressLine2);
-                bodypropCount++;
-            }
-
-            if (bodyunstructuredMessage != null)
-            {
-                body["unstructuredMessage"] = ExpressionConverter.ConvertO(bodyunstructuredMessage);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
-        public IBodyWorkflowAction<string> ReadSwissQrBill(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
-        {
-            var apiCallPath = "/v2/FlowV2/ReadSwissQrBill";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (bodydocumentname != null)
-            {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
-                documentObjectpropCount++;
-            }
-
-            if (documentObjectpropCount > 0)
-            {
-                body["document"] = documentObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
-        public IBodyWorkflowAction<SplitDocBySwissQrCodeV1Response> SplitDocBySwissQrCode(Expression<Func<string>> bodydocContent, Expression<Func<bodysplitBarcodePageInput>> bodysplitBarcodePage, Expression<Func<string>> bodydocumentname = null, Expression<Func<bool>> bodycombinePagesWithSameConsecutiveBarcodes = null, Expression<Func<string>> bodypdfRenderDpi = null)
-        {
-            var apiCallPath = "/v2/FlowV2/SplitPdfByBarcode";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["barcodeFilter"] = "startsWith";
-            bodypropCount++;
-            body["barcodeString"] = "SPC";
-            bodypropCount++;
-            body["barcodeType"] = "qrcode";
-            bodypropCount++;
-            bodypropCount++;
-            body["docContent"] = ExpressionConverter.ConvertO(bodydocContent);
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (bodydocumentname != null)
-            {
-                documentObject["Name"] = ExpressionConverter.ConvertO(bodydocumentname);
-                documentObjectpropCount++;
-            }
-
-            if (documentObjectpropCount > 0)
-            {
-                body["document"] = documentObject;
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["splitBarcodePage"] = ExpressionConverter.ConvertO(bodysplitBarcodePage);
-            if (bodycombinePagesWithSameConsecutiveBarcodes != null)
-            {
+                body["splitBarcodePage"] = SourceExpressionConverter.Convert(bodysplitBarcodePage);
                 if (bodycombinePagesWithSameConsecutiveBarcodes != null)
                 {
-                    body["combinePagesWithSameConsecutiveBarcodes"] = ExpressionConverter.ConvertO(bodycombinePagesWithSameConsecutiveBarcodes);
+                    if (bodycombinePagesWithSameConsecutiveBarcodes != null)
+                    {
+                        body["combinePagesWithSameConsecutiveBarcodes"] = SourceExpressionConverter.ConvertToken(bodycombinePagesWithSameConsecutiveBarcodes);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["combinePagesWithSameConsecutiveBarcodes"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["combinePagesWithSameConsecutiveBarcodes"] = false;
-                bodypropCount++;
-            }
-
-            if (bodypdfRenderDpi != null)
-            {
                 if (bodypdfRenderDpi != null)
                 {
-                    body["pdfRenderDpi"] = ExpressionConverter.ConvertO(bodypdfRenderDpi);
+                    if (bodypdfRenderDpi != null)
+                    {
+                        body["pdfRenderDpi"] = SourceExpressionConverter.ConvertToken(bodypdfRenderDpi);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["pdfRenderDpi"] = "150";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["pdfRenderDpi"] = "150";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SplitDocBySwissQrCodeV1Response>(callPayload);
+            return new ApiConnectionAction<SplitDocBySwissQrCodeV1Response>(BuildSourceInput);
         }
     }
 

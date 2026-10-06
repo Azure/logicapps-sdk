@@ -12,387 +12,463 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
     public class FreeagentipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IWorkflowAction DeleteContact(Expression<Func<string>> contactId)
+        public IWorkflowAction DeleteContact([WorkflowExpression] Func<string> contactId)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IBodyWorkflowAction<GetContactResponse> GetContact(Expression<Func<string>> contactId)
+        public IBodyWorkflowAction<GetContactResponse> GetContact([WorkflowExpression] Func<string> contactId)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetContactResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetContactResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IWorkflowAction UpdateContact(Expression<Func<string>> contactId, Expression<Func<bool>> bodycontactcontactNameOnInvoices = null, Expression<Func<int>> bodycontactdefaultPaymentTermsInDays = null, Expression<Func<string>> bodycontactlocale = null, Expression<Func<string>> bodycontactcountry = null)
+        public IWorkflowAction UpdateContact([WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<bool> bodycontactcontactNameOnInvoices = null, [WorkflowExpression] Func<int> bodycontactdefaultPaymentTermsInDays = null, [WorkflowExpression] Func<string> bodycontactlocale = null, [WorkflowExpression] Func<string> bodycontactcountry = null)
         {
-            var apiCallPath = String.Format("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var contactObject = new JObject();
-            var contactObjectpropCount = 0;
-            if (bodycontactcontactNameOnInvoices != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                contactObject["contact_name_on_invoices"] = ExpressionConverter.ConvertO(bodycontactcontactNameOnInvoices);
-                contactObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var contactObject = new JObject();
+                var contactObjectpropCount = 0;
+                if (bodycontactcontactNameOnInvoices != null)
+                {
+                    contactObject["contact_name_on_invoices"] = SourceExpressionConverter.ConvertToken(bodycontactcontactNameOnInvoices);
+                    contactObjectpropCount++;
+                }
+
+                if (bodycontactdefaultPaymentTermsInDays != null)
+                {
+                    contactObject["default_payment_terms_in_days"] = SourceExpressionConverter.ConvertToken(bodycontactdefaultPaymentTermsInDays);
+                    contactObjectpropCount++;
+                }
+
+                if (bodycontactlocale != null)
+                {
+                    contactObject["locale"] = SourceExpressionConverter.ConvertToken(bodycontactlocale);
+                    contactObjectpropCount++;
+                }
+
+                if (bodycontactcountry != null)
+                {
+                    contactObject["country"] = SourceExpressionConverter.ConvertToken(bodycontactcountry);
+                    contactObjectpropCount++;
+                }
+
+                if (contactObjectpropCount > 0)
+                {
+                    body["contact"] = contactObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycontactdefaultPaymentTermsInDays != null)
-            {
-                contactObject["default_payment_terms_in_days"] = ExpressionConverter.ConvertO(bodycontactdefaultPaymentTermsInDays);
-                contactObjectpropCount++;
-            }
-
-            if (bodycontactlocale != null)
-            {
-                contactObject["locale"] = ExpressionConverter.ConvertO(bodycontactlocale);
-                contactObjectpropCount++;
-            }
-
-            if (bodycontactcountry != null)
-            {
-                contactObject["country"] = ExpressionConverter.ConvertO(bodycontactcountry);
-                contactObjectpropCount++;
-            }
-
-            if (contactObjectpropCount > 0)
-            {
-                body["contact"] = contactObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IWorkflowAction DeleteInvoice(Expression<Func<string>> id)
+        public IWorkflowAction DeleteInvoice([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IBodyWorkflowAction<ShowInvoiceResponse> ShowInvoice(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ShowInvoiceResponse> ShowInvoice([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ShowInvoiceResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ShowInvoiceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IWorkflowAction UpdateInvoice(Expression<Func<string>> id, Expression<Func<string>> bodyinvoicedatedOn = null, Expression<Func<string>> bodyinvoicedueOn = null, Expression<Func<string>> bodyinvoicecurrency = null, Expression<Func<string>> bodyinvoiceexchangeRate = null, Expression<Func<string>> bodyinvoicestatus = null, Expression<Func<bodyinvoiceinvoiceItemsInputItem[]>> bodyinvoiceinvoiceItems = null)
+        public IWorkflowAction UpdateInvoice([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyinvoicedatedOn = null, [WorkflowExpression] Func<string> bodyinvoicedueOn = null, [WorkflowExpression] Func<string> bodyinvoicecurrency = null, [WorkflowExpression] Func<string> bodyinvoiceexchangeRate = null, [WorkflowExpression] Func<string> bodyinvoicestatus = null, [WorkflowExpression] Func<bodyinvoiceinvoiceItemsInputItem[]> bodyinvoiceinvoiceItems = null)
         {
-            var apiCallPath = String.Format("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var invoiceObject = new JObject();
-            var invoiceObjectpropCount = 0;
-            if (bodyinvoicedatedOn != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                invoiceObject["dated_on"] = ExpressionConverter.ConvertO(bodyinvoicedatedOn);
-                invoiceObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var invoiceObject = new JObject();
+                var invoiceObjectpropCount = 0;
+                if (bodyinvoicedatedOn != null)
+                {
+                    invoiceObject["dated_on"] = SourceExpressionConverter.ConvertToken(bodyinvoicedatedOn);
+                    invoiceObjectpropCount++;
+                }
+
+                if (bodyinvoicedueOn != null)
+                {
+                    invoiceObject["due_on"] = SourceExpressionConverter.ConvertToken(bodyinvoicedueOn);
+                    invoiceObjectpropCount++;
+                }
+
+                if (bodyinvoicecurrency != null)
+                {
+                    invoiceObject["currency"] = SourceExpressionConverter.ConvertToken(bodyinvoicecurrency);
+                    invoiceObjectpropCount++;
+                }
+
+                if (bodyinvoiceexchangeRate != null)
+                {
+                    invoiceObject["exchange_rate"] = SourceExpressionConverter.ConvertToken(bodyinvoiceexchangeRate);
+                    invoiceObjectpropCount++;
+                }
+
+                if (bodyinvoicestatus != null)
+                {
+                    invoiceObject["status"] = SourceExpressionConverter.ConvertToken(bodyinvoicestatus);
+                    invoiceObjectpropCount++;
+                }
+
+                if (bodyinvoiceinvoiceItems != null)
+                {
+                    invoiceObject["invoice_items"] = SourceExpressionConverter.ConvertToken(bodyinvoiceinvoiceItems);
+                    invoiceObjectpropCount++;
+                }
+
+                if (invoiceObjectpropCount > 0)
+                {
+                    body["invoice"] = invoiceObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyinvoicedueOn != null)
-            {
-                invoiceObject["due_on"] = ExpressionConverter.ConvertO(bodyinvoicedueOn);
-                invoiceObjectpropCount++;
-            }
-
-            if (bodyinvoicecurrency != null)
-            {
-                invoiceObject["currency"] = ExpressionConverter.ConvertO(bodyinvoicecurrency);
-                invoiceObjectpropCount++;
-            }
-
-            if (bodyinvoiceexchangeRate != null)
-            {
-                invoiceObject["exchange_rate"] = ExpressionConverter.ConvertO(bodyinvoiceexchangeRate);
-                invoiceObjectpropCount++;
-            }
-
-            if (bodyinvoicestatus != null)
-            {
-                invoiceObject["status"] = ExpressionConverter.ConvertO(bodyinvoicestatus);
-                invoiceObjectpropCount++;
-            }
-
-            if (bodyinvoiceinvoiceItems != null)
-            {
-                invoiceObject["invoice_items"] = ExpressionConverter.ConvertO(bodyinvoiceinvoiceItems);
-                invoiceObjectpropCount++;
-            }
-
-            if (invoiceObjectpropCount > 0)
-            {
-                body["invoice"] = invoiceObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IBodyWorkflowAction<GetContactsResponse> GetContacts()
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetContactsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetContactsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IBodyWorkflowAction<CreateContactResponse> CreateContact(Expression<Func<string>> bodycontactfirstName = null, Expression<Func<string>> bodycontactlastName = null, Expression<Func<string>> bodycontactorganisationName = null, Expression<Func<string>> bodycontactemail = null, Expression<Func<string>> bodycontacttelephone = null, Expression<Func<string>> bodycontactmobile = null, Expression<Func<string>> bodycontactaddress1 = null, Expression<Func<string>> bodycontactaddress2 = null, Expression<Func<string>> bodycontactaddress3 = null, Expression<Func<string>> bodycontacttown = null, Expression<Func<string>> bodycontactregion = null, Expression<Func<string>> bodycontactpostcode = null, Expression<Func<string>> bodycontactcountry = null)
+        public IBodyWorkflowAction<CreateContactResponse> CreateContact([WorkflowExpression] Func<string> bodycontactfirstName = null, [WorkflowExpression] Func<string> bodycontactlastName = null, [WorkflowExpression] Func<string> bodycontactorganisationName = null, [WorkflowExpression] Func<string> bodycontactemail = null, [WorkflowExpression] Func<string> bodycontacttelephone = null, [WorkflowExpression] Func<string> bodycontactmobile = null, [WorkflowExpression] Func<string> bodycontactaddress1 = null, [WorkflowExpression] Func<string> bodycontactaddress2 = null, [WorkflowExpression] Func<string> bodycontactaddress3 = null, [WorkflowExpression] Func<string> bodycontacttown = null, [WorkflowExpression] Func<string> bodycontactregion = null, [WorkflowExpression] Func<string> bodycontactpostcode = null, [WorkflowExpression] Func<string> bodycontactcountry = null)
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var contactObject = new JObject();
-            var contactObjectpropCount = 0;
-            if (bodycontactfirstName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                contactObject["first_name"] = ExpressionConverter.ConvertO(bodycontactfirstName);
-                contactObjectpropCount++;
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var contactObject = new JObject();
+                var contactObjectpropCount = 0;
+                if (bodycontactfirstName != null)
+                {
+                    contactObject["first_name"] = SourceExpressionConverter.ConvertToken(bodycontactfirstName);
+                    contactObjectpropCount++;
+                }
+
+                if (bodycontactlastName != null)
+                {
+                    contactObject["last_name"] = SourceExpressionConverter.ConvertToken(bodycontactlastName);
+                    contactObjectpropCount++;
+                }
+
+                if (bodycontactorganisationName != null)
+                {
+                    contactObject["organisation_name"] = SourceExpressionConverter.ConvertToken(bodycontactorganisationName);
+                    contactObjectpropCount++;
+                }
+
+                if (bodycontactemail != null)
+                {
+                    contactObject["email"] = SourceExpressionConverter.ConvertToken(bodycontactemail);
+                    contactObjectpropCount++;
+                }
+
+                if (bodycontacttelephone != null)
+                {
+                    contactObject["phone_number"] = SourceExpressionConverter.ConvertToken(bodycontacttelephone);
+                    contactObjectpropCount++;
+                }
+
+                if (bodycontactmobile != null)
+                {
+                    contactObject["mobile"] = SourceExpressionConverter.ConvertToken(bodycontactmobile);
+                    contactObjectpropCount++;
+                }
+
+                if (bodycontactaddress1 != null)
+                {
+                    contactObject["address1"] = SourceExpressionConverter.ConvertToken(bodycontactaddress1);
+                    contactObjectpropCount++;
+                }
+
+                if (bodycontactaddress2 != null)
+                {
+                    contactObject["address2"] = SourceExpressionConverter.ConvertToken(bodycontactaddress2);
+                    contactObjectpropCount++;
+                }
+
+                if (bodycontactaddress3 != null)
+                {
+                    contactObject["address3"] = SourceExpressionConverter.ConvertToken(bodycontactaddress3);
+                    contactObjectpropCount++;
+                }
+
+                if (bodycontacttown != null)
+                {
+                    contactObject["town"] = SourceExpressionConverter.ConvertToken(bodycontacttown);
+                    contactObjectpropCount++;
+                }
+
+                if (bodycontactregion != null)
+                {
+                    contactObject["region"] = SourceExpressionConverter.ConvertToken(bodycontactregion);
+                    contactObjectpropCount++;
+                }
+
+                if (bodycontactpostcode != null)
+                {
+                    contactObject["postcode"] = SourceExpressionConverter.ConvertToken(bodycontactpostcode);
+                    contactObjectpropCount++;
+                }
+
+                if (bodycontactcountry != null)
+                {
+                    contactObject["country"] = SourceExpressionConverter.ConvertToken(bodycontactcountry);
+                    contactObjectpropCount++;
+                }
+
+                if (contactObjectpropCount > 0)
+                {
+                    body["contact"] = contactObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycontactlastName != null)
-            {
-                contactObject["last_name"] = ExpressionConverter.ConvertO(bodycontactlastName);
-                contactObjectpropCount++;
-            }
-
-            if (bodycontactorganisationName != null)
-            {
-                contactObject["organisation_name"] = ExpressionConverter.ConvertO(bodycontactorganisationName);
-                contactObjectpropCount++;
-            }
-
-            if (bodycontactemail != null)
-            {
-                contactObject["email"] = ExpressionConverter.ConvertO(bodycontactemail);
-                contactObjectpropCount++;
-            }
-
-            if (bodycontacttelephone != null)
-            {
-                contactObject["phone_number"] = ExpressionConverter.ConvertO(bodycontacttelephone);
-                contactObjectpropCount++;
-            }
-
-            if (bodycontactmobile != null)
-            {
-                contactObject["mobile"] = ExpressionConverter.ConvertO(bodycontactmobile);
-                contactObjectpropCount++;
-            }
-
-            if (bodycontactaddress1 != null)
-            {
-                contactObject["address1"] = ExpressionConverter.ConvertO(bodycontactaddress1);
-                contactObjectpropCount++;
-            }
-
-            if (bodycontactaddress2 != null)
-            {
-                contactObject["address2"] = ExpressionConverter.ConvertO(bodycontactaddress2);
-                contactObjectpropCount++;
-            }
-
-            if (bodycontactaddress3 != null)
-            {
-                contactObject["address3"] = ExpressionConverter.ConvertO(bodycontactaddress3);
-                contactObjectpropCount++;
-            }
-
-            if (bodycontacttown != null)
-            {
-                contactObject["town"] = ExpressionConverter.ConvertO(bodycontacttown);
-                contactObjectpropCount++;
-            }
-
-            if (bodycontactregion != null)
-            {
-                contactObject["region"] = ExpressionConverter.ConvertO(bodycontactregion);
-                contactObjectpropCount++;
-            }
-
-            if (bodycontactpostcode != null)
-            {
-                contactObject["postcode"] = ExpressionConverter.ConvertO(bodycontactpostcode);
-                contactObjectpropCount++;
-            }
-
-            if (bodycontactcountry != null)
-            {
-                contactObject["country"] = ExpressionConverter.ConvertO(bodycontactcountry);
-                contactObjectpropCount++;
-            }
-
-            if (contactObjectpropCount > 0)
-            {
-                body["contact"] = contactObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateContactResponse>(callPayload);
+            return new ApiConnectionAction<CreateContactResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IBodyWorkflowAction<ListAllRecurringInvoicesResponse> ListAllRecurringInvoices()
         {
-            var apiCallPath = "/recurring_invoices";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListAllRecurringInvoicesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/recurring_invoices";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAllRecurringInvoicesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
         public IBodyWorkflowAction<ListInvoicesResponse> ListInvoices()
         {
-            var apiCallPath = "/invoices";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListInvoicesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/invoices";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListInvoicesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IBodyWorkflowAction<CreateInvoiceResponse> CreateInvoice(Expression<Func<string>> bodyinvoicecontact = null, Expression<Func<string>> bodyinvoicedatedOn = null, Expression<Func<string>> bodyinvoicedueOn = null, Expression<Func<string>> bodyinvoicecurrency = null, Expression<Func<bool>> bodyinvoiceomitHeader = null, Expression<Func<bool>> bodyinvoicealwaysShowBICAndIBAN = null, Expression<Func<int>> bodyinvoicepaymentTermsInDays = null)
+        public IBodyWorkflowAction<CreateInvoiceResponse> CreateInvoice([WorkflowExpression] Func<string> bodyinvoicecontact = null, [WorkflowExpression] Func<string> bodyinvoicedatedOn = null, [WorkflowExpression] Func<string> bodyinvoicedueOn = null, [WorkflowExpression] Func<string> bodyinvoicecurrency = null, [WorkflowExpression] Func<bool> bodyinvoiceomitHeader = null, [WorkflowExpression] Func<bool> bodyinvoicealwaysShowBICAndIBAN = null, [WorkflowExpression] Func<int> bodyinvoicepaymentTermsInDays = null)
         {
-            var apiCallPath = "/invoices";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var invoiceObject = new JObject();
-            var invoiceObjectpropCount = 0;
-            if (bodyinvoicecontact != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                invoiceObject["contact"] = ExpressionConverter.ConvertO(bodyinvoicecontact);
-                invoiceObjectpropCount++;
+                var apiCallPath = "/invoices";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var invoiceObject = new JObject();
+                var invoiceObjectpropCount = 0;
+                if (bodyinvoicecontact != null)
+                {
+                    invoiceObject["contact"] = SourceExpressionConverter.ConvertToken(bodyinvoicecontact);
+                    invoiceObjectpropCount++;
+                }
+
+                if (bodyinvoicedatedOn != null)
+                {
+                    invoiceObject["dated_on"] = SourceExpressionConverter.ConvertToken(bodyinvoicedatedOn);
+                    invoiceObjectpropCount++;
+                }
+
+                if (bodyinvoicedueOn != null)
+                {
+                    invoiceObject["due_on"] = SourceExpressionConverter.ConvertToken(bodyinvoicedueOn);
+                    invoiceObjectpropCount++;
+                }
+
+                if (bodyinvoicecurrency != null)
+                {
+                    invoiceObject["currency"] = SourceExpressionConverter.ConvertToken(bodyinvoicecurrency);
+                    invoiceObjectpropCount++;
+                }
+
+                if (bodyinvoiceomitHeader != null)
+                {
+                    invoiceObject["omit_header"] = SourceExpressionConverter.ConvertToken(bodyinvoiceomitHeader);
+                    invoiceObjectpropCount++;
+                }
+
+                if (bodyinvoicealwaysShowBICAndIBAN != null)
+                {
+                    invoiceObject["always_show_bic_and_iban"] = SourceExpressionConverter.ConvertToken(bodyinvoicealwaysShowBICAndIBAN);
+                    invoiceObjectpropCount++;
+                }
+
+                if (bodyinvoicepaymentTermsInDays != null)
+                {
+                    invoiceObject["payment_terms_in_days"] = SourceExpressionConverter.ConvertToken(bodyinvoicepaymentTermsInDays);
+                    invoiceObjectpropCount++;
+                }
+
+                if (invoiceObjectpropCount > 0)
+                {
+                    body["invoice"] = invoiceObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyinvoicedatedOn != null)
-            {
-                invoiceObject["dated_on"] = ExpressionConverter.ConvertO(bodyinvoicedatedOn);
-                invoiceObjectpropCount++;
-            }
-
-            if (bodyinvoicedueOn != null)
-            {
-                invoiceObject["due_on"] = ExpressionConverter.ConvertO(bodyinvoicedueOn);
-                invoiceObjectpropCount++;
-            }
-
-            if (bodyinvoicecurrency != null)
-            {
-                invoiceObject["currency"] = ExpressionConverter.ConvertO(bodyinvoicecurrency);
-                invoiceObjectpropCount++;
-            }
-
-            if (bodyinvoiceomitHeader != null)
-            {
-                invoiceObject["omit_header"] = ExpressionConverter.ConvertO(bodyinvoiceomitHeader);
-                invoiceObjectpropCount++;
-            }
-
-            if (bodyinvoicealwaysShowBICAndIBAN != null)
-            {
-                invoiceObject["always_show_bic_and_iban"] = ExpressionConverter.ConvertO(bodyinvoicealwaysShowBICAndIBAN);
-                invoiceObjectpropCount++;
-            }
-
-            if (bodyinvoicepaymentTermsInDays != null)
-            {
-                invoiceObject["payment_terms_in_days"] = ExpressionConverter.ConvertO(bodyinvoicepaymentTermsInDays);
-                invoiceObjectpropCount++;
-            }
-
-            if (invoiceObjectpropCount > 0)
-            {
-                body["invoice"] = invoiceObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateInvoiceResponse>(callPayload);
+            return new ApiConnectionAction<CreateInvoiceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IBodyWorkflowAction<ShowRecurringInvoiceResponse> ShowRecurringInvoice(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ShowRecurringInvoiceResponse> ShowRecurringInvoice([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/recurring_invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ShowRecurringInvoiceResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/recurring_invoices/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ShowRecurringInvoiceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IWorkflowAction MarkInvoiceAsCancelled(Expression<Func<string>> id)
+        public IWorkflowAction MarkInvoiceAsCancelled([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/invoices/{0}/transitions/mark_as_cancelled", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_cancelled", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IWorkflowAction MarkInvoiceAsDraft(Expression<Func<string>> id)
+        public IWorkflowAction MarkInvoiceAsDraft([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/invoices/{0}/transitions/mark_as_draft", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_draft", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IWorkflowAction MarkInvoiceAsScheduled(Expression<Func<string>> id)
+        public IWorkflowAction MarkInvoiceAsScheduled([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/invoices/{0}/transitions/mark_as_scheduled", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_scheduled", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freeagentip")]
-        public IWorkflowAction MarkInvoiceAsSent(Expression<Func<string>> id)
+        public IWorkflowAction MarkInvoiceAsSent([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/invoices/{0}/transitions/mark_as_sent", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/invoices/{0}/transitions/mark_as_sent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

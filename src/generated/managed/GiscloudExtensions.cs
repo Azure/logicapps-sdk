@@ -12,36 +12,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giscloud
     public class GiscloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giscloud")]
-        public IBodyWorkflowAction<UploadFileToPathResponse> UploadFileToPath(Expression<Func<string>> aPIKey, Expression<Func<object>> filedata, Expression<Func<string>> pathToAFile, Expression<Func<int>> destinationMap = null)
+        public IBodyWorkflowAction<Error> DeleteFileAtPath([WorkflowExpression] Func<string> aPIKey, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> pathToAFile)
         {
-            var apiCallPath = String.Format("/storage/fs/{0}", ExpressionConverter.ConvertWithUrlEncoding(pathToAFile, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (destinationMap != null)
-                callPayload.Queries["destination_map"] = ExpressionConverter.Convert(destinationMap);
-            callPayload.Headers["API-Key"] = ExpressionConverter.Convert(aPIKey);
-            return new ApiConnectionAction<UploadFileToPathResponse>(callPayload);
-        }
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/storage/fs/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pathToAFile, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileName, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["API-Key"] = SourceExpressionConverter.ConvertO(aPIKey);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giscloud")]
-        public IBodyWorkflowAction<Error> DeleteFileAtPath(Expression<Func<string>> aPIKey, Expression<Func<string>> fileName, Expression<Func<string>> pathToAFile)
-        {
-            var apiCallPath = String.Format("/storage/fs/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(pathToAFile, 1), ExpressionConverter.ConvertWithUrlEncoding(fileName, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["API-Key"] = ExpressionConverter.Convert(aPIKey);
-            return new ApiConnectionAction<Error>(callPayload);
+            return new ApiConnectionAction<Error>(BuildSourceInput);
         }
     }
 
     public class GiscloudTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class UploadFileToPathResponse
-    {
-        [JsonProperty("location")]
-        public string Location { get; set; }
     }
 
     public class Error

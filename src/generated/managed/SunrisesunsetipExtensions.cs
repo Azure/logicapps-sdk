@@ -12,19 +12,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
     public class SunrisesunsetipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sunrisesunsetip")]
-        public IBodyWorkflowAction<GetDataResponse> GetData(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> date = null, Expression<Func<formattedInput>> formatted = null)
+        public IBodyWorkflowAction<GetDataResponse> GetData([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<formattedInput> formatted = null)
         {
-            var apiCallPath = "/json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
-            callPayload.Queries["date"] = Convert.ToString("");
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            if (formatted != null)
-                callPayload.Queries["formatted"] = ExpressionConverter.Convert(formatted);
-            return new ApiConnectionAction<GetDataResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                callPayload.Queries["date"] = Convert.ToString("");
+                if (date != null)
+                    callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                if (formatted != null)
+                    callPayload.Queries["formatted"] = SourceExpressionConverter.Convert(formatted);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDataResponse>(BuildSourceInput);
         }
     }
 
@@ -76,10 +81,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
 
     public enum formattedInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 }
 

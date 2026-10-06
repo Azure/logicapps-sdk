@@ -12,19 +12,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobilyws
     public class MobilywsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobilyws")]
-        public IBodyWorkflowAction<string> SendSMS(Expression<Func<string>> apiKey, Expression<Func<string>> numbers, Expression<Func<string>> sender, Expression<Func<string>> msg, Expression<Func<string>> applicationType, Expression<Func<string>> lang, Expression<Func<string>> contentType)
+        public IBodyWorkflowAction<string> SendSMS([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> numbers, [WorkflowExpression] Func<string> sender, [WorkflowExpression] Func<string> msg, [WorkflowExpression] Func<string> applicationType, [WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<string> contentType)
         {
-            var apiCallPath = "/msgSend.php";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["apiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["numbers"] = ExpressionConverter.Convert(numbers);
-            callPayload.Queries["sender"] = ExpressionConverter.Convert(sender);
-            callPayload.Queries["msg"] = ExpressionConverter.Convert(msg);
-            callPayload.Queries["applicationType"] = ExpressionConverter.Convert(applicationType);
-            callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/msgSend.php";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["apiKey"] = SourceExpressionConverter.ConvertO(apiKey);
+                callPayload.Queries["numbers"] = SourceExpressionConverter.ConvertO(numbers);
+                callPayload.Queries["sender"] = SourceExpressionConverter.ConvertO(sender);
+                callPayload.Queries["msg"] = SourceExpressionConverter.ConvertO(msg);
+                callPayload.Queries["applicationType"] = SourceExpressionConverter.ConvertO(applicationType);
+                callPayload.Queries["lang"] = SourceExpressionConverter.ConvertO(lang);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 
