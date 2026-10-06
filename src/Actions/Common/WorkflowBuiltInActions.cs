@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             WorkflowExpression.Validate(headers, nameof(headers), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                return new NestedWorkflowAction<JToken>(ExpressionConverter.Convert(workflowReferenceName), requestBody != null ? ExpressionConverter.ConvertO(requestBody) : null, headers != null ? ExpressionConverter.ConvertObject(headers) : null);
+                return new NestedWorkflowAction<JToken>(ExpressionConverter.Convert(workflowReferenceName), requestBody != null ? ExpressionConverter.ConvertO(requestBody) : null, headers != null ? ExpressionConverter.ConvertO(headers) : null);
             });
         }
 
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             WorkflowExpression.Validate(headers, nameof(headers), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                return new HttpAction<JToken>(ExpressionConverter.Convert(uri), ExpressionConverter.Convert(method), requestBody != null ? ExpressionConverter.ConvertO(requestBody) : null, queries != null ? ExpressionConverter.ConvertObject(queries) : null, headers != null ? ExpressionConverter.ConvertObject(headers) : null);
+                return new HttpAction<JToken>(ExpressionConverter.Convert(uri), ExpressionConverter.Convert(method), requestBody != null ? ExpressionConverter.ConvertO(requestBody) : null, queries != null ? ExpressionConverter.ConvertO(queries) : null, headers != null ? ExpressionConverter.ConvertO(headers) : null);
             });
         }
 
@@ -194,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             WorkflowExpression.Validate(schema, nameof(schema), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
-                return new ResponseAction<JToken>(ExpressionConverter.ConvertStatusCode(statusCode), responseBody != null ? ExpressionConverter.ConvertO(responseBody) : null, headers != null ? ExpressionConverter.ConvertObject(headers) : null, schema != null ? ExpressionConverter.ConvertObject(schema) : null);
+                return new ResponseAction<JToken>(ExpressionConverter.ConvertStatusCode(statusCode), responseBody != null ? ExpressionConverter.ConvertO(responseBody) : null, headers != null ? ExpressionConverter.ConvertO(headers) : null, schema != null ? ExpressionConverter.ConvertO(schema) : null);
             });
         }
 

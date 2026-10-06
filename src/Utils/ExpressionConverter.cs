@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                 "return token.Type == global::Newtonsoft.Json.Linq.JTokenType.Null ? null : token.Type == global::Newtonsoft.Json.Linq.JTokenType.String ? " +
                 "token.Value<string>() : token.ToString(global::Newtonsoft.Json.Formatting.None); }))()}";
         }
-        public static JToken ConvertObject<T>(WorkflowExpression<T> value) => ConvertO(value);
         public static string ConvertCondition(WorkflowExpression<bool> value) =>
             value.LiteralToken is JToken token ? (token.Value<bool>() ? "#{true}" : "#{false}") : "#{" + value.Render() + "}";
         public static JToken ConvertStatusCode(WorkflowExpression<System.Net.HttpStatusCode> value) =>
@@ -50,7 +49,6 @@ namespace Microsoft.Azure.Workflows.Sdk
             for (var index = 0; index < times; index++) source = "encodeURIComponent(" + source + ")";
             return "#{" + source + "}";
         }
-        public static string ConvertWithUrlEncodingWithInt(WorkflowExpression<int> value, int times) => ConvertWithUrlEncoding(value, times);
         public static string ConvertOWithBase64<T>(WorkflowExpression<T> value)
         {
             if (value == null) return null;
