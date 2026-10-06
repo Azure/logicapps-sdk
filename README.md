@@ -81,6 +81,11 @@ pickup and execution checks. Historical reports and recorded output snapshots
 are kept outside the repository. Local test passes do not establish backend
 support; the E2E suite retains its known failing contracts.
 
+For testing changes across all three repositories, start with the
+[three-repository integration runbook](tests/ExtensionE2E/README.md#agent-entry-point-three-repository-testing).
+It identifies the required checkout/tool inputs, companion setup guides,
+candidate handoffs, safety boundaries, and evidence required for each test gate.
+
 Block/async workflow values are rejected until an execution-host transport is
 verified. Dynamically selected delegates, runtime-created expression trees,
 arbitrary captured getters, and implicit instance state are not reconstructed
