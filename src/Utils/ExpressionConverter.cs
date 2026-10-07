@@ -7,17 +7,21 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>Formats descriptor boundaries without interpreting authored C#.</summary>
     internal static class ExpressionConverter
     {
+        private const string SerializerSource =
+            "new global::Newtonsoft.Json.JsonSerializer { Culture = global::System.Globalization.CultureInfo.InvariantCulture, " +
+            "Converters = { new global::Newtonsoft.Json.Converters.StringEnumConverter() } }";
+
         public static JToken ConvertO<T>(WorkflowExpression<T> value)
         {
             if (value == null) return null;
             var literal = value.LiteralToken;
             if (literal != null) return Escape(literal);
             // Standard Newtonsoft serialization preserves SDK JSON attributes and enum wire names.
-            var serializer = "new global::Newtonsoft.Json.JsonSerializer { Culture = global::System.Globalization.CultureInfo.InvariantCulture, " +
-                "Converters = { new global::Newtonsoft.Json.Converters.StringEnumConverter() } }";
-            return new JValue($"#{{((global::System.Func<global::Newtonsoft.Json.Linq.JToken>)(() => {{ object result = {value.Render()}; " +
-                $"return result == null ? global::Newtonsoft.Json.Linq.JValue.CreateNull() : global::Newtonsoft.Json.Linq.JToken.FromObject(result, {serializer}); }}))()}}");
+            return new JValue(
+                $"#{{global::Newtonsoft.Json.Linq.JToken.FromObject((object)({value.Render()}) ?? " +
+                $"global::Newtonsoft.Json.Linq.JValue.CreateNull(), {SerializerSource})}}");
         }
+
         public static string Convert<T>(WorkflowExpression<T> value)
         {
             if (value == null) return null;
@@ -25,22 +29,27 @@ namespace Microsoft.Azure.Workflows.Sdk
                 literal.Type == JTokenType.String ? Escape(literal).Value<string>() : literal.ToString(Formatting.None);
             if (typeof(T) == typeof(Uri)) return $"#{{({value.Render()})?.OriginalString}}";
             if (typeof(T) == typeof(HttpMethod)) return $"#{{({value.Render()})?.Method}}";
-            var tokenSource = ConvertO(value).Value<string>();
-            return $"#{{((global::System.Func<string>)(() => {{ var token = {tokenSource.Substring(2, tokenSource.Length - 3)}; " +
+            return $"#{{((global::System.Func<string>)(() => {{ object result = {value.Render()}; " +
+                "var token = global::Newtonsoft.Json.Linq.JToken.FromObject(result ?? global::Newtonsoft.Json.Linq.JValue.CreateNull(), " +
+                $"{SerializerSource}); " +
                 "return token.Type == global::Newtonsoft.Json.Linq.JTokenType.Null ? null : token.Type == global::Newtonsoft.Json.Linq.JTokenType.String ? " +
                 "token.Value<string>() : token.ToString(global::Newtonsoft.Json.Formatting.None); }))()}";
         }
+
         public static string ConvertCondition(WorkflowExpression<bool> value) =>
             value.LiteralToken is JToken token ? (token.Value<bool>() ? "#{true}" : "#{false}") : "#{" + value.Render() + "}";
+
         public static JToken ConvertStatusCode(WorkflowExpression<System.Net.HttpStatusCode> value) =>
             value == null ? new JValue(200) : value.LiteralToken is JToken token ?
                 new JValue((int)Enum.Parse(typeof(System.Net.HttpStatusCode), token.Value<string>())) : new JValue("#{" + "(int)(" + value.Render() + ")}");
+
         public static string LiteralName(WorkflowExpression<string> value)
         {
             WorkflowExpression.Validate(value, nameof(value), true);
             if (value.LiteralToken?.Type != JTokenType.String) throw new NotSupportedException("Referenced variable names must be literal or captured strings.");
             return value.LiteralToken.Value<string>();
         }
+
         public static string ConvertWithUrlEncoding<T>(WorkflowExpression<T> value, int times)
         {
             if (times < 0) throw new ArgumentOutOfRangeException(nameof(times));
@@ -49,6 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             for (var index = 0; index < times; index++) source = "encodeURIComponent(" + source + ")";
             return "#{" + source + "}";
         }
+
         public static string ConvertOWithBase64<T>(WorkflowExpression<T> value)
         {
             if (value == null) return null;
@@ -57,9 +67,11 @@ namespace Microsoft.Azure.Workflows.Sdk
                 if (typeof(T) == typeof(byte[])) return literal.Value<string>("$content");
                 return "#{" + "base64(" + JsonConvert.ToString(literal.Type == JTokenType.String ? literal.Value<string>() : literal.ToString(Formatting.None)) + ")}";
             }
-            return typeof(T) == typeof(byte[]) ? "#{global::System.Convert.ToBase64String(" + value.Render() + ")}" :
-                "#{base64(" + Strip(Convert(value)) + ")}";
+            return typeof(T) == typeof(byte[])
+                ? "#{global::System.Convert.ToBase64String(" + value.Render() + ")}"
+                : "#{base64(" + Strip(Convert(value)) + ")}";
         }
+
         public static string ConvertGeneratedPath(string format, params string[] arguments)
         {
             var sources = arguments.Select(argument => argument.StartsWith("#{", StringComparison.Ordinal) ? Strip(argument) : JsonConvert.ToString(argument)).ToArray();
@@ -78,7 +90,9 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (text.Length != 0) pieces.Add(JsonConvert.ToString(text.ToString()));
             return "#{" + string.Join(" + ", pieces) + "}";
         }
+
         private static string Strip(string source) => source.Substring(2, source.Length - 3);
+
         private static JToken Escape(JToken token)
         {
             if (token.Type != JTokenType.String) return token;

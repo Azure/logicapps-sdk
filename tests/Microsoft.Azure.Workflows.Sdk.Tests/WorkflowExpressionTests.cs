@@ -34,6 +34,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void BoundaryConversionIsFlatAndEvaluatesSourceOnce()
+        {
+            var previous = WorkflowActions.BuiltIn.Compose<string>(() => "value").WithName("Source");
+            var objectAction = WorkflowActions.BuiltIn.Compose(() =>
+                new SendMessageInputMessageType { MessageId = previous.Output });
+            var objectSource = Input(objectAction);
+            Assert.Contains("JToken.FromObject((object)(", objectSource);
+            Assert.DoesNotContain("Func<global::Newtonsoft.Json.Linq.JToken>", objectSource);
+            Assert.Equal(1, objectSource.Split("outputs(\"Source\")").Length - 1);
+
+            var textAction = WorkflowActions.BuiltIn.Compose(() => previous.Output.ToUpperInvariant());
+            var textSource = Input(textAction);
+            Assert.Contains("object result =", textSource);
+            Assert.Contains("var token =", textSource);
+            Assert.Equal(1, textSource.Split("outputs(\"Source\")").Length - 1);
+            Assert.Equal("VALUE", Evaluate(textSource, JObject.Parse("""{"Source":"value"}""")).Value<string>());
+        }
+
+        [Fact]
         public void BlocksLoopsLocalFunctionsAndNestedLambdasRemainCSharp()
         {
             var offset = 3;
