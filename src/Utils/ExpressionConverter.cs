@@ -17,9 +17,9 @@ namespace Microsoft.Azure.Workflows.Sdk
             var literal = value.LiteralToken;
             if (literal != null) return Escape(literal);
             // Standard Newtonsoft serialization preserves SDK JSON attributes and enum wire names.
-            return new JValue(
-                $"#{{global::Newtonsoft.Json.Linq.JToken.FromObject((object)({value.Render()}) ?? " +
-                $"global::Newtonsoft.Json.Linq.JValue.CreateNull(), {SerializerSource})}}");
+            return WrapExpression(
+                $"global::Newtonsoft.Json.Linq.JToken.FromObject((object)({value.Render()}) ?? " +
+                $"global::Newtonsoft.Json.Linq.JValue.CreateNull(), {SerializerSource})");
         }
 
         public static string Convert<T>(WorkflowExpression<T> value)
@@ -27,21 +27,24 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (value == null) return null;
             if (value.LiteralToken is JToken literal) return literal.Type == JTokenType.Null ? null :
                 literal.Type == JTokenType.String ? Escape(literal).Value<string>() : literal.ToString(Formatting.None);
-            if (typeof(T) == typeof(Uri)) return $"#{{({value.Render()})?.OriginalString}}";
-            if (typeof(T) == typeof(HttpMethod)) return $"#{{({value.Render()})?.Method}}";
-            return $"#{{((global::System.Func<string>)(() => {{ object result = {value.Render()}; " +
+            if (typeof(T) == typeof(Uri)) return WrapExpressionText($"({value.Render()})?.OriginalString");
+            if (typeof(T) == typeof(HttpMethod)) return WrapExpressionText($"({value.Render()})?.Method");
+            return WrapExpressionText($"((global::System.Func<string>)(() => {{ object result = {value.Render()}; " +
                 "var token = global::Newtonsoft.Json.Linq.JToken.FromObject(result ?? global::Newtonsoft.Json.Linq.JValue.CreateNull(), " +
                 $"{SerializerSource}); " +
                 "return token.Type == global::Newtonsoft.Json.Linq.JTokenType.Null ? null : token.Type == global::Newtonsoft.Json.Linq.JTokenType.String ? " +
-                "token.Value<string>() : token.ToString(global::Newtonsoft.Json.Formatting.None); }))()}";
+                "token.Value<string>() : token.ToString(global::Newtonsoft.Json.Formatting.None); }))()");
         }
 
         public static string ConvertCondition(WorkflowExpression<bool> value) =>
-            value.LiteralToken is JToken token ? (token.Value<bool>() ? "#{true}" : "#{false}") : "#{" + value.Render() + "}";
+            WrapExpressionText(value.LiteralToken is JToken token
+                ? (token.Value<bool>() ? "true" : "false")
+                : value.Render());
 
         public static JToken ConvertStatusCode(WorkflowExpression<System.Net.HttpStatusCode> value) =>
             value == null ? new JValue(200) : value.LiteralToken is JToken token ?
-                new JValue((int)Enum.Parse(typeof(System.Net.HttpStatusCode), token.Value<string>())) : new JValue("#{" + "(int)(" + value.Render() + ")}");
+                new JValue((int)Enum.Parse(typeof(System.Net.HttpStatusCode), token.Value<string>())) :
+                WrapExpression("(int)(" + value.Render() + ")");
 
         public static string LiteralName(WorkflowExpression<string> value)
         {
@@ -56,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var source = Convert(value);
             source = source.StartsWith("#{", StringComparison.Ordinal) ? source.Substring(2, source.Length - 3) : JsonConvert.ToString(source);
             for (var index = 0; index < times; index++) source = "encodeURIComponent(" + source + ")";
-            return "#{" + source + "}";
+            return WrapExpressionText(source);
         }
 
         public static string ConvertOWithBase64<T>(WorkflowExpression<T> value)
@@ -65,11 +68,12 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (value.LiteralToken is JToken literal)
             {
                 if (typeof(T) == typeof(byte[])) return literal.Value<string>("$content");
-                return "#{" + "base64(" + JsonConvert.ToString(literal.Type == JTokenType.String ? literal.Value<string>() : literal.ToString(Formatting.None)) + ")}";
+                return WrapExpressionText("base64(" + JsonConvert.ToString(
+                    literal.Type == JTokenType.String ? literal.Value<string>() : literal.ToString(Formatting.None)) + ")");
             }
-            return typeof(T) == typeof(byte[])
-                ? "#{global::System.Convert.ToBase64String(" + value.Render() + ")}"
-                : "#{base64(" + Strip(Convert(value)) + ")}";
+            return WrapExpressionText(typeof(T) == typeof(byte[])
+                ? "global::System.Convert.ToBase64String(" + value.Render() + ")"
+                : "base64(" + Strip(Convert(value)) + ")");
         }
 
         public static string ConvertGeneratedPath(string format, params string[] arguments)
@@ -88,8 +92,14 @@ namespace Microsoft.Azure.Workflows.Sdk
                 index = end;
             }
             if (text.Length != 0) pieces.Add(JsonConvert.ToString(text.ToString()));
-            return "#{" + string.Join(" + ", pieces) + "}";
+            return WrapExpressionText(string.Join(" + ", pieces));
         }
+
+        private static JValue WrapExpression(string source) =>
+            new JValue(WrapExpressionText(source));
+
+        private static string WrapExpressionText(string source) =>
+            $"#{{{source}}}";
 
         private static string Strip(string source) => source.Substring(2, source.Length - 3);
 
@@ -97,7 +107,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             if (token.Type != JTokenType.String) return token;
             var text = token.Value<string>();
-            if (text.StartsWith("#{", StringComparison.Ordinal) || text.Contains("@{")) return new JValue("#{" + JsonConvert.ToString(text) + "}");
+            if (text.StartsWith("#{", StringComparison.Ordinal) || text.Contains("@{"))
+                return WrapExpression(JsonConvert.ToString(text));
             return text.StartsWith("@", StringComparison.Ordinal) ? new JValue("@" + text) : token;
         }
     }
