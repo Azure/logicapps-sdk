@@ -199,6 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         public string TimestampExpire { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum viaInput
     {
         AUTO,

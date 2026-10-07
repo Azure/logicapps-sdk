@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cmi
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum parametersmethodInput
     {
         GET,

@@ -82,6 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyEventInput
     {
         [EnumMember(Value = "checked_in")]

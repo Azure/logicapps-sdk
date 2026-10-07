@@ -314,6 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         public double Count { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inlinecountInput
     {
         [EnumMember(Value = "none")]
@@ -340,6 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         public string Unstructured { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum entryInputhttpMethodInput
     {
         GET,

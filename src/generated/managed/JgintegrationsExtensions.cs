@@ -222,6 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         public string Hash { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyalgoInput
     {
         [EnumMember(Value = "md2")]
@@ -284,6 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         public string Output { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypagesizeInput
     {
         [EnumMember(Value = "[4a0")]

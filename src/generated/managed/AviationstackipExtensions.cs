@@ -431,6 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         public string FlightIcao { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum flightStatusInput
     {
         [EnumMember(Value = "scheduled")]

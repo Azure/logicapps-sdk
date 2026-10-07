@@ -824,6 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         public string SigneeKey { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum flowTypeInput
     {
         RenderFlow,
@@ -997,6 +998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         public string Language { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysignatureLocationInput
     {
         TopFirstPage,
@@ -1087,6 +1089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         public string ReminderRule { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateSigningProcessSignatureLocationType
     {
         TopFirstPage,
@@ -1102,6 +1105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         public string VerificationCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyauthenticationContextTypeInput
     {
         Sim,
@@ -1153,6 +1157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taktikalcore
         public JToken Meta { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylookupTypeInput
     {
         NameAddress,

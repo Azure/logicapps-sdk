@@ -998,12 +998,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         public string TimeToLive { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum queueTypeInput
     {
         Main,
         DeadLetter
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum subscriptionTypeInput
     {
         Main,
@@ -1015,6 +1017,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         public string SubscriptionName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum subscriptionFilterTypeInput
     {
         None,

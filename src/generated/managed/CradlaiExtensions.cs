@@ -387,6 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         public PostprocessConfigTheStrategyUsedForAggregatingPredictionsType TheStrategyUsedForAggregatingPredictions { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PostprocessConfigTheOutputFormatType
     {
         [EnumMember(Value = "v1")]
@@ -395,6 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         V2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PostprocessConfigTheStrategyUsedForAggregatingPredictionsType
     {
         [EnumMember(Value = "BEST_N_PAGES")]
@@ -415,6 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         public string ImageQuality { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestpostprocessingtheOutputFormatInput
     {
         [EnumMember(Value = "v1")]
@@ -423,6 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         V2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestpostprocessingtheStrategyUsedForAggregatingPredictionsInput
     {
         [EnumMember(Value = "BEST_N_PAGES")]

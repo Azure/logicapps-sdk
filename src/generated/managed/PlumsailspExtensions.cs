@@ -2431,6 +2431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string WebURL { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum actionTypeInput
     {
         Grant,
@@ -2439,6 +2440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         RestoreInheritance
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum targetInput
     {
         Site,
@@ -2446,6 +2448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         Group
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestgroupTypeInput
     {
         Owner,
@@ -2480,6 +2483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string FolderURL { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum siteTypeInput
     {
         TeamSite,
@@ -2565,12 +2569,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestlocationInput
     {
         Top,
         QuickLaunch
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestdelimiterInput
     {
         Comma,
@@ -2579,6 +2585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         Pipe
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestlocaleInput
     {
         [EnumMember(Value = "aa-DJ")]

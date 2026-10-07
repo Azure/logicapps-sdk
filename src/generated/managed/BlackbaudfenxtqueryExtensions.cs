@@ -347,6 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         public string QueryResultsURI { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum QueryApiQueryExecutionJobStatusType
     {
         Pending,
@@ -358,6 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         Throttled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum moduleInput
     {
         GeneralLedger,
@@ -367,6 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         CashReceipts
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum includeReadUrlInput
     {
         Never,
@@ -374,6 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         OnceCompleted
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum contentDispositionInput
     {
         Inline,
@@ -473,12 +477,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         public string ChangedBy { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum QueryApiQuerySummaryFormatType
     {
         Dynamic,
         Static
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum QueryApiQuerySummarySupportedExecutionModesType
     {
         None,
@@ -487,12 +493,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum queryFormatInput
     {
         Dynamic,
         Static
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortColumnInput
     {
         Name,
@@ -517,6 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum QueryApiExecuteQueryResponseStatusType
     {
         Pending,
@@ -528,6 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         Throttled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoutputFormatInput
     {
         Csv,
@@ -535,6 +545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         Jsonl
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyformattingModeInput
     {
         None,
@@ -542,6 +553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
         Export
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysQLGenerationModeInput
     {
         Query,

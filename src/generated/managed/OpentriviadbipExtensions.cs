@@ -131,6 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
         public string[] IncorrectAnswers { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum difficultyInput
     {
         [EnumMember(Value = "easy")]
@@ -141,6 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
         Hard
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "boolean")]

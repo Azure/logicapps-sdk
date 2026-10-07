@@ -355,6 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         public string ResultDetails { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OperationResponseResultCodeType
     {
         Success,
@@ -373,6 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         InvalidExtension
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatalanguageInput
     {
         English,
@@ -392,6 +394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         Russian
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataperformanceInput
     {
         [EnumMember(Value = "Slow but accurate")]
@@ -402,6 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         FastestAndLeastAccurate
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatablacklistWhitelistInput
     {
         None,
@@ -424,6 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientpdfocr
         public string ResultDetails { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OcrOperationResponseResultCodeType
     {
         Success,

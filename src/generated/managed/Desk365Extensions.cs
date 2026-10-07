@@ -552,6 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         public string ClosedOn { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderByInput
     {
         [EnumMember(Value = "created_time")]
@@ -560,6 +561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         UpdatedTime
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderTypeInput
     {
         [EnumMember(Value = "asc")]
@@ -568,6 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         Desc
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum includeDescriptionInput
     {
         Yes,
@@ -616,6 +619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         public string ClosedOn { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriorityInput
     {
         Low,
@@ -624,6 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         Urgent
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         Question,
@@ -667,12 +672,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         public string Private { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyprivateInput
     {
         Yes,
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyresponseTypeInput
     {
         Agent,

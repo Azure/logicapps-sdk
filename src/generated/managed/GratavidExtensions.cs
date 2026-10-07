@@ -235,6 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
         public string ViewInGratavidLink { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum webookHookEventInput
     {
         [EnumMember(Value = "taskSent")]

@@ -94,6 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
         public string Latitude { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum countryInput
     {
         AD,

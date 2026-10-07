@@ -251,6 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobDtoStateType
     {
         Pending,
@@ -264,6 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         Resumed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobDtoJobPriorityType
     {
         Low,
@@ -296,6 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleRobotDtoTypeType
     {
         NonProduction,
@@ -312,18 +315,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         TestAutomation
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleRobotDtoHostingTypeType
     {
         Standard,
         Floating
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleRobotDtoProvisionTypeType
     {
         Manual,
         Automatic
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleRobotDtoCredentialTypeType
     {
         Default,
@@ -341,6 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EnvironmentDtoTypeType
     {
         Dev,
@@ -396,11 +403,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntryPointDataVariationDtoContentTypeType
     {
         Json
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleReleaseDtoProcessTypeType
     {
         Undefined,
@@ -433,6 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public bool AlwaysRunning { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleReleaseDtoJobPriorityType
     {
         Low,
@@ -440,6 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobDtoSourceTypeType
     {
         Manual,
@@ -449,18 +460,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         StudioWeb
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobDtoTypeType
     {
         Unattended,
         Attended
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobDtoStopStrategyType
     {
         SoftStop,
         Kill
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobDtoRuntimeTypeType
     {
         NonProduction,
@@ -477,6 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         TestAutomation
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobDtoProcessTypeType
     {
         Undefined,
@@ -502,12 +517,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MachineDtoTypeType
     {
         Standard,
         Template
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MachineDtoScopeType
     {
         Default,
@@ -530,6 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public bool HasTriggers { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MachineDtoAutoScalingProfileType
     {
         CostEfficient,
@@ -538,6 +556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         Custom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystartInfosourceInput
     {
         Manual,
@@ -546,6 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         StudioWeb
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystartInfojobPriorityInput
     {
         Low,
@@ -553,6 +573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystartInforuntimeTypeInput
     {
         NonProduction,
@@ -636,12 +657,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public string CreationTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ProcessingExceptionDtoTypeType
     {
         ApplicationException,
         BusinessException
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum QueueItemDtoStatusType
     {
         New,
@@ -653,6 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         Deleted
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum QueueItemDtoReviewStatusType
     {
         None,
@@ -710,6 +734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserRoleDtoRoleTypeType
     {
         Mixed,
@@ -723,6 +748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleUserDtoTypeType
     {
         User,
@@ -731,12 +757,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         DirectoryGroup
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleUserDtoProvisionTypeType
     {
         Manual,
         Automatic
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SimpleUserDtoLicenseTypeType
     {
         NonProduction,
@@ -761,6 +789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public AttendedRobotDtoRobotTypeType RobotType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AttendedRobotDtoRobotTypeType
     {
         NonProduction,
@@ -790,6 +819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public int MachineMappingsCount { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UnattendedRobotDtoCredentialTypeType
     {
         Default,
@@ -810,12 +840,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         public bool CloudRobots { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum QueueItemDtoProcessingExceptionTypeType
     {
         ApplicationException,
         BusinessException
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum QueueItemDtoPriorityType
     {
         High,
@@ -823,6 +855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
         Low
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyitemDatapriorityInput
     {
         High,

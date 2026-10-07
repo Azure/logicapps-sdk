@@ -315,6 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         public string Department { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "personal")]

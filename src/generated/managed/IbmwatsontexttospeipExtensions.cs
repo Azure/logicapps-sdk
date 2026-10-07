@@ -113,6 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         public string Base64 { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum voiceInput
     {
         [EnumMember(Value = "ar-MS_OmarVoice")]

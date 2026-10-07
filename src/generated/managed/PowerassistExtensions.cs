@@ -1495,6 +1495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         public JToken[] Result { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycomparisonInput
     {
         [EnumMember(Value = "equals")]
@@ -1515,6 +1516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         IsNotNullOrUndefined
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvalueTypeInput
     {
         String,

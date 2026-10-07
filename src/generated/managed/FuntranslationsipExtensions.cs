@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
         public string Translated { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum languageInput
     {
         [EnumMember(Value = "aldmeris")]

@@ -386,6 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         public string TransactionId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyproviderInput
     {
         Mpesa,
@@ -393,6 +394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         Athena
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytransferTypeInput
     {
         BusinessBuyGoods,
@@ -401,6 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         BusinessToBusinessTransfer
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycurrencyCodeInput
     {
         KES,
@@ -631,6 +634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         public string RecipientName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum categoryInput
     {
         BankCheckout,
@@ -644,6 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         UserStashTopup
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum providerInput
     {
         Mpesa,
@@ -653,12 +658,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         Athena
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         Success,
         Failed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sourceInput
     {
         [EnumMember(Value = "phoneNumber")]
@@ -668,6 +675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         Wallet
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum destinationInput
     {
         [EnumMember(Value = "phoneNumber")]
@@ -755,6 +763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         public JToken Metadata { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrecipientsInputItemCurrencyCodeType
     {
         KES,
@@ -763,6 +772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         USD
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrecipientsInputItemReasonType
     {
         SalaryPayment,

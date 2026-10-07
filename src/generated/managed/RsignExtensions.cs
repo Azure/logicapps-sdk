@@ -371,6 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         public string LastModifiedDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydetailOrSummaryInput
     {
         Detail,

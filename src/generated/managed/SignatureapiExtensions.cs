@@ -1759,6 +1759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string SenderEmail { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EnvelopeMode
     {
         [EnumMember(Value = "live")]
@@ -1767,6 +1768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         Test
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EnvelopeRouting
     {
         [EnumMember(Value = "parallel")]
@@ -1775,12 +1777,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         Sequential
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EnvelopeAttestation
     {
         [EnumMember(Value = "mx_nom151")]
         MxNom151
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyenvelopeModeInput
     {
         [EnumMember(Value = "live")]
@@ -1789,6 +1793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         Test
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyenvelopeRoutingInput
     {
         [EnumMember(Value = "parallel")]
@@ -1797,6 +1802,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         Sequential
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyenvelopeAttestationInput
     {
         [EnumMember(Value = "mx_nom151")]
@@ -1872,6 +1878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrequirementInput
     {
         [EnumMember(Value = "required")]
@@ -1901,6 +1908,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public RecipientDeliveryType DeliveryType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RecipientCeremonyCreation
     {
         [EnumMember(Value = "automatic")]
@@ -1909,6 +1917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         Manual
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RecipientDeliveryType
     {
         [EnumMember(Value = "email")]
@@ -1917,6 +1926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrecipientCeremonyCreationInput
     {
         [EnumMember(Value = "automatic")]
@@ -1925,6 +1935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         Manual
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrecipientDeliveryTypeInput
     {
         [EnumMember(Value = "email")]
@@ -1987,12 +1998,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         public string FileContent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DeliverableType
     {
         [EnumMember(Value = "audit_log")]
         AuditLog
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DeliverableStatus
     {
         [EnumMember(Value = "processing")]

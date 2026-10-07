@@ -4325,6 +4325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESBGBudgetSheetObjStateType
     {
         Initial,
@@ -4334,6 +4335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Fixed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESBGBudgetSheetObjLayoutTypeType
     {
         PerDC,
@@ -4342,6 +4344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         TotDD
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESBGBudgetSheetObjProductionStatusType
     {
         Indifferent,
@@ -4356,6 +4359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public JToken[] Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum rFARequestpriorityInput
     {
         Low,
@@ -4384,6 +4388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TriggeredOn { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESRFARequestPriorityType
     {
         Low,
@@ -4391,6 +4396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum entityTypeInput
     {
         ES00Device,
@@ -4645,6 +4651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public EntersoftWebApiApiControllersESCreatedEntityInfoEntityTypeType EntityType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiApiControllersESCreatedEntityInfoEntityTypeType
     {
         ES00Device,
@@ -5687,6 +5694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjTradeAccountTypeType
     {
         Customer,
@@ -5695,12 +5703,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Creditor
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjTradeAccountNatureType
     {
         Requirements,
         Obligations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADDocumentStateType
     {
         Temporary,
@@ -5708,6 +5718,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Posted
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjVATStatusType
     {
         Normal,
@@ -5717,6 +5728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADCancelStateType
     {
         Normal,
@@ -5724,6 +5736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Canceled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADOriginType
     {
         Manual,
@@ -5731,12 +5744,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         External
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADPrintedType
     {
         NoPrinting,
         NormalPrinting
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADFiscalPeriodTypeType
     {
         Normal,
@@ -5744,6 +5759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Closing
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADTransitionStateType
     {
         None,
@@ -5751,6 +5767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Full
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADLockModeType
     {
         NoLock,
@@ -5758,6 +5775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPassFIChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjCalculatedCashFlowTypeType
     {
         No,
@@ -5767,6 +5785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         UndoOutflows
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentTradeObjADProcessStateType
     {
         Initial,
@@ -5999,6 +6018,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjAssemblyTypeType
     {
         [EnumMember(Value = "_Simple")]
@@ -6009,6 +6029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Assembly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjItemClassType
     {
         Item,
@@ -6016,6 +6037,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         FixedAsset
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjValuationMethodType
     {
         Average,
@@ -6028,18 +6050,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjIncludedTaxReportsType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjSubTypeType
     {
         Service,
         Expense
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjExpenseTypeType
     {
         VariousExpenses,
@@ -6066,6 +6091,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OtherFees
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjServiceTypeType
     {
         ServicesProvision,
@@ -6077,6 +6103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         VariousSalesRevenues
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpensesObjElementExportCategoryType
     {
         None,
@@ -6340,6 +6367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjTypeType
     {
         Customer,
@@ -6348,12 +6376,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Creditor
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjNatureType
     {
         Requirements,
         Obligations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjKEPYOStatusType
     {
         Obligated,
@@ -6362,6 +6392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PublicSector
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjVATStatusType
     {
         Normal,
@@ -6371,6 +6402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjMatchingCriteriaType
     {
         ByAmountLeft,
@@ -6378,6 +6410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         NoAutoMatching
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjProposedPaymentTypeType
     {
         ByCheck,
@@ -6387,6 +6420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPortfolioChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjIncludeTaxDocsType
     {
         All,
@@ -6395,6 +6429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OnlyFiscal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjSolvencyTypeType
     {
         Approved,
@@ -6402,6 +6437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Rejected
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICreditorObjConcernsType
     {
         Items,
@@ -6738,6 +6774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADDocumentStateType
     {
         Temporary,
@@ -6745,6 +6782,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Posted
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADCancelStateType
     {
         Normal,
@@ -6752,6 +6790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Canceled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADOriginType
     {
         Manual,
@@ -6759,6 +6798,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         External
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjVATStatusType
     {
         Normal,
@@ -6768,12 +6808,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADPrintedType
     {
         NoPrinting,
         NormalPrinting
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADFiscalPeriodTypeType
     {
         Normal,
@@ -6781,6 +6823,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Closing
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADTransitionStateType
     {
         None,
@@ -6788,6 +6831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Full
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADLockModeType
     {
         NoLock,
@@ -6795,6 +6839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPassFIChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentCashObjADProcessStateType
     {
         Initial,
@@ -7112,6 +7157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjTypeType
     {
         Customer,
@@ -7120,12 +7166,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Creditor
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjNatureType
     {
         Requirements,
         Obligations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjKEPYOStatusType
     {
         Obligated,
@@ -7134,6 +7182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PublicSector
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjVATStatusType
     {
         Normal,
@@ -7143,6 +7192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjMatchingCriteriaType
     {
         ByAmountLeft,
@@ -7150,6 +7200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         NoAutoMatching
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjProposedPaymentTypeType
     {
         ByCheck,
@@ -7159,6 +7210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPortfolioChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjIncludeTaxDocsType
     {
         All,
@@ -7167,6 +7219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OnlyFiscal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjSolvencyTypeType
     {
         Approved,
@@ -7174,6 +7227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Rejected
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISupplierObjConcernsType
     {
         Items,
@@ -7405,6 +7459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjAssemblyTypeType
     {
         [EnumMember(Value = "_Simple")]
@@ -7415,6 +7470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Assembly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjItemClassType
     {
         Item,
@@ -7422,6 +7478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         FixedAsset
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjValuationMethodType
     {
         Average,
@@ -7434,18 +7491,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjIncludedTaxReportsType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjSubTypeType
     {
         Service,
         Expense
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjExpenseTypeType
     {
         VariousExpenses,
@@ -7472,6 +7532,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OtherFees
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjServiceTypeType
     {
         ServicesProvision,
@@ -7483,6 +7544,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         VariousSalesRevenues
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemExpenseObjElementExportCategoryType
     {
         None,
@@ -7837,6 +7899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjAssemblyTypeType
     {
         [EnumMember(Value = "_Simple")]
@@ -7847,6 +7910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Assembly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjItemClassType
     {
         Item,
@@ -7854,6 +7918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         FixedAsset
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjValuationMethodType
     {
         Average,
@@ -7866,18 +7931,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjIncludedTaxReportsType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjSubTypeType
     {
         Service,
         Expense
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjExpenseTypeType
     {
         VariousExpenses,
@@ -7904,6 +7972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OtherFees
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjServiceTypeType
     {
         ServicesProvision,
@@ -7915,6 +7984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         VariousSalesRevenues
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemObjElementExportCategoryType
     {
         None,
@@ -8024,6 +8094,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjAccountTypeType
     {
         Charge,
@@ -8033,6 +8104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Bonus
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjDiscountLineUpdateType
     {
         Discount1,
@@ -8041,6 +8113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Discount4
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjAmountTypeType
     {
         Price,
@@ -8049,6 +8122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Round
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjPriceRelatedFieldType
     {
         Quantity,
@@ -8058,6 +8132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Volume
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjPercentageRelatedFieldType
     {
         [EnumMember(Value = "HP_BaseValue")]
@@ -8090,6 +8165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         LPQuantityAndGrossPriceProduct
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjRoundingTypeType
     {
         NoDecimal,
@@ -8098,6 +8174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         _000
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjOriginType
     {
         DocumentType,
@@ -8108,12 +8185,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ShippingMethod
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjIsKEPYOType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjCalcFromPrevLineType
     {
         No,
@@ -8121,6 +8200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         RunningTotal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjElementExportCategoryType
     {
         None,
@@ -8133,6 +8213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ClearanceSupply
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFISpecialAccountObjTypeType
     {
         Revenue,
@@ -8558,6 +8639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjSourceTypeType
     {
         CompanySite,
@@ -8567,6 +8649,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Transporter
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjTargetTypeType
     {
         CompanySite,
@@ -8576,6 +8659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Transporter
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADDocumentStateType
     {
         Temporary,
@@ -8583,6 +8667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Posted
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADCancelStateType
     {
         Normal,
@@ -8590,6 +8675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Canceled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADOriginType
     {
         Manual,
@@ -8597,12 +8683,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         External
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADPrintedType
     {
         NoPrinting,
         NormalPrinting
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADFiscalPeriodTypeType
     {
         Normal,
@@ -8610,6 +8698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Closing
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADTransitionStateType
     {
         None,
@@ -8617,6 +8706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Full
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADLockModeType
     {
         NoLock,
@@ -8624,6 +8714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPassFIChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentStockObjADProcessStateType
     {
         Initial,
@@ -8765,12 +8856,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFINoteObjNatureType
     {
         Receivable,
         Payable
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFINoteObjSourceAccountTypeType
     {
         Customer,
@@ -8780,6 +8873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Other
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFINoteObjTargetAccountTypeType
     {
         Customer,
@@ -8789,6 +8883,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Other
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFINoteObjHolderTypeType
     {
         [EnumMember(Value = "One_Off")]
@@ -8803,6 +8898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         GLAccount
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFINoteObjIssuedByTypeType
     {
         [EnumMember(Value = "One_Off")]
@@ -8817,6 +8913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         GLAccount
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFINoteObjUnderwriterTypeType
     {
         [EnumMember(Value = "One_Off")]
@@ -8831,6 +8928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         GLAccount
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFINoteObjConcernsType
     {
         All,
@@ -9031,6 +9129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountContractObjPeriodLengthType
     {
         OneMonthPeriod,
@@ -9132,6 +9231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIVoucherObjTypeType
     {
         DiscVoucherValue,
@@ -9390,6 +9490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjTypeType
     {
         Customer,
@@ -9398,12 +9499,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Creditor
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjNatureType
     {
         Requirements,
         Obligations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjKEPYOStatusType
     {
         Obligated,
@@ -9412,6 +9515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PublicSector
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjVATStatusType
     {
         Normal,
@@ -9421,6 +9525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjMatchingCriteriaType
     {
         ByAmountLeft,
@@ -9428,6 +9533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         NoAutoMatching
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjProposedPaymentTypeType
     {
         ByCheck,
@@ -9437,6 +9543,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPortfolioChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjIncludeTaxDocsType
     {
         All,
@@ -9445,6 +9552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OnlyFiscal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjSolvencyTypeType
     {
         Approved,
@@ -9452,6 +9560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Rejected
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICustomerObjConcernsType
     {
         Items,
@@ -9711,6 +9820,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjTypeType
     {
         Customer,
@@ -9719,12 +9829,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Creditor
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjNatureType
     {
         Requirements,
         Obligations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjKEPYOStatusType
     {
         Obligated,
@@ -9733,6 +9845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PublicSector
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjVATStatusType
     {
         Normal,
@@ -9742,6 +9855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjMatchingCriteriaType
     {
         ByAmountLeft,
@@ -9749,6 +9863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         NoAutoMatching
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjProposedPaymentTypeType
     {
         ByCheck,
@@ -9758,6 +9873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPortfolioChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjIncludeTaxDocsType
     {
         All,
@@ -9766,6 +9882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OnlyFiscal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjSolvencyTypeType
     {
         Approved,
@@ -9773,6 +9890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Rejected
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDebtorObjConcernsType
     {
         Items,
@@ -9866,12 +9984,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIPricelistObjKindType
     {
         Sales,
         Purchases
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIPricelistObjDiscountAssignmentType
     {
         DirectlyOnPrice,
@@ -9880,6 +10000,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Discount3Field
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIPricelistObjTypeType
     {
         Simple,
@@ -9888,6 +10009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         InvoicePolicyReference
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIPricelistObjDiscountSelectionType
     {
         All,
@@ -10119,6 +10241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjAssemblyTypeType
     {
         [EnumMember(Value = "_Simple")]
@@ -10129,6 +10252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Assembly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjItemClassType
     {
         Item,
@@ -10136,6 +10260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         FixedAsset
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjValuationMethodType
     {
         Average,
@@ -10148,18 +10273,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjIncludedTaxReportsType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjSubTypeType
     {
         Service,
         Expense
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjExpenseTypeType
     {
         VariousExpenses,
@@ -10186,6 +10314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OtherFees
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjServiceTypeType
     {
         ServicesProvision,
@@ -10197,6 +10326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         VariousSalesRevenues
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIItemServiceObjElementExportCategoryType
     {
         None,
@@ -10315,6 +10445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICashAccountObjExportTransferLayoutTypeType
     {
         None,
@@ -10324,12 +10455,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Ethniki
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICashAccountObjNotesNumberingModeType
     {
         BasedOnIntervals,
         BasedOnSpecifiedValues
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFICashAccountObjConcernsType
     {
         All,
@@ -10807,6 +10940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjAccountTypeType
     {
         GeneralLedgerAccount,
@@ -10819,6 +10953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         SalesPerson
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADDocumentStateType
     {
         Temporary,
@@ -10826,6 +10961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Posted
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADCancelStateType
     {
         Normal,
@@ -10833,6 +10969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Canceled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADOriginType
     {
         Manual,
@@ -10840,12 +10977,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         External
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADPrintedType
     {
         NoPrinting,
         NormalPrinting
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADFiscalPeriodTypeType
     {
         Normal,
@@ -10853,6 +10992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Closing
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADTransitionStateType
     {
         None,
@@ -10860,6 +11000,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Full
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjVATStatusType
     {
         Normal,
@@ -10869,6 +11010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADLockModeType
     {
         NoLock,
@@ -10876,6 +11018,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPassFIChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObjADProcessStateType
     {
         Initial,
@@ -11136,6 +11279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjTypeType
     {
         Customer,
@@ -11144,12 +11288,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Creditor
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjNatureType
     {
         Requirements,
         Obligations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjKEPYOStatusType
     {
         Obligated,
@@ -11158,6 +11304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PublicSector
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjVATStatusType
     {
         Normal,
@@ -11167,6 +11314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjMatchingCriteriaType
     {
         ByAmountLeft,
@@ -11174,6 +11322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         NoAutoMatching
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjProposedPaymentTypeType
     {
         ByCheck,
@@ -11183,6 +11332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ByPortfolioChecks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjIncludeTaxDocsType
     {
         All,
@@ -11191,6 +11341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         OnlyFiscal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjSolvencyTypeType
     {
         Approved,
@@ -11198,6 +11349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Rejected
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFITradeAccountObjConcernsType
     {
         Items,
@@ -11512,6 +11664,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFAFixedAssetObjAssemblyTypeType
     {
         [EnumMember(Value = "_Simple")]
@@ -11522,6 +11675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Assembly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFAFixedAssetObjItemClassType
     {
         Item,
@@ -11529,6 +11683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         FixedAsset
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFAFixedAssetObjItemTypeType
     {
         Good,
@@ -11546,6 +11701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PackingMaterial
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFAFixedAssetObjValuationMethodType
     {
         Average,
@@ -11558,12 +11714,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFAFixedAssetObjIncludedTaxReportsType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESFAFixedAssetObjAssetTypeType
     {
         Land,
@@ -11857,6 +12015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOPersonObjVATStatusType
     {
         Normal,
@@ -11866,12 +12025,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Remised
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOPersonObjPersonKindType
     {
         LegalPerson,
         ActualPerson
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOPersonObjSexType
     {
         Unknown,
@@ -11879,6 +12040,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Female
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOPersonObjFamilyStatusType
     {
         Unmarried,
@@ -11887,6 +12049,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Unknown
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOPersonObjPreferredWayOfContractType
     {
         UNKNOWN,
@@ -11965,6 +12128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsES00DeviceObjLogTypeType
     {
         Full,
@@ -11972,6 +12136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Phantom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsES00DeviceObjStateType
     {
         Normal,
@@ -11982,6 +12147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Init
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsES00DeviceObjMobileApplicationType
     {
         SalesForceAutomation,
@@ -11999,6 +12165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ESAnalyzer
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsES00DeviceObjOperatingSystemType
     {
         WindowsMobile,
@@ -12039,6 +12206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOWebUserObjStatusType
     {
         PendingActivation,
@@ -12106,6 +12274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOUserObjSecurityLevelType
     {
         IPRestricted,
@@ -12118,6 +12287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ForbidEditShortcuts
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOUserObjUserTypeType
     {
         Normal,
@@ -12125,12 +12295,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         B2BUser
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOUserObjValidAuthMethodsType
     {
         BASIC,
         LDAP
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOUserObjAllowAccessFromSourceType
     {
         Desktop,
@@ -12140,6 +12312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Service
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESGOUserObjRequest2FAFromSourceType
     {
         Desktop,
@@ -12178,6 +12351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string RequestURI { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESBusinessHookRegistrationResponseBusinessEventTypeType
     {
         HighValueSalesOrder,
@@ -12201,6 +12375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         RequestHasBeenApproved
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESBusinessHookRegistrationResponseHClassType
     {
         Entity,
@@ -12243,6 +12418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string RequestURI { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESPodHookRegistrationResponseStateType
     {
         Initial,
@@ -12253,6 +12429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         All
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESPodHookRegistrationResponsePackageTypeType
     {
         MasterPackage,
@@ -12263,6 +12440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         All
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESPodHookRegistrationResponseHClassType
     {
         Entity,
@@ -12306,6 +12484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string RequestURI { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESRFAHookRegistrationResponsePriorityType
     {
         Low,
@@ -12313,6 +12492,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESRFAHookRegistrationResponseHClassType
     {
         Entity,
@@ -12351,6 +12531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string RequestURI { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESEntityHookRegistrationResponseEntityTypeType
     {
         ES00Device,
@@ -12597,6 +12778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ESWPWorkPackage
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESEntityHookRegistrationResponseEventTypeType
     {
         Create,
@@ -12605,6 +12787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         CreateOrUpdate
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESEntityHookRegistrationResponseHClassType
     {
         Entity,
@@ -12643,6 +12826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string RequestURI { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESSystemHookRegistrationResponseSystemEventTypeTypeItem
     {
         RestartAppServer,
@@ -12662,6 +12846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Other
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiInfrastructureESSystemHookRegistrationResponseHClassType
     {
         Entity,
@@ -12757,6 +12942,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjModelClassType
     {
         NotSpecified,
@@ -12767,6 +12953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Recommendation
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjRegressionType
     {
         NotSpecified,
@@ -12774,6 +12961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Casual
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjStatusType
     {
         Initial,
@@ -12783,6 +12971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Training
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjSubSystemType
     {
         NotSpecified,
@@ -12796,6 +12985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ItemLikelihoodToDeliver
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjAlgorithmType
     {
         NotSpecified,
@@ -12829,6 +13019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         MLCATBOOST
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjMeasureType
     {
         NotSpecified,
@@ -12837,6 +13028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Transactions
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjAggregateType
     {
         NotSpecified,
@@ -12847,12 +13039,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Count
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjTransactionGroupsType
     {
         Date,
         TransactionID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjCalendarGroupsType
     {
         Year,
@@ -12868,6 +13062,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         WorkingDay
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjCompanyGroupsType
     {
         Company,
@@ -12878,6 +13073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Dimension2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjBranchGroupsType
     {
         Branch,
@@ -12888,6 +13084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Area
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjTradeAccountGroupsType
     {
         TradeAccount,
@@ -12907,6 +13104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Education
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjItemGroupsType
     {
         Item,
@@ -12916,6 +13114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         SubCategory
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjCalendarFeaturesType
     {
         Year,
@@ -12931,6 +13130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         WorkingDay
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjCompanyFeaturesType
     {
         Company,
@@ -12941,6 +13141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Dimension2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjBranchFeaturesType
     {
         Branch,
@@ -12951,6 +13152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Area
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjTradeAccountFeaturesType
     {
         TradeAccount,
@@ -12970,6 +13172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Education
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjItemFeaturesType
     {
         Item,
@@ -12979,6 +13182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         SubCategory
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjPersonGroupsType
     {
         Person,
@@ -13007,6 +13211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Property10
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjPersonFeaturesType
     {
         Person,
@@ -13035,6 +13240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Property10
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjSiteGroupsType
     {
         Site,
@@ -13045,6 +13251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Area
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjSiteFeaturesType
     {
         Site,
@@ -13055,6 +13262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Area
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjOpportunityFeaturesType
     {
         Lead,
@@ -13065,6 +13273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Competitor
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjTransactionKPIFeaturesType
     {
         Turnover,
@@ -13074,6 +13283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         NumberOfItemHierarchyCategories
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjBinningStrategyType
     {
         NoBinning,
@@ -13083,6 +13293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         DecisionTree
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjCompanyFeaturesGenerationType
     {
         SelectedFeatures,
@@ -13090,6 +13301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjBranchFeaturesGenerationType
     {
         SelectedFeatures,
@@ -13097,6 +13309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjPersonFeaturesGenerationType
     {
         SelectedFeatures,
@@ -13104,6 +13317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjPersonSiteFeaturesGenerationType
     {
         SelectedFeatures,
@@ -13111,6 +13325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjPersonPropertyFeaturesGenerationType
     {
         SelectedFeatures,
@@ -13118,6 +13333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjTradeAccountFeaturesGenerationType
     {
         SelectedFeatures,
@@ -13125,6 +13341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjTradeAccountSiteFeaturesGenerationType
     {
         SelectedFeatures,
@@ -13132,6 +13349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjSiteFeaturesGenerationType
     {
         SelectedFeatures,
@@ -13139,6 +13357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjOpportunityFeaturesGenerationType
     {
         SelectedFeatures,
@@ -13146,6 +13365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjNumericFeaturesType
     {
         Numeric1,
@@ -13175,6 +13395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Numeric25
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjItemFeaturesGenerationType
     {
         SelectedFeatures,
@@ -13182,6 +13403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjFeatureImportanceAlgorithmType
     {
         RandomForest,
@@ -13190,6 +13412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         RecursiveFeatureElimination
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjHyperParamOptType
     {
         Default,
@@ -13198,6 +13421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Bayesian
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjBinningNumStrategyType
     {
         None,
@@ -13206,12 +13430,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         BayesianBlocks
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjFeatureCorrelationNumAlgortithmType
     {
         PearsonCorrCoef,
         Spearman
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMLModelObjFeatureCorrelationCatAlgortithmType
     {
         CramersV
@@ -13383,6 +13609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMSerialNumberObjPositionTypeType
     {
         TradeAccount,
@@ -13509,6 +13736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCatalogueItemObjNotesTextTypeType
     {
         RichText,
@@ -13516,6 +13744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         HtmlText
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCatalogueItemObjProductTypeType
     {
         CompanyProduct,
@@ -13589,6 +13818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStorageLocationObjAisleSideTypeType
     {
         Unknown,
@@ -13956,6 +14186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStockItemObjAssemblyTypeType
     {
         [EnumMember(Value = "_Simple")]
@@ -13966,6 +14197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Assembly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStockItemObjItemClassType
     {
         Item,
@@ -13973,6 +14205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         FixedAsset
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStockItemObjItemTypeType
     {
         Good,
@@ -13990,6 +14223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PackingMaterial
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStockItemObjValuationMethodType
     {
         Average,
@@ -14002,18 +14236,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStockItemObjIncludedTaxReportsType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStockItemObjServiceMUTypeType
     {
         BaseMU,
         AltMU
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMStockItemObjLotCharacteristicsMgmtType
     {
         ExpirationDate,
@@ -14173,12 +14410,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCommercialProfileObjIncludedTaxReportsType
     {
         Annually,
         Periodically
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCommercialProfileObjValuationMethodType
     {
         Average,
@@ -14191,6 +14430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCommercialProfileObjItemTypeType
     {
         Good,
@@ -14208,6 +14448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         PackingMaterial
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCommercialProfileObjItemClassType
     {
         Item,
@@ -14215,6 +14456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         FixedAsset
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCommercialProfileObjAssetTypeType
     {
         Land,
@@ -14228,6 +14470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Other
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMCommercialProfileObjLotCharacteristicsMgmtType
     {
         ExpirationDate,
@@ -14468,6 +14711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMProductionPlanObjStatusType
     {
         Initial,
@@ -14479,6 +14723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         Cancelled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESMMProductionPlanObjDatesCalculationBasedOnType
     {
         ResourceDateAnalysis,
@@ -14694,6 +14939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string DataTypeName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum severityInput
     {
         Information,
@@ -14713,6 +14959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string EnumName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApiModelsCompanyParamExESTypeType
     {
         [EnumMember(Value = "STRING_TYPE")]
@@ -14764,6 +15011,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMMobileTaskTypeObjSignatureType
     {
         None,
@@ -15002,18 +15250,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMServiceRequestObjDefaultVisitTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMServiceRequestObjDefaultPreparationTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMServiceRequestObjTaskNotesTextTypeType
     {
         RichText,
@@ -15049,18 +15300,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMRFMModelObjTradeAccountSelectionModeType
     {
         AllCustomers,
         BasedOnFilter
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMRFMModelObjStateType
     {
         InProgress,
         Completed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMRFMModelObjCalculationSourceType
     {
         TradeAccountEntries,
@@ -15092,6 +15346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMNewsletterRecipientObjStateType
     {
         Subscribed,
@@ -15331,18 +15586,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMInteractionObjDefaultVisitTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMInteractionObjDefaultPreparationTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMInteractionObjTaskNotesTextTypeType
     {
         RichText,
@@ -15608,18 +15866,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMTaskObjDefaultVisitTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMTaskObjDefaultPreparationTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMTaskObjTaskNotesTextTypeType
     {
         RichText,
@@ -15669,6 +15930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMResourceObjResourceTypeType
     {
         Person,
@@ -15908,18 +16170,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMCampaignObjDefaultVisitTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMCampaignObjDefaultPreparationTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMCampaignObjTaskNotesTextTypeType
     {
         RichText,
@@ -16158,18 +16423,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMSMActivityObjDefaultVisitTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMSMActivityObjDefaultPreparationTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMSMActivityObjTaskNotesTextTypeType
     {
         RichText,
@@ -16408,18 +16676,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMOpportunityObjDefaultVisitTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMOpportunityObjDefaultPreparationTimeUnitType
     {
         Minutes,
         Hours
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESTMOpportunityObjTaskNotesTextTypeType
     {
         RichText,
@@ -16657,6 +16928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESWMTransportActionObjBalancePostingType
     {
         ActionItem,
@@ -16758,6 +17030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntersoftWebApi2ODSModelsESWMShipmentObjOriginType
     {
         User,
@@ -17132,6 +17405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         public string TS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum registrationbusinessEventTypeInput
     {
         HighValueSalesOrder,
@@ -17155,6 +17429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         RequestHasBeenApproved
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum registrationstateInput
     {
         Initial,
@@ -17165,6 +17440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         All
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum registrationpackageTypeInput
     {
         MasterPackage,
@@ -17175,6 +17451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         All
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum registrationpriorityInput
     {
         Low,
@@ -17182,6 +17459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum registrationentityTypeInput
     {
         ES00Device,
@@ -17428,6 +17706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         ESWPWorkPackage
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum registrationeventTypeInput
     {
         Create,
@@ -17436,6 +17715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
         CreateOrUpdate
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum registrationsystemEventTypeInputItem
     {
         RestartAppServer,

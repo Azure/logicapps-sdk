@@ -43,6 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apptigentpowertoolspro
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum positionInput
     {
         Custom,

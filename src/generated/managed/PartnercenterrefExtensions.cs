@@ -1690,6 +1690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Notes { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MicrosoftPartnerServicePartnerReferralsContractsV3ReferralInviteContextTypeAssistanceRequestCodeType
     {
         Unknown,
@@ -1737,6 +1738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Uri { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MicrosoftPartnerServicePartnerReferralsContractsV3ReferralSalesStageType
     {
         Qualify,
@@ -1928,6 +1930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum referralinviteContextassistanceRequestCodeInput
     {
         Unknown,
@@ -1939,6 +1942,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         WorkloadSpecificValueProposition
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum referralsalesStageInput
     {
         Qualify,
@@ -2124,6 +2128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum odataReferralinviteContextassistanceRequestCodeInput
     {
         Unknown,
@@ -2135,6 +2140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         WorkloadSpecificValueProposition
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum odataReferralsalesStageInput
     {
         Qualify,
@@ -2287,6 +2293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public JToken Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum referralInputItemUpdateOperationType
     {
         [EnumMember(Value = "replace")]
@@ -2295,6 +2302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         Add
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum referralInputItemFieldPathType
     {
         [EnumMember(Value = "/registrations/0/contract/startDateTime")]
@@ -2335,12 +2343,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public referralInputItemValueType Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum referralInputItemOpType
     {
         [EnumMember(Value = "add")]
         Add
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum referralInputItemPathType
     {
         [EnumMember(Value = "/registrations/-")]
@@ -2359,6 +2369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public referralInputItemValueTypeContractType Contract { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum referralInputItemValueTypeTypeType
     {
         AzureIPCoSell
@@ -2388,12 +2399,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public referralInputItemValueTypeSolutionDetailsTypeItemMarketplaceTransactionDetailsType MarketplaceTransactionDetails { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum referralInputItemValueTypeSolutionDetailsTypeItemPrimaryDeploymentOnType
     {
         Customer,
         Partner
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum referralInputItemValueTypeSolutionDetailsTypeItemPricingModelType
     {
         PayAsYouGo,
@@ -2430,6 +2443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Partnercenterref
         public string StartDateTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum referralInputItemValueTypeContractTypeTermType
     {
         Perpetual,

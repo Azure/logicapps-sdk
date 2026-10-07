@@ -12692,6 +12692,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string StandardError { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum runProcesswindowStyleInput
     {
         [EnumMember(Value = "normal")]
@@ -12704,6 +12705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         Hidden
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum runProcessstandardOutputEncodingInput
     {
         UTF8,
@@ -12713,6 +12715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         UTF16BE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum runProcessstandardErrorEncodingInput
     {
         UTF8,
@@ -12732,6 +12735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string StandardError { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum runPowerShellProcesswindowStyleInput
     {
         [EnumMember(Value = "normal")]
@@ -12744,6 +12748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         Hidden
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum runPowerShellProcessstandardOutputEncodingInput
     {
         UTF8,
@@ -12753,6 +12758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         UTF16BE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum runPowerShellProcessstandardErrorEncodingInput
     {
         UTF8,
@@ -12830,6 +12836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string MouseMoveMethod { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum setMouseMoveMethodmouseMoveMethodInput
     {
         [EnumMember(Value = "mouse_event")]
@@ -12850,6 +12857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ScreenshotErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum takeScreenshotimageFormatInput
     {
         PNG,
@@ -12932,6 +12940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string PlainTextPassword { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum generatePasswordgenerateAtInput
     {
         Agent,
@@ -12966,12 +12975,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum credentialWritecredentialTypeInput
     {
         Windows,
         Generic
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum credentialWritecredentialPersistenceInput
     {
         Session,
@@ -12985,6 +12996,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Password { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum credentialReadcredentialTypeInput
     {
         Windows,
@@ -12997,6 +13009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum credentialDeletecredentialTypeInput
     {
         Windows,
@@ -13008,12 +13021,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string RDPFilePath { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum generateRDPFilecredentialTypeInput
     {
         Windows,
         Generic
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum generateRDPFilecredentialPersistenceInput
     {
         Session,
@@ -13093,6 +13108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int ConvertedRectangleHeight { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum convertRectangleCoordinatesconversionTypeInput
     {
         [EnumMember(Value = "P2V")]
@@ -13110,6 +13126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int ThreadId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sendMessageToWebAPImethodInput
     {
         GET,
@@ -13122,6 +13139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         TRACE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sendMessageToWebAPItransmitEncodingInput
     {
         [EnumMember(Value = "UTF-8")]
@@ -13135,6 +13153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         UTF16BE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sendMessageToWebAPIresponseEncodingInput
     {
         [EnumMember(Value = "UTF-8")]
@@ -13159,6 +13178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int TaskId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum tasksAddNewTasksetAutomationNameInput
     {
         [EnumMember(Value = "Auto")]
@@ -13172,6 +13192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int TaskId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum tasksAddNewDeferralsetAutomationNameInput
     {
         [EnumMember(Value = "Auto")]
@@ -13210,6 +13231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int NumberOfAutomationTasks { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum tasksGetAllTasksautomationTaskStatusInput
     {
         Deferred,
@@ -13244,6 +13266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Tags { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum tasksGetTaskstatusChangeInput
     {
         Retrieved,
@@ -13277,6 +13300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string Tags { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum tasksGetNextTaskstatusChangeInput
     {
         Retrieved,
@@ -13290,6 +13314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum tasksChangeTaskStatusautomationTaskStatusInput
     {
         Completed,
@@ -13304,6 +13329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum tasksAddNotenoteTypeInput
     {
         WorkNote,
@@ -13538,6 +13564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool AttachedToSession { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum attachToIAConnectSessionByIndexsearchIAConnectSessionTypeInput
     {
         [EnumMember(Value = "Local Agent")]
@@ -13555,6 +13582,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public bool AttachedToSession { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum attachToMostRecentIAConnectSessionsearchIAConnectSessionTypeInput
     {
         [EnumMember(Value = "Local Agent")]
@@ -13594,6 +13622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum setAgentGlobalCoordinateConfigurationmultiMonitorFunctionalityInput
     {
         NotSet,
@@ -13603,6 +13632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         AllDisplays
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplierInput
     {
         [EnumMember(Value = "Auto")]
@@ -13611,6 +13641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         NotSet
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplierInput
     {
         [EnumMember(Value = "Auto")]
@@ -13619,6 +13650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         NotSet
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum setAgentGlobalCoordinateConfigurationjavaCoordinateSystemInput
     {
         NotSet,
@@ -13626,6 +13658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         Physical
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystemInput
     {
         NotSet,
@@ -13694,6 +13727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ThreadErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum getAgentThreadssortOrderInput
     {
         None,
@@ -13832,6 +13866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public int FileSize { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum writeTextFileencodingInput
     {
         Unicode,
@@ -13895,6 +13930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum writeCollectionToCSVFileoutputEncodingInput
     {
         UTF8,
@@ -13903,6 +13939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         ASCII
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addPermissionToFolderpermissionInput
     {
         Read,
@@ -13911,6 +13948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         FullControl
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addPermissionToFilepermissionInput
     {
         Read,
@@ -13944,6 +13982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         public string DownloadFileContents { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum downloadHTTPFilereturnContentEncodingInput
     {
         ASCII,

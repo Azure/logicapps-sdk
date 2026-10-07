@@ -460,6 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         public int CreatedTimestampMs { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         COMPLETED,
@@ -469,6 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         FAILED
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum whenInput
     {
         [EnumMember(Value = "created_before")]
@@ -477,6 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         CreatedAfter
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortByInput
     {
         [EnumMember(Value = "created")]
@@ -487,6 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         Ended
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum directionInput
     {
         [EnumMember(Value = "asc")]

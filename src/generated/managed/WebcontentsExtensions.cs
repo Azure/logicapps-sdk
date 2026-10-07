@@ -86,6 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestmethodInput
     {
         GET,

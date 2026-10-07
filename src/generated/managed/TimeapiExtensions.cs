@@ -374,6 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         public bool DstActive { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DayOfWeek
     {
         Sunday,
@@ -550,6 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         public bool DstActive { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydstAmbiguityInput
     {
         [EnumMember(Value = "earlier")]

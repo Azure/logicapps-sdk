@@ -515,6 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         public string B64Json { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysizeInput
     {
         [EnumMember(Value = "256x256")]
@@ -525,6 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         _1024x1024
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyresponseFormatInput
     {
         [EnumMember(Value = "url")]
@@ -578,6 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         public int TotalTokens { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyengineInput
     {
         [EnumMember(Value = "text-davinci-002")]

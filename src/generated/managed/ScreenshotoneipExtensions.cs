@@ -450,6 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "mp4")]
@@ -464,6 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
         Gif
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum responseTypeInput
     {
         [EnumMember(Value = "by_format")]
@@ -474,6 +476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
         Json
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ipCountryCodeInput
     {
         [EnumMember(Value = "us")]
@@ -506,6 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
         Mx
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum timeZoneInput
     {
         [EnumMember(Value = "America/Belize")]
@@ -576,6 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
         PacificMajuro
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum storageClassInput
     {
         [EnumMember(Value = "standard")]
@@ -607,6 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum scrollEasingInput
     {
         [EnumMember(Value = "linear")]

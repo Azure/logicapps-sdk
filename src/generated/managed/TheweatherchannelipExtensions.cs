@@ -130,6 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum unitsInput
     {
         [EnumMember(Value = "e")]
@@ -138,6 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
         M
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "json")]

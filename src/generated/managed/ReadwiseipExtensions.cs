@@ -669,6 +669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         public string HighlightUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyhighlightsInputItemCategoryType
     {
         [EnumMember(Value = "books")]
@@ -681,6 +682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
         Podcasts
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyhighlightsInputItemLocationTypeType
     {
         [EnumMember(Value = "page")]

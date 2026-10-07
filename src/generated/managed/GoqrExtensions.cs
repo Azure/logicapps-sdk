@@ -74,6 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goqr
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum charsetSourceInput
     {
         [EnumMember(Value = "ISO-8859-1")]
@@ -82,6 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goqr
         UTF8
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum charsetTargetInput
     {
         [EnumMember(Value = "ISO-8859-1")]
@@ -90,6 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goqr
         UTF8
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "png")]

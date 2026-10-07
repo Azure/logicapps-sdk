@@ -1421,6 +1421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public OpportunityResponse Opportunity { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyopportunitydurationBasisInput
     {
         FIXED,
@@ -1555,6 +1556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         public string WebsiteType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypartytitleInput
     {
         Mr,
@@ -1566,6 +1568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         Prof
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypartyphoneNumbersphoneTypeInput
     {
         Home,
@@ -1575,12 +1578,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         Direct
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypartyemailAddressesemailTypeInput
     {
         Home,
         Work
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypartywebsiteswebsiteServiceInput
     {
         FEED,
@@ -1600,12 +1605,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
         YOUTUBE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypartywebsiteswebsiteTypeInput
     {
         Home,
         Work
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypartyaddressesaddressTypeInput
     {
         Home,

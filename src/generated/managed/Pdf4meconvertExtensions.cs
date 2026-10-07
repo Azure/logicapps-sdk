@@ -957,6 +957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylayoutInput
     {
         [EnumMember(Value = "")]
@@ -965,6 +966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         Landscape
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyformatInput
     {
         [EnumMember(Value = "")]
@@ -982,12 +984,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         A6
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyauthTypeInput
     {
         NoAuth,
         SharePointLogin
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum schemaValInput
     {
         PDF,
@@ -1001,6 +1005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         VSDX
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycomplianceInput
     {
         PdfA1b,
@@ -1013,12 +1018,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meconvert
         PdfA3a
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyqualityTypeInput
     {
         Draft,
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoutputFormatInput
     {
         [EnumMember(Value = "")]

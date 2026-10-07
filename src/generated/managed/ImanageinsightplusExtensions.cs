@@ -610,6 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         public string Ssid { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CurationPropertiesStateType
     {
         [EnumMember(Value = "IN_DRAFT")]
@@ -720,6 +721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         public KnowledgeAdminTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum KnowledgeAdminTypeType
     {
         USER,
@@ -864,6 +866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         public string Ssid { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyenabledStateInput
     {
         Enabled,

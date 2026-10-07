@@ -644,6 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         public string RawJSON { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum doctypeInput
     {
         [EnumMember(Value = "legal")]

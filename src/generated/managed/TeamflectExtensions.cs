@@ -740,6 +740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
         public double CurrentValue { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyupdaterTypeInput
     {
         Owner,

@@ -877,6 +877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         public string ModifiedOn { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum skipInput
     {
         [EnumMember(Value = "0")]

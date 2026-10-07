@@ -162,6 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mediastack
         public string PublishedAt { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortInput
     {
         [EnumMember(Value = "published_desc")]

@@ -1550,6 +1550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         public string Date { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylanguageInput
     {
         [EnumMember(Value = "nb-NO")]
@@ -1566,6 +1567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         LvLV
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysigningMethodInput
     {
         [EnumMember(Value = "email")]
@@ -1600,6 +1602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         TouchSign
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodynotificationMethodInput
     {
         [EnumMember(Value = "email")]

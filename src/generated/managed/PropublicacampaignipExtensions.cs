@@ -970,6 +970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         public string DateCoverageTo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum categoryInput
     {
         [EnumMember(Value = "candidate-loan")]

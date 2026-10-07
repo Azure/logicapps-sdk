@@ -268,6 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         [EnumMember(Value = "text")]
@@ -276,6 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
         Title
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycolorInput
     {
         [EnumMember(Value = "yellow")]

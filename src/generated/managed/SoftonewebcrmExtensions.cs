@@ -5235,6 +5235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public TaskApiModelsEnumsCallDirection CallDirection { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TaskApiModelsEnumsTaskType
     {
         [EnumMember(Value = "Task")]
@@ -5247,12 +5248,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Note
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TaskApiModelsEnumsAssignedToType
     {
         People,
         Queues
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TaskApiModelsEnumsRelatedToType
     {
         Account,
@@ -5260,18 +5263,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Quote
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TaskApiModelsEnumsContactType
     {
         Lead,
         Contact
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TaskApiModelsEnumsStatus
     {
         Open,
         Completed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TaskApiModelsEnumsCallDirection
     {
         Unknown,
@@ -5279,18 +5285,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Outbound
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         Open,
         Completed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyassignedToTypeInput
     {
         People,
         Queues
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrelatedToTypeInput
     {
         Account,
@@ -5298,12 +5307,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Quote
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycontactTypeInput
     {
         Lead,
         Contact
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
         Open,
@@ -5313,6 +5324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Ignore
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycallDirectionInput
     {
         Unknown,
@@ -5320,6 +5332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Outbound
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytaskTypeInput
     {
         [EnumMember(Value = "Task")]
@@ -5440,6 +5453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string Latitude { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TaskApiModelsEnumsEventStatus
     {
         Scheduled,
@@ -5448,6 +5462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Canceled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum eventStatusInput
     {
         Scheduled,
@@ -5456,6 +5471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Canceled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyeventStatusInput
     {
         Scheduled,
@@ -5512,6 +5528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string SortDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum relatedToTypeInput
     {
         Account,
@@ -5594,6 +5611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string ParentId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "Task")]
@@ -5750,6 +5768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public bool OptOut { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SalesPipelineApiModelsEnumsEmailType
     {
         Work,
@@ -5771,6 +5790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public bool OptOut { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SalesPipelineApiModelsEnumsPhoneType
     {
         Work,
@@ -5780,6 +5800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Ignore
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SalesPipelineApiModelsEnumsOwnerType
     {
         People,
@@ -5807,6 +5828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string PostalCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SalesPipelineApiModelsEnumsStatus
     {
         Default,
@@ -5814,6 +5836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Unqualified
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SalesPipelineApiFeaturesLeadUpdateLeadScoreLeadSentiment
     {
         Unqualified,
@@ -5823,12 +5846,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Hot
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ownerTypeInput
     {
         People,
         Queues
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyownerTypeInput
     {
         People,
@@ -5934,6 +5959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string AiGenerationDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SalesPipelineApiModelsEnumsOpportunityStatus
     {
         Open,
@@ -5943,6 +5969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         Ignore
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SalesPipelineApiFeaturesOpportunityUpdateOpportunityScoreOpportunitySentiment
     {
         Unqualified,
@@ -6195,6 +6222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public string Email { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CustomerApiFeaturesAccountsAccountDTOAiSentimentType
     {
         [EnumMember(Value = "0")]
@@ -6209,6 +6237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         _4
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyaiSentimentInput
     {
         [EnumMember(Value = "0")]
@@ -6367,6 +6396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public bool OptOut { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CustomerApiFeaturesContactsEmailTypeType
     {
         Work,
@@ -6388,6 +6418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public bool OptOut { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CustomerApiFeaturesContactsPhoneTypeType
     {
         Work,
@@ -6580,6 +6611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public bool OptOut { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CustomerApiFeaturesContactsEmailDTOTypeType
     {
         Work,
@@ -6601,6 +6633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
         public bool OptOut { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CustomerApiFeaturesContactsPhoneDTOTypeType
     {
         Work,

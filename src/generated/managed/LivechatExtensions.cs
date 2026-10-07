@@ -447,6 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         public string GroupName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyloginStatusInput
     {
         [EnumMember(Value = "accepting chats")]
@@ -455,6 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         NotAcceptingChats
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypermissionInput
     {
         [EnumMember(Value = "administrator")]
@@ -622,6 +624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         public string URL { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysourcesourceTypeInput
     {
         [EnumMember(Value = "chat-window")]

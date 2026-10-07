@@ -241,6 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         public string DistanceUnits { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum unitsInput
     {
         [EnumMember(Value = "I")]
@@ -420,6 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         public string DistanceUnits { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum measureInput
     {
         Temperature,
@@ -430,6 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         WindSpeed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum whenInput
     {
         [EnumMember(Value = "Is equal to")]

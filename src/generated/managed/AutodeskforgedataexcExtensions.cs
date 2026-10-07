@@ -444,6 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         public string LastModified { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum regionInput
     {
         US,
@@ -532,6 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         public string NextLink { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum getlatestInput
     {
         [EnumMember(Value = "all")]
@@ -540,6 +542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         LatestProperties
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum filterByInput
     {
         [EnumMember(Value = "category")]
@@ -552,6 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         NoFilter
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum selectedUnitTypeInput
     {
         [EnumMember(Value = "imperial")]

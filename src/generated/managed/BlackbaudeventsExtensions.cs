@@ -1536,6 +1536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string[] Tags { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventApiEventAttachmentTypeType
     {
         Link,
@@ -1548,6 +1549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string ID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         Link,
@@ -1635,6 +1637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public int Version { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventApiEventParticipantOptionInputTypeType
     {
         Boolean,
@@ -1660,6 +1663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string ID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyinputTypeInput
     {
         Boolean,
@@ -1790,6 +1794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public EventApiMembership[] Memberships { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventApiParticipantListEntryRSVPStatusType
     {
         NoResponse,
@@ -1801,6 +1806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         NotApplicable
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventApiParticipantListEntryInvitationStatusType
     {
         NotApplicable,
@@ -1871,6 +1877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum rsvpStatusInput
     {
         NoResponse,
@@ -1882,6 +1889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         NotApplicable
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum invitationStatusInput
     {
         NotApplicable,
@@ -1895,6 +1903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string ID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrSVPStatusInput
     {
         NoResponse,
@@ -1906,6 +1915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         NotApplicable
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyinvitationStatusInput
     {
         NotApplicable,
@@ -1955,6 +1965,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         public string DateModified { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventApiParticipantRSVPStatusType
     {
         NoResponse,
@@ -1966,6 +1977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudevents
         NotApplicable
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventApiParticipantInvitationStatusType
     {
         NotApplicable,

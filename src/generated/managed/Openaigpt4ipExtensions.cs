@@ -1028,6 +1028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         public double Violence { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodelInput
     {
         [EnumMember(Value = "dall-e-2")]
@@ -1072,6 +1073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         public int TotalTokens { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyencodingFormatInput
     {
         [EnumMember(Value = "float")]
@@ -1089,6 +1091,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         public string ContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvoiceInput
     {
         [EnumMember(Value = "alloy")]
@@ -1105,6 +1108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         Shimmer
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyresponseFormatInput
     {
         [EnumMember(Value = "mp3")]
@@ -1147,6 +1151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         public string RevisedPrompt { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyqualityInput
     {
         [EnumMember(Value = "standard")]
@@ -1155,6 +1160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         Hd
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysizeInput
     {
         [EnumMember(Value = "1024x1024")]
@@ -1169,6 +1175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         _1024x1792
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystyleInput
     {
         [EnumMember(Value = "vivid")]
@@ -1195,6 +1202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         public string RevisedPrompt { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sizeInput
     {
         [EnumMember(Value = "1024x1024")]

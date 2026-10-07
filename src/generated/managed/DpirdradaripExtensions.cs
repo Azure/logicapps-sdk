@@ -341,6 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         public int Distance { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dataSetInput
     {
         RF3,

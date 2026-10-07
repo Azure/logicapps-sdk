@@ -812,6 +812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         public GetTaskResponse TaskObject { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum taskdirectionInput
     {
         [EnumMember(Value = "up")]

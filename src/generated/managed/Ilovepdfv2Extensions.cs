@@ -985,6 +985,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfileSourceInput
     {
         [EnumMember(Value = "binary")]
@@ -993,6 +994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Url
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycompressionLevelInput
     {
         [EnumMember(Value = "extreme")]
@@ -1012,6 +1014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysplitModeInput
     {
         [EnumMember(Value = "fixed_ranges")]
@@ -1026,6 +1029,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Filesize
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymergeAfterInput
     {
         [EnumMember(Value = "true")]
@@ -1052,6 +1056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypdfjpgModeInput
     {
         [EnumMember(Value = "pages")]
@@ -1069,6 +1074,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypagesizeInput
     {
         [EnumMember(Value = "fit")]
@@ -1087,6 +1093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyconformanceInput
     {
         [EnumMember(Value = "pdfa-1b")]
@@ -1107,6 +1114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Pdfa3a
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyallowDowngradeInput
     {
         [EnumMember(Value = "true")]
@@ -1133,6 +1141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfacingPagesInput
     {
         [EnumMember(Value = "true")]
@@ -1141,6 +1150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfirstCoverInput
     {
         [EnumMember(Value = "true")]
@@ -1149,6 +1159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyverticalPositionInput
     {
         [EnumMember(Value = "bottom")]
@@ -1159,6 +1170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Top
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyhorizontalPositionInput
     {
         [EnumMember(Value = "left")]
@@ -1169,6 +1181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Right
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfontFamilyInput
     {
         Arial,
@@ -1195,6 +1208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfileSource2Input
     {
         [EnumMember(Value = "binary")]
@@ -1212,6 +1226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodeInput
     {
         [EnumMember(Value = "text")]
@@ -1220,6 +1235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         Image
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymosaicInput
     {
         [EnumMember(Value = "true")]
@@ -1228,12 +1244,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfontStyleInput
     {
         Bold,
         Italic
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylayerInput
     {
         [EnumMember(Value = "above")]
@@ -1251,6 +1269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfv2
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrotateInput
     {
         [EnumMember(Value = "0")]

@@ -393,18 +393,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycrAddressTypeInput
     {
         S,
         K
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycurrencyInput
     {
         CHF,
         EUR
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylanguageTypeInput
     {
         German,
@@ -413,6 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         English
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyreferenceTypeInput
     {
         QRR,
@@ -420,6 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         NON
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyseperatorLineInput
     {
         LineWithScissor,
@@ -427,6 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyudAddressTypeInput
     {
         S,
@@ -448,6 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         public string StreamFile { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysplitBarcodePageInput
     {
         [EnumMember(Value = "before")]

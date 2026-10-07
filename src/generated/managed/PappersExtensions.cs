@@ -217,6 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public string Classification { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CompanyFormatStatusType
     {
         [EnumMember(Value = "active")]
@@ -246,6 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public string CountryCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CompanyFormatCommercialRegisterRegistrationStatusType
     {
         [EnumMember(Value = "registered")]
@@ -315,6 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public string CountryCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficerTypeType
     {
         [EnumMember(Value = "legal")]
@@ -323,6 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         Physical
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficerGenderType
     {
         M,
@@ -377,6 +381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public string VotingPercentage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UboGenderType
     {
         M,
@@ -410,6 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public RelatedDocument[] RelatedDocuments { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FinancialTypeType
     {
         [EnumMember(Value = "accounts")]
@@ -418,6 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         ConsolidatedAccounts
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FinancialAvailabilityType
     {
         [EnumMember(Value = "available")]
@@ -640,6 +647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public string Country { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EstablishmentStatusType
     {
         [EnumMember(Value = "active")]
@@ -657,6 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContactTypeType
     {
         [EnumMember(Value = "website")]
@@ -667,6 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         Phone
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum countryCodeInput
     {
         UK,
@@ -675,6 +685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         CH
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldsInput
     {
         [EnumMember(Value = "officers")]
@@ -740,6 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         public SearchFormatHeadOfficeType HeadOffice { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SearchFormatStatusType
     {
         [EnumMember(Value = "active")]

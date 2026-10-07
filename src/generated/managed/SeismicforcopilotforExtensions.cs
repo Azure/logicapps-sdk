@@ -367,6 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         public JToken AdditionalProperties { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum recordTypeInput
     {
         [EnumMember(Value = "account")]
@@ -375,6 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         Opportunity
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum crmTypeInput
     {
         Salesforce,

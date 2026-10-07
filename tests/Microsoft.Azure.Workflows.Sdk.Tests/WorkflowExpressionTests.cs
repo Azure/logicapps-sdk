@@ -269,6 +269,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void SdkEnumsDeclareTheirWireRepresentation()
+        {
+            var missing = typeof(WorkflowActions).Assembly.GetTypes()
+                .Where(type => type.IsEnum &&
+                    type.GetCustomAttribute<JsonConverterAttribute>()?.ConverterType != typeof(StringEnumConverter) &&
+                    !IsGeneratedIntegerEnum(type))
+                .Select(type => type.FullName)
+                .OrderBy(name => name)
+                .ToArray();
+
+            Assert.True(missing.Length == 0, string.Join(Environment.NewLine, missing));
+        }
+
+        [Fact]
         public void GeneratedTriggersUseUniqueDefaultsAndWithNameOnly()
         {
             var managedMethod = typeof(Microsoft.Azure.Workflows.Sdk.Connectors.Office365.Office365Triggers)
@@ -295,6 +309,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             ((string)AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES")).Split(Path.PathSeparator)
                 .Append(typeof(WorkflowExpression).Assembly.Location).Append(typeof(JToken).Assembly.Location)
                 .Distinct(StringComparer.OrdinalIgnoreCase).Select(path => MetadataReference.CreateFromFile(path));
+        private static bool IsGeneratedIntegerEnum(Type type)
+        {
+            var names = Enum.GetNames(type);
+            if (names.Length == 0) return false;
+            var values = Enum.GetValues(type).Cast<object>().Select(value => Convert.ToInt64(value)).ToArray();
+            for (var index = 0; index < names.Length; index++)
+            {
+                var name = names[index];
+                if (name.StartsWith("_", StringComparison.Ordinal) &&
+                    long.TryParse(name.Substring(1), out var positive) &&
+                    values[index] == positive)
+                {
+                    continue;
+                }
+                if (name.StartsWith("Negative", StringComparison.Ordinal) &&
+                    long.TryParse(name.Substring("Negative".Length), out var negative) &&
+                    values[index] == -negative)
+                {
+                    continue;
+                }
+                return false;
+            }
+            return true;
+        }
         private static JToken Evaluate(string expression, JObject values = null)
         {
             Assert.StartsWith("#{", expression);

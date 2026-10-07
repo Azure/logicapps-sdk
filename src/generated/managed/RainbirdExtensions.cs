@@ -239,6 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum environmentInput
     {
         [EnumMember(Value = "enterprise-api.rainbird.ai")]

@@ -657,6 +657,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum apiVersionInput
     {
         [EnumMember(Value = "2025-11-15-preview")]
@@ -693,6 +694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public JToken Metadata { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MessagesRoleType
     {
         [EnumMember(Value = "user")]
@@ -974,6 +976,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public AgentId Agent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpenAIServiceTier
     {
         [EnumMember(Value = "auto")]
@@ -1000,6 +1003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public OpenAIReasoningGenerateSummaryType GenerateSummary { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpenAIReasoningEffortType
     {
         [EnumMember(Value = "low")]
@@ -1010,6 +1014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpenAIReasoningSummaryType
     {
         [EnumMember(Value = "auto")]
@@ -1020,6 +1025,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         Detailed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpenAIReasoningGenerateSummaryType
     {
         [EnumMember(Value = "auto")]
@@ -1042,6 +1048,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public OpenAIResponseTextFormatConfigurationType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpenAIResponseTextFormatConfigurationType
     {
         [EnumMember(Value = "text")]
@@ -1058,6 +1065,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public OpenAIToolType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpenAIToolType
     {
         [EnumMember(Value = "file_search")]
@@ -1114,6 +1122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public JToken Variables { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpenAIResponseTruncationType
     {
         [EnumMember(Value = "auto")]
@@ -1122,12 +1131,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         Disabled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpenAIResponseObjectEntityType
     {
         [EnumMember(Value = "response")]
         Response
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpenAIResponseStatusType
     {
         [EnumMember(Value = "completed")]
@@ -1153,6 +1164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpenAIResponseErrorCode
     {
         [EnumMember(Value = "server_error")]
@@ -1199,6 +1211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public OpenAIResponseIncompleteDetailsTypeReasonType Reason { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpenAIResponseIncompleteDetailsTypeReasonType
     {
         [EnumMember(Value = "max_output_tokens")]
@@ -1216,6 +1229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpenAIItemType
     {
         [EnumMember(Value = "message")]
@@ -1312,18 +1326,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         public string Version { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AgentIdTypeType
     {
         [EnumMember(Value = "agent_id")]
         AgentId
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyagenttypeInput
     {
         [EnumMember(Value = "agent_reference")]
         AgentReference
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytextformattypeInput
     {
         [EnumMember(Value = "text")]
@@ -1334,6 +1351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         JsonObject
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytruncationInput
     {
         [EnumMember(Value = "auto")]
@@ -1342,6 +1360,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         Disabled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpenAIIncludable
     {
         [EnumMember(Value = "code_interpreter_call.outputs")]

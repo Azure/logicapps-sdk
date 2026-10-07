@@ -230,6 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         public string Receiver { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requesttextTypeInput
     {
         GSM,

@@ -2905,6 +2905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public int Quantity { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyavailabilitypickupAtLocationAvailabilityInputItemAvailabilityTypeType
     {
         [EnumMember(Value = "IN_STOCK")]
@@ -2924,6 +2925,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public int Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyavailabilitypickupAtLocationAvailabilityInputItemFulfillmentTimeTypeUnitType
     {
         YEAR,
@@ -2960,6 +2962,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public int Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyavailabilityshipToLocationAvailabilityavailabilityDistributionsInputItemFulfillmentTimeTypeUnitType
     {
         YEAR,
@@ -2975,6 +2978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         MILLISECOND
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyconditionInput
     {
         NEW,
@@ -3008,6 +3012,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         FORPARTSORNOTWORKING
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypackageWeightAndSizedimensionsunitInput
     {
         INCH,
@@ -3016,6 +3021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         METER
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypackageWeightAndSizepackageTypeInput
     {
         LETTER,
@@ -3069,6 +3075,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         WINEPAK
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypackageWeightAndSizeweightunitInput
     {
         POUND,
@@ -3398,6 +3405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string Open { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylocationTypesInputItem
     {
         STORE,
@@ -3413,6 +3421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public bodyoperatingHoursInputItemIntervalsTypeItem[] Intervals { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoperatingHoursInputItemDayOfWeekEnumType
     {
         MONDAY,
@@ -4030,6 +4039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyformatInput
     {
         AUCTION,
@@ -4037,6 +4047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         FIXEDPRICE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylistingDurationInput
     {
         [EnumMember(Value = "DAYS_1")]
@@ -4089,12 +4100,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylistingPoliciesshippingCostOverridesInputItemShippingServiceTypeType
     {
         DOMESTIC,
         INTERNATIONAL
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypricingSummaryoriginallySoldForRetailPriceOnInput
     {
         [EnumMember(Value = "ON_EBAY")]
@@ -4105,6 +4118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebayip
         ONANDOFFEBAY
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypricingSummarypricingVisibilityInput
     {
         NONE,

@@ -128,6 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetTimeSlotsResponseItemLocationsTypeItemTypeType
     {
         [EnumMember(Value = "physical")]
@@ -138,6 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
         Phone
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylocationTypeInput
     {
         [EnumMember(Value = "physical")]

@@ -521,6 +521,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         public EipErrorResponseBody ErrorDetails { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UpdateControlNumberResultStatusOfTheUpdateControlNumberActionType
     {
         ControlNumberSuccessfullyUpdated,
@@ -549,6 +550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         public string[] Errors { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EipErrorResponseBodyStatusCodeType
     {
         Continue,
@@ -611,6 +613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         public bool IsMessageProcessingFailed { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReplicableControlNumberContentControlNumberTypeType
     {
         Icn,
@@ -618,6 +621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         Tscn
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReplicableControlNumberContentMessageDirectionType
     {
         Receive,
@@ -893,6 +897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         public EdifactDataElementIdentification UCI7 { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum segmentTerminatorSuffixInput
     {
         NotSpecified,
@@ -902,6 +907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         CRLF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum decimalIndicatorInput
     {
         NotSpecified,
@@ -909,6 +915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
         Decimal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum payloadCharacterSetInput
     {
         Legacy,

@@ -914,6 +914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string CreationTimestamp { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydocumentLanguageInput
     {
         [EnumMember(Value = "en")]
@@ -1114,12 +1115,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         public string LegalNoticetext { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystakeholdersInputItemActorsTypeItemTypeType
     {
         Signer,
         Receiver
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystakeholdersInputItemActorsTypeItemUserRolesTypeItem
     {
         LEGALNOTICE1,

@@ -240,6 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ChatCompletionResponseChoicesTypeItemMessageTypeRoleType
     {
         [EnumMember(Value = "user")]
@@ -248,6 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         Assistant
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ChatCompletionResponseChoicesTypeItemFinishReasonType
     {
         [EnumMember(Value = "stop")]
@@ -279,6 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymessagesInputItemRoleType
     {
         [EnumMember(Value = "system")]
@@ -330,6 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         public int TotalTokens { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyencodingFormatInput
     {
         [EnumMember(Value = "float")]

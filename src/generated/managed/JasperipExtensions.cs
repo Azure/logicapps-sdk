@@ -810,6 +810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoptionsinputLanguageInput
     {
         English,
@@ -820,6 +821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         German
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoptionsoutputLanguageInput
     {
         English,
@@ -830,6 +832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         German
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoptionslanguageFormalityInput
     {
         [EnumMember(Value = "default")]
@@ -840,6 +843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         Less
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoptionscompletionTypeInput
     {
         [EnumMember(Value = "performance")]
@@ -869,6 +873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyinputstypeInput
     {
         [EnumMember(Value = "text")]
@@ -1108,6 +1113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string AppVisibility { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysettingsappVisibilityInput
     {
         [EnumMember(Value = "visible")]

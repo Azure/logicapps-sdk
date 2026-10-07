@@ -1613,6 +1613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         public TrusteeWriteAccessRightsTypeItem[] AccessRights { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TrusteeWriteAccessRightsTypeItem
     {
         [EnumMember(Value = "see")]

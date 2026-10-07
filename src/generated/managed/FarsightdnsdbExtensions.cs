@@ -342,6 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         public string[] Rdata { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "name")]
@@ -394,6 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         public string RawRdata { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         [EnumMember(Value = "regex")]
@@ -402,6 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Farsightdnsdb
         Glob
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum keyInput
     {
         [EnumMember(Value = "rrnames")]

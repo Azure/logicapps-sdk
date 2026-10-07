@@ -101,6 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubdocumentreadability
         public double AvgParagraphLength { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum contentTypeInput
     {
         [EnumMember(Value = "application/pdf")]

@@ -632,6 +632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum projectdataprojectColorInput
     {
         [EnumMember(Value = "dark-pink")]
@@ -672,6 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         LightWarmGray
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum taskdataassigneeStatusInput
     {
         Inbox,

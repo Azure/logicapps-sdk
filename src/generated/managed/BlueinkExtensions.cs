@@ -226,6 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         [EnumMember(Value = "dr")]
@@ -244,6 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         Fa
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInInput
     {
         [EnumMember(Value = "dr")]
@@ -262,6 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         Fa
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderingInput
     {
         [EnumMember(Value = "created")]
@@ -305,6 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         public string Phone { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListPersonsResponseItemChannelsTypeItemKindType
     {
         [EnumMember(Value = "em")]
@@ -361,6 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         public string Url { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListWebhooksResponseItemEventTypesTypeItem
     {
         [EnumMember(Value = "bundle_sent")]
@@ -397,6 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         public string Webhook { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum eventTypeInput
     {
         [EnumMember(Value = "bundle_sent")]
@@ -457,6 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         public string Timestamp { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListWebhookDeliveriesResponseItemEventTypeType
     {
         [EnumMember(Value = "bundle_sent")]
@@ -517,6 +524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blueink
         public string Timestamp { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListWebhookEventsResponseItemEventTypeType
     {
         [EnumMember(Value = "bundle_sent")]

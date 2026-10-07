@@ -392,6 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         public string Visibility { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum regionInput
     {
         [EnumMember(Value = "1")]
@@ -402,6 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         _3
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvisibilityInput
     {
         Private,
@@ -447,12 +449,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyemailTypeInput
     {
         PlainText,
         Html
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoptInTypeInput
     {
         Unknown,

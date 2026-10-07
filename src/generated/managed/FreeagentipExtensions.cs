@@ -800,6 +800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freeagentip
         public string Quantity { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyinvoiceinvoiceItemsInputItemItemTypeType
     {
         Hours,

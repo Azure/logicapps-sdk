@@ -11934,6 +11934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public int CountOfUsersFound { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum activeDirectoryGetADUserByIdentityfilterPropertyComparisonInput
     {
         [EnumMember(Value = "Equals")]
@@ -11970,6 +11971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public int CountOfGroupsFound { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum activeDirectoryGetADGroupByIdentityfilterPropertyComparisonInput
     {
         [EnumMember(Value = "Equals")]
@@ -12057,6 +12059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string PowerShellJSONOutput { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum activeDirectoryDirSyncpolicyTypeInput
     {
         Delta,
@@ -12159,6 +12162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum activeDirectorySetADServerpredefinedADServerChoiceInput
     {
         [EnumMember(Value = "User PDC: PDC emulator of logged-in user domain")]
@@ -12183,6 +12187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string RIDMaster { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum activeDirectoryGetDomainInfopredefinedIdentityInput
     {
         [EnumMember(Value = "User: Logged-in user domain")]
@@ -12200,6 +12205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string CreatedGroupSAMAccountName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum activeDirectoryAddADGroupgroupCategoryInput
     {
         [EnumMember(Value = "Security")]
@@ -12208,6 +12214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         DistributionGroup
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum activeDirectoryAddADGroupgroupScopeInput
     {
         DomainLocal,
@@ -12255,6 +12262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum openExchangePowerShellRunspaceconnectionMethodInput
     {
         [EnumMember(Value = "Local")]
@@ -12263,6 +12271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         RemoteCommandsRunInRemoteExchangeRunspace
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum openExchangePowerShellRunspaceauthenticationMechanismInput
     {
         Basic,
@@ -12273,6 +12282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         Negotiate
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum openExchangePowerShellRunspacecommandTypesToImportLocallyInput
     {
         [EnumMember(Value = "All")]
@@ -12319,6 +12329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public int CountOfMailboxesFound { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum exchangeGetMailboxfilterPropertyComparisonInput
     {
         [EnumMember(Value = "Equals")]
@@ -12337,6 +12348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         RawEnterFilterManually
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum exchangeGetMailboxrecipientTypeDetailsInput
     {
         DiscoveryMailbox,
@@ -12357,6 +12369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public bool MailboxExists { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum exchangeDoesMailboxExistfilterPropertyComparisonInput
     {
         [EnumMember(Value = "Equals")]
@@ -12375,6 +12388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         RawEnterFilterManually
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum exchangeDoesMailboxExistrecipientTypeDetailsInput
     {
         DiscoveryMailbox,
@@ -12408,6 +12422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public int CountOfDistributionGroupsFound { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum exchangeGetDistributionGroupfilterPropertyComparisonInput
     {
         [EnumMember(Value = "Equals")]
@@ -12446,12 +12461,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string NewGroupGUID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum exchangeNewDistributionGroupmemberDepartRestrictionInput
     {
         Open,
         Closed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum exchangeNewDistributionGroupmemberJoinRestrictionInput
     {
         Open,
@@ -12459,6 +12476,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         ApprovalRequired
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum exchangeNewDistributionGrouptypeInput
     {
         Distribution,
@@ -12513,6 +12531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public int CountOfMailboxesFound { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum exchangeGetRemoteMailboxfilterPropertyComparisonInput
     {
         [EnumMember(Value = "Equals")]
@@ -12536,6 +12555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public bool MailboxExists { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum exchangeDoesRemoteMailboxExistfilterPropertyComparisonInput
     {
         [EnumMember(Value = "Equals")]
@@ -12618,6 +12638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum exchangeSetRemoteMailboxtypeInput
     {
         Regular,
@@ -12644,6 +12665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum exchangeSetMailboxAutoReplyConfigurationautoReplyStateInput
     {
         [EnumMember(Value = "Enabled")]
@@ -12652,6 +12674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         DisabledAutomaticRepliesAreNotSent
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum exchangeSetMailboxAutoReplyConfigurationexternalAudienceInput
     {
         [EnumMember(Value = "None")]
@@ -12674,6 +12697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum openAzureADv2PowerShellRunspaceaPIToUseInput
     {
         [EnumMember(Value = "Auto")]
@@ -12690,6 +12714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum openAzureADv2PowerShellRunspaceWithCertificateaPIToUseInput
     {
         [EnumMember(Value = "Auto")]
@@ -12736,6 +12761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public int CountOfUsersFound { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum azureADv2GetAzureADUsersfilterPropertyComparisonInput
     {
         [EnumMember(Value = "Equals")]
@@ -12755,6 +12781,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string CreatedUserObjectId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum azureADv2AddAzureADUserageGroupInput
     {
         None,
@@ -12763,6 +12790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         Adult
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum azureADv2AddAzureADUserconsentProvidedForMinorInput
     {
         None,
@@ -12832,6 +12860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public int CountOfSKUsFound { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum azureADv2GetAzureADLicenseSKUsexpandPropertyInput
     {
         None,
@@ -12845,6 +12874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum azureADv2SetAzureADUserLicenselicensePlansChoiceInput
     {
         [EnumMember(Value = "All")]
@@ -12879,6 +12909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum azureADv2SetAzureADUserageGroupInput
     {
         None,
@@ -12887,6 +12918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         Adult
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum azureADv2SetAzureADUserconsentProvidedForMinorInput
     {
         None,
@@ -12926,6 +12958,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string CreatedGroupObjectId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum azureADv2NewMicrosoft365GroupgroupVisibilityInput
     {
         [EnumMember(Value = "Public")]
@@ -12940,6 +12973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public int CountOfGroupsFound { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum azureADv2GetGroupsfilterPropertyComparisonInput
     {
         [EnumMember(Value = "All")]
@@ -13021,6 +13055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum openO365PowerShellRunspaceconnectionMethodInput
     {
         [EnumMember(Value = "EXO V1 local")]
@@ -13031,6 +13066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         EXOV2ExchangeOnlinePowerShellV2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum openO365PowerShellRunspacecommandTypesToImportLocallyInput
     {
         [EnumMember(Value = "All")]
@@ -13047,12 +13083,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum openO365PowerShellRunspaceWithCertificateconnectionMethodInput
     {
         [EnumMember(Value = "EXO V2")]
         EXOV2ExchangeOnlinePowerShellV2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocallyInput
     {
         [EnumMember(Value = "All")]
@@ -13099,6 +13137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public int CountOfMailboxesFound { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum o365GetO365MailboxfilterPropertyComparisonInput
     {
         [EnumMember(Value = "Equals")]
@@ -13117,6 +13156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         RawEnterFilterManually
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum o365GetO365MailboxrecipientTypeDetailsInput
     {
         DiscoveryMailbox,
@@ -13156,6 +13196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public int CountOfGroupsFound { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum o365GetO365DistributionGroupfilterPropertyComparisonInput
     {
         [EnumMember(Value = "Equals")]
@@ -13183,12 +13224,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string CreatedGroupIdentity { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum o365NewO365DistributionGroupmemberDepartRestrictionInput
     {
         Open,
         Closed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum o365NewO365DistributionGroupmemberJoinRestrictionInput
     {
         Open,
@@ -13196,6 +13239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         ApprovalRequired
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum o365NewO365DistributionGrouptypeInput
     {
         Distribution,
@@ -13214,6 +13258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum o365SetO365MailboxtypeInput
     {
         Regular,
@@ -13229,6 +13274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public int CountOfMailboxesFound { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum o365WaitForO365MailboxrecipientTypeDetailsInput
     {
         DiscoveryMailbox,
@@ -13250,6 +13296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum o365SetO365MailboxAutoReplyConfigurationautoReplyStateInput
     {
         [EnumMember(Value = "Enabled")]
@@ -13258,6 +13305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         DisabledAutomaticRepliesAreNotSent
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum o365SetO365MailboxAutoReplyConfigurationexternalAudienceInput
     {
         [EnumMember(Value = "None")]
@@ -13350,6 +13398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         public jMLGetNextAvailableAccountNamepropertiesToCheckListInputItemPropertyNameMaxLengthFieldToCutType PropertyNameMaxLengthFieldToCut { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum jMLGetNextAvailableAccountNamepropertiesToCheckListInputItemPropertyToCheckType
     {
         [EnumMember(Value = "ADSAMAccountName")]
@@ -13374,6 +13423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         Office365MailboxEmailAddress
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum jMLGetNextAvailableAccountNamepropertiesToCheckListInputItemPropertyNameMaxLengthFieldToCutType
     {
         FirstName,

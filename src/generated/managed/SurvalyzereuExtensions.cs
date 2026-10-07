@@ -3040,6 +3040,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public int DistributorId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodychannelInput
     {
         Invalid,
@@ -3128,6 +3129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public string ErrorCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypanelTypeInput
     {
         Basic,
@@ -3387,6 +3389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public bool HasPrompt { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ElementType
     {
         Invalid,
@@ -3480,6 +3483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public bool DisableThousandSeparator { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContentValidationType
     {
         Invalid,
@@ -3500,6 +3504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public Condition[] Elements { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConditionAction
     {
         Invalid,
@@ -3534,6 +3539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public string JsonPath { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Conjunction
     {
         Invalid,
@@ -3541,6 +3547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         Or
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConditionType
     {
         Invalid,
@@ -3559,6 +3566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         SQL
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConditionOperator
     {
         Invalid,
@@ -3582,6 +3590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         AnyDoesNotMatchRegex
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum VariableType
     {
         Invalid,
@@ -3595,6 +3604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         Matrix
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ColumnType
     {
         Invalid,
@@ -3602,6 +3612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         Multiple
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TextFieldSize
     {
         Invalid,
@@ -3640,6 +3651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public ConditionDefinition Condition { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ChoiceType
     {
         Invalid,
@@ -3686,6 +3698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public TranslationElement[] ForwardUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ActionType
     {
         Invalid,
@@ -3693,6 +3706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         ForwardToUrl
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ValueAssignmentType
     {
         Invalid,
@@ -3702,6 +3716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         Credit
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExecutionBehavior
     {
         Invalid,
@@ -3711,6 +3726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         SurveyLoad
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ApiCallMethod
     {
         Invalid,
@@ -3718,6 +3734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         Post
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ScriptType
     {
         Invalid,
@@ -3725,6 +3742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         Css
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ArrangementMode
     {
         Invalid,
@@ -3744,6 +3762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public VariableType VariableType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysurveyDefinitiondataAccessControlaccessTypeInput
     {
         Private,
@@ -3751,6 +3770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysurveyDefinitioncodeAccessModeInput
     {
         None,
@@ -3760,6 +3780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         WeakAccessCode
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysurveyDefinitionpanelSyncBehaviourInput
     {
         Invalid,
@@ -3776,6 +3797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public string PanelField { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput
     {
         M,
@@ -3784,6 +3806,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         Xl
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput
     {
         Invalid,
@@ -3806,6 +3829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public string ErrorCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyeventTypeInput
     {
         Invalid,
@@ -3948,6 +3972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public string ErrorCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyworkflowInput
     {
         Invalid,
@@ -4042,6 +4067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public InvitationType InvitationType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BounceType
     {
         Invalid,
@@ -4050,6 +4076,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         Spam
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InvitationType
     {
         Invalid,
@@ -4057,6 +4084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         Reminder
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyinvitationTypeInput
     {
         Invalid,
@@ -4064,6 +4092,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         Reminder
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypagingorderDirectionInput
     {
         Invalid,
@@ -4137,6 +4166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public ConditionDefinition[] Conditions { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DistributionChannel
     {
         Invalid,
@@ -4315,6 +4345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public Condition[] Conditions { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AccessType
     {
         Private,
@@ -4322,6 +4353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CodeAccessMode
     {
         None,
@@ -4331,6 +4363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         WeakAccessCode
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PanelSyncBehaviour
     {
         Invalid,
@@ -4740,6 +4773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public int Answers { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SurveyStatus
     {
         Invalid,
@@ -4803,6 +4837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public TextBlock[] TextBlocks { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MatrixSubQuestionSize
     {
         M,
@@ -4826,6 +4861,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public bool LogReferer { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AnonymizingMode
     {
         Invalid,
@@ -4872,6 +4908,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public string UpdatedBy { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventType
     {
         Invalid,
@@ -5023,6 +5060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public JToken Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PanelMemberFieldType
     {
         Number,
@@ -5083,6 +5121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
         public OptOutOperation OptOutOperation { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OptOutOperation
     {
         Add,

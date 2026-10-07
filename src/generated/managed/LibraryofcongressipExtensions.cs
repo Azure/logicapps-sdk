@@ -2722,6 +2722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
         public string Slideshow { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "manuscripts")]

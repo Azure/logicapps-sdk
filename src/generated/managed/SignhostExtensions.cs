@@ -329,6 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public string Link { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TransactionLanguageType
     {
         [EnumMember(Value = "de-DE")]
@@ -377,6 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public double Bsn { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AuthenticationTypeType
     {
         DigiD,
@@ -388,6 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public VerificationTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum VerificationTypeType
     {
         Consent,
@@ -412,6 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         ZealiDQualified
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TransactionSignersTypeItemLanguageType
     {
         [EnumMember(Value = "de-DE")]
@@ -438,6 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public string CreatedDateTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TransactionSignersTypeItemActivitiesTypeItemCodeType
     {
         [EnumMember(Value = "101")]
@@ -481,6 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public JToken Context { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TransactionStatusType
     {
         [EnumMember(Value = "5")]
@@ -506,6 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum transactionlanguageInput
     {
         [EnumMember(Value = "de-DE")]
@@ -547,6 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public transactionsignersInputItemActivitiesTypeItem[] Activities { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum transactionsignersInputItemLanguageType
     {
         [EnumMember(Value = "de-DE")]
@@ -573,6 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         public string CreatedDateTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum transactionsignersInputItemActivitiesTypeItemCodeType
     {
         [EnumMember(Value = "101")]

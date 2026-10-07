@@ -150,6 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         public string PercentAllottedleastFavoriteAccptPrice { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum operationInput
     {
         [EnumMember(Value = "all")]
@@ -160,6 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         Extensions
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         [EnumMember(Value = "announcements")]
@@ -170,6 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         Operations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum includeInput
     {
         [EnumMember(Value = "summary")]
@@ -178,6 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         Details
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "json")]

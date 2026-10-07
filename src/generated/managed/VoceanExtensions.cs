@@ -363,6 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         public GetExploreResponsesResponseItemResponseMultipleValuesTypeItem[] ResponseMultipleValues { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetExploreResponsesResponseItemResponseYesNoValueType
     {
         [EnumMember(Value = "")]
@@ -412,6 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         public string ActivityType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum activityTypeInput
     {
         Innovate,

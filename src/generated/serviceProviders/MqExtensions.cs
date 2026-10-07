@@ -550,7 +550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollBrowseMessagesOutputMessagesTypeItemReportType
     {
         None,
@@ -564,7 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollBrowseMessagesOutputMessagesTypeItemMessageTypeType
     {
         Datagram,
@@ -572,7 +572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Reply
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollBrowseMessagesOutputMessagesTypeItemPriorityType
     {
         [EnumMember(Value = "As Published")]
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollBrowseMessagesOutputMessagesTypeItemPersistenceType
     {
         None,
@@ -592,7 +592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollBrowseMessagesOutputMessagesTypeItemFlagsType
     {
         None,
@@ -630,7 +630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public int? PollingIntervalInSeconds { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollBrowseMessagesInputGetMessageOptionsTypeFormatType
     {
         String,
@@ -761,7 +761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollMessagesOutputMessagesTypeItemReportType
     {
         None,
@@ -775,7 +775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollMessagesOutputMessagesTypeItemMessageTypeType
     {
         Datagram,
@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Reply
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollMessagesOutputMessagesTypeItemPriorityType
     {
         [EnumMember(Value = "As Published")]
@@ -794,7 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollMessagesOutputMessagesTypeItemPersistenceType
     {
         None,
@@ -803,7 +803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollMessagesOutputMessagesTypeItemFlagsType
     {
         None,
@@ -838,7 +838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public bool? MaximizeThroughput { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PollMessagesInputGetMessageOptionsTypeFormatType
     {
         String,
@@ -972,7 +972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseMessageOutputMessageTypeReportType
     {
         None,
@@ -986,7 +986,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseMessageOutputMessageTypeMessageTypeType
     {
         Datagram,
@@ -994,7 +994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Reply
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseMessageOutputMessageTypePriorityType
     {
         [EnumMember(Value = "As Published")]
@@ -1005,7 +1005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseMessageOutputMessageTypePersistenceType
     {
         None,
@@ -1014,7 +1014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseMessageOutputMessageTypeFlagsType
     {
         None,
@@ -1049,7 +1049,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public int? BrowseLockedTimeoutInSeconds { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseMessageInputGetMessageOptionsTypeFormatType
     {
         String,
@@ -1183,7 +1183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseBatchOutputMessagesTypeItemReportType
     {
         None,
@@ -1197,7 +1197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseBatchOutputMessagesTypeItemMessageTypeType
     {
         Datagram,
@@ -1205,7 +1205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Reply
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseBatchOutputMessagesTypeItemPriorityType
     {
         [EnumMember(Value = "As Published")]
@@ -1216,7 +1216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseBatchOutputMessagesTypeItemPersistenceType
     {
         None,
@@ -1225,7 +1225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseBatchOutputMessagesTypeItemFlagsType
     {
         None,
@@ -1260,7 +1260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public int? BrowseLockedTimeoutInSeconds { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrowseBatchInputGetMessageOptionsTypeFormatType
     {
         String,
@@ -1391,7 +1391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveMessageOutputMessageTypeReportType
     {
         None,
@@ -1405,7 +1405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveMessageOutputMessageTypeMessageTypeType
     {
         Datagram,
@@ -1413,7 +1413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Reply
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveMessageOutputMessageTypePriorityType
     {
         [EnumMember(Value = "As Published")]
@@ -1424,7 +1424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveMessageOutputMessageTypePersistenceType
     {
         None,
@@ -1433,7 +1433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveMessageOutputMessageTypeFlagsType
     {
         None,
@@ -1465,7 +1465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public int? WaitIntervalInSeconds { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveMessageInputGetMessageOptionsTypeFormatType
     {
         String,
@@ -1596,7 +1596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveBatchOutputMessagesTypeItemReportType
     {
         None,
@@ -1610,7 +1610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveBatchOutputMessagesTypeItemMessageTypeType
     {
         Datagram,
@@ -1618,7 +1618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Reply
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveBatchOutputMessagesTypeItemPriorityType
     {
         [EnumMember(Value = "As Published")]
@@ -1629,7 +1629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveBatchOutputMessagesTypeItemPersistenceType
     {
         None,
@@ -1638,7 +1638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveBatchOutputMessagesTypeItemFlagsType
     {
         None,
@@ -1670,7 +1670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public int? WaitIntervalInSeconds { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveBatchInputGetMessageOptionsTypeFormatType
     {
         String,
@@ -1764,7 +1764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendMessageInputSendMessageOptionsTypeMessageTypeType
     {
         Request,
@@ -1772,14 +1772,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Datagram
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendMessageInputSendMessageOptionsTypeFormatType
     {
         String,
         Binary
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendMessageInputSendMessageOptionsTypePriorityType
     {
         AsPublished,
@@ -1787,7 +1787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendMessageInputSendMessageOptionsTypePersistenceType
     {
         Persistent,
@@ -1795,7 +1795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendMessageInputSendMessageOptionsTypeReportType
     {
         None,
@@ -1805,7 +1805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendMessageInputSendMessageOptionsTypeFlagsType
     {
         None,
@@ -1816,7 +1816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         LastMessageInAGroup
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendMessageInputSendMessageOptionsTypePutApplicationTypeType
     {
         Cics,
@@ -1899,7 +1899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public JToken RuleAndFormattingVersion2Header { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendBatchInputMessageListTypeItemFormatType
     {
         String,
@@ -1948,7 +1948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public string PutDateTime { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendBatchInputSendMessageOptionsTypeMessageTypeType
     {
         Request,
@@ -1956,7 +1956,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         Datagram
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendBatchInputSendMessageOptionsTypePersistenceType
     {
         Persistent,
@@ -1964,7 +1964,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsParent
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendBatchInputSendMessageOptionsTypePriorityType
     {
         AsPublished,
@@ -1972,7 +1972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         AsQueueDefined
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendBatchInputSendMessageOptionsTypeReportType
     {
         None,
@@ -1982,7 +1982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         DiscardMessage
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendBatchInputSendMessageOptionsTypeFlagsType
     {
         None,
@@ -1993,7 +1993,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         LastMessageInAGroup
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendBatchInputSendMessageOptionsTypePutApplicationTypeType
     {
         Cics,
@@ -2067,7 +2067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public string Status { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CompleteMessageInputCompleteActionType
     {
         Commit,
@@ -2113,7 +2113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public string Status { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CompleteBatchInputCompleteActionType
     {
         Commit,
@@ -2154,7 +2154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         public string PutDateTime { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MoveMessageToDeadLetterQueueInputSendMessageOptionsTypePutApplicationTypeType
     {
         Cics,

@@ -4,10 +4,14 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
+
     /// <summary>
     /// The status of a flow.
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1717:OnlyFlagsEnumsShouldHavePluralNames", Justification = "By design.")]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum FlowStatus
     {
         /// <summary>

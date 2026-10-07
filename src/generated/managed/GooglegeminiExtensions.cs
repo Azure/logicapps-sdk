@@ -772,6 +772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytaskTypeInput
     {
         [EnumMember(Value = "RETRIEVAL_QUERY")]

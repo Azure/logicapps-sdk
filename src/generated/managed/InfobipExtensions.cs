@@ -201,6 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
         public string DescriptionOfMessageSendingStatus { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestBodylanguageInput
     {
         [EnumMember(Value = "en")]

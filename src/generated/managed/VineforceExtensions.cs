@@ -1642,6 +1642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string FieldName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriorityTextInput
     {
         Normal,
@@ -1649,6 +1650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         Urgent
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyresourceAppNameInput
     {
         [EnumMember(Value = "Adobe Cloud")]
@@ -1714,6 +1716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bodyfilesInputItemFileTypeType FileType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfilesInputItemFileTypeType
     {
         Word,
@@ -1773,6 +1776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string FieldName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyresourceNameInput
     {
         [EnumMember(Value = "Adobe Cloud")]
@@ -1937,6 +1941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string FieldName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytaskStatusInput
     {
         Completed,
@@ -2000,6 +2005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string ContactId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyphoneTypeInput
     {
         Mobile,
@@ -2009,6 +2015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         Other
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyaddressTypeInput
     {
         Home,
@@ -2018,6 +2025,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         Other
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrelationshipInput
     {
         Spouse,
@@ -2156,6 +2164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bool IsSharePointDrive { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum matchByInput
     {
         [EnumMember(Value = "Account No.")]
@@ -2340,6 +2349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bool Abp { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
         Active,
@@ -2433,6 +2443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string ReferenceSource { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum getByInput
     {
         [EnumMember(Value = "Trovve Id")]
@@ -2582,6 +2593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string RoleType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum roleTypeInput
     {
         Member,
@@ -2651,6 +2663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bool IsDefault { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfilesLinksInputItemFileTypeType
     {
         Word,

@@ -512,6 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
         public string Author { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum issueissuestatusInput
     {
         New,

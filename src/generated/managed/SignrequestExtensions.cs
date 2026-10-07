@@ -677,6 +677,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public SignerInputsTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SignerInputsTypeType
     {
         [EnumMember(Value = "s")]
@@ -693,6 +694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         C
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SignerLanguageType
     {
         [EnumMember(Value = "en")]
@@ -729,6 +731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         Ru
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SignRequestQuickCreateWhoType
     {
         [EnumMember(Value = "m")]
@@ -739,6 +742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         O
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum datawhoInput
     {
         [EnumMember(Value = "m")]
@@ -776,6 +780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Uuid { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum WebhookSubscriptionEventTypeType
     {
         [EnumMember(Value = "convert_error")]
@@ -826,6 +831,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
         public string Url { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dataeventTypeInput
     {
         [EnumMember(Value = "convert_error")]

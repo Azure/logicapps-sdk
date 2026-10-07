@@ -1082,6 +1082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string ProjectUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum transactionInput
     {
         [EnumMember(Value = "estimates")]
@@ -1090,6 +1091,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         Purchases
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyweightunitsInput
     {
         [EnumMember(Value = "kg")]
@@ -1755,6 +1757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloverlyip
         public string ProjectUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyenergyunitsInput
     {
         Wh,

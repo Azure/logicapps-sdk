@@ -764,6 +764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         public string ReplyToQueueManager { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum optionsincludeInfoInput
     {
         [EnumMember(Value = "false")]
@@ -786,6 +787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         public string CorrelationId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum messagemessageTypeInput
     {
         Datagram,

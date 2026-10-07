@@ -143,6 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         public string RequestId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "json")]
@@ -151,6 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         Xml
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum codeLengthInput
     {
         [EnumMember(Value = "4")]
@@ -159,6 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         _6
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum lgInput
     {
         [EnumMember(Value = "ar-xa")]
@@ -241,6 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         ZhTw
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum workflowIdInput
     {
         [EnumMember(Value = "1")]

@@ -495,6 +495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         public int Iso { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orientationInput
     {
         [EnumMember(Value = "landscape")]
@@ -505,6 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         Squarish
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum contentFilterInput
     {
         [EnumMember(Value = "low")]

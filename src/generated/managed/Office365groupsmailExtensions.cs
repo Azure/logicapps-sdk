@@ -913,6 +913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         public Attachment[] Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         GET,

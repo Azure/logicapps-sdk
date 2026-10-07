@@ -526,6 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         public string ThumbnailUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentDocumentStatusType
     {
         [EnumMember(Value = "draft")]
@@ -540,6 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         Rejected
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentInitiatorCompanyVerificationTypeType
     {
         [EnumMember(Value = "none")]
@@ -550,6 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         Strong
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentJurisdictionType
     {
         [EnumMember(Value = "zertes")]
@@ -585,6 +588,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         public string ViewedTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentRequiredAuthorityServiceType
     {
         [EnumMember(Value = "ras")]
@@ -593,6 +597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         Did
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentSignatureModeType
     {
         [EnumMember(Value = "timestamp")]
@@ -675,6 +680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         public bool CanModifyAutographPosition { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SigneeSignStatusType
     {
         [EnumMember(Value = "on-hold")]
@@ -689,6 +695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         Rejected
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SigneeSignatureTypeType
     {
         [EnumMember(Value = "signature")]

@@ -989,6 +989,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         public string Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymetadataarchetypeInput
     {
         [EnumMember(Value = "bridge_v2")]

@@ -153,6 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         public string[] Unicode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum categoryNameInput
     {
         [EnumMember(Value = "smileys_and_people")]
@@ -191,6 +192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         public string[] Unicode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum groupNameInput
     {
         [EnumMember(Value = "body")]

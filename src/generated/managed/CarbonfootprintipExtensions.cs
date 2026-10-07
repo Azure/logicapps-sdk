@@ -246,6 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         public double NumberOfTrees { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum unitInput
     {
         [EnumMember(Value = "kg")]
@@ -260,6 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         public double CarbonEquivalent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum locationInput
     {
         USA,
@@ -278,6 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         public int CarbonEquivalent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum energyInput
     {
         Solar,
@@ -295,6 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         public double CarbonEquivalent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         Taxi,
@@ -314,6 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         public double CarbonEquivalent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum vehicleInput
     {
         SmallDieselCar,

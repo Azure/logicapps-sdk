@@ -1016,6 +1016,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         public AssistantPostResponseToolsTypeItemTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AssistantPostResponseToolsTypeItemTypeType
     {
         [EnumMember(Value = "code_interpreter")]

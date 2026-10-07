@@ -1064,6 +1064,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         public string State { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum countryInput
     {
         [EnumMember(Value = "au")]
@@ -1139,6 +1140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         public string DatePublished { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum angleInput
     {
         [EnumMember(Value = "front")]
@@ -1149,6 +1151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         Back
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum photoTypeInput
     {
         [EnumMember(Value = "interior")]
@@ -1159,6 +1162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         Engine
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sizeInput
     {
         All,
@@ -1168,6 +1172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         Wallpaper
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum licenseInput
     {
         Public,

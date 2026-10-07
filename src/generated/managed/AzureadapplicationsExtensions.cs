@@ -383,6 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
         public JToken[] RedirectUris { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum countInput
     {
         [EnumMember(Value = "true")]

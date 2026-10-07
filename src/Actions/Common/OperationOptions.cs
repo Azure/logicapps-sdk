@@ -5,11 +5,14 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     using System;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     /// <summary>
     /// The operation options.
     /// </summary>
     [Flags]
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum OperationOptions
     {
         /// <summary>

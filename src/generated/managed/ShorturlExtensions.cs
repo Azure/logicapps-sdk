@@ -164,6 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum baseDomainInput
     {
         [EnumMember(Value = "surl.link")]
@@ -176,6 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
         OfficeurlCom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum redirectionCodeInput
     {
         [EnumMember(Value = "301 - Moved Permanently")]

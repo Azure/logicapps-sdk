@@ -460,6 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         public JToken ItemId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum environmentInput
     {
         [EnumMember(Value = "draft")]
@@ -468,6 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         Published
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum triggersInput
     {
         Submitted,

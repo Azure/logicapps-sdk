@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
         public string MessageFromDeveloper { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum endpointInput
     {
         RapidAPI,

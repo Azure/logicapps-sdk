@@ -2041,6 +2041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string Label { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvariablesinputbusinessAddresscountryInput
     {
         Afghanistan,
@@ -2456,6 +2457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvariableslistClassInput
     {
         MarketingList,
@@ -2543,6 +2545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvariablesinputaddresscountryInput
     {
         Afghanistan,

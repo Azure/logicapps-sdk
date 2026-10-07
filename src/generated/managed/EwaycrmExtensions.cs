@@ -5778,6 +5778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum saveRelationWrappertransmitObjectfolderName1Input
     {
         Actions,
@@ -5859,6 +5860,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         XsltTransformations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum saveRelationWrappertransmitObjectfolderName2Input
     {
         Actions,
@@ -6370,6 +6372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         public string Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum unlinkItemsWrapperfolderNameInput
     {
         Actions,
@@ -6451,6 +6454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ewaycrm
         XsltTransformations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum unlinkItemsWrapperrelatedFolderNameInput
     {
         Actions,

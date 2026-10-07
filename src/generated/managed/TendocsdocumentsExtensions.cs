@@ -630,6 +630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         public string DocumentSummary { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestconfigurationprofessionInput
     {
         Doctor,
@@ -695,6 +696,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         public JToken[] Subsections { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestconfigurationdocumentFormatInput
     {
         Original,

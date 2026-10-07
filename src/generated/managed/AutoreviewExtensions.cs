@@ -841,6 +841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         public string Parent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyconfigfileTypeInput
     {
         [EnumMember(Value = "review")]

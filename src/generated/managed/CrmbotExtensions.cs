@@ -432,6 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         public JToken Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymediaTypeInput
     {
         [EnumMember(Value = "1")]
@@ -440,6 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
         Video
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyuseUnspecifiedIfYourFlowIsPlatformAgnosticInput
     {
         Unspecified,

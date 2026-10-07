@@ -1494,6 +1494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string OrganisationName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyentitiesInputItem
     {
         [EnumMember(Value = "CVE-2000-01")]
@@ -1502,6 +1503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         MitreTA0001
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusesInputItem
     {
         New,
@@ -1510,6 +1512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         Resolved
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyprioritiesInputItem
     {
         High,
@@ -1517,6 +1520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         Informational
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycategoriesInputItem
     {
         [EnumMember(Value = "domain_abuse")]
@@ -1527,6 +1531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         CodeRepoLeakage
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycreatedFromRelativeInput
     {
         [EnumMember(Value = "-5m")]
@@ -1537,6 +1542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         _1d
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycreatedUntilRelativeInput
     {
         [EnumMember(Value = "-0m")]
@@ -1547,6 +1553,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         _1d
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyupdatedFromRelativeInput
     {
         [EnumMember(Value = "-5m")]
@@ -1557,6 +1564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         _1d
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyupdatedUntilRelativeInput
     {
         [EnumMember(Value = "-0m")]
@@ -1672,6 +1680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public string DisplayName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypesInputItem
     {
         [EnumMember(Value = "sigma")]
@@ -1682,6 +1691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         Snort
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylimitInput
     {
         [EnumMember(Value = "1")]
@@ -1715,6 +1725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public int Criticality { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum pathInput
     {
         [EnumMember(Value = "/public/MicrosoftAzure/ip_default.json")]
@@ -2387,6 +2398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         public int Total { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldsInput
     {
         [EnumMember(Value = "ai_insights")]

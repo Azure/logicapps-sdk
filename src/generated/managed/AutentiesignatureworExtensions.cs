@@ -340,6 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         public string Processes { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         DRAFT,
@@ -348,6 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         EVERYTHING
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortInput
     {
         ASCENDING,
@@ -477,6 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         public string[] RequiredClassifiers { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyparticipantTypeInput
     {
         [EnumMember(Value = "company")]
@@ -485,6 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         Private
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyroleTypeInput
     {
         VIEWER,
@@ -529,6 +533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         public string MimeType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum filePurposeInput
     {
         [EnumMember(Value = "SOURCE_FILE")]
@@ -569,6 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         public string Meta { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyeventTypeInput
     {
         [EnumMember(Value = "Start document signing process")]

@@ -273,6 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         public bool Geo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum poststatusInput
     {
         [EnumMember(Value = "draft")]

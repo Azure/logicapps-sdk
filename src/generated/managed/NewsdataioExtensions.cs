@@ -123,6 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
         public string Language { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fullContentInput
     {
         [EnumMember(Value = "0")]
@@ -131,6 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum imageInput
     {
         [EnumMember(Value = "0")]
@@ -139,6 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum videoInput
     {
         [EnumMember(Value = "0")]

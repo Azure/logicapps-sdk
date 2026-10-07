@@ -124,6 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
         public string Model { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "html")]

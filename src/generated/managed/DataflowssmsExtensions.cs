@@ -104,6 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SMSResponseStatusType
     {
         [EnumMember(Value = "success")]
@@ -121,6 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         public SMSListDataType Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SMSListStatusType
     {
         [EnumMember(Value = "success")]
@@ -147,6 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         public SMSDetailsDataType Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SMSDetailsStatusType
     {
         [EnumMember(Value = "success")]
@@ -200,6 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         public ProfileDataType Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ProfileStatusType
     {
         [EnumMember(Value = "success")]
@@ -235,6 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         public BalanceDataType Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BalanceStatusType
     {
         [EnumMember(Value = "success")]

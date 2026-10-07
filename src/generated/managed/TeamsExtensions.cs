@@ -1494,6 +1494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string JoinUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum calendaridInput
     {
         Birthdays,
@@ -1502,6 +1503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         UnitedStatesHolidays
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemimportanceInput
     {
         [EnumMember(Value = "low")]
@@ -1512,6 +1514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemrecurrencepatternrecurrencePatternInput
     {
         [EnumMember(Value = "")]
@@ -1526,6 +1529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         RelativeYearly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemrecurrencepatternweekIndexInput
     {
         [EnumMember(Value = "")]
@@ -1542,6 +1546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         Last
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemstatusShowAsInput
     {
         [EnumMember(Value = "free")]
@@ -1639,6 +1644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public GetChannelResponseTheTypeOfTheChannelType TheTypeOfTheChannel { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetChannelResponseTheTypeOfTheChannelType
     {
         [EnumMember(Value = "standard")]
@@ -1696,6 +1702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string ConversationID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum chatTypeInput
     {
         [EnumMember(Value = "all")]
@@ -1708,6 +1715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         OneOnOne
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum topicInput
     {
         [EnumMember(Value = "all")]
@@ -1787,6 +1795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string UserID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum posterInput
     {
         [EnumMember(Value = "Flow bot")]
@@ -1794,6 +1803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         User
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum notificationTypeInput
     {
         [EnumMember(Value = "groupchat")]
@@ -1907,6 +1917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string IdentityProvider { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum threadTypeInput
     {
         [EnumMember(Value = "groupchat")]
@@ -2188,6 +2199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string NewTeamID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvisibilityInput
     {
         Private,
@@ -2206,6 +2218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         public string ConversationID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         GET,
@@ -2215,6 +2228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         DELETE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum frequencyInput
     {
         [EnumMember(Value = "Multiple")]
@@ -2223,6 +2237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         FirstReactionOnlyOnce
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum runningPolicyInput
     {
         Myself,

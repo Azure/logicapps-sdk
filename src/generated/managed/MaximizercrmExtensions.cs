@@ -1267,6 +1267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public PaAbEntryView[] AbEntries { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum applyActionToInput
     {
         Individual,
@@ -1826,6 +1827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string CaseProductItemValue { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum linkWithTypeInput
     {
         Case,
@@ -2123,6 +2125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public string[] Category { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum parentTypeInput
     {
         AbEntry,
@@ -3556,6 +3559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         public JToken UserDefinedFields { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum convertOptionInput
     {
         [EnumMember(Value = "newCompany")]
@@ -3570,6 +3574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         ChooseExistingContact
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum doNotCreateAContactInput
     {
         [EnumMember(Value = "true")]
@@ -3578,6 +3583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum doNotCreateAnOpportunityInput
     {
         [EnumMember(Value = "true")]

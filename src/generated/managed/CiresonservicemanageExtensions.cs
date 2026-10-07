@@ -1203,6 +1203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         public JToken AppliesToWorkItem { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyactionTypeInput
     {
         [EnumMember(Value = "Analyst Comment")]
@@ -1229,6 +1230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         public string CreatedDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodywebhookSettingsworkItemClassTypeInput
     {
         [EnumMember(Value = "Analyst Comment")]

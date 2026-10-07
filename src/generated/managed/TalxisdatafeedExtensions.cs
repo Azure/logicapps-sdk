@@ -201,6 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum jurisdictionCodeInput
     {
         CZ,
@@ -420,6 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         public int WeekNumber { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ruleInput
     {
         FirstDay,
@@ -427,6 +429,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         FirstFourDayWeek
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum firstDayOfWeekInput
     {
         Sunday,
@@ -447,12 +450,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         public string ExpiresOn { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum languageInput
     {
         CS,
         SK
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum genderInput
     {
         [EnumMember(Value = "male")]
@@ -491,6 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         public string CountryCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DataFeedModelEntitiesHolidaysTypesType
     {
         Public,

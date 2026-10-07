@@ -676,12 +676,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         public bool Logo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum cacheControlInput
     {
         [EnumMember(Value = "no-cache")]
         NoCache
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum countryInput
     {
         ALL,
@@ -723,6 +725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         US
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum searchLangInput
     {
         [EnumMember(Value = "ar")]
@@ -827,6 +830,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         Vi
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uiLangInput
     {
         [EnumMember(Value = "ar")]
@@ -931,6 +935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         Vi
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum safesearchInput
     {
         [EnumMember(Value = "strict")]
@@ -1212,6 +1217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         public string Src { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum freshnessInput
     {
         [EnumMember(Value = "pd")]
@@ -1248,6 +1254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         public string Query { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum langInput
     {
         [EnumMember(Value = "ar")]

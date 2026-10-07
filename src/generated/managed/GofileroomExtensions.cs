@@ -3779,6 +3779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string[] Values { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydocumentSecurityInputItemDocSecurityTypeType
     {
         [EnumMember(Value = "DENY ACCESS")]
@@ -3789,6 +3790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         NOEDIT
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydocumentSecurityInputItemOperationType
     {
         ADD,
@@ -3969,6 +3971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string UserId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum userTypeInput
     {
         GFRUSERS,
@@ -3987,6 +3990,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string LoginId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyuserTypeInput
     {
         GFRUSERS,
@@ -4130,6 +4134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string TotalLicenses { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum licenseInput
     {
         DEDICATED,
@@ -4512,6 +4517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string IndexValue { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysortOrderInput
     {
         ASC,
@@ -4845,6 +4851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         public string IndexValue { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyactionTypeInput
     {
         [EnumMember(Value = "1")]
@@ -4861,6 +4868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         _6
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysearchTypeInput
     {
         [EnumMember(Value = "0")]

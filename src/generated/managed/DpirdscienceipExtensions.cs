@@ -372,6 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         public bool EndYear { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum groupInput
     {
         [EnumMember(Value = "all")]
@@ -624,6 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         public double Crop { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum soilTypeInput
     {
         [EnumMember(Value = "gravel")]

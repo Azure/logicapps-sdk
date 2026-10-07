@@ -749,6 +749,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         public string Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum availableLocalesInput
     {
         [EnumMember(Value = "af_ZA")]
@@ -1144,6 +1145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         public string ImageUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum categoryInput
     {
         [EnumMember(Value = "abstract")]

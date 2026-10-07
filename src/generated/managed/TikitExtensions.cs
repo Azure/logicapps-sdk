@@ -1306,6 +1306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         public string UserName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrequiredByAllInput
     {
         True,
@@ -1334,6 +1335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         public int PowerAutomateTaskId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodywebHookpriorityInput
     {
         Any,
@@ -1345,6 +1347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         _3Low
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodywebHookisPublicCommentInput
     {
         Any,

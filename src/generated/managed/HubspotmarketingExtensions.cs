@@ -1135,6 +1135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotmarketing
         public int DisplayOrder { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dataeventTypeInput
     {
         WEBINAR,

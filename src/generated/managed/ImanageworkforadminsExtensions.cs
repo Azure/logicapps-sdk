@@ -773,6 +773,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public bool Hipaa { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum enabledStateInput
     {
         Enabled,
@@ -847,6 +848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public bool UserCreated { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypasswordCreateMethodInput
     {
         [EnumMember(Value = "Send an email")]
@@ -951,6 +953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public NewFolderProfileWstypeType Wstype { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NewFolderProfileDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
@@ -963,6 +966,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NewFolderProfileEffectiveSecurityType
     {
         [EnumMember(Value = "no_access")]
@@ -975,6 +979,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         FullAccess
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NewFolderProfileFolderTypeType
     {
         [EnumMember(Value = "regular")]
@@ -991,6 +996,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         MyFavorites
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NewFolderProfileInheritedDefaultSecurityType
     {
         [EnumMember(Value = "private")]
@@ -1100,6 +1106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public string Custom30 { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NewFolderProfileViewTypeType
     {
         [EnumMember(Value = "none")]
@@ -1118,6 +1125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         ImanageShare
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NewFolderProfileWstypeType
     {
         [EnumMember(Value = "folder")]
@@ -1130,6 +1138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         WorkspaceShortcut
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyparentTypeInput
     {
         Folder,
@@ -1137,6 +1146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         Tab
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydefaultSecurityInput
     {
         [EnumMember(Value = "no change")]
@@ -1151,6 +1161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyinheritProfileFromWorkspaceInput
     {
         Yes,
@@ -1196,6 +1207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public string WorkspaceName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NewTabProfileDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
@@ -1235,6 +1247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public string Owner { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetMyMattersCategoriesResponseDataTypeItemCategoryTypeType
     {
         [EnumMember(Value = "my_matters")]
@@ -1243,6 +1256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         MyFavorites
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetMyMattersCategoriesResponseDataTypeItemDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
@@ -1282,6 +1296,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         public MyMattersShortcutsInArrayTargetType Target { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MyMattersShortcutsInArrayWstypeType
     {
         [EnumMember(Value = "workspace_shortcut")]

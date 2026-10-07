@@ -748,18 +748,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string DateModified { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConstituentApiActionReadDirectionType
     {
         Inbound,
         Outbound
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConstituentApiActionReadOutcomeType
     {
         Successful,
         Unsuccessful
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConstituentApiActionReadPriorityType
     {
         Normal,
@@ -767,6 +770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         Low
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConstituentApiActionReadComputedStatusType
     {
         Open,
@@ -780,6 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string ID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycategoryInput
     {
         [EnumMember(Value = "Phone Call")]
@@ -791,18 +796,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         TaskOther
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydirectionInput
     {
         Inbound,
         Outbound
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoutcomeInput
     {
         Successful,
         Unsuccessful
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriorityInput
     {
         Normal,
@@ -861,6 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string[] Tags { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConstituentApiActionAttachmentReadTypeType
     {
         Link,
@@ -930,6 +939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string DateModified { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConstituentApiActionCustomFieldReadTypeType
     {
         Text,
@@ -960,6 +970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
         public string ID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         Link,

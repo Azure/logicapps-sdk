@@ -241,6 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         public bool IsSuccessful { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum appendModeInput
     {
         [EnumMember(Value = "autocreate")]

@@ -1757,6 +1757,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string VstsClosedDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum IcmRetrospectiveRepairItemAdditionalDataRepairItemTypeType
     {
         Fix,
@@ -1773,6 +1774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         Unknown
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum IcmRetrospectiveRepairItemAdditionalDataRepairItemDeliveryTypeType
     {
         ShortTerm,
@@ -1799,6 +1801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public IcmBridge[] Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrenderTypeInput
     {
         Html,
@@ -1811,12 +1814,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public JToken[] Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum icmEndpointInput
     {
         Public,
         Eudb
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyseverityInput
     {
         Sev0,
@@ -1875,6 +1880,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string UpdateProcessTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum IncidentAddUpdateStatus
     {
         Invalid,
@@ -1886,6 +1892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         Discarded
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum IncidentAddUpdateSubStatus
     {
         None,
@@ -1898,6 +1905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         Unresolved
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyhowFoundInput
     {
         Other,
@@ -1911,12 +1919,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         Email
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydiscussionEntryrenderTypeInput
     {
         Html,
         Plaintext
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycloudInstanceInput
     {
         Public,
@@ -1938,12 +1948,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public IcmAccessClaimRoleType Role { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum IcmAccessClaimClaimTypeType
     {
         IcmContactAlias,
         MemberOfIcmTeamPublicId
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum IcmAccessClaimRoleType
     {
         Owners,
@@ -1960,6 +1972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string NextLink { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum searchEndpointInput
     {
         Public,
@@ -2158,6 +2171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         public string EmailAddress { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         GET,

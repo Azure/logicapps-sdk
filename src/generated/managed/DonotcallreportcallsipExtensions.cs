@@ -172,6 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
         public string Self { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortOrderInput
     {
         DESC,

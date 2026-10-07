@@ -376,6 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
         public bool Border { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyshapeInput
     {
         [EnumMember(Value = "rectangle")]

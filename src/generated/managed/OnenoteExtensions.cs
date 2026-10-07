@@ -487,6 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum updatesInputItemActionType
     {
         [EnumMember(Value = "append")]
@@ -499,6 +500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         Replace
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum updatesInputItemLocationType
     {
         [EnumMember(Value = "after")]

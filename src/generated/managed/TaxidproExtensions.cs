@@ -103,6 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
         public string FormatName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "individual")]
@@ -113,6 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
         Vat
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum localeInput
     {
         [EnumMember(Value = "auto")]

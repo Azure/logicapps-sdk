@@ -1189,6 +1189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         public string LastName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortOrderInput
     {
         [EnumMember(Value = "asc")]
@@ -1197,6 +1198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         Desc
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum subscriberStateInput
     {
         [EnumMember(Value = "active")]
@@ -1547,6 +1549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         public string LastName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortFieldInput
     {
         [EnumMember(Value = "")]

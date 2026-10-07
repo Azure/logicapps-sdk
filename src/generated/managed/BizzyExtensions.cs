@@ -1572,6 +1572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string MessageId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum cardSetdisplayStyleInput
     {
         Carousel,
@@ -1626,6 +1627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public JToken Properties { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum webHookacceptResponseFromInput
     {
         [EnumMember(Value = "Original User")]
@@ -1634,6 +1636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         AnyUser
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum webHookdateScopeInput
     {
         [EnumMember(Value = "Date Only")]
@@ -1644,12 +1647,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         DateAndTime
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum webHookallowBranchingInput
     {
         No,
         Yes
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum webHookmodeInput
     {
         Single,
@@ -1689,6 +1694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
         public string MemoryItemValue { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum webHookbotTriggerTypeInput
     {
         Shared,

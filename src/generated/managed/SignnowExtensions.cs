@@ -1409,6 +1409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public inviteinvitesInputItemSignersTypeItemDocumentsTypeItemActionType Action { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteinvitesInputItemSignersTypeItemDocumentsTypeItemActionType
     {
         Sign,
@@ -1469,6 +1470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string AuthenticationSmsMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteadvancedInputItemLanguageType
     {
         En,
@@ -1476,6 +1478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         Fr
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteadvancedInputItemRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
@@ -1484,12 +1487,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         InTheSameTab
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteadvancedInputItemDeliveryTypeType
     {
         Email,
         Link
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteadvancedInputItemAuthenticationTypeType
     {
         Password,
@@ -1498,6 +1503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         Sms
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteqESSignatureInput
     {
         Eideasy,
@@ -1603,6 +1609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public int SessionExpiration { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteinviteAdvancedParametersInputItemLanguageType
     {
         En,
@@ -1610,6 +1617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         Fr
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteinviteAdvancedParametersInputItemRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
@@ -1618,6 +1626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         InTheSameTab
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteinviteAdvancedParametersInputItemAuthenticationTypeType
     {
         Password,
@@ -1626,6 +1635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         Sms
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteinviteAdvancedParametersInputItemDeliveryTypeType
     {
         Email,
@@ -1839,6 +1849,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public bool ShowDeclineOnSignature { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyroleInputItemAuthenticationTypeType
     {
         Password,
@@ -2003,6 +2014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string AuthenticationSmsMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum replaceToadvancedParametersInputItemAuthenticationTypeType
     {
         Password,
@@ -2035,6 +2047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string Url { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteSettingstypeInput
     {
         Manage,
@@ -2043,6 +2056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         SendInvite
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteSettingsredirectTargetInput
     {
         [EnumMember(Value = "In the new tab")]
@@ -2156,6 +2170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public invitesignerAdvancedPropertiesInputItemLanguageType Language { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum invitesignerAdvancedPropertiesInputItemAuthenticationTypeType
     {
         Password,
@@ -2164,6 +2179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         Sms
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum invitesignerAdvancedPropertiesInputItemRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
@@ -2172,6 +2188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         InTheSameTab
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum invitesignerAdvancedPropertiesInputItemLanguageType
     {
         En,
@@ -2248,6 +2265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public inviteapproverAdvancedPropertiesInputItemRedirectTargetType RedirectTarget { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteapproverAdvancedPropertiesInputItemAuthenticationTypeType
     {
         Password,
@@ -2256,6 +2274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         Sms
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteapproverAdvancedPropertiesInputItemRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
@@ -2331,6 +2350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public inviteinviteStepsInputItemAdvancedTypeItem[] Advanced { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteinviteStepsInputItemActionType
     {
         View,
@@ -2377,6 +2397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteinviteStepsInputItemAdvancedTypeItemAuthenticationTypeAuthenticationTypeType
     {
         Password,
@@ -2421,6 +2442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         public bool IsDeclineRedirectCanceled { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteinviteStepsInputItemAdvancedTypeItemRedirectTypeRedirectTargetType
     {
         [EnumMember(Value = "In the new tab")]
@@ -2429,6 +2451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         InTheSameTab
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inviteinviteStepsInputItemAdvancedTypeItemLanguageType
     {
         En,

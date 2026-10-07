@@ -451,6 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public bool IsDeprecated { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodelInput
     {
         [EnumMember(Value = "large")]
@@ -461,6 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         Multilingual2212
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytruncateInput
     {
         NONE,
@@ -826,6 +828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodychatHistoryInputItemRoleType
     {
         CHATBOT,
@@ -833,6 +836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         USER
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypromptTruncationInput
     {
         AUTO,
@@ -865,6 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohereip
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycitationQualityInput
     {
         [EnumMember(Value = "accurate")]

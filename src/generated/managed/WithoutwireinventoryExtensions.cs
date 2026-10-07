@@ -1016,6 +1016,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public GetWorkOrdersResponseItemLineItemsTypeItemPickRecordsTypeItem[] PickRecords { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetWorkOrdersResponseItemLineItemsTypeItemCoreItemTypeType
     {
         BASIC,
@@ -1039,6 +1040,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string CoreValue { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderStatusCodeInput
     {
         UNA,
@@ -1150,6 +1152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public bodyInputItemLineItemsTypeItemUomTypeType UomType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyInputItemLineItemsTypeItemCoreItemTypeType
     {
         BASIC,
@@ -1252,6 +1255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string OrderStatusDescription { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyInputItemOrderStatusCodeType
     {
         UNA,
@@ -1295,6 +1299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string Distance { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetInventoryResponseItemCoreItemTypeType
     {
         BASIC,
@@ -1351,6 +1356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string SourceWarehouseName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyInputItemSourceProcessType
     {
         [EnumMember(Value = "Request Inventory")]
@@ -1403,6 +1409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public bool InternalOnly { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyInputItemCoreValueType
     {
         BASIC,
@@ -1411,6 +1418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         DATE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyInputItemMovementTypeType
     {
         [EnumMember(Value = "Adjustment In+")]
@@ -1480,6 +1488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public bodyInputItemLineItemsTypeItem2[] LineItems { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyInputItemPurchaseOrderTypeType
     {
         [EnumMember(Value = "1")]
@@ -1566,6 +1575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public double BaseConvFactor { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyInputItemItemTypeType
     {
         Inventory,
@@ -1574,6 +1584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         Pallet
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyInputItemCoreItemTypeType
     {
         BASIC,
@@ -1620,6 +1631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string AllocationSetName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetInboundRequestResponseItemLineItemsTypeItemCoreItemTypeType
     {
         BASIC,
@@ -1641,6 +1653,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public int LineNumber { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum pOStatusInput
     {
         Unassigned,
@@ -1650,6 +1663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         Completed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum lineReceiptStatusInput
     {
         Unassigned,
@@ -1686,6 +1700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public int PickSequence { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyInputItemBinTypeType
     {
         Inventory,
@@ -1799,6 +1814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string InventoryRequestTaskID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetSalesOrdersResponseItemLineItemsTypeItemCoreItemTypeType
     {
         BASIC,
@@ -1946,6 +1962,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string AllocationSetName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SingleScanInventoryLookupResponseItemPODetailsTypeItemItemTypeCoreItemTypeType
     {
         BASIC,
@@ -1955,6 +1972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         OrDATE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SingleScanInventoryLookupResponseItemPODetailsTypeItemItemTypeCoreValueType
     {
         BASIC,
@@ -2055,6 +2073,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Withoutwireinventory
         public string InventoryRequestTaskID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetTransferOrdersResponseItemLineItemsTypeItemCoreItemTypeType
     {
         BASIC,

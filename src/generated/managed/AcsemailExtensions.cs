@@ -173,6 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
         public ErrorDetail Error { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EmailSendResultStatusType
     {
         NotStarted,
@@ -209,6 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
         public JToken Info { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum emailMessageimportanceInput
     {
         High,

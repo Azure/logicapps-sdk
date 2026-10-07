@@ -1493,6 +1493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public string ChecklistId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum checklistsInput
     {
         [EnumMember(Value = "all")]
@@ -1501,6 +1502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum filterInput
     {
         [EnumMember(Value = "all")]
@@ -1741,6 +1743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public bool CanInvite { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum actionsFormatInput
     {
         [EnumMember(Value = "count")]
@@ -1814,6 +1817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public Checklist[] Checklists { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum cardsInput
     {
         [EnumMember(Value = "all")]
@@ -1826,6 +1830,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Open
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum cardChecklistsInput
     {
         [EnumMember(Value = "all")]
@@ -1834,6 +1839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardStarsInput
     {
         [EnumMember(Value = "mine")]
@@ -1842,6 +1848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum labelsInput
     {
         [EnumMember(Value = "all")]
@@ -1850,6 +1857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum listsInput
     {
         [EnumMember(Value = "all")]
@@ -1862,6 +1870,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Open
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum membersInput
     {
         [EnumMember(Value = "admins")]
@@ -1876,6 +1885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Owners
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum membersInvitedInput
     {
         [EnumMember(Value = "admin")]
@@ -1890,6 +1900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Owners
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardcreateDefaultListsInput
     {
         [EnumMember(Value = "true")]
@@ -1898,6 +1909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardpermissionLevelInput
     {
         [EnumMember(Value = "org")]
@@ -1908,6 +1920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardcommentPreferencesInput
     {
         [EnumMember(Value = "disabled")]
@@ -1922,6 +1935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardinvitationPreferencesInput
     {
         [EnumMember(Value = "admins")]
@@ -1930,6 +1944,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Members
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boarduseCardCoversInput
     {
         [EnumMember(Value = "true")]
@@ -1938,6 +1953,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardbackgroundColorInput
     {
         [EnumMember(Value = "blue")]
@@ -1960,6 +1976,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Grey
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardvotingPowerUpPreferencesInput
     {
         [EnumMember(Value = "disabled")]
@@ -1974,6 +1991,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardcardAgingPowerUpPreferencesInput
     {
         [EnumMember(Value = "disabled")]
@@ -1984,6 +2002,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Regular
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum boardenableCalendarPowerUpInput
     {
         [EnumMember(Value = "true")]
@@ -2034,6 +2053,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public double ListPosition { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum closedInput
     {
         [EnumMember(Value = "true")]
@@ -2042,6 +2062,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum posInput
     {
         [EnumMember(Value = "top")]
@@ -2050,6 +2071,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Bottom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum subscribedInput
     {
         [EnumMember(Value = "true")]
@@ -2130,6 +2152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         public string DatetimeCreated { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum listlistPositionInput
     {
         [EnumMember(Value = "top")]
@@ -2138,6 +2161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
         Bottom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum newCardcardPositionInput
     {
         [EnumMember(Value = "top")]

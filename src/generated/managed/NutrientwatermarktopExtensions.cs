@@ -2186,6 +2186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         public string ResultDetails { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OperationResponseResultCodeType
     {
         Success,
@@ -2204,6 +2205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         InvalidExtension
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatapositionInput
     {
         [EnumMember(Value = "Top Left")]
@@ -2228,12 +2230,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         Random
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatalayerInput
     {
         Background,
         Foreground
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatawatermarkPageOrientationInput
     {
         Portrait,
@@ -2241,6 +2245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataprintOnlyInput
     {
         [EnumMember(Value = "false")]
@@ -2249,6 +2254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         True
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatabarcodeTypeInput
     {
         Codabar,
@@ -2267,6 +2273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         UPCA
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatadisableCheckDigitInput
     {
         [EnumMember(Value = "true")]
@@ -2275,6 +2282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatashowCheckDigitInput
     {
         [EnumMember(Value = "true")]
@@ -2283,6 +2291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataomitEncodingOfStartStopSymbolsInput
     {
         [EnumMember(Value = "true")]
@@ -2291,6 +2300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatalabelPlacementInput
     {
         [EnumMember(Value = "Top Left")]
@@ -2308,6 +2318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         BottomRight
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataversionInput
     {
         Auto,
@@ -2393,6 +2404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         Version40
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatainputModeInput
     {
         Binary,
@@ -2400,6 +2412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         Numeric
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataerrorCorrectionLevelInput
     {
         Low,
@@ -2408,6 +2421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         Quartile
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatatextAlignmentInput
     {
         [EnumMember(Value = "Top Left")]
@@ -2436,6 +2450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientwatermarktop
         BottomJustfiy
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatawordWrapInput
     {
         WordOnly,

@@ -1245,6 +1245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
         public int TotalPages { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderInput
     {
         [EnumMember(Value = "desc")]

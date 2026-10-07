@@ -1927,6 +1927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string LastModifiedTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum filterByInput
     {
         [EnumMember(Value = "Status.All")]
@@ -1951,6 +1952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         DatePaymentExpectedDate
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortColumnInput
     {
         [EnumMember(Value = "customer_name")]
@@ -2299,6 +2301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public bool IsPrimaryContact { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylanguageCodeInput
     {
         [EnumMember(Value = "de")]
@@ -2323,6 +2326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         Zh
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytaxRegimeInput
     {
         [EnumMember(Value = "general_legal_person")]
@@ -2365,6 +2369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         IncomeThroughTechnologyPlatform
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodygstTreatmentInput
     {
         [EnumMember(Value = "business_gst")]
@@ -2974,6 +2979,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public string Label { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvatTreatmentInput
     {
         [EnumMember(Value = "uk")]
@@ -3380,6 +3386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohoinvoicebasic
         public double Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         [EnumMember(Value = "sent")]

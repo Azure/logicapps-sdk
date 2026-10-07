@@ -108,6 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
         public string Target { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum actionInput
     {
         Create,

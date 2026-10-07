@@ -2874,6 +2874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dataLanguageInput
     {
         [EnumMember(Value = "en")]
@@ -2915,6 +2916,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public ITopicBusiness Business { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TopicType
     {
         Unknown,
@@ -2930,6 +2932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         RecycleBin
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TopicResource
     {
         Chart,
@@ -2999,6 +3002,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string OpenLocation { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FieldType
     {
         Unknown,
@@ -3031,6 +3035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Icon { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfieldValueTypeInput
     {
         Unknown,
@@ -3714,6 +3719,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public IRelationshipElement WithElementParent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CategoryType
     {
         Unknown,
@@ -3731,6 +3737,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         Report
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RelationshipType
     {
         Unknown,
@@ -3757,6 +3764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
         public string Icon { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrelationshipTypeInput
     {
         Unknown,

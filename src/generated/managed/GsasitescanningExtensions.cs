@@ -143,6 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
         public double TotalFinalURLBaseDomains { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum primaryScanStatusInput
     {
         [EnumMember(Value = "completed")]
@@ -365,6 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
         public double USWDSVersion { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum WebsiteApiResultDtoScanStatusType
     {
         [EnumMember(Value = "completed")]

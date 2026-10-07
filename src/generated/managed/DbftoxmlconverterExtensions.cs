@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dbftoxmlconverter
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyencodingInput
     {
         [EnumMember(Value = "cp1251")]

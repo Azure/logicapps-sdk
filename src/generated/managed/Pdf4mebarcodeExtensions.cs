@@ -816,6 +816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodybarcodeTypeInput
     {
         [EnumMember(Value = "any")]
@@ -826,6 +827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         Qrcode
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyalignXInput
     {
         Left,
@@ -833,6 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         Right
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyalignYInput
     {
         Top,
@@ -840,12 +843,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         Bottom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyepcQrCodeActionversionInput
     {
         V1,
         V2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyepcQrCodeActioncharacterSetInput
     {
         UTF8,
@@ -865,18 +870,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         ISO885915
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycrAddressTypeInput
     {
         S,
         K
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycurrencyInput
     {
         CHF,
         EUR
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylanguageTypeInput
     {
         German,
@@ -885,6 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         English
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyreferenceTypeInput
     {
         QRR,
@@ -892,6 +901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         NON
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyseperatorLineInput
     {
         LineWithScissor,
@@ -899,6 +909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyudAddressTypeInput
     {
         S,
@@ -921,6 +932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         public int Page { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodybarcodeTypeInputItem
     {
         All,
@@ -959,6 +971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         public string StreamFile { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodybarcodeFilterInput
     {
         [EnumMember(Value = "startsWith")]
@@ -971,6 +984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4mebarcode
         Exact
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysplitBarcodePageInput
     {
         [EnumMember(Value = "before")]

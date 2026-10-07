@@ -75,6 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
         public string[] Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum titleInput
     {
         [EnumMember(Value = "adventures-sherlock-holmes")]

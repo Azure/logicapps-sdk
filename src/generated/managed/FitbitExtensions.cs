@@ -1253,6 +1253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         public int ThirtyDayAvgMinutes { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortInput
     {
         [EnumMember(Value = "asc")]
@@ -1288,6 +1289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         public int Steps { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum periodInput
     {
         [EnumMember(Value = "1d")]
@@ -1854,6 +1856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum resourceInput
     {
         [EnumMember(Value = "bmi")]
@@ -1888,6 +1891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         public double WeightThreshold { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum goalTypeInput
     {
         [EnumMember(Value = "weight")]

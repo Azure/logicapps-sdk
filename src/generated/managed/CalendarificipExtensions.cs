@@ -142,6 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
         public int Day { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "local")]

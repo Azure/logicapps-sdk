@@ -354,6 +354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         public string WifiBssid { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum indicatorTypeInput
     {
         [EnumMember(Value = "ipv4")]

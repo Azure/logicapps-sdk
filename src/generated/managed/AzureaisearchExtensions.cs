@@ -408,6 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum searchModeInput
     {
         Any,

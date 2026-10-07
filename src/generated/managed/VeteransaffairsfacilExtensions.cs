@@ -312,6 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public string ZIPCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FacilityAttributesFacilityTypeType
     {
         [EnumMember(Value = "va_benefits_facility")]
@@ -360,6 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public SupplementalStatus[] SupplementalStatus { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OperatingStatusStatusCodeType
     {
         NORMAL,
@@ -491,6 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public string ServiceID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FacilityFacilityTypeType
     {
         [EnumMember(Value = "va_facilities")]
@@ -551,6 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public int TotalPages { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "health")]
@@ -638,6 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public ServiceInfoServiceTypeType ServiceType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ServiceInfoServiceTypeType
     {
         [EnumMember(Value = "benefits")]
@@ -798,6 +803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public int MinimumTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NearbyFacilityTypeType
     {
         [EnumMember(Value = "nearby_facility")]

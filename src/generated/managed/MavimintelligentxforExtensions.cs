@@ -89,6 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
         public bool AllFromLog { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AuditLogLanguageType
     {
         Czech,
@@ -187,6 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
         public string OrderNumber { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dataLanguageInput
     {
         [EnumMember(Value = "en")]

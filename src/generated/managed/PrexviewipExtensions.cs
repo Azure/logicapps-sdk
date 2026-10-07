@@ -86,6 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoutputInput
     {
         [EnumMember(Value = "pdf")]

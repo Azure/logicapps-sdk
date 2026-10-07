@@ -266,6 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
         public int ChannelID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytransactionDataTypeInput
     {
         [EnumMember(Value = "application/xml")]

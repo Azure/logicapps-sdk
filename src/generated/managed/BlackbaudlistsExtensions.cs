@@ -94,6 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylistTypeInput
     {
         Constituent,
@@ -108,6 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
         public string ID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypermissionsInput
     {
         OnlyOwnerCanAccess,

@@ -96,12 +96,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
         public bool PlayBeep { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyactionsInputItemActionTypeType
     {
         Play,
         Say
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyactionsInputItemVoiceType
     {
         [EnumMember(Value = "man")]

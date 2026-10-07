@@ -251,6 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodeInput
     {
         [EnumMember(Value = "markdown")]
@@ -259,6 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
         Gfm
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum contentTypeInput
     {
         [EnumMember(Value = "text/plain")]

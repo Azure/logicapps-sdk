@@ -1385,6 +1385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string FileName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BaseResultExportResponseResultCodeType
     {
         [EnumMember(Value = "0")]
@@ -1504,6 +1505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string LastAutoExportDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BaseResultListExportFormatResponseResultCodeType
     {
         [EnumMember(Value = "0")]
@@ -1619,6 +1621,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddOrUpdateEntityResultResultCodeType
     {
         [EnumMember(Value = "0")]
@@ -1719,6 +1722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2008
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BaseResultListAddOrUpdateEntityResultResultCodeType
     {
         [EnumMember(Value = "0")]
@@ -1851,6 +1855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string[] TagsToUnassign { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddOrUpdateProjectInputProjectUseTypeType
     {
         [EnumMember(Value = "1")]
@@ -1877,6 +1882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BaseResultResultCodeType
     {
         [EnumMember(Value = "0")]
@@ -2025,6 +2031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public TagResponse[] ReportTags { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReportResponseStateType
     {
         [EnumMember(Value = "0")]
@@ -2059,6 +2066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public TagResponseUseTypeType UseType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TagResponseTagTypeType
     {
         [EnumMember(Value = "1")]
@@ -2067,6 +2075,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TagResponseUseTypeType
     {
         [EnumMember(Value = "2")]
@@ -2085,6 +2094,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _128
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListAndPagesCountResultReportResponseResultCodeType
     {
         [EnumMember(Value = "0")]
@@ -2185,6 +2195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2008
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum reportUpdateStatusInputoperationInput
     {
         [EnumMember(Value = "0")]
@@ -2279,6 +2290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public TagResponse[] RestrictedTags { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserResponseUserTypeType
     {
         [EnumMember(Value = "0")]
@@ -2299,6 +2311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _56
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserResponseUserStateType
     {
         [EnumMember(Value = "0")]
@@ -2309,6 +2322,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserResponseManagerUserStateType
     {
         [EnumMember(Value = "0")]
@@ -2319,6 +2333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserResponseReviewerUserStateType
     {
         [EnumMember(Value = "0")]
@@ -2329,6 +2344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserResponseUserRoleType
     {
         [EnumMember(Value = "0")]
@@ -2395,6 +2411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public double MinimumAmount { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListAndPagesCountResultUserResponseResultCodeType
     {
         [EnumMember(Value = "0")]
@@ -2495,6 +2512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2008
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum quickExpenseInputexpenseUseTypeInput
     {
         [EnumMember(Value = "1")]
@@ -2543,6 +2561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public TagResponse[] CategoryTags { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CategoryResponseCategoryUseTypeType
     {
         [EnumMember(Value = "1")]
@@ -2553,6 +2572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _4
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListAndPagesCountResultCategoryResponseResultCodeType
     {
         [EnumMember(Value = "0")]
@@ -2726,6 +2746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public TagResponse[] ExpenseTags { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExpenseResponseUseTypeType
     {
         [EnumMember(Value = "1")]
@@ -2740,6 +2761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _16
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExpenseResponseStateType
     {
         [EnumMember(Value = "0")]
@@ -2806,6 +2828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public TagResponse[] ProjectTags { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ProjectResponseProjectUseTypeType
     {
         [EnumMember(Value = "1")]
@@ -2840,6 +2863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string AccountNumber { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PaymentInstrumentResponseInstrumentTypeType
     {
         [EnumMember(Value = "0")]
@@ -2860,6 +2884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _99
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PaymentInstrumentResponseAccountTypeType
     {
         [EnumMember(Value = "0")]
@@ -2895,6 +2920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string EndDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum VehicleResponseVehicleTypeType
     {
         [EnumMember(Value = "1")]
@@ -2909,6 +2935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _5
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum VehicleResponseInternalVehicleTypeType
     {
         [EnumMember(Value = "0")]
@@ -2919,6 +2946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum VehicleResponseStateType
     {
         [EnumMember(Value = "0")]
@@ -2935,6 +2963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         Negative1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum VehicleResponseCreationTypeType
     {
         [EnumMember(Value = "0")]
@@ -2943,6 +2972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExpenseResponsePerdiemCalculationPeriodTypeType
     {
         [EnumMember(Value = "0")]
@@ -2951,6 +2981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExpenseResponsePerDiemTypeType
     {
         [EnumMember(Value = "0")]
@@ -2978,6 +3009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public bool ForAllCompany { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrokenRuleResponseRuleTypeType
     {
         [EnumMember(Value = "0")]
@@ -2990,6 +3022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _3
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrokenRuleResponseRuleElementTypeType
     {
         [EnumMember(Value = "0")]
@@ -2998,6 +3031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrokenRuleResponseIntervalTypeType
     {
         [EnumMember(Value = "0")]
@@ -3026,6 +3060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public bool IsCoworker { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExpenseResponseSubStatusType
     {
         [EnumMember(Value = "0")]
@@ -3052,6 +3087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _1024
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListAndPagesCountResultExpenseResponseResultCodeType
     {
         [EnumMember(Value = "0")]
@@ -3159,6 +3195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BaseResultProjectResponseResultCodeType
     {
         [EnumMember(Value = "0")]
@@ -3268,6 +3305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListAndPagesCountResultProjectResponseResultCodeType
     {
         [EnumMember(Value = "0")]
@@ -3386,6 +3424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EventResponseEventTypeType
     {
         [EnumMember(Value = "1")]
@@ -3540,6 +3579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _129
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BaseResultListEventResponseResultCodeType
     {
         [EnumMember(Value = "0")]
@@ -3640,6 +3680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2008
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum userInviteInputuserTypeInput
     {
         [EnumMember(Value = "0")]
@@ -3660,6 +3701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _56
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum userInviteInputuserRoleInput
     {
         [EnumMember(Value = "0")]
@@ -3758,6 +3800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LoginResponseResultCodeType
     {
         [EnumMember(Value = "0")]
@@ -3858,6 +3901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2008
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum userUpdateInputuserTypeInput
     {
         [EnumMember(Value = "0")]
@@ -3878,6 +3922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _56
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum userUpdateInputuserRoleInput
     {
         [EnumMember(Value = "0")]
@@ -3950,6 +3995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UpdateUserResultResultCodeType
     {
         [EnumMember(Value = "0")]
@@ -4050,6 +4096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         _2008
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BaseResultListUpdateUserResultResultCodeType
     {
         [EnumMember(Value = "0")]
@@ -4156,6 +4203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         public UpdateUserStateInputOperationType Operation { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UpdateUserStateInputOperationType
     {
         [EnumMember(Value = "2")]

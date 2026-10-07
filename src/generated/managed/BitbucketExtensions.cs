@@ -570,6 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         public string Milestone { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyissueTypeInput
     {
         [EnumMember(Value = "bug")]
@@ -582,6 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         TaskObject
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriorityInput
     {
         [EnumMember(Value = "trivial")]
@@ -596,6 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         Blocker
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
         [EnumMember(Value = "new")]

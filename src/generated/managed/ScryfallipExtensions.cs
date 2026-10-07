@@ -1046,6 +1046,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string BorderCrop { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uniqueInput
     {
         [EnumMember(Value = "cards")]
@@ -1056,6 +1057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         Prints
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderInput
     {
         [EnumMember(Value = "name")]
@@ -1090,6 +1092,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         Review
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dirInput
     {
         [EnumMember(Value = "auto")]
@@ -1412,6 +1415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         public string Cardhoarder { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum versionInput
     {
         [EnumMember(Value = "large")]

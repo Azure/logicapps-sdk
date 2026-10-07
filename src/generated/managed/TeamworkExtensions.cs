@@ -894,6 +894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         public string TaskId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytodoItempriorityInput
     {
         [EnumMember(Value = "not set")]

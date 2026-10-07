@@ -1604,6 +1604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public int Version { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         [EnumMember(Value = "salesinvoice")]
@@ -1718,6 +1719,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public double TaxRate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriceleadingPriceInput
     {
         GROSS,
@@ -2915,6 +2917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum acceptInput
     {
         [EnumMember(Value = "*/*")]
@@ -4180,6 +4183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public string Property { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum voucherTypeInput
     {
         [EnumMember(Value = "any")]
@@ -4206,6 +4210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         Deliverynote
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum voucherStatusInput
     {
         [EnumMember(Value = "any")]
@@ -4252,6 +4257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public int Version { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytaxTypeInput
     {
         [EnumMember(Value = "net")]
@@ -4275,6 +4281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public int TaxRatePercent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvoucherStatusInput
     {
         [EnumMember(Value = "unchecked")]
@@ -4445,6 +4452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         public int Version { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyeventTypeInput
     {
         [EnumMember(Value = "article.created")]

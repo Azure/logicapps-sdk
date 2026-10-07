@@ -89,6 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
         public WebsiteScanResultWebsiteThreatTypeType WebsiteThreatType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum WebsiteScanResultWebsiteThreatTypeType
     {
         None,

@@ -413,6 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortDirectionInput
     {
         [EnumMember(Value = "asc")]
@@ -436,6 +437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeCardInput
     {
         Standard,
@@ -448,6 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         QCDAction
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum wedgeRingInput
     {
         [EnumMember(Value = "inner")]
@@ -500,6 +503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         public string EndDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fileContentTypeInput
     {
         [EnumMember(Value = "image/png")]

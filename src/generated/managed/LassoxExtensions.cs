@@ -64,6 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum productInput
     {
         [EnumMember(Value = "dynamicscrm")]

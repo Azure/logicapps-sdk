@@ -385,6 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         public string GrantingBody { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum includesInput
     {
         [EnumMember(Value = "grants")]

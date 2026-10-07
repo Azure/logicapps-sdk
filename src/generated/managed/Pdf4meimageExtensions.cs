@@ -342,12 +342,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyimageTypeInput
     {
         JPG,
         PNG
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycompressionLevelInput
     {
         Max,
@@ -355,6 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         Low
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycurrentImageFormatInput
     {
         BMP,
@@ -364,6 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         TIF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodynewImageFormatInput
     {
         BMP,
@@ -373,12 +377,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         TIF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum schemaValInput
     {
         Percentage,
         Specific
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyorientationTypeInput
     {
         Horizontal,
@@ -395,6 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         public string DocText { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyimageTypeExtractInput
     {
         JPG,

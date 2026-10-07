@@ -3172,6 +3172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyInputItemOpType
     {
         [EnumMember(Value = "add")]

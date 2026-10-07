@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libreborip
         public string LastUpdate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CompanyStatus
     {
         [EnumMember(Value = "active")]

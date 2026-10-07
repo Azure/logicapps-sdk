@@ -835,6 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyimportanceInput
     {
         Low,
@@ -842,6 +843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyshowAsInput
     {
         Free,
@@ -852,6 +854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         Unknown
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         GET,

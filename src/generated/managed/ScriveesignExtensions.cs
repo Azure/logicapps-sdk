@@ -760,6 +760,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyauthorRoleInput
     {
         [EnumMember(Value = "signing_party")]
@@ -768,6 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         Viewer
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypartyRoleInput
     {
         [EnumMember(Value = "signing_party")]
@@ -778,6 +780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         Approver
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydeliveryMethodInput
     {
         [EnumMember(Value = "email")]
@@ -792,6 +795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         Api
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyauthenticationToViewInput
     {
         [EnumMember(Value = "standard")]
@@ -812,6 +816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         NlIdin
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyauthenticationToViewArchivedInput
     {
         [EnumMember(Value = "standard")]
@@ -832,6 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         NlIdin
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyauthenticationToSignInput
     {
         [EnumMember(Value = "standard")]
@@ -852,6 +858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         OnfidoDocumentAndPhotoCheck
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyconfirmationInput
     {
         [EnumMember(Value = "email")]
@@ -868,12 +875,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrequiredInput
     {
         Yes,
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyaddToSealedFileInput
     {
         Yes,

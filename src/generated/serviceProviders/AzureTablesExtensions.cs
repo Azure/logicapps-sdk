@@ -329,14 +329,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         public string TableName { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UpsertEntityInputUpdateModeType
     {
         Merge,
         Replace
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UpdateEntityInputUpdateModeType
     {
         Merge,

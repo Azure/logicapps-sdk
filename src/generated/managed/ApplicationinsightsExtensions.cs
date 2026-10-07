@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
         public JToken[] Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum timerangeInput
     {
         [EnumMember(Value = "Last hour")]
@@ -110,6 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
         public string AttachmentName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum chartTypeInput
     {
         [EnumMember(Value = "Html Table")]

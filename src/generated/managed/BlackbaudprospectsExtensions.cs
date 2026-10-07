@@ -817,6 +817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public ConstituentApiRatingReadTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConstituentApiRatingReadTypeType
     {
         Text,
@@ -993,6 +994,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public string[] Tags { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpportunityApiOpportunityAttachmentReadTypeType
     {
         Link,
@@ -1062,6 +1064,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public string DateModified { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpportunityApiOpportunityCustomFieldReadTypeType
     {
         Text,
@@ -1092,6 +1095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudprospects
         public string ID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         Link,

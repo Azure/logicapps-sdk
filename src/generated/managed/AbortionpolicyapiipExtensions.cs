@@ -210,6 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
         public string LastUpdated { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum stateInput
     {
         Alabama,

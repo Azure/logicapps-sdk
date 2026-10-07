@@ -497,6 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scrapingbeeip
         public string URI { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum deviceInput
     {
         [EnumMember(Value = "desktop")]

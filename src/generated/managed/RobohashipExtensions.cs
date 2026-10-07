@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum setInput
     {
         [EnumMember(Value = "any")]
@@ -74,6 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
         Set5
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum gravatarInput
     {
         [EnumMember(Value = "no")]

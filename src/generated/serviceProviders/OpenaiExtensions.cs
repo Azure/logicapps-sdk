@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         public string User { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetChatCompletionsInputMessagesTypeItemRoleType
     {
         User,
@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
         public string User { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetMultipleChatCompletionsInputMessagesTypeItemRoleType
     {
         User,

@@ -281,6 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         public string Ref { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyengineInput
     {
         [EnumMember(Value = "cecil")]
@@ -293,6 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         Muriel
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysummaryTypeInput
     {
         [EnumMember(Value = "summary")]
@@ -301,6 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         Takeaway
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytargetLanguageInput
     {
         BG,

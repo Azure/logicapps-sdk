@@ -306,6 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum colorInput
     {
         Red,
@@ -314,6 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfblocks
         Black
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum angleInput
     {
         [EnumMember(Value = "0")]

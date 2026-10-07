@@ -561,6 +561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         public string StepType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fileTypeInput
     {
         CSV,
@@ -568,6 +569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         TDF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fileEncodingInput
     {
         [EnumMember(Value = "UTF-8")]
@@ -577,6 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         Cp1252
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum lidsBodyfileFormatInput
     {
         CSV,
@@ -584,6 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         TDF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum lidsBodyfileEncodingInput
     {
         [EnumMember(Value = "UTF-8")]
@@ -593,6 +597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         Cp1252
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum hierarchiesBodyfileFormatInput
     {
         CSV,
@@ -600,6 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         TDF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum hierarchiesBodyfileEncodingInput
     {
         [EnumMember(Value = "UTF-8")]
@@ -609,6 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         Cp1252
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum valuesBodyfileFormatInput
     {
         CSV,
@@ -616,6 +623,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         TDF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum valuesBodyfileEncodingInput
     {
         [EnumMember(Value = "UTF-8")]

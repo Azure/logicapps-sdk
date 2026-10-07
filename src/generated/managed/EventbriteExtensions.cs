@@ -285,6 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
         public string UTC { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum eventStartTimezoneInput
     {
         [EnumMember(Value = "Pacific/Midway")]
@@ -379,6 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
         PacificAuckland
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum eventEndTimezoneInput
     {
         [EnumMember(Value = "Pacific/Midway")]
@@ -473,6 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
         PacificAuckland
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum eventCurrencyInput
     {
         USD,

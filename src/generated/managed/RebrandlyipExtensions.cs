@@ -409,6 +409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         public string FullName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderByInput
     {
         [EnumMember(Value = "createdAt")]
@@ -417,6 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         UpdatedAt
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderDirInput
     {
         [EnumMember(Value = "asc")]

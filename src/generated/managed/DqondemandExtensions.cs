@@ -2155,6 +2155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum caseTypeInput
     {
         [EnumMember(Value = "ProperCase_FamilyName")]
@@ -2166,6 +2167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         TitleCase
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum languageInput
     {
         English,
@@ -2229,6 +2231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string[] Salacious { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum categoriesInput
     {
         All,
@@ -2259,6 +2262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public double Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum comparisonAlgorithmInput
     {
         JaroWinkler,
@@ -2294,6 +2298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string Code { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum actionTypeInput
     {
         CountryToEmail,
@@ -2475,6 +2480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public GenerateNonPrintingSettings NonPrintingSettings { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GenerateSettingsExcludeFromTokenTypeItem
     {
         WhiteSpace,
@@ -2493,12 +2499,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public GenerateLetterSettingsCollapseTypeItem[] Collapse { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GenerateLetterSettingsExcludeTypeItem
     {
         Vowels,
         Consonants
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GenerateLetterSettingsCollapseTypeItem
     {
         Vowels,
@@ -2512,12 +2520,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public GenerateNumberSettingsCollapseTypeItem[] Collapse { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GenerateNumberSettingsExcludeTypeItem
     {
         Odd,
         Even
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GenerateNumberSettingsCollapseTypeItem
     {
         Odd,
@@ -2542,6 +2552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public bool Collapse { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum generateAlgorithmTypeInput
     {
         DQFonetix,
@@ -2582,6 +2593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public ParsePhoneGetResponseDataTypeNumberTypeType NumberType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ParsePhoneGetResponseDataTypeNumberTypeType
     {
         [EnumMember(Value = "FIXED_LINE")]
@@ -2661,6 +2673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string Port { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ParseURLGetResponseDataTypeHostNameTypeType
     {
         Unknown,
@@ -2802,12 +2815,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public inputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsType InterScoreSettings { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemGroupFieldsTypeItemSettingsTypeScoringTypeType
     {
         InterScore,
         IntraScore
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemGroupFieldsTypeItemSettingsTypeScoringMethodType
     {
         EditDistanceScore,
@@ -2828,6 +2843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         DateProportional
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemGroupFieldsTypeItemSettingsTypeComparisonAlgorithmType
     {
         JaroWinkler,
@@ -2842,6 +2858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         HammingChangeCount
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemGroupFieldsTypeItemSettingsTypeAlphaSequenceType
     {
         AscCharacters,
@@ -2851,6 +2868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         None
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemGroupFieldsTypeItemSettingsTypeDateFormatType
     {
         DDMMYYYY,
@@ -2866,6 +2884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public int Threshold { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemGroupFieldsTypeItemSettingsTypeInterScoreSettingsTypeScoringMethodType
     {
         AnyMatch,
@@ -2881,6 +2900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public string TokenValue { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum entityTypeInput
     {
         Addresses,
@@ -2898,6 +2918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         Salacious
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum operationTypeInput
     {
         Elaborate,
@@ -2956,6 +2977,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public inputInputItemSettingsTypeItemLanguageType Language { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemSettingsTypeItemCategoryType
     {
         Addresses,
@@ -2973,6 +2995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         Salacious
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemSettingsTypeItemActionType
     {
         Elaborate,
@@ -2982,6 +3005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         Transliterate
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInputItemSettingsTypeItemLanguageType
     {
         English,
@@ -3126,6 +3150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public JToken AdditionalInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum VerifyAddressGetResponseDataTypeStatusType
     {
         VERIFIED,
@@ -3133,6 +3158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         UNVERIFIED
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum providerInput
     {
         Default,
@@ -3244,6 +3270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public JToken AdditionalInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SuppressDeceasedResponseDataTypeStatusType
     {
         Suppressed,
@@ -3275,6 +3302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public JToken AdditionalInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SuppressGoneAwayResponseDataTypeStatusType
     {
         Suppressed,
@@ -3309,6 +3337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public JToken AdditionalInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SuppressRelocatedResponseDataTypeStatusType
     {
         Suppressed,
@@ -3466,6 +3495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         public JToken AdditionalInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AuthenticatePhoneGetResponseDataTypeNumberTypeType
     {
         Mobile,
@@ -3474,6 +3504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         Unknown
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum characterTypeInput
     {
         Digit,
@@ -3493,6 +3524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         NonPrinting
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         Letter,
@@ -3510,6 +3542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dqondemand
         NonPrinting
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum extractFromInput
     {
         Start,

@@ -375,6 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         public string RemainingCredits { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ofInput
     {
         [EnumMember(Value = "json")]
@@ -383,6 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         Xml
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum txtfInput
     {
         [EnumMember(Value = "plain")]
@@ -391,6 +393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         Markup
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum verboseInput
     {
         [EnumMember(Value = "y")]
@@ -399,6 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         N
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uwInput
     {
         [EnumMember(Value = "y")]
@@ -446,6 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         public string RemainingCredits { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum modelInput
     {
         [EnumMember(Value = "IAB_2.0")]
@@ -474,6 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         VoEExitInterview
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum debugInput
     {
         [EnumMember(Value = "y")]
@@ -482,6 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         N
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum expandHierarchyInput
     {
         [EnumMember(Value = "n")]
@@ -630,6 +637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         public string Relevance { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum polarityInput
     {
         [EnumMember(Value = "y")]
@@ -761,6 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         public string Document10 { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum langInput
     {
         [EnumMember(Value = "en")]
@@ -791,6 +800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         Ar
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum modeInput
     {
         [EnumMember(Value = "tm")]
@@ -799,6 +809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         Dg
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum swInput
     {
         [EnumMember(Value = "y")]

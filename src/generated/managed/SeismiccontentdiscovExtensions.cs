@@ -541,6 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         public string ApplicationUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum searchRequestBodyoptionssearchFieldsInputItem
     {
         Name,
@@ -549,6 +550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         Properties
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum searchRequestBodyoptionsreturnFieldsInputItem
     {
         Repository,
@@ -579,6 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         public SeismicSearchSortConstraintOrderType Order { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SeismicSearchSortConstraintOrderType
     {
         Asc,

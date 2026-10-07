@@ -280,6 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         public double[] Coordinates { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         [EnumMember(Value = "open")]

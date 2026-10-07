@@ -658,6 +658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydirectionInput
     {
         [EnumMember(Value = "forward")]
@@ -666,6 +667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         Backward
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycolorInput
     {
         [EnumMember(Value = "")]
@@ -742,6 +744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         Random
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfromColorInput
     {
         [EnumMember(Value = "")]
@@ -836,6 +839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         public string Label { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypowerInput
     {
         [EnumMember(Value = "on")]
@@ -865,6 +869,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         public double Infrared { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatesInputItemPowerType
     {
         [EnumMember(Value = "on")]
@@ -873,6 +878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         Off
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatesInputItemColorType
     {
         [EnumMember(Value = "")]
@@ -949,6 +955,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         Random
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydefaultspowerInput
     {
         [EnumMember(Value = "on")]
@@ -957,6 +964,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         Off
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydefaultscolorInput
     {
         [EnumMember(Value = "")]

@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
         }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyeventTypeInput
     {
         SHARED,

@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
         public string ValueToHash { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         [EnumMember(Value = "sha1")]

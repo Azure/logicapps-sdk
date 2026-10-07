@@ -102,6 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dayRangeInput
     {
         [EnumMember(Value = "1")]

@@ -202,6 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
         public string Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderInput
     {
         [EnumMember(Value = "relevance")]
@@ -210,6 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
         Date
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum paginateByInput
     {
         [EnumMember(Value = "results")]

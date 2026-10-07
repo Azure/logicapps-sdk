@@ -169,6 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
         public string From { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "house_number")]

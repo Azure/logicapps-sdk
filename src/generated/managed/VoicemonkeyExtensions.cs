@@ -234,6 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvoiceInput
     {
         Nicole,
@@ -276,6 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         Miguel
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylanguageInput
     {
         [EnumMember(Value = "de-DE")]
@@ -310,6 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         PtBR
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodychimeInput
     {
         [EnumMember(Value = "soundbank://soundlibrary/alarms/air_horns/air_horn_01")]
@@ -358,6 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         SoundbankSoundlibraryAlarmsBeepsAndBloopsWoosh02
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymediaScalingInput
     {
         [EnumMember(Value = "none")]
@@ -372,6 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         BestFitDown
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymediaAlignmentInput
     {
         [EnumMember(Value = "bottom")]

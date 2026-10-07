@@ -140,6 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
         public bool Green { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum greenInput
     {
         [EnumMember(Value = "0")]

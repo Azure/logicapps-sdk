@@ -436,6 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         public string FlowExecutionPanelUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum reqrecordTypeInput
     {
         Flow,
@@ -443,6 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
         DataSet
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum reqexportModeInput
     {
         All,

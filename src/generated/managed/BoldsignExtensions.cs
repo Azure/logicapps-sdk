@@ -210,6 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         public string WebHookId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum eventsInput
     {
         Sent,

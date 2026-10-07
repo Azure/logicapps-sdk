@@ -157,6 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
         public int TotalTokens { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodelInput
     {
         [EnumMember(Value = "mistral-7b-instruct")]
@@ -182,6 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymessagesInputItemRoleType
     {
         [EnumMember(Value = "system")]

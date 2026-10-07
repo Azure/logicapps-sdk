@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
         public JToken Response { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AnalyzeDocumentInputModelIdType
     {
         [EnumMember(Value = "prebuilt-read")]

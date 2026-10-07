@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
         public string Address { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycountryCodeInput
     {
         AT,

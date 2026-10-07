@@ -811,7 +811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public string Uuid { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SapTriggerOutputRfcServerContextTypeUnitIdTypeUnitTypeType
     {
         Queued,
@@ -833,7 +833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public string SendingDateTime { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SapTriggerInputIdocFormatType
     {
         MicrosoftLobNamespaceXml,
@@ -841,14 +841,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         FlatFile
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CallRfcInputInputBodyTypeType
     {
         XML,
         JSON
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CallRfcInputOutputBodyTypeType
     {
         XML,
@@ -930,7 +930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public string QueueName { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendIDocInputIdocFormatType
     {
         MicrosoftLobNamespaceXml,
@@ -1115,7 +1115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public string Description { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReadTableInputReturnFormatType
     {
         Xml,
@@ -1123,7 +1123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         ExpandedJson
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetSchemaV2InputOperationTypeType
     {
         BAPI,
@@ -1139,7 +1139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public int[] IDocNumbers { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetIDocListInputDirectionType
     {
         Send,
@@ -1152,7 +1152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         public int IDocStatus { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RunDiagnosticsInputOperationTypeType
     {
         [EnumMember(Value = "Fetch RFC Metadata")]

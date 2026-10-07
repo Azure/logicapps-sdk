@@ -845,6 +845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         public string OutputText { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestBodyoutputFormatInput
     {
         [EnumMember(Value = "markdown")]

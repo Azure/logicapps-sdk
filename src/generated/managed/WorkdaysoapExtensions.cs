@@ -65,6 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum serviceInput
     {
         [EnumMember(Value = "Human_Resources")]

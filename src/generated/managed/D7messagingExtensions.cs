@@ -275,6 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         public int Expiry { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydataCodingInput
     {
         [EnumMember(Value = "auto")]
@@ -285,6 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         Unicode
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyotpTypeInput
     {
         [EnumMember(Value = "numeric")]

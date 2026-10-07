@@ -248,6 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         public string Combined { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum imagerySetInput
     {
         Aerial,
@@ -258,6 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         Road
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "gif")]
@@ -406,6 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         public string FormattedAddress { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum travelModeInput
     {
         Driving,
@@ -413,6 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         Transit
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum optimizeInput
     {
         [EnumMember(Value = "distance")]
@@ -425,12 +429,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         TimeAvoidClosure
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum distanceUnitInput
     {
         Mile,
         Kilometer
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum timeTypeInput
     {
         Arrival,

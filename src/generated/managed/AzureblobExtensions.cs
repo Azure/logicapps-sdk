@@ -551,6 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         public string WebUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum policypermissionsInput
     {
         Read,
@@ -567,6 +568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         ReadWriteListDelete
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum policysharedAccessProtocolInput
     {
         HttpsOnly,
@@ -587,6 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         public string IPAddressOrIPAddressRange { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SharedAccessSignatureBlobPolicyPermissionsType
     {
         Read,
@@ -603,6 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         ReadWriteListDelete
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SharedAccessSignatureBlobPolicySharedAccessProtocolType
     {
         HttpsOnly,
@@ -675,6 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureblob
         public string NextPageMarker { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum newTierInput
     {
         Hot,

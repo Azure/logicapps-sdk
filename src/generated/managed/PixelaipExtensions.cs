@@ -801,6 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyagreeTermsOfServiceInput
     {
         [EnumMember(Value = "yes")]
@@ -809,6 +810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodynotMinorInput
     {
         [EnumMember(Value = "yes")]
@@ -892,6 +894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public bool IsSuccess { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         [EnumMember(Value = "int")]
@@ -900,6 +903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         Float
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycolorInput
     {
         [EnumMember(Value = "shibafu")]
@@ -967,6 +971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum modeInput
     {
         [EnumMember(Value = "short")]
@@ -977,6 +982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelaip
         Line
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum appearanceInput
     {
         [EnumMember(Value = "dark")]

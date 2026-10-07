@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
         public string DataflowId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum workspaceTypeInput
     {
         Workspace,

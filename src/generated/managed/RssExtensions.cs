@@ -99,6 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
         public string[] FeedCategories { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sincePropertyInput
     {
         PublishDate,

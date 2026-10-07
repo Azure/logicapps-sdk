@@ -81,6 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aheadintranet
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysourceInput
     {
         Ahead,

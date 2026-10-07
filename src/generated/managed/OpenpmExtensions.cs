@@ -545,6 +545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openpm
         public string Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "json")]

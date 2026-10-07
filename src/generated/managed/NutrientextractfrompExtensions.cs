@@ -559,6 +559,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         public string ResultDetails { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OperationResponseResultCodeType
     {
         Success,
@@ -577,6 +578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         InvalidExtension
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDatadPIInput
     {
         [EnumMember(Value = "500")]
@@ -591,6 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         _150
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDatakVPOutputFormatInput
     {
         [EnumMember(Value = "json")]
@@ -601,6 +604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         Xml
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataautorotateInput
     {
         Default,
@@ -608,6 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDatatrimSymbolsInput
     {
         Default,
@@ -615,6 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataincludeKeyBoundingBoxInput
     {
         Default,
@@ -622,6 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataincludeValueBoundingBoxInput
     {
         Default,
@@ -629,6 +636,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataincludePageNumberInput
     {
         Default,
@@ -636,6 +644,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataincludeConfidenceInput
     {
         Default,
@@ -643,6 +652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataincludeTypeInput
     {
         Default,
@@ -665,6 +675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         public string ResultDetails { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OcrOperationResponseResultCodeType
     {
         Success,
@@ -683,6 +694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         InvalidExtension
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatalanguageInput
     {
         English,
@@ -702,6 +714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         Russian
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataperformanceInput
     {
         [EnumMember(Value = "Slow but accurate")]
@@ -712,6 +725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientextractfromp
         FastestAndLeastAccurate
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatablacklistWhitelistInput
     {
         None,

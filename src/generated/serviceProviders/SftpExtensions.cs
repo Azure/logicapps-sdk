@@ -726,7 +726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
         public bool IsFolder { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExtractArchiveInputOverwriteExistingFilesBehaviourType
     {
         Fail,

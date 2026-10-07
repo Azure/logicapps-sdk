@@ -1472,6 +1472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         public bool ChillHour { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum groupInput
     {
         [EnumMember(Value = "all")]
@@ -2159,6 +2160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         public double ExtremeValue { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum @operatorInput
     {
         [EnumMember(Value = "gt")]
@@ -2167,6 +2169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         Lt
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum propertyInput
     {
         [EnumMember(Value = "airTemperature")]
@@ -2187,6 +2190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         BarometricPressure
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum intervalInput
     {
         [EnumMember(Value = "minute")]

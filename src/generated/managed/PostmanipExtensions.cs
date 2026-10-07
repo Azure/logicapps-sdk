@@ -271,6 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         public string Visibility { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "personal")]
@@ -300,6 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyworkspacetypeInput
     {
         [EnumMember(Value = "personal")]

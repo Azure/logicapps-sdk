@@ -396,6 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         public bodyformFieldsInputItemChoicesTypeItem[] Choices { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyformFieldsInputItemFieldTypeType
     {
         Text,

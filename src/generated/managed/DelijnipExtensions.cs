@@ -205,6 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
         public Link[] Links { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LijnrichtingRichtingType
     {
         HEEN,
@@ -247,6 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
         public GeoCoordinaat GeoCoordinaat { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LocatieTypeType
     {
         [EnumMember(Value = "adres")]
@@ -259,6 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
         Station
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LocatieSubtypeType
     {
         [EnumMember(Value = "hoofdgemeente")]

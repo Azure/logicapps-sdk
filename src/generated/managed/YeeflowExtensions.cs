@@ -752,6 +752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         public ListDataWhereRequest[] Child { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListDataWhereRequestPreType
     {
         [EnumMember(Value = "and")]

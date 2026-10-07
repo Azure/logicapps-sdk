@@ -849,12 +849,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public bool WelcomeBannerDismissed { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserRequestResponseDisplayNameFormatType
     {
         Full,
         Short
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserRequestResponseStatusType
     {
         New,
@@ -932,6 +934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public bool IsPubliclyVisible { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AffiliationQuestionResponseQuestionTypeType
     {
         SingleAnswer,
@@ -1038,6 +1041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public JToken ProfilePictureImages { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserChannelResponseProviderType
     {
         None,
@@ -1099,6 +1103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         FacebookNative
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserChannelResponseStatusType
     {
         Active,
@@ -1115,6 +1120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string[] Times { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserScheduleSettingsResponseDaysType
     {
         Sunday,
@@ -1222,12 +1228,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public bool DefaultPostShowCreatorInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserDefaultsRequestResponseDefaultPostStateType
     {
         Shareable,
         NonShareable
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserDefaultsRequestResponseDefaultPostApprovalStateType
     {
         Pending,
@@ -1256,6 +1264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string[] AcceptedValues { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ManageUserTagResponseTypeType
     {
         Tag,
@@ -1307,6 +1316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodynotificationsDefaultInput
     {
         Immediately,
@@ -1538,12 +1548,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public bool IsActive { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PostResponsePostTypeType
     {
         Text,
         Video
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PostResponsePostSourceTypeType
     {
         Member,
@@ -1551,6 +1563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         Brand
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PostResponsePostBylineTypeType
     {
         Author,
@@ -1558,6 +1571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         Hidden
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PostResponseApprovalStateType
     {
         Pending,
@@ -1565,12 +1579,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         Excluded
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PostResponseDisplayModeType
     {
         DisplayInApp,
         OpenExternally
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PostResponseStatusType
     {
         Active,
@@ -1721,6 +1737,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public string ShareDisclosureText { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PostShareDisclosureResponseProviderType
     {
         None,
@@ -1791,6 +1808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public int ShareMaxCharacterLimit { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PostShareCommentRulesResponseProviderType
     {
         None,
@@ -1864,12 +1882,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         public int ParentCategoryID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypostTypeInput
     {
         Text,
         Video
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyapprovalStateInput
     {
         Pending,
@@ -1877,6 +1897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsignal
         Excluded
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydisplayModeInput
     {
         DisplayInApp,

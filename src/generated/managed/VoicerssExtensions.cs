@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicerss
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum cInput
     {
         MP3,

@@ -1184,6 +1184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public string Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortInput
     {
         [EnumMember(Value = "name")]
@@ -1194,6 +1195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         UploadedAt
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortDirectionInput
     {
         [EnumMember(Value = "asc")]
@@ -1382,6 +1384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public Photo Photo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyformatInput
     {
         [EnumMember(Value = "json")]
@@ -1530,6 +1533,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public GeometryTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GeometryTypeType
     {
         Point,
@@ -1546,6 +1550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public Record Record { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrecordgeometrytypeInput
     {
         Point,
@@ -1706,6 +1711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public string Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RecordHistoryItemHistoryChangeTypeType
     {
         [EnumMember(Value = "c")]
@@ -1755,6 +1761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         public string Url { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReportResponseReportTypeStateType
     {
         [EnumMember(Value = "pending")]

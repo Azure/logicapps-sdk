@@ -590,6 +590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         public string ProcessId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydatatranscriptionFormatInput
     {
         [EnumMember(Value = "text")]

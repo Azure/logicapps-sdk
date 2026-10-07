@@ -178,6 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
         }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum queryInput
     {
         [EnumMember(Value = "default")]
@@ -190,6 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
         Max
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum timezoneInput
     {
         [EnumMember(Value = "(GMT+00:00) UTC")]
@@ -1034,6 +1036,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
         public string Result { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytimezoneInput
     {
         [EnumMember(Value = "(GMT+00:00) UTC")]
@@ -1872,6 +1875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
         GMT1400PacificApia
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum conditionInput
     {
         Any,

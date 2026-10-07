@@ -282,6 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         public string Ts { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum messageparseModeInput
     {
         [EnumMember(Value = "full")]

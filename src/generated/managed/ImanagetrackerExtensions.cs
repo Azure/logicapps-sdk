@@ -516,6 +516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         public string WId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum WorkObjectInResponseWWstypeType
     {
         DOCUMENT,
@@ -528,6 +529,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TaskProfileParentTypeType
     {
         [EnumMember(Value = "task")]
@@ -536,6 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         Tracker
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyassigneetyInput
     {
         [EnumMember(Value = "user")]
@@ -598,6 +601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
         public string FieldId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyviewOptionInput
     {
         [EnumMember(Value = "Details View")]

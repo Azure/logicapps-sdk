@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
         public string JobId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum batchrPAEnvironmentInput
     {
         [EnumMember(Value = "0")]

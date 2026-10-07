@@ -344,6 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
         public string Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BreachMetadataPrecisionType
     {
         [EnumMember(Value = "year")]
@@ -462,6 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
         public SecretDetailsDetailsTypeRankType Rank { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SecretDetailsDetailsTypePropertiesTypeItem
     {
         Letter,
@@ -481,6 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
         MalwareOnly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SecretDetailsDetailsTypeRankType
     {
         Top100kCommonPasswords,
@@ -502,6 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
         public string[] Subjects { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfilterpropertiesInputItem
     {
         Letter,
@@ -521,6 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
         MalwareOnly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfilterusernamePropertiesInputItem
     {
         Email

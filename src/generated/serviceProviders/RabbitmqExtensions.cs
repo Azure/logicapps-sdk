@@ -229,14 +229,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         public int ConsumerCount { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateQueueInputExchangeTypeType
     {
         Direct,
         Topic
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CompleteMessageInputAcknowledgementType
     {
         Complete,

@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
         public bool IsFolder { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExtractArchiveInputOverwriteExistingFilesBehaviourType
     {
         Fail,

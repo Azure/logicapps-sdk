@@ -1218,6 +1218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         public string Identifier { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         [EnumMember(Value = "workplace_user")]
@@ -1260,6 +1261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doppler
         public string Identifier { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "workplace_user")]

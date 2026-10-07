@@ -1405,6 +1405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string[] Values { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SeismicLibraryContentManagementEnumResponseType
     {
         [EnumMember(Value = "unknown")]
@@ -1693,12 +1694,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SeismicLibraryInstructionsInstructionType
     {
         [EnumMember(Value = "text")]
         Text
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         [EnumMember(Value = "text")]
@@ -1879,6 +1882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclibrary
         public bool IsDeleted { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyactionInput
     {
         [EnumMember(Value = "approve")]

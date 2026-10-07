@@ -387,6 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         public string EncryptedData { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum operationInputalgorithmInput
     {
         [EnumMember(Value = "RSA-OAEP-256")]

@@ -1063,6 +1063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public Link[] Links { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CampaignResponseModelCampaignTypeType
     {
         [EnumMember(Value = "")]
@@ -1235,6 +1236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public Schedule Schedule { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RSSOptsFrequencyType
     {
         [EnumMember(Value = "")]
@@ -1286,6 +1288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public bool Saturday { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ScheduleWeeklySendingDayType
     {
         [EnumMember(Value = "")]
@@ -1525,6 +1528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public CampaignDefaultsLanguageType Language { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CampaignDefaultsLanguageType
     {
         [EnumMember(Value = "")]
@@ -1684,6 +1688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string DateOfLastListUnsubscribe { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum newListRequestcampaignDefaultslanguageInput
     {
         [EnumMember(Value = "")]
@@ -1792,6 +1797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Vi
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum newListRequestvisibilityInput
     {
         [EnumMember(Value = "")]
@@ -1838,6 +1844,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string EmailAddress { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NewMemberInListRequestEmailTypeType
     {
         [EnumMember(Value = "")]
@@ -1848,6 +1855,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Text
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NewMemberInListRequestStatusType
     {
         [EnumMember(Value = "")]
@@ -1970,6 +1978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         public string Note { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum newMemberInListstatusInput
     {
         [EnumMember(Value = "")]
@@ -1984,6 +1993,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Pending
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum newMemberInListemailTypeInput
     {
         [EnumMember(Value = "")]
@@ -1994,6 +2004,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Text
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum newCampaignRequestcampaignTypeInput
     {
         [EnumMember(Value = "")]
@@ -2010,6 +2021,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Variate
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum newCampaignRequestrssOptsfrequencyInput
     {
         [EnumMember(Value = "")]
@@ -2022,6 +2034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Monthly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum newCampaignRequestrssOptsscheduleweeklySendingDayInput
     {
         [EnumMember(Value = "")]
@@ -2042,6 +2055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Saturday
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum updateMemberInListRequeststatusInput
     {
         [EnumMember(Value = "")]
@@ -2056,6 +2070,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         Pending
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum updateMemberInListRequestemailTypeInput
     {
         [EnumMember(Value = "")]

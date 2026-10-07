@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
         public string HeaderValue { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveMessageInputAuthenticationModeType
     {
         Plain,
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
         ScramSha512
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReceiveMessageInputProtocolType
     {
         Ssl,

@@ -548,6 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         public string CurrencyCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyexpenseamountcurrencyInput
     {
         AED,
@@ -823,6 +824,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         public string CurrencyCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyclientcurrencyInput
     {
         AED,

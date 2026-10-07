@@ -382,6 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         public string WorkflowUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum WorkflowRunResponseStatusType
     {
         Active,
@@ -408,6 +409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         public string TimeZone { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
         Active,
@@ -443,6 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         public string TaskId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytaskStateInput
     {
         [EnumMember(Value = "Task Checked")]

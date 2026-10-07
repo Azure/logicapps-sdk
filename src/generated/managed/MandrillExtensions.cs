@@ -320,6 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         public string MessageID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListScheduledInfoRecipientSStatusType
     {
         [EnumMember(Value = "")]
@@ -336,6 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         OrInvalid
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListScheduledInfoRejectionReasonType
     {
         [EnumMember(Value = "")]
@@ -389,6 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         public RecipientInfoSendAsType SendAs { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RecipientInfoSendAsType
     {
         [EnumMember(Value = "to")]

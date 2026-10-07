@@ -4314,6 +4314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
         public string ID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoriginInput
     {
         [EnumMember(Value = "user")]
@@ -4934,6 +4935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
         public bool Expired { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dateRangeInput
     {
         [EnumMember(Value = "All dates")]
@@ -5459,6 +5461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
         public string ID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
         Pending,
@@ -5593,6 +5596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudaltruconsti
         public string ID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydeleteActionInput
     {
         [EnumMember(Value = "delete source constituent")]

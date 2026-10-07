@@ -126,6 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
         public string EnvironmentID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymethodInput
     {
         GET,

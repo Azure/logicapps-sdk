@@ -279,6 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         public string WorkerNumber { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum entityInput
     {
         AbsenceDailyDetails,

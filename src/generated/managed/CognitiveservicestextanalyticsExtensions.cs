@@ -274,6 +274,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         public string TargetRef { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TextAnalyticsWarningCodeType
     {
         LongWordsInDocument,
@@ -496,6 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         public TextAnalyticsWarning[] Warnings { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentSentimentSentimentType
     {
         [EnumMember(Value = "positive")]
@@ -538,6 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         public int Length { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SentenceSentimentSentimentType
     {
         [EnumMember(Value = "positive")]

@@ -416,6 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         public string CreatedAt { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum modelIdInput
     {
         [EnumMember(Value = "26a1a203-3a46-42cb-8cfa-f4de075907d8")]
@@ -698,6 +699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         public string MediaUri { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodeInput
     {
         [EnumMember(Value = "melody")]

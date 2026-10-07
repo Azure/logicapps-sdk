@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum viewInput
     {
         [EnumMember(Value = "1")]
@@ -64,6 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
         SwitchTerminalSequencesOffNoColors
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum langInput
     {
         [EnumMember(Value = "en")]

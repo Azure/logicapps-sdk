@@ -1917,6 +1917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         public bool IsRented { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum deletedFilterInput
     {
         IncludeAll,
@@ -2042,6 +2043,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         public string PaymentNote { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum reversedFilterInput
     {
         All,

@@ -147,6 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
         public string[] RecipientIds { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobReportEncodingType
     {
         [EnumMember(Value = "standard")]
@@ -155,6 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
         Utf16
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobReportQosType
     {
         EXPRESS,

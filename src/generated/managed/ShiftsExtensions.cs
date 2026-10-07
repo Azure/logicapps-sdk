@@ -1486,6 +1486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public Theme Theme { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Theme
     {
         [EnumMember(Value = "white")]
@@ -1529,6 +1530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public Theme Theme { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestvaluethemeInput
     {
         [EnumMember(Value = "white")]
@@ -1773,6 +1775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public ActivitiesItem[] Activities { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestsharedOpenShiftthemeInput
     {
         [EnumMember(Value = "white")]
@@ -1927,6 +1930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string TimeOffReasonID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TimeOffRequestResponseAssignedToType
     {
         [EnumMember(Value = "mananger")]
@@ -1935,6 +1939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         Recipient
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum stateInput
     {
         [EnumMember(Value = "pending")]
@@ -2002,6 +2007,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string ManagerID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfferShiftRequestResponseAssignedToType
     {
         [EnumMember(Value = "mananger")]
@@ -2070,6 +2076,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string ManagerID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SwapShiftsChangeRequestResponseAssignedToType
     {
         [EnumMember(Value = "mananger")]
@@ -2126,6 +2133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
         public string OpenShiftID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OpenShiftChangeRequestResponseAssignedToType
     {
         [EnumMember(Value = "mananger")]

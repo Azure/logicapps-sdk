@@ -5643,6 +5643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         public string ResultDetails { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OperationResponseResultCodeType
     {
         Success,
@@ -5661,6 +5662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         InvalidExtension
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataremoveAnnotationsInput
     {
         Default,
@@ -5668,6 +5670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataremoveBlankPagesInput
     {
         Default,
@@ -5675,6 +5678,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataremoveBookmarksInput
     {
         Default,
@@ -5682,6 +5686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataremoveEmbeddedFilesInput
     {
         Default,
@@ -5689,6 +5694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataremoveFormFieldsInput
     {
         Default,
@@ -5696,6 +5702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataremoveHyperlinksInput
     {
         Default,
@@ -5703,6 +5710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataremoveJavaScriptInput
     {
         Default,
@@ -5710,6 +5718,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataremoveMetadataInput
     {
         Default,
@@ -5717,6 +5726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataremovePageThumbnailsInput
     {
         Default,
@@ -5724,6 +5734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDatapackFontsInput
     {
         Default,
@@ -5731,6 +5742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDatapackDocumentInput
     {
         Default,
@@ -5738,6 +5750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDatarecompressImagesInput
     {
         Default,
@@ -5745,6 +5758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataenableMRCInput
     {
         Default,
@@ -5752,6 +5766,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDatapreserveSmoothingInput
     {
         Default,
@@ -5759,6 +5774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataimageQualityInput
     {
         Default,
@@ -5773,6 +5789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         VeryLow
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDatadownscaleImagesInput
     {
         Default,
@@ -5780,6 +5797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataenableColorDetectionInput
     {
         Default,
@@ -5787,6 +5805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataenableCharRepairInput
     {
         Default,
@@ -5794,6 +5813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataenableJPEG2000Input
     {
         Default,
@@ -5801,6 +5821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataenableJBIG2Input
     {
         Default,
@@ -5808,6 +5829,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataoutputFormatInput
     {
         PDF,
@@ -5841,6 +5863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         XFDF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputCadDatapaperSizeInput
     {
         A3,
@@ -5851,6 +5874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Custom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputCadDataforegroundColorInput
     {
         Default,
@@ -5863,6 +5887,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Custom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputCadDataemptyLayoutDetectionInput
     {
         Default,
@@ -5871,6 +5896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         SkipLayoutsWithoutViewports
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputCadDatalayoutSortOrderInput
     {
         Default,
@@ -5879,6 +5905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         TabOrder
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputEmailDataattachmentActionInput
     {
         Default,
@@ -5887,6 +5914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         AttachOriginal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputEmailDataunsupportedAttachmentActionInput
     {
         Error,
@@ -5894,6 +5922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         AttachOriginal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputEmailDatapaperSizeInput
     {
         A3,
@@ -5904,6 +5933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Custom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputEmailDataconversionQualityInput
     {
         OptimizeForPrint,
@@ -5911,6 +5941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Original
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputExcelDataoutputFormatInput
     {
         PDF,
@@ -5929,6 +5960,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         ODS
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputExcelDatarangeInput
     {
         VisibleDocuments,
@@ -5936,6 +5968,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         ActiveDocuments
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputExcelDataqualityInput
     {
         OptimizeForPrint,
@@ -5943,18 +5976,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Original
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatapageOrientationInput
     {
         Portrait,
         Landscape
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatamediaTypeInput
     {
         Screen,
         Print
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataauthenticationTypeInput
     {
         Anonymous,
@@ -5963,6 +5999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Web
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDataoutputFormatInput
     {
         PDF,
@@ -5981,6 +6018,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         ODS
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDataattachmentActionInput
     {
         Default,
@@ -5989,6 +6027,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         AttachOriginal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDataunsupportedAttachmentActionInput
     {
         Error,
@@ -5996,6 +6035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         AttachOriginal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDatadefaultPaperSizeInput
     {
         A3,
@@ -6006,6 +6046,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Custom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDataforcePaperSizeInput
     {
         A3,
@@ -6016,6 +6057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Custom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDatadefaultPageOrientationInput
     {
         Default,
@@ -6024,6 +6066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDataforcePageOrientationInput
     {
         Default,
@@ -6032,6 +6075,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDataconversionQualityInput
     {
         OptimizeForPrint,
@@ -6039,6 +6083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Original
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDatapDFProfileInput
     {
         Default,
@@ -6068,6 +6113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         PDF17
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPowerpointDataoutputFormatInput
     {
         PDF,
@@ -6081,6 +6127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         PPSX
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPowerpointDatarangeInput
     {
         VisibleDocuments,
@@ -6088,6 +6135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         ActiveDocuments
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPowerpointDataprintLayoutHandoutsInput
     {
         Slides,
@@ -6101,6 +6149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Outline
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPowerpointDataqualityInput
     {
         OptimizeForPrint,
@@ -6108,18 +6157,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Original
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputVisioDataoutputFormatInput
     {
         PDF,
         XPS
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputVisioDatarangeInput
     {
         AllDocuments,
         ActiveDocuments
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputVisioDataqualityInput
     {
         OptimizeForPrint,
@@ -6127,6 +6179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Original
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputWordDataoutputFormatInput
     {
         PDF,
@@ -6145,6 +6198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         ODS
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputWordDatadisplayForReviewInput
     {
         Final,
@@ -6153,6 +6207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         OriginalShowingMarkup
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputWordDatareviewMarkupModeInput
     {
         Balloon,
@@ -6160,6 +6215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Mixed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputWordDatagenerateBookmarksInput
     {
         Disabled,
@@ -6167,6 +6223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Custom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputWordDataqualityInput
     {
         OptimizeForPrint,
@@ -6186,6 +6243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         public string ResultDetails { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OperationResponseCommonResultCodeType
     {
         Success,
@@ -6204,6 +6262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         InvalidExtension
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatapositionInput
     {
         [EnumMember(Value = "Top Left")]
@@ -6228,12 +6287,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Random
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatalayerInput
     {
         Background,
         Foreground
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatawatermarkPageOrientationInput
     {
         Portrait,
@@ -6241,6 +6302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataprintOnlyInput
     {
         [EnumMember(Value = "false")]
@@ -6249,6 +6311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         True
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputFromPdfDataoutputDataFormatInput
     {
         XML,
@@ -6256,6 +6319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         XFDF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputXmlDataflattenInput
     {
         Default,
@@ -6263,6 +6327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputXmlDatareadOnlyInput
     {
         Default,
@@ -6270,6 +6335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDatadPIInput
     {
         [EnumMember(Value = "500")]
@@ -6284,6 +6350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         _150
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDatakVPOutputFormatInput
     {
         [EnumMember(Value = "json")]
@@ -6294,6 +6361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Xml
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataautorotateInput
     {
         Default,
@@ -6301,6 +6369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDatatrimSymbolsInput
     {
         Default,
@@ -6308,6 +6377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataincludeKeyBoundingBoxInput
     {
         Default,
@@ -6315,6 +6385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataincludeValueBoundingBoxInput
     {
         Default,
@@ -6322,6 +6393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataincludePageNumberInput
     {
         Default,
@@ -6329,6 +6401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataincludeConfidenceInput
     {
         Default,
@@ -6336,6 +6409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataincludeTypeInput
     {
         Default,
@@ -6343,6 +6417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatabarcodeTypeInput
     {
         Codabar,
@@ -6361,6 +6436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         UPCA
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatadisableCheckDigitInput
     {
         [EnumMember(Value = "true")]
@@ -6369,6 +6445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatashowCheckDigitInput
     {
         [EnumMember(Value = "true")]
@@ -6377,6 +6454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataomitEncodingOfStartStopSymbolsInput
     {
         [EnumMember(Value = "true")]
@@ -6385,6 +6463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatalabelPlacementInput
     {
         [EnumMember(Value = "Top Left")]
@@ -6402,6 +6481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         BottomRight
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataeachDocumentInput
     {
         [EnumMember(Value = "Starts on the default page")]
@@ -6423,6 +6503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatalanguageInput
     {
         English,
@@ -6442,6 +6523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Russian
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataperformanceInput
     {
         [EnumMember(Value = "Slow but accurate")]
@@ -6452,6 +6534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         FastestAndLeastAccurate
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatablacklistWhitelistInput
     {
         None,
@@ -6474,6 +6557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         public string ResultDetails { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OcrOperationResponseResultCodeType
     {
         Success,
@@ -6492,6 +6576,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         InvalidExtension
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataversionInput
     {
         Auto,
@@ -6577,6 +6662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Version40
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatainputModeInput
     {
         Binary,
@@ -6584,6 +6670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Numeric
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataerrorCorrectionLevelInput
     {
         Low,
@@ -6592,6 +6679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         Quartile
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDataredactionTypeInput
     {
         Text,
@@ -6619,6 +6707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         public string ProcessedFileContent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SplitOperationResponseResultCodeType
     {
         Success,
@@ -6637,6 +6726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         InvalidExtension
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatasplitByInput
     {
         [EnumMember(Value = "Number of Pages")]
@@ -6645,6 +6735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         BookmarkLevel
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatatextAlignmentInput
     {
         [EnumMember(Value = "Top Left")]
@@ -6673,6 +6764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbi
         BottomJustfiy
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatawordWrapInput
     {
         WordOnly,

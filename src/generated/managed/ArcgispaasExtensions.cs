@@ -288,6 +288,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         public double LatitudeY { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum locationTypeInput
     {
         Rooftop,
@@ -324,6 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
         public string Units { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum buffertypeInput
     {
         [EnumMember(Value = "default")]

@@ -1379,6 +1379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public bool Success { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "add")]
@@ -1396,6 +1397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public bool Success { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyemploymentemploymentInput
     {
         [EnumMember(Value = "")]
@@ -1415,6 +1417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public bool Success { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypropertiestypeInput
     {
         [EnumMember(Value = "private")]
@@ -1468,6 +1471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leaddesk
         public bool Success { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderInput
     {
         [EnumMember(Value = "first")]

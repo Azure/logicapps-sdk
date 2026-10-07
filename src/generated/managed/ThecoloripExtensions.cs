@@ -825,6 +825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
         public string Quad { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum modeInput
     {
         [EnumMember(Value = "monochrome")]

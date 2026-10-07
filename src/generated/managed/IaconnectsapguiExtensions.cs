@@ -8688,6 +8688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public string SAPElementMessageType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeToInput
     {
         Center,
@@ -8705,6 +8706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sAPGlobalRightMouseClickOnSAPElementoffsetRelativeToInput
     {
         Center,
@@ -8722,6 +8724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeToInput
     {
         Center,
@@ -8739,6 +8742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeToInput
     {
         Center,
@@ -8959,6 +8963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         public bool CellIsLink { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeToInput
     {
         Center,
@@ -8976,6 +8981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeToInput
     {
         Center,
@@ -8993,6 +8999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         BottomRight
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeToInput
     {
         Center,

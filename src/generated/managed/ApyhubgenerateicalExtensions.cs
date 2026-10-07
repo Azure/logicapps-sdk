@@ -260,6 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrecurrencefrequencyInput
     {
         DAILY,

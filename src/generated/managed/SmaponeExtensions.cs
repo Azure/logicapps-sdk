@@ -665,6 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         public string Culture { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserInfoModelSourceType
     {
         SmapOne,
@@ -673,6 +674,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         Stripe
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserInfoModelAvailableFeaturesTypeItem
     {
         CustomReportTemplates,
@@ -792,6 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         public int PreviewSmapCount { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AccountStatisticsSubscriptionTypeType
     {
         None,
@@ -886,6 +889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         public string DataSourceId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AbstractDataSourceDefinitionTypeType
     {
         StaticTable
@@ -936,6 +940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         public string LogoId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SmapModelChangeTypeType
     {
         None,
@@ -1029,12 +1034,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         public JToken Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DataRecordApiSchemaVersionType
     {
         [EnumMember(Value = "1")]
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DataRecordApiRecordTypeType
     {
         [EnumMember(Value = "Task")]
@@ -1042,12 +1049,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         Record
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         Json,
         Xml
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum stateInput
     {
         New,
@@ -1088,6 +1097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smapone
         public string AudioDuration { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum stateactionInput
     {
         Assign,

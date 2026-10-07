@@ -453,6 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         public double Confidence { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum modelInput
     {
         [EnumMember(Value = "general")]
@@ -471,6 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         Video
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum tierInput
     {
         [EnumMember(Value = "base")]
@@ -481,12 +483,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         Nova
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum versionInput
     {
         [EnumMember(Value = "latest")]
         Latest
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum redactInput
     {
         [EnumMember(Value = "pci")]
@@ -666,6 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         public string Completed { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         [EnumMember(Value = "succeeded")]
@@ -841,6 +846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         public int Requests { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         [EnumMember(Value = "sync")]

@@ -122,6 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
         public string Path { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ErrorResponseMethodType
     {
         GET,

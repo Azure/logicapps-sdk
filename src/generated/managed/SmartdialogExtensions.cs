@@ -764,6 +764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestBodyprotocolInput
     {
         SMS
@@ -809,6 +810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestBodybuttonsInputItemTypeType
     {
         Call,
@@ -887,6 +889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public GetGroupContactResponseCustomContactPropertiesTypeItem[] CustomContactProperties { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetGroupContactResponseGenderType
     {
         Male,
@@ -903,6 +906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestBodygenderInput
     {
         Male,

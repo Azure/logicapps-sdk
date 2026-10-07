@@ -2143,7 +2143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
         public string SequenceNumber { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateTopicSubscriptionInputTopicSubscriptionFilterTypeType
     {
         None,

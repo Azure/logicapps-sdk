@@ -991,6 +991,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         public string Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsMetamodelDocumentTypeRepresentationSituation
     {
         None,
@@ -999,6 +1000,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         Overlap
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsMetamodelMetamodelItemRelationshipTypeUsage
     {
         Directionless,
@@ -1007,6 +1009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         Intersectional
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsMetamodelMetamodelItemSystemColors
     {
         Default,
@@ -1152,6 +1155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         public OfficeArchitectContractsModelItemModelItemStatus Status { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsModelItemModelItemStatus
     {
         Original,
@@ -1306,6 +1310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         public string MemberObjectId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsMessageMessageCategory
     {
         Error,
@@ -1313,6 +1318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         Information
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsMessageMessageCode
     {
         AttributeAssignmentDoesNotExist,
@@ -1782,6 +1788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         OverrideAll
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsResponseOperationType
     {
         Create,
@@ -1789,6 +1796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         Delete
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsResponseEntityType
     {
         None,
@@ -2051,6 +2059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         public string Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OfficeArchitectContractsMetamodelMetamodelItemTitleIcons
     {
         None,

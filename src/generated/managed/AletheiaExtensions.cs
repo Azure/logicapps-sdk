@@ -708,6 +708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         public double Cash { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum periodInput
     {
         [EnumMember(Value = "0")]
@@ -889,6 +890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         public string LastSplitDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytransactionTypeInput
     {
         [EnumMember(Value = "0")]
@@ -933,6 +935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         _19
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysecurityTypeInput
     {
         [EnumMember(Value = "0")]

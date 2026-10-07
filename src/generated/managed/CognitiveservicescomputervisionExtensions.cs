@@ -350,6 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         public string ObjectName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "Image Content")]
@@ -412,6 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         public string TagName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum languageInput
     {
         [EnumMember(Value = "en")]
@@ -496,6 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         public string LandmarkName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum modelInput
     {
         [EnumMember(Value = "celebrities")]

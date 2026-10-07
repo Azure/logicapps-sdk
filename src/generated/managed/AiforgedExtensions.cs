@@ -1381,6 +1381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public int Related { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALClassType
     {
         [EnumMember(Value = "0")]
@@ -1487,6 +1488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public int TrainedParametersCount { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALDocumentStatus
     {
         [EnumMember(Value = "0")]
@@ -1523,6 +1525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _190
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALUsageType
     {
         [EnumMember(Value = "0")]
@@ -1545,6 +1548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALAvailability
     {
         [EnumMember(Value = "0")]
@@ -1686,6 +1690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public double Charge { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALVerificationType
     {
         [EnumMember(Value = "0")]
@@ -1708,6 +1713,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _8
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALVerificationStatus
     {
         [EnumMember(Value = "1")]
@@ -1790,6 +1796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public AIForgedDALAvailability Availability { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALDocumentDataType
     {
         [EnumMember(Value = "0")]
@@ -1900,6 +1907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string Validation { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALParameterDefinitionStatus
     {
         [EnumMember(Value = "0")]
@@ -1908,6 +1916,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALParameterDefinitionCategory
     {
         [EnumMember(Value = "0")]
@@ -1936,6 +1945,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _40
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALGroupingType
     {
         [EnumMember(Value = "0")]
@@ -1968,6 +1978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALValueType
     {
         [EnumMember(Value = "0")]
@@ -2020,6 +2031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALRequiredOption
     {
         [EnumMember(Value = "1")]
@@ -2147,6 +2159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string UserId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALSettingType
     {
         [EnumMember(Value = "0")]
@@ -2163,6 +2176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _10
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALSettingStatus
     {
         [EnumMember(Value = "0")]
@@ -2173,6 +2187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALOrientation
     {
         [EnumMember(Value = "0")]
@@ -2185,6 +2200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _3
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALMarkingType
     {
         [EnumMember(Value = "0")]
@@ -2207,6 +2223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _8
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALOptionStatusFlags
     {
         [EnumMember(Value = "1")]
@@ -2233,6 +2250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _1024
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum categoryInput
     {
         [EnumMember(Value = "0")]
@@ -2261,6 +2279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _40
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum groupingInput
     {
         [EnumMember(Value = "0")]
@@ -2464,6 +2483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public AIForgedViewModelsParameterDefViewModel[] Services { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALProjectStatus
     {
         [EnumMember(Value = "0")]
@@ -2508,6 +2528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALDataTypeCategory
     {
         [EnumMember(Value = "1")]
@@ -2562,6 +2583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public string Color { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIForgedDALEnumType
     {
         [EnumMember(Value = "0")]
@@ -2787,6 +2809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         public double Max { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SystemDayOfWeek
     {
         [EnumMember(Value = "0")]
@@ -2805,6 +2828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _6
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "0")]
@@ -2819,6 +2843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _11
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum usageInput
     {
         [EnumMember(Value = "0")]
@@ -2841,6 +2866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _99
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         [EnumMember(Value = "0")]
@@ -2877,6 +2903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _190
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortFieldInput
     {
         [EnumMember(Value = "0")]
@@ -2893,6 +2920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiforged
         _5
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortDirectionInput
     {
         [EnumMember(Value = "0")]

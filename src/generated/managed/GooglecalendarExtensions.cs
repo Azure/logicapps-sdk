@@ -396,6 +396,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         public string TimeZone { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum minAccessRoleInput
     {
         [EnumMember(Value = "freeBusyReader")]
@@ -459,6 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         public bool EndTimeUnspecified { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum newEventstatusInput
     {
         [EnumMember(Value = "confirmed")]
@@ -469,6 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         Cancelled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum updatedEventstatusInput
     {
         [EnumMember(Value = "confirmed")]
@@ -533,6 +536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         public bool EndTimeUnspecified { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ResponseEventWithActionTypeActionTypeType
     {
         [EnumMember(Value = "added")]

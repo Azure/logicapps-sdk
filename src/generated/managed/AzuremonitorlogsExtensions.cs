@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
         public JToken[] Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum resourcetypeInput
     {
         [EnumMember(Value = "Log Analytics Workspace")]
@@ -108,6 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
         public string AttachmentName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum visTypeInput
     {
         [EnumMember(Value = "Html Table")]

@@ -380,6 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymessagesInputItemRoleType
     {
         [EnumMember(Value = "system")]

@@ -380,6 +380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         public string Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         CS,
@@ -407,6 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         LT
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum marketInput
     {
         [EnumMember(Value = "stocks")]
@@ -421,6 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         Indices
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderInput
     {
         [EnumMember(Value = "asc")]
@@ -429,6 +432,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         Desc
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortInput
     {
         [EnumMember(Value = "filing_date")]
@@ -629,6 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         public string Ticker { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum frequencyInput
     {
         [EnumMember(Value = "0")]
@@ -643,6 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         _12
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dividendTypeInput
     {
         CD,
@@ -807,6 +813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         public double Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum timeframeInput
     {
         [EnumMember(Value = "annual")]
@@ -865,6 +872,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         public string Url { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum assetClassInput
     {
         [EnumMember(Value = "stocks")]
@@ -877,6 +885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
         Fx
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum localeInput
     {
         [EnumMember(Value = "us")]

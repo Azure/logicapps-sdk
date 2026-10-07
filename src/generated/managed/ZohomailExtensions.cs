@@ -569,12 +569,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string CcAddress { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyaskReceiptInput
     {
         No,
         Yes
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymailFormatInput
     {
         [EnumMember(Value = "html")]
@@ -625,6 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string CcAddress { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodeInput
     {
         [EnumMember(Value = "draft")]
@@ -1083,6 +1086,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string Rhs { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycriteriasInputItemLhsType
     {
         [EnumMember(Value = "sender")]
@@ -1097,6 +1101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         ToCc
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycriteriasInputItemOperatorType
     {
         [EnumMember(Value = "contains")]

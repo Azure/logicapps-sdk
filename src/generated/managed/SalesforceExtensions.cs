@@ -949,6 +949,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public string SystemModStamp { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobInfoColumnDelimiterType
     {
         BACKQUOTE,
@@ -959,12 +960,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         TAB
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobInfoConcurrencyModeType
     {
         Parallel,
         Serial
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobInfoJobTypeType
     {
         BigObjectInjest,
@@ -972,12 +975,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         V2Injest
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobInfoLineEndingType
     {
         LF,
         CRLF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobInfoOperationType
     {
         [EnumMember(Value = "insert")]
@@ -990,6 +995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         Upsert
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JobInfoStateType
     {
         Open,
@@ -999,6 +1005,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         Failed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum concurrenyModeInput
     {
         BACKQUOTE,
@@ -1009,6 +1016,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         TAB
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum jobTypeInput
     {
         BigObjectInjest,
@@ -1076,6 +1084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public double TotalProcessingTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CheckJobResponseColumnDelimiterType
     {
         BACKQUOTE,
@@ -1086,12 +1095,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         TAB
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CheckJobResponseConcurrencyModeType
     {
         Parallel,
         Serial
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CheckJobResponseJobTypeType
     {
         BigObjectInjest,
@@ -1099,12 +1110,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         V2Injest
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CheckJobResponseLineEndingType
     {
         LF,
         CRLF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CheckJobResponseOperationType
     {
         [EnumMember(Value = "insert")]
@@ -1117,6 +1130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         Upsert
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CheckJobResponseStateType
     {
         Open,
@@ -1126,12 +1140,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         Failed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystateInput
     {
         UploadComplete,
         Aborted
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum resultTypeInput
     {
         Successful,
@@ -1164,6 +1180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public string Url { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         GET,
@@ -1242,6 +1259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         public string SystemModstamp { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum parametersoperationInput
     {
         [EnumMember(Value = "insert")]

@@ -11645,6 +11645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public int ElementDepth { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum jABGlobalLeftMouseClickOnElementoffsetRelativeToInput
     {
         Center,
@@ -11662,6 +11663,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         BottomRight
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum jABGlobalRightMouseClickOnElementoffsetRelativeToInput
     {
         Center,
@@ -11679,6 +11681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         BottomRight
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum jABGlobalMiddleMouseClickOnElementoffsetRelativeToInput
     {
         Center,
@@ -11696,6 +11699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         BottomRight
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum jABGlobalDoubleLeftMouseClickOnElementoffsetRelativeToInput
     {
         Center,
@@ -11859,6 +11863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjava
         public int NumberOfParentElementsReturned { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum jABGlobalMouseClickOnTableCelloffsetRelativeToInput
     {
         Center,

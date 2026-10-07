@@ -305,6 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         public string Author { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum issueissuetrackerInput
     {
         Bug,
@@ -312,6 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         Support
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum issueissuestatusInput
     {
         New,

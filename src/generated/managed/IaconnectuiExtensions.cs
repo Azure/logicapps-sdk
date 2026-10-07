@@ -13877,6 +13877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public bool ElementExistsAfterWait { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAGlobalMouseClickOnElementoffsetRelativeToInput
     {
         Center,
@@ -13894,6 +13895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         BottomRight
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAGlobalRightMouseClickOnElementoffsetRelativeToInput
     {
         Center,
@@ -13911,6 +13913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         BottomRight
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAGlobalMiddleMouseClickOnElementoffsetRelativeToInput
     {
         Center,
@@ -13928,6 +13931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         BottomRight
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAGlobalDoubleLeftMouseClickOnElementoffsetRelativeToInput
     {
         Center,
@@ -14011,6 +14015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ScreenBitmapBase64 { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIATakeScreenShotOfElementLocationimageFormatInput
     {
         PNG,
@@ -14125,6 +14130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAGlobalMouseClickElementSearchColourRegionmouseButtonInput
     {
         Left,
@@ -14134,6 +14140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         DoubleLeft
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAGlobalMouseClickElementSearchColourRegionoffsetRelativeToInput
     {
         Center,
@@ -14165,6 +14172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum setUIAElementSearchModeuIAElementSearchModeInput
     {
         FindAll,
@@ -14206,12 +14214,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAMoveElementhorizontalMovementTypeInput
     {
         Absolute,
         Relative
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAMoveElementverticalMovementTypeInput
     {
         Absolute,
@@ -14224,12 +14234,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAResizeElementresizeWidthTypeInput
     {
         Absolute,
         Relative
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAResizeElementresizeHeightTypeInput
     {
         Absolute,
@@ -14254,6 +14266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int SearchImageBoundingBoxScreenCenterPixelYCoord { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIALocateVisibleSearchImageWithinElementsearchImageTypeInput
     {
         [EnumMember(Value = "DirectorFile")]
@@ -14263,6 +14276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         Base64
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIALocateVisibleSearchImageWithinElementaltSearchImageTypeInput
     {
         None,
@@ -14273,18 +14287,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         Base64
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIALocateVisibleSearchImageWithinElementpixelXOffsetsUnitInput
     {
         Pixel,
         Percent
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIALocateVisibleSearchImageWithinElementpixelYOffsetsUnitInput
     {
         Pixel,
         Percent
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIALocateVisibleSearchImageWithinElementimageSearchDirectionInput
     {
         FromTop,
@@ -14312,6 +14329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int ThreadId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAWaitForVisibleSearchImageWithinElementsearchImageTypeInput
     {
         [EnumMember(Value = "DirectorFile")]
@@ -14321,6 +14339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         Base64
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAWaitForVisibleSearchImageWithinElementaltSearchImageTypeInput
     {
         None,
@@ -14331,18 +14350,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         Base64
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAWaitForVisibleSearchImageWithinElementpixelXOffsetsUnitInput
     {
         Pixel,
         Percent
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAWaitForVisibleSearchImageWithinElementpixelYOffsetsUnitInput
     {
         Pixel,
         Percent
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAWaitForVisibleSearchImageWithinElementimageSearchDirectionInput
     {
         FromTop,
@@ -14359,6 +14381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         public int ThreadId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAWaitForVisibleSearchImageToNotExistWithinElementsearchImageTypeInput
     {
         [EnumMember(Value = "DirectorFile")]
@@ -14368,6 +14391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         Base64
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAWaitForVisibleSearchImageToNotExistWithinElementaltSearchImageTypeInput
     {
         None,
@@ -14378,18 +14402,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectui
         Base64
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAWaitForVisibleSearchImageToNotExistWithinElementpixelXOffsetsUnitInput
     {
         Pixel,
         Percent
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAWaitForVisibleSearchImageToNotExistWithinElementpixelYOffsetsUnitInput
     {
         Pixel,
         Percent
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum uIAWaitForVisibleSearchImageToNotExistWithinElementimageSearchDirectionInput
     {
         FromTop,

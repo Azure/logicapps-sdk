@@ -391,6 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public int RankStars { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum levelInput
     {
         Elementary,
@@ -614,6 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         public double NumberOfOtherSupportStaff { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortByInput
     {
         [EnumMember(Value = "schoolname")]

@@ -9825,6 +9825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mSWordSetDocumentSensitivityLabelassignmentMethodInput
     {
         [EnumMember(Value = "NOT_SET")]
@@ -9895,6 +9896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public int ColumnIndex { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mSExcelFindNextCellWithValuedirectionInput
     {
         U,
@@ -9903,6 +9905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         R
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mSExcelFindNextCellWithValuecomparisonTypeInput
     {
         Equals,
@@ -9918,6 +9921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public int ColumnIndex { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mSExcelFindNextEmptyCelldirectionInput
     {
         U,
@@ -9964,6 +9968,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string NewWorkbookName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mSExcelSaveWorkbookAsexcelFileFormatInput
     {
         [EnumMember(Value = "AutomaticByExtension")]
@@ -9999,6 +10004,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string NewWorkbookName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mSExcelSaveWorkbookAsWithPasswordexcelFileFormatInput
     {
         [EnumMember(Value = "AutomaticByExtension")]
@@ -10029,6 +10035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string NewWorkbookName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mSExcelSaveCurrentWorkbookAsexcelFileFormatInput
     {
         [EnumMember(Value = "AutomaticByExtension")]
@@ -10109,12 +10116,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public int ColumnIndex { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mSExcelInsertOnSelectionshiftInput
     {
         R,
         D
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mSExcelDeleteSelectionshiftInput
     {
         L,
@@ -10219,6 +10228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mSExcelSetWorksheetSensitivityLabelassignmentMethodInput
     {
         [EnumMember(Value = "NOT_SET")]
@@ -10247,6 +10257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mSExcelWriteArraydirectionInput
     {
         U,
@@ -10309,6 +10320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         public string EmailAttachmentSaveAsFilenamesJSON { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mSOutlookSendEmailbodyFormatInput
     {
         HTML,
@@ -10316,6 +10328,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         RTF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mSOutlookReplyToEmailbodyFormatInput
     {
         HTML,
@@ -10323,6 +10336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         RTF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mSOutlookForwardEmailbodyFormatInput
     {
         HTML,

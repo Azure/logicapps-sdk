@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoutputFormatInput
     {
         [EnumMember(Value = "hex")]
@@ -85,6 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
         Hash
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyencodeTypeInput
     {
         [EnumMember(Value = "utf-7")]
@@ -99,6 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
         Unicode
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyhashAlgorithmInput
     {
         [EnumMember(Value = "sha1")]

@@ -64,8 +64,11 @@ Preserve computed CLR results in generated C# and let BPM's
 `WorkflowValueNormalizer` perform the sole CLR-to-workflow conversion after
 evaluation. The SDK must not emit `JToken.FromObject`, serializer settings, or
 enum wire conversion around rendered source. Runtime normalization preserves SDK
-JSON attributes, SDK enum wire names, binary content envelopes, and supported
-framework value conventions recursively. Do not introduce model schemas,
+JSON attributes, explicitly declared enum wire names, binary content envelopes,
+and supported framework value conventions recursively. String-valued SDK enums
+must declare `[JsonConverter(typeof(StringEnumConverter))]`; use `[EnumMember]`
+when the wire value differs from the CLR member name. Numeric connector enums
+remain unannotated and normalize numerically. Do not introduce model schemas,
 generated read/write codecs, descriptor versions, or parallel conversion
 protocols.
 

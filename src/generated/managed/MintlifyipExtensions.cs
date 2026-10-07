@@ -104,6 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
         public string Documentation { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylanguageInput
     {
         [EnumMember(Value = "javascript")]
@@ -120,6 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
         Php
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyformatInput
     {
         [EnumMember(Value = "")]

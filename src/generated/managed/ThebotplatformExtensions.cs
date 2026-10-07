@@ -201,6 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         public JToken Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydataattributesisPiiInput
     {
         Yes,

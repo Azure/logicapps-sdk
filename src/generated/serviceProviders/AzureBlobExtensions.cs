@@ -1055,7 +1055,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public string ETag { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UploadBlobInputOverrideIfExistsType
     {
         [EnumMember(Value = "true")]
@@ -1100,7 +1100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public string ETag { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UploadBlobFromUriInputOverrideIfExistsType
     {
         [EnumMember(Value = "true")]
@@ -1226,7 +1226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public JToken BlobUri { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetBlobSASUriInputPermissionsType
     {
         Read,
@@ -1244,7 +1244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         ReadWriteListDelete
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetBlobSASUriInputSharedAccessProtocolType
     {
         Https,
@@ -1257,7 +1257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public JToken BlobUri { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetBlobSASUriFromUriInputPermissionsType
     {
         Read,
@@ -1275,7 +1275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         ReadWriteListDelete
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetBlobSASUriFromUriInputSharedAccessProtocolType
     {
         Https,
@@ -1426,7 +1426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public string PolicyStartsOn { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SetBlobTierInputBlobAccessTierType
     {
         Hot,
@@ -1434,7 +1434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         Archive
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SetBlobTierFromUriInputBlobAccessTierType
     {
         Hot,
@@ -1469,7 +1469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public string LastModifiedTime { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExtractArchiveFromBlobPathInputOverwriteExistingFilesBehaviourType
     {
         Fail,
@@ -1504,7 +1504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public string LastModifiedTime { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExtractArchiveFromUriInputOverwriteExistingFilesBehaviourType
     {
         Fail,
@@ -1539,7 +1539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         public string LastModifiedTime { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExtractArchiveFromContentInputOverwriteExistingFilesBehaviourType
     {
         Fail,

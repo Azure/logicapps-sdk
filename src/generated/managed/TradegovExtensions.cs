@@ -534,6 +534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         public string IssueDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fuzzyNameInput
     {
         [EnumMember(Value = "")]

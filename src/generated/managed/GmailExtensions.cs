@@ -332,6 +332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         public string ContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum replyMessageimportanceInput
     {
         Normal,
@@ -339,6 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum emailMessageimportanceInput
     {
         Normal,
@@ -346,6 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum importanceInput
     {
         All,
@@ -354,6 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         NotImportant
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum starredInput
     {
         All,

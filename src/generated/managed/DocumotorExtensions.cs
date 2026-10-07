@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documotor
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum acceptInput
     {
         [EnumMember(Value = "*/*")]

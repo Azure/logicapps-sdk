@@ -531,6 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum xMsConsistencyLevelInput
     {
         Strong,
@@ -539,6 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         Eventual
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum xMsVersionInput
     {
         [EnumMember(Value = "2017-05-03")]
@@ -673,6 +675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
         public DataWithSensitivityLabelInfo[] Metadata { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum consistencyLevelInput
     {
         Strong,

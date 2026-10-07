@@ -525,6 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         public bool Selectable { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TableCapabilitiesMetadataFilterFunctionSupportTypeItem
     {
         [EnumMember(Value = "eq")]
@@ -623,6 +624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         Null
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TableCapabilitiesMetadataServerPagingOptionsTypeItem
     {
         [EnumMember(Value = "top")]
@@ -679,6 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Excelonlinebusiness
         public string ParentSensitivityLabelId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dateTimeFormatInput
     {
         [EnumMember(Value = "Serial Number")]

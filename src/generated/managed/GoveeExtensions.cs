@@ -152,6 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         public JToken Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycmdcommandNameInput
     {
         [EnumMember(Value = "turn")]
@@ -164,6 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         ColorTem
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyturnInput
     {
         [EnumMember(Value = "on")]

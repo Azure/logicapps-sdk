@@ -5157,6 +5157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AlertRoLevelType
     {
         INFO,
@@ -5164,6 +5165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         CRITICAL
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AlertRoStateType
     {
         OPENED,
@@ -5203,6 +5205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Tag { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dirInput
     {
         ASC,
@@ -5389,6 +5392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Reference { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ProductTinyRoConnectivityTypesTypeItem
     {
         LORA,
@@ -5571,6 +5575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public bool ValueNode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum JsonNodeNodeTypeType
     {
         ARRAY,
@@ -5585,6 +5590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         STRING
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MessageRoProcessedType
     {
         TODO,
@@ -5601,6 +5607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         ERROR
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum messageRoprocessedInput
     {
         TODO,
@@ -5617,6 +5624,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         ERROR
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum messageRorawMeasurementsnodeTypeInput
     {
         ARRAY,
@@ -5676,6 +5684,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string PostalCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum nodenodeTypeInput
     {
         ARRAY,
@@ -5852,6 +5861,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public ConnectivityRoTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConnectivityRoStatusType
     {
         INACTIVE,
@@ -5861,6 +5871,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         UNKNOWN
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ConnectivityRoTypeType
     {
         LORA,
@@ -5908,6 +5919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CustomFieldRoTypeType
     {
         TEXT,
@@ -5972,6 +5984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public DeviceRoStatusType Status { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DeviceRoBatteryStatusType
     {
         NORMAL,
@@ -5986,6 +5999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         UNKNOWN
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DeviceRoStatusType
     {
         RUNNING,
@@ -5994,6 +6008,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         UNKNOWN
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SingleThingRoStatusType
     {
         PROVISIONED,
@@ -6025,6 +6040,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int StatusCodeValue { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ResponseEntityStatusCodeType
     {
         [EnumMember(Value = "100")]
@@ -6157,6 +6173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         _511
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum jsonnodeTypeInput
     {
         ARRAY,
@@ -6234,6 +6251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public ThingTagRo[] Tags { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ThingRoStatusType
     {
         PROVISIONED,
@@ -6253,6 +6271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         VIRTUAL
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum thingRoconnectivitystatusInput
     {
         INACTIVE,
@@ -6262,6 +6281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         UNKNOWN
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum thingRoconnectivitytypeInput
     {
         LORA,
@@ -6288,6 +6308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         UNKNOWN
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum thingRodevicebatteryStatusInput
     {
         NORMAL,
@@ -6302,6 +6323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         UNKNOWN
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum thingRodevicestatusInput
     {
         RUNNING,
@@ -6310,6 +6332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         UNKNOWN
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum thingRolastMeasurementsnodeTypeInput
     {
         ARRAY,
@@ -6324,6 +6347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         STRING
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum thingRolastMeasurementsTimestampsnodeTypeInput
     {
         ARRAY,
@@ -6338,6 +6362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         STRING
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum thingRoproductconnectivityTypesInputItem
     {
         LORA,
@@ -6364,6 +6389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         UNKNOWN
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum thingRostatusInput
     {
         PROVISIONED,
@@ -6464,6 +6490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int TotalSize { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum customFieldRotypeInput
     {
         TEXT,
@@ -6501,6 +6528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int Number { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum messageRomeasurementsnodeTypeInput
     {
         ARRAY,
@@ -6536,6 +6564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public int TotalSize { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum placeholdersValuesnodeTypeInput
     {
         ARRAY,
@@ -6613,6 +6642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public ThingTinyRo[] Things { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ProductRoConnectivityTypesTypeItem
     {
         LORA,
@@ -6660,6 +6690,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         public string Link { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum productconnectivityTypesInputItem
     {
         LORA,

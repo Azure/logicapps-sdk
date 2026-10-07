@@ -1850,6 +1850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         public string Apikey { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum filterInput
     {
         [EnumMember(Value = "admin")]

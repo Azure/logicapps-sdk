@@ -309,6 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
         public string UpdatedAt { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum emissionFactorTypeInput
     {
         [EnumMember(Value = "lifecycle")]

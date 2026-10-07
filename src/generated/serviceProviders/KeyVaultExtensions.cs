@@ -642,7 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public string RawData { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DecryptDataWithKeyInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]
@@ -659,7 +659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public string RawData { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DecryptDataWithKeyVersionInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]
@@ -676,7 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public string EncryptedData { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EncryptDataWithKeyInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]
@@ -693,7 +693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         public string EncryptedData { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EncryptDataWithKeyVersionInputAlgorithmType
     {
         [EnumMember(Value = "RSA-OAEP")]

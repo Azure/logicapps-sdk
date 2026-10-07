@@ -93,6 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
         public int StatusCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum attributeSynchronizationModeldirectionInput
     {
         [EnumMember(Value = "fromFile")]

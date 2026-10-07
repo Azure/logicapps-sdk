@@ -577,6 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public string RecipientSource { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestEmailTypeInput
     {
         Sent,
@@ -597,6 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public bool Success { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestrecipientSourceInput
     {
         Emails,
@@ -605,12 +607,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         ExchangeGroups
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestemailContentTypeInput
     {
         Template,
         Html
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestwhenToSendTypeInput
     {
         Now,
@@ -884,6 +888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         public string UnsubscribedTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestDataTypeInput
     {
         OpensUnique,

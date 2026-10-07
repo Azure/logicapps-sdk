@@ -113,6 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum emailMessageimportanceInput
     {
         Normal,

@@ -472,6 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymailTypeInput
     {
         [EnumMember(Value = "html")]

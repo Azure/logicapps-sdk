@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Omdbip
         public string Poster { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "movie")]

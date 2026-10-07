@@ -4098,6 +4098,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string GivenName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserInfoResponseLanguageType
     {
         [EnumMember(Value = "en-US")]
@@ -4108,6 +4109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         DeDE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserInfoResponseAuthTypeType
     {
         [EnumMember(Value = "ad")]
@@ -4118,6 +4120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Egnyte
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserInfoResponseUserTypeType
     {
         [EnumMember(Value = "admin")]
@@ -4227,6 +4230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string GivenName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserListResponseResourcesTypeItemLanguageType
     {
         [EnumMember(Value = "en-US")]
@@ -4237,6 +4241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         DeDE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserListResponseResourcesTypeItemAuthTypeType
     {
         [EnumMember(Value = "ad")]
@@ -4247,6 +4252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Egnyte
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UserListResponseResourcesTypeItemUserTypeType
     {
         [EnumMember(Value = "admin")]
@@ -4296,6 +4302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string UserPrincipalName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UpdateUserResponseLanguageType
     {
         [EnumMember(Value = "en-US")]
@@ -4306,6 +4313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         DeDE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UpdateUserResponseAuthTypeType
     {
         [EnumMember(Value = "ad")]
@@ -4316,6 +4324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Egnyte
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UpdateUserResponseUserTypeType
     {
         [EnumMember(Value = "admin")]
@@ -4326,6 +4335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Standard
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylanguageInput
     {
         [EnumMember(Value = "en-US")]
@@ -4336,6 +4346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         DeDE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyauthTypeInput
     {
         [EnumMember(Value = "ad")]
@@ -4346,6 +4357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Egnyte
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyuserTypeInput
     {
         [EnumMember(Value = "admin")]
@@ -4425,6 +4437,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Formatted { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateUserResponseAuthTypeType
     {
         [EnumMember(Value = "ad")]
@@ -4435,6 +4448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Egnyte
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateUserResponseUserTypeType
     {
         [EnumMember(Value = "admin")]
@@ -4559,6 +4573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public bodymembersInputItemOperationType Operation { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymembersInputItemOperationType
     {
         [EnumMember(Value = "add")]
@@ -4909,6 +4924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public bool RestrictMoveDelete { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypublicLinksInput
     {
         [EnumMember(Value = "files_folders")]
@@ -4979,6 +4995,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public bool Editable { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NamespaceItemScopeType
     {
         [EnumMember(Value = "public")]
@@ -4989,6 +5006,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Private
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NamespaceItemMetadataScopeTypeType
     {
         GLOBAL,
@@ -4996,6 +5014,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         FOLDERSCOPE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyscopeInput
     {
         [EnumMember(Value = "public")]
@@ -5027,6 +5046,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string[] Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodykeysInputItemTypeType
     {
         [EnumMember(Value = "integer")]
@@ -5059,6 +5079,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public double Priority { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         FOLDER,
@@ -5138,6 +5159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
         [EnumMember(Value = "pending")]
@@ -5200,6 +5222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public GetEffectivePermissionsResponsePermissionType Permission { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetEffectivePermissionsResponsePermissionType
     {
         None,
@@ -5253,6 +5276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public double TotalCount { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyaccessibilityInput
     {
         [EnumMember(Value = "anyone")]
@@ -5354,6 +5378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string[] Recipients { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyprotectionInput
     {
         PREVIEW,
@@ -5405,6 +5430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AIMessageRoleType
     {
         [EnumMember(Value = "user")]
@@ -5521,6 +5547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysortByInput
     {
         [EnumMember(Value = "last_modified")]
@@ -5533,6 +5560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Score
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysortDirectionInput
     {
         [EnumMember(Value = "ascending")]
@@ -5541,6 +5569,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         Descending
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfileQueryFieldsInputItem
     {
         ALL,
@@ -5549,6 +5578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         CONTENT
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfolderQueryFieldsInputItem
     {
         ALL,
@@ -5556,6 +5586,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         DESCRIPTION
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyqueryOperatorInput
     {
         ANY,

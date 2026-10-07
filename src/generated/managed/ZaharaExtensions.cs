@@ -560,6 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         public UserIntegrationModel ApprovedBy { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ProcessLogIntegrationModelStepResultType
     {
         None,
@@ -580,6 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         public string CurrencyCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentSimpleIntegrationModelTypeType
     {
         PurchaseOrder,
@@ -589,6 +591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         PurchaseRequisition
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentSimpleIntegrationModelStatusType
     {
         Created,
@@ -611,6 +614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         public string TelephoneNumber { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum documentTypeInput
     {
         PurchaseOrder,
@@ -646,6 +650,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         public string CurrencyCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InvoiceIntegrationModelCurrentExportStatusType
     {
         None,
@@ -655,6 +660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         ExportFailed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InvoiceIntegrationModelSyncTypeType
     {
         None,
@@ -704,6 +710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         public string ReferenceNumber { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InvoiceIntegrationModelTypeType
     {
         PurchaseOrder,
@@ -713,6 +720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         PurchaseRequisition
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InvoiceIntegrationModelStatusType
     {
         Created,
@@ -748,6 +756,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         public string DateCreated { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ProjectIntegrationModelStatusType
     {
         Active,
@@ -785,6 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         public string CurrencyCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PurchaseOrderIntegrationModelTypeType
     {
         PurchaseOrder,
@@ -794,6 +804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         PurchaseRequisition
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PurchaseOrderIntegrationModelStatusType
     {
         Created,
@@ -830,6 +841,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         public string CurrencyCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PurchaseRequsitionIntegrationModelTypeType
     {
         PurchaseOrder,
@@ -839,6 +851,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         PurchaseRequisition
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PurchaseRequsitionIntegrationModelStatusType
     {
         Created,

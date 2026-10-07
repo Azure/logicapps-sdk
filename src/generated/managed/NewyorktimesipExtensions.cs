@@ -203,6 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         public Article[] Results { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sectionInput
     {
         [EnumMember(Value = "arts")]
@@ -349,6 +350,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         public string Format { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum periodInput
     {
         [EnumMember(Value = "1")]

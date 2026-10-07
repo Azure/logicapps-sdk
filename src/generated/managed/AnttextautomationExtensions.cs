@@ -249,12 +249,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum postBodyParametersaveCopyToSentItemsInput
     {
         Yes,
         No
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum postBodyParameterimportanceInput
     {
         High,
@@ -262,6 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anttextautomation
         Low
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum postBodyParameterincludeAntTextSignatureInput
     {
         Yes,

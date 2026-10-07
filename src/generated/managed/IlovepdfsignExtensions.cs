@@ -135,6 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfsign
         public string Status { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfileSourceInput
     {
         [EnumMember(Value = "binary")]
@@ -143,6 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfsign
         Url
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysignTypeInput
     {
         [EnumMember(Value = "signer")]
@@ -153,6 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfsign
         Viewer
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysignerRemindersInput
     {
         [EnumMember(Value = "true")]

@@ -1376,6 +1376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int[] TaskIds { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodygoalstatusInput
     {
         APPRO,
@@ -1383,6 +1384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         ARCHI
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodygoalcompletionCriteriaInput
     {
         [EnumMember(Value = "TARGET-REACHED")]
@@ -1391,6 +1393,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         TARGETDEADLINEREACHED
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodygoaltargetFlowInput
     {
         OVER,
@@ -1398,6 +1401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         NONE
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodygoalweightIdInput
     {
         [EnumMember(Value = "1")]
@@ -1410,6 +1414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         _4
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodygoalisPrivateInput
     {
         [EnumMember(Value = "0")]
@@ -1418,6 +1423,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodygoaltrackingTypeInput
     {
         MANUAL,
@@ -1718,6 +1724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int CA1573011296755 { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyissueisCriticalInput
     {
         [EnumMember(Value = "0")]
@@ -1726,6 +1733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyissueisResolvedInput
     {
         [EnumMember(Value = "0")]
@@ -1926,6 +1934,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         public int EntityTemplateId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateTaskResponseTasksTypeWeightIdType
     {
         [EnumMember(Value = "1")]
@@ -1938,6 +1947,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         _4
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytaskisCompleteInput
     {
         [EnumMember(Value = "0")]
@@ -1946,6 +1956,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytaskweightIdInput
     {
         [EnumMember(Value = "1")]

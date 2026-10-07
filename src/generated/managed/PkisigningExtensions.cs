@@ -761,6 +761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         public string DocumentId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExtendedSignerModelActionType
     {
         Sign,
@@ -768,6 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         Approve
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExtendedSignerModelLanguageType
     {
         NL,
@@ -795,6 +797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         public string Email { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum actorModelactionInput
     {
         Sign,
@@ -802,12 +805,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         Approve
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum actorModellanguageInput
     {
         NL,
         EN
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum actorModelModelactionInput
     {
         Sign,
@@ -815,6 +820,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         Approve
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum actorModelModellanguageInput
     {
         NL,
@@ -884,6 +890,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         public DocumentMetaDataModelDocumentTypeType DocumentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentMetaDataModelStatusType
     {
         Active,
@@ -971,6 +978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         public double Width { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentMetaDataModelDocumentTypeType
     {
         RegularPdf,
@@ -1002,6 +1010,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         Unspecified
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum metadatadocumentTypeInput
     {
         RegularPdf,
@@ -1120,6 +1129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         public SignerModel[] Actors { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentModelDocumentTypeType
     {
         RegularPdf,
@@ -1151,6 +1161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         Unspecified
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentModelDocumentstatusType
     {
         Active,
@@ -1226,6 +1237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         public double SigFieldW { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SignerModelActionType
     {
         Sign,
@@ -1233,12 +1245,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         Approve
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SignerModelLanguageType
     {
         NL,
         EN
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RequestModelStatusType
     {
         Active,
@@ -1258,6 +1272,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         PendingSignature
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RequestModelDossierTypeType
     {
         IcpDeclaration,

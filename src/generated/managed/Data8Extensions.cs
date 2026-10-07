@@ -1043,6 +1043,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public double CreditsRemaining { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum IsUsableNameResponseResultType
     {
         [EnumMember(Value = "")]
@@ -1134,6 +1135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public double CreditsRemaining { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylevelInput
     {
         Syntax,
@@ -1261,6 +1263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public string Country { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylicenceInput
     {
         InternalUserFull,
@@ -1273,6 +1276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         FreeTrial
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoptionsformatterInput
     {
         DefaultFormatter,
@@ -1293,6 +1297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         public double CreditsRemaining { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoptionsmatchLevelInput
     {
         S,

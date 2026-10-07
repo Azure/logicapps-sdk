@@ -411,6 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         public string CreatedBy { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyapprovedInput
     {
         [EnumMember(Value = "true")]
@@ -419,6 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         Reject
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyisPublicInput
     {
         [EnumMember(Value = "")]
@@ -429,6 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         Private
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyarchiveInput
     {
         [EnumMember(Value = "true")]

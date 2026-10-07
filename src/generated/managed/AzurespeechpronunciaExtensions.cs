@@ -57,12 +57,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurespeechpronuncia
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum gradingSystemInput
     {
         FivePoint,
         HundredMark
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum granularityInput
     {
         Phoneme,
@@ -70,6 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurespeechpronuncia
         FullText
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dimensionInput
     {
         Basic,

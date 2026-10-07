@@ -278,6 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public SeismicDeliveryExternalApplicationType ExternalApplication { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SeismicDeliveryExternalApplicationType
     {
         [EnumMember(Value = "")]
@@ -315,6 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public string Format { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SeismicDeliveryAdHocInputType
     {
         [EnumMember(Value = "string")]
@@ -370,6 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public SeismicDeliveryInternalLibraryContent LibraryContent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SeismicDeliveryCustomDeliveryContentRepositoryType
     {
         [EnumMember(Value = "generatedlivedocs")]
@@ -459,6 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public string WorkspaceUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SeismicWorkSpaceContentManagerItemType
     {
         [EnumMember(Value = "folder")]
@@ -523,6 +527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public string[] ProfilePath { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SeismicDeliveryCustomRepository
     {
         [EnumMember(Value = "workspace")]
@@ -599,6 +604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         public string[] ProfilePath { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SeismicLiveSendLiveSendContentRepositoryEnum
     {
         DocCenter,

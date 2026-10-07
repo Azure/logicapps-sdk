@@ -2457,6 +2457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriorityInput
     {
         Low,
@@ -3150,6 +3151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         public bool DeleteAfterExpiration { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyuploadMethodInput
     {
         UploadFileBytesLarge,

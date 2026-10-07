@@ -349,6 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         public string LocationSpan { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         Draft,

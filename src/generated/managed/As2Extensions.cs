@@ -145,6 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         public EipErrorResponseBody ErrorDetails { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MicUpdateResponseStatusOfTheCreateOrUpdateMICActionType
     {
         MicEntryCreated,
@@ -176,6 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         public string[] Errors { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EipErrorResponseBodyStatusCodeType
     {
         Continue,
@@ -279,6 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         public string OriginalMessageId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum As2DecodedMessageMicVerificationType
     {
         NotApplicable,
@@ -286,6 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         Failed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum As2DecodedMessageMdnStatusCodeType
     {
         NotApplicable,
@@ -294,6 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         AcceptedWithErrors
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum As2DecodedMessageMdnExpectedType
     {
         NotApplicable,
@@ -314,6 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         public string Error { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum As2OutgoingMdnMdnTypeType
     {
         NotConfigured,
@@ -321,6 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         Async
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum As2OutgoingMdnMicVerificationType
     {
         NotApplicable,
@@ -328,6 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         Failed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum As2OutgoingMdnMdnStatusCodeType
     {
         NotApplicable,
@@ -357,6 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         public JToken OutboundHeaders { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum As2EncodedMessageMdnExpectedType
     {
         NotApplicable,
@@ -364,6 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         NotExpected
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum As2EncodedMessageMdnTypeExpectedType
     {
         NotConfigured,

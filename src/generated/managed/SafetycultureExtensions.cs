@@ -639,6 +639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string TemplateID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderInput
     {
         [EnumMember(Value = "desc")]
@@ -647,6 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         Asc
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum archivedInput
     {
         [EnumMember(Value = "true")]
@@ -657,6 +659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum completedInput
     {
         [EnumMember(Value = "true")]
@@ -667,6 +670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ownerInput
     {
         [EnumMember(Value = "me")]
@@ -776,6 +780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string ExportTaskID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "pdf")]
@@ -784,6 +789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         Docx
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum timezoneInput
     {
         [EnumMember(Value = "Pacific/Auckland")]
@@ -942,6 +948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public searchActionsBodyassigneesInputItemTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum searchActionsBodyassigneesInputItemTypeType
     {
         [EnumMember(Value = "user")]
@@ -950,6 +957,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         Email
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum createActionBodypriorityInput
     {
         [EnumMember(Value = "0")]
@@ -962,6 +970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         _30
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum createActionBodystatusInput
     {
         [EnumMember(Value = "0")]
@@ -983,6 +992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public createActionBodyassigneesInputItemTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum createActionBodyassigneesInputItemTypeType
     {
         [EnumMember(Value = "user")]
@@ -997,6 +1007,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public bool Ok { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum updateActionBodypriorityInput
     {
         [EnumMember(Value = "0")]
@@ -1009,6 +1020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         _30
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum updateActionBodystatusInput
     {
         [EnumMember(Value = "0")]
@@ -1030,6 +1042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public updateActionBodyassigneesInputItemTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum updateActionBodyassigneesInputItemTypeType
     {
         [EnumMember(Value = "user")]
@@ -1044,6 +1057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         public string ExportTaskID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatexportFormatInput
     {
         PDF,

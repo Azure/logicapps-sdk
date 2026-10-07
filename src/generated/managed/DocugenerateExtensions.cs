@@ -408,6 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         public string DocumentUri { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoutputFormatInput
     {
         [EnumMember(Value = ".docx")]

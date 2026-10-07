@@ -382,6 +382,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystateInput
     {
         [EnumMember(Value = "published")]

@@ -1189,6 +1189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public LocalizedInternalContent[] Contents { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContentTypeDiscriminator
     {
         None,
@@ -1299,6 +1300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public string[] MediaIds { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LanguageBehavior
     {
         [EnumMember(Value = "af")]
@@ -1405,6 +1407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         Welsh
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymyNewsDisplayInput
     {
         [EnumMember(Value = "default")]
@@ -1559,6 +1562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public LocalizedBaseCtaContent[] Contents { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CtaContentTypeDiscriminator
     {
         None,
@@ -1901,6 +1905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         public string Url { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mediaVisibilityInput
     {
         [EnumMember(Value = "private")]

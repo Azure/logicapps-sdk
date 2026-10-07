@@ -1326,6 +1326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         public string AdaptiveCard { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum targetappInput
     {
         Teams,
@@ -1362,6 +1363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         public string Language { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeOfOrderInput
     {
         [EnumMember(Value = "ascending")]
@@ -1382,6 +1384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FilterGroupOperatorType
     {
         [EnumMember(Value = "equals")]

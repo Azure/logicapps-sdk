@@ -555,6 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public string ParkStatusText { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyurgencyTypeInput
     {
         [EnumMember(Value = "0")]
@@ -565,6 +566,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         _2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyeffectsTypeInput
     {
         [EnumMember(Value = "0")]
@@ -610,6 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public string ParkStatusText { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyticketPositionTypeInput
     {
         [EnumMember(Value = "0")]
@@ -622,6 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         _3
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyticketPositionVisibilityInput
     {
         [EnumMember(Value = "0")]
@@ -648,6 +652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyparkTicketparkingReasonInput
     {
         [EnumMember(Value = "0")]
@@ -660,6 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
         _3
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyparkTicketafterParkingActionInput
     {
         [EnumMember(Value = "0")]

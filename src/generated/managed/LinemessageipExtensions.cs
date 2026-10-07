@@ -91,6 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip
         public string Longitude { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymessagesInputItemTypeType
     {
         [EnumMember(Value = "text")]

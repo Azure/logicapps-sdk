@@ -3659,12 +3659,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ItemBodyContentTypeType
     {
         Text,
         HTML
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OutlookReceiveMessageImportanceType
     {
         Low,
@@ -3686,6 +3688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum draftMessageimportanceInput
     {
         Low,
@@ -3723,6 +3726,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string NotificationUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum optionsEmailSubscriptionmessageimportanceInput
     {
         Low,
@@ -3730,6 +3734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum approvalEmailSubscriptionmessageimportanceInput
     {
         Low,
@@ -3737,6 +3742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         GET,
@@ -3866,6 +3872,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public GraphCalendarEventClientReceiveSensitivityType Sensitivity { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GraphCalendarEventClientReceiveResponseTypeType
     {
         [EnumMember(Value = "none")]
@@ -3882,6 +3889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         NotResponded
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GraphCalendarEventClientReceiveImportanceType
     {
         [EnumMember(Value = "low")]
@@ -3892,6 +3900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GraphCalendarEventClientReceiveRecurrenceType
     {
         [EnumMember(Value = "none")]
@@ -3906,6 +3915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Yearly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GraphCalendarEventClientReceiveShowAsType
     {
         [EnumMember(Value = "free")]
@@ -3922,6 +3932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Unknown
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GraphCalendarEventClientReceiveSensitivityType
     {
         [EnumMember(Value = "normal")]
@@ -3967,6 +3978,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string Address { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemtimeZoneInput
     {
         [EnumMember(Value = "")]
@@ -4245,6 +4257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         UTC1400KiritimatiIsland
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemimportanceInput
     {
         [EnumMember(Value = "low")]
@@ -4255,6 +4268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemrecurrenceInput
     {
         [EnumMember(Value = "none")]
@@ -4269,6 +4283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Yearly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemselectedDaysOfWeekInputItem
     {
         Sunday,
@@ -4280,6 +4295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Saturday
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemshowAsInput
     {
         [EnumMember(Value = "free")]
@@ -4296,6 +4312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Unknown
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemsensitivityInput
     {
         [EnumMember(Value = "normal")]
@@ -4560,6 +4577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string PostalCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyactivityDomainInput
     {
         Work,
@@ -4568,6 +4586,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Unknown
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyflagflagStatusInput
     {
         [EnumMember(Value = "flagged")]
@@ -4698,6 +4717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public SensitivityLabelMetadata[] SensitivityLabelInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GraphClientReceiveMessageImportanceType
     {
         [EnumMember(Value = "low")]
@@ -4741,6 +4761,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public GraphClientReceiveMessage[] Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum importanceInput
     {
         Any,
@@ -4833,6 +4854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string Address { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum replyParametersimportanceInput
     {
         Low,
@@ -4840,6 +4862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum responseInput
     {
         [EnumMember(Value = "accept")]
@@ -4850,6 +4873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Decline
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum emailMessageimportanceInput
     {
         Low,
@@ -4884,6 +4908,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string ExternalReplyMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AutomaticRepliesSettingClientV2StatusType
     {
         [EnumMember(Value = "disabled")]
@@ -4894,6 +4919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Scheduled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AutomaticRepliesSettingClientV2ExternalAudienceType
     {
         [EnumMember(Value = "none")]
@@ -4922,6 +4948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public string TimeZone { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyautomaticRepliesSettingstatusInput
     {
         [EnumMember(Value = "disabled")]
@@ -4932,6 +4959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Scheduled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyautomaticRepliesSettingexternalAudienceInput
     {
         [EnumMember(Value = "none")]
@@ -5051,6 +5079,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         public GraphCalendarEventClientWithActionTypeSensitivityType Sensitivity { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GraphCalendarEventClientWithActionTypeActionTypeType
     {
         [EnumMember(Value = "added")]
@@ -5061,6 +5090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Deleted
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GraphCalendarEventClientWithActionTypeResponseTypeType
     {
         [EnumMember(Value = "none")]
@@ -5077,6 +5107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         NotResponded
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GraphCalendarEventClientWithActionTypeImportanceType
     {
         [EnumMember(Value = "low")]
@@ -5087,6 +5118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GraphCalendarEventClientWithActionTypeRecurrenceType
     {
         [EnumMember(Value = "none")]
@@ -5101,6 +5133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Yearly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GraphCalendarEventClientWithActionTypeShowAsType
     {
         [EnumMember(Value = "free")]
@@ -5117,6 +5150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
         Unknown
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GraphCalendarEventClientWithActionTypeSensitivityType
     {
         [EnumMember(Value = "normal")]

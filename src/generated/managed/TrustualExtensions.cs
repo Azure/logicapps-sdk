@@ -190,6 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         public string Timestamp { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ZFeaturesItem
     {
         [EnumMember(Value = "eu_qualified")]
@@ -198,6 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         TestMode
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ZLanguage
     {
         [EnumMember(Value = "de")]
@@ -214,6 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         Nl
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ZStatus
     {
         [EnumMember(Value = "pending")]
@@ -224,6 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         Failed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycertificateLanguageInput
     {
         [EnumMember(Value = "de")]

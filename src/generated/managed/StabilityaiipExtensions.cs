@@ -672,6 +672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public string FinishReason { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyinitImageModeInput
     {
         [EnumMember(Value = "image_strength")]
@@ -716,6 +717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public string FinishReason { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymaskSourceInput
     {
         [EnumMember(Value = "MASK_IMAGE_WHITE")]
@@ -738,6 +740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public int Seed { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyaspectRatioInput
     {
         [EnumMember(Value = "1:1")]
@@ -760,6 +763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         _921
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystylePresetInput
     {
         [EnumMember(Value = "3d-model")]
@@ -810,6 +814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         public int Seed { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodelInput
     {
         [EnumMember(Value = "sd3")]

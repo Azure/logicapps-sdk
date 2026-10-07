@@ -1561,6 +1561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
         public string[] AccessRights { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TrusteeWriteTypeType
     {
         User,

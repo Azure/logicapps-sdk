@@ -2175,6 +2175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyaggregationTypeInput
     {
         AVG,
@@ -2184,6 +2185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         MIN
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyencodingInput
     {
         ASCII,
@@ -2194,6 +2196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         ISO88591
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyjoinTypeInput
     {
         Left,
@@ -2246,12 +2249,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         public double AvgRatio { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysettingsapplyRatioThresholdToInput
     {
         Max,
         Avg
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysettingsratioSelectionTypeInput
     {
         All,
@@ -2259,6 +2264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         Partial
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysettingstokenSortTypeInput
     {
         All,
@@ -2267,6 +2273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         Sorted
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysortOrderInput
     {
         ASC,

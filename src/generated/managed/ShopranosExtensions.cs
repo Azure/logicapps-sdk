@@ -1682,6 +1682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public JToken Translation { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AttributeDTOTypeType
     {
         Text,
@@ -1690,6 +1691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Size
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AttributeDTOStatusType
     {
         Draft,
@@ -1723,6 +1725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public JToken Translation { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         Active,
@@ -1783,6 +1786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string SeoDescription { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BrandDTOStatusType
     {
         Draft,
@@ -1864,6 +1868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public CategoryDTOStatusType Status { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CategoryDTOStatusType
     {
         Draft,
@@ -1942,6 +1947,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public JToken Translation { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum IcoTagDTOModeType
     {
         Automatic,
@@ -1950,6 +1956,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Ignore
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum IcoTagDTOStatusType
     {
         Draft,
@@ -2082,12 +2089,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string UpdateDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AssortmentValueDTOStatusType
     {
         Inactive,
         Active
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AssortmentValueDTOSourceType
     {
         [EnumMember(Value = "manual")]
@@ -2096,6 +2105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Orders
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sourceInput
     {
         [EnumMember(Value = "manual")]
@@ -2188,6 +2198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public CustomerShippingAddressDTO[] ShippingAddresses { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CustomerDTOStatusType
     {
         Active,
@@ -2227,6 +2238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public CustomerBranchDTOStatusType Status { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CustomerBranchDTOStatusType
     {
         Active,
@@ -2248,6 +2260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public JToken Translation { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CustomerDTOVatTypeType
     {
         Zero,
@@ -2257,6 +2270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Ignore
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CustomerDTOShopTypeType
     {
         B2B,
@@ -2464,6 +2478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         public string SeriesId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OrderDTOStatusType
     {
         Draft,
@@ -2481,6 +2496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Ignore
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OrderDTOCurrencyType
     {
         [EnumMember(Value = "aed")]
@@ -2845,6 +2861,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Ignore
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OrderDTOFinancialStatusType
     {
         Pending,
@@ -2855,6 +2872,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         Voided
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OrderDTOFulfillmentStatusType
     {
         Fulfilled,

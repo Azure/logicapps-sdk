@@ -151,6 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         public string TokenExpiry { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TokenScopes
     {
         [EnumMember(Value = "chat")]

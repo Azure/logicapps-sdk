@@ -92,6 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
         public string RequestId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum agentNameInput
     {
         [EnumMember(Value = "cleanliness-score")]

@@ -1659,6 +1659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Important { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum timevalidInput
     {
         [EnumMember(Value = "true")]
@@ -1667,6 +1668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         Enabled,
@@ -1877,6 +1879,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Thumbprint { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum powerappsInput
     {
         [EnumMember(Value = "false")]
@@ -1885,6 +1888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         True
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyimportantInput
     {
         [EnumMember(Value = "true")]
@@ -1893,6 +1897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
         Approved,
@@ -1900,6 +1905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         UpdateOnly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrenewalstatusInput
     {
         [EnumMember(Value = "approved")]
@@ -2173,6 +2179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Templateid { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyhiddenInput
     {
         [EnumMember(Value = "")]
@@ -2463,6 +2470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Lastmodifiedevent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         Email,
@@ -2470,6 +2478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         PowerBI
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum versionInput
     {
         [EnumMember(Value = "1")]
@@ -2482,6 +2491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         _4
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum keytypeInput
     {
         RSA,
@@ -2662,12 +2672,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyurgentInput
     {
         True,
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrenewalInput
     {
         [EnumMember(Value = "")]
@@ -2948,6 +2960,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Workflowlocation { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum @eventInput
     {
         [EnumMember(Value = "issued-certificate")]
@@ -2994,6 +3007,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         public string Hookid { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         Web,
@@ -3001,6 +3015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
         PowerBI
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyeventsInputItem
     {
         [EnumMember(Value = "issued-certificate")]

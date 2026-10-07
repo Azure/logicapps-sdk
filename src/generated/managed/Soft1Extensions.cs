@@ -5560,6 +5560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public int CashLineValue { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvaluepRSNOUTgenderInput
     {
         [EnumMember(Value = "1")]
@@ -5580,6 +5581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Url { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvaluecUSTOMERtaxCategoryInput
     {
         [EnumMember(Value = "0")]
@@ -5590,6 +5592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         _2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvaluelINEITEMinvoicingCategoryInput
     {
         [EnumMember(Value = "12")]
@@ -5604,6 +5607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         _16
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvaluelINEITEMtypeInput
     {
         [EnumMember(Value = "0")]
@@ -5614,6 +5618,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         _2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvaluelINEITEMfeeValueInput
     {
         [EnumMember(Value = "1")]
@@ -5662,6 +5667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string Quantity { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvaluepRJCaCTSTATUSInput
     {
         [EnumMember(Value = "0")]
@@ -5680,6 +5686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         _6
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvaluepRJCpRJCRMInput
     {
         [EnumMember(Value = "0")]
@@ -5755,6 +5762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public int QTY { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvaluesOACTIONaCTSTATUSInput
     {
         [EnumMember(Value = "0")]
@@ -5773,6 +5781,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         _6
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydATAsOACTIONaCTSTATUSInput
     {
         [EnumMember(Value = "0")]
@@ -5810,6 +5819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
         public string REMARKS { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyObjectInput
     {
         Cheque,

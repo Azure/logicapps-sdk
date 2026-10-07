@@ -695,6 +695,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortfieldInput
     {
         [EnumMember(Value = "id")]
@@ -709,6 +710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         Datacoverage
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortorderInput
     {
         [EnumMember(Value = "asc")]
@@ -1080,6 +1082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         public int Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum unitsInput
     {
         [EnumMember(Value = "standard")]
@@ -2396,6 +2399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         public string EndDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         CLOSED,

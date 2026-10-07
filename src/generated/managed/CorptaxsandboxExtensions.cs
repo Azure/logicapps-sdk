@@ -818,6 +818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum lookupTypeInput
     {
         Account,
@@ -834,6 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeOfActionInput
     {
         Post,
@@ -857,6 +859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeOfActionInput
     {
         Cart,
@@ -882,6 +885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyimportTransactionTypeInput
     {
         Transaction,
@@ -905,6 +909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         BalanceDeleteExistingAdjustment
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyledgerAmountTypeInput
     {
         None,
@@ -935,6 +940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyreportInput
     {
         Summary,
@@ -942,6 +948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         Detail
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyreportFormatInput
     {
         Xml,

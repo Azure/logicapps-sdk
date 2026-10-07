@@ -1207,6 +1207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         public bool IsRadialSearch { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum positionSensitivityInput
     {
         [EnumMember(Value = "1")]
@@ -1225,12 +1226,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         _7NCSHighRisk
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldsInput
     {
         Min,
         Full
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortFieldInput
     {
         [EnumMember(Value = "opendate")]
@@ -1263,6 +1266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         Salary
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortDirectionInput
     {
         [EnumMember(Value = "asc")]

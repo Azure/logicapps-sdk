@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clearbitip
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "png")]

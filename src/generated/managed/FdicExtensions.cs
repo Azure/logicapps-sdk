@@ -705,6 +705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         public string ZIP { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DataBKCLASSType
     {
         N,
@@ -715,6 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         OI
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "json")]
@@ -805,6 +807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         public string ZIP { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Data1BKCLASSType
     {
         N,
@@ -815,6 +818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         OI
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Data1CBSADIVFLGType
     {
         [EnumMember(Value = "0")]
@@ -823,6 +827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Data1CBSAMICROFLGType
     {
         [EnumMember(Value = "0")]
@@ -831,6 +836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Data1CSAFLGType
     {
         [EnumMember(Value = "0")]
@@ -839,6 +845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Data1MAINOFFType
     {
         [EnumMember(Value = "0")]
@@ -847,6 +854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Data1SERVTYPEType
     {
         [EnumMember(Value = "11")]
@@ -1693,6 +1701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         public string YEAR { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Data2CBSIType
     {
         CB,
@@ -1736,6 +1745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         public string PSTALP { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Data3SAVRType
     {
         BIF,
@@ -1746,6 +1756,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         FDIC
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Data3RESTYPE1Type
     {
         [EnumMember(Value = "A/A")]
@@ -1759,6 +1770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         PO
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Data3CHCLASS1Type
     {
         N,
@@ -1768,6 +1780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         SB
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum Data3RESTYPEType
     {
         Failure,

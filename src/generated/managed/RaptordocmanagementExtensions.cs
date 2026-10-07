@@ -1539,6 +1539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string ChangedBy { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyorderByInput
     {
         [EnumMember(Value = "0")]
@@ -2763,6 +2764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum contentTypeInput
     {
         [EnumMember(Value = "application/octet-stream")]
@@ -3054,6 +3056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string ChangedBy { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         [EnumMember(Value = "get-or-create")]
@@ -3073,6 +3076,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylabelsInputItemLanguageIdType
     {
         [EnumMember(Value = "1031")]

@@ -428,6 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         public string SalesforceUuid { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyeventsInputItem
     {
         [EnumMember(Value = "routing_form_submission.created")]

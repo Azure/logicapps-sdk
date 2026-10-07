@@ -2499,6 +2499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public bool IsHTML { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ClientReceiveMessageStringEnumsImportanceType
     {
         Low,
@@ -2521,6 +2522,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string NotificationUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum optionsEmailSubscriptionmessageimportanceInput
     {
         Low,
@@ -2536,6 +2538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum approvalEmailSubscriptionmessageimportanceInput
     {
         Low,
@@ -2626,6 +2629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public string PostalCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum responseInput
     {
         Accept,
@@ -2682,6 +2686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public bool ResponseRequested { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CalendarEventClientReceiveStringEnumsImportanceType
     {
         Low,
@@ -2689,6 +2694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CalendarEventClientReceiveStringEnumsResponseTypeType
     {
         None,
@@ -2699,6 +2705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         NotResponded
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CalendarEventClientReceiveStringEnumsRecurrenceType
     {
         None,
@@ -2708,6 +2715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         Yearly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CalendarEventClientReceiveStringEnumsShowAsType
     {
         Free,
@@ -2772,6 +2780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public bool ResponseRequested { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemtimeZoneInput
     {
         [EnumMember(Value = "")]
@@ -3050,6 +3059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         UTC1400KiritimatiIsland
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemimportanceInput
     {
         Low,
@@ -3057,6 +3067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemrecurrenceInput
     {
         None,
@@ -3066,6 +3077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         Yearly
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum itemshowAsInput
     {
         Free,
@@ -3082,6 +3094,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public ClientReceiveMessage[] Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum importanceInput
     {
         Any,
@@ -3096,6 +3109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public CalendarEventClientReceiveStringEnums[] Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum replyParametersimportanceInput
     {
         Low,
@@ -3103,6 +3117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum emailMessageimportanceInput
     {
         Low,
@@ -3167,6 +3182,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         public bool ResponseRequested { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CalendarEventClientWithActionTypeActionTypeType
     {
         [EnumMember(Value = "added")]

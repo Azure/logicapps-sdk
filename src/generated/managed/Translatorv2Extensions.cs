@@ -105,6 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
         public string LanguageName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum textTypeInput
     {
         [EnumMember(Value = "plain")]

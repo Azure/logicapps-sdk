@@ -787,6 +787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         public string LastModifiedBy { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         View,
@@ -806,6 +807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         public int Height { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sizeInput
     {
         Small,
@@ -813,6 +815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
         Large
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum findModeInput
     {
         OneDriveSearch,

@@ -213,6 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         public int Visits { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum reportNameInput
     {
         [EnumMember(Value = "download")]
@@ -225,6 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         SecondLevelDomain
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum agencyNameInput
     {
         [EnumMember(Value = "agency-international-development")]

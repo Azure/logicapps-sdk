@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vantage365imaging
         public string Barcodegraphic { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeofcodeInput
     {
         Aztec,

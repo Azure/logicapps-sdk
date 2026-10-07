@@ -177,6 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
         public string AlignedFile { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum downloadTypeInput
     {
         [EnumMember(Value = "translated")]
@@ -243,6 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicstranslations
         public int TranslationId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum translationTypeInput
     {
         [EnumMember(Value = "ui")]

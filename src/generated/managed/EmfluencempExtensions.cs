@@ -557,6 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public int TotalRecords { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortFieldInput
     {
         [EnumMember(Value = "contactID")]
@@ -569,6 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         ContactScore
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortDirectionInput
     {
         [EnumMember(Value = "asc")]
@@ -649,6 +651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         public string LastName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysortFieldInput
     {
         [EnumMember(Value = "contactID")]
@@ -661,6 +664,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emfluencemp
         ContactScore
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysortDirectionInput
     {
         [EnumMember(Value = "asc")]

@@ -964,6 +964,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         public string MessageId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sendToAllInput
     {
         Yes,
@@ -979,6 +980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         public string ActionInstanceId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum actionTypeInput
     {
         [EnumMember(Value = "job")]
@@ -1004,6 +1006,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         public string ReactionId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestreactionTypeInput
     {
         Like,
@@ -1016,6 +1019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         public string GroupId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestgroupTypeInput
     {
         [EnumMember(Value = "group")]

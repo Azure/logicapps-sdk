@@ -357,6 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         public string ItemId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrelationInput
     {
         [EnumMember(Value = "spouse")]
@@ -391,6 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         public int Extension { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyphonesInputItemPhoneTypeType
     {
         [EnumMember(Value = "home")]

@@ -218,6 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         public string Street { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum byTypeInput
     {
         [EnumMember(Value = "micro")]

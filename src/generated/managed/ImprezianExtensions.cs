@@ -3194,6 +3194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Revenue { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         [EnumMember(Value = "E-mail")]
@@ -3323,6 +3324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string NewCodeID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyitemtypeInput
     {
         I,
@@ -3801,6 +3803,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string AssignedToRep { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         C,
@@ -3808,6 +3811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         B
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrecordtypeInput
     {
         L,
@@ -3868,6 +3872,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Phone4 { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoperationInput
     {
         [EnumMember(Value = "remove")]
@@ -3925,6 +3930,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string ItemID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyorderstatusInput
     {
         [EnumMember(Value = "quote")]
@@ -4128,6 +4134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
         public string Total { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriorityInput
     {
         [EnumMember(Value = "0")]

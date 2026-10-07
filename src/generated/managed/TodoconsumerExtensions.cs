@@ -531,6 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         public string DateTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ToDoImportanceType
     {
         [EnumMember(Value = "low")]
@@ -547,6 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         public string DateTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ToDoStatusType
     {
         [EnumMember(Value = "notStarted")]
@@ -561,6 +563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         Deferred
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyimportanceInput
     {
         [EnumMember(Value = "low")]
@@ -571,6 +574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
         [EnumMember(Value = "notStarted")]

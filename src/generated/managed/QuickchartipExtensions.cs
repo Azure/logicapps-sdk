@@ -480,6 +480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyformatInput
     {
         [EnumMember(Value = "svg")]
@@ -488,6 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         Png
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyencodingInput
     {
         [EnumMember(Value = "url")]
@@ -523,6 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ecLevelInput
     {
         L,
@@ -531,6 +534,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         G
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "svg")]
@@ -548,6 +552,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylayoutInput
     {
         [EnumMember(Value = "dot")]
@@ -573,6 +578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum scaleInput
     {
         [EnumMember(Value = "linear")]
@@ -583,6 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         Log
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum @caseInput
     {
         [EnumMember(Value = "lower")]

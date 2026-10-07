@@ -888,6 +888,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string PersonID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataworkerReferenceworkerIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
@@ -898,6 +899,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WorkdayID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatacountryReferencecountryIDInput
     {
         USA,
@@ -915,6 +917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string AddressLine { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDataaddressLineDataInputItemAddessLineTypeType
     {
         [EnumMember(Value = "ADDRESS LINE 1")]
@@ -925,12 +928,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         ADDRESSLINE3
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationForPersonEventRequestaddOrUpdateAddressInformationDataaddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput
     {
         Home,
         Business
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataworkerReferenceworkerIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
@@ -941,6 +946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WorkdayID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatacountryISOCodeInput
     {
         USA,
@@ -952,6 +958,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         JPN
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDataphoneDeviceTypeReferencephoneDeviceTypeIDInput
     {
         Mobile,
@@ -960,12 +967,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         Pager
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationForPersonEventRequestaddOrUpdatePhoneInformationDataphoneInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput
     {
         Home,
         Business
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataworkerReferenceworkerIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
@@ -976,12 +985,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WorkdayID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationForPersonEventRequestaddOrUpdateEmailAddressInformationDataemailAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput
     {
         Home,
         Business
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDataworkerReferenceworkerIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
@@ -992,6 +1003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WorkdayID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatainstantMessengerTypeReferenceinstantMessengerTypeIDInput
     {
         AIM,
@@ -1004,12 +1016,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         Yahoo
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationForPersonEventRequestaddOrUpdateInstantMessengerInformationDatainstantMessengerInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput
     {
         Home,
         Business
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDataworkerReferenceworkerIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
@@ -1020,6 +1034,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WorkdayID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationForPersonEventRequestaddOrUpdateWebAddressInformationDatawebAddressInformationDatausageDatatypeDatatypeReferencecommunicationUsageTypeIDInput
     {
         Home,
@@ -1146,6 +1161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public CommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDType CommunicationUsageTypeID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDTypeType
     {
         [EnumMember(Value = "Communication_Usage_Type_ID")]
@@ -1153,6 +1169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CommunicationMethodUsageInformationDataTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDType
     {
         Home,
@@ -1186,6 +1203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public PhoneInformationDataUsageDataType UsageData { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PhoneInformationDataCountryISOCodeType
     {
         USA,
@@ -1203,6 +1221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public PhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIDType PhoneDeviceTypeID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIDTypeType
     {
         [EnumMember(Value = "Phone_Device_Type_ID")]
@@ -1210,6 +1229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PhoneInformationDataPhoneDeviceTypeReferenceTypePhoneDeviceTypeIDType
     {
         Mobile,
@@ -1245,6 +1265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public PhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDType CommunicationUsageTypeID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDTypeType
     {
         [EnumMember(Value = "Communication_Usage_Type_ID")]
@@ -1252,6 +1273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PhoneInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDType
     {
         Home,
@@ -1291,6 +1313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public AddressInformationDataCountryReferenceTypeCountryIDType CountryID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressInformationDataCountryReferenceTypeCountryIDTypeType
     {
         [EnumMember(Value = "ISO 3166-1 Alpha-2 Code")]
@@ -1301,6 +1324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         ISO31661Numeric3Code
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressInformationDataCountryReferenceTypeCountryIDType
     {
         USA,
@@ -1318,6 +1342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string AddressLine { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressInformationDataAddressLineDataTypeItemAddessLineTypeType
     {
         [EnumMember(Value = "ADDRESS LINE 1")]
@@ -1334,6 +1359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public string CountryRegionID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressInformationDataCountryRegionReferenceTypeCountryRegionIDTypeType
     {
         [EnumMember(Value = "Country Region ID")]
@@ -1369,6 +1395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public AddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDType CommunicationUsageTypeID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDTypeType
     {
         [EnumMember(Value = "Communication_Usage_Type_ID")]
@@ -1376,6 +1403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressInformationDataUsageDataTypeTypeDataTypeTypeReferenceTypeCommunicationUsageTypeIDType
     {
         Home,
@@ -1406,6 +1434,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public InstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIDType InstantMessengerTypeID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIDTypeType
     {
         [EnumMember(Value = "Instant_Messenger_Type_ID")]
@@ -1413,6 +1442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         WID
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InstantMessengerInformationDataInstantMessengerTypeReferenceTypeInstantMessengerTypeIDType
     {
         AIM,
@@ -1572,6 +1602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public bool ReceiveEmailNotifications { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum systemIDTypeInput
     {
         [EnumMember(Value = "Employee ID")]
@@ -2303,6 +2334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         public int WorkerID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dateCriteriaInput
     {
         [EnumMember(Value = "Effective Date")]
@@ -2311,6 +2343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
         UpdatedDate
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum businessProcessTypeInput
     {
         [EnumMember(Value = "Hire Employee")]

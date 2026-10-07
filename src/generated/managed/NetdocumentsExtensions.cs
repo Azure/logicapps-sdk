@@ -1808,6 +1808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum actionInput
     {
         [EnumMember(Value = "add")]
@@ -1816,6 +1817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         Remove
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sendInput
     {
         [EnumMember(Value = "ignoreGenerator")]
@@ -1946,6 +1948,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         public int Count { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum orderbyInput
     {
         [EnumMember(Value = "relevance desc")]
@@ -1995,6 +1998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         public string Access { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum logtypeInput
     {
         [EnumMember(Value = "consolidated")]
@@ -2024,6 +2028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         public string Registered { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum returnInfoInput
     {
         [EnumMember(Value = "all")]
@@ -2115,6 +2120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         public string Access { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum optionsInput
     {
         [EnumMember(Value = "hidden")]
@@ -2125,6 +2131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         HiddenHideMembership
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum accessInput
     {
         [EnumMember(Value = "0")]
@@ -2141,6 +2148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         _1248
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum collaborationspaceaccessInput
     {
         [EnumMember(Value = "0")]
@@ -2157,6 +2165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         _1248
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum modeInput
     {
         [EnumMember(Value = "add")]
@@ -2167,6 +2176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         Remove
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum completionEmailInput
     {
         [EnumMember(Value = "true")]

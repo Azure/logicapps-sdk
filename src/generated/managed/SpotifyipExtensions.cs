@@ -287,6 +287,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         public string URI { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TrackRestriction
     {
         [EnumMember(Value = "market")]

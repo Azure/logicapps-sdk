@@ -1898,6 +1898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         public double N2o { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystorageTypeInput
     {
         [EnumMember(Value = "ssd")]

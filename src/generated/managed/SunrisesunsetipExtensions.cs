@@ -89,6 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
         public string AstronomicalTwilightEnd { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formattedInput
     {
         [EnumMember(Value = "0")]

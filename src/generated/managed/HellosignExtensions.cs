@@ -177,6 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
         public string LastRemindedDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum testModeInput
     {
         Free,

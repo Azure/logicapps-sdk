@@ -3381,6 +3381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public GetTrusteesResponseDataTypeItemTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetTrusteesResponseDataTypeItemTypeType
     {
         [EnumMember(Value = "user")]
@@ -3389,6 +3390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Group
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyobjectTypeInput
     {
         [EnumMember(Value = "document")]
@@ -3414,6 +3416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public AccessPermissionsItem[] Acl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UpdateDefaultSecurityResponseDataTypeDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
@@ -3462,6 +3465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public bool HasRestrictedMember { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AccessPermissionsItemTypeType
     {
         [EnumMember(Value = "user")]
@@ -3470,6 +3474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Group
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AccessPermissionsItemAccessLevelType
     {
         [EnumMember(Value = "no_access")]
@@ -3484,6 +3489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         ChangeSecurity
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AccessPermissionsItemAccessLevelDisplayNameType
     {
         [EnumMember(Value = "No Access")]
@@ -3519,6 +3525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string AllGroupIds { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UpdatePermissionsResponseDataTypeDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
@@ -3567,6 +3574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public bool HasRestrictedMember { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyaccessLevelInput
     {
         [EnumMember(Value = "No Access")]
@@ -3604,6 +3612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string AllGroupIds { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetPermissionsResponseDataTypeDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
@@ -3616,6 +3625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Private
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetPermissionsResponseDataTypeInheritedDefaultSecurityType
     {
         [EnumMember(Value = "public")]
@@ -3662,6 +3672,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public bool HasRestrictedMember { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysourceObjectTypeInput
     {
         [EnumMember(Value = "document")]
@@ -3672,6 +3683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Workspace
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytargetObjectTypeInput
     {
         [EnumMember(Value = "document")]
@@ -3682,6 +3694,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Workspace
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycopyTypeInput
     {
         Overwrite,
@@ -3913,6 +3926,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Custom30Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum WorkspaceProfileDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
@@ -3925,6 +3939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum WorkspaceProfileEffectiveSecurityType
     {
         [EnumMember(Value = "no_access")]
@@ -3937,6 +3952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         FullAccess
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum WorkspaceProfileWstypeType
     {
         [EnumMember(Value = "document")]
@@ -3957,6 +3973,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         User
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycreateChildrenInput
     {
         [EnumMember(Value = "All Folders")]
@@ -3965,6 +3982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         OnlyRequiredFolders
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydefaultSecurityInput
     {
         [EnumMember(Value = "private")]
@@ -4023,6 +4041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public bool SubclassRequired { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetClassesResponseDataTypeResultsTypeItemDefaultSecurityType
     {
         [EnumMember(Value = "private")]
@@ -4033,6 +4052,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum defaultSecurityInput
     {
         [EnumMember(Value = "inherit")]
@@ -4090,6 +4110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public bool Shadow { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetSubclassesResponseDataTypeResultsTypeItemDefaultSecurityType
     {
         [EnumMember(Value = "private")]
@@ -4220,6 +4241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public SearchFolderResultWstypeType Wstype { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SearchFolderResultDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
@@ -4232,6 +4254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SearchFolderResultFolderTypeType
     {
         [EnumMember(Value = "regular")]
@@ -4248,6 +4271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         MyFavorites
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SearchFolderResultViewTypeType
     {
         [EnumMember(Value = "none")]
@@ -4266,6 +4290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         ImanageShare
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SearchFolderResultWstypeType
     {
         [EnumMember(Value = "folder")]
@@ -4560,6 +4585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Custom30Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ShortDocumentProfileDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
@@ -4572,6 +4598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ShortDocumentProfileWstypeType
     {
         [EnumMember(Value = "document")]
@@ -4592,6 +4619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         User
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum updateOrCreateInput
     {
         [EnumMember(Value = "Update Current Version")]
@@ -4714,6 +4742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public bool IsHidden { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GetLibrariesResponseDataTypeItemTypeType
     {
         [EnumMember(Value = "worksite")]
@@ -5052,6 +5081,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Custom30Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FullDocumentProfileAccessType
     {
         [EnumMember(Value = "no_access")]
@@ -5073,6 +5103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public bool AllowLogon { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FullDocumentProfileDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
@@ -5085,6 +5116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FullDocumentProfileWstypeType
     {
         [EnumMember(Value = "document")]
@@ -5198,6 +5230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public int UserNum { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum logonStatusInput
     {
         Any,
@@ -5424,6 +5457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Custom30Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SearchWorkspaceResultDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
@@ -5436,6 +5470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SearchWorkspaceResultWstypeType
     {
         [EnumMember(Value = "document")]
@@ -5471,6 +5506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public AddDocumentReferenceResponseDataTypeWstypeType Wstype { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddDocumentReferenceResponseDataTypeWstypeType
     {
         [EnumMember(Value = "document")]
@@ -5784,6 +5820,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Custom30Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MoveDocumentProfileAccessType
     {
         [EnumMember(Value = "no_access")]
@@ -5796,6 +5833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         FullAccess
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MoveDocumentProfileDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
@@ -5808,6 +5846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MoveDocumentProfileWstypeType
     {
         [EnumMember(Value = "document")]
@@ -6002,6 +6041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Custom22 { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CopyDocumentResponseDataTypeAccessType
     {
         [EnumMember(Value = "no_access")]
@@ -6014,6 +6054,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         FullAccess
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CopyDocumentResponseDataTypeDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
@@ -6026,6 +6067,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CopyDocumentResponseDataTypeWstypeType
     {
         [EnumMember(Value = "document")]
@@ -7762,6 +7804,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public MinimalDocumentProfileWstypeType Wstype { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MinimalDocumentProfileDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
@@ -7774,6 +7817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MinimalDocumentProfileWstypeType
     {
         [EnumMember(Value = "document")]
@@ -8034,6 +8078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public MinimalDocumentProfileInArrayWstypeType Wstype { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MinimalDocumentProfileInArrayDefaultSecurityType
     {
         [EnumMember(Value = "inherit")]
@@ -8046,6 +8091,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum MinimalDocumentProfileInArrayWstypeType
     {
         [EnumMember(Value = "document")]
@@ -8213,6 +8259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         public string Ssid { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyenabledStateInput
     {
         Enabled,

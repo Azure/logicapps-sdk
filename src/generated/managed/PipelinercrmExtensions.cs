@@ -1751,6 +1751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string ModifiedByUser { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyaccountClassInput
     {
         [EnumMember(Value = "1")]
@@ -2113,6 +2114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string ModifiedByUser { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodygenderInput
     {
         [EnumMember(Value = "0")]
@@ -3082,6 +3084,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         public string ModifiedByUser { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriorityInput
     {
         [EnumMember(Value = "1")]
@@ -3092,6 +3095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pipelinercrm
         _3
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
         [EnumMember(Value = "1")]

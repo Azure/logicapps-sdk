@@ -169,6 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         public string Request { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriorityInput
     {
         [EnumMember(Value = "-2")]
@@ -183,6 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         _2
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyhtmlInput
     {
         [EnumMember(Value = "1")]

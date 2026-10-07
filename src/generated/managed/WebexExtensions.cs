@@ -787,6 +787,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         public string Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "group")]
@@ -795,6 +796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         Direct
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortByInput
     {
         [EnumMember(Value = "lastactivity")]

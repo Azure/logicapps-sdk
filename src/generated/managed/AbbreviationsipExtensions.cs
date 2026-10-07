@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abbreviationsip
         public string Score { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortbyInput
     {
         [EnumMember(Value = "p")]
@@ -87,6 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abbreviationsip
         Category
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum searchtypeInput
     {
         [EnumMember(Value = "e")]

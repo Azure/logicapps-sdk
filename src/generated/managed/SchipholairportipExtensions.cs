@@ -560,6 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         public bool Visa { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum flightDirectionInput
     {
         A,

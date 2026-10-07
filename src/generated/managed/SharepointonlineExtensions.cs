@@ -1877,6 +1877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         public string FileLocator { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum parametersmethodInput
     {
         GET,
@@ -1926,6 +1927,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         public string ScheduledVersion { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum approvalActionInput
     {
         Submit,

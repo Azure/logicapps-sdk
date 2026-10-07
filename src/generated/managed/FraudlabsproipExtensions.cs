@@ -527,6 +527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         public int FraudlabsproCredits { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypaymentModeInput
     {
         [EnumMember(Value = "creditcard")]
@@ -578,6 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         public string FraudlabsproMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyactionInput
     {
         APPROVE,
@@ -736,6 +738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         public string FraudlabsproMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum idTypeInput
     {
         [EnumMember(Value = "fraudlabspro_id")]

@@ -250,6 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         public string UpdateID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvisibilityInput
     {
         Public,

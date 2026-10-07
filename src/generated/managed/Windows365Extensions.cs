@@ -635,6 +635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         public bool EnableSingleSignOn { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum selectInput
     {
         [EnumMember(Value = "id")]
@@ -737,6 +738,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         public bool EnableSingleSignOn { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum remoteActionInput
     {
         [EnumMember(Value = "endGracePeriod")]
@@ -753,6 +755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         Restore
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         GET,
@@ -894,6 +897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         public string RegionGroup { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyimageTypeInput
     {
         [EnumMember(Value = "gallery")]
@@ -902,6 +906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         Custom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyprovisioningTypeInput
     {
         [EnumMember(Value = "dedicated")]
@@ -1100,6 +1105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         public string Locale { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyscenarioInput
     {
         [EnumMember(Value = "When a new provisioning policy is created")]

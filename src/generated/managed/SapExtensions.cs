@@ -803,12 +803,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         public JToken JsonResponse { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputFormatInput
     {
         Json,
         Xml
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum returnFormatInput
     {
         Json,
@@ -843,6 +845,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         public int[] IDOCNumbers { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum directionInput
     {
         Send,
@@ -881,6 +884,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         public string TransactionId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum recordTypesVersionInput
     {
         [EnumMember(Value = "2")]
@@ -889,6 +893,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         _3
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum idocFormatInput
     {
         Xml,
@@ -902,6 +907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         public string RenewInterval { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SubscribeResponseCodeType
     {
         Continue,
@@ -953,6 +959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         HttpVersionNotSupported
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum subscriptioniDOCFormatInput
     {
         MicrosoftLobNamespaceXml,

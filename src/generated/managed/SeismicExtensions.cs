@@ -494,6 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public V2LiveDocsModelsResponseModelsLiveDocGenOutputResultRespStatusType Status { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum V2LiveDocsModelsResponseModelsLiveDocGenOutputResultRespStatusType
     {
         Queued,
@@ -733,6 +734,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string[] Values { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum V2LibraryContentManagementModelsFileResponseTypeType
     {
         [EnumMember(Value = "unknown")]
@@ -826,6 +828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string VersionId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum V2LibraryContentManagementModelsItemResponseTypeType
     {
         [EnumMember(Value = "unknown")]
@@ -910,6 +913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public genInputReqoutputsInputItemDocxOptionsTypeImageDpiType ImageDpi { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum genInputReqoutputsInputItemDocxOptionsTypeImageDpiType
     {
         [EnumMember(Value = "0")]
@@ -928,6 +932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         _400
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum genInputReqoutputsInputItemFormatType
     {
         PPTX,
@@ -954,6 +959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string OwnerPassword { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum genInputReqoutputsInputItemPdfOptionsTypeCompatibilityType
     {
         [EnumMember(Value = "Acrobat 5.0")]
@@ -964,6 +970,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         Acrobat90
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum genInputReqoutputsInputItemPdfOptionsTypeLayoutType
     {
         [EnumMember(Value = "Full Page Slides")]
@@ -981,6 +988,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public genInputReqoutputsInputItemPptxOptionsTypeImageDpiType ImageDpi { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum genInputReqoutputsInputItemPptxOptionsTypeImageDpiType
     {
         [EnumMember(Value = "0")]
@@ -1113,6 +1121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string Username { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum V2UsersUserResponseLicenseTypeType
     {
         [EnumMember(Value = "business")]
@@ -1189,6 +1198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum V2WorkSpaceContentManagerModelsWsFileRespTypeType
     {
         [EnumMember(Value = "folder")]
@@ -1253,6 +1263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string VersionId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum V2WorkSpaceContentManagerModelsWsFolderRespTypeType
     {
         [EnumMember(Value = "folder")]
@@ -1329,6 +1340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string VersionId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum V2WorkSpaceContentManagerModelsWsItemRespTypeType
     {
         [EnumMember(Value = "folder")]

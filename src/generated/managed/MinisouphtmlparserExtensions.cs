@@ -320,6 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
         public bool IsSelfClosing { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyselectorTypeInput
     {
         [EnumMember(Value = "css")]

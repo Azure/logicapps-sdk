@@ -219,6 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         public JToken SourceChannel { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum contentTypeInput
     {
         [EnumMember(Value = "application/json")]

@@ -126,6 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dicebearip
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum versionInput
     {
         [EnumMember(Value = "5.x")]
@@ -152,6 +153,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dicebearip
         _44
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum styleNameInput
     {
         [EnumMember(Value = "adventurer")]
@@ -202,6 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dicebearip
         PixelArtNeutral
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fileFormatInput
     {
         [EnumMember(Value = "png")]
@@ -210,6 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dicebearip
         Jpg
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum backgroundTypeInput
     {
         [EnumMember(Value = "gradientLinear")]

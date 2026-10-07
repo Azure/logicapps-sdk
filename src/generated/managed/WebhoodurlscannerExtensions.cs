@@ -118,6 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         public string ErrorDescription { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ScanStatusType
     {
         [EnumMember(Value = "pending")]
@@ -130,6 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         Running
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         [EnumMember(Value = "pending")]

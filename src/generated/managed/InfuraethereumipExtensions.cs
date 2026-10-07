@@ -142,6 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         public int Result { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyParamsblockInput
     {
         [EnumMember(Value = "latest")]

@@ -565,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
         public bool IsFolder { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExtractArchiveInputOverwriteType
     {
         Fail,

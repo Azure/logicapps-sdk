@@ -388,6 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public string Link { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum filterInput
     {
         Location,
@@ -435,12 +436,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydisplayGalleryInput
     {
         Gallery,
         List
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydisplayTextInput
     {
         Beside,
@@ -455,6 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public ProjectUserResponse[] RecipientsCc { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyscopeInput
     {
         ByMe,

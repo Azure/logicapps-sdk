@@ -111,6 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
         public string ErrorMessage { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SendSMSv2ResponseValueTypeItemRepeatabilityResultType
     {
         [EnumMember(Value = "accepted")]

@@ -477,6 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string Code { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum classCodeTypeInput
     {
         [EnumMember(Value = "all")]
@@ -530,6 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string DrugName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum nameTypeInput
     {
         [EnumMember(Value = "both")]
@@ -618,6 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string Rxtty { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum rxttyInput
     {
         PSN,
@@ -673,6 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         public string Title { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum deaScheduleCodeInput
     {
         [EnumMember(Value = "none")]
@@ -684,6 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dailymedip
         C48679
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum publishedDateComparisonInput
     {
         [EnumMember(Value = "lt")]

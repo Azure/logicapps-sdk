@@ -807,6 +807,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public string[] AssociatedBuildingIds { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EntityType
     {
         [EnumMember(Value = "portfolio")]
@@ -857,6 +858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public double MetricValue { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AreaValueTypeUnitType
     {
         [EnumMember(Value = "m2")]
@@ -982,6 +984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public double Longitude { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SpaceTypeOfUseEnum
     {
         [EnumMember(Value = "office")]
@@ -1108,6 +1111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public int NumberOfBasementFloors { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SpaceTypeOfOwnership
     {
         Leased,
@@ -1183,6 +1187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public string[] ImageIds { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FloorTypeOfFloorType
     {
         [EnumMember(Value = "basement")]
@@ -1361,6 +1366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public AreaValueType GrossArea { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OutsideAreaType
     {
         [EnumMember(Value = "pavedArea")]
@@ -1558,6 +1564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public SpaceTypeOfSpaceType TypeOfSpace { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SpaceTypeOfSpaceType
     {
         [EnumMember(Value = "residential")]
@@ -1595,6 +1602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         public Space[] Items { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum spaceTypeInput
     {
         [EnumMember(Value = "portfolios")]
@@ -1619,6 +1627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
         Spaces
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum associatedTypeInput
     {
         [EnumMember(Value = "portfolios")]

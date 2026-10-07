@@ -317,6 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         public string FileName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum posterClassificationInput
     {
         [EnumMember(Value = "default")]
@@ -341,6 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         LawEnforcementAssistance
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldOfficesInput
     {
         [EnumMember(Value = "albany")]
@@ -457,6 +459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         Washingtondc
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum personClassificationInput
     {
         Main,
@@ -464,6 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         Accomplice
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         [EnumMember(Value = "na")]
@@ -480,6 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         Deceased
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortOnInput
     {
         [EnumMember(Value = "publication")]
@@ -488,6 +493,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         Modified
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortOrderInput
     {
         [EnumMember(Value = "desc")]

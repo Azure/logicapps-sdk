@@ -277,6 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         GET,

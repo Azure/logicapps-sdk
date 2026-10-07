@@ -348,6 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         public int Priority { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyregionInput
     {
         [EnumMember(Value = "us-east-1")]

@@ -1031,6 +1031,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public CommentsGetResponseDataTypeItemLikesTypeIsLikedType IsLiked { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CommentsGetResponseDataTypeItemLikesTypeIsLikedType
     {
         [EnumMember(Value = "")]
@@ -1173,6 +1174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffbase
         public PostData[] Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum contentTypeInput
     {
         [EnumMember(Value = "articles")]

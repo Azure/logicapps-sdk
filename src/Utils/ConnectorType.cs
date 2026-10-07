@@ -55,6 +55,7 @@ public class ApiConnectionActionInput(string path, string method, string connect
 /// <summary>
 /// The type of the access key.
 /// </summary>
+[Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
 public enum AccessKeyType
 {
     /// <summary>
@@ -373,6 +374,7 @@ internal class ConnectorOperatorInfoAttribute(string connectorName, string displ
     public string DisplayName { get; } = displayName;
 }
 
+[Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
 public enum ConnectorType
 {
     Unspecified = 0,

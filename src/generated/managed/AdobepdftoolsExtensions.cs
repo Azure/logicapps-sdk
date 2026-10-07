@@ -971,6 +971,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string OutputFileContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum providerNameInput
     {
         [EnumMember(Value = "INTESI_GROUP")]
@@ -982,12 +983,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         TRUSTPRO
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum signatureFormatInput
     {
         PADES,
         PKCS7
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sealImageFormatInput
     {
         [EnumMember(Value = "image/jpeg")]
@@ -998,6 +1001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         PDF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum xRegionValueInput
     {
         [EnumMember(Value = "-ue1")]
@@ -1018,6 +1022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string PDFFileContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum pageSizeInput
     {
         Default,
@@ -1052,6 +1057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string OutputFileContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum targetFormatInput
     {
         PDF,
@@ -1076,6 +1082,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string PDFFileContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum compressionLevelInput
     {
         LOW,
@@ -1119,6 +1126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string PDFFileContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ocrLocaleInput
     {
         [EnumMember(Value = "BG_BG")]
@@ -1199,6 +1207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         ChineseHongKong
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ocrTypeInput
     {
         [EnumMember(Value = "SEARCHABLE_IMAGE")]
@@ -1219,6 +1228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string PDFFileContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum contentEncryptionInput
     {
         [EnumMember(Value = "ALL_CONTENT")]
@@ -1257,6 +1267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string FileContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum splitByTypeInput
     {
         [EnumMember(Value = "PageRangeArray")]
@@ -1341,6 +1352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public TableObject[] Tables { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum pdfStructureOutputFormatInput
     {
         [EnumMember(Value = "JSON FILE")]

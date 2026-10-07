@@ -3225,6 +3225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int ThreadId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum runPowerShellAutomationScriptauthenticationMechanismInput
     {
         Basic,
@@ -3251,6 +3252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int PowerShellMinorVersion { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum getPowerShellVersionauthenticationMechanismInput
     {
         Basic,
@@ -3305,6 +3307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum createJSONFromInputVariablesinputVariablesInputItemDataTypeType
     {
         String,
@@ -3408,6 +3411,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum insertRowInJSONTableFromInputVariablesrowToInsertInputVariablesInputItemDataTypeType
     {
         String,
@@ -3533,6 +3537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int NumberOfRowsInOutput { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum lookupColumnsFromIAConnectLookupTablereturnFormatInput
     {
         JSON,
@@ -3553,6 +3558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int NumberOfRowsInOutput { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum getColumnFromIAConnectListreturnFormatInput
     {
         JSON,
@@ -3569,6 +3575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int NumberOfColumnsInOutput { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum getIAConnectListContentsreturnFormatInput
     {
         JSON,
@@ -3583,6 +3590,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int NumberOfCellsInOutput { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum lookupDataCellsFromIAConnectLookupTablereturnFormatInput
     {
         JSON,
@@ -3598,6 +3606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         public int NumberOfColumnsInOutput { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum getIAConnectLookupTableContentsreturnFormatInput
     {
         JSON,

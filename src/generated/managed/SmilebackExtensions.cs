@@ -292,6 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldcsatFilterRaitingInputItem
     {
         Positive,
@@ -299,6 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         Negative
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldcsatFilterCommentsInput
     {
         [EnumMember(Value = "")]
@@ -306,6 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         Yes
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldcsatFilterMpInput
     {
         [EnumMember(Value = "")]
@@ -313,6 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         Yes
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldnpsFilterScoreInputItem
     {
         [EnumMember(Value = "Detractor (0-6)")]
@@ -323,6 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         Promoter910
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldnpsFilterCommentsInput
     {
         [EnumMember(Value = "")]
@@ -330,6 +335,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         Yes
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldnpsFilterMpInput
     {
         [EnumMember(Value = "")]
@@ -337,6 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         Yes
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldprojectsFilterScoreInputItem
     {
         [EnumMember(Value = "1")]
@@ -351,6 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         _5
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldprojectsFilterCommentsInput
     {
         [EnumMember(Value = "")]
@@ -358,6 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         Yes
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fieldprojectsFilterMpInput
     {
         [EnumMember(Value = "")]

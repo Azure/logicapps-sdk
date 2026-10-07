@@ -730,6 +730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         public string Board { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "task")]
@@ -782,6 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         public string Provider { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         [EnumMember(Value = "task")]

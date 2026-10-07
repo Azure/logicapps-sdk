@@ -187,6 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
         public string RequestId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum strictnessInput
     {
         [EnumMember(Value = "0")]
@@ -299,6 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
         public string Iso { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum abuseStrictnessInput
     {
         [EnumMember(Value = "0")]

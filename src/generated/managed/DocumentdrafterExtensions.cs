@@ -603,6 +603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         public string ContentBytes { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum outputFormatInput
     {
         [EnumMember(Value = "docx")]
@@ -626,6 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         public string DocumentId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TriggerSubmitPollingResponseItemsTypeItemStatusType
     {
         Completed,

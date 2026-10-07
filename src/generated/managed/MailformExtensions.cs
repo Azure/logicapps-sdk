@@ -135,6 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailform
         public string Service { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum serviceInput
     {
         [EnumMember(Value = "USPS_PRIORITY_EXPRESS")]

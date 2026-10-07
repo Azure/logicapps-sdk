@@ -1483,6 +1483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         public bool Video { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum deviceInput
     {
         [EnumMember(Value = "desktop")]
@@ -1493,6 +1494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         Tablet
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum nfprInput
     {
         [EnumMember(Value = "0")]
@@ -1501,6 +1503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum filterInput
     {
         [EnumMember(Value = "0")]
@@ -1509,6 +1512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum safeInput
     {
         [EnumMember(Value = "off")]

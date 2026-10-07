@@ -433,12 +433,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         public JToken BaseScore { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum addOnsInput
     {
         [EnumMember(Value = "cves")]
         Cves
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum cvssV2SeverityInput
     {
         LOW,
@@ -446,6 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         HIGH
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum cvssV3SeverityInput
     {
         LOW,

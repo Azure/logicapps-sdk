@@ -525,6 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyactionInput
     {
         [EnumMember(Value = "push-buffer-live")]
@@ -535,6 +536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         CancelPublish
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycategoryIdInput
     {
         [EnumMember(Value = "0")]
@@ -549,6 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         _4
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytemplateTypeInput
     {
         [EnumMember(Value = "2")]

@@ -141,6 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         public string NameId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum callbackBodyflowResultInput
     {
         Positive,

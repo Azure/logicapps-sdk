@@ -52,6 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum aPINameInput
     {
         [EnumMember(Value = "resource")]
@@ -78,6 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
         Integrationsetup
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum pluralAPINameInput
     {
         [EnumMember(Value = "resources")]

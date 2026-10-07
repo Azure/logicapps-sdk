@@ -2087,6 +2087,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytimeZoneInput
     {
         [EnumMember(Value = "(GMT-11:00) Niue")]
@@ -2715,6 +2716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public string Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum objectiveTypeInput
     {
         Personal,
@@ -2734,6 +2736,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvalueTypeInput
     {
         Number,
@@ -2742,6 +2745,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         YesNo
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrecurTypeInput
     {
         Days,
@@ -2762,6 +2766,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         public int Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriorityInput
     {
         Critical,
@@ -2770,6 +2775,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
         Information
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyarticleTypeInput
     {
         Social,

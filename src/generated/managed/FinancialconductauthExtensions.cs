@@ -453,6 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "individual")]

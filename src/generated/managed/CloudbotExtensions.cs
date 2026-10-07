@@ -219,6 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
         public string FileRef { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum xCbotContentLanguageInput
     {
         [EnumMember(Value = "ja")]

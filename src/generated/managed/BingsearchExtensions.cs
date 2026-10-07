@@ -106,6 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
         public string Category { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum mktInput
     {
         [EnumMember(Value = "es-AR")]
@@ -192,6 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
         EsUS
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum safeSearchInput
     {
         Moderate,

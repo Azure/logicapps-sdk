@@ -226,6 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         public int Results { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum eventNameInput
     {
         [EnumMember(Value = "add_to_cart")]

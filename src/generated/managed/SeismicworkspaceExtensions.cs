@@ -1240,6 +1240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         public double Timestamp { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SeismicLibraryCommentingAnnotationType
     {
         [EnumMember(Value = "pen")]
@@ -1357,6 +1358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         public SeismicWorkSpaceContentManagerItemType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SeismicWorkSpaceContentManagerItemType
     {
         [EnumMember(Value = "folder")]
@@ -1367,6 +1369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
         File
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyannotationtypeInput
     {
         [EnumMember(Value = "pen")]

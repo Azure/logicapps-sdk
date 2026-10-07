@@ -2458,6 +2458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public ErrorDetails LastError { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CatalogVisibility
     {
         None,
@@ -2466,6 +2467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         All
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ApplicationVisibility
     {
         None,
@@ -2577,6 +2579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string[] SupportedCountries { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InstancePackageState
     {
         None,
@@ -2593,6 +2596,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         TemplateInstalled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum appInstallStateInput
     {
         All,
@@ -2699,6 +2703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string OperationId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum InstancePackageOperationStatus
     {
         NotStarted,
@@ -2924,6 +2929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public StageStatus[] StageStatuses { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OperationStatus
     {
         Queued,
@@ -2977,6 +2983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public ErrorInfo ErrorDetail { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycopyTypeInput
     {
         Minimal,
@@ -3133,6 +3140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public RuleAssignmentResourceTypeType ResourceType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum RuleAssignmentResourceTypeType
     {
         NotSpecified,
@@ -3182,6 +3190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string NextLink { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CrossTenantConnectionReportStatusType
     {
         Received,
@@ -3199,6 +3208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public CrossTenantConnectionConnectionTypeType ConnectionType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CrossTenantConnectionConnectionTypeType
     {
         Inbound,
@@ -3223,6 +3233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public ResourceItem[] Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ResourceQueryResponseResultTruncatedType
     {
         [EnumMember(Value = "0")]
@@ -3306,6 +3317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public ClauseTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ClauseTypeType
     {
         [EnumMember(Value = "where")]
@@ -3367,6 +3379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public Principal LastModifiedBy { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BillingPolicyStatus
     {
         Enabled,
@@ -3406,6 +3419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public string UserPrincipalName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
         Enabled,
@@ -3448,6 +3462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public int Allocated { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ExternalCurrencyType
     {
         AI,
@@ -3566,24 +3581,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public PayAsYouGoState DesktopFlowAttendedRunsPayAsYouGoState { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PayAsYouGoState
     {
         Enabled,
         Disabled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypowerAutomatePolicycloudFlowRunsPayAsYouGoStateInput
     {
         Enabled,
         Disabled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoStateInput
     {
         Enabled,
         Disabled
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoStateInput
     {
         Enabled,
@@ -3611,6 +3630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public TemporaryLicenseInfo TemporaryLicenseInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LicenseModel
     {
         None,
@@ -3639,6 +3659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public CapacityStatusMessageCode FinOpsStatusMessageCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CapacityAvailabilityStatus
     {
         None,
@@ -3647,6 +3668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         NotAvailable
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CapacityStatusMessageCode
     {
         AllCapacityAvailable,
@@ -3706,6 +3728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public TenantCapacityEntitlementModel[] CapacityEntitlements { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CapacityType
     {
         None,
@@ -3728,6 +3751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         PIProcess
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CapacityUnits
     {
         None,
@@ -3777,6 +3801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         public LicenseDetailsModel[] Licenses { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CapacityEntitlementType
     {
         None,

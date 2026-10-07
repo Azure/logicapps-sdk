@@ -504,6 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public string Start { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressTypeType
     {
         [EnumMember(Value = "postal")]
@@ -514,6 +515,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressUseType
     {
         [EnumMember(Value = "home")]
@@ -552,6 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public string OpeningTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum HoursOfOperationDaysOfWeekTypeItem
     {
         [EnumMember(Value = "mon")]
@@ -636,6 +639,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public string Version { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum IdentifierUseType
     {
         [EnumMember(Value = "usual")]
@@ -677,6 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public string VersionId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LocationModeType
     {
         [EnumMember(Value = "instance")]
@@ -706,6 +711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public JToken[] ModifierExtension { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LocationStatusType
     {
         [EnumMember(Value = "active")]
@@ -740,6 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContactPointSystemType
     {
         [EnumMember(Value = "phone")]
@@ -758,6 +765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         Other
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContactPointUseType
     {
         [EnumMember(Value = "home")]
@@ -787,6 +795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public NarrativeStatusType Status { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NarrativeStatusType
     {
         [EnumMember(Value = "generated")]
@@ -829,6 +838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public JToken Who { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LocationBundleTypeType
     {
         [EnumMember(Value = "document")]
@@ -1034,6 +1044,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public HumanNameUseType Use { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum HumanNameUseType
     {
         [EnumMember(Value = "usual")]
@@ -1052,6 +1063,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         Maiden
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OrganizationBundleTypeType
     {
         [EnumMember(Value = "document")]
@@ -1203,6 +1215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public Narrative Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PractitionerGenderType
     {
         Male,
@@ -1268,6 +1281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public Period Period { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PractitionerBundleTypeType
     {
         [EnumMember(Value = "document")]
@@ -1455,6 +1469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public JToken[] ModifierExtension { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PractitionerAvailableTimeDaysOfWeekTypeItem
     {
         Monday,
@@ -1484,6 +1499,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public JToken[] ModifierExtension { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PractitionerRoleBundleTypeType
     {
         [EnumMember(Value = "document")]

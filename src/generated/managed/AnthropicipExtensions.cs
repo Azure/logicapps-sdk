@@ -185,6 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         public int OutputTokens { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodelInput
     {
         [EnumMember(Value = "claude-opus-4-0")]
@@ -210,6 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymessagesInputItemRoleType
     {
         [EnumMember(Value = "user")]

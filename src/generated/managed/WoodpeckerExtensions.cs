@@ -371,6 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         public string CampaignEmail { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortInput
     {
         [EnumMember(Value = "+id")]
@@ -455,6 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         StatusDescending
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         RUNNING,
@@ -493,6 +495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         public string Msg { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyupdateInput
     {
         [EnumMember(Value = "true")]
@@ -501,6 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyforceInput
     {
         [EnumMember(Value = "true")]

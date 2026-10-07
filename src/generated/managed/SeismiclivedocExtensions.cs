@@ -217,6 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         public bodyoutputsInputItemXlsxOptionsType XlsxOptions { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoutputsInputItemFormatType
     {
         PPTX,
@@ -234,6 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         public bool ClearNotes { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoutputsInputItemPptxOptionsTypeImageDpiType
     {
         [EnumMember(Value = "0")]
@@ -258,6 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         public bodyoutputsInputItemDocxOptionsTypeImageDpiType ImageDpi { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoutputsInputItemDocxOptionsTypeImageDpiType
     {
         [EnumMember(Value = "0")]
@@ -294,6 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         public string OwnerOptions { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoutputsInputItemPdfOptionsTypeLayoutType
     {
         [EnumMember(Value = "0")]
@@ -304,6 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         NotePages
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoutputsInputItemPdfOptionsTypeCompatibilityType
     {
         [EnumMember(Value = "Acrobat 5.0")]
@@ -347,6 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
         public string OutputFileName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SeismicLiveDocsLiveDocGenStatusResp
     {
         Queued,

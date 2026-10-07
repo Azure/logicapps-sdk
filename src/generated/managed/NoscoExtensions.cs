@@ -426,6 +426,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
         public string StartCursor { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortFieldInput
     {
         [EnumMember(Value = "PUBLISHED_AT")]
@@ -434,6 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
         LASTSTAGECHANGEAT
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortOrderInput
     {
         ASC,

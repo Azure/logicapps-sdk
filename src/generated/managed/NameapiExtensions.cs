@@ -183,6 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
         public double Confidence { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyinputPersongenderInput
     {
         MALE,

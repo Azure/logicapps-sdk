@@ -1072,6 +1072,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public string User { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PermissionsEnum
     {
         [EnumMember(Value = "1")]
@@ -1322,6 +1323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public string Uuid { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentResponseDetailSignerObjectsTypeItemRoleType
     {
         [EnumMember(Value = "signer")]
@@ -1332,6 +1334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         Witness
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentStatusEnum
     {
         [EnumMember(Value = "10")]
@@ -1373,6 +1376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public SignerStatusEnum Status { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SignerStatusEnum
     {
         [EnumMember(Value = "4")]
@@ -1510,6 +1514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public string Uuid { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DocumentListResponseObjectsTypeItemSignersInOrderType
     {
         [EnumMember(Value = "0")]
@@ -1569,6 +1574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public bool IncludeLink { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypdfPasswordTypeInput
     {
         [EnumMember(Value = "1")]
@@ -1664,6 +1670,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
         public bool XframeAllowPdfEdit { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyeventFilterInput
     {
         [EnumMember(Value = "document.*")]

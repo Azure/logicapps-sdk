@@ -343,6 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
         public double Longitude { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sortByInput
     {
         [EnumMember(Value = "best_match")]
@@ -658,6 +659,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
         public double Longitude { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum matchThresholdInput
     {
         [EnumMember(Value = "none")]

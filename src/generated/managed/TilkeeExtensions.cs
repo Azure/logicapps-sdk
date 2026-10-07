@@ -1174,6 +1174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyverdictInput
     {
         [EnumMember(Value = "won")]
@@ -1579,6 +1580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         public string ExternalId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyInputItemTypeType
     {
         [EnumMember(Value = "file")]
@@ -1614,6 +1616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyruleInput
     {
         [EnumMember(Value = "connexion_started")]

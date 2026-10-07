@@ -698,6 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         public bodysortInputItemNullsType Nulls { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysortInputItemOrderType
     {
         [EnumMember(Value = "asc")]
@@ -706,6 +707,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         Desc
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysortInputItemNullsType
     {
         [EnumMember(Value = "first")]

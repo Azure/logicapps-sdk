@@ -404,6 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum privacyInput
     {
         Private,
@@ -411,6 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         Public
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum languageInput
     {
         English,
@@ -526,6 +528,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         public bool Done { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum textScopeInput
     {
         Transcript,
@@ -595,6 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         public int Views { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum widgetTypeInput
     {
         People,

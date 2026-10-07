@@ -613,6 +613,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public string RawContent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytopicInput
     {
         [EnumMember(Value = "general")]
@@ -621,6 +622,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         News
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysearchDepthInput
     {
         [EnumMember(Value = "basic")]
@@ -629,6 +631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         Advanced
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytimeRangeInput
     {
         [EnumMember(Value = "day")]
@@ -682,6 +685,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public string Error { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyextractDepthInput
     {
         [EnumMember(Value = "basic")]
@@ -723,6 +727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tavily
         public double ResponseTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycategoriesInputItem
     {
         Careers,

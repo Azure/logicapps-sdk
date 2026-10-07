@@ -203,6 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         public int V { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyformatInput
     {
         [EnumMember(Value = "png")]

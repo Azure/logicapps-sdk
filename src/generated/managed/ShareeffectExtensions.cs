@@ -297,6 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoutputformatInput
     {
         [EnumMember(Value = "docx")]

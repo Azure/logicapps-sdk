@@ -1204,6 +1204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public string CourseLayoutId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycoursetypeInput
     {
         ELearning,
@@ -1229,6 +1230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public bool IsNew { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyenrollmentFlowInput
     {
         AutomaticApproval,
@@ -1238,6 +1240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         ExternalWebhookApproval
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycourseSessionEnrollmentTypeInput
     {
         EnrollToSingle,
@@ -1577,6 +1580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         public bool IsExternal { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytimeZoneInput
     {
         [EnumMember(Value = "Afghanistan Standard Time")]
@@ -1854,12 +1858,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         YakutskStandardTime
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyroomsourceInput
     {
         Unknown,
         Exchange
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum parametersmethodInput
     {
         GET,

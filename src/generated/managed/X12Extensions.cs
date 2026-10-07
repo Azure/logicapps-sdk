@@ -448,6 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         public EipErrorResponseBody ErrorDetails { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum UpdateControlNumberResultStatusOfTheUpdateControlNumberActionType
     {
         ControlNumberSuccessfullyUpdated,
@@ -476,6 +477,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         public string[] Errors { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EipErrorResponseBodyStatusCodeType
     {
         Continue,
@@ -538,6 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         public bool IsMessageProcessingFailed { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReplicableControlNumberContentControlNumberTypeType
     {
         Icn,
@@ -545,6 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         Tscn
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ReplicableControlNumberContentMessageDirectionType
     {
         Receive,
@@ -688,6 +692,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         public DataElementNote[] AK4DataElementNote { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DataSegmentNoteAK304Type
     {
         UnrecognizedSegmentId,
@@ -720,6 +725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         public string AK413 { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DataElementNoteAK403Type
     {
         MandatoryDataElementMissing,
@@ -734,6 +740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         ExclusionConditionViolatedCode
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AK2LoopAK501Type
     {
         A,
@@ -745,6 +752,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         X
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AK2LoopAK502Type
     {
         NotSupported,
@@ -756,6 +764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         MissingOrInvalidControlNumber
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AK2LoopAK503Type
     {
         NotSupported,
@@ -767,6 +776,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         MissingOrInvalidControlNumber
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AK2LoopAK504Type
     {
         NotSupported,
@@ -778,6 +788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         MissingOrInvalidControlNumber
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AK2LoopAK505Type
     {
         NotSupported,
@@ -789,6 +800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         MissingOrInvalidControlNumber
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AK2LoopAK506Type
     {
         NotSupported,
@@ -813,6 +825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         public AK9FunctionalGroupResponseTrailerAK909Type AK909 { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AK9FunctionalGroupResponseTrailerAK901Type
     {
         A,
@@ -824,6 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         X
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AK9FunctionalGroupResponseTrailerAK905Type
     {
         NotSupported,
@@ -833,6 +847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         DuplicateGroupControlNumber
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AK9FunctionalGroupResponseTrailerAK906Type
     {
         NotSupported,
@@ -842,6 +857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         DuplicateGroupControlNumber
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AK9FunctionalGroupResponseTrailerAK907Type
     {
         NotSupported,
@@ -851,6 +867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         DuplicateGroupControlNumber
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AK9FunctionalGroupResponseTrailerAK908Type
     {
         NotSupported,
@@ -860,6 +877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         DuplicateGroupControlNumber
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AK9FunctionalGroupResponseTrailerAK909Type
     {
         NotSupported,
@@ -878,6 +896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         public string TA105 { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum X12TechnicalAcknowledgementTA104Type
     {
         A,
@@ -988,6 +1007,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
         public JToken Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum segmentTerminatorSuffixInput
     {
         NotSpecified,

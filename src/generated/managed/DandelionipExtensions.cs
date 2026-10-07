@@ -306,6 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         public double Similarity { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bowInput
     {
         [EnumMember(Value = "never")]
@@ -405,6 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         public string Label { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum langInput
     {
         [EnumMember(Value = "en")]
@@ -423,6 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         Ru
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum queryInput
     {
         [EnumMember(Value = "full")]

@@ -502,6 +502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         public double ReadProgress { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum filterslikedFilterDefaultAllInput
     {
         Liked,
@@ -509,6 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         NotLiked
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum filtersreadFilterDefaultAllInput
     {
         Unread,
@@ -521,6 +523,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         Read
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum likedFilterInput
     {
         Liked,
@@ -528,6 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         NotLiked
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum readFilterInput
     {
         Unread,

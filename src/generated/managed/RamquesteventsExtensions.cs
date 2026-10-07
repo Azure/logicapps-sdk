@@ -84,6 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
         }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyactionInput
     {
         TaskEvent,

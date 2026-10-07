@@ -254,6 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         public string MeetingType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum meetingconferenceCallInfoInput
     {
         PSTN,
@@ -263,6 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         VoIP
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum meetingmeetingTypeInput
     {
         [EnumMember(Value = "immediate")]
@@ -306,6 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         public string ConferenceCallInfo { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum newMeetingconferenceCallInfoInput
     {
         PSTN,
@@ -315,6 +318,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         VoIP
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum newMeetingmeetingTypeInput
     {
         [EnumMember(Value = "immediate")]

@@ -900,6 +900,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public string TrackingCycleDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FetchedGoalStatusType
     {
         [EnumMember(Value = "Not started")]
@@ -913,6 +914,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         Completed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FetchedGoalFrequencyType
     {
         [EnumMember(Value = "No cycle")]
@@ -930,6 +932,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum goalstatusInput
     {
         [EnumMember(Value = "Leave unchanged")]
@@ -951,6 +954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public JToken[] FirstTableRows { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum checkinstatusInput
     {
         [EnumMember(Value = "Leave unchanged")]
@@ -1011,6 +1015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public GoalNotesItem[] Notes { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum exportPayloadPowerBIReportformatInput
     {
         PDF,
@@ -1072,6 +1077,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerbi
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum exportPayloadPaginatedReportformatInput
     {
         PDF,

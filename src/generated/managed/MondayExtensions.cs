@@ -1004,6 +1004,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyduplicationTypeInput
     {
         [EnumMember(Value = "Duplicate board with structure")]
@@ -1056,6 +1057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         public string Description { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycolumnTypeInput
     {
         [EnumMember(Value = "auto_number")]

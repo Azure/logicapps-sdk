@@ -285,6 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         public string Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         ECO,

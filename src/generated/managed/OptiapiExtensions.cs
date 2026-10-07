@@ -972,6 +972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] Array { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyOperatorInput
     {
         Add,
@@ -1002,6 +1003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] ResultArray { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysortInput
     {
         Ascending,
@@ -1020,6 +1022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Datetime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyactionInput
     {
         Year,
@@ -1045,6 +1048,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoemInput
     {
         [EnumMember(Value = "0")]
@@ -1053,6 +1057,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypsmInput
     {
         [EnumMember(Value = "0")]
@@ -1085,6 +1090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         _13
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         [EnumMember(Value = "pdf")]
@@ -1161,6 +1167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Title { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylayoutInput
     {
         [EnumMember(Value = "raw")]

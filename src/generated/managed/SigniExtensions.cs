@@ -794,6 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public double X { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypeopleInputItemContractRoleType
     {
         [EnumMember(Value = "sign")]
@@ -804,6 +805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         Stamp
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypeopleInputItemTypeOfPersonType
     {
         [EnumMember(Value = "legal")]
@@ -814,6 +816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         Citizen
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylanguageInput
     {
         [EnumMember(Value = "cs")]
@@ -832,6 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         Hu
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysettingsrulesForSendingEMailsAndSignaturesInput
     {
         [EnumMember(Value = "all_at_once")]
@@ -842,6 +846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         OneAtATime
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysettingsautomaticSignPlacementInput
     {
         [EnumMember(Value = "error")]
@@ -1027,6 +1032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string ContractID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysignerTypeInput
     {
         [EnumMember(Value = "legal")]
@@ -1043,6 +1049,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         public string ContractID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypersonTypeInput
     {
         [EnumMember(Value = "legal")]

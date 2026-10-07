@@ -222,12 +222,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serverless360
         public string StageActivityId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sL360ArchiveMessageInput
     {
         True,
         False
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sL360StatusInput
     {
         Success,

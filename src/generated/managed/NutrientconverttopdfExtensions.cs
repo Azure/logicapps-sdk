@@ -1497,6 +1497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         public string ResultDetails { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OperationResponseResultCodeType
     {
         Success,
@@ -1515,6 +1516,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         InvalidExtension
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataoutputFormatInput
     {
         PDF,
@@ -1548,6 +1550,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         XFDF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputCadDatapaperSizeInput
     {
         A3,
@@ -1558,6 +1561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Custom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputCadDataforegroundColorInput
     {
         Default,
@@ -1570,6 +1574,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Custom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputCadDataemptyLayoutDetectionInput
     {
         Default,
@@ -1578,6 +1583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         SkipLayoutsWithoutViewports
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputCadDatalayoutSortOrderInput
     {
         Default,
@@ -1586,6 +1592,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         TabOrder
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputEmailDataattachmentActionInput
     {
         Default,
@@ -1594,6 +1601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         AttachOriginal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputEmailDataunsupportedAttachmentActionInput
     {
         Error,
@@ -1601,6 +1609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         AttachOriginal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputEmailDatapaperSizeInput
     {
         A3,
@@ -1611,6 +1620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Custom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputEmailDataconversionQualityInput
     {
         OptimizeForPrint,
@@ -1618,6 +1628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Original
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputExcelDataoutputFormatInput
     {
         PDF,
@@ -1636,6 +1647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         ODS
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputExcelDatarangeInput
     {
         VisibleDocuments,
@@ -1643,6 +1655,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         ActiveDocuments
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputExcelDataqualityInput
     {
         OptimizeForPrint,
@@ -1650,18 +1663,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Original
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatapageOrientationInput
     {
         Portrait,
         Landscape
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDatamediaTypeInput
     {
         Screen,
         Print
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputDataauthenticationTypeInput
     {
         Anonymous,
@@ -1670,6 +1686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Web
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDataoutputFormatInput
     {
         PDF,
@@ -1688,6 +1705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         ODS
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDataattachmentActionInput
     {
         Default,
@@ -1696,6 +1714,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         AttachOriginal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDataunsupportedAttachmentActionInput
     {
         Error,
@@ -1703,6 +1722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         AttachOriginal
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDatadefaultPaperSizeInput
     {
         A3,
@@ -1713,6 +1733,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Custom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDataforcePaperSizeInput
     {
         A3,
@@ -1723,6 +1744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Custom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDatadefaultPageOrientationInput
     {
         Default,
@@ -1731,6 +1753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDataforcePageOrientationInput
     {
         Default,
@@ -1739,6 +1762,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputInfopathDataconversionQualityInput
     {
         OptimizeForPrint,
@@ -1746,6 +1770,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Original
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPdfDatapDFProfileInput
     {
         Default,
@@ -1775,6 +1800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         PDF17
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPowerpointDataoutputFormatInput
     {
         PDF,
@@ -1788,6 +1814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         PPSX
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPowerpointDatarangeInput
     {
         VisibleDocuments,
@@ -1795,6 +1822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         ActiveDocuments
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPowerpointDataprintLayoutHandoutsInput
     {
         Slides,
@@ -1808,6 +1836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Outline
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputPowerpointDataqualityInput
     {
         OptimizeForPrint,
@@ -1815,18 +1844,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Original
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputVisioDataoutputFormatInput
     {
         PDF,
         XPS
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputVisioDatarangeInput
     {
         AllDocuments,
         ActiveDocuments
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputVisioDataqualityInput
     {
         OptimizeForPrint,
@@ -1834,6 +1866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Original
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputWordDataoutputFormatInput
     {
         PDF,
@@ -1852,6 +1885,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         ODS
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputWordDatadisplayForReviewInput
     {
         Final,
@@ -1860,6 +1894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         OriginalShowingMarkup
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputWordDatareviewMarkupModeInput
     {
         Balloon,
@@ -1867,6 +1902,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Mixed
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputWordDatagenerateBookmarksInput
     {
         Disabled,
@@ -1874,6 +1910,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientconverttopdf
         Custom
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum inputWordDataqualityInput
     {
         OptimizeForPrint,

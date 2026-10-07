@@ -171,6 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         public string ArticleID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodeInput
     {
         [EnumMember(Value = "keyword")]

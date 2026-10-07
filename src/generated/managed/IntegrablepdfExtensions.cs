@@ -502,6 +502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum watermarkPdfBackgroundInputcolorInput
     {
         Gray,
@@ -509,18 +510,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         Blue
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum watermarkPdfBackgroundInputorientationInput
     {
         Upward,
         Downward
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum watermarkPdfBackgroundInputstyleInput
     {
         Solid,
         Outline
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum watermarkPdfOverlayInputcolorInput
     {
         Gray,
@@ -528,12 +532,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         Blue
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum watermarkPdfOverlayInputorientationInput
     {
         Upward,
         Downward
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum watermarkPdfOverlayInputstyleInput
     {
         Solid,
