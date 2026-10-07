@@ -74,7 +74,7 @@ internal sealed class SourceProgram(SemanticModel model, LambdaExpressionSyntax 
         if (node is MemberAccessExpressionSyntax path && TryCustomOutputPath(path, out var factoryPath, out var keys))
         {
             var source = Bind(factoryPath) + string.Concat(keys.Select(key => "[" + Quote(key) + "]"));
-            return Read(model.GetTypeInfo(path).Type!, source).WithTriviaFrom(node);
+            return Read(model.GetTypeInfo(path).Type!, source, defaultIfMissing: true).WithTriviaFrom(node);
         }
         if (node is ExpressionSyntax expression && TryWorkflowReference(expression, out var factory))
             return Read(model.GetTypeInfo(expression).Type!, Bind(factory)).WithTriviaFrom(node);
@@ -238,11 +238,13 @@ internal sealed class SourceProgram(SemanticModel model, LambdaExpressionSyntax 
         return false;
     }
 
-    private static ExpressionSyntax Read(ITypeSymbol type, string source)
+    private static ExpressionSyntax Read(ITypeSymbol type, string source, bool defaultIfMissing = false)
     {
         ValidateType(type, SyntaxFactory.ParseExpression(source));
-        return SyntaxFactory.ParseExpression(type.ToDisplayString() == "Newtonsoft.Json.Linq.JToken" ? source :
-            $"({source}).ToObject<{TypeName(type)}>()");
+        if (type.ToDisplayString() == "Newtonsoft.Json.Linq.JToken") return SyntaxFactory.ParseExpression(source);
+        return SyntaxFactory.ParseExpression(defaultIfMissing
+            ? $"({source})?.ToObject<{TypeName(type)}>() ?? default({TypeName(type)})"
+            : $"({source}).ToObject<{TypeName(type)}>()");
     }
     private string Bind(string factory)
     {

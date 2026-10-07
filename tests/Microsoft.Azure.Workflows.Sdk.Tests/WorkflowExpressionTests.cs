@@ -292,6 +292,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void CustomDtoLeafPathsDefaultOnlyMissingTypedTokens()
+        {
+            const string Source = """
+                using Microsoft.Azure.Workflows.Sdk;
+                using Newtonsoft.Json;
+                using Newtonsoft.Json.Linq;
+                public sealed class Customer {
+                    [JsonProperty("optional_name")]
+                    public string OptionalName { get; set; }
+                    public int Count { get; set; }
+                    public JToken Token { get; set; }
+                }
+                public sealed class Consumer {
+                    public void Build(IOutputWorkflowAction<Customer> customer) {
+                        WorkflowActions.BuiltIn.Compose(() => customer.Output.OptionalName);
+                        WorkflowActions.BuiltIn.Compose(() => customer.Output.Count);
+                        WorkflowActions.BuiltIn.Compose(() => customer.Output.Token);
+                    }
+                }
+                """;
+            var compilation = CSharpCompilation.Create("Consumer", new[] { CSharpSyntaxTree.ParseText(Source, path: "Consumer.cs") },
+                References(), new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+            var result = ExpressionCompiler.Transform(compilation);
+            Assert.Empty(result.Diagnostics);
+            var programs = RenderPrograms(result.Sources["Consumer.cs"], """outputs("Customer")""");
+
+            Assert.Equal(3, programs.Length);
+            AssertReturnExpression(
+                """(outputs("Customer")["optional_name"])?.ToObject<string>() ?? default(string)""",
+                programs[0]);
+            AssertReturnExpression(
+                """(outputs("Customer")["Count"])?.ToObject<int>() ?? default(int)""",
+                programs[1]);
+            AssertReturnExpression("""outputs("Customer")["Token"]""", programs[2]);
+        }
+
+        [Fact]
         public void ControlCallbacksRunOnceAndDefinitionsResolveNamesLate()
         {
             var count = 0;
@@ -472,6 +509,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 .Where(variable => variable.Identifier.ValueText.StartsWith("__capture", StringComparison.Ordinal))
                 .Select(variable => NormalizeNode(variable.Initializer.Value))
                 .ToArray();
+        private static string[] RenderPrograms(string transformedSource, string binding)
+        {
+            var root = CSharpSyntaxTree.ParseText(transformedSource).GetRoot();
+            return root.DescendantNodes().OfType<InvocationExpressionSyntax>()
+                .Where(invocation => invocation.Expression.ToString().Contains("WorkflowExpression.Program", StringComparison.Ordinal))
+                .Select(invocation =>
+                {
+                    var segments = ((ArrayCreationExpressionSyntax)invocation.ArgumentList.Arguments[0].Expression)
+                        .Initializer.Expressions.Cast<LiteralExpressionSyntax>()
+                        .Select(segment => segment.Token.ValueText)
+                        .ToArray();
+                    return "#{" + string.Join(binding, segments) + "}";
+                })
+                .ToArray();
+        }
         private static string NormalizeExpression(string source)
         {
             var expression = SyntaxFactory.ParseExpression(source);
