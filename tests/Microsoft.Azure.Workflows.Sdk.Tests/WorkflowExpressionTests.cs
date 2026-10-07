@@ -2,11 +2,11 @@
 namespace Microsoft.Azure.Workflows.Sdk.Tests
 {
     using System.Reflection;
-    using System.Runtime.ExceptionServices;
     using Microsoft.Azure.Workflows.Sdk.Build;
     using Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus;
     using Microsoft.CodeAnalysis;
     using Microsoft.CodeAnalysis.CSharp;
+    using Microsoft.CodeAnalysis.CSharp.Syntax;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
@@ -34,8 +34,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             previous.WithName("Prepare");
             var inputs = JObject.FromObject(action.GetActionDefinition("flow").Inputs);
             var code = inputs["parameters"]["message"].Value<string>();
-            Assert.Contains("ToObject<global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.SendMessageInputMessageType>", code);
-            Assert.Equal("FIRST", Evaluate(code, JObject.Parse("""{"Prepare":{"messageId":"first"}}""")).Value<string>("messageId"));
+            var body = ProgramBody(code);
+            Assert.Equal(
+                NormalizeExpression(
+                    """(outputs("Prepare")).ToObject<global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.SendMessageInputMessageType>()"""),
+                NormalizeNode(body.Statements.OfType<LocalDeclarationStatementSyntax>().Single()
+                    .Declaration.Variables.Single().Initializer.Value));
+            Assert.Equal(
+                NormalizeExpression("message.MessageId = message.MessageId.ToUpperInvariant()"),
+                NormalizeNode(body.Statements.OfType<ExpressionStatementSyntax>().Single().Expression));
+            Assert.Equal("message", NormalizeNode(body.Statements.OfType<ReturnStatementSyntax>().Single().Expression));
         }
 
         [Fact]
@@ -47,16 +55,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var objectSource = Input(objectAction);
             Assert.DoesNotContain("JToken.FromObject", objectSource);
             Assert.DoesNotContain("JsonSerializer", objectSource);
-            Assert.Contains("new global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.SendMessageInputMessageType", objectSource);
+            AssertReturnExpression(
+                """new global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.SendMessageInputMessageType { MessageId = (outputs("Source")).ToObject<string>() }""",
+                objectSource);
             Assert.Equal(1, objectSource.Split("outputs(\"Source\")").Length - 1);
 
             var textAction = WorkflowActions.BuiltIn.Compose(() => previous.Output.ToUpperInvariant());
             var textSource = Input(textAction);
             Assert.DoesNotContain("JToken.FromObject", textSource);
             Assert.DoesNotContain("object result =", textSource);
-            Assert.Contains("ToUpperInvariant", textSource);
+            AssertReturnExpression("""(outputs("Source")).ToObject<string>().ToUpperInvariant()""", textSource);
             Assert.Equal(1, textSource.Split("outputs(\"Source\")").Length - 1);
-            Assert.Equal("VALUE", Evaluate(textSource, JObject.Parse("""{"Source":"value"}""")).Value<string>());
         }
 
         [Fact]
@@ -64,22 +73,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var bytes = WorkflowActions.BuiltIn.Compose(() => new byte[] { 1, 2, 3 });
             var byteSource = Input(bytes);
-            Assert.Contains("new byte[]", byteSource);
+            AssertReturnExpression("new byte[] { 1, 2, 3 }", byteSource);
             Assert.DoesNotContain("JToken.FromObject", byteSource);
 
             var method = WorkflowActions.BuiltIn.Compose(() => System.Net.Http.HttpMethod.Post);
             var methodSource = Input(method);
-            Assert.Contains("global::System.Net.Http.HttpMethod", methodSource);
+            AssertReturnExpression("System.Net.Http.HttpMethod.Post", methodSource);
             Assert.DoesNotContain("JToken.FromObject", methodSource);
 
             var capturedMethod = System.Net.Http.HttpMethod.Patch;
             var capturedMethodSource = Input(WorkflowActions.BuiltIn.Compose(() => capturedMethod));
-            Assert.StartsWith("#{", capturedMethodSource);
-            Assert.Contains("new global::System.Net.Http.HttpMethod", capturedMethodSource);
+            Assert.Equal(
+                new[] { NormalizeExpression("""new global::System.Net.Http.HttpMethod("PATCH")""") },
+                CaptureInitializers(capturedMethodSource));
+            AssertReturnExpression("__capture0", capturedMethodSource);
 
             var enumSource = Input(WorkflowActions.BuiltIn.Compose(() => MessageRole.User));
-            Assert.StartsWith("#{", enumSource);
-            Assert.Contains("global::Microsoft.Azure.Workflows.Sdk.MessageRole.User", enumSource);
+            AssertReturnExpression("global::Microsoft.Azure.Workflows.Sdk.MessageRole.User", enumSource);
         }
 
         [Fact]
@@ -94,7 +104,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 return new[] { sum }.Select(value => value + offset).Single();
             });
             offset = 100;
-            Assert.Equal(9, Evaluate(Input(action)).Value<int>());
+            var source = Input(action);
+            var body = ProgramBody(source);
+            Assert.Single(body.Statements.OfType<LocalFunctionStatementSyntax>());
+            Assert.Single(body.Statements.OfType<ForStatementSyntax>());
+            Assert.Single(body.DescendantNodes().OfType<SimpleLambdaExpressionSyntax>());
+            Assert.Equal(new[] { NormalizeExpression("(global::System.Int32)(3)") }, CaptureInitializers(source));
+            Assert.Equal(
+                NormalizeExpression("new[] { sum }.Select(value => value + __capture0).Single()"),
+                NormalizeNode(body.Statements.OfType<ReturnStatementSyntax>().Single().Expression));
+            Assert.DoesNotContain("(100)", source);
         }
 
         [Fact]
@@ -110,7 +129,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 output.Headers["X"] = "after";
                 return second.Usage.PromptTokens + output.Headers["X"];
             });
-            Assert.Equal("2after", Evaluate(Input(action)).Value<string>());
+            var source = Input(action);
+            var body = ProgramBody(source);
+            Assert.Equal(2, body.DescendantNodes().OfType<AssignmentExpressionSyntax>()
+                .Count(assignment => assignment.Left.ToString() == "Usage"));
+            Assert.Single(body.DescendantNodes().OfType<PostfixUnaryExpressionSyntax>(),
+                expression => expression.Operand.ToString() == "usage.PromptTokens");
+            Assert.Contains(body.DescendantNodes().OfType<AssignmentExpressionSyntax>(),
+                assignment => NormalizeNode(assignment) == NormalizeExpression("output.Headers[\"X\"] = \"after\""));
+            Assert.Equal(
+                NormalizeExpression("""second.Usage.PromptTokens + output.Headers["X"]"""),
+                NormalizeNode(body.Statements.OfType<ReturnStatementSyntax>().Single().Expression));
         }
 
         [Fact]
@@ -121,7 +150,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 MessageRole? role = MessageRole.User;
                 return role.Value.ToString("D") + ((int)role.Value + 1);
             });
-            Assert.Equal(((int)MessageRole.User).ToString() + ((int)MessageRole.User + 1), Evaluate(Input(action)).Value<string>());
+            var source = Input(action);
+            var body = ProgramBody(source);
+            Assert.Equal(
+                NormalizeNode(SyntaxFactory.ParseStatement(
+                    "global::Microsoft.Azure.Workflows.Sdk.MessageRole? role = global::Microsoft.Azure.Workflows.Sdk.MessageRole.User;")),
+                NormalizeNode(body.Statements.OfType<LocalDeclarationStatementSyntax>().Single()));
+            Assert.Equal(
+                NormalizeExpression("""role.Value.ToString("D") + ((int)role.Value + 1)"""),
+                NormalizeNode(body.Statements.OfType<ReturnStatementSyntax>().Single().Expression));
         }
 
         [Fact]
@@ -134,8 +171,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var action = WorkflowActions.BuiltIn.Compose(() => previous.Output + suffix + id.ToString("N") + date.Kind);
             suffix = "?";
             previous.WithName("Late");
-            Assert.Equal("hello!00000000000000000000000000000001Utc", Evaluate(Input(action), JObject.Parse("""{"Late":"hello"}""")).Value<string>());
-            Assert.DoesNotContain("JsonTextReader", Input(action));
+            var source = Input(action);
+            Assert.Equal(
+                new[]
+                {
+                    NormalizeExpression("\"!\""),
+                    NormalizeExpression("""new global::System.Guid("00000000-0000-0000-0000-000000000001")"""),
+                    NormalizeExpression("new global::System.DateTime(639268452000000000L, global::System.DateTimeKind.Utc)"),
+                },
+                CaptureInitializers(source));
+            AssertReturnExpression(
+                """(outputs("Late")).ToObject<string>() + __capture0 + __capture1.ToString("N") + __capture2.Kind""",
+                source);
+            Assert.DoesNotContain(""" = "?";""", source);
+            Assert.DoesNotContain("JsonTextReader", source);
         }
 
         [Fact]
@@ -150,7 +199,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var source = Input(action);
             Assert.DoesNotContain(nameof(this.instanceOffset), source);
             Assert.DoesNotContain(nameof(this.InstanceAutoOffset), source);
-            Assert.Equal(5, Evaluate(source).Value<int>());
+            Assert.Equal(
+                new[] { NormalizeExpression("(global::System.Int32)(2)"), NormalizeExpression("(global::System.Int32)(3)") },
+                CaptureInitializers(source));
+            AssertReturnExpression("__capture0 + __capture1", source);
+            Assert.DoesNotContain("(20)", source);
+            Assert.DoesNotContain("(30)", source);
         }
 
         [Fact]
@@ -161,8 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             this.instanceSource.WithName("InstanceSource");
 
             var source = Input(action);
-            Assert.Contains("outputs(\"InstanceSource\")", source);
-            Assert.Equal("HELLO", Evaluate(source, JObject.Parse("""{"InstanceSource":"hello"}""")).Value<string>());
+            AssertReturnExpression("""(outputs("InstanceSource")).ToObject<string>().ToUpperInvariant()""", source);
         }
 
         [Theory]
@@ -196,20 +249,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var email = WorkflowActions.Managed.Office365("office").GetEmail(messageId: () => "id").WithName("Email");
             var action = WorkflowActions.BuiltIn.Compose(() => email.Body.Subject.ToUpperInvariant());
-            Assert.Contains(".Subject", Input(action));
-            Assert.Equal("HELLO", Evaluate(Input(action), JObject.Parse("""{"Email":{"subject":"hello"}}""")).Value<string>());
+            var actionSource = Input(action);
+            var actionReturn = ReturnExpression(actionSource);
+            Assert.Equal("ToUpperInvariant", ((InvocationExpressionSyntax)actionReturn).Expression
+                .DescendantNodesAndSelf().OfType<SimpleNameSyntax>().Last().Identifier.ValueText);
+            Assert.Equal("""body("Email")""", actionReturn.DescendantNodesAndSelf().OfType<InvocationExpressionSyntax>()
+                .Single(invocation => invocation.Expression.ToString() == "body").ToString());
+            Assert.Single(actionReturn.DescendantNodesAndSelf().OfType<GenericNameSyntax>(),
+                name => name.Identifier.ValueText == "ToObject");
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
             var triggered = WorkflowActions.BuiltIn.Compose(() => trigger.TriggerOutput.Headers["X"]);
-            Assert.Equal("value", Evaluate(Input(triggered), JObject.Parse("""{"trigger":{"headers":{"X":"value"}}}""")).Value<string>());
+            var triggerSource = Input(triggered);
+            var triggerReturn = ReturnExpression(triggerSource);
+            Assert.Equal("triggerOutputs()", triggerReturn.DescendantNodesAndSelf().OfType<InvocationExpressionSyntax>()
+                .Single(invocation => invocation.Expression.ToString() == "triggerOutputs").ToString());
+            Assert.Single(triggerReturn.DescendantNodesAndSelf().OfType<GenericNameSyntax>(),
+                name => name.Identifier.ValueText == "ToObject");
+            Assert.Equal("\"X\"", triggerReturn.DescendantNodesAndSelf().OfType<BracketedArgumentListSyntax>().Single()
+                .Arguments.Single().Expression.ToString());
         }
 
         [Fact]
         public void WorkflowFunctionsBecomeExistingHostCalls()
         {
             var action = WorkflowActions.BuiltIn.Compose(() => WorkflowFunctions.ToJson<SendMessageInputMessageType>("{\"messageId\":\"id\"}").MessageId);
-            Assert.Contains("json(", Input(action));
-            Assert.DoesNotContain("WorkflowFunctions", Input(action));
-            Assert.Equal("id", Evaluate(Input(action)).Value<string>());
+            var source = Input(action);
+            AssertReturnExpression(
+                """(json("{\"messageId\":\"id\"}")).ToObject<global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.SendMessageInputMessageType>().MessageId""",
+                source);
+            Assert.DoesNotContain("WorkflowFunctions", source);
         }
 
         [Fact]
@@ -217,7 +285,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var previous = WorkflowActions.BuiltIn.Compose<object>(() => new SendMessageInputMessageType { MessageId = "id" }).WithName("Object");
             var action = WorkflowActions.BuiltIn.Compose(() => ((SendMessageInputMessageType)previous.Output).MessageId);
-            Assert.Equal("id", Evaluate(Input(action), JObject.Parse("""{"Object":{"messageId":"id"}}""")).Value<string>());
+            var source = Input(action);
+            AssertReturnExpression(
+                """((outputs("Object")).ToObject<global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.SendMessageInputMessageType>()).MessageId""",
+                source);
         }
 
         [Fact]
@@ -230,7 +301,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 trueBranch: () => { count++; return WorkflowActions.BuiltIn.Compose(() => "yes"); },
                 falseBranch: () => null);
             previous.WithName("Flag");
-            Assert.True(Evaluate(condition.GetActionDefinition("flow").Expression.Value<string>(), JObject.Parse("""{"Flag":true}""")).Value<bool>());
+            var source = condition.GetActionDefinition("flow").Expression.Value<string>();
+            AssertReturnExpression("""(outputs("Flag")).ToObject<bool>()""", source);
             condition.GetActionDefinition("flow");
             Assert.Equal(1, count);
         }
@@ -243,8 +315,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 statusCode: () => previous.Output ? System.Net.HttpStatusCode.Accepted : System.Net.HttpStatusCode.BadRequest,
                 headers: () => new Dictionary<string, string> { ["X"] = previous.Output ? "yes" : "no" });
             var inputs = JObject.FromObject(response.GetActionDefinition("flow").Inputs);
-            Assert.Equal(202, Evaluate(inputs["StatusCode"].Value<string>(), JObject.Parse("""{"Flag":true}""")).Value<int>());
-            Assert.Equal("yes", Evaluate(inputs["Headers"].Value<string>(), JObject.Parse("""{"Flag":true}""")).Value<string>("X"));
+            var statusSource = inputs["StatusCode"].Value<string>();
+            AssertReturnExpression(
+                """(outputs("Flag")).ToObject<bool>() ? System.Net.HttpStatusCode.Accepted : System.Net.HttpStatusCode.BadRequest""",
+                statusSource);
+            var headersSource = inputs["Headers"].Value<string>();
+            AssertReturnExpression(
+                """new global::System.Collections.Generic.Dictionary<string, string> { ["X"] = (outputs("Flag")).ToObject<bool>() ? "yes" : "no" }""",
+                headersSource);
         }
 
         [Fact]
@@ -255,7 +333,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var first = WorkflowActions.BuiltIn.Compose(source);
             Assert.Equal("!", ((JToken)first.GetActionDefinition("flow").Inputs).Value<string>());
             var action = WorkflowActions.BuiltIn.Compose(() => new { Value = DateTime.UtcNow.Year, Role = MessageRole.User });
-            Assert.Equal("User", Evaluate(Input(action)).Value<string>("Role"));
+            var actionSource = Input(action);
+            AssertReturnExpression(
+                "new { Value = global::System.DateTime.UtcNow.Year, Role = global::Microsoft.Azure.Workflows.Sdk.MessageRole.User }",
+                actionSource);
             var nullValue = WorkflowActions.BuiltIn.Compose<object>(() => null);
             Assert.Equal(JTokenType.Null, ((JToken)nullValue.GetActionDefinition("flow").Inputs).Type);
         }
@@ -275,12 +356,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var variable = WorkflowActions.BuiltIn.Variables.InitializeVariable(name: () => "counter", value: () => 1);
             var read = WorkflowActions.BuiltIn.Compose(() => variable.Value.Value<int>() + 1);
-            Assert.Equal(3, Evaluate(Input(read), JObject.Parse("""{"counter":2}""")).Value<int>());
+            var readSource = Input(read);
+            AssertReturnExpression("""variables("counter").Value<int>() + 1""", readSource);
             var loop = WorkflowActions.BuiltIn.Control.ForEach(
                 items: () => new[] { "hello" },
                 actions: item => WorkflowActions.BuiltIn.Compose(() => item.Value<string>().ToUpperInvariant()).WithName("Upper"));
             var inner = loop.GetActionDefinition("flow").Actions["Upper"].Inputs as JToken;
-            Assert.Equal("HELLO", Evaluate(inner.Value<string>(), JObject.Parse("""{"item":"hello"}""")).Value<string>());
+            AssertReturnExpression("item().Value<string>().ToUpperInvariant()", inner.Value<string>());
         }
 
         [Fact]
@@ -362,7 +444,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.Contains("Service", serviceDefinition.Definition.Triggers.Keys);
         }
 
-        internal static string Input(IWorkflowAction action) => ((JToken)action.GetActionDefinition("flow").Inputs).Value<string>();
+        internal static string Input(IWorkflowAction action)
+        {
+            var source = ((JToken)action.GetActionDefinition("flow").Inputs).Value<string>();
+            ProgramExpression(source);
+            return source;
+        }
+        private static ExpressionSyntax ProgramExpression(string source)
+        {
+            Assert.StartsWith("#{", source);
+            Assert.EndsWith("}", source);
+            var expression = SyntaxFactory.ParseExpression(source.Substring(2, source.Length - 3));
+            Assert.DoesNotContain(expression.GetDiagnostics(), diagnostic => diagnostic.Severity == DiagnosticSeverity.Error);
+            return expression;
+        }
+        private static BlockSyntax ProgramBody(string source) =>
+            (BlockSyntax)ProgramExpression(source).DescendantNodesAndSelf()
+                .OfType<ParenthesizedLambdaExpressionSyntax>()
+                .First(lambda => lambda.Body is BlockSyntax).Body;
+        private static ExpressionSyntax ReturnExpression(string source) =>
+            ProgramBody(source).Statements.OfType<ReturnStatementSyntax>().Single().Expression;
+        private static void AssertReturnExpression(string expected, string source) =>
+            Assert.Equal(NormalizeExpression(expected), NormalizeNode(ReturnExpression(source)));
+        private static string[] CaptureInitializers(string source) =>
+            ProgramBody(source).Statements.OfType<LocalDeclarationStatementSyntax>()
+                .SelectMany(statement => statement.Declaration.Variables)
+                .Where(variable => variable.Identifier.ValueText.StartsWith("__capture", StringComparison.Ordinal))
+                .Select(variable => NormalizeNode(variable.Initializer.Value))
+                .ToArray();
+        private static string NormalizeExpression(string source)
+        {
+            var expression = SyntaxFactory.ParseExpression(source);
+            Assert.DoesNotContain(expression.GetDiagnostics(), diagnostic => diagnostic.Severity == DiagnosticSeverity.Error);
+            return NormalizeNode(expression);
+        }
+        private static string NormalizeNode(SyntaxNode node) => node.NormalizeWhitespace().ToFullString();
         private static IEnumerable<MetadataReference> References() =>
             ((string)AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES")).Split(Path.PathSeparator)
                 .Append(typeof(WorkflowExpression).Assembly.Location).Append(typeof(JToken).Assembly.Location)
@@ -390,42 +506,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 return false;
             }
             return true;
-        }
-        private static JToken Evaluate(string expression, JObject values = null)
-        {
-            Assert.StartsWith("#{", expression);
-            var source = $$"""
-                using System; using System.Linq; using System.Collections.Generic; using Newtonsoft.Json.Linq;
-                public static class Evaluation {
-                    public static object Run(JObject values) {
-                        JToken outputs(string name) => values[name];
-                        JToken body(string name) => values[name];
-                        JToken triggerOutputs() => values["trigger"];
-                        JToken triggerBody() => values["trigger"]?["body"];
-                        JToken variables(string name) => values[name];
-                        JToken item() => values["item"];
-                        JToken json(string value) => JToken.Parse(value);
-                        return {{expression.Substring(2, expression.Length - 3)}};
-                    }
-                }
-                """;
-            var compilation = CSharpCompilation.Create("Evaluation_" + Guid.NewGuid().ToString("N"),
-                new[] { CSharpSyntaxTree.ParseText(source) }, References(), new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
-            using var stream = new MemoryStream();
-            var result = compilation.Emit(stream);
-            Assert.True(result.Success, string.Join("\n", result.Diagnostics) + "\n" + source);
-            try
-            {
-                var value = Assembly.Load(stream.ToArray()).GetType("Evaluation").GetMethod("Run").Invoke(null, new object[] { values ?? new JObject() });
-                var serializer = new JsonSerializer();
-                serializer.Converters.Add(new StringEnumConverter());
-                return value == null ? JValue.CreateNull() : JToken.FromObject(value, serializer);
-            }
-            catch (TargetInvocationException error) when (error.InnerException != null)
-            {
-                ExceptionDispatchInfo.Capture(error.InnerException).Throw();
-                throw;
-            }
         }
     }
 }
