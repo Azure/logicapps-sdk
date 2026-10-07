@@ -34,22 +34,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
-        public void BoundaryConversionIsFlatAndEvaluatesSourceOnce()
+        public void BoundaryConversionPreservesRawClrSource()
         {
             var previous = WorkflowActions.BuiltIn.Compose<string>(() => "value").WithName("Source");
             var objectAction = WorkflowActions.BuiltIn.Compose(() =>
                 new SendMessageInputMessageType { MessageId = previous.Output });
             var objectSource = Input(objectAction);
-            Assert.Contains("JToken.FromObject((object)(", objectSource);
-            Assert.DoesNotContain("Func<global::Newtonsoft.Json.Linq.JToken>", objectSource);
+            Assert.DoesNotContain("JToken.FromObject", objectSource);
+            Assert.DoesNotContain("JsonSerializer", objectSource);
+            Assert.Contains("new global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.SendMessageInputMessageType", objectSource);
             Assert.Equal(1, objectSource.Split("outputs(\"Source\")").Length - 1);
 
             var textAction = WorkflowActions.BuiltIn.Compose(() => previous.Output.ToUpperInvariant());
             var textSource = Input(textAction);
-            Assert.Contains("object result =", textSource);
-            Assert.Contains("var token =", textSource);
+            Assert.DoesNotContain("JToken.FromObject", textSource);
+            Assert.DoesNotContain("object result =", textSource);
+            Assert.Contains("ToUpperInvariant", textSource);
             Assert.Equal(1, textSource.Split("outputs(\"Source\")").Length - 1);
             Assert.Equal("VALUE", Evaluate(textSource, JObject.Parse("""{"Source":"value"}""")).Value<string>());
+        }
+
+        [Fact]
+        public void SpecialClrValuesRemainRuntimeExpressions()
+        {
+            var bytes = WorkflowActions.BuiltIn.Compose(() => new byte[] { 1, 2, 3 });
+            var byteSource = Input(bytes);
+            Assert.Contains("new byte[]", byteSource);
+            Assert.DoesNotContain("JToken.FromObject", byteSource);
+
+            var method = WorkflowActions.BuiltIn.Compose(() => System.Net.Http.HttpMethod.Post);
+            var methodSource = Input(method);
+            Assert.Contains("global::System.Net.Http.HttpMethod", methodSource);
+            Assert.DoesNotContain("JToken.FromObject", methodSource);
+
+            var capturedMethod = System.Net.Http.HttpMethod.Patch;
+            var capturedMethodSource = Input(WorkflowActions.BuiltIn.Compose(() => capturedMethod));
+            Assert.StartsWith("#{", capturedMethodSource);
+            Assert.Contains("new global::System.Net.Http.HttpMethod", capturedMethodSource);
+
+            var enumSource = Input(WorkflowActions.BuiltIn.Compose(() => MessageRole.User));
+            Assert.StartsWith("#{", enumSource);
+            Assert.Contains("global::Microsoft.Azure.Workflows.Sdk.MessageRole.User", enumSource);
         }
 
         [Fact]

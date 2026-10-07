@@ -7,19 +7,12 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>Formats descriptor boundaries without interpreting authored C#.</summary>
     internal static class ExpressionConverter
     {
-        private const string SerializerSource =
-            "new global::Newtonsoft.Json.JsonSerializer { Culture = global::System.Globalization.CultureInfo.InvariantCulture, " +
-            "Converters = { new global::Newtonsoft.Json.Converters.StringEnumConverter() } }";
-
         public static JToken ConvertO<T>(WorkflowExpression<T> value)
         {
             if (value == null) return null;
             var literal = value.LiteralToken;
             if (literal != null) return Escape(literal);
-            // Standard Newtonsoft serialization preserves SDK JSON attributes and enum wire names.
-            return WrapExpression(
-                $"global::Newtonsoft.Json.Linq.JToken.FromObject((object)({value.Render()}) ?? " +
-                $"global::Newtonsoft.Json.Linq.JValue.CreateNull(), {SerializerSource})");
+            return WrapExpression(value.Render());
         }
 
         public static string Convert<T>(WorkflowExpression<T> value)
@@ -27,13 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (value == null) return null;
             if (value.LiteralToken is JToken literal) return literal.Type == JTokenType.Null ? null :
                 literal.Type == JTokenType.String ? Escape(literal).Value<string>() : literal.ToString(Formatting.None);
-            if (typeof(T) == typeof(Uri)) return WrapExpressionText($"({value.Render()})?.OriginalString");
-            if (typeof(T) == typeof(HttpMethod)) return WrapExpressionText($"({value.Render()})?.Method");
-            return WrapExpressionText($"((global::System.Func<string>)(() => {{ object result = {value.Render()}; " +
-                "var token = global::Newtonsoft.Json.Linq.JToken.FromObject(result ?? global::Newtonsoft.Json.Linq.JValue.CreateNull(), " +
-                $"{SerializerSource}); " +
-                "return token.Type == global::Newtonsoft.Json.Linq.JTokenType.Null ? null : token.Type == global::Newtonsoft.Json.Linq.JTokenType.String ? " +
-                "token.Value<string>() : token.ToString(global::Newtonsoft.Json.Formatting.None); }))()");
+            return WrapExpressionText(value.Render());
         }
 
         public static string ConvertCondition(WorkflowExpression<bool> value) =>

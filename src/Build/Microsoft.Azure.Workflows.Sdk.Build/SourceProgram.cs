@@ -27,14 +27,17 @@ internal sealed class SourceProgram(SemanticModel model, LambdaExpressionSyntax 
     {
         if (!lambda.AsyncKeyword.IsKind(SyntaxKind.None)) throw Error("Workflow value lambdas must be synchronous.", lambda);
         ValidateType(resultType, lambda);
-        if (lambda.Body is ExpressionSyntax expression && model.GetConstantValue(expression) is { HasValue: true } constant)
+        if (lambda.Body is ExpressionSyntax expression &&
+            model.GetConstantValue(expression) is { HasValue: true } constant &&
+            (constant.Value == null || CanUseWorkflowLiteral(resultType)))
         {
             var value = Constant(constant.Value);
             return $"{Prefix}WorkflowExpression.Literal<{TypeName(resultType)}>(({TypeName(resultType)})({value}))";
         }
         if (lambda.Body is IdentifierNameSyntax capturedExpression &&
             model.GetSymbolInfo(capturedExpression).Symbol is ILocalSymbol capturedLocal && !Local(capturedLocal) &&
-            SymbolEqualityComparer.Default.Equals(capturedLocal.Type, resultType))
+            SymbolEqualityComparer.Default.Equals(capturedLocal.Type, resultType) &&
+            CanUseWorkflowLiteral(resultType))
         {
             ValidateCapture(capturedLocal.Type, capturedExpression);
             return $"{Prefix}WorkflowExpression.Literal<{TypeName(resultType)}>({capturedExpression})";
@@ -281,6 +284,8 @@ internal sealed class SourceProgram(SemanticModel model, LambdaExpressionSyntax 
         { ValidateCapture(named.TypeArguments[0], node); return; }
         throw Error("Capture immutable scalar values, not mutable objects or collections.", node);
     }
+    private static bool CanUseWorkflowLiteral(ITypeSymbol type) =>
+        type.SpecialType is >= SpecialType.System_Boolean and <= SpecialType.System_String;
     private static string Constant(object? value) => value switch
     {
         null => "null", string text => Quote(text), char ch => "(char)" + (int)ch, bool flag => flag ? "true" : "false",

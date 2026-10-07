@@ -60,9 +60,14 @@ Reject mutable collection/object captures, implicit instance state, external
 local functions, and async/task-returning workflow values. Expression-local
 values remain normal mutable C# objects.
 
-Use normal Newtonsoft serialization at operation boundaries, including enum wire
-conventions and SDK JSON attributes. Do not introduce model schemas, generated
-read/write codecs, descriptor versions, or host conversion protocols.
+Preserve computed CLR results in generated C# and let BPM's
+`WorkflowValueNormalizer` perform the sole CLR-to-workflow conversion after
+evaluation. The SDK must not emit `JToken.FromObject`, serializer settings, or
+enum wire conversion around rendered source. Runtime normalization preserves SDK
+JSON attributes, SDK enum wire names, binary content envelopes, and supported
+framework value conventions recursively. Do not introduce model schemas,
+generated read/write codecs, descriptor versions, or parallel conversion
+protocols.
 
 ## Runtime references
 
