@@ -14,6 +14,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
     public class WorkflowExpressionTests
     {
+        private int instanceOffset;
+        private int InstanceAutoOffset { get; set; }
+        private int InstanceComputedOffset => 5;
+        private IOutputWorkflowAction<string> instanceSource;
+
         [Fact]
         public void BlockReadsSdkOutputAndMutatesItNatively()
         {
@@ -131,6 +136,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             previous.WithName("Late");
             Assert.Equal("hello!00000000000000000000000000000001Utc", Evaluate(Input(action), JObject.Parse("""{"Late":"hello"}""")).Value<string>());
             Assert.DoesNotContain("JsonTextReader", Input(action));
+        }
+
+        [Fact]
+        public void InstanceFieldsAndAutoPropertiesAreSnapshotted()
+        {
+            this.instanceOffset = 2;
+            this.InstanceAutoOffset = 3;
+            var action = WorkflowActions.BuiltIn.Compose(() => this.instanceOffset + InstanceAutoOffset);
+            this.instanceOffset = 20;
+            this.InstanceAutoOffset = 30;
+
+            var source = Input(action);
+            Assert.DoesNotContain(nameof(this.instanceOffset), source);
+            Assert.DoesNotContain(nameof(this.InstanceAutoOffset), source);
+            Assert.Equal(5, Evaluate(source).Value<int>());
+        }
+
+        [Fact]
+        public void InstanceWorkflowHandleRemainsALateBoundOperationBinding()
+        {
+            this.instanceSource = WorkflowActions.BuiltIn.Compose<string>(() => "hello");
+            var action = WorkflowActions.BuiltIn.Compose(() => instanceSource.Output.ToUpperInvariant());
+            this.instanceSource.WithName("InstanceSource");
+
+            var source = Input(action);
+            Assert.Contains("outputs(\"InstanceSource\")", source);
+            Assert.Equal("HELLO", Evaluate(source, JObject.Parse("""{"InstanceSource":"hello"}""")).Value<string>());
+        }
+
+        [Theory]
+        [InlineData("() => InstanceComputedOffset", "executable getter")]
+        [InlineData("() => GetOffset()", "Instance method")]
+        [InlineData("() => { instanceOffset++; return instanceOffset; }", "snapshots")]
+        [InlineData("() => values.Count", "mutable objects")]
+        public void UnsupportedInstanceDependenciesFailDuringAuthoring(string lambda, string message)
+        {
+            var source = $$"""
+                using Microsoft.Azure.Workflows.Sdk;
+                public class Consumer {
+                    private int instanceOffset = 1;
+                    private int InstanceComputedOffset => 2;
+                    private System.Collections.Generic.List<int> values = new();
+                    private int GetOffset() => 3;
+                    public void Build() {
+                        WorkflowActions.BuiltIn.Compose({{lambda}});
+                    }
+                }
+                """;
+            var compilation = CSharpCompilation.Create("Consumer", new[] { CSharpSyntaxTree.ParseText(source, path: "Consumer.cs") },
+                References(), new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+
+            Assert.Contains(ExpressionCompiler.Transform(compilation).Diagnostics,
+                diagnostic => diagnostic.GetMessage().Contains(message, StringComparison.OrdinalIgnoreCase));
         }
 
         [Fact]

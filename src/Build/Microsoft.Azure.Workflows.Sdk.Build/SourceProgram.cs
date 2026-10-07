@@ -78,8 +78,11 @@ internal sealed class SourceProgram(SemanticModel model, LambdaExpressionSyntax 
         }
         if (node is ExpressionSyntax expression && TryWorkflowReference(expression, out var factory))
             return Read(model.GetTypeInfo(expression).Type!, Bind(factory)).WithTriviaFrom(node);
+        if (node is MemberAccessExpressionSyntax { Expression: ThisExpressionSyntax or BaseExpressionSyntax } instanceMember &&
+            model.GetSymbolInfo(instanceMember).Symbol is ISymbol instanceSymbol)
+            return CaptureInstanceMember(instanceMember, instanceSymbol);
         if (node is ThisExpressionSyntax or BaseExpressionSyntax)
-            throw Error("Capture supported values in locals instead of referring to implicit instance state.", node);
+            throw Error("Capture supported instance data rather than referring to the authoring object.", node);
         if (node is TypeSyntax typeSyntax && node is not IdentifierNameSyntax { Identifier.ValueText: "var" } &&
             node.Parent is not QualifiedNameSyntax and not AliasQualifiedNameSyntax &&
             !(node.Parent is MemberAccessExpressionSyntax access && access.Name == node) &&
@@ -95,22 +98,22 @@ internal sealed class SourceProgram(SemanticModel model, LambdaExpressionSyntax 
     {
         if (node.Parent is MemberAccessExpressionSyntax member && member.Name == node || node.Parent is NameEqualsSyntax or NameColonSyntax)
             return node;
+        if (node.Parent is AssignmentExpressionSyntax initializerAssignment && initializerAssignment.Left == node &&
+            initializerAssignment.Parent is InitializerExpressionSyntax)
+            return node;
         var symbol = model.GetSymbolInfo(node).Symbol;
         if (symbol is ILocalSymbol or IParameterSymbol && !Local(symbol))
         {
             if (symbol is ILocalSymbol { IsConst: true } constant) return Parse(Constant(constant.ConstantValue), node);
-            if (IsWrite(node)) throw Error("External captures are snapshots and cannot be assigned or passed by reference.", node);
             var type = symbol is ILocalSymbol local ? local.Type : ((IParameterSymbol)symbol).Type;
-            ValidateCapture(type, node);
-            if (!captures.TryGetValue(symbol, out var name))
-            {
-                name = Unique("__capture");
-                captures.Add(symbol, name);
-                var slot = Bind($"{Prefix}WorkflowExpressionBinding.Capture<{TypeName(type)}>(@{symbol.Name})");
-                declarations.Add($"{(type.SpecialType is >= SpecialType.System_Boolean and <= SpecialType.System_String || type.TypeKind == TypeKind.Enum ? "const " : "")}{TypeName(type)} {name} = {slot};");
-            }
-            return SyntaxFactory.IdentifierName(name).WithTriviaFrom(node);
+            return Capture(node, symbol, type, "@" + symbol.Name);
         }
+        if (symbol is IFieldSymbol { IsStatic: false } instanceField && !Local(instanceField))
+            return Capture(node, instanceField, instanceField.Type, node.ToString());
+        if (symbol is IPropertySymbol { IsStatic: false } instanceProperty && !Local(instanceProperty))
+            return CaptureInstanceMember(node, instanceProperty);
+        if (symbol is IMethodSymbol { IsStatic: false, MethodKind: MethodKind.Ordinary } && node.Parent is InvocationExpressionSyntax)
+            throw Error($"Instance method '{symbol.Name}' cannot run in the workflow host. Invoke it before creating the workflow expression and capture its result.", node);
         if (symbol is IMethodSymbol { IsStatic: true, MethodKind: not MethodKind.LocalFunction } method && node.Parent is InvocationExpressionSyntax)
             return Parse(TypeName(method.ContainingType) + "." + node, node);
         if (symbol is IFieldSymbol { IsStatic: true } field)
@@ -132,6 +135,10 @@ internal sealed class SourceProgram(SemanticModel model, LambdaExpressionSyntax 
         if (node.Expression is IdentifierNameSyntax { Identifier.ValueText: "nameof" } &&
             model.GetConstantValue(node) is { HasValue: true, Value: string text }) return Parse(Quote(text), node);
         if (model.GetSymbolInfo(node).Symbol is not IMethodSymbol method) return base.VisitInvocationExpression(node);
+        if (!method.IsStatic && method.MethodKind == MethodKind.Ordinary &&
+            (node.Expression is IdentifierNameSyntax ||
+             node.Expression is MemberAccessExpressionSyntax { Expression: ThisExpressionSyntax or BaseExpressionSyntax }))
+            throw Error($"Instance method '{method.Name}' cannot run in the workflow host. Invoke it before creating the workflow expression and capture its result.", node);
         if (method.ContainingType.ToDisplayString() == Sdk + ".WorkflowFunctions")
         {
             if (!functions.TryGetValue(method.Name, out var function)) throw Error("Unsupported workflow function.", node);
@@ -222,10 +229,7 @@ internal sealed class SourceProgram(SemanticModel model, LambdaExpressionSyntax 
         while (current is MemberAccessExpressionSyntax member && model.GetSymbolInfo(member).Symbol is IPropertySymbol property)
         {
             if (TryWorkflowReference(member, out factory)) return keys.Count > 0;
-            var automatic = property.ContainingType.IsAnonymousType || property.DeclaringSyntaxReferences.Any(reference =>
-                reference.GetSyntax() is PropertyDeclarationSyntax { ExpressionBody: null, AccessorList: { } list } &&
-                list.Accessors.All(accessor => accessor.Body == null && accessor.ExpressionBody == null));
-            if (!automatic) return false;
+            if (!Automatic(property)) return false;
             var wireName = property.GetAttributes().FirstOrDefault(attribute =>
                 attribute.AttributeClass?.ToDisplayString() == "Newtonsoft.Json.JsonPropertyAttribute")?.ConstructorArguments.FirstOrDefault().Value as string;
             keys.Insert(0, wireName ?? property.Name);
@@ -246,6 +250,32 @@ internal sealed class SourceProgram(SemanticModel model, LambdaExpressionSyntax 
         bindings.Add(name, factory);
         return name;
     }
+    private ExpressionSyntax CaptureInstanceMember(ExpressionSyntax node, ISymbol symbol)
+    {
+        var type = symbol switch
+        {
+            IFieldSymbol field => field.Type,
+            IPropertySymbol property when Automatic(property) => property.Type,
+            IPropertySymbol property => throw Error(
+                $"Instance property '{property.Name}' has an executable getter. Read it before creating the workflow expression and capture the result.",
+                node),
+            _ => throw Error("Only instance fields and auto-properties can be captured.", node),
+        };
+        return Capture(node, symbol, type, node.ToString());
+    }
+    private ExpressionSyntax Capture(ExpressionSyntax node, ISymbol symbol, ITypeSymbol type, string source)
+    {
+        if (IsWrite(node)) throw Error("External captures are snapshots and cannot be assigned or passed by reference.", node);
+        ValidateCapture(type, node);
+        if (!captures.TryGetValue(symbol, out var name))
+        {
+            name = Unique("__capture");
+            captures.Add(symbol, name);
+            var slot = Bind($"{Prefix}WorkflowExpressionBinding.Capture<{TypeName(type)}>({source})");
+            declarations.Add($"{(type.SpecialType is >= SpecialType.System_Boolean and <= SpecialType.System_String || type.TypeKind == TypeKind.Enum ? "const " : "")}{TypeName(type)} {name} = {slot};");
+        }
+        return SyntaxFactory.IdentifierName(name).WithTriviaFrom(node);
+    }
     private string Unique(string prefix)
     {
         var index = 0;
@@ -254,6 +284,10 @@ internal sealed class SourceProgram(SemanticModel model, LambdaExpressionSyntax 
     }
     private bool Local(ISymbol symbol) => symbol.DeclaringSyntaxReferences.Any(reference =>
         reference.SyntaxTree == lambda.SyntaxTree && lambda.Span.Contains(reference.Span));
+    private static bool Automatic(IPropertySymbol property) => property.ContainingType.IsAnonymousType ||
+        property.DeclaringSyntaxReferences.Any(reference =>
+            reference.GetSyntax() is PropertyDeclarationSyntax { ExpressionBody: null, AccessorList: { } list } &&
+            list.Accessors.All(accessor => accessor.Body == null && accessor.ExpressionBody == null));
     private static bool Implements(ITypeSymbol? type, string name) => type != null && type.AllInterfaces.Prepend(type)
         .Any(candidate => candidate.Name == name && candidate.ContainingNamespace.ToDisplayString() == Sdk);
     private static bool IsWrite(ExpressionSyntax node) =>

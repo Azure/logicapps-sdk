@@ -54,11 +54,16 @@ effective.
 
 Synchronous blocks use framework `Func<T>` invocation, not an SDK execution
 helper. Scalar captures emit literals or direct GUID/date/time/URI/HTTP-method
-constructors. Captures are immutable snapshots, not executable closures.
+constructors. Supported instance fields and source-visible auto-properties use
+the same construction-time snapshot bindings. Workflow handles stored in fields
+remain late-bound operation bindings rather than value captures. Captures are
+immutable snapshots, not executable closures.
 
-Reject mutable collection/object captures, implicit instance state, external
-local functions, and async/task-returning workflow values. Expression-local
-values remain normal mutable C# objects.
+Reject mutable collection/object captures, instance methods, custom property
+getters, capture writes, external local functions, and async/task-returning
+workflow values. Call executable instance members before constructing the
+workflow expression and capture their result explicitly. Expression-local values
+remain normal mutable C# objects.
 
 Preserve computed CLR results in generated C# and let BPM's
 `WorkflowValueNormalizer` perform the sole CLR-to-workflow conversion after
