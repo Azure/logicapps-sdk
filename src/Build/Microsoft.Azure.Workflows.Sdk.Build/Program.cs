@@ -13,6 +13,7 @@ internal static class Program
         public string[] References { get; set; } = [];
         public string Defines { get; set; } = "";
         public bool CheckOverflow { get; set; }
+        public string LanguageVersion { get; set; } = "";
     }
     private static int Main(string[] args)
     {
@@ -20,7 +21,9 @@ internal static class Program
         {
             if (args.Length != 2) throw new ArgumentException("Expected compilation manifest and output directory.");
             var manifest = JsonSerializer.Deserialize<Manifest>(File.ReadAllText(args[0]), new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
-            var options = new CSharpParseOptions(LanguageVersion.CSharp12, preprocessorSymbols: manifest.Defines.Split(';', StringSplitOptions.RemoveEmptyEntries));
+            var options = new CSharpParseOptions(
+                ResolveLanguageVersion(manifest.LanguageVersion),
+                preprocessorSymbols: manifest.Defines.Split(';', StringSplitOptions.RemoveEmptyEntries));
             var trees = manifest.Sources.Select(path => CSharpSyntaxTree.ParseText(File.ReadAllText(path), options, path)).ToArray();
             var references = manifest.References.Distinct(StringComparer.OrdinalIgnoreCase).Select(path => MetadataReference.CreateFromFile(path));
             var result = ExpressionCompiler.Transform(CSharpCompilation.Create("WorkflowAuthoring", trees, references,
@@ -51,5 +54,14 @@ internal static class Program
             Console.Error.WriteLine("error LAEXP002: " + error.Message);
             return 1;
         }
+    }
+
+    internal static LanguageVersion ResolveLanguageVersion(string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value)) return LanguageVersion.CSharp12;
+        if (LanguageVersionFacts.TryParse(value.Trim(), out var languageVersion)) return languageVersion;
+        throw new ArgumentException(
+            $"The workflow expression compiler does not support C# language version '{value}'. " +
+            "Upgrade Microsoft.Azure.Workflows.Sdk or select a supported language version.");
     }
 }

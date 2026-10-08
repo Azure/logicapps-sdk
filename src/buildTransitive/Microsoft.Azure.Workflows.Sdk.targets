@@ -5,6 +5,7 @@
       <References ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
       <Defines ParameterType="System.String" />
       <CheckOverflow ParameterType="System.Boolean" />
+      <LanguageVersion ParameterType="System.String" />
       <Path ParameterType="System.String" Required="true" />
     </ParameterGroup>
     <Task>
@@ -13,7 +14,8 @@
         Func<string,string> quote = text => "\"" + text.Replace("\\","\\\\").Replace("\"","\\\"").Replace("\r","\\r").Replace("\n","\\n") + "\"";
         File.WriteAllText(Path, "{\"sources\":[" + string.Join(",",Sources.Select(x=>quote(x.GetMetadata("FullPath")))) +
           "],\"references\":[" + string.Join(",",References.Select(x=>quote(x.GetMetadata("FullPath")))) +
-          "],\"defines\":" + quote(Defines ?? "") + ",\"checkOverflow\":" + (CheckOverflow ? "true" : "false") + "}");
+          "],\"defines\":" + quote(Defines ?? "") + ",\"checkOverflow\":" + (CheckOverflow ? "true" : "false") +
+          ",\"languageVersion\":" + quote(LanguageVersion ?? "") + "}");
       ]]></Code>
     </Task>
   </UsingTask>
@@ -27,7 +29,8 @@
     <MakeDir Directories="$(_WorkflowSourceDirectory)" />
     <ItemGroup><_WorkflowOriginalCompile Include="@(Compile)" /></ItemGroup>
     <WriteWorkflowManifest Sources="@(Compile)" References="@(ReferencePath)" Defines="$(DefineConstants)"
-                           CheckOverflow="$(CheckForOverflowUnderflow)" Path="$(_WorkflowSourceDirectory)manifest.json" />
+                           CheckOverflow="$(CheckForOverflowUnderflow)" LanguageVersion="$(LangVersion)"
+                           Path="$(_WorkflowSourceDirectory)manifest.json" />
     <Exec Command="&quot;$(DotNetHostPath)&quot; &quot;$(WorkflowCompilerPath)&quot; &quot;$(_WorkflowSourceDirectory)manifest.json&quot; &quot;$(_WorkflowSourceDirectory).&quot;" />
     <ReadLinesFromFile File="$(_WorkflowSourceDirectory)compiled-files.txt"><Output TaskParameter="Lines" ItemName="_WorkflowCompiledSources" /></ReadLinesFromFile>
     <ItemGroup><Compile Remove="@(Compile)" /><Compile Include="@(_WorkflowCompiledSources)" /></ItemGroup>
