@@ -71,10 +71,9 @@ internal sealed class SourceProgram(SemanticModel model, LambdaExpressionSyntax 
 
     public override SyntaxNode? Visit(SyntaxNode? node)
     {
-        if (node is MemberAccessExpressionSyntax path && TryCustomOutputPath(path, out var factoryPath, out var keys))
+        if (node is ExpressionSyntax path && TryCustomOutputPath(path, out var factoryPath, out var segments))
         {
-            var source = Bind(factoryPath) + string.Concat(keys.Select(key => "[" + Quote(key) + "]"));
-            return Read(model.GetTypeInfo(path).Type!, source, defaultIfMissing: true).WithTriviaFrom(node);
+            return ReadCustomOutputPath(model.GetTypeInfo(path).Type!, factoryPath, segments).WithTriviaFrom(node);
         }
         if (node is ExpressionSyntax expression && TryWorkflowReference(expression, out var factory))
             return Read(model.GetTypeInfo(expression).Type!, Bind(factory)).WithTriviaFrom(node);
@@ -218,25 +217,87 @@ internal sealed class SourceProgram(SemanticModel model, LambdaExpressionSyntax 
         return false;
     }
 
-    private bool TryCustomOutputPath(MemberAccessExpressionSyntax expression, out string factory, out List<string> keys)
+    private bool TryCustomOutputPath(
+        ExpressionSyntax expression,
+        out string factory,
+        out List<(string Key, bool ConditionalReceiver)> segments)
     {
         factory = "";
-        keys = [];
-        if (model.GetSymbolInfo(expression).Symbol is not IPropertySymbol leaf ||
-            leaf.ContainingAssembly.Name == Sdk || leaf.ContainingAssembly.Name.StartsWith("System", StringComparison.Ordinal) ||
-            leaf.ContainingAssembly.Name == "Newtonsoft.Json") return false;
-        ExpressionSyntax current = expression;
-        while (current is MemberAccessExpressionSyntax member && model.GetSymbolInfo(member).Symbol is IPropertySymbol property)
+        segments = [];
+        return CollectCustomOutputPath(expression, segments, ref factory, conditionalReceiver: false) &&
+            factory.Length != 0 &&
+            segments.Count != 0;
+    }
+    private bool CollectCustomOutputPath(
+        ExpressionSyntax expression,
+        List<(string Key, bool ConditionalReceiver)> segments,
+        ref string factory,
+        bool conditionalReceiver)
+    {
+        if (expression is MemberAccessExpressionSyntax member)
         {
-            if (TryWorkflowReference(member, out factory)) return keys.Count > 0;
-            if (!Automatic(property)) return false;
-            var wireName = property.GetAttributes().FirstOrDefault(attribute =>
-                attribute.AttributeClass?.ToDisplayString() == "Newtonsoft.Json.JsonPropertyAttribute")?.ConstructorArguments.FirstOrDefault().Value as string;
-            keys.Insert(0, wireName ?? property.Name);
-            current = member.Expression;
+            if (TryWorkflowReference(member, out factory)) return true;
+            if (!CollectCustomOutputPath(member.Expression, segments, ref factory, conditionalReceiver) ||
+                model.GetSymbolInfo(member).Symbol is not IPropertySymbol property ||
+                !CustomPathProperty(property))
+                return false;
+            segments.Add((WireName(property), false));
+            return true;
+        }
+        if (expression is MemberBindingExpressionSyntax binding)
+        {
+            if (model.GetSymbolInfo(binding).Symbol is not IPropertySymbol property || !CustomPathProperty(property))
+                return false;
+            segments.Add((WireName(property), conditionalReceiver));
+            return true;
+        }
+        if (expression is ConditionalAccessExpressionSyntax conditional)
+        {
+            return CollectCustomOutputPath(conditional.Expression, segments, ref factory, conditionalReceiver) &&
+                CollectCustomOutputPath(conditional.WhenNotNull, segments, ref factory, conditionalReceiver: true);
         }
         return false;
     }
+    private ExpressionSyntax ReadCustomOutputPath(
+        ITypeSymbol type,
+        string factory,
+        List<(string Key, bool ConditionalReceiver)> segments)
+    {
+        var root = Bind(factory);
+        if (!segments.Any(segment => segment.ConditionalReceiver))
+        {
+            var source = root + string.Concat(segments.Select(segment => "[" + Quote(segment.Key) + "]"));
+            return Read(type, source, defaultIfMissing: true);
+        }
+
+        ValidateType(type, SyntaxFactory.ParseExpression(root));
+        var token = Unique("__path");
+        var sourceBuilder = new System.Text.StringBuilder(
+            $"((global::System.Func<{TypeName(type)}>)(() => {{ global::Newtonsoft.Json.Linq.JToken {token} = {root}; ");
+        foreach (var segment in segments)
+        {
+            if (segment.ConditionalReceiver)
+            {
+                sourceBuilder.Append(
+                    $"if ({token} == null || {token}.Type is global::Newtonsoft.Json.Linq.JTokenType.Null or " +
+                    $"global::Newtonsoft.Json.Linq.JTokenType.Undefined) return default({TypeName(type)}); ");
+            }
+            sourceBuilder.Append($"{token} = {token}[{Quote(segment.Key)}]; ");
+        }
+        sourceBuilder.Append(type.ToDisplayString() == "Newtonsoft.Json.Linq.JToken"
+            ? $"return {token}; }}))()"
+            : $"return {token}?.ToObject<{TypeName(type)}>() ?? default({TypeName(type)}); }}))()");
+        return SyntaxFactory.ParseExpression(sourceBuilder.ToString());
+    }
+    private static bool CustomPathProperty(IPropertySymbol property) =>
+        property.ContainingAssembly.Name != Sdk &&
+        !property.ContainingAssembly.Name.StartsWith("System", StringComparison.Ordinal) &&
+        property.ContainingAssembly.Name != "Newtonsoft.Json" &&
+        Automatic(property);
+    private static string WireName(IPropertySymbol property) =>
+        property.GetAttributes().FirstOrDefault(attribute =>
+            attribute.AttributeClass?.ToDisplayString() == "Newtonsoft.Json.JsonPropertyAttribute")
+            ?.ConstructorArguments.FirstOrDefault().Value as string ?? property.Name;
 
     private static ExpressionSyntax Read(ITypeSymbol type, string source, bool defaultIfMissing = false)
     {

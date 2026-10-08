@@ -210,9 +210,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 using Microsoft.Azure.Workflows.Sdk;
                 using Newtonsoft.Json;
                 using Newtonsoft.Json.Linq;
+                public sealed class Country {
+                    [JsonProperty("code")]
+                    public string Code { get; set; }
+                }
                 public sealed class Address {
                     [JsonProperty("city_name")]
                     public string City { get; set; }
+                    [JsonProperty("country")]
+                    public Country Country { get; set; }
                 }
                 public sealed class Customer {
                     [JsonProperty("optional_name")]
@@ -228,6 +234,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                         WorkflowActions.BuiltIn.Compose(() => customer.Output.Count);
                         WorkflowActions.BuiltIn.Compose(() => customer.Output.Token);
                         WorkflowActions.BuiltIn.Compose(() => customer.Output.Address.City);
+                        WorkflowActions.BuiltIn.Compose(() => customer.Output.Address?.City);
+                        WorkflowActions.BuiltIn.Compose(() => customer.Output.Address?.Country?.Code);
                     }
                 }
                 """;
@@ -237,7 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.Empty(result.Diagnostics);
             var programs = RenderPrograms(result.Sources["Consumer.cs"], """outputs("Customer")""");
 
-            Assert.Equal(4, programs.Length);
+            Assert.Equal(6, programs.Length);
             AssertReturnExpression(
                 """(outputs("Customer")["optional_name"])?.ToObject<string>() ?? default(string)""",
                 programs[0]);
@@ -248,6 +256,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             AssertReturnExpression(
                 """(outputs("Customer")["address"]["city_name"])?.ToObject<string>() ?? default(string)""",
                 programs[3]);
+            var conditionalPath = ReturnExpression(programs[4]).DescendantNodesAndSelf()
+                .OfType<ParenthesizedLambdaExpressionSyntax>().Single();
+            var conditionalBody = Assert.IsType<BlockSyntax>(conditionalPath.Body);
+            Assert.Equal(
+                NormalizeExpression("""outputs("Customer")"""),
+                NormalizeNode(conditionalBody.Statements.OfType<LocalDeclarationStatementSyntax>().Single()
+                    .Declaration.Variables.Single().Initializer.Value));
+            Assert.Equal(
+                new[]
+                {
+                    NormalizeExpression("""__path0 = __path0["address"]"""),
+                    NormalizeExpression("""__path0 = __path0["city_name"]"""),
+                },
+                conditionalBody.Statements.OfType<ExpressionStatementSyntax>()
+                    .Select(statement => NormalizeNode(statement.Expression)).ToArray());
+            var nullCheck = Assert.Single(conditionalBody.Statements.OfType<IfStatementSyntax>());
+            Assert.Contains("JTokenType.Null", nullCheck.Condition.ToString());
+            Assert.Contains("JTokenType.Undefined", nullCheck.Condition.ToString());
+            Assert.Equal(
+                NormalizeExpression("__path0?.ToObject<string>() ?? default(string)"),
+                NormalizeNode(conditionalBody.Statements.OfType<ReturnStatementSyntax>().Last().Expression));
+
+            var nestedConditionalPath = ReturnExpression(programs[5]).DescendantNodesAndSelf()
+                .OfType<ParenthesizedLambdaExpressionSyntax>().Single();
+            var nestedConditionalBody = Assert.IsType<BlockSyntax>(nestedConditionalPath.Body);
+            Assert.Equal(2, nestedConditionalBody.Statements.OfType<IfStatementSyntax>().Count());
+            Assert.Equal(
+                new[] { "\"address\"", "\"country\"", "\"code\"" },
+                nestedConditionalBody.Statements.OfType<ExpressionStatementSyntax>()
+                    .Select(statement => statement.DescendantNodes().OfType<ElementAccessExpressionSyntax>().Single()
+                        .ArgumentList.Arguments.Single().Expression.ToString())
+                    .ToArray());
         }
 
         [Fact]
