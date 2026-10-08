@@ -10,6 +10,9 @@
     <LangVersion>latest</LangVersion>
     <Authors>Microsoft Corporation</Authors>
     <Description>Microsoft Azure Logic Apps SDK</Description>
+    <TargetsForTfmSpecificContentInPackage>
+      $(TargetsForTfmSpecificContentInPackage);IncludeWorkflowCompilerInPackage
+    </TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,14 +24,15 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
-  <Target Name="IncludeWorkflowCompiler" BeforeTargets="_GetPackageFiles">
+  <Target Name="IncludeWorkflowCompilerInPackage">
     <MSBuild Projects="$(MSBuildProjectDirectory)\Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj"
              Targets="GetTargetPath" Properties="Configuration=$(Configuration)" RemoveProperties="TargetFramework">
       <Output TaskParameter="TargetOutputs" ItemName="_WorkflowCompiler" />
     </MSBuild>
     <PropertyGroup><_WorkflowCompilerDirectory>@(_WorkflowCompiler->'%(RootDir)%(Directory)')</_WorkflowCompilerDirectory></PropertyGroup>
     <ItemGroup>
-      <None Include="$(_WorkflowCompilerDirectory)**\*" Pack="true" PackagePath="tools\workflow-build\%(RecursiveDir)" />
+      <TfmSpecificPackageFile Include="$(_WorkflowCompilerDirectory)**\*"
+                              PackagePath="tools\workflow-build\%(RecursiveDir)" />
     </ItemGroup>
   </Target>
 

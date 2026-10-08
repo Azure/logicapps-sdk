@@ -16,6 +16,29 @@ if (-not $Version) {
     if (-not $prefix) { throw "VersionPrefix is missing from '$versionPropsPath'." }
     $Version = if ($suffix) { "$prefix-$suffix" } else { $prefix }
 }
+$packagePath = Join-Path $PackageDirectory "Microsoft.Azure.Workflows.Sdk.$Version.nupkg"
+if (-not (Test-Path -LiteralPath $packagePath)) {
+    throw "The SDK package '$packagePath' does not exist."
+}
+$requiredEntries = @(
+    'buildTransitive/Microsoft.Azure.Workflows.Sdk.targets',
+    'tools/workflow-build/Microsoft.Azure.Workflows.Sdk.Build.dll',
+    'tools/workflow-build/Microsoft.Azure.Workflows.Sdk.Build.deps.json',
+    'tools/workflow-build/Microsoft.Azure.Workflows.Sdk.Build.runtimeconfig.json',
+    'tools/workflow-build/Microsoft.CodeAnalysis.dll',
+    'tools/workflow-build/Microsoft.CodeAnalysis.CSharp.dll'
+)
+$archive = [System.IO.Compression.ZipFile]::OpenRead((Resolve-Path -LiteralPath $packagePath).Path)
+try {
+    $entries = @($archive.Entries | ForEach-Object { $_.FullName.Replace('\', '/') })
+    $missingEntries = @($requiredEntries | Where-Object { $entries -notcontains $_ })
+    if ($missingEntries.Count -ne 0) {
+        throw "The SDK package is missing required build assets: $($missingEntries -join ', ')."
+    }
+}
+finally {
+    $archive.Dispose()
+}
 try {
     New-Item -ItemType Directory -Path $cache -Force | Out-Null
     $config = [xml]'<configuration><packageSources><clear/><add key="sdk" value=""/><add key="dependencies" value=""/></packageSources><disabledPackageSources><clear/></disabledPackageSources><packageSourceMapping><clear/><packageSource key="sdk"><package pattern="Microsoft.Azure.Workflows.Sdk"/></packageSource><packageSource key="dependencies"><package pattern="*"/></packageSource></packageSourceMapping></configuration>'
