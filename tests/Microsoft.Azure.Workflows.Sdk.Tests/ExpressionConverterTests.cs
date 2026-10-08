@@ -57,5 +57,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.Throws<ArgumentNullException>(() => WorkflowExpression.Validate(null, "input", true));
             Assert.Throws<ArgumentException>(() => WorkflowExpression.Program<int>(new[] { "" }, new WorkflowExpressionBinding[] { null }));
         }
+
+        [Theory]
+        [InlineData("#{1 + 2}", "#{\"#{1 + 2}\"}")]
+        [InlineData("@value", "@@value")]
+        [InlineData("@{triggerBody()}", "#{\"@{triggerBody()}\"}")]
+        public void LiteralExpressionMarkersRemainData(string value, string expected)
+        {
+            var action = WorkflowActions.BuiltIn.__BuildCompose(WorkflowExpression.Literal(value));
+
+            Assert.Equal(expected, ((JToken)action.GetActionDefinition("flow").Inputs).Value<string>());
+        }
     }
 }

@@ -88,6 +88,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void InterpolationAndPropertyPatternsRemainCSharp()
+        {
+            var previous = WorkflowActions.BuiltIn.Compose<SendMessageInputMessageType>(
+                () => new SendMessageInputMessageType { MessageId = "id" }).WithName("Message");
+            var action = WorkflowActions.BuiltIn.Compose(() =>
+                previous.Output is { MessageId: "id" } ? $"ID:{previous.Output.MessageId}" : "none");
+
+            var expression = Assert.IsType<ConditionalExpressionSyntax>(ReturnExpression(Input(action)));
+            var pattern = Assert.IsType<IsPatternExpressionSyntax>(expression.Condition);
+            Assert.Equal("MessageId", pattern.Pattern.DescendantNodesAndSelf()
+                .OfType<SubpatternSyntax>().Single().NameColon.Name.Identifier.ValueText);
+            Assert.IsType<ParenthesizedExpressionSyntax>(
+                expression.WhenTrue.DescendantNodes().OfType<InterpolationSyntax>().Single().Expression);
+            Assert.Equal(2, expression.DescendantNodes().OfType<InvocationExpressionSyntax>()
+                .Count(invocation => invocation.Expression.ToString() == "outputs"));
+        }
+
+        [Fact]
+        public void CheckedAndUncheckedContextsRemainDistinct()
+        {
+            var previous = WorkflowActions.BuiltIn.Compose<int>(() => 1).WithName("Value");
+            IOutputWorkflowAction<int> checkedAction;
+            IOutputWorkflowAction<int> uncheckedAction;
+            checked
+            {
+                checkedAction = WorkflowActions.BuiltIn.Compose(() => previous.Output + 1);
+            }
+            unchecked
+            {
+                uncheckedAction = WorkflowActions.BuiltIn.Compose(() => previous.Output + 1);
+            }
+
+            Assert.IsType<CheckedExpressionSyntax>(ProgramExpression(Input(checkedAction)));
+            Assert.IsNotType<CheckedExpressionSyntax>(ProgramExpression(Input(uncheckedAction)));
+        }
+
+        [Fact]
+        public void NameofFoldsWithoutRuntimeTypeDependency()
+        {
+            var previous = WorkflowActions.BuiltIn.Compose<string>(() => "value").WithName("Source");
+            var action = WorkflowActions.BuiltIn.Compose(() =>
+                nameof(WorkflowExpressionCompilerTests) + previous.Output);
+
+            AssertReturnExpression(
+                "\"WorkflowExpressionCompilerTests\" + (outputs(\"Source\")).ToObject<string>()",
+                Input(action));
+        }
+
+        [Fact]
         public void NestedSdkObjectsPreserveIdentityAndDictionaryMutation()
         {
             var action = WorkflowActions.BuiltIn.Compose(() =>
@@ -161,17 +210,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 using Microsoft.Azure.Workflows.Sdk;
                 using Newtonsoft.Json;
                 using Newtonsoft.Json.Linq;
+                public sealed class Address {
+                    [JsonProperty("city_name")]
+                    public string City { get; set; }
+                }
                 public sealed class Customer {
                     [JsonProperty("optional_name")]
                     public string OptionalName { get; set; }
                     public int Count { get; set; }
                     public JToken Token { get; set; }
+                    [JsonProperty("address")]
+                    public Address Address { get; set; }
                 }
                 public sealed class Consumer {
                     public void Build(IOutputWorkflowAction<Customer> customer) {
                         WorkflowActions.BuiltIn.Compose(() => customer.Output.OptionalName);
                         WorkflowActions.BuiltIn.Compose(() => customer.Output.Count);
                         WorkflowActions.BuiltIn.Compose(() => customer.Output.Token);
+                        WorkflowActions.BuiltIn.Compose(() => customer.Output.Address.City);
                     }
                 }
                 """;
@@ -181,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.Empty(result.Diagnostics);
             var programs = RenderPrograms(result.Sources["Consumer.cs"], """outputs("Customer")""");
 
-            Assert.Equal(3, programs.Length);
+            Assert.Equal(4, programs.Length);
             AssertReturnExpression(
                 """(outputs("Customer")["optional_name"])?.ToObject<string>() ?? default(string)""",
                 programs[0]);
@@ -189,6 +245,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 """(outputs("Customer")["Count"])?.ToObject<int>() ?? default(int)""",
                 programs[1]);
             AssertReturnExpression("""outputs("Customer")["Token"]""", programs[2]);
+            AssertReturnExpression(
+                """(outputs("Customer")["address"]["city_name"])?.ToObject<string>() ?? default(string)""",
+                programs[3]);
         }
 
         [Fact]
@@ -205,6 +264,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 actionSource);
             var nullValue = WorkflowActions.BuiltIn.Compose<object>(() => null);
             Assert.Equal(JTokenType.Null, ((JToken)nullValue.GetActionDefinition("flow").Inputs).Type);
+        }
+
+        [Theory]
+        [InlineData("System.Func<int> value = () => 1;", "value = () => 2;", "")]
+        [InlineData("System.Func<int> value = flag ? (() => 1) : (() => 2);", "", "private bool flag = true;")]
+        [InlineData("System.Func<int> value = () => 1;", "Mutate(ref value);", "private static void Mutate(ref System.Func<int> value) { }")]
+        public void StoredLambdaMustHaveOneUnmodifiedSource(
+            string declaration,
+            string beforeCall,
+            string additionalMember)
+        {
+            var source = $$"""
+                using Microsoft.Azure.Workflows.Sdk;
+                public class Consumer {
+                    {{additionalMember}}
+                    public void Build() {
+                        {{declaration}}
+                        {{beforeCall}}
+                        WorkflowActions.BuiltIn.Compose(value);
+                    }
+                }
+                """;
+            var compilation = CSharpCompilation.Create("Consumer", new[] { CSharpSyntaxTree.ParseText(source, path: "Consumer.cs") },
+                References(), new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+
+            var diagnostic = Assert.Single(ExpressionCompiler.Transform(compilation).Diagnostics);
+            Assert.Contains("inline lambda or an unreassigned source-visible local lambda", diagnostic.GetMessage());
         }
 
         [Theory]

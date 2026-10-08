@@ -85,19 +85,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 diagnostic => diagnostic.GetMessage().Contains(message, StringComparison.OrdinalIgnoreCase));
         }
 
-        [Fact]
-        public void ConditionalCaptureCannotBeAssignedInsideTheValueLambda()
+        [Theory]
+        [InlineData("captured = 2")]
+        [InlineData("captured += 2")]
+        [InlineData("System.Threading.Interlocked.Increment(ref captured)")]
+        [InlineData("int.TryParse(\"1\", out captured)")]
+        public void CaptureWritesAndByReferenceUsesFailDuringAuthoring(string expression)
         {
-            const string Source = """
+            var source = $$"""
                 using Microsoft.Azure.Workflows.Sdk;
                 public class Consumer {
                     public void Build() {
                         var captured = 1;
-                        WorkflowActions.BuiltIn.Compose(() => { captured++; return captured; });
+                        WorkflowActions.BuiltIn.Compose(() => { {{expression}}; return captured; });
                     }
                 }
                 """;
-            var compilation = CSharpCompilation.Create("Consumer", new[] { CSharpSyntaxTree.ParseText(Source) },
+            var compilation = CSharpCompilation.Create("Consumer", new[] { CSharpSyntaxTree.ParseText(source) },
                 References(), new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
             Assert.Contains(ExpressionCompiler.Transform(compilation).Diagnostics, diagnostic => diagnostic.GetMessage().Contains("snapshots"));
         }

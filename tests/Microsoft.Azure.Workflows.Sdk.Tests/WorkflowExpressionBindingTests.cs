@@ -48,6 +48,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void TriggerBodyUsesTheBodyBinding()
+        {
+            var trigger = WorkflowTriggers.ServiceProviders.ServiceBus("service")
+                .ReceiveQueueMessages(() => "queue");
+            var action = WorkflowActions.BuiltIn.Compose(() => trigger.TriggerBody[0].MessageId);
+
+            AssertReturnExpression(
+                """(triggerBody()).ToObject<global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.ReceiveQueueMessagesOutputItem[]>()[0].MessageId""",
+                Input(action));
+        }
+
+        [Fact]
         public void ControlCallbacksRunOnceAndDefinitionsResolveNamesLate()
         {
             var count = 0;
